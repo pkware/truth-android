@@ -28,7 +28,9 @@ import static android.accessibilityservice.AccessibilityServiceInfo.CAPABILITY_C
 import static android.accessibilityservice.AccessibilityServiceInfo.CAPABILITY_CAN_REQUEST_TOUCH_EXPLORATION;
 import static android.accessibilityservice.AccessibilityServiceInfo.CAPABILITY_CAN_RETRIEVE_WINDOW_CONTENT;
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
+import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
 import static com.google.common.truth.Truth.assertThat;
+import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildBitMaskString;
 
 /**
@@ -55,6 +57,17 @@ public class AccessibilityServiceInfoSubject extends Subject<AccessibilityServic
         .flag(CAPABILITY_CAN_REQUEST_TOUCH_EXPLORATION, "request_touch_exploration")
         .flag(CAPABILITY_CAN_RETRIEVE_WINDOW_CONTENT, "retrieve_window_content")
         .get();
+  }
+
+  @TargetApi(JELLY_BEAN_MR2)
+  public AccessibilityServiceInfoSubject hasCapabilities(@AccessibilityServiceInfoCapabilities int capabilities) {
+    int actualCapabilities = getSubject().getCapabilities();
+    //noinspection ResourceType
+    assert_()
+        .withFailureMessage("Expected capabilities <%s> but was <%s>.", capabilitiesToString(capabilities), capabilitiesToString(actualCapabilities))
+        .that(actualCapabilities)
+        .isEqualTo(capabilities);
+    return this;
   }
 
   /**

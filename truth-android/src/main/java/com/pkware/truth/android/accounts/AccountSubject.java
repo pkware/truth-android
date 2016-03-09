@@ -24,7 +24,7 @@ import com.google.common.truth.SubjectFactory;
 import static com.google.common.truth.Truth.assertThat;
 
 /**
- * Assertions for {@link Account} instances.
+ * Propositions for {@link Account} subjects.
  */
 public class AccountSubject extends Subject<AccountSubject, Account> {
   private AccountSubject(FailureStrategy failureStrategy, Account subject) {

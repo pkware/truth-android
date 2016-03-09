@@ -32,7 +32,7 @@ import static com.google.common.truth.Truth.assertThat;
 import static com.pkware.truth.android.internal.IntegerUtils.buildBitMaskString;
 
 /**
- * Assertions for {@link AccessibilityServiceInfo} instances.
+ * Propositions for {@link AccessibilityServiceInfo} subjects.
  */
 public class AccessibilityServiceInfoSubject extends Subject<AccessibilityServiceInfoSubject, AccessibilityServiceInfo> {
   private AccessibilityServiceInfoSubject(FailureStrategy failureStrategy, AccessibilityServiceInfo subject) {

@@ -1,0 +1,195 @@
+/*
+ * Copyright 2016 PKWARE, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.pkware.truth.android.gesture;
+
+import android.gesture.GestureOverlayView;
+
+import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.Subject;
+import com.google.common.truth.SubjectFactory;
+
+import static android.gesture.GestureOverlayView.GESTURE_STROKE_TYPE_MULTIPLE;
+import static android.gesture.GestureOverlayView.GESTURE_STROKE_TYPE_SINGLE;
+import static android.gesture.GestureOverlayView.ORIENTATION_HORIZONTAL;
+import static android.gesture.GestureOverlayView.ORIENTATION_VERTICAL;
+import static com.google.common.truth.Truth.assertThat;
+import static com.google.common.truth.Truth.assert_;
+import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
+
+/**
+ * Propositions for {@link GestureOverlayView} subjects.
+ */
+public class GestureOverlayViewSubject extends Subject<GestureOverlayViewSubject, GestureOverlayView> {
+  protected GestureOverlayViewSubject(FailureStrategy failureStrategy, GestureOverlayView subject) {
+    super(failureStrategy, subject);
+  }
+
+  public static SubjectFactory<GestureOverlayViewSubject, GestureOverlayView> type() {
+    return new SubjectFactory<GestureOverlayViewSubject, GestureOverlayView>() {
+      @Override
+      public GestureOverlayViewSubject getSubject(FailureStrategy fs, GestureOverlayView that) {
+        return new GestureOverlayViewSubject(fs, that);
+      }
+    };
+  }
+
+  public static String gestureStrokeTypeToString(@GestureOverlayViewGestureStrokeType int type) {
+    return buildNamedValueString(type)
+        .value(GESTURE_STROKE_TYPE_SINGLE, "single")
+        .value(GESTURE_STROKE_TYPE_MULTIPLE, "multiple")
+        .get();
+  }
+
+  public static String orientationToString(@GestureOverlayViewOrientation int orientation) {
+    return buildNamedValueString(orientation)
+        .value(ORIENTATION_HORIZONTAL, "horizontal")
+        .value(ORIENTATION_VERTICAL, "vertical")
+        .get();
+  }
+
+  public GestureOverlayViewSubject hasFadeOffset(long offset) {
+    assertThat(getSubject().getFadeOffset())
+        .named("fade offset")
+        .isEqualTo(offset);
+    return this;
+  }
+
+  public GestureOverlayViewSubject hasGestureColor(int color) {
+    int actualColor = getSubject().getGestureColor();
+    assert_()
+        .withFailureMessage("Expected gesture color <%s> but was <%s>.", Integer.toHexString(color), Integer.toHexString(actualColor))
+        .that(actualColor)
+        .isEqualTo(color);
+    return this;
+  }
+
+  public GestureOverlayViewSubject hasGestureStrokeAngleThreshold(float threshold, float tolerance) {
+    assertThat(getSubject().getGestureStrokeAngleThreshold())
+        .named("gesture stroke angle threshold")
+        .isWithin(tolerance)
+        .of(threshold);
+    return this;
+  }
+
+  public GestureOverlayViewSubject hasGestureStrokeLengthThreshold(float threshold, float tolerance) {
+    assertThat(getSubject().getGestureStrokeLengthThreshold())
+        .named("gesture stroke length threshold")
+        .isWithin(tolerance)
+        .of(threshold);
+    return this;
+  }
+
+  public GestureOverlayViewSubject hasGestureStrokeSquarenessThreshold(float threshold, float tolerance) {
+    assertThat(getSubject().getGestureStrokeSquarenessTreshold())
+        .named("gesture stroke squareness threshold")
+        .isWithin(tolerance)
+        .of(threshold);
+    return this;
+  }
+
+  public GestureOverlayViewSubject hasGestureStokeType(@GestureOverlayViewGestureStrokeType int type) {
+    int actualType = getSubject().getGestureStrokeType();
+    //noinspection ResourceType
+    assert_()
+        .withFailureMessage("Expected gesture stroke type <%s> but was <%s>.", gestureStrokeTypeToString(type), gestureStrokeTypeToString(actualType))
+        .that(actualType)
+        .isEqualTo(type);
+    return this;
+  }
+
+  public GestureOverlayViewSubject hasGestureStrokeWidth(float width, float tolerance) {
+    assertThat(getSubject().getGestureStrokeWidth())
+        .named("gesture stroke width")
+        .isWithin(tolerance)
+        .of(width);
+    return this;
+  }
+
+  public GestureOverlayViewSubject hasOrientation(@GestureOverlayViewOrientation int orientation) {
+    int actualOrientation = getSubject().getOrientation();
+    //noinspection ResourceType
+    assert_()
+        .withFailureMessage("Expected orientation <%s> but was <%s>.", orientationToString(orientation), orientationToString(actualOrientation))
+        .that(actualOrientation)
+        .isEqualTo(orientation);
+    return this;
+  }
+
+  public GestureOverlayViewSubject hasUncertainGestureColor(int color) {
+    int actualColor = getSubject().getUncertainGestureColor();
+    assert_()
+        .withFailureMessage("Expected uncertain gesture color <%s> but was <%s>.", Integer.toHexString(color), Integer.toHexString(actualColor))
+        .that(actualColor)
+        .isEqualTo(color);
+    return this;
+  }
+
+  public GestureOverlayViewSubject isInterceptingEvents() {
+    assertThat(getSubject().isEventsInterceptionEnabled())
+        .named("events intercepting is enabled")
+        .isTrue();
+    return this;
+  }
+
+  public GestureOverlayViewSubject isNotInterceptingEvents() {
+    assertThat(getSubject().isEventsInterceptionEnabled())
+        .named("events intercepting is enabled")
+        .isFalse();
+    return this;
+  }
+
+  public GestureOverlayViewSubject isFadeEnabled() {
+    assertThat(getSubject().isFadeEnabled())
+        .named("fade is enabled")
+        .isTrue();
+    return this;
+  }
+
+  public GestureOverlayViewSubject isFadeDisabled() {
+    assertThat(getSubject().isFadeEnabled())
+        .named("fade is enabled")
+        .isFalse();
+    return this;
+  }
+
+  public GestureOverlayViewSubject isGestureVisible() {
+    assertThat(getSubject().isGestureVisible())
+        .named("gesture is visible")
+        .isTrue();
+    return this;
+  }
+
+  public GestureOverlayViewSubject isGestureNotVisible() {
+    assertThat(getSubject().isGestureVisible())
+        .named("gesture is visible")
+        .isFalse();
+    return this;
+  }
+
+  public GestureOverlayViewSubject isGesturing() {
+    assertThat(getSubject().isGesturing())
+        .named("is gesturing")
+        .isTrue();
+    return this;
+  }
+
+  public GestureOverlayViewSubject isNotGesturing() {
+    assertThat(getSubject().isGesturing())
+        .named("is gesturing")
+        .isFalse();
+    return this;
+  }
+}

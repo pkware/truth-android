@@ -1,0 +1,57 @@
+/*
+ * Copyright 2016 PKWARE, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.pkware.truth.android.view;
+
+import android.annotation.TargetApi;
+import android.view.InputEvent;
+
+import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.Subject;
+
+import static android.os.Build.VERSION_CODES.JELLY_BEAN;
+import static com.google.common.truth.Truth.assertThat;
+
+public abstract class AbstractInputEventSubject<S extends AbstractInputEventSubject<S, T>, T extends InputEvent>
+    extends Subject<S, T> {
+  protected AbstractInputEventSubject(FailureStrategy failureStrategy, T subject) {
+    super(failureStrategy, subject);
+  }
+
+  public S hasDeviceId(int id) {
+    assertThat(getSubject().getDeviceId())
+        .named("device ID")
+        .isEqualTo(id);
+    //noinspection unchecked
+    return (S) this;
+  }
+
+  @TargetApi(JELLY_BEAN)
+  public S hasEventTime(long time) {
+    assertThat(getSubject().getEventTime())
+        .named("event time")
+        .isEqualTo(time);
+    //noinspection unchecked
+    return (S) this;
+  }
+
+  public S hasSource(int source) {
+    assertThat(getSubject().getSource())
+        .named("source")
+        .isEqualTo(source);
+    //noinspection unchecked
+    return (S) this;
+  }
+}

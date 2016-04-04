@@ -18,6 +18,7 @@ package com.pkware.truth.android.playservices.maps;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.Subject;
 import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -40,105 +41,101 @@ public class MarkerSubject extends Subject<MarkerSubject, Marker> {
   }
 
   public MarkerSubject hasAlpha(float alpha, float tolerance) {
-    float actualAlpha = getSubject().getAlpha();
-    assertThat(actualAlpha)
-        .overridingErrorMessage("Expected alpha <%s> but was <%s>.", alpha, actualAlpha)
-        .isEqualTo(alpha);
+    assertThat(getSubject().getAlpha())
+        .named("alpha")
+        .isWithin(tolerance)
+        .of(alpha);
     return this;
   }
 
   public MarkerSubject hasId(String id) {
-    String actualId = getSubject().getId();
-    assertThat(actualId)
-        .overridingErrorMessage("Expected id <%s> but was <%s>.", id, actualId)
+    assertThat(getSubject().getId())
+        .named("ID")
         .isEqualTo(id);
     return this;
   }
 
   public MarkerSubject hasPosition(LatLng position) {
-    LatLng actualLatLng = getSubject().getPosition();
-    assertThat(actualLatLng)
-        .overridingErrorMessage("Expected position <%s> but was <%s>.", position, actualLatLng)
+    assertThat(getSubject().getPosition())
+        .named("position")
         .isEqualTo(position);
     return this;
   }
 
   public MarkerSubject hasRotation(float rotation, float tolerance) {
-    float actualRotation = getSubject().getRotation();
-    assertThat(actualRotation)
-        .overridingErrorMessage("Expected rotation <%s> but was <%s>.", rotation, actualRotation)
-        .isEqualTo(rotation);
+    assertThat(getSubject().getRotation())
+        .named("rotation")
+        .isWithin(tolerance)
+        .of(rotation);
     return this;
   }
 
   public MarkerSubject hasSnippet(String snippet) {
-    String actualSnippet = getSubject().getSnippet();
-    assertThat(actualSnippet)
-        .overridingErrorMessage("Expected snippet <%s> but was <%s>.", snippet, actualSnippet)
+    assertThat(getSubject().getSnippet())
+        .named("snippet")
         .isEqualTo(snippet);
     return this;
   }
 
   public MarkerSubject hasTitle(String title) {
-    String actualTitle = getSubject().getTitle();
-    assertThat(actualTitle)
-        .overridingErrorMessage("Expected title <%s> but was <%s>.", title, actualTitle)
+    assertThat(getSubject().getTitle())
+        .named("title")
         .isEqualTo(title);
     return this;
   }
 
   public MarkerSubject isDraggable() {
     assertThat(getSubject().isDraggable())
-        .overridingErrorMessage("Expected to be draggable but was not.")
+        .named("is draggable")
         .isTrue();
     return this;
   }
 
   public MarkerSubject isNotDraggable() {
     assertThat(getSubject().isDraggable())
-        .overridingErrorMessage("Expected to not be draggable but was.")
+        .named("is draggable")
         .isFalse();
     return this;
   }
 
   public MarkerSubject isFlat() {
     assertThat(getSubject().isFlat())
-        .overridingErrorMessage("Expected to be flat but was not.")
+        .named("is flat")
         .isTrue();
     return this;
   }
 
   public MarkerSubject isNotFlat() {
     assertThat(getSubject().isFlat())
-        .overridingErrorMessage("Expected to not be flat but was.")
+        .named("is flat")
         .isFalse();
     return this;
   }
 
   public MarkerSubject hasInfoWindowShown() {
     assertThat(getSubject().isInfoWindowShown())
-        .overridingErrorMessage("Expected info window to be shown but was not.")
+        .named("is info window shown")
         .isTrue();
     return this;
   }
 
   public MarkerSubject hasInfoWindowNotShown() {
     assertThat(getSubject().isInfoWindowShown())
-        .overridingErrorMessage("Expected info window to not be shown but was.")
+        .named("is info window shown")
         .isFalse();
     return this;
   }
 
   public MarkerSubject isVisible() {
     assertThat(getSubject().isVisible())
-        .overridingErrorMessage("Expected to be visible but was not.")
+        .named("is visible")
         .isTrue();
     return this;
   }
 
   public MarkerSubject isNotVisible() {
     assertThat(getSubject().isVisible())
-        .overridingErrorMessage("Expected to not be visible but was.")
+        .named("is visible")
         .isFalse();
     return this;
   }

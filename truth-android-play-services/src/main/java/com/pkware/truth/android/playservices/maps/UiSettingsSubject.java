@@ -17,7 +17,10 @@ package com.pkware.truth.android.playservices.maps;
 
 import com.google.android.gms.maps.UiSettings;
 import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.Subject;
 import com.google.common.truth.SubjectFactory;
+
+import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link UiSettings} subjects.
@@ -38,113 +41,113 @@ public class UiSettingsSubject extends Subject<UiSettingsSubject, UiSettings> {
 
   public UiSettingsSubject hasCompassEnabled() {
     assertThat(getSubject().isCompassEnabled())
-        .overridingErrorMessage("Expected compass to be enabled but was disabled.")
+        .named("is compass enabled")
         .isTrue();
     return this;
   }
 
   public UiSettingsSubject hasCompassDisabled() {
-    assertThat(getSubject().isCompassEnabled())
-        .overridingErrorMessage("Expected compass to be disabled but was enabled.")
-        .isFalse();
+    assertThat(!getSubject().isCompassEnabled())
+        .named("is compass disabled")
+        .isTrue();
     return this;
   }
 
   public UiSettingsSubject hasIndoorLevelPickerEnabled() {
     assertThat(getSubject().isIndoorLevelPickerEnabled())
-        .overridingErrorMessage("Expected indoor level picker to be enabled but was disabled.")
+        .named("is indoor level picker enabled")
         .isTrue();
     return this;
   }
 
   public UiSettingsSubject hasIndoorLevelPickerDisabled() {
-    assertThat(getSubject().isIndoorLevelPickerEnabled())
-        .overridingErrorMessage("Expected indoor level picker to be disabled but was enabled.")
-        .isFalse();
+    assertThat(!getSubject().isIndoorLevelPickerEnabled())
+        .named("is indoor level picker disabled")
+        .isTrue();
     return this;
   }
 
   public UiSettingsSubject hasMyLocationButtonEnabled() {
     assertThat(getSubject().isMyLocationButtonEnabled())
-        .overridingErrorMessage("Expected my location button to be enabled but was disabled.")
+        .named("is 'my location' button enabled")
         .isTrue();
     return this;
   }
 
   public UiSettingsSubject hasMyLocationButtonDisabled() {
-    assertThat(getSubject().isMyLocationButtonEnabled())
-        .overridingErrorMessage("Expected my location button to be disabled but was enabled.")
-        .isFalse();
+    assertThat(!getSubject().isMyLocationButtonEnabled())
+        .named("is 'my location' button disabled")
+        .isTrue();
     return this;
   }
 
   public UiSettingsSubject hasRotateGesturesEnabled() {
     assertThat(getSubject().isRotateGesturesEnabled())
-        .overridingErrorMessage("Expected rotate gestures to be enabled but was disabled.")
+        .named("is rotate gesture enabled")
         .isTrue();
     return this;
   }
 
   public UiSettingsSubject hasRotateGesturesDisabled() {
-    assertThat(getSubject().isRotateGesturesEnabled())
-        .overridingErrorMessage("Expected rotate gestures to be disabled but was enabled.")
-        .isFalse();
+    assertThat(!getSubject().isRotateGesturesEnabled())
+        .named("is rotate gesture disabled")
+        .isTrue();
     return this;
   }
 
   public UiSettingsSubject hasScrollGesturesEnabled() {
     assertThat(getSubject().isScrollGesturesEnabled())
-        .overridingErrorMessage("Expected scroll gestures to be enabled but was disabled.")
+        .named("is scroll gesture enabled")
         .isTrue();
     return this;
   }
 
   public UiSettingsSubject hasScrollGesturesDisabled() {
-    assertThat(getSubject().isScrollGesturesEnabled())
-        .overridingErrorMessage("Expected scroll gestures to be disabled but was enabled.")
-        .isFalse();
+    assertThat(!getSubject().isScrollGesturesEnabled())
+        .named("is scroll gesture enabled")
+        .isTrue();
     return this;
   }
 
   public UiSettingsSubject hasTiltGesturesEnabled() {
     assertThat(getSubject().isTiltGesturesEnabled())
-        .overridingErrorMessage("Expected tilt gestures to be enabled but was disabled.")
+        .named("is tilt gesture enabled")
         .isTrue();
     return this;
   }
 
   public UiSettingsSubject hasTiltGesturesDisabled() {
-    assertThat(getSubject().isTiltGesturesEnabled())
-        .overridingErrorMessage("Expected tilt gestures to be disabled but was enabled.")
-        .isFalse();
+    assertThat(!getSubject().isTiltGesturesEnabled())
+        .named("is tilt gesture disabled")
+        .isTrue();
     return this;
   }
 
   public UiSettingsSubject hasZoomControlsEnabled() {
     assertThat(getSubject().isZoomControlsEnabled())
-        .overridingErrorMessage("Expected zoom controls to be enabled but was disabled.")
+        .named("zoom controls are enabled")
         .isTrue();
     return this;
   }
 
   public UiSettingsSubject hasZoomControlsDisabled() {
-    assertThat(getSubject().isZoomControlsEnabled())
-        .overridingErrorMessage("Expected zoom controls to be disabled but was enabled.")
-        .isFalse();
+    assertThat(!getSubject().isZoomControlsEnabled())
+        .named("zoom controls are disabled")
+        .isTrue();
     return this;
   }
 
   public UiSettingsSubject hasZoomGesturesEnabled() {
     assertThat(getSubject().isZoomGesturesEnabled())
-        .overridingErrorMessage("Expected zoom gestures to be enabled but was disabled.")
+        .named("is zoom gesture enabled")
         .isTrue();
     return this;
   }
 
   public UiSettingsSubject hasZoomGesturesDisabled() {
-    assertThat(getSubject().isZoomGesturesEnabled())
-        .overridingErrorMessage("Expected zoom gestures to be disabled but was enabled.")
-        .isFalse();
+    assertThat(!getSubject().isZoomGesturesEnabled())
+        .named("is zoom gesture enabled")
+        .isTrue();
     return this;
   }
 }

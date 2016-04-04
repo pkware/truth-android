@@ -1,0 +1,151 @@
+/*
+ * Copyright 2016 PKWARE, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.pkware.truth.android.mediarouter.v7.media;
+
+import android.support.v7.media.MediaRouter;
+
+import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.Subject;
+import com.google.common.truth.SubjectFactory;
+
+import static com.google.common.truth.Truth.assertThat;
+import static com.google.common.truth.Truth.assert_;
+import static com.pkware.truth.android.mediarouter.v7.media.MediaRouteDescriptorSubject.volumeHandling;
+
+/**
+ * Propositions for {@link MediaRouter.RouteInfo} subjects.
+ */
+public class MediaRouterRouteInfoSubject
+    extends Subject<MediaRouterRouteInfoSubject, MediaRouter.RouteInfo> {
+
+  protected MediaRouterRouteInfoSubject(FailureStrategy failureStrategy, MediaRouter.RouteInfo subject) {
+    super(failureStrategy, subject);
+  }
+
+  public static SubjectFactory<MediaRouterRouteInfoSubject, MediaRouter.RouteInfo> type() {
+    return new SubjectFactory<MediaRouterRouteInfoSubject, MediaRouter.RouteInfo>() {
+      @Override
+      public MediaRouterRouteInfoSubject getSubject(FailureStrategy fs, MediaRouter.RouteInfo that) {
+        return new MediaRouterRouteInfoSubject(fs, that);
+      }
+    };
+  }
+
+  public MediaRouterRouteInfoSubject hasDescription(String description) {
+    assertThat(getSubject().getDescription())
+        .named("description")
+        .isEqualTo(description);
+    return this;
+  }
+
+  public MediaRouterRouteInfoSubject hasId(String id) {
+    assertThat(getSubject().getId())
+        .named("ID")
+        .isEqualTo(id);
+    return this;
+  }
+
+  public MediaRouterRouteInfoSubject hasName(String name) {
+    assertThat(getSubject().getName())
+        .named("name")
+        .isEqualTo(name);
+    return this;
+  }
+
+  public MediaRouterRouteInfoSubject hasPlaybackStream(int playbackStream) {
+    assertThat(getSubject().getPlaybackStream())
+        .named("playback stream")
+        .isEqualTo(playbackStream);
+    return this;
+  }
+
+  public MediaRouterRouteInfoSubject hasPlaybackType(int playbackType) {
+    int actualPlaybackType = getSubject().getPlaybackType();
+    assertThat(getSubject().getPlaybackType())
+        .named("playback type")
+        .isEqualTo(playbackType);
+    return this;
+  }
+
+  public MediaRouterRouteInfoSubject hasVolume(int volume) {
+    int actualVolume = getSubject().getVolume();
+    assertThat(getSubject().getVolume())
+        .named("volume")
+        .isEqualTo(volume);
+    return this;
+  }
+
+  public MediaRouterRouteInfoSubject hasVolumeHandling(@MediaRouteVolumeHandling int volumeHandling) {
+    int actualHandling = getSubject().getVolumeHandling();
+    //noinspection WrongConstant
+    assert_()
+        .withFailureMessage("Expected volume handling <%s> but was <%s>.",
+            volumeHandling(volumeHandling), volumeHandling(actualHandling))
+        .that(actualHandling)
+        .isEqualTo(volumeHandling);
+    return this;
+  }
+
+  public MediaRouterRouteInfoSubject hasVolumeMax(int volumeMax) {
+    int actualVolumeMax = getSubject().getVolumeMax();
+    assertThat(getSubject().getVolumeMax())
+        .named("maximum volume")
+        .isEqualTo(volumeMax);
+    return this;
+  }
+
+  public MediaRouterRouteInfoSubject isConnecting() {
+    assertThat(getSubject().isConnecting())
+        .named("is connecting")
+        .isTrue();
+    return this;
+  }
+
+  public MediaRouterRouteInfoSubject isNotConnecting() {
+    assertThat(getSubject().isConnecting())
+        .named("is connecting")
+        .isFalse();
+    return this;
+  }
+
+  public MediaRouterRouteInfoSubject isEnabled() {
+    assertThat(getSubject().isEnabled())
+        .named("is enabled")
+        .isTrue();
+    return this;
+  }
+
+  public MediaRouterRouteInfoSubject isDisabled() {
+    assertThat(!getSubject().isEnabled())
+        .named("is disabled")
+        .isTrue();
+    return this;
+  }
+
+  public MediaRouterRouteInfoSubject isSelected() {
+    assertThat(getSubject().isSelected())
+        .named("is selected")
+        .isTrue();
+    return this;
+  }
+
+  public MediaRouterRouteInfoSubject isNotSelected() {
+    assertThat(getSubject().isSelected())
+        .named("is selected")
+        .isFalse();
+    return this;
+  }
+}

@@ -1,5 +1,10 @@
 apply plugin: 'com.android.library'
 
+dependencies {
+    compile rootProject.ext.truth
+    compile rootProject.ext.supportAnnotations
+}
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -14,7 +19,5 @@ android {
     }
 }
 
-dependencies {
-    compile rootProject.ext.truth
-    compile rootProject.ext.supportAnnotations
-}
+apply from: rootProject.file('gradle/checkstyle.gradle')
+apply from: rootProject.file('gradle/gradle-mvn-push.gradle')

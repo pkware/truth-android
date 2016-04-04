@@ -66,7 +66,6 @@ public class PowerManagerSubject extends Subject<PowerManagerSubject, PowerManag
 
   @TargetApi(KITKAT_WATCH)
   public PowerManagerSubject isNotInteractive() {
-    isNotNull();
     assertThat(getSubject().isInteractive())
         .named("is interactive")
         .isFalse();

@@ -22,6 +22,8 @@ import com.google.common.truth.FailureStrategy;
 import com.google.common.truth.SubjectFactory;
 import com.pkware.truth.android.net.UriSubject;
 
+import java.util.Arrays;
+
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assert_;
 
@@ -46,7 +48,7 @@ public class CursorLoaderSubject extends AbstractLoaderSubject<CursorLoaderSubje
     assertThat(getSubject().getProjection())
         .asList()
         .named("projection")
-        .containsExactly(projection);
+        .containsExactlyElementsIn(Arrays.asList(projection));
     return this;
   }
 
@@ -91,7 +93,7 @@ public class CursorLoaderSubject extends AbstractLoaderSubject<CursorLoaderSubje
     assertThat(getSubject().getSelectionArgs())
         .asList()
         .named("selection args")
-        .containsExactly(selectionArgs);
+        .containsExactlyElementsIn(Arrays.asList(selectionArgs));
     return this;
   }
 

@@ -152,7 +152,6 @@ public class ScaleGestureDetectorSubject extends Subject<ScaleGestureDetectorSub
 
   @TargetApi(KITKAT)
   public ScaleGestureDetectorSubject isQuickScaleDisabled() {
-    isNotNull();
     assertThat(getSubject().isQuickScaleEnabled())
         .named("is quick scale enabled")
         .isFalse();

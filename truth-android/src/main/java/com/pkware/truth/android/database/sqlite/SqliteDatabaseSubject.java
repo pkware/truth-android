@@ -92,7 +92,6 @@ public class SqliteDatabaseSubject extends Subject<SqliteDatabaseSubject, SQLite
   }
 
   public SqliteDatabaseSubject isDatabaseIntegrityNotOk() {
-    isNotNull();
     assertThat(getSubject().isDatabaseIntegrityOk())
         .named("is database integrity ok")
         .isFalse();

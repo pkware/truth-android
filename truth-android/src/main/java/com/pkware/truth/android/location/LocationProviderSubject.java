@@ -132,7 +132,6 @@ public class LocationProviderSubject extends Subject<LocationProviderSubject, Lo
   }
 
   public LocationProviderSubject hasNoAltitudeSupport() {
-    isNotNull();
     assertThat(getSubject().supportsAltitude())
         .named("supports altitude")
         .isFalse();

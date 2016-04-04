@@ -28,8 +28,8 @@ public class Converter {
 
   @TargetApi(Build.VERSION_CODES.KITKAT)
   public static void main(String[] args) throws IOException {
-    for (String packageName : new String[]{"app", "content", "media", "print", "util", "view", "widget"}) {
-      File root = new File("truth-android-support-v4/src/main/java/org/assertj/android/support/v4/api/" + packageName);
+    for (String packageName : new String[]{"widget"}) {
+      File root = new File("truth-android-recyclerview-v7/src/main/java/org/assertj/android/recyclerview/v7/api/" + packageName);
       File[] toConvert = root.listFiles(new FilenameFilter() {
         @Override
         public boolean accept(File dir, String filename) {
@@ -38,7 +38,7 @@ public class Converter {
       });
 
       for (File file : toConvert) {
-        String targetDir = "truth-android-support-v4/src/main/java/com/pkware/truth/android/support/v4/" + packageName + "/";
+        String targetDir = "truth-android-recyclerview-v7/src/main/java/com/pkware/truth/android/recyclerview/v7/" + packageName + "/";
         new File(targetDir).mkdirs();
         String pathToNewFile = file.getName();
         pathToNewFile = targetDir + pathToNewFile.substring(0, pathToNewFile.indexOf("Assert.java")) + "Subject.java";
@@ -71,7 +71,7 @@ public class Converter {
             String line = scanner.nextLine();
 
             if (line.contains("package")) {
-              line = line.replace("package org.assertj.android.support.v4.api", "package com.pkware.truth.android.support.v4");
+              line = line.replace("package org.assertj.android.recyclerview.v7.api", "package com.pkware.truth.android.recyclerview.v7");
               hitPackage = true;
             } else if (!hitPackage) {
               continue;

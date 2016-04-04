@@ -2,7 +2,7 @@ rootProject.name = 'truth-android-root'
 
 include ':truth-android'
 include ':truth-android-appcompat-v7'
-//include ':truth-android-cardview-v7'
+include ':truth-android-cardview-v7'
 //include ':truth-android-design'
 //include ':truth-android-gridlayout-v7'
 //include ':truth-android-mediarouter-v7'

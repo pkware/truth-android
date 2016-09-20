@@ -41,7 +41,7 @@ public class PagerAdapterSubject extends Subject<PagerAdapterSubject, PagerAdapt
   }
 
   public PagerAdapterSubject hasCount(int count) {
-    assertThat(getSubject().getCount())
+    assertThat(actual().getCount())
         .named("count")
         .isEqualTo(count);
     return this;

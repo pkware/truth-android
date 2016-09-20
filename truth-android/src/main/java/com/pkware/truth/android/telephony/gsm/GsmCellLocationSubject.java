@@ -41,21 +41,21 @@ public class GsmCellLocationSubject extends Subject<GsmCellLocationSubject, GsmC
   }
 
   public GsmCellLocationSubject hasCid(int cid) {
-    assertThat(getSubject().getCid())
+    assertThat(actual().getCid())
         .named("CID")
         .isEqualTo(cid);
     return this;
   }
 
   public GsmCellLocationSubject hasLac(int lac) {
-    assertThat(getSubject().getLac())
+    assertThat(actual().getLac())
         .named("LAC")
         .isEqualTo(lac);
     return this;
   }
 
   public GsmCellLocationSubject hasPsc(int psc) {
-    assertThat(getSubject().getPsc())
+    assertThat(actual().getPsc())
         .named("PSC")
         .isEqualTo(psc);
     return this;

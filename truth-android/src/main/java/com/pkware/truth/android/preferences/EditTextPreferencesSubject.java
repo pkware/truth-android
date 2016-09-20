@@ -40,7 +40,7 @@ public class EditTextPreferencesSubject extends AbstractDialogPreferenceSubject<
   }
 
   public EditTextPreferencesSubject hasText(String text) {
-    assertThat(getSubject().getText())
+    assertThat(actual().getText())
         .named("text")
         .isEqualTo(text);
     return this;

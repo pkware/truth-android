@@ -31,7 +31,7 @@ public abstract class AbstractListViewSubject<S extends AbstractListViewSubject<
   }
 
   public S hasDivider(Drawable divider) {
-    assertThat(getSubject().getDivider())
+    assertThat(actual().getDivider())
         .named("divider")
         .isSameAs(divider);
     //noinspection unchecked
@@ -39,7 +39,7 @@ public abstract class AbstractListViewSubject<S extends AbstractListViewSubject<
   }
 
   public S hasDividerHeight(int height) {
-    assertThat(getSubject().getDividerHeight())
+    assertThat(actual().getDividerHeight())
         .named("divider height")
         .isEqualTo(height);
     //noinspection unchecked
@@ -47,7 +47,7 @@ public abstract class AbstractListViewSubject<S extends AbstractListViewSubject<
   }
 
   public S hasFooterViewsCount(int count) {
-    assertThat(getSubject().getFooterViewsCount())
+    assertThat(actual().getFooterViewsCount())
         .named("footer views count")
         .isEqualTo(count);
     //noinspection unchecked
@@ -55,7 +55,7 @@ public abstract class AbstractListViewSubject<S extends AbstractListViewSubject<
   }
 
   public S hasHeaderViewsCount(int count) {
-    assertThat(getSubject().getHeaderViewsCount())
+    assertThat(actual().getHeaderViewsCount())
         .named("header views count")
         .isEqualTo(count);
     //noinspection unchecked
@@ -63,7 +63,7 @@ public abstract class AbstractListViewSubject<S extends AbstractListViewSubject<
   }
 
   public S hasOverscrollFooter(Drawable footer) {
-    assertThat(getSubject().getOverscrollFooter())
+    assertThat(actual().getOverscrollFooter())
         .named("overscroll footer")
         .isSameAs(footer);
     //noinspection unchecked
@@ -71,7 +71,7 @@ public abstract class AbstractListViewSubject<S extends AbstractListViewSubject<
   }
 
   public S hasOverscrollHeader(Drawable header) {
-    assertThat(getSubject().getOverscrollHeader())
+    assertThat(actual().getOverscrollHeader())
         .named("overscroll header")
         .isSameAs(header);
     //noinspection unchecked
@@ -80,7 +80,7 @@ public abstract class AbstractListViewSubject<S extends AbstractListViewSubject<
 
   @TargetApi(KITKAT)
   public S hasFooterDividersEnabled() {
-    assertThat(getSubject().areFooterDividersEnabled())
+    assertThat(actual().areFooterDividersEnabled())
         .named("footer dividers are enabled")
         .isTrue();
     //noinspection unchecked
@@ -89,7 +89,7 @@ public abstract class AbstractListViewSubject<S extends AbstractListViewSubject<
 
   @TargetApi(KITKAT)
   public S hasFooterDividersDisabled() {
-    assertThat(getSubject().areFooterDividersEnabled())
+    assertThat(actual().areFooterDividersEnabled())
         .named("footer dividers are enabled")
         .isFalse();
     //noinspection unchecked
@@ -98,7 +98,7 @@ public abstract class AbstractListViewSubject<S extends AbstractListViewSubject<
 
   @TargetApi(KITKAT)
   public S hasHeaderDividersEnabled() {
-    assertThat(getSubject().areHeaderDividersEnabled())
+    assertThat(actual().areHeaderDividersEnabled())
         .named("header dividers are enabled")
         .isTrue();
     //noinspection unchecked
@@ -107,7 +107,7 @@ public abstract class AbstractListViewSubject<S extends AbstractListViewSubject<
 
   @TargetApi(KITKAT)
   public S hasHeaderDividersDisabled() {
-    assertThat(getSubject().areHeaderDividersEnabled())
+    assertThat(actual().areHeaderDividersEnabled())
         .named("header dividers are enabled")
         .isFalse();
     //noinspection unchecked

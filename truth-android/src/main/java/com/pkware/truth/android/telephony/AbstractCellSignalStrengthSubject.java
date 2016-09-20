@@ -31,7 +31,7 @@ public class AbstractCellSignalStrengthSubject<S extends AbstractCellSignalStren
   }
 
   public S hasAsuLevel(int level) {
-    assertThat(getSubject().getAsuLevel())
+    assertThat(actual().getAsuLevel())
         .named("ASU level")
         .isEqualTo(level);
     //noinspection unchecked
@@ -39,7 +39,7 @@ public class AbstractCellSignalStrengthSubject<S extends AbstractCellSignalStren
   }
 
   public S hasDbm(int dbm) {
-    assertThat(getSubject().getDbm())
+    assertThat(actual().getDbm())
         .named("dBm")
         .isEqualTo(dbm);
     //noinspection unchecked
@@ -47,7 +47,7 @@ public class AbstractCellSignalStrengthSubject<S extends AbstractCellSignalStren
   }
 
   public S hasLevel(int level) {
-    assertThat(getSubject().getLevel())
+    assertThat(actual().getLevel())
         .named("level")
         .isEqualTo(level);
     //noinspection unchecked

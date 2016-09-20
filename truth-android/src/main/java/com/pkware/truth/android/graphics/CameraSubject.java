@@ -44,7 +44,7 @@ public class CameraSubject extends Subject<CameraSubject, Camera> {
 
   @TargetApi(JELLY_BEAN)
   public CameraSubject hasLocationX(float location, float tolerance) {
-    assertThat(getSubject().getLocationX())
+    assertThat(actual().getLocationX())
         .named("X location")
         .isWithin(tolerance)
         .of(location);
@@ -53,7 +53,7 @@ public class CameraSubject extends Subject<CameraSubject, Camera> {
 
   @TargetApi(JELLY_BEAN)
   public CameraSubject hasLocationY(float location, float tolerance) {
-    assertThat(getSubject().getLocationY())
+    assertThat(actual().getLocationY())
         .named("Y location")
         .isWithin(tolerance)
         .of(location);
@@ -62,7 +62,7 @@ public class CameraSubject extends Subject<CameraSubject, Camera> {
 
   @TargetApi(JELLY_BEAN)
   public CameraSubject hasLocationZ(float location, float tolerance) {
-    assertThat(getSubject().getLocationZ())
+    assertThat(actual().getLocationZ())
         .named("Z location")
         .isWithin(tolerance)
         .of(location);

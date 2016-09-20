@@ -31,7 +31,7 @@ public abstract class AbstractInputEventSubject<S extends AbstractInputEventSubj
   }
 
   public S hasDeviceId(int id) {
-    assertThat(getSubject().getDeviceId())
+    assertThat(actual().getDeviceId())
         .named("device ID")
         .isEqualTo(id);
     //noinspection unchecked
@@ -40,7 +40,7 @@ public abstract class AbstractInputEventSubject<S extends AbstractInputEventSubj
 
   @TargetApi(JELLY_BEAN)
   public S hasEventTime(long time) {
-    assertThat(getSubject().getEventTime())
+    assertThat(actual().getEventTime())
         .named("event time")
         .isEqualTo(time);
     //noinspection unchecked
@@ -48,7 +48,7 @@ public abstract class AbstractInputEventSubject<S extends AbstractInputEventSubj
   }
 
   public S hasSource(int source) {
-    assertThat(getSubject().getSource())
+    assertThat(actual().getSource())
         .named("source")
         .isEqualTo(source);
     //noinspection unchecked

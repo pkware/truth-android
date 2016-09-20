@@ -41,7 +41,7 @@ public class DisplayMetricsSubject extends Subject<DisplayMetricsSubject, Displa
   }
 
   public DisplayMetricsSubject hasDensity(float density, float tolerance) {
-    assertThat(getSubject().density)
+    assertThat(actual().density)
         .named("density")
         .isWithin(tolerance)
         .of(density);
@@ -49,21 +49,21 @@ public class DisplayMetricsSubject extends Subject<DisplayMetricsSubject, Displa
   }
 
   public DisplayMetricsSubject hasDpi(int dpi) {
-    assertThat(getSubject().densityDpi)
+    assertThat(actual().densityDpi)
         .named("DPI")
         .isEqualTo(dpi);
     return this;
   }
 
   public DisplayMetricsSubject hasHeight(int height) {
-    assertThat(getSubject().heightPixels)
+    assertThat(actual().heightPixels)
         .named("height")
         .isEqualTo(height);
     return this;
   }
 
   public DisplayMetricsSubject hasScaledDensity(float scaledDensity, float tolerance) {
-    assertThat(getSubject().scaledDensity)
+    assertThat(actual().scaledDensity)
         .named("scaled density")
         .isWithin(tolerance)
         .of(scaledDensity);
@@ -71,14 +71,14 @@ public class DisplayMetricsSubject extends Subject<DisplayMetricsSubject, Displa
   }
 
   public DisplayMetricsSubject hasWidth(int width) {
-    assertThat(getSubject().widthPixels)
+    assertThat(actual().widthPixels)
         .named("width")
         .isEqualTo(width);
     return this;
   }
 
   public DisplayMetricsSubject hasXDpi(float xDpi, float tolerance) {
-    assertThat(getSubject().xdpi)
+    assertThat(actual().xdpi)
         .named("X DPI")
         .isWithin(tolerance)
         .of(xDpi);
@@ -86,7 +86,7 @@ public class DisplayMetricsSubject extends Subject<DisplayMetricsSubject, Displa
   }
 
   public DisplayMetricsSubject hasYDpi(float yDpi, float tolerance) {
-    assertThat(getSubject().ydpi)
+    assertThat(actual().ydpi)
         .named("Y DPI")
         .isWithin(tolerance)
         .of(yDpi);

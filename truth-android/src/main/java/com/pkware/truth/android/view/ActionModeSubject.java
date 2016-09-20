@@ -44,35 +44,35 @@ public class ActionModeSubject extends Subject<ActionModeSubject, ActionMode> {
   }
 
   public ActionModeSubject hasCustomView() {
-    assertThat(getSubject().getCustomView())
+    assertThat(actual().getCustomView())
         .named("has custom view")
         .isNotNull();
     return this;
   }
 
   public ActionModeSubject hasCustomView(View view) {
-    assertThat(getSubject().getCustomView())
+    assertThat(actual().getCustomView())
         .named("custom view")
         .isEqualTo(view);
     return this;
   }
 
   public ActionModeSubject hasSubtitle(CharSequence subtitle) {
-    assertThat(getSubject().getSubtitle())
+    assertThat(actual().getSubtitle())
         .named("subtitle")
         .isEqualTo(subtitle);
     return this;
   }
 
   public ActionModeSubject hasTag(Object tag) {
-    assertThat(getSubject().getTag())
+    assertThat(actual().getTag())
         .named("tag")
         .isEqualTo(tag);
     return this;
   }
 
   public ActionModeSubject hasTitle(CharSequence title) {
-    assertThat(getSubject().getTitle())
+    assertThat(actual().getTitle())
         .named("title")
         .isEqualTo(title);
     return this;
@@ -80,7 +80,7 @@ public class ActionModeSubject extends Subject<ActionModeSubject, ActionMode> {
 
   @TargetApi(JELLY_BEAN)
   public ActionModeSubject hasOptionalTitleHint() {
-    assertThat(getSubject().getTitleOptionalHint())
+    assertThat(actual().getTitleOptionalHint())
         .named("is title hint optional")
         .isTrue();
     return this;
@@ -88,7 +88,7 @@ public class ActionModeSubject extends Subject<ActionModeSubject, ActionMode> {
 
   @TargetApi(JELLY_BEAN)
   public ActionModeSubject hasNonOptionalTitleHint() {
-    assertThat(getSubject().getTitleOptionalHint())
+    assertThat(actual().getTitleOptionalHint())
         .named("is title hint optional")
         .isFalse();
     return this;
@@ -96,7 +96,7 @@ public class ActionModeSubject extends Subject<ActionModeSubject, ActionMode> {
 
   @TargetApi(JELLY_BEAN)
   public ActionModeSubject hasOptionalTitle() {
-    assertThat(getSubject().isTitleOptional())
+    assertThat(actual().isTitleOptional())
         .named("is title optional")
         .isTrue();
     return this;
@@ -104,7 +104,7 @@ public class ActionModeSubject extends Subject<ActionModeSubject, ActionMode> {
 
   @TargetApi(JELLY_BEAN)
   public ActionModeSubject hasNonOptionalTitle() {
-    assertThat(getSubject().isTitleOptional())
+    assertThat(actual().isTitleOptional())
         .named("is title optional")
         .isFalse();
     return this;

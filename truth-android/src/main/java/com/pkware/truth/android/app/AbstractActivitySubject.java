@@ -72,7 +72,7 @@ public abstract class AbstractActivitySubject<S extends AbstractActivitySubject<
   }
 
   public S hasRequestedOrientation(@ActivityScreenOrientation int orientation) {
-    int actualOrientation = getSubject().getRequestedOrientation();
+    int actualOrientation = actual().getRequestedOrientation();
     assert_()
         .withFailureMessage("Expected orientation <%s> but was <%s>.", screenOrientationToString(orientation), screenOrientationToString(actualOrientation))
         .that(actualOrientation)
@@ -82,7 +82,7 @@ public abstract class AbstractActivitySubject<S extends AbstractActivitySubject<
   }
 
   public S hasTitle(CharSequence title) {
-    assertThat(getSubject().getTitle())
+    assertThat(actual().getTitle())
         .named("title")
         .isEqualTo(title);
     //noinspection unchecked
@@ -90,11 +90,11 @@ public abstract class AbstractActivitySubject<S extends AbstractActivitySubject<
   }
 
   public S hasTitle(@StringRes int resId) {
-    return hasTitle(getSubject().getString(resId));
+    return hasTitle(actual().getString(resId));
   }
 
   public S hasTitleColor(@ColorRes int color) {
-    int actualColor = getSubject().getTitleColor();
+    int actualColor = actual().getTitleColor();
     assert_()
         .withFailureMessage("Expected title color <%s> but was <%s>.", Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
@@ -104,7 +104,7 @@ public abstract class AbstractActivitySubject<S extends AbstractActivitySubject<
   }
 
   public S hasWindowFocus() {
-    assertThat(getSubject().hasWindowFocus())
+    assertThat(actual().hasWindowFocus())
         .named("has window focus")
         .isTrue();
     //noinspection unchecked
@@ -112,7 +112,7 @@ public abstract class AbstractActivitySubject<S extends AbstractActivitySubject<
   }
 
   public S isChangingConfigurations() {
-    assertThat(getSubject().isChangingConfigurations())
+    assertThat(actual().isChangingConfigurations())
         .named("is changing configurations")
         .isTrue();
     //noinspection unchecked
@@ -120,7 +120,7 @@ public abstract class AbstractActivitySubject<S extends AbstractActivitySubject<
   }
 
   public S isNotChangingConfigurations() {
-    assertThat(getSubject().isChangingConfigurations())
+    assertThat(actual().isChangingConfigurations())
         .named("is changing configurations")
         .isFalse();
     //noinspection unchecked
@@ -128,7 +128,7 @@ public abstract class AbstractActivitySubject<S extends AbstractActivitySubject<
   }
 
   public S isChild() {
-    assertThat(getSubject().isChild())
+    assertThat(actual().isChild())
         .named("is child")
         .isTrue();
     //noinspection unchecked
@@ -136,7 +136,7 @@ public abstract class AbstractActivitySubject<S extends AbstractActivitySubject<
   }
 
   public S isNotChild() {
-    assertThat(getSubject().isChild())
+    assertThat(actual().isChild())
         .named("is child")
         .isFalse();
     //noinspection unchecked
@@ -145,7 +145,7 @@ public abstract class AbstractActivitySubject<S extends AbstractActivitySubject<
 
   @TargetApi(JELLY_BEAN_MR1)
   public S isDestroyed() {
-    assertThat(getSubject().isDestroyed())
+    assertThat(actual().isDestroyed())
         .named("is destroyed")
         .isTrue();
     //noinspection unchecked
@@ -154,7 +154,7 @@ public abstract class AbstractActivitySubject<S extends AbstractActivitySubject<
 
   @TargetApi(JELLY_BEAN_MR1)
   public S isNotDestroyed() {
-    assertThat(getSubject().isDestroyed())
+    assertThat(actual().isDestroyed())
         .named("is destroyed")
         .isFalse();
     //noinspection unchecked
@@ -162,7 +162,7 @@ public abstract class AbstractActivitySubject<S extends AbstractActivitySubject<
   }
 
   public S isFinishing() {
-    assertThat(getSubject().isFinishing())
+    assertThat(actual().isFinishing())
         .named("is finishing")
         .isTrue();
     //noinspection unchecked
@@ -170,7 +170,7 @@ public abstract class AbstractActivitySubject<S extends AbstractActivitySubject<
   }
 
   public S isNotFinishing() {
-    assertThat(getSubject().isFinishing())
+    assertThat(actual().isFinishing())
         .named("is finishing")
         .isFalse();
     //noinspection unchecked
@@ -179,7 +179,7 @@ public abstract class AbstractActivitySubject<S extends AbstractActivitySubject<
 
   @TargetApi(JELLY_BEAN_MR2)
   public S isImmersive() {
-    assertThat(getSubject().isImmersive())
+    assertThat(actual().isImmersive())
         .named("is immersive")
         .isTrue();
     //noinspection unchecked
@@ -188,7 +188,7 @@ public abstract class AbstractActivitySubject<S extends AbstractActivitySubject<
 
   @TargetApi(JELLY_BEAN_MR2)
   public S isNotImmersive() {
-    assertThat(getSubject().isImmersive())
+    assertThat(actual().isImmersive())
         .named("is immersive")
         .isFalse();
     //noinspection unchecked
@@ -196,7 +196,7 @@ public abstract class AbstractActivitySubject<S extends AbstractActivitySubject<
   }
 
   public S isTaskRoot() {
-    assertThat(getSubject().isTaskRoot())
+    assertThat(actual().isTaskRoot())
         .named("is task root")
         .isTrue();
     //noinspection unchecked
@@ -204,7 +204,7 @@ public abstract class AbstractActivitySubject<S extends AbstractActivitySubject<
   }
 
   public S isNotTaskRoot() {
-    assertThat(getSubject().isTaskRoot())
+    assertThat(actual().isTaskRoot())
         .named("is task root")
         .isFalse();
     //noinspection unchecked

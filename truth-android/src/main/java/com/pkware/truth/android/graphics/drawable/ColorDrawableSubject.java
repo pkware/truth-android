@@ -40,7 +40,7 @@ public class ColorDrawableSubject extends AbstractDrawableSubject<ColorDrawableS
   }
 
   public ColorDrawableSubject hasColor(int color) {
-    int actualColor = getSubject().getColor();
+    int actualColor = actual().getColor();
     assert_()
         .withFailureMessage("Expected color <%s> but was <%s>.", Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)

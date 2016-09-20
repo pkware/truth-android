@@ -41,14 +41,14 @@ public class InterpolatorSubject extends Subject<InterpolatorSubject, Interpolat
   }
 
   public InterpolatorSubject hasKeyFrameCount(int count) {
-    assertThat(getSubject().getKeyFrameCount())
+    assertThat(actual().getKeyFrameCount())
         .named("key frame count")
         .isEqualTo(count);
     return this;
   }
 
   public InterpolatorSubject hasValueCount(int count) {
-    assertThat(getSubject().getValueCount())
+    assertThat(actual().getValueCount())
         .named("value count")
         .isEqualTo(count);
     return this;

@@ -41,7 +41,7 @@ public class VelocityTrackerSubject extends Subject<VelocityTrackerSubject, Velo
   }
 
   public VelocityTrackerSubject hasXVelocity(float velocity, float tolerance) {
-    assertThat(getSubject().getXVelocity())
+    assertThat(actual().getXVelocity())
         .named("X velocity")
         .isWithin(tolerance)
         .of(velocity);
@@ -49,7 +49,7 @@ public class VelocityTrackerSubject extends Subject<VelocityTrackerSubject, Velo
   }
 
   public VelocityTrackerSubject hasXVelocity(int id, float velocity, float tolerance) {
-    assertThat(getSubject().getXVelocity(id))
+    assertThat(actual().getXVelocity(id))
         .named("X velocity for ID " + id)
         .isWithin(tolerance)
         .of(velocity);
@@ -57,7 +57,7 @@ public class VelocityTrackerSubject extends Subject<VelocityTrackerSubject, Velo
   }
 
   public VelocityTrackerSubject hasYVelocity(float velocity, float tolerance) {
-    assertThat(getSubject().getYVelocity())
+    assertThat(actual().getYVelocity())
         .named("Y velocity")
         .isWithin(tolerance)
         .of(velocity);
@@ -65,7 +65,7 @@ public class VelocityTrackerSubject extends Subject<VelocityTrackerSubject, Velo
   }
 
   public VelocityTrackerSubject hasYVelocity(int id, float velocity, float tolerance) {
-    assertThat(getSubject().getYVelocity(id))
+    assertThat(actual().getYVelocity(id))
         .named("Y velocity for ID " + id)
         .isWithin(tolerance)
         .of(velocity);

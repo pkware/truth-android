@@ -45,14 +45,14 @@ public final class CellInfoGsmSubject extends AbstractCellInfoSubject<CellInfoGs
   }
 
   public CellInfoGsmSubject hasCellIdentity(CellIdentityGsm cellIdentity) {
-    assertThat(getSubject().getCellIdentity())
+    assertThat(actual().getCellIdentity())
         .named("cell identity")
         .isEqualTo(cellIdentity);
     return this;
   }
 
   public CellInfoGsmSubject hasCellSignalStrength(CellSignalStrengthGsm cellSignalStrength) {
-    assertThat(getSubject().getCellSignalStrength())
+    assertThat(actual().getCellSignalStrength())
         .named("cell signal strength")
         .isEqualTo(cellSignalStrength);
     return this;

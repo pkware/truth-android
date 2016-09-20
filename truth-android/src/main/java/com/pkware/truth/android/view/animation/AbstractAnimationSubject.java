@@ -48,7 +48,7 @@ public abstract class AbstractAnimationSubject<S extends AbstractAnimationSubjec
   }
 
   public S hasBackgroundColor(int color) {
-    int actualColor = getSubject().getBackgroundColor();
+    int actualColor = actual().getBackgroundColor();
     assert_()
         .withFailureMessage("Expected background color <%s> but was <%s>.",
             Integer.toHexString(color), Integer.toHexString(actualColor))
@@ -59,8 +59,8 @@ public abstract class AbstractAnimationSubject<S extends AbstractAnimationSubjec
   }
 
   public S hasDuration(long duration) {
-    long actualDuration = getSubject().getDuration();
-    assertThat(getSubject().getDuration())
+    long actualDuration = actual().getDuration();
+    assertThat(actual().getDuration())
         .named("duration")
         .isEqualTo(duration);
     //noinspection unchecked
@@ -68,7 +68,7 @@ public abstract class AbstractAnimationSubject<S extends AbstractAnimationSubjec
   }
 
   public S isFillingAfter() {
-    assertThat(getSubject().getFillAfter())
+    assertThat(actual().getFillAfter())
         .named("is filling after")
         .isTrue();
     //noinspection unchecked
@@ -76,7 +76,7 @@ public abstract class AbstractAnimationSubject<S extends AbstractAnimationSubjec
   }
 
   public S isNotFillingAfter() {
-    assertThat(getSubject().getFillAfter())
+    assertThat(actual().getFillAfter())
         .named("is filling after")
         .isFalse();
     //noinspection unchecked
@@ -84,7 +84,7 @@ public abstract class AbstractAnimationSubject<S extends AbstractAnimationSubjec
   }
 
   public S isFillingBefore() {
-    assertThat(getSubject().getFillBefore())
+    assertThat(actual().getFillBefore())
         .named("is filling before")
         .isTrue();
     //noinspection unchecked
@@ -92,7 +92,7 @@ public abstract class AbstractAnimationSubject<S extends AbstractAnimationSubjec
   }
 
   public S isNotFillingBefore() {
-    assertThat(getSubject().getFillBefore())
+    assertThat(actual().getFillBefore())
         .named("is filling before")
         .isFalse();
     //noinspection unchecked
@@ -100,7 +100,7 @@ public abstract class AbstractAnimationSubject<S extends AbstractAnimationSubjec
   }
 
   public S hasInterpolator(Interpolator interpolator) {
-    assertThat(getSubject().getInterpolator())
+    assertThat(actual().getInterpolator())
         .named("interpolator")
         .isSameAs(interpolator);
     //noinspection unchecked
@@ -108,7 +108,7 @@ public abstract class AbstractAnimationSubject<S extends AbstractAnimationSubjec
   }
 
   public S hasRepeatCount(int count) {
-    int actualCount = getSubject().getRepeatCount();
+    int actualCount = actual().getRepeatCount();
     assert_()
         .withFailureMessage("Expected repeat count <%s> but was <%s>.",
             repeatCountToString(count), repeatCountToString(actualCount))
@@ -119,7 +119,7 @@ public abstract class AbstractAnimationSubject<S extends AbstractAnimationSubjec
   }
 
   public S hasRepeatMode(@AnimationRepeatMode int mode) {
-    int actualMode = getSubject().getRepeatMode();
+    int actualMode = actual().getRepeatMode();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected repeat mode <%s> but was <%s>.", repeatModeToString(mode),
@@ -131,7 +131,7 @@ public abstract class AbstractAnimationSubject<S extends AbstractAnimationSubjec
   }
 
   public S hasStartOffset(long offset) {
-    assertThat(getSubject().getStartOffset())
+    assertThat(actual().getStartOffset())
         .named("start offset")
         .isEqualTo(offset);
     //noinspection unchecked
@@ -139,7 +139,7 @@ public abstract class AbstractAnimationSubject<S extends AbstractAnimationSubjec
   }
 
   public S hasStartTime(long time) {
-    assertThat(getSubject().getStartTime())
+    assertThat(actual().getStartTime())
         .named("start time")
         .isEqualTo(time);
     //noinspection unchecked
@@ -147,7 +147,7 @@ public abstract class AbstractAnimationSubject<S extends AbstractAnimationSubjec
   }
 
   public S hasZAdjustment(int adjustment) {
-    assertThat(getSubject().getZAdjustment())
+    assertThat(actual().getZAdjustment())
         .named("Z adjustment")
         .isEqualTo(adjustment);
     //noinspection unchecked
@@ -155,7 +155,7 @@ public abstract class AbstractAnimationSubject<S extends AbstractAnimationSubjec
   }
 
   public S isEnded() {
-    assertThat(getSubject().hasEnded())
+    assertThat(actual().hasEnded())
         .named("has ended")
         .isTrue();
     //noinspection unchecked
@@ -163,7 +163,7 @@ public abstract class AbstractAnimationSubject<S extends AbstractAnimationSubjec
   }
 
   public S isNotEnded() {
-    assertThat(getSubject().hasEnded())
+    assertThat(actual().hasEnded())
         .named("has ended")
         .isFalse();
     //noinspection unchecked
@@ -171,7 +171,7 @@ public abstract class AbstractAnimationSubject<S extends AbstractAnimationSubjec
   }
 
   public S isStarted() {
-    assertThat(getSubject().hasStarted())
+    assertThat(actual().hasStarted())
         .named("has started")
         .isTrue();
     //noinspection unchecked
@@ -179,7 +179,7 @@ public abstract class AbstractAnimationSubject<S extends AbstractAnimationSubjec
   }
 
   public S isNotStarted() {
-    assertThat(getSubject().hasStarted())
+    assertThat(actual().hasStarted())
         .named("has started")
         .isFalse();
     //noinspection unchecked
@@ -187,7 +187,7 @@ public abstract class AbstractAnimationSubject<S extends AbstractAnimationSubjec
   }
 
   public S isFillEnabled() {
-    assertThat(getSubject().isFillEnabled())
+    assertThat(actual().isFillEnabled())
         .named("is fill enabled")
         .isTrue();
     //noinspection unchecked
@@ -195,7 +195,7 @@ public abstract class AbstractAnimationSubject<S extends AbstractAnimationSubjec
   }
 
   public S isFillDisabled() {
-    assertThat(!getSubject().isFillEnabled())
+    assertThat(!actual().isFillEnabled())
         .named("is fill disabled")
         .isTrue();
     //noinspection unchecked
@@ -203,7 +203,7 @@ public abstract class AbstractAnimationSubject<S extends AbstractAnimationSubjec
   }
 
   public S isInitialized() {
-    assertThat(getSubject().isInitialized())
+    assertThat(actual().isInitialized())
         .named("is initialized")
         .isTrue();
     //noinspection unchecked
@@ -211,7 +211,7 @@ public abstract class AbstractAnimationSubject<S extends AbstractAnimationSubjec
   }
 
   public S isNotInitialized() {
-    assertThat(getSubject().isInitialized())
+    assertThat(actual().isInitialized())
         .named("is initialized")
         .isFalse();
     //noinspection unchecked
@@ -219,7 +219,7 @@ public abstract class AbstractAnimationSubject<S extends AbstractAnimationSubjec
   }
 
   public S isChangingBounds() {
-    assertThat(getSubject().willChangeBounds())
+    assertThat(actual().willChangeBounds())
         .named("is changing bounds")
         .isTrue();
     //noinspection unchecked
@@ -227,7 +227,7 @@ public abstract class AbstractAnimationSubject<S extends AbstractAnimationSubjec
   }
 
   public S isNotChangingBounds() {
-    assertThat(getSubject().willChangeBounds())
+    assertThat(actual().willChangeBounds())
         .named("is changing bounds")
         .isFalse();
     //noinspection unchecked
@@ -235,7 +235,7 @@ public abstract class AbstractAnimationSubject<S extends AbstractAnimationSubjec
   }
 
   public S isChangingTransformationMatrix() {
-    assertThat(getSubject().willChangeTransformationMatrix())
+    assertThat(actual().willChangeTransformationMatrix())
         .named("is changing transformation matrix")
         .isTrue();
     //noinspection unchecked
@@ -243,7 +243,7 @@ public abstract class AbstractAnimationSubject<S extends AbstractAnimationSubjec
   }
 
   public S isNotChangingTransformationMatrix() {
-    assertThat(getSubject().willChangeTransformationMatrix())
+    assertThat(actual().willChangeTransformationMatrix())
         .named("is changing transformation matrix")
         .isFalse();
     //noinspection unchecked

@@ -40,28 +40,28 @@ public class ViewFlipperSubject extends AbstractViewAnimatorSubject<ViewFlipperS
   }
 
   public ViewFlipperSubject isAutoStarting() {
-    assertThat(getSubject().isAutoStart())
+    assertThat(actual().isAutoStart())
         .named("is auto-starting")
         .isTrue();
     return this;
   }
 
   public ViewFlipperSubject isNotAutoStarting() {
-    assertThat(getSubject().isAutoStart())
+    assertThat(actual().isAutoStart())
         .named("is auto-starting")
         .isTrue();
     return this;
   }
 
   public ViewFlipperSubject isFlipping() {
-    assertThat(getSubject().isFlipping())
+    assertThat(actual().isFlipping())
         .named("is flipping")
         .isTrue();
     return this;
   }
 
   public ViewFlipperSubject isNotFlipping() {
-    assertThat(getSubject().isFlipping())
+    assertThat(actual().isFlipping())
         .named("is flipping")
         .isFalse();
     return this;

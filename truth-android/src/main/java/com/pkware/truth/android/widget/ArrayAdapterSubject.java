@@ -42,14 +42,14 @@ public class ArrayAdapterSubject extends AbstractListAdapterSubject<ArrayAdapter
   }
 
   public ArrayAdapterSubject hasContext(Context context) {
-    assertThat(getSubject().getContext())
+    assertThat(actual().getContext())
         .named("context")
         .isSameAs(context);
     return this;
   }
 
   public ArrayAdapterSubject hasFilter(Filter filter) {
-    assertThat(getSubject().getFilter())
+    assertThat(actual().getFilter())
         .named("filter")
         .isSameAs(filter);
     return this;

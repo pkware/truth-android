@@ -45,42 +45,42 @@ public class PaletteSubject extends Subject<PaletteSubject, Palette> {
   }
 
   public PaletteSubject hasVibrantColor(int color) {
-    assertThat(getSubject().getVibrantColor(getAnotherColor(color)))
+    assertThat(actual().getVibrantColor(getAnotherColor(color)))
         .named("vibrant color")
         .isEqualTo(color);
     return this;
   }
 
   public PaletteSubject hasDarkVibrantColor(int color) {
-    assertThat(getSubject().getDarkVibrantColor(getAnotherColor(color)))
+    assertThat(actual().getDarkVibrantColor(getAnotherColor(color)))
         .named("dark vibrant color")
         .isEqualTo(color);
     return this;
   }
 
   public PaletteSubject hasLightVibrantColor(int color) {
-    assertThat(getSubject().getLightVibrantColor(getAnotherColor(color)))
+    assertThat(actual().getLightVibrantColor(getAnotherColor(color)))
         .named("light vibrant color")
         .isEqualTo(color);
     return this;
   }
 
   public PaletteSubject hasMutedColor(int color) {
-    assertThat(getSubject().getMutedColor(getAnotherColor(color)))
+    assertThat(actual().getMutedColor(getAnotherColor(color)))
         .named("muted color")
         .isEqualTo(color);
     return this;
   }
 
   public PaletteSubject hasDarkMutedColor(int color) {
-    assertThat(getSubject().getDarkMutedColor(getAnotherColor(color)))
+    assertThat(actual().getDarkMutedColor(getAnotherColor(color)))
         .named("dark muted color")
         .isEqualTo(color);
     return this;
   }
 
   public PaletteSubject hasLightMutedColor(int color) {
-    assertThat(getSubject().getLightMutedColor(color))
+    assertThat(actual().getLightMutedColor(color))
         .named("light muted color")
         .isEqualTo(color);
     return this;

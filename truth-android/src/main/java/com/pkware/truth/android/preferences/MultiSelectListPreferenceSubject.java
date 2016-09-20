@@ -47,7 +47,7 @@ public class MultiSelectListPreferenceSubject extends
   public MultiSelectListPreferenceSubject hasEntries(String... entries) {
 
     // We convert to Strings b/c most of the time we are interested in the text content
-    String[] actualEntries = FluentIterable.of(getSubject().getEntries())
+    String[] actualEntries = FluentIterable.of(actual().getEntries())
         .transform(mapToString())
         .toArray(String.class);
 
@@ -60,7 +60,7 @@ public class MultiSelectListPreferenceSubject extends
   public MultiSelectListPreferenceSubject hasEntryValues(String... values) {
 
     // We convert to Strings b/c most of the time we are interested in the text content
-    String[] actualValues = FluentIterable.of(getSubject().getEntryValues())
+    String[] actualValues = FluentIterable.of(actual().getEntryValues())
         .transform(mapToString())
         .toArray(String.class);
 
@@ -71,7 +71,7 @@ public class MultiSelectListPreferenceSubject extends
   }
 
   public MultiSelectListPreferenceSubject hasValues(String... values) {
-    assertThat(getSubject().getValues())
+    assertThat(actual().getValues())
         .named("values")
         .containsExactlyElementsIn(Arrays.asList(values));
     return this;

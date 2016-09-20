@@ -102,14 +102,14 @@ public class BluetoothGattCharacteristicSubject extends Subject<BluetoothGattCha
   }
 
   public BluetoothGattCharacteristicSubject hasInstanceId(int id) {
-    assertThat(getSubject().getInstanceId())
+    assertThat(actual().getInstanceId())
         .named("instance id")
         .isEqualTo(id);
     return this;
   }
 
   public BluetoothGattCharacteristicSubject hasPermissions(@BluetoothGattCharacteristicPermissions int permissions) {
-    int actualPermissions = getSubject().getPermissions();
+    int actualPermissions = actual().getPermissions();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected permissions <%s> but was <%s>.",
@@ -121,7 +121,7 @@ public class BluetoothGattCharacteristicSubject extends Subject<BluetoothGattCha
   }
 
   public BluetoothGattCharacteristicSubject hasProperties(@BluetoothGattCharacteristicProperties int properties) {
-    int actualProperties = getSubject().getProperties();
+    int actualProperties = actual().getProperties();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected properties <%s> but was <%s>.",
@@ -133,14 +133,14 @@ public class BluetoothGattCharacteristicSubject extends Subject<BluetoothGattCha
   }
 
   public BluetoothGattCharacteristicSubject hasUuid(UUID uuid) {
-    assertThat(getSubject().getUuid())
+    assertThat(actual().getUuid())
         .named("UUID")
         .isEqualTo(uuid);
     return this;
   }
 
   public BluetoothGattCharacteristicSubject hasValue(byte[] value) {
-    byte[] actualValue = getSubject().getValue();
+    byte[] actualValue = actual().getValue();
     assertThat(actualValue)
         .named("value")
         .isEqualTo(value);
@@ -148,7 +148,7 @@ public class BluetoothGattCharacteristicSubject extends Subject<BluetoothGattCha
   }
 
   public BluetoothGattCharacteristicSubject hasWriteType(@BluetoothGattCharacteristicWriteType int writeType) {
-    int actualWriteType = getSubject().getWriteType();
+    int actualWriteType = actual().getWriteType();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected write type <%s> but was <%s>.",

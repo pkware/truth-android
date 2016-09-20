@@ -69,7 +69,7 @@ public class BluetoothGattDescriptorSubject extends Subject<BluetoothGattDescrip
   }
 
   public BluetoothGattDescriptorSubject hasPermissions(@BluetoothGattDescriptorPermissions int permissions) {
-    int actualPermissions = getSubject().getPermissions();
+    int actualPermissions = actual().getPermissions();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected permissions <%s> but was <%s>.",
@@ -81,14 +81,14 @@ public class BluetoothGattDescriptorSubject extends Subject<BluetoothGattDescrip
   }
 
   public BluetoothGattDescriptorSubject hasUuid(UUID uuid) {
-    assertThat(getSubject().getUuid())
+    assertThat(actual().getUuid())
         .named("UUID")
         .isEqualTo(uuid);
     return this;
   }
 
   public BluetoothGattDescriptorSubject hasValue(byte[] value) {
-    assertThat(getSubject().getValue())
+    assertThat(actual().getValue())
         .named("value")
         .isEqualTo(value);
     return this;

@@ -43,98 +43,98 @@ public abstract class AbstractAccessibilityRecordSubject<S extends AbstractAcces
   }
 
   public AbstractAccessibilityRecordSubject hasAddedCount(int count) {
-    assertThat(getSubject().getAddedCount())
+    assertThat(actual().getAddedCount())
         .named("added count")
         .isEqualTo(count);
     return this;
   }
 
   public AbstractAccessibilityRecordSubject hasBeforeText(String text) {
-    assertThat(getSubject().getBeforeText().toString())
+    assertThat(actual().getBeforeText().toString())
         .named("before text")
         .isEqualTo(text);
     return this;
   }
 
   public AbstractAccessibilityRecordSubject hasClassName(String name) {
-    assertThat(getSubject().getClassName().toString())
+    assertThat(actual().getClassName().toString())
         .named("class name")
         .isEqualTo(name);
     return this;
   }
 
   public AbstractAccessibilityRecordSubject hasContentDescription(String description) {
-    assertThat(getSubject().getContentDescription().toString())
+    assertThat(actual().getContentDescription().toString())
         .named("content description")
         .isEqualTo(description);
     return this;
   }
 
   public AbstractAccessibilityRecordSubject hasCurrentItemIndex(int index) {
-    assertThat(getSubject().getCurrentItemIndex())
+    assertThat(actual().getCurrentItemIndex())
         .named("current item index")
         .isEqualTo(index);
     return this;
   }
 
   public AbstractAccessibilityRecordSubject hasFromIndex(int index) {
-    assertThat(getSubject().getFromIndex())
+    assertThat(actual().getFromIndex())
         .named("from index")
         .isEqualTo(index);
     return this;
   }
 
   public AbstractAccessibilityRecordSubject hasItemCount(int count) {
-    assertThat(getSubject().getItemCount())
+    assertThat(actual().getItemCount())
         .named("item count")
         .isEqualTo(count);
     return this;
   }
 
   public AbstractAccessibilityRecordSubject hasMaximumScrollX(int scroll) {
-    assertThat(getSubject().getMaxScrollX())
+    assertThat(actual().getMaxScrollX())
         .named("maximum X scroll")
         .isEqualTo(scroll);
     return this;
   }
 
   public AbstractAccessibilityRecordSubject hasMaximumScrollY(int scroll) {
-    assertThat(getSubject().getMaxScrollY())
+    assertThat(actual().getMaxScrollY())
         .named("maximum Y scroll")
         .isEqualTo(scroll);
     return this;
   }
 
   public AbstractAccessibilityRecordSubject hasRemovedCount(int count) {
-    assertThat(getSubject().getRemovedCount())
+    assertThat(actual().getRemovedCount())
         .named("remove count")
         .isEqualTo(count);
     return this;
   }
 
   public AbstractAccessibilityRecordSubject hasScrollX(int scroll) {
-    assertThat(getSubject().getScrollX())
+    assertThat(actual().getScrollX())
         .named("X scroll")
         .isEqualTo(scroll);
     return this;
   }
 
   public AbstractAccessibilityRecordSubject hasScrollY(int scroll) {
-    assertThat(getSubject().getScrollY())
+    assertThat(actual().getScrollY())
         .named("Y scroll")
         .isEqualTo(scroll);
     return this;
   }
 
   public AbstractAccessibilityRecordSubject hasSource(AccessibilityNodeInfo info) {
-    assertThat(getSubject().getSource())
+    assertThat(actual().getSource())
         .named("source")
         .isSameAs(info);
     return this;
   }
 
   public AbstractAccessibilityRecordSubject hasText(List<String> text) {
-    List<String> actualText = FluentIterable.from(getSubject().getText())
+    List<String> actualText = FluentIterable.from(actual().getText())
         .transform(mapToString())
         .toList();
     assertThat(actualText)
@@ -144,85 +144,85 @@ public abstract class AbstractAccessibilityRecordSubject<S extends AbstractAcces
   }
 
   public AbstractAccessibilityRecordSubject hasToIndex(int index) {
-    assertThat(getSubject().getToIndex())
+    assertThat(actual().getToIndex())
         .named("to index")
         .isEqualTo(index);
     return this;
   }
 
   public AbstractAccessibilityRecordSubject hasWindowId(int id) {
-    int actualId = getSubject().getWindowId();
-    assertThat(getSubject().getWindowId())
+    int actualId = actual().getWindowId();
+    assertThat(actual().getWindowId())
         .named("window ID")
         .isEqualTo(id);
     return this;
   }
 
   public AbstractAccessibilityRecordSubject isChecked() {
-    assertThat(getSubject().isChecked())
+    assertThat(actual().isChecked())
         .named("is checked")
         .isTrue();
     return this;
   }
 
   public AbstractAccessibilityRecordSubject isNotChecked() {
-    assertThat(getSubject().isChecked())
+    assertThat(actual().isChecked())
         .named("is checked")
         .isFalse();
     return this;
   }
 
   public AbstractAccessibilityRecordSubject isEnabled() {
-    assertThat(getSubject().isEnabled())
+    assertThat(actual().isEnabled())
         .named("is enabled")
         .isTrue();
     return this;
   }
 
   public AbstractAccessibilityRecordSubject isNotEnabled() {
-    assertThat(getSubject().isEnabled())
+    assertThat(actual().isEnabled())
         .named("is enabled")
         .isFalse();
     return this;
   }
 
   public AbstractAccessibilityRecordSubject isFullScreen() {
-    assertThat(getSubject().isFullScreen())
+    assertThat(actual().isFullScreen())
         .named("is full screen")
         .isTrue();
     return this;
   }
 
   public AbstractAccessibilityRecordSubject isNotFullScreen() {
-    assertThat(getSubject().isFullScreen())
+    assertThat(actual().isFullScreen())
         .named("is full screen")
         .isFalse();
     return this;
   }
 
   public AbstractAccessibilityRecordSubject isPassword() {
-    assertThat(getSubject().isPassword())
+    assertThat(actual().isPassword())
         .named("is password")
         .isTrue();
     return this;
   }
 
   public AbstractAccessibilityRecordSubject isNotPassword() {
-    assertThat(getSubject().isPassword())
+    assertThat(actual().isPassword())
         .named("is password")
         .isFalse();
     return this;
   }
 
   public AbstractAccessibilityRecordSubject isScrollable() {
-    assertThat(getSubject().isScrollable())
+    assertThat(actual().isScrollable())
         .named("is scrollable")
         .isTrue();
     return this;
   }
 
   public AbstractAccessibilityRecordSubject isNotScrollable() {
-    assertThat(getSubject().isScrollable())
+    assertThat(actual().isScrollable())
         .named("is scrollable")
         .isFalse();
     return this;

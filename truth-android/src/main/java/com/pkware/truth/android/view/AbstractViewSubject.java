@@ -148,7 +148,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasAlpha(float alpha, float tolerance) {
-    assertThat(getSubject().getAlpha())
+    assertThat(actual().getAlpha())
         .named("alpha")
         .isWithin(tolerance)
         .of(alpha);
@@ -157,7 +157,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasAnimation(Animation animation) {
-    assertThat(getSubject().getAnimation())
+    assertThat(actual().getAnimation())
         .named("animation")
         .isSameAs(animation);
     //noinspection unchecked
@@ -165,7 +165,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasBackground(Drawable background) {
-    assertThat(getSubject().getBackground())
+    assertThat(actual().getBackground())
         .named("background")
         .isSameAs(background);
     //noinspection unchecked
@@ -173,7 +173,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasBaseline(int baseline) {
-    assertThat(getSubject().getBaseline())
+    assertThat(actual().getBaseline())
         .named("baseline")
         .isEqualTo(baseline);
     //noinspection unchecked
@@ -181,7 +181,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasBottom(int bottom) {
-    assertThat(getSubject().getBottom())
+    assertThat(actual().getBottom())
         .named("bottom")
         .isEqualTo(bottom);
     //noinspection unchecked
@@ -189,7 +189,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasContentDescription(String contentDescription) {
-    assertThat(getSubject().getContentDescription().toString())
+    assertThat(actual().getContentDescription().toString())
         .named("content description")
         .isEqualTo(contentDescription);
     //noinspection unchecked
@@ -197,11 +197,11 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasContentDescription(@StringRes int resId) {
-    return hasContentDescription(getSubject().getContext().getString(resId));
+    return hasContentDescription(actual().getContext().getString(resId));
   }
 
   public S hasDrawingCacheBackgroundColor(int color) {
-    int actualColor = getSubject().getDrawingCacheBackgroundColor();
+    int actualColor = actual().getDrawingCacheBackgroundColor();
     assert_()
         .withFailureMessage("Expected drawing cache background color <%s> but was <%s>",
             Integer.toHexString(color), Integer.toHexString(actualColor))
@@ -212,7 +212,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasDrawingCacheQuality(int quality) {
-    assertThat(getSubject().getDrawingCacheQuality())
+    assertThat(actual().getDrawingCacheQuality())
         .named("drawing cache quality")
         .isEqualTo(quality);
     //noinspection unchecked
@@ -221,7 +221,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(LOLLIPOP)
   public S hasElevation(float elevation, float tolerance) {
-    assertThat(getSubject().getElevation())
+    assertThat(actual().getElevation())
         .named("elevation")
         .isWithin(tolerance)
         .of(elevation);
@@ -230,7 +230,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasHeight(int height) {
-    assertThat(getSubject().getHeight())
+    assertThat(actual().getHeight())
         .named("height")
         .isEqualTo(height);
     //noinspection unchecked
@@ -238,7 +238,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasHorizontalFadingEdgeLength(int length) {
-    assertThat(getSubject().getHorizontalFadingEdgeLength())
+    assertThat(actual().getHorizontalFadingEdgeLength())
         .named("horizontal fading edge length")
         .isEqualTo(length);
     //noinspection unchecked
@@ -246,7 +246,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasId(int id) {
-    int actualId = getSubject().getId();
+    int actualId = actual().getId();
     assert_()
         .withFailureMessage("Expected ID <%s> but was <%s>", Integer.toHexString(id),
             Integer.toHexString(actualId))
@@ -258,7 +258,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(LOLLIPOP)
   public S isImportantForAccessibility() {
-    assertThat(getSubject().isImportantForAccessibility())
+    assertThat(actual().isImportantForAccessibility())
         .named("is important for accessibility")
         .isTrue();
     //noinspection unchecked
@@ -267,7 +267,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(LOLLIPOP)
   public S isNotImportantForAccessibility() {
-    assertThat(getSubject().isImportantForAccessibility())
+    assertThat(actual().isImportantForAccessibility())
         .named("is important for accessibility")
         .isFalse();
     //noinspection unchecked
@@ -275,7 +275,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isKeepingScreenOn() {
-    assertThat(getSubject().getKeepScreenOn())
+    assertThat(actual().getKeepScreenOn())
         .named("is keeping screen on")
         .isTrue();
     //noinspection unchecked
@@ -283,7 +283,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isNotKeepingScreenOn() {
-    assertThat(getSubject().getKeepScreenOn())
+    assertThat(actual().getKeepScreenOn())
         .named("is keeping screen on")
         .isFalse();
     //noinspection unchecked
@@ -292,7 +292,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(JELLY_BEAN_MR1)
   public S isLabelFor(@IdRes int id) {
-    assertThat(getSubject().getLabelFor())
+    assertThat(actual().getLabelFor())
         .named("is label for view")
         .isEqualTo(id);
     //noinspection unchecked
@@ -300,7 +300,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasLayerType(@ViewLayerType int type) {
-    int actualType = getSubject().getLayerType();
+    int actualType = actual().getLayerType();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected layer type <%s> but was <%s>", layerTypeToString(type),
@@ -313,7 +313,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(JELLY_BEAN_MR1)
   public S hasLayoutDirection(int direction) {
-    int actualDirection = getSubject().getLayoutDirection();
+    int actualDirection = actual().getLayoutDirection();
     assert_()
         .withFailureMessage("Expected layout direction <%s> but was <%s>",
             layoutDirectionToString(direction), layoutDirectionToString(actualDirection))
@@ -324,7 +324,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasLeft(int left) {
-    assertThat(getSubject().getLeft())
+    assertThat(actual().getLeft())
         .named("left")
         .isEqualTo(left);
     //noinspection unchecked
@@ -332,7 +332,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasMeasuredHeight(int height) {
-    assertThat(getSubject().getMeasuredHeight())
+    assertThat(actual().getMeasuredHeight())
         .named("measured height")
         .isEqualTo(height);
     //noinspection unchecked
@@ -340,7 +340,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasMeasuredHeightAndState(int heightAndState) {
-    assertThat(getSubject().getMeasuredHeightAndState())
+    assertThat(actual().getMeasuredHeightAndState())
         .named("measured height and state")
         .isEqualTo(heightAndState);
     //noinspection unchecked
@@ -348,7 +348,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasMeasuredState(int state) {
-    assertThat(getSubject().getMeasuredState())
+    assertThat(actual().getMeasuredState())
         .named("measured state")
         .isEqualTo(state);
     //noinspection unchecked
@@ -356,7 +356,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasMeasuredWidth(int width) {
-    assertThat(getSubject().getMeasuredWidth())
+    assertThat(actual().getMeasuredWidth())
         .named("measured width")
         .isEqualTo(width);
     //noinspection unchecked
@@ -364,7 +364,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasMeasuredWidthAndState(int widthAndState) {
-    assertThat(getSubject().getMeasuredWidthAndState())
+    assertThat(actual().getMeasuredWidthAndState())
         .named("measured width and state")
         .isEqualTo(widthAndState);
     //noinspection unchecked
@@ -373,7 +373,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(JELLY_BEAN)
   public S hasMinimumHeight(int height) {
-    assertThat(getSubject().getMinimumHeight())
+    assertThat(actual().getMinimumHeight())
         .named("minimum height")
         .isEqualTo(height);
     //noinspection unchecked
@@ -382,7 +382,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(JELLY_BEAN)
   public S hasMinimumWidth(int width) {
-    assertThat(getSubject().getMinimumWidth())
+    assertThat(actual().getMinimumWidth())
         .named("minimum width")
         .isEqualTo(width);
     //noinspection unchecked
@@ -390,7 +390,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasNextFocusDownId(@IdRes int id) {
-    assertThat(getSubject().getNextFocusDownId())
+    assertThat(actual().getNextFocusDownId())
         .named("next focus down ID")
         .isEqualTo(id);
     //noinspection unchecked
@@ -398,7 +398,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasNextFocusForwardId(@IdRes int id) {
-    assertThat(getSubject().getNextFocusForwardId())
+    assertThat(actual().getNextFocusForwardId())
         .named("next focus forward ID")
         .isEqualTo(id);
     //noinspection unchecked
@@ -406,7 +406,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasNextFocusLeftId(@IdRes int id) {
-    assertThat(getSubject().getNextFocusLeftId())
+    assertThat(actual().getNextFocusLeftId())
         .named("next focus left ID")
         .isEqualTo(id);
     //noinspection unchecked
@@ -414,7 +414,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasNextFocusRightId(@IdRes int id) {
-    assertThat(getSubject().getNextFocusRightId())
+    assertThat(actual().getNextFocusRightId())
         .named("next focus right ID")
         .isEqualTo(id);
     //noinspection unchecked
@@ -422,7 +422,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasNextFocusUpId(@IdRes int id) {
-    assertThat(getSubject().getNextFocusUpId())
+    assertThat(actual().getNextFocusUpId())
         .named("next focus up ID")
         .isEqualTo(id);
     //noinspection unchecked
@@ -430,7 +430,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasOverScrollMode(@ViewOverscrollMode int mode) {
-    int actualMode = getSubject().getOverScrollMode();
+    int actualMode = actual().getOverScrollMode();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected over scroll mode <%s> but was <%s>",
@@ -442,7 +442,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasPaddingBottom(int padding) {
-    assertThat(getSubject().getPaddingBottom())
+    assertThat(actual().getPaddingBottom())
         .named("padding bottom")
         .isEqualTo(padding);
     //noinspection unchecked
@@ -451,7 +451,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(JELLY_BEAN_MR1)
   public S hasPaddingEnd(int padding) {
-    assertThat(getSubject().getPaddingEnd())
+    assertThat(actual().getPaddingEnd())
         .named("padding end")
         .isEqualTo(padding);
     //noinspection unchecked
@@ -459,7 +459,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasPaddingLeft(int padding) {
-    assertThat(getSubject().getPaddingLeft())
+    assertThat(actual().getPaddingLeft())
         .named("padding left")
         .isEqualTo(padding);
     //noinspection unchecked
@@ -467,7 +467,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasPaddingRight(int padding) {
-    assertThat(getSubject().getPaddingRight())
+    assertThat(actual().getPaddingRight())
         .named("padding right")
         .isEqualTo(padding);
     //noinspection unchecked
@@ -476,7 +476,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(JELLY_BEAN_MR1)
   public S hasPaddingStart(int padding) {
-    assertThat(getSubject().getPaddingStart())
+    assertThat(actual().getPaddingStart())
         .named("padding start")
         .isEqualTo(padding);
     //noinspection unchecked
@@ -484,7 +484,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasPaddingTop(int padding) {
-    assertThat(getSubject().getPaddingTop())
+    assertThat(actual().getPaddingTop())
         .named("padding top")
         .isEqualTo(padding);
     //noinspection unchecked
@@ -492,7 +492,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasParent(ViewParent parent) {
-    assertThat(getSubject().getParent())
+    assertThat(actual().getParent())
         .named("parent")
         .isSameAs(parent);
     //noinspection unchecked
@@ -501,7 +501,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(JELLY_BEAN)
   public S hasParentForAccessibility(ViewParent parent) {
-    assertThat(getSubject().getParentForAccessibility())
+    assertThat(actual().getParentForAccessibility())
         .named("parent for accessibility")
         .isSameAs(parent);
     //noinspection unchecked
@@ -509,7 +509,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasPivotX(float pivotX, float tolerance) {
-    assertThat(getSubject().getPivotX())
+    assertThat(actual().getPivotX())
         .named("X pivot")
         .isWithin(tolerance)
         .of(pivotX);
@@ -518,7 +518,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasPivotY(float pivotY, float tolerance) {
-    assertThat(getSubject().getPivotY())
+    assertThat(actual().getPivotY())
         .named("Y pivot")
         .isWithin(tolerance)
         .of(pivotY);
@@ -527,7 +527,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasRight(int right) {
-    assertThat(getSubject().getRight())
+    assertThat(actual().getRight())
         .named("right")
         .isEqualTo(right);
     //noinspection unchecked
@@ -535,7 +535,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasRootView(View view) {
-    assertThat(getSubject().getRootView())
+    assertThat(actual().getRootView())
         .named("root view")
         .isSameAs(view);
     //noinspection unchecked
@@ -543,7 +543,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasRotation(float rotation, float tolerance) {
-    assertThat(getSubject().getRotation())
+    assertThat(actual().getRotation())
         .named("rotation")
         .isWithin(tolerance)
         .of(rotation);
@@ -552,7 +552,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasRotationX(float rotation, float tolerance) {
-    assertThat(getSubject().getRotationX())
+    assertThat(actual().getRotationX())
         .named("X rotation")
         .isWithin(tolerance)
         .of(rotation);
@@ -561,7 +561,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasRotationY(float rotation, float tolerance) {
-    assertThat(getSubject().getRotationY())
+    assertThat(actual().getRotationY())
         .named("Y rotation")
         .isWithin(tolerance)
         .of(rotation);
@@ -570,7 +570,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasScaleX(float scale, float tolerance) {
-    assertThat(getSubject().getScaleX())
+    assertThat(actual().getScaleX())
         .named("X scale")
         .isWithin(tolerance)
         .of(scale);
@@ -579,7 +579,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasScaleY(float scale, float tolerance) {
-    assertThat(getSubject().getScaleY())
+    assertThat(actual().getScaleY())
         .named("Y scale")
         .isWithin(tolerance)
         .of(scale);
@@ -589,7 +589,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(JELLY_BEAN)
   public S hasScrollBarDefaultDelayBeforeFade(int fade) {
-    assertThat(getSubject().getScrollBarDefaultDelayBeforeFade())
+    assertThat(actual().getScrollBarDefaultDelayBeforeFade())
         .named("scroll bar default delay before fade")
         .isEqualTo(fade);
     //noinspection unchecked
@@ -598,7 +598,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(JELLY_BEAN)
   public S hasScrollBarFadeDuration(int fade) {
-    assertThat(getSubject().getScrollBarFadeDuration())
+    assertThat(actual().getScrollBarFadeDuration())
         .named("scroll bar fade duration")
         .isEqualTo(fade);
     //noinspection unchecked
@@ -607,7 +607,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(JELLY_BEAN)
   public S hasScrollBarSize(int size) {
-    assertThat(getSubject().getScrollBarSize())
+    assertThat(actual().getScrollBarSize())
         .named("scroll bar size")
         .isEqualTo(size);
     //noinspection unchecked
@@ -615,7 +615,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasScrollBarStyle(@ViewScrollBarStyle int style) {
-    int actualStyle = getSubject().getScrollBarStyle();
+    int actualStyle = actual().getScrollBarStyle();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected scroll bar style <%s> but was <%s>",
@@ -627,7 +627,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasScrollX(int scroll) {
-    assertThat(getSubject().getScrollX())
+    assertThat(actual().getScrollX())
         .named("X scroll")
         .isEqualTo(scroll);
     //noinspection unchecked
@@ -635,7 +635,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasScrollY(int scroll) {
-    assertThat(getSubject().getScrollY())
+    assertThat(actual().getScrollY())
         .named("Y scroll")
         .isEqualTo(scroll);
     //noinspection unchecked
@@ -643,7 +643,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasSolidColor(int color) {
-    int actualColor = getSubject().getSolidColor();
+    int actualColor = actual().getSolidColor();
     assert_()
         .withFailureMessage("Expected solid color <%s> but was <%s>",
             Integer.toHexString(color), Integer.toHexString(actualColor))
@@ -654,7 +654,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasSystemUiVisibility(int visibility) {
-    assertThat(getSubject().getSystemUiVisibility())
+    assertThat(actual().getSystemUiVisibility())
         .named("system UI visibility")
         .isEqualTo(visibility);
     //noinspection unchecked
@@ -662,7 +662,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasTag(int key, Object tag) {
-    assertThat(getSubject().getTag(key))
+    assertThat(actual().getTag(key))
         .named("tag")
         .isEqualTo(tag);
     //noinspection unchecked
@@ -670,7 +670,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasTag(Object tag) {
-    assertThat(getSubject().getTag())
+    assertThat(actual().getTag())
         .named("tag")
         .isEqualTo(tag);
     //noinspection unchecked
@@ -679,7 +679,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(JELLY_BEAN_MR1)
   public S hasTextAlignment(@ViewTextAlignment int alignment) {
-    int actualAlignment = getSubject().getTextAlignment();
+    int actualAlignment = actual().getTextAlignment();
     assert_()
         .withFailureMessage("Expected text alignment <%s> but was <%s>",
             textAlignmentToString(alignment), textAlignmentToString(actualAlignment))
@@ -691,7 +691,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(JELLY_BEAN_MR1)
   public S hasTextDirection(@ViewTextDirection int direction) {
-    int actualDirection = getSubject().getTextDirection();
+    int actualDirection = actual().getTextDirection();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected text direction <%s> but was <%s>",
@@ -703,7 +703,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasTop(int top) {
-    assertThat(getSubject().getTop())
+    assertThat(actual().getTop())
         .named("top")
         .isEqualTo(top);
     //noinspection unchecked
@@ -711,7 +711,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasTranslationX(float translation, float tolerance) {
-    assertThat(getSubject().getTranslationX())
+    assertThat(actual().getTranslationX())
         .named("X translation")
         .isWithin(tolerance)
         .of(translation);
@@ -720,7 +720,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasTranslationY(float translation, float tolerance) {
-    assertThat(getSubject().getTranslationY())
+    assertThat(actual().getTranslationY())
         .named("Y translation")
         .isWithin(tolerance)
         .of(translation);
@@ -730,7 +730,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(LOLLIPOP)
   public S hasTranslationZ(float translation, float tolerance) {
-    assertThat(getSubject().getTranslationZ())
+    assertThat(actual().getTranslationZ())
         .named("Z translation")
         .isWithin(tolerance)
         .of(translation);
@@ -739,7 +739,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasVerticalFadingEdgeLength(int length) {
-    assertThat(getSubject().getVerticalFadingEdgeLength())
+    assertThat(actual().getVerticalFadingEdgeLength())
         .named("vertical fading edge length")
         .isEqualTo(length);
     //noinspection unchecked
@@ -747,7 +747,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasVerticalScrollbarPosition(int position) {
-    int actualPosition = getSubject().getVerticalScrollbarPosition();
+    int actualPosition = actual().getVerticalScrollbarPosition();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected vertical scroll bar position <%s> but was <%s>",
@@ -760,7 +760,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasVerticalScrollbarWidth(int width) {
-    assertThat(getSubject().getVerticalScrollbarWidth())
+    assertThat(actual().getVerticalScrollbarWidth())
         .named("vertical scroll bar width")
         .isEqualTo(width);
     //noinspection unchecked
@@ -768,7 +768,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasVisibility(@ViewVisibility int visibility) {
-    int actualVisibility = getSubject().getVisibility();
+    int actualVisibility = actual().getVisibility();
     assert_()
         .withFailureMessage("Expected visibility <%s> but was <%s>.",
             visibilityToString(visibility), visibilityToString(actualVisibility))
@@ -779,7 +779,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isVisible() {
-    int actualVisibility = getSubject().getVisibility();
+    int actualVisibility = actual().getVisibility();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected to be visible but was %s", visibilityToString(actualVisibility))
@@ -790,7 +790,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isNotVisible() {
-    int actualVisibility = getSubject().getVisibility();
+    int actualVisibility = actual().getVisibility();
     assert_()
         .withFailureMessage("Expected to be not visible but was visible")
         .that(actualVisibility)
@@ -800,7 +800,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isInvisible() {
-    int actualVisibility = getSubject().getVisibility();
+    int actualVisibility = actual().getVisibility();
     assert_()
         .withFailureMessage("Expected to be invisible but was %s",
             visibilityToString(actualVisibility))
@@ -811,7 +811,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isNotInvisible() {
-    int actualVisibility = getSubject().getVisibility();
+    int actualVisibility = actual().getVisibility();
     assert_()
         .withFailureMessage("Expected to be not invisible but was invisible")
         .that(actualVisibility)
@@ -821,7 +821,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isGone() {
-    int actualVisibility = getSubject().getVisibility();
+    int actualVisibility = actual().getVisibility();
     assert_()
         .withFailureMessage("Expected to be gone but was %s", visibilityToString(actualVisibility))
         .that(actualVisibility)
@@ -831,7 +831,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isNotGone() {
-    int actualVisibility = getSubject().getVisibility();
+    int actualVisibility = actual().getVisibility();
     assert_()
         .withFailureMessage("Expected to be not gone but was gone")
         .that(actualVisibility)
@@ -841,7 +841,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasWidth(int width) {
-    assertThat(getSubject().getWidth())
+    assertThat(actual().getWidth())
         .named("width")
         .isEqualTo(width);
     //noinspection unchecked
@@ -849,7 +849,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasWindowVisibility(int visibility) {
-    int actualVisibility = getSubject().getWindowVisibility();
+    int actualVisibility = actual().getWindowVisibility();
     assert_()
         .withFailureMessage("Expected window visibility <%s> but was <%s>",
             visibilityToString(visibility), visibilityToString(actualVisibility))
@@ -860,7 +860,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasX(float x, float tolerance) {
-    assertThat(getSubject().getX())
+    assertThat(actual().getX())
         .named("X")
         .isWithin(tolerance)
         .of(x);
@@ -869,7 +869,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasY(float y, float tolerance) {
-    assertThat(getSubject().getY())
+    assertThat(actual().getY())
         .named("Y")
         .isWithin(tolerance)
         .of(y);
@@ -879,7 +879,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(LOLLIPOP)
   public S hasZ(float z, float tolerance) {
-    assertThat(getSubject().getZ())
+    assertThat(actual().getZ())
         .named("Z")
         .isWithin(tolerance)
         .of(z);
@@ -888,7 +888,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasFocus() {
-    assertThat(getSubject().hasFocus())
+    assertThat(actual().hasFocus())
         .named("has focus")
         .isTrue();
     //noinspection unchecked
@@ -896,7 +896,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasNoFocus() {
-    assertThat(getSubject().hasFocus())
+    assertThat(actual().hasFocus())
         .named("has focus")
         .isFalse();
     //noinspection unchecked
@@ -904,7 +904,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasFocusable() {
-    assertThat(getSubject().hasFocusable())
+    assertThat(actual().hasFocusable())
         .named("has focusable")
         .isTrue();
     //noinspection unchecked
@@ -912,7 +912,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isInFocusedWindow() {
-    assertThat(getSubject().hasWindowFocus())
+    assertThat(actual().hasWindowFocus())
         .named("is in focused window")
         .isTrue();
     //noinspection unchecked
@@ -920,7 +920,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isNotInFocusedWindow() {
-    assertThat(getSubject().hasWindowFocus())
+    assertThat(actual().hasWindowFocus())
         .named("is in focused window")
         .isFalse();
     //noinspection unchecked
@@ -928,7 +928,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isActivated() {
-    assertThat(getSubject().isActivated())
+    assertThat(actual().isActivated())
         .named("is activated")
         .isTrue();
     //noinspection unchecked
@@ -936,7 +936,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isNotActivated() {
-    assertThat(getSubject().isActivated())
+    assertThat(actual().isActivated())
         .named("is activated")
         .isFalse();
     //noinspection unchecked
@@ -944,7 +944,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isClickable() {
-    assertThat(getSubject().isClickable())
+    assertThat(actual().isClickable())
         .named("is clickable")
         .isTrue();
     //noinspection unchecked
@@ -952,7 +952,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isNotClickable() {
-    assertThat(getSubject().isClickable())
+    assertThat(actual().isClickable())
         .named("is clickable")
         .isFalse();
     //noinspection unchecked
@@ -960,7 +960,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isDirty() {
-    assertThat(getSubject().isDirty())
+    assertThat(actual().isDirty())
         .named("is dirty")
         .isTrue();
     //noinspection unchecked
@@ -968,7 +968,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isNotDirty() {
-    assertThat(getSubject().isDirty())
+    assertThat(actual().isDirty())
         .named("is dirty")
         .isFalse();
     //noinspection unchecked
@@ -976,7 +976,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isUsingDrawingCache() {
-    assertThat(getSubject().isDrawingCacheEnabled())
+    assertThat(actual().isDrawingCacheEnabled())
         .named("is using drawing cache")
         .isTrue();
     //noinspection unchecked
@@ -984,7 +984,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isNotUsingDrawingCache() {
-    assertThat(getSubject().isDrawingCacheEnabled())
+    assertThat(actual().isDrawingCacheEnabled())
         .named("is using drawing cache")
         .isFalse();
     //noinspection unchecked
@@ -992,7 +992,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isDuplicatingParentState() {
-    assertThat(getSubject().isDuplicateParentStateEnabled())
+    assertThat(actual().isDuplicateParentStateEnabled())
         .named("is duplicating parent state")
         .isTrue();
     //noinspection unchecked
@@ -1000,7 +1000,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isNotDuplicatingParentState() {
-    assertThat(getSubject().isDuplicateParentStateEnabled())
+    assertThat(actual().isDuplicateParentStateEnabled())
         .named("is duplicating parent state")
         .isFalse();
     //noinspection unchecked
@@ -1008,7 +1008,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isEnabled() {
-    assertThat(getSubject().isEnabled())
+    assertThat(actual().isEnabled())
         .named("is enabled")
         .isTrue();
     //noinspection unchecked
@@ -1016,7 +1016,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isDisabled() {
-    assertThat(!getSubject().isEnabled())
+    assertThat(!actual().isEnabled())
         .named("is disabled")
         .isTrue();
     //noinspection unchecked
@@ -1024,7 +1024,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isFocusable() {
-    assertThat(getSubject().isFocusable())
+    assertThat(actual().isFocusable())
         .named("is focusable")
         .isTrue();
     //noinspection unchecked
@@ -1032,7 +1032,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isNotFocusable() {
-    assertThat(getSubject().isFocusable())
+    assertThat(actual().isFocusable())
         .named("is focusable")
         .isFalse();
     //noinspection unchecked
@@ -1040,7 +1040,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isFocusableInTouchMode() {
-    assertThat(getSubject().isFocusableInTouchMode())
+    assertThat(actual().isFocusableInTouchMode())
         .named("is focusable in touch mode")
         .isTrue();
     //noinspection unchecked
@@ -1048,7 +1048,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isNotFocusableInTouchMode() {
-    assertThat(getSubject().isFocusableInTouchMode())
+    assertThat(actual().isFocusableInTouchMode())
         .named("is focusable in touch mode")
         .isFalse();
     //noinspection unchecked
@@ -1056,7 +1056,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isFocused() {
-    assertThat(getSubject().isFocused())
+    assertThat(actual().isFocused())
         .named("is focused")
         .isTrue();
     //noinspection unchecked
@@ -1064,7 +1064,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isNotFocused() {
-    assertThat(getSubject().isFocused())
+    assertThat(actual().isFocused())
         .named("is focused")
         .isFalse();
     //noinspection unchecked
@@ -1072,7 +1072,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasHapticFeedbackEnabled() {
-    assertThat(getSubject().isHapticFeedbackEnabled())
+    assertThat(actual().isHapticFeedbackEnabled())
         .named("is haptic feedback enabled")
         .isTrue();
     //noinspection unchecked
@@ -1080,7 +1080,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasHapticFeedbackDisabled() {
-    assertThat(!getSubject().isHapticFeedbackEnabled())
+    assertThat(!actual().isHapticFeedbackEnabled())
         .named("is haptic feedback disabled")
         .isTrue();
     //noinspection unchecked
@@ -1088,7 +1088,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isHardwareAccelerated() {
-    assertThat(getSubject().isHardwareAccelerated())
+    assertThat(actual().isHardwareAccelerated())
         .named("is hardware accelerated")
         .isTrue();
     //noinspection unchecked
@@ -1096,7 +1096,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isNotHardwareAccelerated() {
-    assertThat(getSubject().isHardwareAccelerated())
+    assertThat(actual().isHardwareAccelerated())
         .named("is hardware accelerated")
         .isFalse();
     //noinspection unchecked
@@ -1104,7 +1104,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasHorizontalFadingEdgesEnabled() {
-    assertThat(getSubject().isHorizontalFadingEdgeEnabled())
+    assertThat(actual().isHorizontalFadingEdgeEnabled())
         .named("is fading horizontal edges")
         .isTrue();
     //noinspection unchecked
@@ -1112,7 +1112,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasHorizontalFadingEdgesDisabled() {
-    assertThat(!getSubject().isHorizontalFadingEdgeEnabled())
+    assertThat(!actual().isHorizontalFadingEdgeEnabled())
         .named("is not fading horizontal edges")
         .isTrue();
     //noinspection unchecked
@@ -1120,7 +1120,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasHorizontalScrollbarEnabled() {
-    assertThat(getSubject().isHorizontalScrollBarEnabled())
+    assertThat(actual().isHorizontalScrollBarEnabled())
         .named("is horizontal scroll bar enabled")
         .isTrue();
     //noinspection unchecked
@@ -1128,7 +1128,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasHorizontalScrollbarDisabled() {
-    assertThat(getSubject().isHorizontalScrollBarEnabled())
+    assertThat(actual().isHorizontalScrollBarEnabled())
         .named("is horizontal scroll bar enabled")
         .isFalse();
     //noinspection unchecked
@@ -1136,7 +1136,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isHovered() {
-    assertThat(getSubject().isHovered())
+    assertThat(actual().isHovered())
         .named("is hovered")
         .isTrue();
     //noinspection unchecked
@@ -1144,7 +1144,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isNotHovered() {
-    assertThat(getSubject().isHovered())
+    assertThat(actual().isHovered())
         .named("is hovered")
         .isFalse();
     //noinspection unchecked
@@ -1152,7 +1152,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isInEditMode() {
-    assertThat(getSubject().isInEditMode())
+    assertThat(actual().isInEditMode())
         .named("is in edit mode")
         .isTrue();
     //noinspection unchecked
@@ -1160,7 +1160,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isNotInEditMode() {
-    assertThat(getSubject().isInEditMode())
+    assertThat(actual().isInEditMode())
         .named("is in edit mode")
         .isFalse();
     //noinspection unchecked
@@ -1169,7 +1169,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(JELLY_BEAN_MR2)
   public S isInLayout() {
-    assertThat(getSubject().isInLayout())
+    assertThat(actual().isInLayout())
         .named("is in layout")
         .isTrue();
     //noinspection unchecked
@@ -1178,7 +1178,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(JELLY_BEAN_MR2)
   public S isNotInLayout() {
-    assertThat(getSubject().isInLayout())
+    assertThat(actual().isInLayout())
         .named("is in layout")
         .isFalse();
     //noinspection unchecked
@@ -1186,7 +1186,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isInTouchMode() {
-    assertThat(getSubject().isInTouchMode())
+    assertThat(actual().isInTouchMode())
         .named("is in touch mode")
         .isTrue();
     //noinspection unchecked
@@ -1194,7 +1194,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isNotInTouchMode() {
-    assertThat(getSubject().isInTouchMode())
+    assertThat(actual().isInTouchMode())
         .named("is in touch mode")
         .isFalse();
     //noinspection unchecked
@@ -1202,7 +1202,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasLayoutRequested() {
-    assertThat(getSubject().isLayoutRequested())
+    assertThat(actual().isLayoutRequested())
         .named("is layout requested")
         .isTrue();
     //noinspection unchecked
@@ -1210,7 +1210,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasNoLayoutRequested() {
-    assertThat(getSubject().isLayoutRequested())
+    assertThat(actual().isLayoutRequested())
         .named("is layout requested")
         .isFalse();
     //noinspection unchecked
@@ -1218,7 +1218,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isLongClickable() {
-    assertThat(getSubject().isLongClickable())
+    assertThat(actual().isLongClickable())
         .named("is long-clickable")
         .isTrue();
     //noinspection unchecked
@@ -1226,7 +1226,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isNotLongClickable() {
-    assertThat(getSubject().isLongClickable())
+    assertThat(actual().isLongClickable())
         .named("is long-clickable")
         .isFalse();
     //noinspection unchecked
@@ -1234,7 +1234,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isOpaque() {
-    assertThat(getSubject().isOpaque())
+    assertThat(actual().isOpaque())
         .named("is opaque")
         .isTrue();
     //noinspection unchecked
@@ -1242,7 +1242,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isNotOpaque() {
-    assertThat(getSubject().isOpaque())
+    assertThat(actual().isOpaque())
         .named("is opaque")
         .isFalse();
     //noinspection unchecked
@@ -1250,7 +1250,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isPressed() {
-    assertThat(getSubject().isPressed())
+    assertThat(actual().isPressed())
         .named("is pressed")
         .isTrue();
     //noinspection unchecked
@@ -1258,7 +1258,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isNotPressed() {
-    assertThat(getSubject().isPressed())
+    assertThat(actual().isPressed())
         .named("is pressed")
         .isFalse();
     //noinspection unchecked
@@ -1266,7 +1266,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasSaveEnabled() {
-    assertThat(getSubject().isSaveEnabled())
+    assertThat(actual().isSaveEnabled())
         .named("is save enabled")
         .isTrue();
     //noinspection unchecked
@@ -1274,7 +1274,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasSaveDisabled() {
-    assertThat(getSubject().isSaveEnabled())
+    assertThat(actual().isSaveEnabled())
         .named("is save enabled")
         .isFalse();
     //noinspection unchecked
@@ -1282,7 +1282,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasSaveFromParentEnabled() {
-    assertThat(getSubject().isSaveFromParentEnabled())
+    assertThat(actual().isSaveFromParentEnabled())
         .named("is save from parent enabled")
         .isTrue();
     //noinspection unchecked
@@ -1290,7 +1290,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasSaveFromParentDisabled() {
-    assertThat(getSubject().isSaveFromParentEnabled())
+    assertThat(actual().isSaveFromParentEnabled())
         .named("is save from parent enabled")
         .isFalse();
     //noinspection unchecked
@@ -1299,7 +1299,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(JELLY_BEAN)
   public S isScrollContainer() {
-    assertThat(getSubject().isScrollContainer())
+    assertThat(actual().isScrollContainer())
         .named("is a scroll container")
         .isTrue();
     //noinspection unchecked
@@ -1308,7 +1308,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(JELLY_BEAN)
   public S isNotScrollContainer() {
-    assertThat(getSubject().isScrollContainer())
+    assertThat(actual().isScrollContainer())
         .named("is a scroll container")
         .isFalse();
     //noinspection unchecked
@@ -1316,7 +1316,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasScrollbarFadingEnabled() {
-    assertThat(getSubject().isScrollbarFadingEnabled())
+    assertThat(actual().isScrollbarFadingEnabled())
         .named("is scroll bar fading enabled")
         .isTrue();
     //noinspection unchecked
@@ -1324,7 +1324,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasScrollbarFadingDisabled() {
-    assertThat(getSubject().isScrollbarFadingEnabled())
+    assertThat(actual().isScrollbarFadingEnabled())
         .named("is scroll bar fading enabled")
         .isFalse();
     //noinspection unchecked
@@ -1332,7 +1332,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isSelected() {
-    assertThat(getSubject().isSelected())
+    assertThat(actual().isSelected())
         .named("is selected")
         .isTrue();
     //noinspection unchecked
@@ -1340,7 +1340,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isNotSelected() {
-    assertThat(getSubject().isSelected())
+    assertThat(actual().isSelected())
         .named("is selected")
         .isFalse();
     //noinspection unchecked
@@ -1348,7 +1348,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isShown() {
-    assertThat(getSubject().isShown())
+    assertThat(actual().isShown())
         .named("is shown")
         .isTrue();
     //noinspection unchecked
@@ -1356,7 +1356,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S isNotShown() {
-    assertThat(getSubject().isShown())
+    assertThat(actual().isShown())
         .named("is shown")
         .isFalse();
     //noinspection unchecked
@@ -1364,7 +1364,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasSoundEffectsEnabled() {
-    assertThat(getSubject().isSoundEffectsEnabled())
+    assertThat(actual().isSoundEffectsEnabled())
         .named("are sound effects enabled")
         .isTrue();
     //noinspection unchecked
@@ -1372,7 +1372,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasSoundEffectsDisabled() {
-    assertThat(getSubject().isSoundEffectsEnabled())
+    assertThat(actual().isSoundEffectsEnabled())
         .named("are sound effects enabled")
         .isFalse();
     //noinspection unchecked
@@ -1380,7 +1380,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasVerticalFadingEdgeEnabled() {
-    assertThat(getSubject().isVerticalFadingEdgeEnabled())
+    assertThat(actual().isVerticalFadingEdgeEnabled())
         .named("is vertical fading edge enabled")
         .isTrue();
     //noinspection unchecked
@@ -1388,7 +1388,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasVerticalFadingEdgeDisabled() {
-    assertThat(getSubject().isVerticalFadingEdgeEnabled())
+    assertThat(actual().isVerticalFadingEdgeEnabled())
         .named("is vertical fading edge enabled")
         .isFalse();
     //noinspection unchecked
@@ -1396,7 +1396,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasVerticalScrollBarEnabled() {
-    assertThat(getSubject().isVerticalScrollBarEnabled())
+    assertThat(actual().isVerticalScrollBarEnabled())
         .named("is vertical scroll bar enabled")
         .isTrue();
     //noinspection unchecked
@@ -1404,7 +1404,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   }
 
   public S hasVerticalScrollBarDisabled() {
-    assertThat(getSubject().isVerticalScrollBarEnabled())
+    assertThat(actual().isVerticalScrollBarEnabled())
         .named("is vertical scroll bar enabled")
         .isFalse();
     //noinspection unchecked
@@ -1413,7 +1413,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(KITKAT)
   public S canResolveLayoutDirection() {
-    assertThat(getSubject().canResolveLayoutDirection())
+    assertThat(actual().canResolveLayoutDirection())
         .named("can resolve layout direction")
         .isTrue();
     //noinspection unchecked
@@ -1422,7 +1422,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(KITKAT)
   public S canNotResolveLayoutDirection() {
-    assertThat(getSubject().canResolveLayoutDirection())
+    assertThat(actual().canResolveLayoutDirection())
         .named("can resolve layout direction")
         .isFalse();
     //noinspection unchecked
@@ -1431,7 +1431,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(KITKAT)
   public S canResolveTextAlignment() {
-    assertThat(getSubject().canResolveTextAlignment())
+    assertThat(actual().canResolveTextAlignment())
         .named("can resolve text alignment")
         .isTrue();
     //noinspection unchecked
@@ -1440,7 +1440,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(KITKAT)
   public S canNotResolveTextAlignment() {
-    assertThat(getSubject().canResolveTextAlignment())
+    assertThat(actual().canResolveTextAlignment())
         .named("can resolve text alignment")
         .isFalse();
     //noinspection unchecked
@@ -1449,7 +1449,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(KITKAT)
   public S canResolveTextDirection() {
-    assertThat(getSubject().canResolveTextDirection())
+    assertThat(actual().canResolveTextDirection())
         .named("can resolve text direction")
         .isTrue();
     //noinspection unchecked
@@ -1458,7 +1458,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(KITKAT)
   public S canNotResolveTextDirection() {
-    assertThat(getSubject().canResolveTextDirection())
+    assertThat(actual().canResolveTextDirection())
         .named("can resolve text direction")
         .isFalse();
     //noinspection unchecked
@@ -1467,7 +1467,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(KITKAT)
   public S isAttachedToWindow() {
-    assertThat(getSubject().isAttachedToWindow())
+    assertThat(actual().isAttachedToWindow())
         .named("is attached to window")
         .isTrue();
     //noinspection unchecked
@@ -1476,7 +1476,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(KITKAT)
   public S isNotAttachedToWindow() {
-    assertThat(getSubject().isAttachedToWindow())
+    assertThat(actual().isAttachedToWindow())
         .named("is attached to window")
         .isFalse();
     //noinspection unchecked
@@ -1485,7 +1485,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(KITKAT)
   public S isLaidOut() {
-    assertThat(getSubject().isLaidOut())
+    assertThat(actual().isLaidOut())
         .named("is laid out")
         .isTrue();
     //noinspection unchecked
@@ -1494,7 +1494,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(KITKAT)
   public S isNotLaidOut() {
-    assertThat(getSubject().isLaidOut())
+    assertThat(actual().isLaidOut())
         .named("is laid out")
         .isFalse();
     //noinspection unchecked
@@ -1503,7 +1503,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(KITKAT)
   public S hasResolvedLayoutDirection() {
-    assertThat(getSubject().isLayoutDirectionResolved())
+    assertThat(actual().isLayoutDirectionResolved())
         .named("is layout direction resolved")
         .isTrue();
     //noinspection unchecked
@@ -1512,7 +1512,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(KITKAT)
   public S hasNotResolvedLayoutDirection() {
-    assertThat(getSubject().isLayoutDirectionResolved())
+    assertThat(actual().isLayoutDirectionResolved())
         .named("is layout direction resolved")
         .isFalse();
     //noinspection unchecked
@@ -1521,7 +1521,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(KITKAT)
   public S hasResolvedTextAlignment() {
-    assertThat(getSubject().isTextAlignmentResolved())
+    assertThat(actual().isTextAlignmentResolved())
         .named("is text alignment resolved")
         .isTrue();
     //noinspection unchecked
@@ -1530,7 +1530,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(KITKAT)
   public S hasNotResolvedTextAlignment() {
-    assertThat(getSubject().isTextAlignmentResolved())
+    assertThat(actual().isTextAlignmentResolved())
         .named("is text alignment resolved")
         .isFalse();
     //noinspection unchecked
@@ -1539,7 +1539,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(KITKAT)
   public S hasResolvedTextDirection() {
-    assertThat(getSubject().isTextDirectionResolved())
+    assertThat(actual().isTextDirectionResolved())
         .named("is text direction resolved")
         .isTrue();
     //noinspection unchecked
@@ -1548,7 +1548,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
 
   @TargetApi(KITKAT)
   public S hasNotResolvedTextDirection() {
-    assertThat(getSubject().isTextDirectionResolved())
+    assertThat(actual().isTextDirectionResolved())
         .named("is text direction resolved")
         .isFalse();
     //noinspection unchecked

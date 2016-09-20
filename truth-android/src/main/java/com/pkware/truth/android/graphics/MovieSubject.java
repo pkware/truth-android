@@ -41,35 +41,35 @@ public class MovieSubject extends Subject<MovieSubject, Movie> {
   }
 
   public MovieSubject hasDuration(int duration) {
-    assertThat(getSubject().duration())
+    assertThat(actual().duration())
         .named("duration")
         .isEqualTo(duration);
     return this;
   }
 
   public MovieSubject hasHeight(int height) {
-    assertThat(getSubject().height())
+    assertThat(actual().height())
         .named("height")
         .isEqualTo(height);
     return this;
   }
 
   public MovieSubject isOpaque() {
-    assertThat(getSubject().isOpaque())
+    assertThat(actual().isOpaque())
         .named("is opaque")
         .isTrue();
     return this;
   }
 
   public MovieSubject isNotOpaque() {
-    assertThat(getSubject().isOpaque())
+    assertThat(actual().isOpaque())
         .named("is opaque")
         .isFalse();
     return this;
   }
 
   public MovieSubject hasWidth(int width) {
-    assertThat(getSubject().width())
+    assertThat(actual().width())
         .named("width")
         .isEqualTo(width);
     return this;

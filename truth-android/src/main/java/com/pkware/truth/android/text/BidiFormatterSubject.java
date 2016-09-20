@@ -41,14 +41,14 @@ public class BidiFormatterSubject extends Subject<BidiFormatterSubject, BidiForm
   }
 
   public BidiFormatterSubject hasRtlContext() {
-    assertThat(getSubject().isRtlContext())
+    assertThat(actual().isRtlContext())
         .named("is RTL context")
         .isTrue();
     return this;
   }
 
   public BidiFormatterSubject doesNotHaveRtlContext() {
-    assertThat(getSubject().isRtlContext())
+    assertThat(actual().isRtlContext())
         .named("is RTL context")
         .isFalse();
     return this;

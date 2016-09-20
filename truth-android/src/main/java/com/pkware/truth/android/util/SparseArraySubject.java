@@ -44,7 +44,7 @@ public class SparseArraySubject<E> extends Subject<SparseArraySubject<E>, Sparse
   public SparseArraySubject<E> hasKey(int key) {
     assert_()
         .withFailureMessage("Expected key <%s> to be present but was not.", key)
-        .that(getSubject().indexOfKey(key))
+        .that(actual().indexOfKey(key))
         .isGreaterThan(-1);
     return this;
   }
@@ -52,13 +52,13 @@ public class SparseArraySubject<E> extends Subject<SparseArraySubject<E>, Sparse
   public SparseArraySubject<E> doesNotHaveKey(int key) {
     assert_()
         .withFailureMessage("Expected key <%s> to not be present but was.")
-        .that(getSubject().indexOfKey(key))
+        .that(actual().indexOfKey(key))
         .isLessThan(0);
     return this;
   }
 
   public SparseArraySubject<E> hasSize(int size) {
-    assertThat(getSubject().size())
+    assertThat(actual().size())
         .named("size")
         .isEqualTo(size);
     return this;

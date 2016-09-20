@@ -41,21 +41,21 @@ public class SensorEventSubject extends Subject<SensorEventSubject, SensorEvent>
   }
 
   public SensorEventSubject hasAccuracy(int accuracy) {
-    assertThat(getSubject().accuracy)
+    assertThat(actual().accuracy)
         .named("accuracy")
         .isEqualTo(accuracy);
     return this;
   }
 
   public SensorEventSubject hasTimestamp(long timestamp) {
-    assertThat(getSubject().timestamp)
+    assertThat(actual().timestamp)
         .named("timestamp")
         .isEqualTo(timestamp);
     return this;
   }
 
   public SensorEventSubject hasValues(float[] values, float tolerance) {
-    assertThat(getSubject().values)
+    assertThat(actual().values)
         .named("values")
         .hasValuesWithin(tolerance)
         .of(values);

@@ -42,7 +42,7 @@ public class PaletteSwatchSubject extends Subject<PaletteSwatchSubject, Palette.
   }
 
   public PaletteSwatchSubject hasRgb(int rgb) {
-    assertThat(getSubject().getRgb())
+    assertThat(actual().getRgb())
         .named("RGB")
         .isEqualTo(rgb);
     return this;

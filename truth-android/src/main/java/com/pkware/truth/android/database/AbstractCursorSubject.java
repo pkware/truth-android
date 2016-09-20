@@ -30,7 +30,7 @@ public abstract class AbstractCursorSubject<S extends AbstractCursorSubject<S, T
   }
 
   public S hasColumnCount(int count) {
-    assertThat(getSubject().getColumnCount())
+    assertThat(actual().getColumnCount())
         .named("column count")
         .isEqualTo(count);
     //noinspection unchecked
@@ -38,7 +38,7 @@ public abstract class AbstractCursorSubject<S extends AbstractCursorSubject<S, T
   }
 
   public S hasColumn(String name) {
-    assertThat(getSubject().getColumnNames())
+    assertThat(actual().getColumnNames())
         .asList()
         .named("columns")
         .contains(name);
@@ -47,7 +47,7 @@ public abstract class AbstractCursorSubject<S extends AbstractCursorSubject<S, T
   }
 
   public S hasColumns(String... names) {
-    assertThat(getSubject().getColumnNames())
+    assertThat(actual().getColumnNames())
         .asList()
         .named("columns")
         .containsAllIn(Arrays.asList(names));
@@ -56,7 +56,7 @@ public abstract class AbstractCursorSubject<S extends AbstractCursorSubject<S, T
   }
 
   public S hasCount(int count) {
-    assertThat(getSubject().getCount())
+    assertThat(actual().getCount())
         .named("count")
         .isEqualTo(count);
     //noinspection unchecked
@@ -64,7 +64,7 @@ public abstract class AbstractCursorSubject<S extends AbstractCursorSubject<S, T
   }
 
   public S hasPosition(int position) {
-    assertThat(getSubject().getPosition())
+    assertThat(actual().getPosition())
         .named("position")
         .isEqualTo(position);
     //noinspection unchecked
@@ -72,7 +72,7 @@ public abstract class AbstractCursorSubject<S extends AbstractCursorSubject<S, T
   }
 
   public S isAfterLast() {
-    assertThat(getSubject().isAfterLast())
+    assertThat(actual().isAfterLast())
         .named("is after last")
         .isTrue();
     //noinspection unchecked
@@ -80,7 +80,7 @@ public abstract class AbstractCursorSubject<S extends AbstractCursorSubject<S, T
   }
 
   public S isNotAfterLast() {
-    assertThat(getSubject().isAfterLast())
+    assertThat(actual().isAfterLast())
         .named("is after last")
         .isFalse();
     //noinspection unchecked
@@ -88,7 +88,7 @@ public abstract class AbstractCursorSubject<S extends AbstractCursorSubject<S, T
   }
 
   public S isBeforeFirst() {
-    assertThat(getSubject().isBeforeFirst())
+    assertThat(actual().isBeforeFirst())
         .named("is before first")
         .isTrue();
     //noinspection unchecked
@@ -96,7 +96,7 @@ public abstract class AbstractCursorSubject<S extends AbstractCursorSubject<S, T
   }
 
   public S isNotBeforeFirst() {
-    assertThat(getSubject().isBeforeFirst())
+    assertThat(actual().isBeforeFirst())
         .named("is before first")
         .isFalse();
     //noinspection unchecked
@@ -104,7 +104,7 @@ public abstract class AbstractCursorSubject<S extends AbstractCursorSubject<S, T
   }
 
   public S isClosed() {
-    assertThat(getSubject().isClosed())
+    assertThat(actual().isClosed())
         .named("is closed")
         .isTrue();
     //noinspection unchecked
@@ -112,7 +112,7 @@ public abstract class AbstractCursorSubject<S extends AbstractCursorSubject<S, T
   }
 
   public S isNotClosed() {
-    assertThat(getSubject().isClosed())
+    assertThat(actual().isClosed())
         .named("is closed")
         .isFalse();
     //noinspection unchecked
@@ -120,7 +120,7 @@ public abstract class AbstractCursorSubject<S extends AbstractCursorSubject<S, T
   }
 
   public S isFirst() {
-    assertThat(getSubject().isFirst())
+    assertThat(actual().isFirst())
         .named("is first")
         .isTrue();
     //noinspection unchecked
@@ -128,7 +128,7 @@ public abstract class AbstractCursorSubject<S extends AbstractCursorSubject<S, T
   }
 
   public S isNotFirst() {
-    assertThat(getSubject().isFirst())
+    assertThat(actual().isFirst())
         .named("is first")
         .isFalse();
     //noinspection unchecked
@@ -136,7 +136,7 @@ public abstract class AbstractCursorSubject<S extends AbstractCursorSubject<S, T
   }
 
   public S isLast() {
-    assertThat(getSubject().isLast())
+    assertThat(actual().isLast())
         .named("is last")
         .isTrue();
     //noinspection unchecked
@@ -144,7 +144,7 @@ public abstract class AbstractCursorSubject<S extends AbstractCursorSubject<S, T
   }
 
   public S isNotLast() {
-    assertThat(getSubject().isLast())
+    assertThat(actual().isLast())
         .named("is last")
         .isFalse();
     //noinspection unchecked

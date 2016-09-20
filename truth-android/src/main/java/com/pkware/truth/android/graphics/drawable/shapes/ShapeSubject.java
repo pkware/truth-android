@@ -41,7 +41,7 @@ public class ShapeSubject extends Subject<ShapeSubject, Shape> {
   }
 
   public ShapeSubject hasHeight(float height, float tolerance) {
-    assertThat(getSubject().getHeight())
+    assertThat(actual().getHeight())
         .named("height")
         .isWithin(tolerance)
         .of(height);
@@ -49,7 +49,7 @@ public class ShapeSubject extends Subject<ShapeSubject, Shape> {
   }
 
   public ShapeSubject hasWidth(float width, float tolerance) {
-    assertThat(getSubject().getWidth())
+    assertThat(actual().getWidth())
         .named("width")
         .isWithin(tolerance)
         .of(width);
@@ -57,14 +57,14 @@ public class ShapeSubject extends Subject<ShapeSubject, Shape> {
   }
 
   public ShapeSubject hasAlpha() {
-    assertThat(getSubject().hasAlpha())
+    assertThat(actual().hasAlpha())
         .named("has alpha")
         .isTrue();
     return this;
   }
 
   public ShapeSubject hasNoAlpha() {
-    assertThat(getSubject().hasAlpha())
+    assertThat(actual().hasAlpha())
         .named("has alpha")
         .isFalse();
     return this;

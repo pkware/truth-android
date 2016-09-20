@@ -41,84 +41,84 @@ public class ViewConfigurationSubject extends Subject<ViewConfigurationSubject, 
   }
 
   public ViewConfigurationSubject hasScaledDoubleTapSlop(int slop) {
-    assertThat(getSubject().getScaledDoubleTapSlop())
+    assertThat(actual().getScaledDoubleTapSlop())
         .named("scaled double-tap slop")
         .isEqualTo(slop);
     return this;
   }
 
   public ViewConfigurationSubject hasScaledEdgeSlop(int slop) {
-    assertThat(getSubject().getScaledEdgeSlop())
+    assertThat(actual().getScaledEdgeSlop())
         .named("scaled edge slop")
         .isEqualTo(slop);
     return this;
   }
 
   public ViewConfigurationSubject hasScaledFadingEdgeLength(int length) {
-    assertThat(getSubject().getScaledFadingEdgeLength())
+    assertThat(actual().getScaledFadingEdgeLength())
         .named("scaled fading edge length")
         .isEqualTo(length);
     return this;
   }
 
   public ViewConfigurationSubject hasScaledMaximumDrawingCacheSize(int size) {
-    assertThat(getSubject().getScaledMaximumDrawingCacheSize())
+    assertThat(actual().getScaledMaximumDrawingCacheSize())
         .named("scaled maximum drawing cache size")
         .isEqualTo(size);
     return this;
   }
 
   public ViewConfigurationSubject hasScaledMaximumFlingVelocity(int velocity) {
-    assertThat(getSubject().getScaledMaximumFlingVelocity())
+    assertThat(actual().getScaledMaximumFlingVelocity())
         .named("scaled maximum fling velocity")
         .isEqualTo(velocity);
     return this;
   }
 
   public ViewConfigurationSubject hasScaledMinimumFlingVelocity(int velocity) {
-    assertThat(getSubject().getScaledMinimumFlingVelocity())
+    assertThat(actual().getScaledMinimumFlingVelocity())
         .named("scaled minimum fling velocity")
         .isEqualTo(velocity);
     return this;
   }
 
   public ViewConfigurationSubject hasScaledOverflingDistance(int distance) {
-    assertThat(getSubject().getScaledOverflingDistance())
+    assertThat(actual().getScaledOverflingDistance())
         .named("scaled overfling distance")
         .isEqualTo(distance);
     return this;
   }
 
   public ViewConfigurationSubject hasScaledOverscrollDistance(int distance) {
-    assertThat(getSubject().getScaledOverscrollDistance())
+    assertThat(actual().getScaledOverscrollDistance())
         .named("scaled overscroll distance")
         .isEqualTo(distance);
     return this;
   }
 
   public ViewConfigurationSubject hasScaledPagingTouchSlop(int slop) {
-    assertThat(getSubject().getScaledPagingTouchSlop())
+    assertThat(actual().getScaledPagingTouchSlop())
         .named("scaled paging touch slop")
         .isEqualTo(slop);
     return this;
   }
 
   public ViewConfigurationSubject hasScaledScrollBarSize(int size) {
-    assertThat(getSubject().getScaledScrollBarSize())
+    assertThat(actual().getScaledScrollBarSize())
         .named("scaled scroll bar size")
         .isEqualTo(size);
     return this;
   }
 
   public ViewConfigurationSubject hasScaledTouchSlop(int slop) {
-    assertThat(getSubject().getScaledTouchSlop())
+    assertThat(actual().getScaledTouchSlop())
         .named("scaled touch slop")
         .isEqualTo(slop);
     return this;
   }
 
   public ViewConfigurationSubject hasScaledWindowTouchSlop(int slop) {
-    assertThat(getSubject().getScaledWindowTouchSlop())
+    assertThat(actual().getScaledWindowTouchSlop())
         .named("scaled window touch slop")
         .isEqualTo(slop);
     return this;

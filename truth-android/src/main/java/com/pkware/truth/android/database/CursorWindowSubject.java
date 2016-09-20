@@ -41,14 +41,14 @@ public class CursorWindowSubject extends Subject<CursorWindowSubject, CursorWind
   }
 
   public CursorWindowSubject hasRowCount(int count) {
-    assertThat(getSubject().getNumRows())
+    assertThat(actual().getNumRows())
         .named("number of rows")
         .isEqualTo(count);
     return this;
   }
 
   public CursorWindowSubject hasStartPosition(int position) {
-    assertThat(getSubject().getStartPosition())
+    assertThat(actual().getStartPosition())
         .named("start position")
         .isEqualTo(position);
     return this;

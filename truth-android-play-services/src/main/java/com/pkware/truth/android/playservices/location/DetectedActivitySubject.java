@@ -64,15 +64,15 @@ public class DetectedActivitySubject
   }
 
   public DetectedActivitySubject hasConfidence(int confidence) {
-    int actualConfidence = getSubject().getConfidence();
-    assertThat(getSubject().getConfidence())
+    int actualConfidence = actual().getConfidence();
+    assertThat(actual().getConfidence())
         .named("confidence")
         .isEqualTo(confidence);
     return this;
   }
 
   public DetectedActivitySubject hasType(@DetectedActivityType int type) {
-    int actualType = getSubject().getType();
+    int actualType = actual().getType();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected type <%s> but was <%s>.", typeToString(type),

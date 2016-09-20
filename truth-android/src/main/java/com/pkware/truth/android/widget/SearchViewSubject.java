@@ -47,7 +47,7 @@ public class SearchViewSubject extends AbstractLinearLayoutSubject<SearchViewSub
 
   @TargetApi(JELLY_BEAN)
   public SearchViewSubject hasImeOptions(int options) {
-    assertThat(getSubject().getImeOptions())
+    assertThat(actual().getImeOptions())
         .named("IME options")
         .isEqualTo(options);
     return this;
@@ -55,7 +55,7 @@ public class SearchViewSubject extends AbstractLinearLayoutSubject<SearchViewSub
 
   @TargetApi(JELLY_BEAN)
   public SearchViewSubject hasInputType(int type) {
-    assertThat(getSubject().getInputType())
+    assertThat(actual().getInputType())
         .named("input type")
         .isEqualTo(type);
     return this;
@@ -63,14 +63,14 @@ public class SearchViewSubject extends AbstractLinearLayoutSubject<SearchViewSub
 
   @TargetApi(JELLY_BEAN)
   public SearchViewSubject hasMaximumWidth(int width) {
-    assertThat(getSubject().getMaxWidth())
+    assertThat(actual().getMaxWidth())
         .named("maximum width")
         .isEqualTo(width);
     return this;
   }
 
   public SearchViewSubject hasQuery(String query) {
-    assertThat(getSubject().getQuery().toString())
+    assertThat(actual().getQuery().toString())
         .named("query")
         .isEqualTo(query);
     return this;
@@ -78,75 +78,81 @@ public class SearchViewSubject extends AbstractLinearLayoutSubject<SearchViewSub
 
   @TargetApi(JELLY_BEAN)
   public SearchViewSubject hasQueryHint(String hint) {
-    CharSequence actualHint = getSubject().getQueryHint();
-    assertThat(actualHint == null ? null : actualHint.toString())
+    CharSequence actualHint = actual().getQueryHint();
+    String actualHintString;
+    if (actualHint == null) {
+      actualHintString = null;
+    } else {
+      actualHintString = actualHint.toString();
+    }
+    assertThat(actualHintString)
         .named("query hint")
         .isEqualTo(hint);
     return this;
   }
 
   public SearchViewSubject hasQueryHint(@StringRes int resId) {
-    return hasQueryHint(getSubject().getContext().getString(resId));
+    return hasQueryHint(actual().getContext().getString(resId));
   }
 
   public SearchViewSubject hasSuggestionsAdapter(CursorAdapter adapter) {
-    assertThat(getSubject().getSuggestionsAdapter())
+    assertThat(actual().getSuggestionsAdapter())
         .named("suggestions adapter")
         .isSameAs(adapter);
     return this;
   }
 
   public SearchViewSubject isIconifiedByDefault() {
-    assertThat(getSubject().isIconfiedByDefault())
+    assertThat(actual().isIconfiedByDefault())
         .named("is iconified by default")
         .isTrue();
     return this;
   }
 
   public SearchViewSubject isNotIconifiedByDefault() {
-    assertThat(getSubject().isIconfiedByDefault())
+    assertThat(actual().isIconfiedByDefault())
         .named("is iconified by default")
         .isFalse();
     return this;
   }
 
   public SearchViewSubject isIconified() {
-    assertThat(getSubject().isIconified())
+    assertThat(actual().isIconified())
         .named("is iconified")
         .isTrue();
     return this;
   }
 
   public SearchViewSubject isNotIconified() {
-    assertThat(getSubject().isIconified())
+    assertThat(actual().isIconified())
         .named("is iconified")
         .isFalse();
     return this;
   }
 
   public SearchViewSubject isQueryRefinementEnabled() {
-    assertThat(getSubject().isQueryRefinementEnabled())
+    assertThat(actual().isQueryRefinementEnabled())
         .named("is query refinement enabled")
         .isTrue();
     return this;
   }
 
   public SearchViewSubject isQueryRefinementDisabled() {
-    assertThat(getSubject().isQueryRefinementEnabled())
+    assertThat(actual().isQueryRefinementEnabled())
         .named("is query refinement enabled")
         .isFalse();
     return this;
   }
 
   public SearchViewSubject isSubmitButtonEnabled() {
-    assertThat(getSubject().isSubmitButtonEnabled())
+    assertThat(actual().isSubmitButtonEnabled())
         .named("is submit button enabled")
         .isTrue();
     return this;
   }
 
   public SearchViewSubject isSubmitButtonDisabled() {
-    assertThat(getSubject().isSubmitButtonEnabled())
+    assertThat(actual().isSubmitButtonEnabled())
         .named("is submit button enabled")
         .isFalse();
     return this;

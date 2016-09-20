@@ -45,154 +45,154 @@ public class MenuItemSubject extends Subject<MenuItemSubject, MenuItem> {
   }
 
   public MenuItemSubject hasActionView(View view) {
-    assertThat(getSubject().getActionView())
+    assertThat(actual().getActionView())
         .named("action view")
         .isSameAs(view);
     return this;
   }
 
   public MenuItemSubject hasAlphabeticShortcut(char shortcut) {
-    assertThat(getSubject().getAlphabeticShortcut())
+    assertThat(actual().getAlphabeticShortcut())
         .named("alphabetic shortcut")
         .isEqualTo(shortcut);
     return this;
   }
 
   public MenuItemSubject hasGroupId(int id) {
-    assertThat(getSubject().getGroupId())
+    assertThat(actual().getGroupId())
         .named("group ID")
         .isEqualTo(id);
     return this;
   }
 
   public MenuItemSubject hasIcon(Drawable icon) {
-    assertThat(getSubject().getIcon())
+    assertThat(actual().getIcon())
         .named("icon")
         .isSameAs(icon);
     return this;
   }
 
   public MenuItemSubject hasIntent(Intent intent) {
-    assertThat(getSubject().getIntent())
+    assertThat(actual().getIntent())
         .named("intent")
         .isEqualTo(intent);
     return this;
   }
 
   public MenuItemSubject hasItemId(@IdRes int id) {
-    assertThat(getSubject().getItemId())
+    assertThat(actual().getItemId())
         .named("item ID")
         .isEqualTo(id);
     return this;
   }
 
   public MenuItemSubject hasNumericShortcut(char shortcut) {
-    assertThat(getSubject().getNumericShortcut())
+    assertThat(actual().getNumericShortcut())
         .named("numeric shortcut")
         .isEqualTo(shortcut);
     return this;
   }
 
   public MenuItemSubject hasOrder(int order) {
-    assertThat(getSubject().getOrder())
+    assertThat(actual().getOrder())
         .named("order")
         .isEqualTo(order);
     return this;
   }
 
   public MenuItemSubject hasTitle(String title) {
-    assertThat(getSubject().getTitle().toString())
+    assertThat(actual().getTitle().toString())
         .named("title")
         .isEqualTo(title);
     return this;
   }
 
   public MenuItemSubject hasCondensedTitle(String title) {
-    assertThat(getSubject().getTitleCondensed().toString())
+    assertThat(actual().getTitleCondensed().toString())
         .named("condensed title")
         .isEqualTo(title);
     return this;
   }
 
   public MenuItemSubject hasSubMenu() {
-    assertThat(getSubject().hasSubMenu())
+    assertThat(actual().hasSubMenu())
         .named("has sub-menu")
         .isTrue();
     return this;
   }
 
   public MenuItemSubject hasNoSubMenu() {
-    assertThat(getSubject().hasSubMenu())
+    assertThat(actual().hasSubMenu())
         .named("has sub-menu")
         .isFalse();
     return this;
   }
 
   public MenuItemSubject isActionViewExpanded() {
-    assertThat(getSubject().isActionViewExpanded())
+    assertThat(actual().isActionViewExpanded())
         .named("is action view expanded")
         .isTrue();
     return this;
   }
 
   public MenuItemSubject isActionViewCollapsed() {
-    assertThat(getSubject().isActionViewExpanded())
+    assertThat(actual().isActionViewExpanded())
         .named("is action view expanded")
         .isFalse();
     return this;
   }
 
   public MenuItemSubject isCheckable() {
-    assertThat(getSubject().isCheckable())
+    assertThat(actual().isCheckable())
         .named("is checkable")
         .isTrue();
     return this;
   }
 
   public MenuItemSubject isNotCheckable() {
-    assertThat(getSubject().isCheckable())
+    assertThat(actual().isCheckable())
         .named("is checkable")
         .isFalse();
     return this;
   }
 
   public MenuItemSubject isChecked() {
-    assertThat(getSubject().isChecked())
+    assertThat(actual().isChecked())
         .named("is checked")
         .isTrue();
     return this;
   }
 
   public MenuItemSubject isNotChecked() {
-    assertThat(getSubject().isChecked())
+    assertThat(actual().isChecked())
         .named("is checked")
         .isFalse();
     return this;
   }
 
   public MenuItemSubject isEnabled() {
-    assertThat(getSubject().isEnabled())
+    assertThat(actual().isEnabled())
         .named("is enabled")
         .isTrue();
     return this;
   }
 
   public MenuItemSubject isDisabled() {
-    assertThat(!getSubject().isEnabled())
+    assertThat(!actual().isEnabled())
         .named("is disabled")
         .isTrue();
     return this;
   }
 
   public MenuItemSubject isVisible() {
-    assertThat(getSubject().isVisible())
+    assertThat(actual().isVisible())
         .named("is visible")
         .isTrue();
     return this;
   }
 
   public MenuItemSubject isNotVisible() {
-    assertThat(getSubject().isVisible())
+    assertThat(actual().isVisible())
         .named("is visible")
         .isFalse();
     return this;

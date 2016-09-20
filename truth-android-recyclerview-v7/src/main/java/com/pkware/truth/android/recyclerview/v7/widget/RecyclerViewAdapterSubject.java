@@ -44,35 +44,35 @@ public class RecyclerViewAdapterSubject<VH extends ViewHolder>
   }
 
   public RecyclerViewAdapterSubject<VH> hasItemCount(int count) {
-    assertThat(getSubject().getItemCount())
+    assertThat(actual().getItemCount())
         .named("item count")
         .isEqualTo(count);
     return this;
   }
 
   public RecyclerViewAdapterSubject<VH> hasStableIds() {
-    assertThat(getSubject().hasStableIds())
+    assertThat(actual().hasStableIds())
         .named("has stable IDs")
         .isTrue();
     return this;
   }
 
   public RecyclerViewAdapterSubject<VH> doesNotHaveStableIds() {
-    assertThat(getSubject().hasStableIds())
+    assertThat(actual().hasStableIds())
         .named("has stable IDs")
         .isFalse();
     return this;
   }
 
   public RecyclerViewAdapterSubject<VH> hasObservers() {
-    assertThat(getSubject().hasObservers())
+    assertThat(actual().hasObservers())
         .named("has observers")
         .isTrue();
     return this;
   }
 
   public RecyclerViewAdapterSubject<VH> doesNotHaveObservers() {
-    assertThat(getSubject().hasObservers())
+    assertThat(actual().hasObservers())
         .named("has observers")
         .isFalse();
     return this;

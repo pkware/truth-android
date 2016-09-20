@@ -41,42 +41,42 @@ public class UsbAccessorySubject extends Subject<UsbAccessorySubject, UsbAccesso
   }
 
   public UsbAccessorySubject hasDescription(String description) {
-    assertThat(getSubject().getDescription())
+    assertThat(actual().getDescription())
         .named("description")
         .isEqualTo(description);
     return this;
   }
 
   public UsbAccessorySubject hasManufacturer(String manufacturer) {
-    assertThat(getSubject().getManufacturer())
+    assertThat(actual().getManufacturer())
         .named("manufacturer")
         .isEqualTo(manufacturer);
     return this;
   }
 
   public UsbAccessorySubject hasModel(String model) {
-    assertThat(getSubject().getModel())
+    assertThat(actual().getModel())
         .named("model")
         .isEqualTo(model);
     return this;
   }
 
   public UsbAccessorySubject hasSerial(String serial) {
-    assertThat(getSubject().getSerial())
+    assertThat(actual().getSerial())
         .named("serial")
         .isEqualTo(serial);
     return this;
   }
 
   public UsbAccessorySubject hasUri(String uri) {
-    assertThat(getSubject().getUri())
+    assertThat(actual().getUri())
         .named("uri")
         .isEqualTo(uri);
     return this;
   }
 
   public UsbAccessorySubject hasVersion(String version) {
-    assertThat(getSubject().getVersion())
+    assertThat(actual().getVersion())
         .named("version")
         .isEqualTo(version);
     return this;

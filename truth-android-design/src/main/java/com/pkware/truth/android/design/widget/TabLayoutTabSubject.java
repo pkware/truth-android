@@ -42,22 +42,28 @@ public class TabLayoutTabSubject extends Subject<TabLayoutTabSubject, TabLayout.
   }
 
   public TabLayoutTabSubject hasContentDescription(String contentDescription) {
-    CharSequence actualContentDescription = getSubject().getContentDescription();
-    assertThat(actualContentDescription == null ? null : actualContentDescription.toString())
+    CharSequence actualContentDescription = actual().getContentDescription();
+    String contentDescriptionString;
+    if (actualContentDescription == null) {
+      contentDescriptionString = null;
+    } else {
+      contentDescriptionString = actualContentDescription.toString();
+    }
+    assertThat(contentDescriptionString)
         .named("content description")
         .isEqualTo(contentDescription);
     return this;
   }
 
   public TabLayoutTabSubject hasIcon(Drawable icon) {
-    assertThat(getSubject().getIcon())
+    assertThat(actual().getIcon())
         .named("icon")
         .isSameAs(icon);
     return this;
   }
 
   public TabLayoutTabSubject hasPosition(int position) {
-    assertThat(getSubject().getPosition())
+    assertThat(actual().getPosition())
         .named("position")
         .isEqualTo(position);
     //noinspection unchecked
@@ -65,8 +71,14 @@ public class TabLayoutTabSubject extends Subject<TabLayoutTabSubject, TabLayout.
   }
 
   public TabLayoutTabSubject hasText(String text) {
-    CharSequence actualText = getSubject().getText();
-    assertThat(actualText == null ? null : actualText.toString())
+    CharSequence actualText = actual().getText();
+    String actualTextString;
+    if (actualText == null) {
+      actualTextString = null;
+    } else {
+      actualTextString = actualText.toString();
+    }
+    assertThat(actualTextString)
         .named("text")
         .isEqualTo(text);
     //noinspection unchecked

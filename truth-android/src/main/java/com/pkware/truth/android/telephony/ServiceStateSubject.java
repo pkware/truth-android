@@ -56,56 +56,56 @@ public class ServiceStateSubject extends Subject<ServiceStateSubject, ServiceSta
   }
 
   public ServiceStateSubject isManualSelection() {
-    assertThat(getSubject().getIsManualSelection())
+    assertThat(actual().getIsManualSelection())
         .named("is manual selection mode")
         .isTrue();
     return this;
   }
 
   public ServiceStateSubject isAutomaticSelection() {
-    assertThat(!getSubject().getIsManualSelection())
+    assertThat(!actual().getIsManualSelection())
         .named("is automatic selection mode")
         .isTrue();
     return this;
   }
 
   public ServiceStateSubject hasOperatorAlphaLong(String operatorAlphaLong) {
-    assertThat(getSubject().getOperatorAlphaLong())
+    assertThat(actual().getOperatorAlphaLong())
         .named("operator name in long alphanumeric format")
         .isEqualTo(operatorAlphaLong);
     return this;
   }
 
   public ServiceStateSubject hasOperatorAlphaShort(String operatorAlphaShort) {
-    assertThat(getSubject().getOperatorAlphaShort())
+    assertThat(actual().getOperatorAlphaShort())
         .named("operator name in short alphanumeric format")
         .isEqualTo(operatorAlphaShort);
     return this;
   }
 
   public ServiceStateSubject hasOperatorNumeric(String operatorNumeric) {
-    assertThat(getSubject().getOperatorNumeric())
+    assertThat(actual().getOperatorNumeric())
         .named("operator numeric ID")
         .isEqualTo(operatorNumeric);
     return this;
   }
 
   public ServiceStateSubject isRoaming() {
-    assertThat(getSubject().getRoaming())
+    assertThat(actual().getRoaming())
         .named("is roaming")
         .isTrue();
     return this;
   }
 
   public ServiceStateSubject isNotRoaming() {
-    assertThat(getSubject().getRoaming())
+    assertThat(actual().getRoaming())
         .named("is roaming")
         .isFalse();
     return this;
   }
 
   public ServiceStateSubject hasState(@ServiceStateState int state) {
-    int actualState = getSubject().getState();
+    int actualState = actual().getState();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected state <%s> but was <%s>.", serviceStateToString(state),

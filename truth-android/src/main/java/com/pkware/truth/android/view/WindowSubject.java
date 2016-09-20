@@ -73,21 +73,21 @@ public class WindowSubject extends Subject<WindowSubject, Window> {
   }
 
   public WindowSubject hasCurrentFocus(View view) {
-    assertThat(getSubject().getCurrentFocus())
+    assertThat(actual().getCurrentFocus())
         .named("current focused view")
         .isSameAs(view);
     return this;
   }
 
   public WindowSubject hasChildren() {
-    assertThat(getSubject().hasChildren())
+    assertThat(actual().hasChildren())
         .named("has children")
         .isTrue();
     return this;
   }
 
   public WindowSubject hasNoChildren() {
-    assertThat(getSubject().hasChildren())
+    assertThat(actual().hasChildren())
         .named("has children")
         .isFalse();
     return this;
@@ -98,34 +98,34 @@ public class WindowSubject extends Subject<WindowSubject, Window> {
     assert_()
         .withFailureMessage("Expected feature <%s> but was not present.",
             featureToString(feature))
-        .that(getSubject().hasFeature(feature))
+        .that(actual().hasFeature(feature))
         .isTrue();
     return this;
   }
 
   public WindowSubject isActive() {
-    assertThat(getSubject().isActive())
+    assertThat(actual().isActive())
         .named("is active")
         .isTrue();
     return this;
   }
 
   public WindowSubject isNotActive() {
-    assertThat(getSubject().isActive())
+    assertThat(actual().isActive())
         .named("is active")
         .isFalse();
     return this;
   }
 
   public WindowSubject isFloating() {
-    assertThat(getSubject().isFloating())
+    assertThat(actual().isFloating())
         .named("is floating")
         .isTrue();
     return this;
   }
 
   public WindowSubject isNotFloating() {
-    assertThat(getSubject().isFloating())
+    assertThat(actual().isFloating())
         .named("is floating")
         .isFalse();
     return this;

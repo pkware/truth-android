@@ -43,21 +43,21 @@ public class NeighboringCellInfoSubject extends Subject<NeighboringCellInfoSubje
   }
 
   public NeighboringCellInfoSubject hasCid(int cid) {
-    assertThat(getSubject().getCid())
+    assertThat(actual().getCid())
         .named("CID")
         .isEqualTo(cid);
     return this;
   }
 
   public NeighboringCellInfoSubject hasLac(int lac) {
-    assertThat(getSubject().getLac())
+    assertThat(actual().getLac())
         .named("LAC")
         .isEqualTo(lac);
     return this;
   }
 
   public NeighboringCellInfoSubject hasNetworkType(@TelephonyManagerNetworkType int networkType) {
-    int actualNetworkType = getSubject().getNetworkType();
+    int actualNetworkType = actual().getNetworkType();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected network type <%s> but was <%s>.",
@@ -68,14 +68,14 @@ public class NeighboringCellInfoSubject extends Subject<NeighboringCellInfoSubje
   }
 
   public NeighboringCellInfoSubject hasPsc(int psc) {
-    assertThat(getSubject().getPsc())
+    assertThat(actual().getPsc())
         .named("PSC")
         .isEqualTo(psc);
     return this;
   }
 
   public NeighboringCellInfoSubject hasRssi(int rssi) {
-    assertThat(getSubject().getRssi())
+    assertThat(actual().getRssi())
         .named("RSSI")
         .isEqualTo(rssi);
     return this;

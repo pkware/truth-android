@@ -29,7 +29,7 @@ public abstract class AbstractAbsoluteLayoutSubject<S extends AbstractAbsoluteLa
   }
 
   public S isDelayingChildPressedState() {
-    assertThat(getSubject().shouldDelayChildPressedState())
+    assertThat(actual().shouldDelayChildPressedState())
         .named("is delaying child pressed state")
         .isTrue();
     //noinspection unchecked
@@ -37,7 +37,7 @@ public abstract class AbstractAbsoluteLayoutSubject<S extends AbstractAbsoluteLa
   }
 
   public S isNotDelayingChildPressedState() {
-    assertThat(getSubject().shouldDelayChildPressedState())
+    assertThat(actual().shouldDelayChildPressedState())
         .named("is delaying child pressed state")
         .isFalse();
     //noinspection unchecked

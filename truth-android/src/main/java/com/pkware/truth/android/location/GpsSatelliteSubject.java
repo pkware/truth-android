@@ -41,7 +41,7 @@ public class GpsSatelliteSubject extends Subject<GpsSatelliteSubject, GpsSatelli
   }
 
   public GpsSatelliteSubject hasAzimuth(float azimuth, float tolerance) {
-    assertThat(getSubject().getAzimuth())
+    assertThat(actual().getAzimuth())
         .named("azimuth")
         .isWithin(tolerance)
         .of(azimuth);
@@ -49,7 +49,7 @@ public class GpsSatelliteSubject extends Subject<GpsSatelliteSubject, GpsSatelli
   }
 
   public GpsSatelliteSubject hasElevation(float elevation, float tolerance) {
-    assertThat(getSubject().getElevation())
+    assertThat(actual().getElevation())
         .named("elevation")
         .isWithin(tolerance)
         .of(elevation);
@@ -57,14 +57,14 @@ public class GpsSatelliteSubject extends Subject<GpsSatelliteSubject, GpsSatelli
   }
 
   public GpsSatelliteSubject hasPrn(int prn) {
-    assertThat(getSubject().getPrn())
+    assertThat(actual().getPrn())
         .named("PRN")
         .isEqualTo(prn);
     return this;
   }
 
   public GpsSatelliteSubject hasSnr(float snr, float tolerance) {
-    assertThat(getSubject().getSnr())
+    assertThat(actual().getSnr())
         .named("SNR")
         .isWithin(tolerance)
         .of(snr);
@@ -72,42 +72,42 @@ public class GpsSatelliteSubject extends Subject<GpsSatelliteSubject, GpsSatelli
   }
 
   public GpsSatelliteSubject hasAlmanac() {
-    assertThat(getSubject().hasAlmanac())
+    assertThat(actual().hasAlmanac())
         .named("has almanac")
         .isTrue();
     return this;
   }
 
   public GpsSatelliteSubject hasNoAlmanac() {
-    assertThat(getSubject().hasAlmanac())
+    assertThat(actual().hasAlmanac())
         .named("has almanac")
         .isFalse();
     return this;
   }
 
   public GpsSatelliteSubject hasEphemeris() {
-    assertThat(getSubject().hasEphemeris())
+    assertThat(actual().hasEphemeris())
         .named("has ephemeris")
         .isTrue();
     return this;
   }
 
   public GpsSatelliteSubject hasNotEphemeris() {
-    assertThat(getSubject().hasEphemeris())
+    assertThat(actual().hasEphemeris())
         .named("has ephemeris")
         .isFalse();
     return this;
   }
 
   public GpsSatelliteSubject isUsedInFix() {
-    assertThat(getSubject().usedInFix())
+    assertThat(actual().usedInFix())
         .named("used in fix")
         .isTrue();
     return this;
   }
 
   public GpsSatelliteSubject isNotUsedInFix() {
-    assertThat(getSubject().usedInFix())
+    assertThat(actual().usedInFix())
         .named("used in fix")
         .isFalse();
     return this;

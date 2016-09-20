@@ -40,14 +40,14 @@ public class DialogFragmentSubject extends AbstractFragmentSubject<DialogFragmen
   }
 
   public DialogFragmentSubject isCancelable() {
-    assertThat(getSubject().isCancelable())
+    assertThat(actual().isCancelable())
         .named("is cancelable")
         .isTrue();
     return this;
   }
 
   public DialogFragmentSubject isNotCancelable() {
-    assertThat(getSubject().isCancelable())
+    assertThat(actual().isCancelable())
         .named("is cancelable")
         .isFalse();
     return this;

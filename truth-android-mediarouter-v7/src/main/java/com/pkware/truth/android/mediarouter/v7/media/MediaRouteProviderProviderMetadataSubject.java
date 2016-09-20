@@ -44,14 +44,14 @@ public class MediaRouteProviderProviderMetadataSubject extends
   }
 
   public MediaRouteProviderProviderMetadataSubject hasComponentName(ComponentName componentName) {
-    assertThat(getSubject().getComponentName())
+    assertThat(actual().getComponentName())
         .named("component name")
         .isEqualTo(componentName);
     return this;
   }
 
   public MediaRouteProviderProviderMetadataSubject hasPackageName(String packageName) {
-    assertThat(getSubject().getPackageName())
+    assertThat(actual().getPackageName())
         .named("package name")
         .isEqualTo(packageName);
     return this;

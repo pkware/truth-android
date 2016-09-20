@@ -49,14 +49,14 @@ public class BundleSubject extends Subject<BundleSubject, Bundle> {
   public BundleSubject hasKey(String key) {
     assert_()
         .withFailureMessage("Expected to contain key <%s> but did not.", key)
-        .that(getSubject().containsKey(key))
+        .that(actual().containsKey(key))
         .isTrue();
     return this;
   }
 
   public BundleSubject hasValue(String key, boolean value) {
     hasKey(key);
-    assertThat(getSubject().getBoolean(key))
+    assertThat(actual().getBoolean(key))
         .named(String.format(Locale.ENGLISH, "value for key <%s>", key))
         .isEqualTo(value);
     return this;
@@ -64,7 +64,7 @@ public class BundleSubject extends Subject<BundleSubject, Bundle> {
 
   public BundleSubject hasValue(String key, short value) {
     hasKey(key);
-    assertThat(getSubject().getShort(key))
+    assertThat(actual().getShort(key))
         .named(String.format(Locale.ENGLISH, "value for key <%s>", key))
         .isEqualTo(value);
     return this;
@@ -72,7 +72,7 @@ public class BundleSubject extends Subject<BundleSubject, Bundle> {
 
   public BundleSubject hasValue(String key, int value) {
     hasKey(key);
-    assertThat(getSubject().getInt(key))
+    assertThat(actual().getInt(key))
         .named(String.format(Locale.ENGLISH, "value for key <%s>", key))
         .isEqualTo(value);
     return this;
@@ -80,7 +80,7 @@ public class BundleSubject extends Subject<BundleSubject, Bundle> {
 
   public BundleSubject hasValue(String key, long value) {
     hasKey(key);
-    assertThat(getSubject().getLong(key))
+    assertThat(actual().getLong(key))
         .named(String.format(Locale.ENGLISH, "value for key <%s>", key))
         .isEqualTo(value);
     return this;
@@ -88,7 +88,7 @@ public class BundleSubject extends Subject<BundleSubject, Bundle> {
 
   public BundleSubject hasValue(String key, char value) {
     hasKey(key);
-    assertThat(getSubject().getChar(key))
+    assertThat(actual().getChar(key))
         .named(String.format(Locale.ENGLISH, "value for key <%s>", key))
         .isEqualTo(value);
     return this;
@@ -96,7 +96,7 @@ public class BundleSubject extends Subject<BundleSubject, Bundle> {
 
   public BundleSubject hasValue(String key, byte value) {
     hasKey(key);
-    assertThat(getSubject().getByte(key))
+    assertThat(actual().getByte(key))
         .named(String.format(Locale.ENGLISH, "value for key <%s>", key))
         .isEqualTo(value);
     return this;
@@ -104,7 +104,7 @@ public class BundleSubject extends Subject<BundleSubject, Bundle> {
 
   public BundleSubject hasValue(String key, Parcelable value) {
     hasKey(key);
-    assertThat(getSubject().getParcelable(key))
+    assertThat(actual().getParcelable(key))
         .named(String.format(Locale.ENGLISH, "value for key <%s>", key))
         .isEqualTo(value);
     return this;
@@ -112,7 +112,7 @@ public class BundleSubject extends Subject<BundleSubject, Bundle> {
 
   public BundleSubject hasValue(String key, Serializable value) {
     hasKey(key);
-    assertThat(getSubject().getSerializable(key))
+    assertThat(actual().getSerializable(key))
         .named(String.format(Locale.ENGLISH, "value for key <%s>", key))
         .isEqualTo(value);
     return this;
@@ -120,28 +120,28 @@ public class BundleSubject extends Subject<BundleSubject, Bundle> {
 
   public BundleSubject hasValue(String key, Object value) {
     hasKey(key);
-    assertThat(getSubject().get(key))
+    assertThat(actual().get(key))
         .named(String.format(Locale.ENGLISH, "value for key <%s>", key))
         .isEqualTo(value);
     return this;
   }
 
   public BundleSubject isEmpty() {
-    assertThat(getSubject().isEmpty())
+    assertThat(actual().isEmpty())
         .named("is empty")
         .isTrue();
     return this;
   }
 
   public BundleSubject isNotEmpty() {
-    assertThat(getSubject().isEmpty())
+    assertThat(actual().isEmpty())
         .named("is empty")
         .isFalse();
     return this;
   }
 
   public BundleSubject hasSize(int size) {
-    assertThat(getSubject().size())
+    assertThat(actual().size())
         .named("size")
         .isEqualTo(size);
     return this;

@@ -43,35 +43,35 @@ public class FragmentManagerSubject extends Subject<FragmentManagerSubject, Frag
   }
 
   public FragmentManagerSubject hasFragmentWithId(int id) {
-    assertThat(getSubject().findFragmentById(id))
+    assertThat(actual().findFragmentById(id))
         .named(String.format(Locale.ENGLISH, "fragment with id <%d>", id))
         .isNotNull();
     return this;
   }
 
   public FragmentManagerSubject doesNotHaveFragmentWithId(int id) {
-    assertThat(getSubject().findFragmentById(id))
+    assertThat(actual().findFragmentById(id))
         .named(String.format(Locale.ENGLISH, "fragment with id <%d>", id))
         .isNull();
     return this;
   }
 
   public FragmentManagerSubject hasFragmentWithTag(String tag) {
-    assertThat(getSubject().findFragmentByTag(tag))
+    assertThat(actual().findFragmentByTag(tag))
         .named(String.format(Locale.ENGLISH, "fragment with tag <%s>", tag))
         .isNotNull();
     return this;
   }
 
   public FragmentManagerSubject doesNotHaveFragmentWithTag(String tag) {
-    assertThat(getSubject().findFragmentByTag(tag))
+    assertThat(actual().findFragmentByTag(tag))
         .named(String.format(Locale.ENGLISH, "fragment with tag <%s>", tag))
         .isNull();
     return this;
   }
 
   public FragmentManagerSubject hasBackStackEntryCount(int count) {
-    int actualCount = getSubject().getBackStackEntryCount();
+    int actualCount = actual().getBackStackEntryCount();
     assertThat(actualCount)
         .named("back stack entry count")
         .isEqualTo(count);

@@ -41,56 +41,56 @@ public class SignalStrengthSubject extends Subject<SignalStrengthSubject, Signal
   }
 
   public SignalStrengthSubject hasCdmaDbm(int dbm) {
-    assertThat(getSubject().getCdmaDbm())
+    assertThat(actual().getCdmaDbm())
         .named("CDMA dBm")
         .isEqualTo(dbm);
     return this;
   }
 
   public SignalStrengthSubject hasCdmaEcio(int ecio) {
-    assertThat(getSubject().getCdmaEcio())
+    assertThat(actual().getCdmaEcio())
         .named("CDMA Ec/Io")
         .isEqualTo(ecio);
     return this;
   }
 
   public SignalStrengthSubject hasEvdoDbm(int dbm) {
-    assertThat(getSubject().getEvdoDbm())
+    assertThat(actual().getEvdoDbm())
         .named("EVDO dBm")
         .isEqualTo(dbm);
     return this;
   }
 
   public SignalStrengthSubject hasEvdoEcio(int ecio) {
-    assertThat(getSubject().getEvdoEcio())
+    assertThat(actual().getEvdoEcio())
         .named("EVDO Ec/Io")
         .isEqualTo(ecio);
     return this;
   }
 
   public SignalStrengthSubject hasEvdoSnr(int snr) {
-    assertThat(getSubject().getEvdoSnr())
+    assertThat(actual().getEvdoSnr())
         .named("EVDO signal to noise ratio")
         .isEqualTo(snr);
     return this;
   }
 
   public SignalStrengthSubject hasGsmSignalStrength(int signalStrength) {
-    assertThat(getSubject().getGsmSignalStrength())
+    assertThat(actual().getGsmSignalStrength())
         .named("GSM signal strength")
         .isEqualTo(signalStrength);
     return this;
   }
 
   public SignalStrengthSubject isGsm() {
-    assertThat(getSubject().isGsm())
+    assertThat(actual().isGsm())
         .named("is GSM")
         .isTrue();
     return this;
   }
 
   public SignalStrengthSubject isNotGsm() {
-    assertThat(getSubject().isGsm())
+    assertThat(actual().isGsm())
         .named("is GSM")
         .isFalse();
     return this;

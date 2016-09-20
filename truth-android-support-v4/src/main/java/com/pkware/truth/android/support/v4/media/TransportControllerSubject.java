@@ -44,28 +44,28 @@ public class TransportControllerSubject
   }
 
   public TransportControllerSubject hasBufferPercentage(int percentage) {
-    assertThat(getSubject().getBufferPercentage())
+    assertThat(actual().getBufferPercentage())
         .named("buffer percentage")
         .isEqualTo(percentage);
     return this;
   }
 
   public TransportControllerSubject hasCurrentPosition(long position) {
-    assertThat(getSubject().getCurrentPosition())
+    assertThat(actual().getCurrentPosition())
         .named("current position")
         .isEqualTo(position);
     return this;
   }
 
   public TransportControllerSubject hasDuration(long duration) {
-    assertThat(getSubject().getDuration())
+    assertThat(actual().getDuration())
         .named("duration")
         .isEqualTo(duration);
     return this;
   }
 
   public TransportControllerSubject hasTransportControlFlags(@TransportMediatorControlFlags int flags) {
-    int actualFlags = getSubject().getTransportControlFlags();
+    int actualFlags = actual().getTransportControlFlags();
     //noinspection WrongConstant
     assert_()
         .withFailureMessage("Expected control flags <%s> but was <%s>.",
@@ -76,14 +76,14 @@ public class TransportControllerSubject
   }
 
   public TransportControllerSubject isPlaying() {
-    assertThat(getSubject().isPlaying())
+    assertThat(actual().isPlaying())
         .named("is playing")
         .isTrue();
     return this;
   }
 
   public TransportControllerSubject isNotPlaying() {
-    assertThat(getSubject().isPlaying())
+    assertThat(actual().isPlaying())
         .named("is playing")
         .isFalse();
     return this;

@@ -64,21 +64,21 @@ public class MediaItemStatusSubject extends Subject<MediaItemStatusSubject, Medi
   }
 
   public MediaItemStatusSubject hasContentDuration(long duration) {
-    assertThat(getSubject().getContentDuration())
+    assertThat(actual().getContentDuration())
         .named("content duration")
         .isEqualTo(duration);
     return this;
   }
 
   public MediaItemStatusSubject hasContentPosition(long position) {
-    assertThat(getSubject().getContentPosition())
+    assertThat(actual().getContentPosition())
         .named("content positions")
         .isEqualTo(position);
     return this;
   }
 
   public MediaItemStatusSubject hasPlaybackState(@MediaItemStatusPlaybackState int state) {
-    int actualState = getSubject().getPlaybackState();
+    int actualState = actual().getPlaybackState();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected playback state <%s> but was <%s>.",
@@ -89,7 +89,7 @@ public class MediaItemStatusSubject extends Subject<MediaItemStatusSubject, Medi
   }
 
   public MediaItemStatusSubject hasTimestamp(long timestamp) {
-    assertThat(getSubject().getTimestamp())
+    assertThat(actual().getTimestamp())
         .named("timestamp")
         .isEqualTo(timestamp);
     return this;

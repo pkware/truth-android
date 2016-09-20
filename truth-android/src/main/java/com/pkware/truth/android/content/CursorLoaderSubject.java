@@ -45,7 +45,7 @@ public class CursorLoaderSubject extends AbstractLoaderSubject<CursorLoaderSubje
   }
 
   public CursorLoaderSubject hasProjection(String... projection) {
-    assertThat(getSubject().getProjection())
+    assertThat(actual().getProjection())
         .asList()
         .named("projection")
         .containsExactlyElementsIn(Arrays.asList(projection));
@@ -53,7 +53,7 @@ public class CursorLoaderSubject extends AbstractLoaderSubject<CursorLoaderSubje
   }
 
   public CursorLoaderSubject doesNotHaveProjection() {
-    String[] projection = getSubject().getProjection();
+    String[] projection = actual().getProjection();
     if (projection == null) {
       projection = new String[0];
     }
@@ -64,7 +64,7 @@ public class CursorLoaderSubject extends AbstractLoaderSubject<CursorLoaderSubje
   }
 
   public CursorLoaderSubject projectionContains(String... projection) {
-    assertThat(getSubject().getProjection())
+    assertThat(actual().getProjection())
         .asList()
         .named("projection")
         .contains(projection);
@@ -72,14 +72,14 @@ public class CursorLoaderSubject extends AbstractLoaderSubject<CursorLoaderSubje
   }
 
   public CursorLoaderSubject hasSelection(String selection) {
-    assertThat(getSubject().getSelection())
+    assertThat(actual().getSelection())
         .named("selection")
         .isEqualTo(selection);
     return this;
   }
 
   public CursorLoaderSubject doesNotHaveSelection() {
-    String selection = getSubject().getSelection();
+    String selection = actual().getSelection();
     if (selection == null) {
       selection = "";
     }
@@ -90,7 +90,7 @@ public class CursorLoaderSubject extends AbstractLoaderSubject<CursorLoaderSubje
   }
 
   public CursorLoaderSubject hasSelectionArgs(String... selectionArgs) {
-    assertThat(getSubject().getSelectionArgs())
+    assertThat(actual().getSelectionArgs())
         .asList()
         .named("selection args")
         .containsExactlyElementsIn(Arrays.asList(selectionArgs));
@@ -98,7 +98,7 @@ public class CursorLoaderSubject extends AbstractLoaderSubject<CursorLoaderSubje
   }
 
   public CursorLoaderSubject doesNotHaveSelectionArgs() {
-    String[] selectionArgs = getSubject().getSelectionArgs();
+    String[] selectionArgs = actual().getSelectionArgs();
     if (selectionArgs == null) {
       selectionArgs = new String[0];
     }
@@ -109,7 +109,7 @@ public class CursorLoaderSubject extends AbstractLoaderSubject<CursorLoaderSubje
   }
 
   public CursorLoaderSubject containsSelectionArgs(String... selectionArgs) {
-    assertThat(getSubject().getSelectionArgs())
+    assertThat(actual().getSelectionArgs())
         .asList()
         .named("selection args")
         .contains(selectionArgs);
@@ -117,14 +117,14 @@ public class CursorLoaderSubject extends AbstractLoaderSubject<CursorLoaderSubje
   }
 
   public CursorLoaderSubject hasSortOrder(String sortOrder) {
-    assertThat(getSubject().getSortOrder())
+    assertThat(actual().getSortOrder())
         .named("sort order")
         .isEqualTo(sortOrder);
     return this;
   }
 
   public CursorLoaderSubject doesNotHaveSortOrder() {
-    String sortOrder = getSubject().getSortOrder();
+    String sortOrder = actual().getSortOrder();
     if (sortOrder == null) {
       sortOrder = "";
     }
@@ -136,7 +136,7 @@ public class CursorLoaderSubject extends AbstractLoaderSubject<CursorLoaderSubje
 
   public CursorLoaderSubject hasUri(Uri uri) {
     assert_().about(UriSubject.type())
-        .that(getSubject().getUri())
+        .that(actual().getUri())
         .named("uri")
         .isEqualTo(uri);
     return this;

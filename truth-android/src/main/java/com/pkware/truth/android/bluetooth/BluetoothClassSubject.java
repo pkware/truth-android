@@ -132,7 +132,7 @@ public class BluetoothClassSubject extends Subject<BluetoothClassSubject, Blueto
   }
 
   public BluetoothClassSubject hasDeviceClass(int deviceClass) {
-    int actualClass = getSubject().getDeviceClass();
+    int actualClass = actual().getDeviceClass();
     assert_()
         .withFailureMessage("Expected device class <%s> but was <%s>.",
             deviceClassToString(deviceClass),
@@ -143,7 +143,7 @@ public class BluetoothClassSubject extends Subject<BluetoothClassSubject, Blueto
   }
 
   public BluetoothClassSubject hasMajorDeviceClass(int majorDeviceClass) {
-    int actualMajorDeviceClass = getSubject().getMajorDeviceClass();
+    int actualMajorDeviceClass = actual().getMajorDeviceClass();
     assert_()
         .withFailureMessage("Expected major device class <%s> but was <%s>.",
             majorDeviceClassToString(majorDeviceClass),
@@ -154,14 +154,14 @@ public class BluetoothClassSubject extends Subject<BluetoothClassSubject, Blueto
   }
 
   public BluetoothClassSubject hasService(int service) {
-    assertThat(getSubject().hasService(service))
+    assertThat(actual().hasService(service))
         .named(String.format(Locale.ENGLISH, "has service <%s>", serviceToString(service)))
         .isTrue();
     return this;
   }
 
   public BluetoothClassSubject doesNotHaveService(int service) {
-    assertThat(getSubject().hasService(service))
+    assertThat(actual().hasService(service))
         .named(String.format(Locale.ENGLISH, "has service <%s>", serviceToString(service)))
         .isFalse();
     return this;

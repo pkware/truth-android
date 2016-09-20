@@ -43,14 +43,14 @@ public class PowerManagerSubject extends Subject<PowerManagerSubject, PowerManag
   }
 
   public PowerManagerSubject isScreenOn() {
-    assertThat(getSubject().isScreenOn())
+    assertThat(actual().isScreenOn())
         .named("is screen on")
         .isTrue();
     return this;
   }
 
   public PowerManagerSubject isScreenOff() {
-    assertThat(!getSubject().isScreenOn())
+    assertThat(!actual().isScreenOn())
         .named("is screen off")
         .isTrue();
     return this;
@@ -58,7 +58,7 @@ public class PowerManagerSubject extends Subject<PowerManagerSubject, PowerManag
 
   @TargetApi(KITKAT_WATCH)
   public PowerManagerSubject isInteractive() {
-    assertThat(getSubject().isInteractive())
+    assertThat(actual().isInteractive())
         .named("is interactive")
         .isTrue();
     return this;
@@ -66,7 +66,7 @@ public class PowerManagerSubject extends Subject<PowerManagerSubject, PowerManag
 
   @TargetApi(KITKAT_WATCH)
   public PowerManagerSubject isNotInteractive() {
-    assertThat(getSubject().isInteractive())
+    assertThat(actual().isInteractive())
         .named("is interactive")
         .isFalse();
     return this;

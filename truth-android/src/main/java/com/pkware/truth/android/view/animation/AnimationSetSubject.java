@@ -40,14 +40,14 @@ public class AnimationSetSubject extends AbstractAnimationSubject<AnimationSetSu
   }
 
   public AnimationSetSubject hasDurationHint(long duration) {
-    assertThat(getSubject().computeDurationHint())
+    assertThat(actual().computeDurationHint())
         .named("duration hint")
         .isEqualTo(duration);
     return this;
   }
 
   public AnimationSetSubject hasAnimationCount(int count) {
-    assertThat(getSubject().getAnimations().size())
+    assertThat(actual().getAnimations().size())
         .named("animation count")
         .isEqualTo(count);
     return this;

@@ -59,35 +59,35 @@ public class RecyclerViewSubject extends AbstractViewGroupSubject<RecyclerViewSu
   }
 
   public <VH extends ViewHolder> RecyclerViewSubject hasAdapter(Adapter<VH> adapter) {
-    assertThat(getSubject().getAdapter())
+    assertThat(actual().getAdapter())
         .named("adapter")
         .isEqualTo(adapter);
     return this;
   }
 
   public RecyclerViewSubject hasItemAnimator(ItemAnimator itemAnimator) {
-    assertThat(getSubject().getItemAnimator())
+    assertThat(actual().getItemAnimator())
         .named("item animator")
         .isEqualTo(itemAnimator);
     return this;
   }
 
   public RecyclerViewSubject hasLayoutManager(LayoutManager layoutManager) {
-    assertThat(getSubject().getLayoutManager())
+    assertThat(actual().getLayoutManager())
         .named("layout manager")
         .isEqualTo(layoutManager);
     return this;
   }
 
   public RecyclerViewSubject hasRecycledViewPool(RecycledViewPool recycledViewPool) {
-    assertThat(getSubject().getRecycledViewPool())
+    assertThat(actual().getRecycledViewPool())
         .named("recycled view pool")
         .isEqualTo(recycledViewPool);
     return this;
   }
 
   public RecyclerViewSubject hasScrollState(@RecyclerViewScrollState int scrollState) {
-    int actualScrollState = getSubject().getScrollState();
+    int actualScrollState = actual().getScrollState();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected scroll state <%s> but was <%s>.",
@@ -98,14 +98,14 @@ public class RecyclerViewSubject extends AbstractViewGroupSubject<RecyclerViewSu
   }
 
   public RecyclerViewSubject hasFixedSize() {
-    assertThat(getSubject().hasFixedSize())
+    assertThat(actual().hasFixedSize())
         .named("has fixed size")
         .isTrue();
     return this;
   }
 
   public RecyclerViewSubject doesNotHaveFixedSize() {
-    assertThat(getSubject().hasFixedSize())
+    assertThat(actual().hasFixedSize())
         .named("has fixed size")
         .isFalse();
     return this;

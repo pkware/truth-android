@@ -41,14 +41,14 @@ public class ExtractEditTextSubject extends Subject<ExtractEditTextSubject, Extr
   }
 
   public ExtractEditTextSubject isInputMethodTarget() {
-    assertThat(getSubject().isInputMethodTarget())
+    assertThat(actual().isInputMethodTarget())
         .named("is input method target")
         .isTrue();
     return this;
   }
 
   public ExtractEditTextSubject isNotInputMethodTarget() {
-    assertThat(getSubject().isInputMethodTarget())
+    assertThat(actual().isInputMethodTarget())
         .named("is input method target")
         .isFalse();
     return this;

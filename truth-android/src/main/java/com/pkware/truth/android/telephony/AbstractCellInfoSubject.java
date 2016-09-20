@@ -33,14 +33,14 @@ public abstract class AbstractCellInfoSubject<S extends AbstractCellInfoSubject<
   }
 
   public S hasTimeStamp(long timeStamp) {
-    assertThat(getSubject().getTimeStamp())
+    assertThat(actual().getTimeStamp())
         .named("time stamp")
         .isEqualTo(timeStamp);
     return (S) this;
   }
 
   public S isRegistered() {
-    assertThat(getSubject().isRegistered())
+    assertThat(actual().isRegistered())
         .named("is registered")
         .isTrue();
     return (S) this;

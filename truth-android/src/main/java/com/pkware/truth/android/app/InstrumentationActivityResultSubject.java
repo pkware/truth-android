@@ -42,14 +42,14 @@ public class InstrumentationActivityResultSubject extends Subject<Instrumentatio
   }
 
   public InstrumentationActivityResultSubject hasResultCode(int code) {
-    assertThat(getSubject().getResultCode())
+    assertThat(actual().getResultCode())
         .named("result code")
         .isEqualTo(code);
     return this;
   }
 
   public InstrumentationActivityResultSubject hasResultData(Intent intent) {
-    assertThat(getSubject().getResultData())
+    assertThat(actual().getResultData())
         .named("result data")
         .isEqualTo(intent);
     return this;

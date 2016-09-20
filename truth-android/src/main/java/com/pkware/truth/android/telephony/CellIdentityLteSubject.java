@@ -44,35 +44,35 @@ public final class CellIdentityLteSubject extends Subject<CellIdentityLteSubject
   }
 
   public CellIdentityLteSubject hasCi(int ci) {
-    assertThat(getSubject().getCi())
+    assertThat(actual().getCi())
         .named("CI")
         .isEqualTo(ci);
     return this;
   }
 
   public CellIdentityLteSubject hasMcc(int mcc) {
-    assertThat(getSubject().getMcc())
+    assertThat(actual().getMcc())
         .named("MCC")
         .isEqualTo(mcc);
     return this;
   }
 
   public CellIdentityLteSubject hasMnc(int mnc) {
-    assertThat(getSubject().getMnc())
+    assertThat(actual().getMnc())
         .named("MNC")
         .isEqualTo(mnc);
     return this;
   }
 
   public CellIdentityLteSubject hasPci(int pci) {
-    assertThat(getSubject().getPci())
+    assertThat(actual().getPci())
         .named("PCI")
         .isEqualTo(pci);
     return this;
   }
 
   public CellIdentityLteSubject hasTac(int tac) {
-    assertThat(getSubject().getTac())
+    assertThat(actual().getTac())
         .named("TAC")
         .isEqualTo(tac);
     return this;

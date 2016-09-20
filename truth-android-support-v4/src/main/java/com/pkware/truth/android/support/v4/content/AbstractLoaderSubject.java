@@ -30,8 +30,8 @@ public abstract class AbstractLoaderSubject<S extends AbstractLoaderSubject<S, T
   }
 
   public S hasId(int id) {
-    int actualId = getSubject().getId();
-    assertThat(getSubject().getId())
+    int actualId = actual().getId();
+    assertThat(actual().getId())
         .named("ID")
         .isEqualTo(id);
     //noinspection unchecked
@@ -39,7 +39,7 @@ public abstract class AbstractLoaderSubject<S extends AbstractLoaderSubject<S, T
   }
 
   public S isAbandoned() {
-    assertThat(getSubject().isAbandoned())
+    assertThat(actual().isAbandoned())
         .named("is abandoned")
         .isTrue();
     //noinspection unchecked
@@ -47,7 +47,7 @@ public abstract class AbstractLoaderSubject<S extends AbstractLoaderSubject<S, T
   }
 
   public S isNotAbandoned() {
-    assertThat(getSubject().isAbandoned())
+    assertThat(actual().isAbandoned())
         .named("is abandoned")
         .isFalse();
     //noinspection unchecked
@@ -55,7 +55,7 @@ public abstract class AbstractLoaderSubject<S extends AbstractLoaderSubject<S, T
   }
 
   public S isReset() {
-    assertThat(getSubject().isReset())
+    assertThat(actual().isReset())
         .named("is reset")
         .isTrue();
     //noinspection unchecked
@@ -63,7 +63,7 @@ public abstract class AbstractLoaderSubject<S extends AbstractLoaderSubject<S, T
   }
 
   public S isNotReset() {
-    assertThat(getSubject().isReset())
+    assertThat(actual().isReset())
         .named("is reset")
         .isFalse();
     //noinspection unchecked
@@ -71,7 +71,7 @@ public abstract class AbstractLoaderSubject<S extends AbstractLoaderSubject<S, T
   }
 
   public S isStarted() {
-    assertThat(getSubject().isStarted())
+    assertThat(actual().isStarted())
         .named("is started")
         .isTrue();
     //noinspection unchecked
@@ -79,7 +79,7 @@ public abstract class AbstractLoaderSubject<S extends AbstractLoaderSubject<S, T
   }
 
   public S isNotStarted() {
-    assertThat(getSubject().isStarted())
+    assertThat(actual().isStarted())
         .named("is started")
         .isFalse();
     //noinspection unchecked

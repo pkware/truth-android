@@ -41,14 +41,14 @@ public class ActionBarDrawerToggleSubject extends Subject<ActionBarDrawerToggleS
   }
 
   public ActionBarDrawerToggleSubject hasDrawerIndicatorEnabled() {
-    assertThat(getSubject().isDrawerIndicatorEnabled())
+    assertThat(actual().isDrawerIndicatorEnabled())
         .named("drawer indicator is enabled")
         .isTrue();
     return this;
   }
 
   public ActionBarDrawerToggleSubject doesNotHaveDrawerIndicatorEnabled() {
-    assertThat(!getSubject().isDrawerIndicatorEnabled())
+    assertThat(!actual().isDrawerIndicatorEnabled())
         .named("drawer indicator is disabled")
         .isTrue();
     return this;

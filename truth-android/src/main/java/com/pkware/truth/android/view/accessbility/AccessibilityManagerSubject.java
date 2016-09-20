@@ -41,28 +41,28 @@ public class AccessibilityManagerSubject extends Subject<AccessibilityManagerSub
   }
 
   public AccessibilityManagerSubject isEnabled() {
-    assertThat(getSubject().isEnabled())
+    assertThat(actual().isEnabled())
         .named("is enabled")
         .isTrue();
     return this;
   }
 
   public AccessibilityManagerSubject isDisabled() {
-    assertThat(!getSubject().isEnabled())
+    assertThat(!actual().isEnabled())
         .named("is disabled")
         .isTrue();
     return this;
   }
 
   public AccessibilityManagerSubject isTouchExplorationEnabled() {
-    assertThat(getSubject().isTouchExplorationEnabled())
+    assertThat(actual().isTouchExplorationEnabled())
         .named("is touch exploration enabled")
         .isTrue();
     return this;
   }
 
   public AccessibilityManagerSubject isTouchExplorationDisabled() {
-    assertThat(getSubject().isTouchExplorationEnabled())
+    assertThat(actual().isTouchExplorationEnabled())
         .named("is touch exploration enabled")
         .isFalse();
     return this;

@@ -45,14 +45,14 @@ public final class CellInfoLteSubject extends AbstractCellInfoSubject<CellInfoLt
   }
 
   public CellInfoLteSubject hasCellIdentity(CellIdentityLte cellIdentity) {
-    assertThat(getSubject().getCellIdentity())
+    assertThat(actual().getCellIdentity())
         .named("cell identity")
         .isEqualTo(cellIdentity);
     return this;
   }
 
   public CellInfoLteSubject hasCellSignalStrength(CellSignalStrengthLte cellSignalStrength) {
-    assertThat(getSubject().getCellSignalStrength())
+    assertThat(actual().getCellSignalStrength())
         .named("cell signal strength")
         .isEqualTo(cellSignalStrength);
     return this;

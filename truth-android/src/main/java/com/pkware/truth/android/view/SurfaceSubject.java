@@ -41,14 +41,14 @@ public class SurfaceSubject extends Subject<SurfaceSubject, Surface> {
   }
 
   public SurfaceSubject isValid() {
-    assertThat(getSubject().isValid())
+    assertThat(actual().isValid())
         .named("is valid")
         .isTrue();
     return this;
   }
 
   public SurfaceSubject isNotValid() {
-    assertThat(getSubject().isValid())
+    assertThat(actual().isValid())
         .named("is valid")
         .isFalse();
     return this;

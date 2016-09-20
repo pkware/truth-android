@@ -43,35 +43,35 @@ public class RecyclerViewItemAnimatorSubject
   }
 
   public RecyclerViewItemAnimatorSubject hasMoveDuration(long duration) {
-    assertThat(getSubject().getMoveDuration())
+    assertThat(actual().getMoveDuration())
         .named("move duration")
         .isEqualTo(duration);
     return this;
   }
 
   public RecyclerViewItemAnimatorSubject hasAddDuration(long duration) {
-    assertThat(getSubject().getAddDuration())
+    assertThat(actual().getAddDuration())
         .named("add duration")
         .isEqualTo(duration);
     return this;
   }
 
   public RecyclerViewItemAnimatorSubject hasRemoveDuration(long duration) {
-    assertThat(getSubject().getRemoveDuration())
+    assertThat(actual().getRemoveDuration())
         .named("remove duration")
         .isEqualTo(duration);
     return this;
   }
 
   public RecyclerViewItemAnimatorSubject isRunning() {
-    assertThat(getSubject().isRunning())
+    assertThat(actual().isRunning())
         .named("is running")
         .isTrue();
     return this;
   }
 
   public RecyclerViewItemAnimatorSubject isNotRunning() {
-    assertThat(getSubject().isRunning())
+    assertThat(actual().isRunning())
         .named("is running")
         .isFalse();
     return this;

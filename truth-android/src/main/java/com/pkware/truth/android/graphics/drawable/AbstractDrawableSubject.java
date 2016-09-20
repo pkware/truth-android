@@ -31,7 +31,7 @@ public class AbstractDrawableSubject<S extends AbstractDrawableSubject<S, T>, T 
   }
 
   public S hasBounds(Rect bounds) {
-    assertThat(getSubject().getBounds())
+    assertThat(actual().getBounds())
         .named("bounds")
         .isEqualTo(bounds);
     //noinspection unchecked
@@ -39,7 +39,7 @@ public class AbstractDrawableSubject<S extends AbstractDrawableSubject<S, T>, T 
   }
 
   public S hasCallback(Drawable.Callback callback) {
-    assertThat(getSubject().getCallback())
+    assertThat(actual().getCallback())
         .named("callback")
         .isSameAs(callback);
     //noinspection unchecked
@@ -47,7 +47,7 @@ public class AbstractDrawableSubject<S extends AbstractDrawableSubject<S, T>, T 
   }
 
   public S hasChangingConfigurations(int mask) {
-    assertThat(getSubject().getChangingConfigurations())
+    assertThat(actual().getChangingConfigurations())
         .named("changing configurations")
         .isEqualTo(mask);
     //noinspection unchecked
@@ -55,7 +55,7 @@ public class AbstractDrawableSubject<S extends AbstractDrawableSubject<S, T>, T 
   }
 
   public S hasConstantState(Drawable.ConstantState state) {
-    assertThat(getSubject().getConstantState())
+    assertThat(actual().getConstantState())
         .named("constant state")
         .isEqualTo(state);
     //noinspection unchecked
@@ -63,7 +63,7 @@ public class AbstractDrawableSubject<S extends AbstractDrawableSubject<S, T>, T 
   }
 
   public S hasIntrinsicHeight(int height) {
-    assertThat(getSubject().getIntrinsicHeight())
+    assertThat(actual().getIntrinsicHeight())
         .named("intrinsic height")
         .isEqualTo(height);
     //noinspection unchecked
@@ -71,7 +71,7 @@ public class AbstractDrawableSubject<S extends AbstractDrawableSubject<S, T>, T 
   }
 
   public S hasIntrinsicWidth(int width) {
-    assertThat(getSubject().getIntrinsicWidth())
+    assertThat(actual().getIntrinsicWidth())
         .named("intrinsic width")
         .isEqualTo(width);
     //noinspection unchecked
@@ -79,7 +79,7 @@ public class AbstractDrawableSubject<S extends AbstractDrawableSubject<S, T>, T 
   }
 
   public S hasLevel(int level) {
-    assertThat(getSubject().getLevel())
+    assertThat(actual().getLevel())
         .named("level")
         .isEqualTo(level);
     //noinspection unchecked
@@ -87,7 +87,7 @@ public class AbstractDrawableSubject<S extends AbstractDrawableSubject<S, T>, T 
   }
 
   public S hasMinimumHeight(int height) {
-    assertThat(getSubject().getMinimumHeight())
+    assertThat(actual().getMinimumHeight())
         .named("minimum height")
         .isEqualTo(height);
     //noinspection unchecked
@@ -95,7 +95,7 @@ public class AbstractDrawableSubject<S extends AbstractDrawableSubject<S, T>, T 
   }
 
   public S hasMinimumWidth(int width) {
-    assertThat(getSubject().getMinimumWidth())
+    assertThat(actual().getMinimumWidth())
         .named("minimum width")
         .isEqualTo(width);
     //noinspection unchecked
@@ -103,7 +103,7 @@ public class AbstractDrawableSubject<S extends AbstractDrawableSubject<S, T>, T 
   }
 
   public S hasOpacity(int opacity) {
-    assertThat(getSubject().getOpacity())
+    assertThat(actual().getOpacity())
         .named("opacity")
         .isEqualTo(opacity);
     //noinspection unchecked
@@ -111,7 +111,7 @@ public class AbstractDrawableSubject<S extends AbstractDrawableSubject<S, T>, T 
   }
 
   public S isStateful() {
-    assertThat(getSubject().isStateful())
+    assertThat(actual().isStateful())
         .named("is stateful")
         .isTrue();
     //noinspection unchecked
@@ -119,7 +119,7 @@ public class AbstractDrawableSubject<S extends AbstractDrawableSubject<S, T>, T 
   }
 
   public S isNotStateful() {
-    assertThat(getSubject().isStateful())
+    assertThat(actual().isStateful())
         .named("is stateful")
         .isFalse();
     //noinspection unchecked
@@ -127,7 +127,7 @@ public class AbstractDrawableSubject<S extends AbstractDrawableSubject<S, T>, T 
   }
 
   public S isVisible() {
-    assertThat(getSubject().isVisible())
+    assertThat(actual().isVisible())
         .named("is visible")
         .isTrue();
     //noinspection unchecked
@@ -135,7 +135,7 @@ public class AbstractDrawableSubject<S extends AbstractDrawableSubject<S, T>, T 
   }
 
   public S isNotVisible() {
-    assertThat(getSubject().isVisible())
+    assertThat(actual().isVisible())
         .named("is visible")
         .isFalse();
     //noinspection unchecked
@@ -144,7 +144,7 @@ public class AbstractDrawableSubject<S extends AbstractDrawableSubject<S, T>, T 
 
   @TargetApi(KITKAT)
   public S hasAlpha(int alpha) {
-    assertThat(getSubject().getAlpha())
+    assertThat(actual().getAlpha())
         .named("alpha")
         .isEqualTo(alpha);
     //noinspection unchecked
@@ -153,7 +153,7 @@ public class AbstractDrawableSubject<S extends AbstractDrawableSubject<S, T>, T 
 
   @TargetApi(KITKAT)
   public S isAutoMirrored() {
-    assertThat(getSubject().isAutoMirrored())
+    assertThat(actual().isAutoMirrored())
         .named("is auto mirrored")
         .isTrue();
     //noinspection unchecked
@@ -162,7 +162,7 @@ public class AbstractDrawableSubject<S extends AbstractDrawableSubject<S, T>, T 
 
   @TargetApi(KITKAT)
   public S isNotAutoMirrored() {
-    assertThat(getSubject().isAutoMirrored())
+    assertThat(actual().isAutoMirrored())
         .named("is auto mirrored")
         .isFalse();
     //noinspection unchecked

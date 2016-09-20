@@ -53,7 +53,7 @@ public class RingtonePreferenceSubject extends AbstractPreferenceSubject<Rington
   }
 
   public RingtonePreferenceSubject hasRingtoneType(@RingtoneType int type) {
-    int actualType = getSubject().getRingtoneType();
+    int actualType = actual().getRingtoneType();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected ringtone type <%s> but was <%s>.",
@@ -64,28 +64,28 @@ public class RingtonePreferenceSubject extends AbstractPreferenceSubject<Rington
   }
 
   public RingtonePreferenceSubject isShowingDefault() {
-    assertThat(getSubject().getShowDefault())
+    assertThat(actual().getShowDefault())
         .named("is showing default")
         .isTrue();
     return this;
   }
 
   public RingtonePreferenceSubject isNotShowingDefault() {
-    assertThat(getSubject().getShowDefault())
+    assertThat(actual().getShowDefault())
         .named("is showing default")
         .isFalse();
     return this;
   }
 
   public RingtonePreferenceSubject isShowingSilent() {
-    assertThat(getSubject().getShowSilent())
+    assertThat(actual().getShowSilent())
         .named("is showing silent")
         .isTrue();
     return this;
   }
 
   public RingtonePreferenceSubject isNotShowingSilent() {
-    assertThat(getSubject().getShowSilent())
+    assertThat(actual().getShowSilent())
         .named("is showing silent")
         .isFalse();
     return this;

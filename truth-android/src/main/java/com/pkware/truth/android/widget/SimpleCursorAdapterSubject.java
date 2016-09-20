@@ -43,21 +43,21 @@ public class SimpleCursorAdapterSubject
   }
 
   public SimpleCursorAdapterSubject hasCursorToStringConverter(CursorToStringConverter converter) {
-    assertThat(getSubject().getCursorToStringConverter())
+    assertThat(actual().getCursorToStringConverter())
         .named("cursor 'toString' converter")
         .isSameAs(converter);
     return this;
   }
 
   public SimpleCursorAdapterSubject hasStringConversionColumn(int column) {
-    assertThat(getSubject().getStringConversionColumn())
+    assertThat(actual().getStringConversionColumn())
         .named("string conversion column")
         .isEqualTo(column);
     return this;
   }
 
   public SimpleCursorAdapterSubject hasViewBinder(ViewBinder binder) {
-    assertThat(getSubject().getViewBinder())
+    assertThat(actual().getViewBinder())
         .named("view binder")
         .isSameAs(binder);
     return this;

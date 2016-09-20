@@ -29,7 +29,7 @@ public abstract class AbstractListActivitySubject<S extends AbstractListActivity
   }
 
   public S hasListAdapter(ListAdapter adapter) {
-    assertThat(getSubject().getListAdapter())
+    assertThat(actual().getListAdapter())
         .named("list adapter")
         .isSameAs(adapter);
     //noinspection unchecked
@@ -37,7 +37,7 @@ public abstract class AbstractListActivitySubject<S extends AbstractListActivity
   }
 
   public S hasListView(ListView listView) {
-    assertThat(getSubject().getListView())
+    assertThat(actual().getListView())
         .named("list view")
         .isSameAs(listView);
     //noinspection unchecked
@@ -45,7 +45,7 @@ public abstract class AbstractListActivitySubject<S extends AbstractListActivity
   }
 
   public S hasSelectedItemId(long id) {
-    assertThat(getSubject().getSelectedItemId())
+    assertThat(actual().getSelectedItemId())
         .named("selected item id")
         .isEqualTo(id);
     //noinspection unchecked
@@ -53,7 +53,7 @@ public abstract class AbstractListActivitySubject<S extends AbstractListActivity
   }
 
   public S hasSelectedItemPosition(int position) {
-    assertThat(getSubject().getSelectedItemPosition())
+    assertThat(actual().getSelectedItemPosition())
         .named("selected item position")
         .isEqualTo(position);
     //noinspection unchecked

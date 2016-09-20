@@ -56,28 +56,28 @@ public class TransportMediatorSubject extends Subject<TransportMediatorSubject, 
   }
 
   public TransportMediatorSubject hasBufferPercentage(int percentage) {
-    assertThat(getSubject().getBufferPercentage())
+    assertThat(actual().getBufferPercentage())
         .named("buffer percentage")
         .isEqualTo(percentage);
     return this;
   }
 
   public TransportMediatorSubject hasCurrentPosition(long position) {
-    assertThat(getSubject().getCurrentPosition())
+    assertThat(actual().getCurrentPosition())
         .named("current position")
         .isEqualTo(position);
     return this;
   }
 
   public TransportMediatorSubject hasDuration(long duration) {
-    assertThat(getSubject().getDuration())
+    assertThat(actual().getDuration())
         .named("duration")
         .isEqualTo(duration);
     return this;
   }
 
   public TransportMediatorSubject hasTransportControlFlags(@TransportMediatorControlFlags int flags) {
-    int actualFlags = getSubject().getTransportControlFlags();
+    int actualFlags = actual().getTransportControlFlags();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected control flags <%s> but was <%s>.",
@@ -88,14 +88,14 @@ public class TransportMediatorSubject extends Subject<TransportMediatorSubject, 
   }
 
   public TransportMediatorSubject isPlaying() {
-    assertThat(getSubject().isPlaying())
+    assertThat(actual().isPlaying())
         .named("is playing")
         .isTrue();
     return this;
   }
 
   public TransportMediatorSubject isNotPlaying() {
-    assertThat(getSubject().isPlaying())
+    assertThat(actual().isPlaying())
         .named("is playing")
         .isFalse();
     return this;

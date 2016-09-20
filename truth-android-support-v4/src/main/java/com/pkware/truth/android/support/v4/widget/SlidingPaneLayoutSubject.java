@@ -42,49 +42,49 @@ public class SlidingPaneLayoutSubject
   }
 
   public SlidingPaneLayoutSubject hasCoveredFadeColor(int color) {
-    assertThat(getSubject().getCoveredFadeColor())
+    assertThat(actual().getCoveredFadeColor())
         .named("covered fade color")
         .isEqualTo(color);
     return this;
   }
 
   public SlidingPaneLayoutSubject hasParallaxDistance(int distance) {
-    assertThat(getSubject().getParallaxDistance())
+    assertThat(actual().getParallaxDistance())
         .named("parallax distance")
         .isEqualTo(distance);
     return this;
   }
 
   public SlidingPaneLayoutSubject hasSliderFadeColor(int color) {
-    assertThat(getSubject().getSliderFadeColor())
+    assertThat(actual().getSliderFadeColor())
         .named("slider fade color")
         .isEqualTo(color);
     return this;
   }
 
   public SlidingPaneLayoutSubject isOpen() {
-    assertThat(getSubject().isOpen())
+    assertThat(actual().isOpen())
         .named("is open")
         .isTrue();
     return this;
   }
 
   public SlidingPaneLayoutSubject isNotOpen() {
-    assertThat(getSubject().isOpen())
+    assertThat(actual().isOpen())
         .named("is open")
         .isFalse();
     return this;
   }
 
   public SlidingPaneLayoutSubject isSlideable() {
-    assertThat(getSubject().isSlideable())
+    assertThat(actual().isSlideable())
         .named("is slideable")
         .isTrue();
     return this;
   }
 
   public SlidingPaneLayoutSubject isNotSlideable() {
-    assertThat(getSubject().isSlideable())
+    assertThat(actual().isSlideable())
         .named("is slideable")
         .isFalse();
     return this;

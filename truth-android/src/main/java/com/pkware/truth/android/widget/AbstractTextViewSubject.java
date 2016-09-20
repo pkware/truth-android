@@ -112,7 +112,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasAutoLinkMask(int mask) {
-    assertThat(getSubject().getAutoLinkMask())
+    assertThat(actual().getAutoLinkMask())
         .named("auto-link mask")
         .isEqualTo(mask);
     //noinspection unchecked
@@ -120,7 +120,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasCompoundDrawablePadding(int padding) {
-    assertThat(getSubject().getCompoundDrawablePadding())
+    assertThat(actual().getCompoundDrawablePadding())
         .named("compound drawable padding")
         .isEqualTo(padding);
     //noinspection unchecked
@@ -128,7 +128,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasCompoundPaddingBottom(int padding) {
-    assertThat(getSubject().getCompoundPaddingBottom())
+    assertThat(actual().getCompoundPaddingBottom())
         .named("compound drawable bottom padding")
         .isEqualTo(padding);
     //noinspection unchecked
@@ -137,7 +137,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
 
   @TargetApi(JELLY_BEAN_MR1)
   public S hasCompoundPaddingEnd(int padding) {
-    assertThat(getSubject().getCompoundPaddingEnd())
+    assertThat(actual().getCompoundPaddingEnd())
         .named("compound drawable end padding")
         .isEqualTo(padding);
     //noinspection unchecked
@@ -145,7 +145,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasCompoundPaddingLeft(int padding) {
-    assertThat(getSubject().getCompoundPaddingLeft())
+    assertThat(actual().getCompoundPaddingLeft())
         .named("compound drawable left padding")
         .isEqualTo(padding);
     //noinspection unchecked
@@ -153,7 +153,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasCompoundPaddingRight(int padding) {
-    assertThat(getSubject().getCompoundPaddingRight())
+    assertThat(actual().getCompoundPaddingRight())
         .named("compound drawable right padding")
         .isEqualTo(padding);
     //noinspection unchecked
@@ -162,7 +162,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
 
   @TargetApi(JELLY_BEAN_MR1)
   public S hasCompoundPaddingStart(int padding) {
-    assertThat(getSubject().getCompoundPaddingStart())
+    assertThat(actual().getCompoundPaddingStart())
         .named("compound drawable start padding")
         .isEqualTo(padding);
     //noinspection unchecked
@@ -170,7 +170,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasCompoundPaddingTop(int padding) {
-    assertThat(getSubject().getCompoundPaddingTop())
+    assertThat(actual().getCompoundPaddingTop())
         .named("compound drawable top padding")
         .isEqualTo(padding);
     //noinspection unchecked
@@ -178,7 +178,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasCurrentHintTextColor(int color) {
-    int actualColor = getSubject().getCurrentHintTextColor();
+    int actualColor = actual().getCurrentHintTextColor();
     assert_()
         .withFailureMessage("Expected current hint text color <%s> but was <%s>.",
             Integer.toHexString(color), Integer.toHexString(actualColor))
@@ -189,7 +189,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasCurrentTextColor(int color) {
-    int actualColor = getSubject().getCurrentTextColor();
+    int actualColor = actual().getCurrentTextColor();
     assert_()
         .withFailureMessage("Expected current text color <%s> but was <%s>.",
             Integer.toHexString(color), Integer.toHexString(actualColor))
@@ -200,8 +200,8 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasEllipsize(TextUtils.TruncateAt truncation) {
-    TextUtils.TruncateAt actualTruncation = getSubject().getEllipsize();
-    assertThat(getSubject().getEllipsize())
+    TextUtils.TruncateAt actualTruncation = actual().getEllipsize();
+    assertThat(actual().getEllipsize())
         .named("ellipsize")
         .isEqualTo(truncation);
     //noinspection unchecked
@@ -209,7 +209,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasError() {
-    assertThat(getSubject().getError())
+    assertThat(actual().getError())
         .named("error")
         .isNotNull();
     //noinspection unchecked
@@ -217,7 +217,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasNoError() {
-    assertThat(getSubject().getError())
+    assertThat(actual().getError())
         .named("error")
         .isNull();
     //noinspection unchecked
@@ -225,7 +225,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasError(String error) {
-    assertThat(getSubject().getError().toString())
+    assertThat(actual().getError().toString())
         .named("error")
         .isEqualTo(error);
     //noinspection unchecked
@@ -233,11 +233,11 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasError(@StringRes int resId) {
-    return hasError(getSubject().getContext().getString(resId));
+    return hasError(actual().getContext().getString(resId));
   }
 
   public S hasExtendedPaddingBottom(int padding) {
-    assertThat(getSubject().getExtendedPaddingBottom())
+    assertThat(actual().getExtendedPaddingBottom())
         .named("extended bottom padding")
         .isEqualTo(padding);
     //noinspection unchecked
@@ -245,8 +245,8 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasExtendedPaddingTop(int padding) {
-    int actualPadding = getSubject().getExtendedPaddingTop();
-    assertThat(getSubject().getExtendedPaddingTop())
+    int actualPadding = actual().getExtendedPaddingTop();
+    assertThat(actual().getExtendedPaddingTop())
         .named("extended top padding")
         .isEqualTo(padding);
     //noinspection unchecked
@@ -254,7 +254,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasFreezesText(boolean freezes) {
-    assertThat(getSubject().getFreezesText())
+    assertThat(actual().getFreezesText())
         .named("freezes text")
         .isEqualTo(freezes);
     //noinspection unchecked
@@ -262,7 +262,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasGravity(@TextViewGravity int gravity) {
-    int actualGravity = getSubject().getGravity();
+    int actualGravity = actual().getGravity();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected gravity <%s> but was <%s>.", gravityToString(gravity),
@@ -275,7 +275,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
 
   @TargetApi(JELLY_BEAN)
   public S hasHighlightColor(int color) {
-    int actualColor = getSubject().getHighlightColor();
+    int actualColor = actual().getHighlightColor();
     assert_()
         .withFailureMessage("Expected highlight color <%s> but was <%s>.",
             Integer.toHexString(color), Integer.toHexString(actualColor))
@@ -286,7 +286,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasHint(String hint) {
-    assertThat(getSubject().getHint().toString())
+    assertThat(actual().getHint().toString())
         .named("hint")
         .isEqualTo(hint);
     //noinspection unchecked
@@ -294,11 +294,11 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasHint(@StringRes int resId) {
-    return hasHint(getSubject().getContext().getString(resId));
+    return hasHint(actual().getContext().getString(resId));
   }
 
   public S hasImeActionId(int id) {
-    assertThat(getSubject().getImeActionId())
+    assertThat(actual().getImeActionId())
         .named("IME action ID")
         .isEqualTo(id);
     //noinspection unchecked
@@ -306,7 +306,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasImeActionLabel(String label) {
-    assertThat(getSubject().getImeActionLabel().toString())
+    assertThat(actual().getImeActionLabel().toString())
         .named("IME action label")
         .isEqualTo(label);
     //noinspection unchecked
@@ -314,11 +314,11 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasImeActionLabel(@StringRes int resId) {
-    return hasImeActionLabel(getSubject().getContext().getString(resId));
+    return hasImeActionLabel(actual().getContext().getString(resId));
   }
 
   public S hasImeOptions(@TextViewImeOptions int options) {
-    int actualOptions = getSubject().getImeOptions();
+    int actualOptions = actual().getImeOptions();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected IME options <%s> but was <%s>.",
@@ -331,7 +331,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
 
   @TargetApi(JELLY_BEAN)
   public S isIncludingFontPadding() {
-    assertThat(getSubject().getIncludeFontPadding())
+    assertThat(actual().getIncludeFontPadding())
         .named("is including font padding")
         .isTrue();
     //noinspection unchecked
@@ -340,7 +340,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
 
   @TargetApi(JELLY_BEAN)
   public S isNotIncludingFontPadding() {
-    assertThat(getSubject().getIncludeFontPadding())
+    assertThat(actual().getIncludeFontPadding())
         .named("is including font padding")
         .isFalse();
     //noinspection unchecked
@@ -348,7 +348,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasInputType(int type) {
-    int actualType = getSubject().getInputType();
+    int actualType = actual().getInputType();
     assertThat(actualType)
         .named("input type")
         .isEqualTo(type);
@@ -357,7 +357,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasLineCount(int count) {
-    assertThat(getSubject().getLineCount())
+    assertThat(actual().getLineCount())
         .named("line count")
         .isEqualTo(count);
     //noinspection unchecked
@@ -365,7 +365,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasLineHeight(int height) {
-    assertThat(getSubject().getLineHeight())
+    assertThat(actual().getLineHeight())
         .named("line height")
         .isEqualTo(height);
     //noinspection unchecked
@@ -374,7 +374,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
 
   @TargetApi(JELLY_BEAN)
   public S hasLineSpacingExtra(float extra, float tolerance) {
-    assertThat(getSubject().getLineSpacingExtra())
+    assertThat(actual().getLineSpacingExtra())
         .named("line spacing extra")
         .isWithin(tolerance)
         .of(extra);
@@ -384,8 +384,8 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
 
   @TargetApi(JELLY_BEAN)
   public S hasLineSpacingMultiplier(float multiplier, float tolerance) {
-    float actualMultiplier = getSubject().getLineSpacingMultiplier();
-    assertThat(getSubject().getLineSpacingMultiplier())
+    float actualMultiplier = actual().getLineSpacingMultiplier();
+    assertThat(actual().getLineSpacingMultiplier())
         .named("line spacing multiplier")
         .isWithin(tolerance)
         .of(multiplier);
@@ -395,7 +395,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
 
   @TargetApi(JELLY_BEAN)
   public S hasMarqueeRepeatLimit(int limit) {
-    assertThat(getSubject().getMarqueeRepeatLimit())
+    assertThat(actual().getMarqueeRepeatLimit())
         .named("marquee repeat limit")
         .isEqualTo(limit);
     //noinspection unchecked
@@ -404,7 +404,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
 
   @TargetApi(JELLY_BEAN)
   public S hasMaxEms(int ems) {
-    assertThat(getSubject().getMaxEms())
+    assertThat(actual().getMaxEms())
         .named("maximum EMs")
         .isEqualTo(ems);
     //noinspection unchecked
@@ -413,7 +413,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
 
   @TargetApi(JELLY_BEAN)
   public S hasMaxHeight(int height) {
-    assertThat(getSubject().getMaxHeight())
+    assertThat(actual().getMaxHeight())
         .named("maximum height")
         .isEqualTo(height);
     //noinspection unchecked
@@ -422,7 +422,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
 
   @TargetApi(JELLY_BEAN)
   public S hasMaxLines(int lines) {
-    assertThat(getSubject().getMaxLines())
+    assertThat(actual().getMaxLines())
         .named("maximum lines")
         .isEqualTo(lines);
     //noinspection unchecked
@@ -431,7 +431,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
 
   @TargetApi(JELLY_BEAN)
   public S hasMaxWidth(int ems) {
-    assertThat(getSubject().getMaxWidth())
+    assertThat(actual().getMaxWidth())
         .named("maximum width")
         .isEqualTo(ems);
     //noinspection unchecked
@@ -440,7 +440,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
 
   @TargetApi(JELLY_BEAN)
   public S hasMinEms(int ems) {
-    assertThat(getSubject().getMinEms())
+    assertThat(actual().getMinEms())
         .named("minimum EMs")
         .isEqualTo(ems);
     //noinspection unchecked
@@ -449,7 +449,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
 
   @TargetApi(JELLY_BEAN)
   public S hasMinHeight(int height) {
-    assertThat(getSubject().getMinHeight())
+    assertThat(actual().getMinHeight())
         .named("minimum height")
         .isEqualTo(height);
     //noinspection unchecked
@@ -458,7 +458,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
 
   @TargetApi(JELLY_BEAN)
   public S hasMinLines(int lines) {
-    assertThat(getSubject().getMinLines())
+    assertThat(actual().getMinLines())
         .named("minimum lines")
         .isEqualTo(lines);
     //noinspection unchecked
@@ -467,7 +467,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
 
   @TargetApi(JELLY_BEAN)
   public S hasMinWidth(int ems) {
-    assertThat(getSubject().getMinWidth())
+    assertThat(actual().getMinWidth())
         .named("minimum width")
         .isEqualTo(ems);
     //noinspection unchecked
@@ -475,7 +475,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasPaintFlags(int flags) {
-    assertThat(getSubject().getPaintFlags())
+    assertThat(actual().getPaintFlags())
         .named("paint flags")
         .isEqualTo(flags);
     //noinspection unchecked
@@ -483,7 +483,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasSelectionEnd(int position) {
-    assertThat(getSubject().getSelectionEnd())
+    assertThat(actual().getSelectionEnd())
         .named("selection end")
         .isEqualTo(position);
     //noinspection unchecked
@@ -491,7 +491,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasSelectionStart(int position) {
-    assertThat(getSubject().getSelectionStart())
+    assertThat(actual().getSelectionStart())
         .named("selection start")
         .isEqualTo(position);
     //noinspection unchecked
@@ -500,7 +500,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
 
   @TargetApi(JELLY_BEAN)
   public S hasShadowColor(int color) {
-    int actualColor = getSubject().getShadowColor();
+    int actualColor = actual().getShadowColor();
     assert_()
         .withFailureMessage("Expected shadow color <%s> but was <%s>.",
             Integer.toHexString(color), Integer.toHexString(actualColor))
@@ -512,7 +512,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
 
   @TargetApi(JELLY_BEAN)
   public S hasShadowDx(float dx, float tolerance) {
-    assertThat(getSubject().getShadowDx())
+    assertThat(actual().getShadowDx())
         .named("shadow DX")
         .isWithin(tolerance)
         .of(dx);
@@ -522,7 +522,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
 
   @TargetApi(JELLY_BEAN)
   public S hasShadowDy(float dy, float tolerance) {
-    assertThat(getSubject().getShadowDx())
+    assertThat(actual().getShadowDx())
         .named("shadow DY")
         .isWithin(tolerance)
         .of(dy);
@@ -532,7 +532,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
 
   @TargetApi(JELLY_BEAN)
   public S hasShadowRadius(float radius, float tolerance) {
-    assertThat(getSubject().getShadowRadius())
+    assertThat(actual().getShadowRadius())
         .named("shadow radius")
         .isWithin(tolerance)
         .of(radius);
@@ -541,7 +541,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasText(String text) {
-    assertThat(getSubject().getText().toString())
+    assertThat(actual().getText().toString())
         .named("text")
         .isEqualTo(text);
     //noinspection unchecked
@@ -549,7 +549,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasText(@StringRes int resId) {
-    return hasText(getSubject().getContext().getString(resId));
+    return hasText(actual().getContext().getString(resId));
   }
 
   public S isEmpty() {
@@ -557,7 +557,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S isNotEmpty() {
-    assertThat(getSubject().getText().toString())
+    assertThat(actual().getText().toString())
         .named("is not empty")
         .isNotEqualTo("");
     //noinspection unchecked
@@ -565,7 +565,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S matches(Pattern pattern) {
-    String text = getSubject().getText().toString();
+    String text = actual().getText().toString();
     assert_()
         .withFailureMessage("Expected text <%s> to match <%s>, but did not.", text, pattern.pattern())
         .that(pattern.matcher(text).matches())
@@ -575,7 +575,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S doesNotMatch(Pattern pattern) {
-    String text = getSubject().getText().toString();
+    String text = actual().getText().toString();
     assert_()
         .withFailureMessage("Expected text <%s> to not match <%s>, but did.", text, pattern.pattern())
         .that(pattern.matcher(text).matches())
@@ -585,27 +585,27 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S containsText(String sequence) {
-    assertThat(getSubject().getText().toString()).contains(sequence);
+    assertThat(actual().getText().toString()).contains(sequence);
     //noinspection unchecked
     return (S) this;
   }
 
   public S containsText(@StringRes int resId) {
-    return containsText(getSubject().getContext().getString(resId));
+    return containsText(actual().getContext().getString(resId));
   }
 
   public S doesNotContainText(String sequence) {
-    assertThat(getSubject().getText().toString()).doesNotContain(sequence);
+    assertThat(actual().getText().toString()).doesNotContain(sequence);
     //noinspection unchecked
     return (S) this;
   }
 
   public S doesNotContainText(@StringRes int resId) {
-    return doesNotContainText(getSubject().getContext().getString(resId));
+    return doesNotContainText(actual().getContext().getString(resId));
   }
 
   public S startsWithText(String sequence) {
-    assertThat(getSubject().getText().toString())
+    assertThat(actual().getText().toString())
         .named("text")
         .startsWith(sequence);
     //noinspection unchecked
@@ -613,11 +613,11 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S startsWithText(@StringRes int resId) {
-    return startsWithText(getSubject().getContext().getString(resId));
+    return startsWithText(actual().getContext().getString(resId));
   }
 
   public S endsWithText(String sequence) {
-    assertThat(getSubject().getText().toString())
+    assertThat(actual().getText().toString())
         .named("text")
         .endsWith(sequence);
     //noinspection unchecked
@@ -625,12 +625,12 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S endsWithText(@StringRes int resId) {
-    return endsWithText(getSubject().getContext().getString(resId));
+    return endsWithText(actual().getContext().getString(resId));
   }
 
   @TargetApi(JELLY_BEAN_MR1)
   public S hasTextLocale(Locale locale) {
-    assertThat(getSubject().getTextLocale())
+    assertThat(actual().getTextLocale())
         .named("text locale")
         .isEqualTo(locale);
     //noinspection unchecked
@@ -638,7 +638,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasTextScaleX(float scale, float tolerance) {
-    assertThat(getSubject().getTextScaleX())
+    assertThat(actual().getTextScaleX())
         .named("text X scale")
         .isWithin(tolerance)
         .of(scale);
@@ -647,7 +647,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasTextSize(float size, float tolerance) {
-    assertThat(getSubject().getTextSize())
+    assertThat(actual().getTextSize())
         .named("text size")
         .isWithin(tolerance)
         .of(size);
@@ -656,7 +656,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasTotalPaddingBottom(int padding) {
-    assertThat(getSubject().getTotalPaddingBottom())
+    assertThat(actual().getTotalPaddingBottom())
         .named("total bottom padding")
         .isEqualTo(padding);
     //noinspection unchecked
@@ -665,7 +665,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
 
   @TargetApi(JELLY_BEAN_MR1)
   public S hasTotalPaddingEnd(int padding) {
-    assertThat(getSubject().getTotalPaddingEnd())
+    assertThat(actual().getTotalPaddingEnd())
         .named("total end padding")
         .isEqualTo(padding);
     //noinspection unchecked
@@ -673,7 +673,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasTotalPaddingLeft(int padding) {
-    assertThat(getSubject().getTotalPaddingLeft())
+    assertThat(actual().getTotalPaddingLeft())
         .named("total left padding")
         .isEqualTo(padding);
     //noinspection unchecked
@@ -681,7 +681,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasTotalPaddingRight(int padding) {
-    assertThat(getSubject().getTotalPaddingRight())
+    assertThat(actual().getTotalPaddingRight())
         .named("total right padding")
         .isEqualTo(padding);
     //noinspection unchecked
@@ -690,7 +690,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
 
   @TargetApi(JELLY_BEAN_MR1)
   public S hasTotalPaddingStart(int padding) {
-    assertThat(getSubject().getTotalPaddingStart())
+    assertThat(actual().getTotalPaddingStart())
         .named("total start padding")
         .isEqualTo(padding);
     //noinspection unchecked
@@ -698,7 +698,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasTotalPaddingTop(int padding) {
-    assertThat(getSubject().getTotalPaddingTop())
+    assertThat(actual().getTotalPaddingTop())
         .named("total top padding")
         .isEqualTo(padding);
     //noinspection unchecked
@@ -706,7 +706,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasTypeface(Typeface typeface) {
-    assertThat(getSubject().getTypeface())
+    assertThat(actual().getTypeface())
         .named("typeface")
         .isSameAs(typeface);
     //noinspection unchecked
@@ -715,7 +715,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
 
   @TargetApi(JELLY_BEAN)
   public S isCursorVisible() {
-    assertThat(getSubject().isCursorVisible())
+    assertThat(actual().isCursorVisible())
         .named("is cursor visible")
         .isTrue();
     //noinspection unchecked
@@ -724,7 +724,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
 
   @TargetApi(JELLY_BEAN)
   public S isCursorNotVisible() {
-    assertThat(getSubject().isCursorVisible())
+    assertThat(actual().isCursorVisible())
         .named("is cursor visible")
         .isFalse();
     //noinspection unchecked
@@ -732,7 +732,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasSelectableText() {
-    assertThat(getSubject().isTextSelectable())
+    assertThat(actual().isTextSelectable())
         .named("is text selectable")
         .isTrue();
     //noinspection unchecked
@@ -740,7 +740,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasUnselectableText() {
-    assertThat(getSubject().isTextSelectable())
+    assertThat(actual().isTextSelectable())
         .named("is text selectable")
         .isFalse();
     //noinspection unchecked
@@ -748,7 +748,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S hasLength(int length) {
-    assertThat(getSubject().length())
+    assertThat(actual().length())
         .named("length")
         .isEqualTo(length);
     //noinspection unchecked
@@ -756,7 +756,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S isInputMethodTarget() {
-    assertThat(getSubject().isInputMethodTarget())
+    assertThat(actual().isInputMethodTarget())
         .named("is input method target")
         .isTrue();
     //noinspection unchecked
@@ -764,7 +764,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   }
 
   public S isNotInputMethodTarget() {
-    assertThat(getSubject().isInputMethodTarget())
+    assertThat(actual().isInputMethodTarget())
         .named("is input method target")
         .isFalse();
     //noinspection unchecked

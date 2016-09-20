@@ -41,14 +41,14 @@ public class ActivityRecognitionResultSubject
   }
 
   public ActivityRecognitionResultSubject hasElapsedRealtimeMillis(long millis) {
-    assertThat(getSubject().getElapsedRealtimeMillis())
+    assertThat(actual().getElapsedRealtimeMillis())
         .named("elapsed real-time millis")
         .isEqualTo(millis);
     return this;
   }
 
   public ActivityRecognitionResultSubject hasTime(long time) {
-    assertThat(getSubject().getTime())
+    assertThat(actual().getTime())
         .named("time")
         .isEqualTo(time);
     return this;

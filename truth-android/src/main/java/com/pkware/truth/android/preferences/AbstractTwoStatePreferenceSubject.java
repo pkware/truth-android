@@ -29,7 +29,7 @@ public abstract class AbstractTwoStatePreferenceSubject<S extends AbstractTwoSta
   }
 
   public S hasSummaryOff(CharSequence summary) {
-    assertThat(getSubject().getSummaryOff())
+    assertThat(actual().getSummaryOff())
         .named("off summary")
         .isEqualTo(summary);
     //noinspection unchecked
@@ -37,11 +37,11 @@ public abstract class AbstractTwoStatePreferenceSubject<S extends AbstractTwoSta
   }
 
   public S hasSummaryOff(@StringRes int resId) {
-    return hasSummaryOff(getSubject().getContext().getString(resId));
+    return hasSummaryOff(actual().getContext().getString(resId));
   }
 
   public S hasSummaryOn(CharSequence summary) {
-    assertThat(getSubject().getSummaryOn())
+    assertThat(actual().getSummaryOn())
         .named("on summary")
         .isEqualTo(summary);
     //noinspection unchecked
@@ -49,11 +49,11 @@ public abstract class AbstractTwoStatePreferenceSubject<S extends AbstractTwoSta
   }
 
   public S hasSummaryOn(@StringRes int resId) {
-    return hasSummaryOn(getSubject().getContext().getString(resId));
+    return hasSummaryOn(actual().getContext().getString(resId));
   }
 
   public S isChecked() {
-    assertThat(getSubject().isChecked())
+    assertThat(actual().isChecked())
         .named("is checked")
         .isTrue();
     //noinspection unchecked
@@ -61,7 +61,7 @@ public abstract class AbstractTwoStatePreferenceSubject<S extends AbstractTwoSta
   }
 
   public S isNotChecked() {
-    assertThat(getSubject().isChecked())
+    assertThat(actual().isChecked())
         .named("is checked")
         .isFalse();
     //noinspection unchecked

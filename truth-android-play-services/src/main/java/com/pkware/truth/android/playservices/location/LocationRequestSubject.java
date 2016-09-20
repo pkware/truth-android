@@ -40,43 +40,43 @@ public class LocationRequestSubject extends Subject<LocationRequestSubject, Loca
   }
 
   public LocationRequestSubject hasExpirationTime(long time) {
-    assertThat(getSubject().getExpirationTime())
+    assertThat(actual().getExpirationTime())
         .named("expiration time")
         .isEqualTo(time);
     return this;
   }
 
   public LocationRequestSubject hasFastestInterval(long interval) {
-    assertThat(getSubject().getFastestInterval())
+    assertThat(actual().getFastestInterval())
         .named("fastest interval")
         .isEqualTo(interval);
     return this;
   }
 
   public LocationRequestSubject hasInterval(long interval) {
-    long actualInterval = getSubject().getInterval();
-    assertThat(getSubject().getInterval())
+    long actualInterval = actual().getInterval();
+    assertThat(actual().getInterval())
         .named("interval")
         .isEqualTo(interval);
     return this;
   }
 
   public LocationRequestSubject hasUpdates(int updates) {
-    assertThat(getSubject().getNumUpdates())
+    assertThat(actual().getNumUpdates())
         .named("update count")
         .isEqualTo(updates);
     return this;
   }
 
   public LocationRequestSubject hasPriority(int priority) {
-    assertThat(getSubject().getPriority())
+    assertThat(actual().getPriority())
         .named("priority")
         .isEqualTo(priority);
     return this;
   }
 
   public LocationRequestSubject hasSmallestDisplacement(float displacement, float tolerance) {
-    assertThat(getSubject().getSmallestDisplacement())
+    assertThat(actual().getSmallestDisplacement())
         .named("smallest displacement")
         .isWithin(tolerance)
         .of(displacement);

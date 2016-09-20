@@ -41,7 +41,7 @@ public class MarkerSubject extends Subject<MarkerSubject, Marker> {
   }
 
   public MarkerSubject hasAlpha(float alpha, float tolerance) {
-    assertThat(getSubject().getAlpha())
+    assertThat(actual().getAlpha())
         .named("alpha")
         .isWithin(tolerance)
         .of(alpha);
@@ -49,21 +49,21 @@ public class MarkerSubject extends Subject<MarkerSubject, Marker> {
   }
 
   public MarkerSubject hasId(String id) {
-    assertThat(getSubject().getId())
+    assertThat(actual().getId())
         .named("ID")
         .isEqualTo(id);
     return this;
   }
 
   public MarkerSubject hasPosition(LatLng position) {
-    assertThat(getSubject().getPosition())
+    assertThat(actual().getPosition())
         .named("position")
         .isEqualTo(position);
     return this;
   }
 
   public MarkerSubject hasRotation(float rotation, float tolerance) {
-    assertThat(getSubject().getRotation())
+    assertThat(actual().getRotation())
         .named("rotation")
         .isWithin(tolerance)
         .of(rotation);
@@ -71,70 +71,70 @@ public class MarkerSubject extends Subject<MarkerSubject, Marker> {
   }
 
   public MarkerSubject hasSnippet(String snippet) {
-    assertThat(getSubject().getSnippet())
+    assertThat(actual().getSnippet())
         .named("snippet")
         .isEqualTo(snippet);
     return this;
   }
 
   public MarkerSubject hasTitle(String title) {
-    assertThat(getSubject().getTitle())
+    assertThat(actual().getTitle())
         .named("title")
         .isEqualTo(title);
     return this;
   }
 
   public MarkerSubject isDraggable() {
-    assertThat(getSubject().isDraggable())
+    assertThat(actual().isDraggable())
         .named("is draggable")
         .isTrue();
     return this;
   }
 
   public MarkerSubject isNotDraggable() {
-    assertThat(getSubject().isDraggable())
+    assertThat(actual().isDraggable())
         .named("is draggable")
         .isFalse();
     return this;
   }
 
   public MarkerSubject isFlat() {
-    assertThat(getSubject().isFlat())
+    assertThat(actual().isFlat())
         .named("is flat")
         .isTrue();
     return this;
   }
 
   public MarkerSubject isNotFlat() {
-    assertThat(getSubject().isFlat())
+    assertThat(actual().isFlat())
         .named("is flat")
         .isFalse();
     return this;
   }
 
   public MarkerSubject hasInfoWindowShown() {
-    assertThat(getSubject().isInfoWindowShown())
+    assertThat(actual().isInfoWindowShown())
         .named("is info window shown")
         .isTrue();
     return this;
   }
 
   public MarkerSubject hasInfoWindowNotShown() {
-    assertThat(getSubject().isInfoWindowShown())
+    assertThat(actual().isInfoWindowShown())
         .named("is info window shown")
         .isFalse();
     return this;
   }
 
   public MarkerSubject isVisible() {
-    assertThat(getSubject().isVisible())
+    assertThat(actual().isVisible())
         .named("is visible")
         .isTrue();
     return this;
   }
 
   public MarkerSubject isNotVisible() {
-    assertThat(getSubject().isVisible())
+    assertThat(actual().isVisible())
         .named("is visible")
         .isFalse();
     return this;

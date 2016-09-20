@@ -41,7 +41,7 @@ public class PropertyValuesHolderSubject extends Subject<PropertyValuesHolderSub
   }
 
   public PropertyValuesHolderSubject hasPropertyName(String name) {
-    assertThat(getSubject().getPropertyName())
+    assertThat(actual().getPropertyName())
         .named("property name")
         .isEqualTo(name);
     return this;

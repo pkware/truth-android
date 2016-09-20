@@ -42,42 +42,42 @@ public class ViewPagerSubject extends AbstractViewGroupSubject<ViewPagerSubject,
   }
 
   public ViewPagerSubject hasAdapter(PagerAdapter adapter) {
-    assertThat(getSubject().getAdapter())
+    assertThat(actual().getAdapter())
         .named("adapter")
         .isSameAs(adapter);
     return this;
   }
 
   public ViewPagerSubject hasCurrentItem(int index) {
-    assertThat(getSubject().getCurrentItem())
+    assertThat(actual().getCurrentItem())
         .named("current item")
         .isEqualTo(index);
     return this;
   }
 
   public ViewPagerSubject hasOffscreenPageLimit(int limit) {
-    assertThat(getSubject().getOffscreenPageLimit())
+    assertThat(actual().getOffscreenPageLimit())
         .named("offscreen page limit")
         .isEqualTo(limit);
     return this;
   }
 
   public ViewPagerSubject hasPageMargin(int margin) {
-    assertThat(getSubject().getPageMargin())
+    assertThat(actual().getPageMargin())
         .named("page margin")
         .isEqualTo(margin);
     return this;
   }
 
   public ViewPagerSubject isFakeDragging() {
-    assertThat(getSubject().isFakeDragging())
+    assertThat(actual().isFakeDragging())
         .named("is fake dragging")
         .isTrue();
     return this;
   }
 
   public ViewPagerSubject isNotFakeDragging() {
-    assertThat(getSubject().isFakeDragging())
+    assertThat(actual().isFakeDragging())
         .named("is fake dragging")
         .isFalse();
     return this;

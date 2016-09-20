@@ -43,42 +43,42 @@ public class VideoViewSubject extends AbstractViewSubject<VideoViewSubject, Vide
   }
 
   public VideoViewSubject isPausable() {
-    assertThat(getSubject().canPause())
+    assertThat(actual().canPause())
         .named("is pausable")
         .isTrue();
     return this;
   }
 
   public VideoViewSubject isNotPausable() {
-    assertThat(getSubject().canPause())
+    assertThat(actual().canPause())
         .named("is pausable")
         .isFalse();
     return this;
   }
 
   public VideoViewSubject isSeekableBackward() {
-    assertThat(getSubject().canSeekBackward())
+    assertThat(actual().canSeekBackward())
         .named("is seekable backward")
         .isTrue();
     return this;
   }
 
   public VideoViewSubject isNotSeekableBackward() {
-    assertThat(getSubject().canSeekBackward())
+    assertThat(actual().canSeekBackward())
         .named("is seekable backward")
         .isFalse();
     return this;
   }
 
   public VideoViewSubject isSeekableForward() {
-    assertThat(getSubject().canSeekForward())
+    assertThat(actual().canSeekForward())
         .named("is seekable forward")
         .isTrue();
     return this;
   }
 
   public VideoViewSubject isNotSeekableForward() {
-    assertThat(getSubject().canSeekForward())
+    assertThat(actual().canSeekForward())
         .named("is seekable forward")
         .isFalse();
     return this;
@@ -86,42 +86,42 @@ public class VideoViewSubject extends AbstractViewSubject<VideoViewSubject, Vide
 
   @TargetApi(JELLY_BEAN_MR2)
   public VideoViewSubject hasAudioSessionId(int id) {
-    assertThat(getSubject().getAudioSessionId())
+    assertThat(actual().getAudioSessionId())
         .named("audio session ID")
         .isEqualTo(id);
     return this;
   }
 
   public VideoViewSubject hasBufferPercentage(int percentage) {
-    assertThat(getSubject().getBufferPercentage())
+    assertThat(actual().getBufferPercentage())
         .named("buffer percentage")
         .isEqualTo(percentage);
     return this;
   }
 
   public VideoViewSubject hasCurrentPosition(int position) {
-    assertThat(getSubject().getCurrentPosition())
+    assertThat(actual().getCurrentPosition())
         .named("current positions")
         .isEqualTo(position);
     return this;
   }
 
   public VideoViewSubject hasDuration(int duration) {
-    assertThat(getSubject().getDuration())
+    assertThat(actual().getDuration())
         .named("duration")
         .isEqualTo(duration);
     return this;
   }
 
   public VideoViewSubject isPlaying() {
-    assertThat(getSubject().isPlaying())
+    assertThat(actual().isPlaying())
         .named("is playing")
         .isTrue();
     return this;
   }
 
   public VideoViewSubject isNotPlaying() {
-    assertThat(getSubject().isPlaying())
+    assertThat(actual().isPlaying())
         .named("is playing")
         .isFalse();
     return this;

@@ -29,7 +29,7 @@ public abstract class AbstractAbsSpinnerSubject<S extends AbstractAbsSpinnerSubj
   }
 
   public S hasAdapter(SpinnerAdapter adapter) {
-    assertThat(getSubject().getAdapter())
+    assertThat(actual().getAdapter())
         .named("adapter")
         .isSameAs(adapter);
     //noinspection unchecked

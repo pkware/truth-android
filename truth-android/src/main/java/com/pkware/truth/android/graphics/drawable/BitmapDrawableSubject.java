@@ -43,35 +43,35 @@ public class BitmapDrawableSubject extends AbstractDrawableSubject<BitmapDrawabl
   }
 
   public BitmapDrawableSubject hasBitmap(Bitmap bitmap) {
-    assertThat(getSubject().getBitmap())
+    assertThat(actual().getBitmap())
         .named("bitmap")
         .isEqualTo(bitmap);
     return this;
   }
 
   public BitmapDrawableSubject hasGravity(int gravity) {
-    assertThat(getSubject().getGravity())
+    assertThat(actual().getGravity())
         .named("gravity")
         .isEqualTo(gravity);
     return this;
   }
 
   public BitmapDrawableSubject hasPaint(Paint paint) {
-    assertThat(getSubject().getPaint())
+    assertThat(actual().getPaint())
         .named("paint")
         .isEqualTo(paint);
     return this;
   }
 
   public BitmapDrawableSubject hasTileModeX(Shader.TileMode mode) {
-    assertThat(getSubject().getTileModeX())
+    assertThat(actual().getTileModeX())
         .named("X tile mode")
         .isEqualTo(mode);
     return this;
   }
 
   public BitmapDrawableSubject hasTileModeY(Shader.TileMode mode) {
-    assertThat(getSubject().getTileModeY())
+    assertThat(actual().getTileModeY())
         .named("Y tile mode")
         .isEqualTo(mode);
     return this;

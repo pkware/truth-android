@@ -31,7 +31,7 @@ public abstract class AbstractAdapterViewSubject<S extends AbstractAdapterViewSu
   }
 
   public S hasAdapter(Adapter adapter) {
-    assertThat(getSubject().getAdapter())
+    assertThat(actual().getAdapter())
         .named("adapter")
         .isSameAs(adapter);
     //noinspection unchecked
@@ -39,7 +39,7 @@ public abstract class AbstractAdapterViewSubject<S extends AbstractAdapterViewSu
   }
 
   public S hasCount(int count) {
-    assertThat(getSubject().getCount())
+    assertThat(actual().getCount())
         .named("count")
         .isEqualTo(count);
     //noinspection unchecked
@@ -47,7 +47,7 @@ public abstract class AbstractAdapterViewSubject<S extends AbstractAdapterViewSu
   }
 
   public S hasFirstVisiblePosition(int position) {
-    assertThat(getSubject().getFirstVisiblePosition())
+    assertThat(actual().getFirstVisiblePosition())
         .named("first visible position")
         .isEqualTo(position);
     //noinspection unchecked
@@ -55,7 +55,7 @@ public abstract class AbstractAdapterViewSubject<S extends AbstractAdapterViewSu
   }
 
   public S hasItemAtPosition(int position, Object item) {
-    assertThat(getSubject().getItemAtPosition(position))
+    assertThat(actual().getItemAtPosition(position))
         .named("item at positions " + position)
         .isEqualTo(item);
     //noinspection unchecked
@@ -63,7 +63,7 @@ public abstract class AbstractAdapterViewSubject<S extends AbstractAdapterViewSu
   }
 
   public S hasItemIdAtPosition(int position, long id) {
-    assertThat(getSubject().getItemIdAtPosition(position))
+    assertThat(actual().getItemIdAtPosition(position))
         .named("ID for item at position " + position)
         .isEqualTo(id);
     //noinspection unchecked
@@ -71,7 +71,7 @@ public abstract class AbstractAdapterViewSubject<S extends AbstractAdapterViewSu
   }
 
   public S hasLastVisiblePosition(int position) {
-    assertThat(getSubject().getLastVisiblePosition())
+    assertThat(actual().getLastVisiblePosition())
         .named("last visible position")
         .isEqualTo(position);
     //noinspection unchecked
@@ -79,7 +79,7 @@ public abstract class AbstractAdapterViewSubject<S extends AbstractAdapterViewSu
   }
 
   public S hasPositionForView(View view, int position) {
-    assertThat(getSubject().getPositionForView(view))
+    assertThat(actual().getPositionForView(view))
         .named("position for view")
         .isEqualTo(position);
     //noinspection unchecked
@@ -87,7 +87,7 @@ public abstract class AbstractAdapterViewSubject<S extends AbstractAdapterViewSu
   }
 
   public S hasSelectedItem(Object item) {
-    assertThat(getSubject().getSelectedItem())
+    assertThat(actual().getSelectedItem())
         .named("selected item")
         .isEqualTo(item);
     //noinspection unchecked
@@ -95,7 +95,7 @@ public abstract class AbstractAdapterViewSubject<S extends AbstractAdapterViewSu
   }
 
   public S hasSelectedItemId(long id) {
-    assertThat(getSubject().getSelectedItemId())
+    assertThat(actual().getSelectedItemId())
         .named("selected item ID")
         .isEqualTo(id);
     //noinspection unchecked
@@ -103,7 +103,7 @@ public abstract class AbstractAdapterViewSubject<S extends AbstractAdapterViewSu
   }
 
   public S hasSelectedItemPosition(int position) {
-    assertThat(getSubject().getSelectedItemPosition())
+    assertThat(actual().getSelectedItemPosition())
         .named("selected item position")
         .isEqualTo(position);
     //noinspection unchecked
@@ -111,7 +111,7 @@ public abstract class AbstractAdapterViewSubject<S extends AbstractAdapterViewSu
   }
 
   public S hasSelectedView(View view) {
-    assertThat(getSubject().getSelectedView())
+    assertThat(actual().getSelectedView())
         .named("selected view")
         .isSameAs(view);
     //noinspection unchecked

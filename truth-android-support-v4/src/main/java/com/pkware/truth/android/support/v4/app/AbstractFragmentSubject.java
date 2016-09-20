@@ -30,7 +30,7 @@ public abstract class AbstractFragmentSubject<S extends AbstractFragmentSubject<
   }
 
   public S hasId(int id) {
-    assertThat(getSubject().getId())
+    assertThat(actual().getId())
         .named("ID")
         .isEqualTo(id);
     //noinspection unchecked
@@ -38,14 +38,14 @@ public abstract class AbstractFragmentSubject<S extends AbstractFragmentSubject<
   }
 
   public S hasTag(String tag) {
-    String actualTag = getSubject().getTag();
+    String actualTag = actual().getTag();
     assertThat(actualTag).isEqualTo(tag);
     //noinspection unchecked
     return (S) this;
   }
 
   public S isUserVisible() {
-    assertThat(getSubject().getUserVisibleHint())
+    assertThat(actual().getUserVisibleHint())
         .named("is visible to user hint")
         .isTrue();
     //noinspection unchecked
@@ -53,7 +53,7 @@ public abstract class AbstractFragmentSubject<S extends AbstractFragmentSubject<
   }
 
   public S isNotUserVisible() {
-    assertThat(getSubject().getUserVisibleHint())
+    assertThat(actual().getUserVisibleHint())
         .named("is visible to user hint")
         .isFalse();
     //noinspection unchecked
@@ -61,7 +61,7 @@ public abstract class AbstractFragmentSubject<S extends AbstractFragmentSubject<
   }
 
   public S isAdded() {
-    assertThat(getSubject().isAdded())
+    assertThat(actual().isAdded())
         .named("is added")
         .isTrue();
     //noinspection unchecked
@@ -69,7 +69,7 @@ public abstract class AbstractFragmentSubject<S extends AbstractFragmentSubject<
   }
 
   public S isNotAdded() {
-    assertThat(getSubject().isAdded())
+    assertThat(actual().isAdded())
         .named("is added")
         .isFalse();
     //noinspection unchecked
@@ -77,7 +77,7 @@ public abstract class AbstractFragmentSubject<S extends AbstractFragmentSubject<
   }
 
   public S isDetached() {
-    assertThat(getSubject().isDetached())
+    assertThat(actual().isDetached())
         .named("is detached")
         .isTrue();
     //noinspection unchecked
@@ -85,7 +85,7 @@ public abstract class AbstractFragmentSubject<S extends AbstractFragmentSubject<
   }
 
   public S isNotDetached() {
-    assertThat(getSubject().isDetached())
+    assertThat(actual().isDetached())
         .named("is detached")
         .isFalse();
     //noinspection unchecked
@@ -93,7 +93,7 @@ public abstract class AbstractFragmentSubject<S extends AbstractFragmentSubject<
   }
 
   public S isHidden() {
-    assertThat(getSubject().isHidden())
+    assertThat(actual().isHidden())
         .named("is hidden")
         .isTrue();
     //noinspection unchecked
@@ -101,7 +101,7 @@ public abstract class AbstractFragmentSubject<S extends AbstractFragmentSubject<
   }
 
   public S isNotHidden() {
-    assertThat(getSubject().isHidden())
+    assertThat(actual().isHidden())
         .named("is hidden")
         .isFalse();
     //noinspection unchecked
@@ -109,7 +109,7 @@ public abstract class AbstractFragmentSubject<S extends AbstractFragmentSubject<
   }
 
   public S isInLayout() {
-    assertThat(getSubject().isInLayout())
+    assertThat(actual().isInLayout())
         .named("is in layout")
         .isTrue();
     //noinspection unchecked
@@ -117,7 +117,7 @@ public abstract class AbstractFragmentSubject<S extends AbstractFragmentSubject<
   }
 
   public S isNotInLayout() {
-    assertThat(getSubject().isInLayout())
+    assertThat(actual().isInLayout())
         .named("is in layout")
         .isFalse();
     //noinspection unchecked
@@ -125,7 +125,7 @@ public abstract class AbstractFragmentSubject<S extends AbstractFragmentSubject<
   }
 
   public S isRemoving() {
-    assertThat(getSubject().isRemoving())
+    assertThat(actual().isRemoving())
         .named("is removing")
         .isTrue();
     //noinspection unchecked
@@ -133,7 +133,7 @@ public abstract class AbstractFragmentSubject<S extends AbstractFragmentSubject<
   }
 
   public S isNotRemoving() {
-    assertThat(getSubject().isRemoving())
+    assertThat(actual().isRemoving())
         .named("is removing")
         .isFalse();
     //noinspection unchecked
@@ -141,7 +141,7 @@ public abstract class AbstractFragmentSubject<S extends AbstractFragmentSubject<
   }
 
   public S isResumed() {
-    assertThat(getSubject().isResumed())
+    assertThat(actual().isResumed())
         .named("is resumed")
         .isTrue();
     //noinspection unchecked
@@ -149,7 +149,7 @@ public abstract class AbstractFragmentSubject<S extends AbstractFragmentSubject<
   }
 
   public S isNotResumed() {
-    assertThat(getSubject().isResumed())
+    assertThat(actual().isResumed())
         .named("is resumed")
         .isFalse();
     //noinspection unchecked
@@ -157,7 +157,7 @@ public abstract class AbstractFragmentSubject<S extends AbstractFragmentSubject<
   }
 
   public S isVisible() {
-    assertThat(getSubject().isVisible())
+    assertThat(actual().isVisible())
         .named("is visible")
         .isTrue();
     //noinspection unchecked
@@ -165,7 +165,7 @@ public abstract class AbstractFragmentSubject<S extends AbstractFragmentSubject<
   }
 
   public S isNotVisible() {
-    assertThat(getSubject().isVisible())
+    assertThat(actual().isVisible())
         .named("is visible")
         .isFalse();
     //noinspection unchecked

@@ -42,14 +42,14 @@ public class SnackbarSubject extends Subject<SnackbarSubject, Snackbar> {
   }
 
   public SnackbarSubject hasDuration(int duration) {
-    assertThat(getSubject().getDuration())
+    assertThat(actual().getDuration())
         .named("duration")
         .isEqualTo(duration);
     return this;
   }
 
   public SnackbarSubject hasView(View view) {
-    assertThat(getSubject().getView())
+    assertThat(actual().getView())
         .named("view")
         .isSameAs(view);
     return this;

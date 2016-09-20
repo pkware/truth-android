@@ -45,14 +45,14 @@ public class TaskStackBuilderSubject extends Subject<TaskStackBuilderSubject, Ta
   }
 
   public TaskStackBuilderSubject hasIntentCount(int count) {
-    assertThat(getSubject().getIntentCount())
+    assertThat(actual().getIntentCount())
         .named("intent count")
         .isEqualTo(count);
     return this;
   }
 
   public TaskStackBuilderSubject containsIntents(Intent... intents) {
-    assertThat(getSubject().getIntents())
+    assertThat(actual().getIntents())
         .asList()
         .contains(intents);
     return this;

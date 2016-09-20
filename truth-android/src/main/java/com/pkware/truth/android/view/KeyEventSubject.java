@@ -41,56 +41,56 @@ public class KeyEventSubject extends Subject<KeyEventSubject, KeyEvent> {
   }
 
   public KeyEventSubject hasAction(int action) {
-    assertThat(getSubject().getAction())
+    assertThat(actual().getAction())
         .named("action")
         .isEqualTo(action);
     return this;
   }
 
   public KeyEventSubject hasDisplayLabel(char label) {
-    assertThat(getSubject().getDisplayLabel())
+    assertThat(actual().getDisplayLabel())
         .named("label")
         .isEqualTo(label);
     return this;
   }
 
   public KeyEventSubject hasDownTime(long time) {
-    assertThat(getSubject().getDownTime())
+    assertThat(actual().getDownTime())
         .named("time")
         .isEqualTo(time);
     return this;
   }
 
   public KeyEventSubject hasKeyCode(int keyCode) {
-    assertThat(getSubject().getKeyCode())
+    assertThat(actual().getKeyCode())
         .named("key code")
         .isEqualTo(keyCode);
     return this;
   }
 
   public KeyEventSubject hasRepeatCount(int count) {
-    assertThat(getSubject().getRepeatCount())
+    assertThat(actual().getRepeatCount())
         .named("repeat count")
         .isEqualTo(count);
     return this;
   }
 
   public KeyEventSubject hasSource(int source) {
-    assertThat(getSubject().getSource())
+    assertThat(actual().getSource())
         .named("source")
         .isEqualTo(source);
     return this;
   }
 
   public KeyEventSubject hasModifiers(int modifiers) {
-    assertThat(getSubject().hasModifiers(modifiers))
+    assertThat(actual().hasModifiers(modifiers))
         .named("modifiers")
         .isTrue();
     return this;
   }
 
   public KeyEventSubject hasNoModifiers() {
-    assertThat(getSubject().hasNoModifiers())
+    assertThat(actual().hasNoModifiers())
         .named("has no modifiers")
         .isTrue();
     return this;

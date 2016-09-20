@@ -44,7 +44,7 @@ public class ViewPropertyAnimatorSubject extends Subject<ViewPropertyAnimatorSub
   }
 
   public ViewPropertyAnimatorSubject hasDuration(long duration) {
-    assertThat(getSubject().getDuration())
+    assertThat(actual().getDuration())
         .named("duration")
         .isEqualTo(duration);
     return this;
@@ -52,14 +52,14 @@ public class ViewPropertyAnimatorSubject extends Subject<ViewPropertyAnimatorSub
 
   @TargetApi(JELLY_BEAN_MR2)
   public ViewPropertyAnimatorSubject hasInterpolator(TimeInterpolator interpolator) {
-    assertThat(getSubject().getInterpolator())
+    assertThat(actual().getInterpolator())
         .named("interpolator")
         .isEqualTo(interpolator);
     return this;
   }
 
   public ViewPropertyAnimatorSubject hasStartDelay(long delay) {
-    assertThat(getSubject().getStartDelay())
+    assertThat(actual().getStartDelay())
         .named("start delay")
         .isEqualTo(delay);
     return this;

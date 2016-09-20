@@ -28,7 +28,7 @@ public abstract class AbstractHorizontalScrollViewSubject<S extends AbstractHori
   }
 
   public S hasMaximumScrollAmount(int amount) {
-    assertThat(getSubject().getMaxScrollAmount())
+    assertThat(actual().getMaxScrollAmount())
         .named("maximum scroll amount")
         .isEqualTo(amount);
     //noinspection unchecked
@@ -36,7 +36,7 @@ public abstract class AbstractHorizontalScrollViewSubject<S extends AbstractHori
   }
 
   public S isFillingViewport() {
-    assertThat(getSubject().isFillViewport())
+    assertThat(actual().isFillViewport())
         .named("is filling viewport")
         .isTrue();
     //noinspection unchecked
@@ -44,7 +44,7 @@ public abstract class AbstractHorizontalScrollViewSubject<S extends AbstractHori
   }
 
   public S isNotFillingViewport() {
-    assertThat(getSubject().isFillViewport())
+    assertThat(actual().isFillViewport())
         .named("is filling viewport")
         .isFalse();
     //noinspection unchecked
@@ -52,7 +52,7 @@ public abstract class AbstractHorizontalScrollViewSubject<S extends AbstractHori
   }
 
   public S isSmoothScrollingEnabled() {
-    assertThat(getSubject().isSmoothScrollingEnabled())
+    assertThat(actual().isSmoothScrollingEnabled())
         .named("is smooth scrolling enabled")
         .isTrue();
     //noinspection unchecked
@@ -60,7 +60,7 @@ public abstract class AbstractHorizontalScrollViewSubject<S extends AbstractHori
   }
 
   public S isSmoothScrollingDisabled() {
-    assertThat(getSubject().isSmoothScrollingEnabled())
+    assertThat(actual().isSmoothScrollingEnabled())
         .named("is smooth scrolling enabled")
         .isFalse();
     //noinspection unchecked

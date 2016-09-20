@@ -35,8 +35,7 @@ public final class HorizontalScrollViewSubject
     return new SubjectFactory<HorizontalScrollViewSubject, HorizontalScrollView>() {
       @Override
       public HorizontalScrollViewSubject getSubject(FailureStrategy fs, HorizontalScrollView that) {
-        return new HorizontalScrollViewSubject
-            (fs, that);
+        return new HorizontalScrollViewSubject(fs, that);
       }
     };
   }

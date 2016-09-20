@@ -40,35 +40,35 @@ public class ProgressDialogSubject extends AbstractDialogSubject<ProgressDialogS
   }
 
   public ProgressDialogSubject hasMax(int max) {
-    assertThat(getSubject().getMax())
+    assertThat(actual().getMax())
         .named("max")
         .isEqualTo(max);
     return this;
   }
 
   public ProgressDialogSubject hasProgress(int progress) {
-    assertThat(getSubject().getProgress())
+    assertThat(actual().getProgress())
         .named("progress")
         .isEqualTo(progress);
     return this;
   }
 
   public ProgressDialogSubject hasSecondaryProgress(int progress) {
-    assertThat(getSubject().getSecondaryProgress())
+    assertThat(actual().getSecondaryProgress())
         .named("secondary progress")
         .isEqualTo(progress);
     return this;
   }
 
   public ProgressDialogSubject isIndeterminate() {
-    assertThat(getSubject().isIndeterminate())
+    assertThat(actual().isIndeterminate())
         .named("is indeterminate")
         .isTrue();
     return this;
   }
 
   public ProgressDialogSubject isDeterminate() {
-    assertThat(getSubject().isIndeterminate())
+    assertThat(actual().isIndeterminate())
         .named("is indeterminate")
         .isFalse();
     return this;

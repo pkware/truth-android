@@ -32,7 +32,7 @@ public abstract class AbstractDialogPreferenceSubject<S extends AbstractDialogPr
   }
 
   public S hasDialog(Dialog dialog) {
-    assertThat(getSubject().getDialog())
+    assertThat(actual().getDialog())
         .named("dialog")
         .isSameAs(dialog);
     //noinspection unchecked
@@ -40,7 +40,7 @@ public abstract class AbstractDialogPreferenceSubject<S extends AbstractDialogPr
   }
 
   public S hasDialogIcon(Drawable icon) {
-    assertThat(getSubject().getIcon())
+    assertThat(actual().getIcon())
         .named("dialog icon")
         .isSameAs(icon);
     //noinspection unchecked
@@ -48,7 +48,7 @@ public abstract class AbstractDialogPreferenceSubject<S extends AbstractDialogPr
   }
 
   public S hasDialogLayoutResource(@LayoutRes int resource) {
-    assertThat(getSubject().getDialogLayoutResource())
+    assertThat(actual().getDialogLayoutResource())
         .named("dialog layout resource")
         .isEqualTo(resource);
     //noinspection unchecked
@@ -56,7 +56,7 @@ public abstract class AbstractDialogPreferenceSubject<S extends AbstractDialogPr
   }
 
   public S hasDialogMessage(CharSequence message) {
-    assertThat(getSubject().getDialogMessage())
+    assertThat(actual().getDialogMessage())
         .named("dialog message")
         .isEqualTo(message);
     //noinspection unchecked
@@ -64,11 +64,11 @@ public abstract class AbstractDialogPreferenceSubject<S extends AbstractDialogPr
   }
 
   public S hasDialogMessage(@StringRes int resId) {
-    return hasDialogMessage(getSubject().getContext().getString(resId));
+    return hasDialogMessage(actual().getContext().getString(resId));
   }
 
   public S hasDialogTitle(CharSequence title) {
-    assertThat(getSubject().getDialogTitle())
+    assertThat(actual().getDialogTitle())
         .named("dialog title")
         .isEqualTo(title);
     //noinspection unchecked
@@ -76,11 +76,11 @@ public abstract class AbstractDialogPreferenceSubject<S extends AbstractDialogPr
   }
 
   public S hasDialogTitle(@StringRes int resId) {
-    return hasDialogTitle(getSubject().getContext().getString(resId));
+    return hasDialogTitle(actual().getContext().getString(resId));
   }
 
   public S hasNegativeButtonText(CharSequence text) {
-    assertThat(getSubject().getNegativeButtonText())
+    assertThat(actual().getNegativeButtonText())
         .named("negative button text")
         .isEqualTo(text);
     //noinspection unchecked
@@ -88,11 +88,11 @@ public abstract class AbstractDialogPreferenceSubject<S extends AbstractDialogPr
   }
 
   public S hasNegativeButtonText(@StringRes int resId) {
-    return hasNegativeButtonText(getSubject().getContext().getString(resId));
+    return hasNegativeButtonText(actual().getContext().getString(resId));
   }
 
   public S hasPositiveButtonText(CharSequence text) {
-    assertThat(getSubject().getPositiveButtonText())
+    assertThat(actual().getPositiveButtonText())
         .named("positive button text")
         .isEqualTo(text);
     //noinspection unchecked
@@ -100,6 +100,6 @@ public abstract class AbstractDialogPreferenceSubject<S extends AbstractDialogPr
   }
 
   public S hasPositiveButtonText(@StringRes int resId) {
-    return hasPositiveButtonText(getSubject().getContext().getString(resId));
+    return hasPositiveButtonText(actual().getContext().getString(resId));
   }
 }

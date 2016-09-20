@@ -41,14 +41,14 @@ public class GestureSubject extends Subject<GestureSubject, Gesture> {
   }
 
   public GestureSubject hasId(long id) {
-    assertThat(getSubject().getID())
+    assertThat(actual().getID())
         .named("id")
         .isEqualTo(id);
     return this;
   }
 
   public GestureSubject hasLength(float length, float tolerance) {
-    assertThat(getSubject().getLength())
+    assertThat(actual().getLength())
         .named("length")
         .isWithin(tolerance)
         .of(length);
@@ -56,7 +56,7 @@ public class GestureSubject extends Subject<GestureSubject, Gesture> {
   }
 
   public GestureSubject hasStrokeCount(int count) {
-    assertThat(getSubject().getStrokesCount())
+    assertThat(actual().getStrokesCount())
         .named("stroke count")
         .isEqualTo(count);
     return this;

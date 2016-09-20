@@ -45,14 +45,14 @@ public class AutoCompleteTextViewSubject extends AbstractTextViewSubject<AutoCom
   }
 
   public AutoCompleteTextViewSubject hasEnoughToFilter() {
-    assertThat(getSubject().enoughToFilter())
+    assertThat(actual().enoughToFilter())
         .named("has enough to filter")
         .isTrue();
     return this;
   }
 
   public AutoCompleteTextViewSubject hasAdapter(ListAdapter adapter) {
-    assertThat(getSubject().getAdapter())
+    assertThat(actual().getAdapter())
         .named("adapter")
         .isSameAs(adapter);
     return this;
@@ -60,95 +60,95 @@ public class AutoCompleteTextViewSubject extends AbstractTextViewSubject<AutoCom
 
   @TargetApi(JELLY_BEAN)
   public AutoCompleteTextViewSubject hasCompletionHint(String hint) {
-    assertThat(getSubject().getCompletionHint().toString())
+    assertThat(actual().getCompletionHint().toString())
         .named("completion hint")
         .isEqualTo(hint);
     return this;
   }
 
   public AutoCompleteTextViewSubject hasCompletionHint(@StringRes int resId) {
-    return hasCompletionHint(getSubject().getContext().getString(resId));
+    return hasCompletionHint(actual().getContext().getString(resId));
   }
 
   public AutoCompleteTextViewSubject hasDropDownAnchor(int id) {
-    assertThat(getSubject().getDropDownAnchor())
+    assertThat(actual().getDropDownAnchor())
         .named("drop-down anchor ID")
         .isEqualTo(id);
     return this;
   }
 
   public AutoCompleteTextViewSubject hasDropDownBackground(Drawable background) {
-    assertThat(getSubject().getDropDownBackground())
+    assertThat(actual().getDropDownBackground())
         .named("drop-down background")
         .isSameAs(background);
     return this;
   }
 
   public AutoCompleteTextViewSubject hasDropDownHeight(int height) {
-    assertThat(getSubject().getDropDownHeight())
+    assertThat(actual().getDropDownHeight())
         .named("drop-down height")
         .isEqualTo(height);
     return this;
   }
 
   public AutoCompleteTextViewSubject hasDropDownHorizontalOffset(int offset) {
-    assertThat(getSubject().getDropDownHorizontalOffset())
+    assertThat(actual().getDropDownHorizontalOffset())
         .named("drop-down horizontal offset")
         .isEqualTo(offset);
     return this;
   }
 
   public AutoCompleteTextViewSubject hasDropDownVerticalOffset(int offset) {
-    assertThat(getSubject().getDropDownVerticalOffset())
+    assertThat(actual().getDropDownVerticalOffset())
         .named("drop-down vertical offset")
         .isEqualTo(offset);
     return this;
   }
 
   public AutoCompleteTextViewSubject hasDropDownWidth(int width) {
-    assertThat(getSubject().getDropDownWidth())
+    assertThat(actual().getDropDownWidth())
         .named("drop-down width")
         .isEqualTo(width);
     return this;
   }
 
   public AutoCompleteTextViewSubject hasListSelection(int position) {
-    assertThat(getSubject().getListSelection())
+    assertThat(actual().getListSelection())
         .named("list selection position")
         .isEqualTo(position);
     return this;
   }
 
   public AutoCompleteTextViewSubject hasThreshold(int threshold) {
-    assertThat(getSubject().getThreshold())
+    assertThat(actual().getThreshold())
         .named("threshold")
         .isEqualTo(threshold);
     return this;
   }
 
   public AutoCompleteTextViewSubject isPerformingCompletion() {
-    assertThat(getSubject().isPerformingCompletion())
+    assertThat(actual().isPerformingCompletion())
         .named("is performing completion")
         .isTrue();
     return this;
   }
 
   public AutoCompleteTextViewSubject isNotPerformingCompletion() {
-    assertThat(getSubject().isPerformingCompletion())
+    assertThat(actual().isPerformingCompletion())
         .named("is performing completion")
         .isFalse();
     return this;
   }
 
   public AutoCompleteTextViewSubject isShowingPopup() {
-    assertThat(getSubject().isPopupShowing())
+    assertThat(actual().isPopupShowing())
         .named("is showing popup")
         .isTrue();
     return this;
   }
 
   public AutoCompleteTextViewSubject isNotShowingPopup() {
-    assertThat(getSubject().isPopupShowing())
+    assertThat(actual().isPopupShowing())
         .named("is showing popup")
         .isFalse();
     return this;

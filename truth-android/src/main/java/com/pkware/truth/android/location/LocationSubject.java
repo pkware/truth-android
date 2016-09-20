@@ -44,7 +44,7 @@ public class LocationSubject extends Subject<LocationSubject, Location> {
   }
 
   public LocationSubject hasAccuracy(float accuracy, float tolerance) {
-    assertThat(getSubject().getAccuracy())
+    assertThat(actual().getAccuracy())
         .named("accuracy")
         .isWithin(tolerance)
         .of(accuracy);
@@ -52,7 +52,7 @@ public class LocationSubject extends Subject<LocationSubject, Location> {
   }
 
   public LocationSubject hasAltitude(double altitude, double tolerance) {
-    assertThat(getSubject().getAltitude())
+    assertThat(actual().getAltitude())
         .named("altitude")
         .isWithin(tolerance)
         .of(altitude);
@@ -60,7 +60,7 @@ public class LocationSubject extends Subject<LocationSubject, Location> {
   }
 
   public LocationSubject hasBearing(float bearing, float tolerance) {
-    assertThat(getSubject().getBearing())
+    assertThat(actual().getBearing())
         .named("bearing")
         .isWithin(tolerance)
         .of(bearing);
@@ -69,14 +69,14 @@ public class LocationSubject extends Subject<LocationSubject, Location> {
 
   @TargetApi(JELLY_BEAN_MR1)
   public LocationSubject hasElapsedRealTimeNanos(long nanos) {
-    assertThat(getSubject().getElapsedRealtimeNanos())
+    assertThat(actual().getElapsedRealtimeNanos())
         .named("elapsed real-time nanos")
         .isEqualTo(nanos);
     return this;
   }
 
   public LocationSubject hasLatitude(double latitude, double tolerance) {
-    assertThat(getSubject().getLatitude())
+    assertThat(actual().getLatitude())
         .named("latitude")
         .isWithin(tolerance)
         .of(latitude);
@@ -84,7 +84,7 @@ public class LocationSubject extends Subject<LocationSubject, Location> {
   }
 
   public LocationSubject hasLongitude(double longitude, double tolerance) {
-    assertThat(getSubject().getLongitude())
+    assertThat(actual().getLongitude())
         .named("longitude")
         .isWithin(tolerance)
         .of(longitude);
@@ -92,14 +92,14 @@ public class LocationSubject extends Subject<LocationSubject, Location> {
   }
 
   public LocationSubject hasProvider(String name) {
-    assertThat(getSubject().getProvider())
+    assertThat(actual().getProvider())
         .named("provider")
         .isEqualTo(name);
     return this;
   }
 
   public LocationSubject hasSpeed(float speed, float tolerance) {
-    assertThat(getSubject().getSpeed())
+    assertThat(actual().getSpeed())
         .named("speed")
         .isWithin(tolerance)
         .of(speed);
@@ -107,63 +107,63 @@ public class LocationSubject extends Subject<LocationSubject, Location> {
   }
 
   public LocationSubject hasTime(long time) {
-    assertThat(getSubject().getTime())
+    assertThat(actual().getTime())
         .named("time")
         .isEqualTo(time);
     return this;
   }
 
   public LocationSubject hasAccuracy() {
-    assertThat(getSubject().hasAccuracy())
+    assertThat(actual().hasAccuracy())
         .named("has accuracy")
         .isTrue();
     return this;
   }
 
   public LocationSubject hasNoAccuracy() {
-    assertThat(getSubject().hasAccuracy())
+    assertThat(actual().hasAccuracy())
         .named("has accuracy")
         .isFalse();
     return this;
   }
 
   public LocationSubject hasAltitude() {
-    assertThat(getSubject().hasAltitude())
+    assertThat(actual().hasAltitude())
         .named("has altitude")
         .isTrue();
     return this;
   }
 
   public LocationSubject hasNoAltitude() {
-    assertThat(getSubject().hasAltitude())
+    assertThat(actual().hasAltitude())
         .named("has altitude")
         .isFalse();
     return this;
   }
 
   public LocationSubject hasBearing() {
-    assertThat(getSubject().hasBearing())
+    assertThat(actual().hasBearing())
         .named("has bearing")
         .isTrue();
     return this;
   }
 
   public LocationSubject hasNoBearing() {
-    assertThat(getSubject().hasBearing())
+    assertThat(actual().hasBearing())
         .named("has bearing")
         .isFalse();
     return this;
   }
 
   public LocationSubject hasSpeed() {
-    assertThat(getSubject().hasSpeed())
+    assertThat(actual().hasSpeed())
         .named("has speed")
         .isTrue();
     return this;
   }
 
   public LocationSubject hasNoSpeed() {
-    assertThat(getSubject().hasSpeed())
+    assertThat(actual().hasSpeed())
         .named("has speed")
         .isFalse();
     return this;
@@ -171,7 +171,7 @@ public class LocationSubject extends Subject<LocationSubject, Location> {
 
   @TargetApi(JELLY_BEAN_MR2)
   public LocationSubject isFromMockProvider() {
-    assertThat(getSubject().isFromMockProvider())
+    assertThat(actual().isFromMockProvider())
         .named("is from mock provider")
         .isTrue();
     return this;
@@ -179,7 +179,7 @@ public class LocationSubject extends Subject<LocationSubject, Location> {
 
   @TargetApi(JELLY_BEAN_MR2)
   public LocationSubject isNotFromMockProvider() {
-    assertThat(getSubject().isFromMockProvider())
+    assertThat(actual().isFromMockProvider())
         .named("is from mock provider")
         .isFalse();
     return this;

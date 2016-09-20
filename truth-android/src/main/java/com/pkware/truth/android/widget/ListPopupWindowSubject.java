@@ -57,42 +57,42 @@ public class ListPopupWindowSubject extends Subject<ListPopupWindowSubject, List
   }
 
   public ListPopupWindowSubject hasAnchorView(View view) {
-    assertThat(getSubject().getAnchorView())
+    assertThat(actual().getAnchorView())
         .named("anchor view")
         .isSameAs(view);
     return this;
   }
 
   public ListPopupWindowSubject hasAnimationStyle(int style) {
-    assertThat(getSubject().getAnimationStyle())
+    assertThat(actual().getAnimationStyle())
         .named("animation style")
         .isEqualTo(style);
     return this;
   }
 
   public ListPopupWindowSubject hasBackground(Drawable background) {
-    assertThat(getSubject().getBackground())
+    assertThat(actual().getBackground())
         .named("background")
         .isSameAs(background);
     return this;
   }
 
   public ListPopupWindowSubject hasHeight(int height) {
-    assertThat(getSubject().getHeight())
+    assertThat(actual().getHeight())
         .named("height")
         .isEqualTo(height);
     return this;
   }
 
   public ListPopupWindowSubject hasHorizontalOffset(int offset) {
-    assertThat(getSubject().getHorizontalOffset())
+    assertThat(actual().getHorizontalOffset())
         .named("horizontal offset")
         .isEqualTo(offset);
     return this;
   }
 
   public ListPopupWindowSubject hasInputMethodMode(@ListPopupWindowInputMethodMode int mode) {
-    int actualMode = getSubject().getInputMethodMode();
+    int actualMode = actual().getInputMethodMode();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected input method mode <%s> but was <%s>.",
@@ -103,91 +103,91 @@ public class ListPopupWindowSubject extends Subject<ListPopupWindowSubject, List
   }
 
   public ListPopupWindowSubject hasListView(ListView view) {
-    assertThat(getSubject().getListView())
+    assertThat(actual().getListView())
         .named("ListView")
         .isSameAs(view);
     return this;
   }
 
   public ListPopupWindowSubject hasPromptPosition(int position) {
-    assertThat(getSubject().getPromptPosition())
+    assertThat(actual().getPromptPosition())
         .named("prompt position")
         .isEqualTo(position);
     return this;
   }
 
   public ListPopupWindowSubject hasSelectedItem(Object item) {
-    assertThat(getSubject().getSelectedItem())
+    assertThat(actual().getSelectedItem())
         .named("selected item")
         .isEqualTo(item);
     return this;
   }
 
   public ListPopupWindowSubject hasSelectedItemId(long id) {
-    assertThat(getSubject().getSelectedItemId())
+    assertThat(actual().getSelectedItemId())
         .named("selected item ID")
         .isEqualTo(id);
     return this;
   }
 
   public ListPopupWindowSubject hasSelectedItemPosition(int position) {
-    assertThat(getSubject().getSelectedItemPosition())
+    assertThat(actual().getSelectedItemPosition())
         .named("selected item position")
         .isEqualTo(position);
     return this;
   }
 
   public ListPopupWindowSubject hasSelectedItemView(View view) {
-    assertThat(getSubject().getSelectedView())
+    assertThat(actual().getSelectedView())
         .named("selected item view")
         .isSameAs(view);
     return this;
   }
 
   public ListPopupWindowSubject hasSoftInputMode(int mode) {
-    assertThat(getSubject().getSoftInputMode())
+    assertThat(actual().getSoftInputMode())
         .named("soft input mode")
         .isEqualTo(mode);
     return this;
   }
 
   public ListPopupWindowSubject hasVerticalOffset(int offset) {
-    assertThat(getSubject().getVerticalOffset())
+    assertThat(actual().getVerticalOffset())
         .named("vertical offset")
         .isEqualTo(offset);
     return this;
   }
 
   public ListPopupWindowSubject hasWidth(int width) {
-    assertThat(getSubject().getWidth())
+    assertThat(actual().getWidth())
         .named("width")
         .isEqualTo(width);
     return this;
   }
 
   public ListPopupWindowSubject isModal() {
-    assertThat(getSubject().isModal())
+    assertThat(actual().isModal())
         .named("is modal")
         .isTrue();
     return this;
   }
 
   public ListPopupWindowSubject isNotModal() {
-    assertThat(getSubject().isModal())
+    assertThat(actual().isModal())
         .named("is modal")
         .isFalse();
     return this;
   }
 
   public ListPopupWindowSubject isShowing() {
-    assertThat(getSubject().isShowing())
+    assertThat(actual().isShowing())
         .named("is showing")
         .isTrue();
     return this;
   }
 
   public ListPopupWindowSubject isNotShowing() {
-    assertThat(getSubject().isShowing())
+    assertThat(actual().isShowing())
         .named("is showing")
         .isFalse();
     return this;

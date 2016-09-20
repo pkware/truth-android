@@ -76,7 +76,7 @@ public class CriteriaSubject extends Subject<CriteriaSubject, Criteria> {
   }
 
   public CriteriaSubject hasAccuracy(int accuracy) {
-    int actualAccuracy = getSubject().getAccuracy();
+    int actualAccuracy = actual().getAccuracy();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected accuracy <%s> but was <%s>.", accuracyRequirementToString(accuracy), accuracyRequirementToString(actualAccuracy))
@@ -86,7 +86,7 @@ public class CriteriaSubject extends Subject<CriteriaSubject, Criteria> {
   }
 
   public CriteriaSubject hasBearingAccuracy(int accuracy) {
-    int actualAccuracy = getSubject().getBearingAccuracy();
+    int actualAccuracy = actual().getBearingAccuracy();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected bearing accuracy <%s> but was <%s>.", accuracyToString(accuracy), accuracyToString(actualAccuracy))
@@ -96,7 +96,7 @@ public class CriteriaSubject extends Subject<CriteriaSubject, Criteria> {
   }
 
   public CriteriaSubject hasHorizontalAccuracy(int accuracy) {
-    int actualAccuracy = getSubject().getHorizontalAccuracy();
+    int actualAccuracy = actual().getHorizontalAccuracy();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected horizontal accuracy <%s> but was <%s>.", accuracyToString(accuracy), accuracyToString(actualAccuracy))
@@ -106,7 +106,7 @@ public class CriteriaSubject extends Subject<CriteriaSubject, Criteria> {
   }
 
   public CriteriaSubject hasPowerRequirement(int requirement) {
-    int actualRequirement = getSubject().getPowerRequirement();
+    int actualRequirement = actual().getPowerRequirement();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected power requirement <%s> but was <%s>.", powerRequirementToString(requirement), powerRequirementToString(actualRequirement))
@@ -116,7 +116,7 @@ public class CriteriaSubject extends Subject<CriteriaSubject, Criteria> {
   }
 
   public CriteriaSubject hasSpeedAccuracy(int accuracy) {
-    int actualAccuracy = getSubject().getSpeedAccuracy();
+    int actualAccuracy = actual().getSpeedAccuracy();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected speed accuracy <%s> but was <%s>.", accuracyToString(accuracy), accuracyToString(actualAccuracy))
@@ -126,7 +126,7 @@ public class CriteriaSubject extends Subject<CriteriaSubject, Criteria> {
   }
 
   public CriteriaSubject hasVerticalAccuracy(int accuracy) {
-    int actualAccuracy = getSubject().getVerticalAccuracy();
+    int actualAccuracy = actual().getVerticalAccuracy();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected vertical accuracy <%s> but was <%s>.", accuracyToString(accuracy), accuracyToString(actualAccuracy))
@@ -136,56 +136,56 @@ public class CriteriaSubject extends Subject<CriteriaSubject, Criteria> {
   }
 
   public CriteriaSubject isAltitudeRequired() {
-    assertThat(getSubject().isAltitudeRequired())
+    assertThat(actual().isAltitudeRequired())
         .named("is altitude required")
         .isTrue();
     return this;
   }
 
   public CriteriaSubject isAltitudeNotRequired() {
-    assertThat(getSubject().isAltitudeRequired())
+    assertThat(actual().isAltitudeRequired())
         .named("is altitude required")
         .isFalse();
     return this;
   }
 
   public CriteriaSubject isBearingRequired() {
-    assertThat(getSubject().isBearingRequired())
+    assertThat(actual().isBearingRequired())
         .named("is bearing required")
         .isTrue();
     return this;
   }
 
   public CriteriaSubject isBearingNotRequired() {
-    assertThat(getSubject().isBearingRequired())
+    assertThat(actual().isBearingRequired())
         .named("is bearing required")
         .isFalse();
     return this;
   }
 
   public CriteriaSubject isCostAllowed() {
-    assertThat(getSubject().isCostAllowed())
+    assertThat(actual().isCostAllowed())
         .named("is cost allowed")
         .isTrue();
     return this;
   }
 
   public CriteriaSubject isCostNotAllowed() {
-    assertThat(!getSubject().isCostAllowed())
+    assertThat(!actual().isCostAllowed())
         .named("cost is not allowed")
         .isTrue();
     return this;
   }
 
   public CriteriaSubject isSpeedRequired() {
-    assertThat(getSubject().isSpeedRequired())
+    assertThat(actual().isSpeedRequired())
         .named("is speed required")
         .isTrue();
     return this;
   }
 
   public CriteriaSubject isSpeedNotRequired() {
-    assertThat(!getSubject().isSpeedRequired())
+    assertThat(!actual().isSpeedRequired())
         .named("speed is not required")
         .isTrue();
     return this;

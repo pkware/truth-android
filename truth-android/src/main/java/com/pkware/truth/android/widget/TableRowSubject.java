@@ -40,8 +40,8 @@ public class TableRowSubject extends AbstractLinearLayoutSubject<TableRowSubject
   }
 
   public TableRowSubject hasVirtualChildCount(int count) {
-    int actualCount = getSubject().getVirtualChildCount();
-    assertThat(getSubject().getVirtualChildCount())
+    int actualCount = actual().getVirtualChildCount();
+    assertThat(actual().getVirtualChildCount())
         .named("virtual child count")
         .isEqualTo(count);
     return this;

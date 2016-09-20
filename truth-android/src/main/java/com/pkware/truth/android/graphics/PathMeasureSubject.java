@@ -41,7 +41,7 @@ public class PathMeasureSubject extends Subject<PathMeasureSubject, PathMeasure>
   }
 
   public PathMeasureSubject hasLength(float length, float tolerance) {
-    assertThat(getSubject().getLength())
+    assertThat(actual().getLength())
         .named("length")
         .isWithin(tolerance)
         .of(length);
@@ -49,14 +49,14 @@ public class PathMeasureSubject extends Subject<PathMeasureSubject, PathMeasure>
   }
 
   public PathMeasureSubject isClosed() {
-    assertThat(getSubject().isClosed())
+    assertThat(actual().isClosed())
         .named("is closed")
         .isTrue();
     return this;
   }
 
   public PathMeasureSubject isNotClosed() {
-    assertThat(getSubject().isClosed())
+    assertThat(actual().isClosed())
         .named("is closed")
         .isFalse();
     return this;

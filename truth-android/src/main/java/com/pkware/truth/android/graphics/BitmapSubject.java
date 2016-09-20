@@ -44,28 +44,28 @@ public class BitmapSubject extends Subject<BitmapSubject, Bitmap> {
   }
 
   public BitmapSubject isRecycled() {
-    assertThat(getSubject().isRecycled())
+    assertThat(actual().isRecycled())
         .named("is recycled")
         .isTrue();
     return this;
   }
 
   public BitmapSubject isNotRecycled() {
-    assertThat(getSubject().isRecycled())
+    assertThat(actual().isRecycled())
         .named("is recycled")
         .isFalse();
     return this;
   }
 
   public BitmapSubject isMutable() {
-    assertThat(getSubject().isMutable())
+    assertThat(actual().isMutable())
         .named("is mutable")
         .isTrue();
     return this;
   }
 
   public BitmapSubject isNotMutable() {
-    assertThat(getSubject().isMutable())
+    assertThat(actual().isMutable())
         .named("is mutable")
         .isFalse();
     return this;
@@ -73,7 +73,7 @@ public class BitmapSubject extends Subject<BitmapSubject, Bitmap> {
 
   @TargetApi(JELLY_BEAN_MR1)
   public BitmapSubject isPremultiplied() {
-    assertThat(getSubject().isPremultiplied())
+    assertThat(actual().isPremultiplied())
         .named("is premultiplied")
         .isTrue();
     return this;
@@ -81,7 +81,7 @@ public class BitmapSubject extends Subject<BitmapSubject, Bitmap> {
 
   @TargetApi(JELLY_BEAN_MR1)
   public BitmapSubject isNotPremultiplied() {
-    assertThat(getSubject().isPremultiplied())
+    assertThat(actual().isPremultiplied())
         .named("is premultiplied")
         .isFalse();
     return this;
@@ -89,49 +89,49 @@ public class BitmapSubject extends Subject<BitmapSubject, Bitmap> {
 
   @TargetApi(KITKAT)
   public BitmapSubject hasAllocationByteCount(int count) {
-    assertThat(getSubject().getAllocationByteCount())
+    assertThat(actual().getAllocationByteCount())
         .named("allocation byte count")
         .isEqualTo(count);
     return this;
   }
 
   public BitmapSubject hasByteCount(int count) {
-    assertThat(getSubject().getByteCount())
+    assertThat(actual().getByteCount())
         .named("byte count")
         .isEqualTo(count);
     return this;
   }
 
   public BitmapSubject hasDensity(int density) {
-    assertThat(getSubject().getDensity())
+    assertThat(actual().getDensity())
         .named("density")
         .isEqualTo(density);
     return this;
   }
 
   public BitmapSubject hasWidth(int width) {
-    assertThat(getSubject().getWidth())
+    assertThat(actual().getWidth())
         .named("width")
         .isEqualTo(width);
     return this;
   }
 
   public BitmapSubject hasHeight(int height) {
-    assertThat(getSubject().getHeight())
+    assertThat(actual().getHeight())
         .named("height")
         .isEqualTo(height);
     return this;
   }
 
   public BitmapSubject hasAlphaSupport() {
-    assertThat(getSubject().hasAlpha())
+    assertThat(actual().hasAlpha())
         .named("has alpha support")
         .isTrue();
     return this;
   }
 
   public BitmapSubject hasNoAlphaSupport() {
-    assertThat(getSubject().hasAlpha())
+    assertThat(actual().hasAlpha())
         .named("has alpha support")
         .isFalse();
     return this;

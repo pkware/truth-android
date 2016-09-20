@@ -15,6 +15,7 @@
  */
 package com.pkware.truth.android.content;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.annotation.IntDef;
 
@@ -22,6 +23,8 @@ import java.lang.annotation.Retention;
 
 import static java.lang.annotation.RetentionPolicy.SOURCE;
 
+// Suppressing lint because FLAG_RECEIVER_REGISTERED_ONLY and FLAG_ACTIVITY_NO_HISTORY are the same
+@SuppressLint("UniqueConstants")
 @IntDef(
     flag = true,
     value = {

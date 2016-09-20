@@ -41,21 +41,21 @@ public class HeaderViewListAdapterSubject extends AbstractWrapperListAdapterSubj
   }
 
   public HeaderViewListAdapterSubject hasFootersCount(int count) {
-    assertThat(getSubject().getFootersCount())
+    assertThat(actual().getFootersCount())
         .named("footers count")
         .isEqualTo(count);
     return this;
   }
 
   public HeaderViewListAdapterSubject hasHeadersCount(int count) {
-    assertThat(getSubject().getHeadersCount())
+    assertThat(actual().getHeadersCount())
         .named("headers count")
         .isEqualTo(count);
     return this;
   }
 
   public HeaderViewListAdapterSubject hasFilter(Filter filter) {
-    assertThat(getSubject().getFilter())
+    assertThat(actual().getFilter())
         .named("filter")
         .isSameAs(filter);
     return this;

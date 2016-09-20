@@ -58,7 +58,7 @@ public class GridViewSubject extends AbstractAbsListViewSubject<GridViewSubject,
 
   @TargetApi(JELLY_BEAN)
   public GridViewSubject hasColumnWidth(int width) {
-    assertThat(getSubject().getColumnWidth())
+    assertThat(actual().getColumnWidth())
         .named("column width")
         .isEqualTo(width);
     return this;
@@ -66,7 +66,7 @@ public class GridViewSubject extends AbstractAbsListViewSubject<GridViewSubject,
 
   @TargetApi(JELLY_BEAN)
   public GridViewSubject hasGravity(int gravity) {
-    assertThat(getSubject().getGravity())
+    assertThat(actual().getGravity())
         .named("gravity")
         .isEqualTo(gravity);
     return this;
@@ -74,14 +74,14 @@ public class GridViewSubject extends AbstractAbsListViewSubject<GridViewSubject,
 
   @TargetApi(JELLY_BEAN)
   public GridViewSubject hasHorizontalSpacing(int spacing) {
-    assertThat(getSubject().getHorizontalSpacing())
+    assertThat(actual().getHorizontalSpacing())
         .named("horizontal spacing")
         .isEqualTo(spacing);
     return this;
   }
 
   public GridViewSubject hasColumnCount(int count) {
-    assertThat(getSubject().getNumColumns())
+    assertThat(actual().getNumColumns())
         .named("column count")
         .isEqualTo(count);
     return this;
@@ -89,7 +89,7 @@ public class GridViewSubject extends AbstractAbsListViewSubject<GridViewSubject,
 
   @TargetApi(JELLY_BEAN)
   public GridViewSubject hasRequestedColumnWidth(int width) {
-    assertThat(getSubject().getRequestedColumnWidth())
+    assertThat(actual().getRequestedColumnWidth())
         .named("requested column width")
         .isEqualTo(width);
     return this;
@@ -97,14 +97,14 @@ public class GridViewSubject extends AbstractAbsListViewSubject<GridViewSubject,
 
   @TargetApi(JELLY_BEAN)
   public GridViewSubject hasRequestedHorizontalSpacing(int spacing) {
-    assertThat(getSubject().getRequestedHorizontalSpacing())
+    assertThat(actual().getRequestedHorizontalSpacing())
         .named("requested horizontal spacing")
         .isEqualTo(spacing);
     return this;
   }
 
   public GridViewSubject hasStretchMode(@GridViewStretchMode int mode) {
-    int actualMode = getSubject().getStretchMode();
+    int actualMode = actual().getStretchMode();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected stretch mode <%s> but was <%s>.",
@@ -116,7 +116,7 @@ public class GridViewSubject extends AbstractAbsListViewSubject<GridViewSubject,
 
   @TargetApi(JELLY_BEAN)
   public GridViewSubject hasVerticalSpacing(int spacing) {
-    assertThat(getSubject().getVerticalSpacing())
+    assertThat(actual().getVerticalSpacing())
         .named("vertical spacing")
         .isEqualTo(spacing);
     return this;

@@ -46,7 +46,7 @@ public class AbstractValueAnimatorSubject<S extends AbstractValueAnimatorSubject
   }
 
   public S hasAnimatedValue(Object value) {
-    assertThat(getSubject().getAnimatedValue())
+    assertThat(actual().getAnimatedValue())
         .named("animated value")
         .isEqualTo(value);
     //noinspection unchecked
@@ -54,7 +54,7 @@ public class AbstractValueAnimatorSubject<S extends AbstractValueAnimatorSubject
   }
 
   public S hasCurrentPlayTime(long time) {
-    assertThat(getSubject().getCurrentPlayTime())
+    assertThat(actual().getCurrentPlayTime())
         .named("current play time")
         .isEqualTo(time);
     //noinspection unchecked
@@ -62,7 +62,7 @@ public class AbstractValueAnimatorSubject<S extends AbstractValueAnimatorSubject
   }
 
   public S hasRepeatCount(int count) {
-    int actualCount = getSubject().getRepeatCount();
+    int actualCount = actual().getRepeatCount();
     assert_()
         .withFailureMessage("Expected repeat count <%s> but was <%s>.", repeatCountToString(count), repeatCountToString(actualCount))
         .that(actualCount)
@@ -72,7 +72,7 @@ public class AbstractValueAnimatorSubject<S extends AbstractValueAnimatorSubject
   }
 
   public S hasRepeatMode(@ValueAnimatorRepeatMode int mode) {
-    int actualMode = getSubject().getRepeatMode();
+    int actualMode = actual().getRepeatMode();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected repeat mode <%s> but was <%s>.", repeatModeToString(mode), repeatModeToString(actualMode))

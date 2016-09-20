@@ -44,14 +44,14 @@ public class ImageViewSubject extends AbstractViewSubject<ImageViewSubject, Imag
   }
 
   public ImageViewSubject isAligningBaselineToBottom() {
-    assertThat(getSubject().getBaselineAlignBottom())
+    assertThat(actual().getBaselineAlignBottom())
         .named("is aligning baseline to bottom")
         .isTrue();
     return this;
   }
 
   public ImageViewSubject isNotAligningBaselineToBottom() {
-    assertThat(getSubject().getBaselineAlignBottom())
+    assertThat(actual().getBaselineAlignBottom())
         .named("is aligning baseline to bottom")
         .isFalse();
     return this;
@@ -59,7 +59,7 @@ public class ImageViewSubject extends AbstractViewSubject<ImageViewSubject, Imag
 
   @TargetApi(JELLY_BEAN)
   public ImageViewSubject isCroppingToPadding() {
-    assertThat(getSubject().getCropToPadding())
+    assertThat(actual().getCropToPadding())
         .named("is cropping to padding")
         .isTrue();
     return this;
@@ -67,14 +67,14 @@ public class ImageViewSubject extends AbstractViewSubject<ImageViewSubject, Imag
 
   @TargetApi(JELLY_BEAN)
   public ImageViewSubject isNotCroppingToPadding() {
-    assertThat(getSubject().getCropToPadding())
+    assertThat(actual().getCropToPadding())
         .named("is cropping to padding")
         .isFalse();
     return this;
   }
 
   public ImageViewSubject hasDrawable(Drawable drawable) {
-    assertThat(getSubject().getDrawable())
+    assertThat(actual().getDrawable())
         .named("drawable")
         .isSameAs(drawable);
     return this;
@@ -82,14 +82,14 @@ public class ImageViewSubject extends AbstractViewSubject<ImageViewSubject, Imag
 
   @TargetApi(JELLY_BEAN)
   public ImageViewSubject hasImageAlpha(int alpha) {
-    assertThat(getSubject().getImageAlpha())
+    assertThat(actual().getImageAlpha())
         .named("image alpha")
         .isEqualTo(alpha);
     return this;
   }
 
   public ImageViewSubject hasScaleType(ImageView.ScaleType type) {
-    assertThat(getSubject().getScaleType())
+    assertThat(actual().getScaleType())
         .named("scale type")
         .isEqualTo(type);
     return this;

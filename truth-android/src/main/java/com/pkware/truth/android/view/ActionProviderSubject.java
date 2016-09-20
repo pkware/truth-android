@@ -43,14 +43,14 @@ public class ActionProviderSubject extends Subject<ActionProviderSubject, Action
   }
 
   public ActionProviderSubject hasSubMenu() {
-    assertThat(getSubject().hasSubMenu())
+    assertThat(actual().hasSubMenu())
         .named("has sub-menu")
         .isTrue();
     return this;
   }
 
   public ActionProviderSubject hasNoSubMenu() {
-    assertThat(getSubject().hasSubMenu())
+    assertThat(actual().hasSubMenu())
         .named("has sub-menu")
         .isFalse();
     return this;
@@ -58,7 +58,7 @@ public class ActionProviderSubject extends Subject<ActionProviderSubject, Action
 
   @TargetApi(JELLY_BEAN)
   public ActionProviderSubject isVisible() {
-    assertThat(getSubject().isVisible())
+    assertThat(actual().isVisible())
         .named("is visible")
         .isTrue();
     return this;
@@ -66,7 +66,7 @@ public class ActionProviderSubject extends Subject<ActionProviderSubject, Action
 
   @TargetApi(JELLY_BEAN)
   public ActionProviderSubject isNotVisible() {
-    assertThat(getSubject().isVisible())
+    assertThat(actual().isVisible())
         .named("is visible")
         .isFalse();
     return this;

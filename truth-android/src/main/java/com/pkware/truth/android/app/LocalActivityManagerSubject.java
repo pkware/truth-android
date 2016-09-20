@@ -43,7 +43,7 @@ public class LocalActivityManagerSubject extends Subject<LocalActivityManagerSub
   }
 
   public LocalActivityManagerSubject hasActivity(String id) {
-    assertThat(getSubject().getActivity(id))
+    assertThat(actual().getActivity(id))
         .named(String.format(Locale.ENGLISH, "has activity with id <%s>", id))
         .isNotNull();
     return this;

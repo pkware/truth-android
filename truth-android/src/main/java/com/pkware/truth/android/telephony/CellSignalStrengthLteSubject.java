@@ -46,7 +46,7 @@ public final class CellSignalStrengthLteSubject
   }
 
   public CellSignalStrengthLteSubject hasTimingAdvance(int timingAdvance) {
-    assertThat(getSubject().getTimingAdvance())
+    assertThat(actual().getTimingAdvance())
         .named("timing advance")
         .isEqualTo(timingAdvance);
     return this;

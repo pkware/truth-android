@@ -42,14 +42,14 @@ public class SwipeRefreshLayoutSubject
   }
 
   public SwipeRefreshLayoutSubject isRefreshing() {
-    assertThat(getSubject().isRefreshing())
+    assertThat(actual().isRefreshing())
         .named("is refreshing")
         .isTrue();
     return this;
   }
 
   public SwipeRefreshLayoutSubject isNotRefreshing() {
-    assertThat(getSubject().isRefreshing())
+    assertThat(actual().isRefreshing())
         .named("is refreshing")
         .isFalse();
     return this;

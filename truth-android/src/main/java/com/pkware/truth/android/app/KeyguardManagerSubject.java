@@ -43,14 +43,14 @@ public class KeyguardManagerSubject extends Subject<KeyguardManagerSubject, Keyg
   }
 
   public KeyguardManagerSubject hasRestrictedInputMode() {
-    assertThat(getSubject().inKeyguardRestrictedInputMode())
+    assertThat(actual().inKeyguardRestrictedInputMode())
         .named("has restricted input mode")
         .isTrue();
     return this;
   }
 
   public KeyguardManagerSubject hasUnrestrictedInputMode() {
-    assertThat(getSubject().inKeyguardRestrictedInputMode())
+    assertThat(actual().inKeyguardRestrictedInputMode())
         .named("has restricted input mode")
         .isFalse();
     return this;
@@ -58,7 +58,7 @@ public class KeyguardManagerSubject extends Subject<KeyguardManagerSubject, Keyg
 
   @TargetApi(JELLY_BEAN)
   public KeyguardManagerSubject hasLockedKeyguard() {
-    assertThat(getSubject().isKeyguardLocked())
+    assertThat(actual().isKeyguardLocked())
         .named("has locked keyguard")
         .isTrue();
     return this;
@@ -66,7 +66,7 @@ public class KeyguardManagerSubject extends Subject<KeyguardManagerSubject, Keyg
 
   @TargetApi(JELLY_BEAN)
   public KeyguardManagerSubject hasUnlockedKeyguard() {
-    assertThat(getSubject().isKeyguardLocked())
+    assertThat(actual().isKeyguardLocked())
         .named("has locked keyguard")
         .isFalse();
     return this;
@@ -74,7 +74,7 @@ public class KeyguardManagerSubject extends Subject<KeyguardManagerSubject, Keyg
 
   @TargetApi(JELLY_BEAN)
   public KeyguardManagerSubject hasSecureKeyguard() {
-    assertThat(getSubject().isKeyguardSecure())
+    assertThat(actual().isKeyguardSecure())
         .named("has secure keyguard")
         .isTrue();
     return this;
@@ -82,7 +82,7 @@ public class KeyguardManagerSubject extends Subject<KeyguardManagerSubject, Keyg
 
   @TargetApi(JELLY_BEAN)
   public KeyguardManagerSubject hasInsecureKeyguard() {
-    assertThat(getSubject().isKeyguardSecure())
+    assertThat(actual().isKeyguardSecure())
         .named("has secure keyguard")
         .isFalse();
     return this;

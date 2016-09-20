@@ -43,7 +43,7 @@ public class NavigationViewSubject
   }
 
   public NavigationViewSubject hasItemBackground(Drawable itemBackground) {
-    assertThat(getSubject().getItemBackground())
+    assertThat(actual().getItemBackground())
         .named("item background")
         .isEqualTo(itemBackground);
     return this;

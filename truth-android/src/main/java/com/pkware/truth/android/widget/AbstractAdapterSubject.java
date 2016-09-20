@@ -31,7 +31,7 @@ public abstract class AbstractAdapterSubject<S extends AbstractAdapterSubject<S,
   }
 
   public S hasCount(int count) {
-    assertThat(getSubject().getCount())
+    assertThat(actual().getCount())
         .named("count")
         .isEqualTo(count);
     //noinspection unchecked
@@ -39,7 +39,7 @@ public abstract class AbstractAdapterSubject<S extends AbstractAdapterSubject<S,
   }
 
   public S hasViewTypeCount(int count) {
-    assertThat(getSubject().getViewTypeCount())
+    assertThat(actual().getViewTypeCount())
         .named("view type count")
         .isEqualTo(count);
     //noinspection unchecked
@@ -47,7 +47,7 @@ public abstract class AbstractAdapterSubject<S extends AbstractAdapterSubject<S,
   }
 
   public S hasStableIds() {
-    assertThat(getSubject().hasStableIds())
+    assertThat(actual().hasStableIds())
         .named("has stable IDs")
         .isTrue();
     //noinspection unchecked
@@ -55,7 +55,7 @@ public abstract class AbstractAdapterSubject<S extends AbstractAdapterSubject<S,
   }
 
   public S hasUnstableIds() {
-    assertThat(getSubject().hasStableIds())
+    assertThat(actual().hasStableIds())
         .named("has stable IDs")
         .isFalse();
     //noinspection unchecked
@@ -63,7 +63,7 @@ public abstract class AbstractAdapterSubject<S extends AbstractAdapterSubject<S,
   }
 
   public S isEmpty() {
-    assertThat(getSubject().isEmpty())
+    assertThat(actual().isEmpty())
         .named("is empty")
         .isTrue();
     //noinspection unchecked
@@ -71,7 +71,7 @@ public abstract class AbstractAdapterSubject<S extends AbstractAdapterSubject<S,
   }
 
   public S isNotEmpty() {
-    assertThat(getSubject().isEmpty())
+    assertThat(actual().isEmpty())
         .named("is empty")
         .isFalse();
     //noinspection unchecked
@@ -79,13 +79,13 @@ public abstract class AbstractAdapterSubject<S extends AbstractAdapterSubject<S,
   }
 
   public S hasItem(Object expected, int index) {
-    int count = getSubject().getCount();
+    int count = actual().getCount();
     assert_()
         .withFailureMessage("Index %s is out of bounds. The adapter holds %s items.", index, count)
         .that(count)
         .isGreaterThan(index);
 
-    Object actualItem = getSubject().getItem(index);
+    Object actualItem = actual().getItem(index);
     assertThat(actualItem)
         .named("item at index " + index)
         .isEqualTo(expected);
@@ -95,13 +95,13 @@ public abstract class AbstractAdapterSubject<S extends AbstractAdapterSubject<S,
   }
 
   public S doesNotHaveItem(Object notExpected, int index) {
-    int count = getSubject().getCount();
+    int count = actual().getCount();
     assert_()
         .withFailureMessage("Index %s is out of bounds. The adapter holds %s items.", index, count)
         .that(count)
         .isGreaterThan(index);
 
-    Object actualItem = getSubject().getItem(index);
+    Object actualItem = actual().getItem(index);
     assertThat(actualItem)
         .named("item at index " + index)
         .isNotEqualTo(notExpected);

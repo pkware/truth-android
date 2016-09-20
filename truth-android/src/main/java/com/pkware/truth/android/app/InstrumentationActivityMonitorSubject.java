@@ -42,14 +42,14 @@ public class InstrumentationActivityMonitorSubject extends Subject<Instrumentati
   }
 
   public InstrumentationActivityMonitorSubject hasHits(int hits) {
-    assertThat(getSubject().getHits())
+    assertThat(actual().getHits())
         .named("hits")
         .isEqualTo(hits);
     return this;
   }
 
   public InstrumentationActivityMonitorSubject hasLastActivity(Activity activity) {
-    assertThat(getSubject().getLastActivity())
+    assertThat(actual().getLastActivity())
         .named("last activity")
         .isSameAs(activity);
     return this;

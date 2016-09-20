@@ -41,14 +41,14 @@ public class VibratorSubject extends Subject<VibratorSubject, Vibrator> {
   }
 
   public VibratorSubject hasVibrator() {
-    assertThat(getSubject().hasVibrator())
+    assertThat(actual().hasVibrator())
         .named("has vibrator")
         .isTrue();
     return this;
   }
 
   public VibratorSubject hasNoVibrator() {
-    assertThat(getSubject().hasVibrator())
+    assertThat(actual().hasVibrator())
         .named("has vibrator")
         .isFalse();
     return this;

@@ -41,21 +41,21 @@ public class PathSubject extends Subject<PathSubject, Path> {
   }
 
   public PathSubject hasFillType(Path.FillType type) {
-    assertThat(getSubject().getFillType())
+    assertThat(actual().getFillType())
         .named("fill type")
         .isEqualTo(type);
     return this;
   }
 
   public PathSubject isEmpty() {
-    assertThat(getSubject().isEmpty())
+    assertThat(actual().isEmpty())
         .named("is empty")
         .isTrue();
     return this;
   }
 
   public PathSubject isNotEmpty() {
-    assertThat(getSubject().isEmpty())
+    assertThat(actual().isEmpty())
         .named("is empty")
         .isFalse();
     return this;

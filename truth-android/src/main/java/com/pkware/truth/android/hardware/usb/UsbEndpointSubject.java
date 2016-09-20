@@ -41,49 +41,49 @@ public class UsbEndpointSubject extends Subject<UsbEndpointSubject, UsbEndpoint>
   }
 
   public UsbEndpointSubject hasAddress(int address) {
-    assertThat(getSubject().getAddress())
+    assertThat(actual().getAddress())
         .named("address")
         .isEqualTo(address);
     return this;
   }
 
   public UsbEndpointSubject hasAttributes(int attributes) {
-    assertThat(getSubject().getAttributes())
+    assertThat(actual().getAttributes())
         .named("attributes")
         .isEqualTo(attributes);
     return this;
   }
 
   public UsbEndpointSubject hasDirection(int direction) {
-    assertThat(getSubject().getDirection())
+    assertThat(actual().getDirection())
         .named("direction")
         .isEqualTo(direction);
     return this;
   }
 
   public UsbEndpointSubject hasEndpointNumber(int number) {
-    assertThat(getSubject().getEndpointNumber())
+    assertThat(actual().getEndpointNumber())
         .named("endpoint number")
         .isEqualTo(number);
     return this;
   }
 
   public UsbEndpointSubject hasInterval(int interval) {
-    assertThat(getSubject().getInterval())
+    assertThat(actual().getInterval())
         .named("interval")
         .isEqualTo(interval);
     return this;
   }
 
   public UsbEndpointSubject hasMaximumPacketSize(int size) {
-    assertThat(getSubject().getMaxPacketSize())
+    assertThat(actual().getMaxPacketSize())
         .named("maximum packet size")
         .isEqualTo(size);
     return this;
   }
 
   public UsbEndpointSubject hasType(int type) {
-    assertThat(getSubject().getType())
+    assertThat(actual().getType())
         .named("type")
         .isEqualTo(type);
     return this;

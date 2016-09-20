@@ -41,28 +41,28 @@ public class FragmentTransactionSubject extends Subject<FragmentTransactionSubje
   }
 
   public FragmentTransactionSubject isAddToBackStackAllowed() {
-    assertThat(getSubject().isAddToBackStackAllowed())
+    assertThat(actual().isAddToBackStackAllowed())
         .named("is add to back stack allowed")
         .isTrue();
     return this;
   }
 
   public FragmentTransactionSubject isAddToBackStackDisallowed() {
-    assertThat(getSubject().isAddToBackStackAllowed())
+    assertThat(actual().isAddToBackStackAllowed())
         .named("is add to back stack allowed")
         .isFalse();
     return this;
   }
 
   public FragmentTransactionSubject isEmpty() {
-    assertThat(getSubject().isEmpty())
+    assertThat(actual().isEmpty())
         .named("is empty")
         .isTrue();
     return this;
   }
 
   public FragmentTransactionSubject isNotEmpty() {
-    assertThat(getSubject().isEmpty())
+    assertThat(actual().isEmpty())
         .named("is empty")
         .isFalse();
     return this;

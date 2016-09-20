@@ -41,14 +41,14 @@ public class PointSubject extends Subject<PointSubject, Point> {
   }
 
   public PointSubject hasX(int x) {
-    assertThat(getSubject().x)
+    assertThat(actual().x)
         .named("X")
         .isEqualTo(x);
     return this;
   }
 
   public PointSubject hasY(int y) {
-    assertThat(getSubject().y)
+    assertThat(actual().y)
         .named("Y")
         .isEqualTo(y);
     return this;

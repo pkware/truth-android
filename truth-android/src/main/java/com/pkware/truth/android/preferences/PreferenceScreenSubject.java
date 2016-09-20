@@ -42,14 +42,14 @@ public class PreferenceScreenSubject extends AbstractPreferenceGroupSubject<Pref
   }
 
   public PreferenceScreenSubject hasDialog(Dialog dialog) {
-    assertThat(getSubject().getDialog())
+    assertThat(actual().getDialog())
         .named("dialog")
         .isSameAs(dialog);
     return this;
   }
 
   public PreferenceScreenSubject hasRootAdapter(ListAdapter adapter) {
-    assertThat(getSubject().getRootAdapter())
+    assertThat(actual().getRootAdapter())
         .named("root adapter")
         .isSameAs(adapter);
     return this;

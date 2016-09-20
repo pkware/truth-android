@@ -29,7 +29,7 @@ public abstract class AbstractViewGroupLayoutParamsSubject<S extends AbstractVie
   }
 
   public S hasHeight(int height) {
-    assertThat(getSubject().height)
+    assertThat(actual().height)
         .named("height")
         .isEqualTo(height);
     //noinspection unchecked
@@ -37,7 +37,7 @@ public abstract class AbstractViewGroupLayoutParamsSubject<S extends AbstractVie
   }
 
   public S hasWidth(int width) {
-    assertThat(getSubject().width)
+    assertThat(actual().width)
         .named("width")
         .isEqualTo(width);
     //noinspection unchecked

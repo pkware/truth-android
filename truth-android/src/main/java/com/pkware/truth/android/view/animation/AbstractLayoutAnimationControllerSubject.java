@@ -31,7 +31,7 @@ public abstract class AbstractLayoutAnimationControllerSubject<S extends Abstrac
   }
 
   public S hasAnimation(Animation animation) {
-    assertThat(getSubject().getAnimation())
+    assertThat(actual().getAnimation())
         .named("animation")
         .isSameAs(animation);
     //noinspection unchecked
@@ -39,8 +39,8 @@ public abstract class AbstractLayoutAnimationControllerSubject<S extends Abstrac
   }
 
   public S hasDelay(float delay, float tolerance) {
-    float actualDelay = getSubject().getDelay();
-    assertThat(getSubject().getDelay())
+    float actualDelay = actual().getDelay();
+    assertThat(actual().getDelay())
         .named("delay")
         .isWithin(tolerance)
         .of(delay);
@@ -49,7 +49,7 @@ public abstract class AbstractLayoutAnimationControllerSubject<S extends Abstrac
   }
 
   public S hasInterpolator(Interpolator interpolator) {
-    assertThat(getSubject().getInterpolator())
+    assertThat(actual().getInterpolator())
         .named("interpolator")
         .isSameAs(interpolator);
     //noinspection unchecked
@@ -57,7 +57,7 @@ public abstract class AbstractLayoutAnimationControllerSubject<S extends Abstrac
   }
 
   public S hasOrder(int order) {
-    assertThat(getSubject().getOrder())
+    assertThat(actual().getOrder())
         .named("order")
         .isEqualTo(order);
     //noinspection unchecked
@@ -65,7 +65,7 @@ public abstract class AbstractLayoutAnimationControllerSubject<S extends Abstrac
   }
 
   public S isDone() {
-    assertThat(getSubject().isDone())
+    assertThat(actual().isDone())
         .named("is done")
         .isTrue();
     //noinspection unchecked
@@ -73,7 +73,7 @@ public abstract class AbstractLayoutAnimationControllerSubject<S extends Abstrac
   }
 
   public S isNotDone() {
-    assertThat(getSubject().isDone())
+    assertThat(actual().isDone())
         .named("is done")
         .isFalse();
     //noinspection unchecked
@@ -81,7 +81,7 @@ public abstract class AbstractLayoutAnimationControllerSubject<S extends Abstrac
   }
 
   public S isOverlapping() {
-    assertThat(getSubject().willOverlap())
+    assertThat(actual().willOverlap())
         .named("is overlapping")
         .isTrue();
     //noinspection unchecked
@@ -89,7 +89,7 @@ public abstract class AbstractLayoutAnimationControllerSubject<S extends Abstrac
   }
 
   public S isNotOverlapping() {
-    assertThat(getSubject().willOverlap())
+    assertThat(actual().willOverlap())
         .named("is overlapping")
         .isFalse();
     //noinspection unchecked

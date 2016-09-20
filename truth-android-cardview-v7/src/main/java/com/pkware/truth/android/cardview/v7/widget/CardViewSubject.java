@@ -41,7 +41,7 @@ public class CardViewSubject extends AbstractViewGroupSubject<CardViewSubject, C
   }
 
   public CardViewSubject hasRadius(int radius) {
-    assertThat(getSubject().getRadius())
+    assertThat(actual().getRadius())
         .named("radius")
         .isEqualTo(radius);
     return this;

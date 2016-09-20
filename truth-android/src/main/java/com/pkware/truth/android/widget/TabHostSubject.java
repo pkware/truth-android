@@ -41,28 +41,28 @@ public class TabHostSubject extends AbstractFrameLayoutSubject<TabHostSubject, T
   }
 
   public TabHostSubject hasCurrentTab(int tab) {
-    assertThat(getSubject().getCurrentTab())
+    assertThat(actual().getCurrentTab())
         .named("current tab")
         .isEqualTo(tab);
     return this;
   }
 
   public TabHostSubject hasCurrentTabTag(String tag) {
-    assertThat(getSubject().getCurrentTabTag())
+    assertThat(actual().getCurrentTabTag())
         .named("current tab tag")
         .isEqualTo(tag);
     return this;
   }
 
   public TabHostSubject hasCurrentTabView(View view) {
-    assertThat(getSubject().getCurrentTabView())
+    assertThat(actual().getCurrentTabView())
         .named("current tab view")
         .isSameAs(view);
     return this;
   }
 
   public TabHostSubject hasCurrentView(View view) {
-    assertThat(getSubject().getCurrentView())
+    assertThat(actual().getCurrentView())
         .named("current view")
         .isSameAs(view);
     return this;

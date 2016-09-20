@@ -41,24 +41,24 @@ public class SwitchPreferenceSubject extends AbstractTwoStatePreferenceSubject<S
   }
 
   public SwitchPreferenceSubject hasSwitchTextOff(CharSequence text) {
-    assertThat(getSubject().getSwitchTextOff())
+    assertThat(actual().getSwitchTextOff())
         .named("switch off text")
         .isEqualTo(text);
     return this;
   }
 
   public SwitchPreferenceSubject hasSwitchTextOff(@StringRes int resId) {
-    return hasSwitchTextOff(getSubject().getContext().getString(resId));
+    return hasSwitchTextOff(actual().getContext().getString(resId));
   }
 
   public SwitchPreferenceSubject hasSwitchTextOn(CharSequence text) {
-    assertThat(getSubject().getSwitchTextOn())
+    assertThat(actual().getSwitchTextOn())
         .named("switch on text")
         .isEqualTo(text);
     return this;
   }
 
   public SwitchPreferenceSubject hasSwitchTextOn(@StringRes int resId) {
-    return hasSwitchTextOn(getSubject().getContext().getString(resId));
+    return hasSwitchTextOn(actual().getContext().getString(resId));
   }
 }

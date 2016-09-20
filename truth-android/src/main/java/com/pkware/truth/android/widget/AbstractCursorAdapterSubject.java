@@ -30,7 +30,7 @@ public abstract class AbstractCursorAdapterSubject<S extends AbstractCursorAdapt
   }
 
   public S hasCursor(Cursor cursor) {
-    assertThat(getSubject().getCursor())
+    assertThat(actual().getCursor())
         .named("cursor")
         .isSameAs(cursor);
     //noinspection unchecked
@@ -38,7 +38,7 @@ public abstract class AbstractCursorAdapterSubject<S extends AbstractCursorAdapt
   }
 
   public S hasFilter(Filter filter) {
-    assertThat(getSubject().getFilter())
+    assertThat(actual().getFilter())
         .named("filter")
         .isSameAs(filter);
     //noinspection unchecked

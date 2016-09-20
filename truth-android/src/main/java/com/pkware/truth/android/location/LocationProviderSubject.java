@@ -44,7 +44,7 @@ public class LocationProviderSubject extends Subject<LocationProviderSubject, Lo
   }
 
   public LocationProviderSubject hasAccuracy(int accuracy) {
-    int actualAccuracy = getSubject().getAccuracy();
+    int actualAccuracy = actual().getAccuracy();
     assert_()
         .withFailureMessage("Expected accuracy <%s> but was <%s>.", accuracyRequirementToString(accuracy), accuracyRequirementToString(actualAccuracy))
         .that(actualAccuracy)
@@ -53,14 +53,14 @@ public class LocationProviderSubject extends Subject<LocationProviderSubject, Lo
   }
 
   public LocationProviderSubject hasName(String name) {
-    assertThat(getSubject().getName())
+    assertThat(actual().getName())
         .named("name")
         .isEqualTo(name);
     return this;
   }
 
   public LocationProviderSubject hasPowerRequirement(int requirement) {
-    int actualRequirement = getSubject().getPowerRequirement();
+    int actualRequirement = actual().getPowerRequirement();
     assert_()
         .withFailureMessage("Expected power requirement <%s> but was <%s>.", powerRequirementToString(requirement), powerRequirementToString(actualRequirement))
         .that(actualRequirement)
@@ -69,98 +69,98 @@ public class LocationProviderSubject extends Subject<LocationProviderSubject, Lo
   }
 
   public LocationProviderSubject hasMonetaryCost() {
-    assertThat(getSubject().hasMonetaryCost())
+    assertThat(actual().hasMonetaryCost())
         .named("has monetary cost")
         .isTrue();
     return this;
   }
 
   public LocationProviderSubject hasNoMonetaryCost() {
-    assertThat(getSubject().hasMonetaryCost())
+    assertThat(actual().hasMonetaryCost())
         .named("has monetary cost")
         .isFalse();
     return this;
   }
 
   public LocationProviderSubject hasCellRequirement() {
-    assertThat(getSubject().requiresCell())
+    assertThat(actual().requiresCell())
         .named("requires cell network")
         .isTrue();
     return this;
   }
 
   public LocationProviderSubject hasNoCellRequirement() {
-    assertThat(getSubject().requiresCell())
+    assertThat(actual().requiresCell())
         .named("requires cell network")
         .isFalse();
     return this;
   }
 
   public LocationProviderSubject hasNetworkRequirement() {
-    assertThat(getSubject().requiresNetwork())
+    assertThat(actual().requiresNetwork())
         .named("requires network")
         .isTrue();
     return this;
   }
 
   public LocationProviderSubject hasNoNetworkRequirement() {
-    assertThat(getSubject().requiresNetwork())
+    assertThat(actual().requiresNetwork())
         .named("requires network")
         .isFalse();
     return this;
   }
 
   public LocationProviderSubject hasSatelliteRequirement() {
-    assertThat(getSubject().requiresSatellite())
+    assertThat(actual().requiresSatellite())
         .named("requires satellite")
         .isTrue();
     return this;
   }
 
   public LocationProviderSubject hasNoSatelliteRequirement() {
-    assertThat(getSubject().requiresSatellite())
+    assertThat(actual().requiresSatellite())
         .named("requires satellite")
         .isFalse();
     return this;
   }
 
   public LocationProviderSubject hasAltitudeSupport() {
-    assertThat(getSubject().supportsAltitude())
+    assertThat(actual().supportsAltitude())
         .named("supports altitude")
         .isTrue();
     return this;
   }
 
   public LocationProviderSubject hasNoAltitudeSupport() {
-    assertThat(getSubject().supportsAltitude())
+    assertThat(actual().supportsAltitude())
         .named("supports altitude")
         .isFalse();
     return this;
   }
 
   public LocationProviderSubject hasBearingSupport() {
-    assertThat(getSubject().supportsBearing())
+    assertThat(actual().supportsBearing())
         .named("supports bearing")
         .isTrue();
     return this;
   }
 
   public LocationProviderSubject hasNoBearingSupport() {
-    assertThat(getSubject().supportsBearing())
+    assertThat(actual().supportsBearing())
         .named("supports bearing")
         .isFalse();
     return this;
   }
 
   public LocationProviderSubject hasSpeedSupport() {
-    assertThat(getSubject().supportsSpeed())
+    assertThat(actual().supportsSpeed())
         .named("supports speed")
         .isTrue();
     return this;
   }
 
   public LocationProviderSubject hasNoSpeedSupport() {
-    assertThat(getSubject().supportsSpeed())
+    assertThat(actual().supportsSpeed())
         .named("supports speed")
         .isFalse();
     return this;

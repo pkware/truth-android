@@ -42,84 +42,84 @@ public class WebViewSubject extends Subject<WebViewSubject, WebView> {
   }
 
   public WebViewSubject canGoBack() {
-    assertThat(getSubject().canGoBack())
+    assertThat(actual().canGoBack())
         .named("can go back")
         .isTrue();
     return this;
   }
 
   public WebViewSubject canNotGoBack() {
-    assertThat(getSubject().canGoBack())
+    assertThat(actual().canGoBack())
         .named("can go back")
         .isFalse();
     return this;
   }
 
   public WebViewSubject canGoForward() {
-    assertThat(getSubject().canGoForward())
+    assertThat(actual().canGoForward())
         .named("can go forward")
         .isTrue();
     return this;
   }
 
   public WebViewSubject canNotGoForward() {
-    assertThat(getSubject().canGoForward())
+    assertThat(actual().canGoForward())
         .named("can go forward")
         .isFalse();
     return this;
   }
 
   public WebViewSubject hasCertificate(SslCertificate certificate) {
-    assertThat(getSubject().getCertificate())
+    assertThat(actual().getCertificate())
         .named("certificate")
         .isSameAs(certificate);
     return this;
   }
 
   public WebViewSubject hasContentHeight(int height) {
-    assertThat(getSubject().getContentHeight())
+    assertThat(actual().getContentHeight())
         .named("content height")
         .isEqualTo(height);
     return this;
   }
 
   public WebViewSubject hasOriginalUrl(String url) {
-    assertThat(getSubject().getOriginalUrl())
+    assertThat(actual().getOriginalUrl())
         .named("original URL")
         .isEqualTo(url);
     return this;
   }
 
   public WebViewSubject hasProgress(int progress) {
-    assertThat(getSubject().getProgress())
+    assertThat(actual().getProgress())
         .named("progress")
         .isEqualTo(progress);
     return this;
   }
 
   public WebViewSubject hasTitle(String title) {
-    assertThat(getSubject().getTitle())
+    assertThat(actual().getTitle())
         .named("title")
         .isEqualTo(title);
     return this;
   }
 
   public WebViewSubject hasUrl(String url) {
-    assertThat(getSubject().getUrl())
+    assertThat(actual().getUrl())
         .named("URL")
         .isEqualTo(url);
     return this;
   }
 
   public WebViewSubject isPrivateBrowsingEnabled() {
-    assertThat(getSubject().isPrivateBrowsingEnabled())
+    assertThat(actual().isPrivateBrowsingEnabled())
         .named("private browsing enabled")
         .isTrue();
     return this;
   }
 
   public WebViewSubject isPrivateBrowsingDisabled() {
-    assertThat(!getSubject().isPrivateBrowsingEnabled())
+    assertThat(!actual().isPrivateBrowsingEnabled())
         .named("private browsing disabled")
         .isTrue();
     return this;

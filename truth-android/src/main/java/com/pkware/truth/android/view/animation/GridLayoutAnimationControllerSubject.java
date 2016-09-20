@@ -79,7 +79,7 @@ public class GridLayoutAnimationControllerSubject extends
   }
 
   public GridLayoutAnimationControllerSubject hasColumnDelay(float delay, float tolerance) {
-    assertThat(getSubject().getColumnDelay())
+    assertThat(actual().getColumnDelay())
         .named("column delay")
         .isWithin(tolerance)
         .of(delay);
@@ -87,7 +87,7 @@ public class GridLayoutAnimationControllerSubject extends
   }
 
   public GridLayoutAnimationControllerSubject hasDirection(@GridLayoutAnimationControllerDirection int direction) {
-    int actualDirection = getSubject().getDirection();
+    int actualDirection = actual().getDirection();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected direction <%s> but was <%s>.",
@@ -98,7 +98,7 @@ public class GridLayoutAnimationControllerSubject extends
   }
 
   public GridLayoutAnimationControllerSubject hasDirectionPriority(@GridLayoutAnimationControllerDirectionPriority int priority) {
-    int actualPriority = getSubject().getDirectionPriority();
+    int actualPriority = actual().getDirectionPriority();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected direction priority <%s> but was <%s>.",
@@ -109,7 +109,7 @@ public class GridLayoutAnimationControllerSubject extends
   }
 
   public GridLayoutAnimationControllerSubject hasRowDelay(float delay, float tolerance) {
-    assertThat(getSubject().getRowDelay())
+    assertThat(actual().getRowDelay())
         .named("row delay")
         .isWithin(tolerance)
         .of(delay);

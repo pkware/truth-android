@@ -45,14 +45,14 @@ public final class CellInfoCdmaSubject extends AbstractCellInfoSubject<CellInfoC
   }
 
   public CellInfoCdmaSubject hasCellIdentity(CellIdentityCdma cellIdentity) {
-    assertThat(getSubject().getCellIdentity())
+    assertThat(actual().getCellIdentity())
         .named("cell identity")
         .isEqualTo(cellIdentity);
     return this;
   }
 
   public CellInfoCdmaSubject hasCellSignalStrength(CellSignalStrengthCdma cellSignalStrength) {
-    assertThat(getSubject().getCellSignalStrength())
+    assertThat(actual().getCellSignalStrength())
         .named("cell signal strength")
         .isEqualTo(cellSignalStrength);
     return this;

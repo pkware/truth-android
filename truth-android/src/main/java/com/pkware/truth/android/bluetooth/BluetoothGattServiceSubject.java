@@ -57,14 +57,14 @@ public class BluetoothGattServiceSubject extends Subject<BluetoothGattServiceSub
   }
 
   public BluetoothGattServiceSubject hasInstanceId(int id) {
-    assertThat(getSubject().getInstanceId())
+    assertThat(actual().getInstanceId())
         .named("instance id")
         .isEqualTo(id);
     return this;
   }
 
   public BluetoothGattServiceSubject hasType(@BluetoothGattServiceType int type) {
-    int actualType = getSubject().getType();
+    int actualType = actual().getType();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected type <%s> but was <%s>.",
@@ -76,7 +76,7 @@ public class BluetoothGattServiceSubject extends Subject<BluetoothGattServiceSub
   }
 
   public BluetoothGattServiceSubject hasUuid(UUID uuid) {
-    assertThat(getSubject().getUuid())
+    assertThat(actual().getUuid())
         .named("UUID")
         .isEqualTo(uuid);
     return this;

@@ -40,112 +40,112 @@ public class UiSettingsSubject extends Subject<UiSettingsSubject, UiSettings> {
   }
 
   public UiSettingsSubject hasCompassEnabled() {
-    assertThat(getSubject().isCompassEnabled())
+    assertThat(actual().isCompassEnabled())
         .named("is compass enabled")
         .isTrue();
     return this;
   }
 
   public UiSettingsSubject hasCompassDisabled() {
-    assertThat(!getSubject().isCompassEnabled())
+    assertThat(!actual().isCompassEnabled())
         .named("is compass disabled")
         .isTrue();
     return this;
   }
 
   public UiSettingsSubject hasIndoorLevelPickerEnabled() {
-    assertThat(getSubject().isIndoorLevelPickerEnabled())
+    assertThat(actual().isIndoorLevelPickerEnabled())
         .named("is indoor level picker enabled")
         .isTrue();
     return this;
   }
 
   public UiSettingsSubject hasIndoorLevelPickerDisabled() {
-    assertThat(!getSubject().isIndoorLevelPickerEnabled())
+    assertThat(!actual().isIndoorLevelPickerEnabled())
         .named("is indoor level picker disabled")
         .isTrue();
     return this;
   }
 
   public UiSettingsSubject hasMyLocationButtonEnabled() {
-    assertThat(getSubject().isMyLocationButtonEnabled())
+    assertThat(actual().isMyLocationButtonEnabled())
         .named("is 'my location' button enabled")
         .isTrue();
     return this;
   }
 
   public UiSettingsSubject hasMyLocationButtonDisabled() {
-    assertThat(!getSubject().isMyLocationButtonEnabled())
+    assertThat(!actual().isMyLocationButtonEnabled())
         .named("is 'my location' button disabled")
         .isTrue();
     return this;
   }
 
   public UiSettingsSubject hasRotateGesturesEnabled() {
-    assertThat(getSubject().isRotateGesturesEnabled())
+    assertThat(actual().isRotateGesturesEnabled())
         .named("is rotate gesture enabled")
         .isTrue();
     return this;
   }
 
   public UiSettingsSubject hasRotateGesturesDisabled() {
-    assertThat(!getSubject().isRotateGesturesEnabled())
+    assertThat(!actual().isRotateGesturesEnabled())
         .named("is rotate gesture disabled")
         .isTrue();
     return this;
   }
 
   public UiSettingsSubject hasScrollGesturesEnabled() {
-    assertThat(getSubject().isScrollGesturesEnabled())
+    assertThat(actual().isScrollGesturesEnabled())
         .named("is scroll gesture enabled")
         .isTrue();
     return this;
   }
 
   public UiSettingsSubject hasScrollGesturesDisabled() {
-    assertThat(!getSubject().isScrollGesturesEnabled())
+    assertThat(!actual().isScrollGesturesEnabled())
         .named("is scroll gesture enabled")
         .isTrue();
     return this;
   }
 
   public UiSettingsSubject hasTiltGesturesEnabled() {
-    assertThat(getSubject().isTiltGesturesEnabled())
+    assertThat(actual().isTiltGesturesEnabled())
         .named("is tilt gesture enabled")
         .isTrue();
     return this;
   }
 
   public UiSettingsSubject hasTiltGesturesDisabled() {
-    assertThat(!getSubject().isTiltGesturesEnabled())
+    assertThat(!actual().isTiltGesturesEnabled())
         .named("is tilt gesture disabled")
         .isTrue();
     return this;
   }
 
   public UiSettingsSubject hasZoomControlsEnabled() {
-    assertThat(getSubject().isZoomControlsEnabled())
+    assertThat(actual().isZoomControlsEnabled())
         .named("zoom controls are enabled")
         .isTrue();
     return this;
   }
 
   public UiSettingsSubject hasZoomControlsDisabled() {
-    assertThat(!getSubject().isZoomControlsEnabled())
+    assertThat(!actual().isZoomControlsEnabled())
         .named("zoom controls are disabled")
         .isTrue();
     return this;
   }
 
   public UiSettingsSubject hasZoomGesturesEnabled() {
-    assertThat(getSubject().isZoomGesturesEnabled())
+    assertThat(actual().isZoomGesturesEnabled())
         .named("is zoom gesture enabled")
         .isTrue();
     return this;
   }
 
   public UiSettingsSubject hasZoomGesturesDisabled() {
-    assertThat(!getSubject().isZoomGesturesEnabled())
+    assertThat(!actual().isZoomGesturesEnabled())
         .named("is zoom gesture enabled")
         .isTrue();
     return this;

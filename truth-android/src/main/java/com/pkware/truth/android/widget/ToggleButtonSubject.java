@@ -42,24 +42,24 @@ public class ToggleButtonSubject
   }
 
   public ToggleButtonSubject hasOnText(String text) {
-    assertThat(getSubject().getTextOn().toString())
+    assertThat(actual().getTextOn().toString())
         .named("'on' text")
         .isEqualTo(text);
     return this;
   }
 
   public ToggleButtonSubject hasOnText(@StringRes int resId) {
-    return hasOnText(getSubject().getContext().getString(resId));
+    return hasOnText(actual().getContext().getString(resId));
   }
 
   public ToggleButtonSubject hasOffText(String text) {
-    assertThat(getSubject().getTextOff().toString())
+    assertThat(actual().getTextOff().toString())
         .named("'off' text")
         .isEqualTo(text);
     return this;
   }
 
   public ToggleButtonSubject hasOffText(@StringRes int resId) {
-    return hasOffText(getSubject().getContext().getString(resId));
+    return hasOffText(actual().getContext().getString(resId));
   }
 }

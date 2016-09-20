@@ -40,14 +40,14 @@ public class ChronometerSubject extends AbstractTextViewSubject<ChronometerSubje
   }
 
   public ChronometerSubject hasBase(long base) {
-    assertThat(getSubject().getBase())
+    assertThat(actual().getBase())
         .named("base time")
         .isEqualTo(base);
     return this;
   }
 
   public ChronometerSubject hasFormat(String format) {
-    assertThat(getSubject().getFormat())
+    assertThat(actual().getFormat())
         .named("format")
         .isEqualTo(format);
     return this;

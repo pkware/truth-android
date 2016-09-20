@@ -44,28 +44,28 @@ public class RecyclerViewSmoothScrollerActionSubject extends
   }
 
   public RecyclerViewSmoothScrollerActionSubject hasDx(int dx) {
-    assertThat(getSubject().getDx())
+    assertThat(actual().getDx())
         .named("dx")
         .isEqualTo(dx);
     return this;
   }
 
   public RecyclerViewSmoothScrollerActionSubject hasDy(int dy) {
-    assertThat(getSubject().getDy())
+    assertThat(actual().getDy())
         .named("dy")
         .isEqualTo(dy);
     return this;
   }
 
   public RecyclerViewSmoothScrollerActionSubject hasDuration(int duration) {
-    assertThat(getSubject().getDuration())
+    assertThat(actual().getDuration())
         .named("duration")
         .isEqualTo(duration);
     return this;
   }
 
   public RecyclerViewSmoothScrollerActionSubject hasInterpolator(Interpolator interpolator) {
-    assertThat(getSubject().getInterpolator())
+    assertThat(actual().getInterpolator())
         .named("interpolator")
         .isEqualTo(interpolator);
     return this;

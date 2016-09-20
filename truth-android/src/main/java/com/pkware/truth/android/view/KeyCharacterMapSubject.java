@@ -58,7 +58,7 @@ public class KeyCharacterMapSubject extends Subject<KeyCharacterMapSubject, KeyC
   }
 
   public KeyCharacterMapSubject hasKeyboardType(@KeyCharacterMapKeyboardType int type) {
-    int actualType = getSubject().getKeyboardType();
+    int actualType = actual().getKeyboardType();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected keyboard type <%s> but was <%s>.",
@@ -69,7 +69,7 @@ public class KeyCharacterMapSubject extends Subject<KeyCharacterMapSubject, KeyC
   }
 
   public KeyCharacterMapSubject hasModifierBehavior(int value) {
-    assertThat(getSubject().getModifierBehavior())
+    assertThat(actual().getModifierBehavior())
         .named("modifier behavior")
         .isEqualTo(value);
     return this;

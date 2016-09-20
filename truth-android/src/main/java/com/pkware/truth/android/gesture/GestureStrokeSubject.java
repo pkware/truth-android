@@ -42,14 +42,14 @@ public class GestureStrokeSubject extends Subject<GestureStrokeSubject, GestureS
   }
 
   public GestureStrokeSubject hasBoundingBox(RectF rect) {
-    assertThat(getSubject().boundingBox)
+    assertThat(actual().boundingBox)
         .named("bounding box")
         .isEqualTo(rect);
     return this;
   }
 
   public GestureStrokeSubject hasLength(float length, float tolerance) {
-    assertThat(getSubject().length)
+    assertThat(actual().length)
         .named("length")
         .isWithin(tolerance)
         .of(length);
@@ -57,7 +57,7 @@ public class GestureStrokeSubject extends Subject<GestureStrokeSubject, GestureS
   }
 
   public GestureStrokeSubject hasPoints(float[] points, float tolerance) {
-    assertThat(getSubject().points)
+    assertThat(actual().points)
         .hasValuesWithin(tolerance)
         .of(points);
     return this;

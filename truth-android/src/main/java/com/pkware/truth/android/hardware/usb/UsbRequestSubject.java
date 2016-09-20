@@ -42,14 +42,14 @@ public class UsbRequestSubject extends Subject<UsbRequestSubject, UsbRequest> {
   }
 
   public UsbRequestSubject hasClientData(Object data) {
-    assertThat(getSubject().getClientData())
+    assertThat(actual().getClientData())
         .named("client data")
         .isEqualTo(data);
     return this;
   }
 
   public UsbRequestSubject hasEndpoint(UsbEndpoint endpoint) {
-    assertThat(getSubject().getEndpoint())
+    assertThat(actual().getEndpoint())
         .named("endpoint")
         .isEqualTo(endpoint);
     return this;

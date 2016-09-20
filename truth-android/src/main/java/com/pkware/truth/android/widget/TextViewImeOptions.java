@@ -15,6 +15,7 @@
  */
 package com.pkware.truth.android.widget;
 
+import android.annotation.SuppressLint;
 import android.support.annotation.IntDef;
 import android.view.inputmethod.EditorInfo;
 
@@ -22,6 +23,8 @@ import java.lang.annotation.Retention;
 
 import static java.lang.annotation.RetentionPolicy.SOURCE;
 
+// Suppressing lint because IME_NULL and IME_ACTION_UNSPECIFIED are the same value
+@SuppressLint("UniqueConstants")
 @IntDef({
     EditorInfo.IME_ACTION_UNSPECIFIED,
     EditorInfo.IME_ACTION_NONE,

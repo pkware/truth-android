@@ -40,7 +40,7 @@ public class RadioGroupSubject extends AbstractLinearLayoutSubject<RadioGroupSub
   }
 
   public RadioGroupSubject hasCheckedRadioButtonId(int id) {
-    assertThat(getSubject().getCheckedRadioButtonId())
+    assertThat(actual().getCheckedRadioButtonId())
         .named("checked radio button ID")
         .isEqualTo(id);
     return this;

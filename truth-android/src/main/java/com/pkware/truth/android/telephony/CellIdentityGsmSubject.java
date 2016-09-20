@@ -44,35 +44,35 @@ public final class CellIdentityGsmSubject extends Subject<CellIdentityGsmSubject
   }
 
   public CellIdentityGsmSubject hasCid(int cid) {
-    assertThat(getSubject().getCid())
+    assertThat(actual().getCid())
         .named("CID")
         .isEqualTo(cid);
     return this;
   }
 
   public CellIdentityGsmSubject hasLac(int lac) {
-    assertThat(getSubject().getLac())
+    assertThat(actual().getLac())
         .named("LAC")
         .isEqualTo(lac);
     return this;
   }
 
   public CellIdentityGsmSubject hasMcc(int mcc) {
-    assertThat(getSubject().getMcc())
+    assertThat(actual().getMcc())
         .named("MCC")
         .isEqualTo(mcc);
     return this;
   }
 
   public CellIdentityGsmSubject hasMnc(int mnc) {
-    assertThat(getSubject().getMnc())
+    assertThat(actual().getMnc())
         .named("MNC")
         .isEqualTo(mnc);
     return this;
   }
 
   public CellIdentityGsmSubject hasPsc(int psc) {
-    assertThat(getSubject().getPsc())
+    assertThat(actual().getPsc())
         .named("PSC")
         .isEqualTo(psc);
     return this;

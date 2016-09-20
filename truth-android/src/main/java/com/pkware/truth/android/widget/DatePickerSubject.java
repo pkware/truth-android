@@ -40,63 +40,63 @@ public class DatePickerSubject extends AbstractFrameLayoutSubject<DatePickerSubj
   }
 
   public DatePickerSubject isShowingCalendarView() {
-    assertThat(getSubject().getCalendarViewShown())
+    assertThat(actual().getCalendarViewShown())
         .named("is showing calendar view")
         .isTrue();
     return this;
   }
 
   public DatePickerSubject isNotShowingCalendarView() {
-    assertThat(getSubject().getCalendarViewShown())
+    assertThat(actual().getCalendarViewShown())
         .named("is showing calendar view")
         .isFalse();
     return this;
   }
 
   public DatePickerSubject hasDayOfMonth(int day) {
-    assertThat(getSubject().getDayOfMonth())
+    assertThat(actual().getDayOfMonth())
         .named("day of the month")
         .isEqualTo(day);
     return this;
   }
 
   public DatePickerSubject hasMaxDate(long date) {
-    assertThat(getSubject().getMaxDate())
+    assertThat(actual().getMaxDate())
         .named("maximum date")
         .isEqualTo(date);
     return this;
   }
 
   public DatePickerSubject hasMinDate(long date) {
-    assertThat(getSubject().getMinDate())
+    assertThat(actual().getMinDate())
         .named("minimum date")
         .isEqualTo(date);
     return this;
   }
 
   public DatePickerSubject hasMonth(int month) {
-    assertThat(getSubject().getMonth())
+    assertThat(actual().getMonth())
         .named("month")
         .isEqualTo(month);
     return this;
   }
 
   public DatePickerSubject isShowingSpinners() {
-    assertThat(getSubject().getSpinnersShown())
+    assertThat(actual().getSpinnersShown())
         .named("is showing spinners")
         .isTrue();
     return this;
   }
 
   public DatePickerSubject isNotShowingSpinners() {
-    assertThat(getSubject().getSpinnersShown())
+    assertThat(actual().getSpinnersShown())
         .named("is showing spinners")
         .isFalse();
     return this;
   }
 
   public DatePickerSubject hasYear(int year) {
-    assertThat(getSubject().getYear())
+    assertThat(actual().getYear())
         .named("year")
         .isEqualTo(year);
     return this;

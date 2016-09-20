@@ -31,7 +31,7 @@ public abstract class AbstractProgressBarSubject<S extends AbstractProgressBarSu
   }
 
   public S hasIndeterminateDrawable(Drawable drawable) {
-    assertThat(getSubject().getIndeterminateDrawable())
+    assertThat(actual().getIndeterminateDrawable())
         .named("indeterminate drawable")
         .isSameAs(drawable);
     //noinspection unchecked
@@ -39,7 +39,7 @@ public abstract class AbstractProgressBarSubject<S extends AbstractProgressBarSu
   }
 
   public S hasInterpolator(Interpolator interpolator) {
-    assertThat(getSubject().getInterpolator())
+    assertThat(actual().getInterpolator())
         .named("interpolator")
         .isSameAs(interpolator);
     //noinspection unchecked
@@ -47,7 +47,7 @@ public abstract class AbstractProgressBarSubject<S extends AbstractProgressBarSu
   }
 
   public S hasMaximum(int maximum) {
-    assertThat(getSubject().getMax())
+    assertThat(actual().getMax())
         .named("maximum")
         .isEqualTo(maximum);
     //noinspection unchecked
@@ -55,7 +55,7 @@ public abstract class AbstractProgressBarSubject<S extends AbstractProgressBarSu
   }
 
   public S hasProgress(int progress) {
-    assertThat(getSubject().getProgress())
+    assertThat(actual().getProgress())
         .named("progress")
         .isEqualTo(progress);
     //noinspection unchecked
@@ -63,7 +63,7 @@ public abstract class AbstractProgressBarSubject<S extends AbstractProgressBarSu
   }
 
   public S hasProgressDrawable(Drawable drawable) {
-    assertThat(getSubject().getProgressDrawable())
+    assertThat(actual().getProgressDrawable())
         .named("progress drawable")
         .isSameAs(drawable);
     //noinspection unchecked
@@ -71,7 +71,7 @@ public abstract class AbstractProgressBarSubject<S extends AbstractProgressBarSu
   }
 
   public S hasSecondaryProgress(int progress) {
-    assertThat(getSubject().getSecondaryProgress())
+    assertThat(actual().getSecondaryProgress())
         .named("secondary progress")
         .isEqualTo(progress);
     //noinspection unchecked
@@ -79,7 +79,7 @@ public abstract class AbstractProgressBarSubject<S extends AbstractProgressBarSu
   }
 
   public S isIndeterminate() {
-    assertThat(getSubject().isIndeterminate())
+    assertThat(actual().isIndeterminate())
         .named("is indeterminate")
         .isTrue();
     //noinspection unchecked
@@ -87,7 +87,7 @@ public abstract class AbstractProgressBarSubject<S extends AbstractProgressBarSu
   }
 
   public S isNotIndeterminate() {
-    assertThat(getSubject().isIndeterminate())
+    assertThat(actual().isIndeterminate())
         .named("is indeterminate")
         .isFalse();
     //noinspection unchecked

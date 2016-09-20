@@ -29,7 +29,7 @@ public class AbstractWrapperListAdapterSubject<S extends AbstractWrapperListAdap
   }
 
   public S hasWrappedAdapter(ListAdapter adapter) {
-    assertThat(getSubject().getWrappedAdapter())
+    assertThat(actual().getWrappedAdapter())
         .named("wrapper adapter")
         .isSameAs(adapter);
     //noinspection unchecked

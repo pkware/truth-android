@@ -42,21 +42,21 @@ public class ToastSubject extends Subject<ToastSubject, Toast> {
   }
 
   public ToastSubject hasDuration(int duration) {
-    assertThat(getSubject().getDuration())
+    assertThat(actual().getDuration())
         .named("duration")
         .isEqualTo(duration);
     return this;
   }
 
   public ToastSubject hasGravity(int gravity) {
-    assertThat(getSubject().getGravity())
+    assertThat(actual().getGravity())
         .named("gravity")
         .isEqualTo(gravity);
     return this;
   }
 
   public ToastSubject hasHorizontalMargin(float margin, float tolerance) {
-    assertThat(getSubject().getHorizontalMargin())
+    assertThat(actual().getHorizontalMargin())
         .named("horizontal margin")
         .isWithin(tolerance)
         .of(margin);
@@ -64,7 +64,7 @@ public class ToastSubject extends Subject<ToastSubject, Toast> {
   }
 
   public ToastSubject hasVerticalMargin(float margin, float tolerance) {
-    assertThat(getSubject().getVerticalMargin())
+    assertThat(actual().getVerticalMargin())
         .named("vertical margin")
         .isWithin(tolerance)
         .of(margin);
@@ -72,21 +72,21 @@ public class ToastSubject extends Subject<ToastSubject, Toast> {
   }
 
   public ToastSubject hasView(View view) {
-    assertThat(getSubject().getView())
+    assertThat(actual().getView())
         .named("view")
         .isSameAs(view);
     return this;
   }
 
   public ToastSubject hasXOffset(int offset) {
-    assertThat(getSubject().getXOffset())
+    assertThat(actual().getXOffset())
         .named("X offset")
         .isEqualTo(offset);
     return this;
   }
 
   public ToastSubject hasYOffset(int offset) {
-    assertThat(getSubject().getYOffset())
+    assertThat(actual().getYOffset())
         .named("Y offset")
         .isEqualTo(offset);
     return this;

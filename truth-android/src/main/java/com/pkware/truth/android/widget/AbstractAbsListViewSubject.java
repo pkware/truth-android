@@ -42,7 +42,7 @@ public abstract class AbstractAbsListViewSubject<S extends AbstractAbsListViewSu
   }
 
   public S hasCheckedItemsCount(int count) {
-    assertThat(getSubject().getCheckedItemCount())
+    assertThat(actual().getCheckedItemCount())
         .named("checked item count")
         .isEqualTo(count);
     //noinspection unchecked
@@ -50,7 +50,7 @@ public abstract class AbstractAbsListViewSubject<S extends AbstractAbsListViewSu
   }
 
   public S containsItemIds(long... itemIds) {
-    assertThat(getSubject().getCheckedItemIds())
+    assertThat(actual().getCheckedItemIds())
         .asList()
         .contains(itemIds);
     //noinspection unchecked
@@ -58,7 +58,7 @@ public abstract class AbstractAbsListViewSubject<S extends AbstractAbsListViewSu
   }
 
   public S hasCheckedItemPosition(int position) {
-    assertThat(getSubject().getCheckedItemPosition()).isEqualTo(position);
+    assertThat(actual().getCheckedItemPosition()).isEqualTo(position);
     //noinspection unchecked
     return (S) this;
   }
@@ -67,7 +67,7 @@ public abstract class AbstractAbsListViewSubject<S extends AbstractAbsListViewSu
     for (int position : positions) {
       assert_()
           .about(SparseBooleanArraySubject.type())
-          .that(getSubject().getCheckedItemPositions())
+          .that(actual().getCheckedItemPositions())
           .keyIsTrue(position);
     }
     //noinspection unchecked
@@ -79,7 +79,7 @@ public abstract class AbstractAbsListViewSubject<S extends AbstractAbsListViewSu
     assert_()
         .withFailureMessage("Expected to be able to scroll <%s> but cannot.",
             scrollDirectionToString(direction))
-        .that(getSubject().canScrollList(direction))
+        .that(actual().canScrollList(direction))
         .isTrue();
     //noinspection unchecked
     return (S) this;

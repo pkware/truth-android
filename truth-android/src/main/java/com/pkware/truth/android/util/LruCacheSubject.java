@@ -41,55 +41,55 @@ public class LruCacheSubject<K, V> extends Subject<LruCacheSubject<K, V>, LruCac
   }
 
   public LruCacheSubject<K, V> hasEntry(K key) {
-    assertThat(getSubject().snapshot())
+    assertThat(actual().snapshot())
         .containsKey(key);
     return this;
   }
 
   public LruCacheSubject<K, V> hasCreateCount(int count) {
-    assertThat(getSubject().createCount())
+    assertThat(actual().createCount())
         .named("create count")
         .isEqualTo(count);
     return this;
   }
 
   public LruCacheSubject<K, V> hasEvictionCount(int count) {
-    assertThat(getSubject().evictionCount())
+    assertThat(actual().evictionCount())
         .named("eviction count")
         .isEqualTo(count);
     return this;
   }
 
   public LruCacheSubject<K, V> hasHitCount(int count) {
-    assertThat(getSubject().hitCount())
+    assertThat(actual().hitCount())
         .named("hit count")
         .isEqualTo(count);
     return this;
   }
 
   public LruCacheSubject<K, V> hasMaxSize(int size) {
-    assertThat(getSubject().maxSize())
+    assertThat(actual().maxSize())
         .named("max size")
         .isEqualTo(size);
     return this;
   }
 
   public LruCacheSubject<K, V> hasMissCount(int count) {
-    assertThat(getSubject().missCount())
+    assertThat(actual().missCount())
         .named("miss count")
         .isEqualTo(count);
     return this;
   }
 
   public LruCacheSubject<K, V> hasPutCount(int count) {
-    assertThat(getSubject().putCount())
+    assertThat(actual().putCount())
         .named("put count")
         .isEqualTo(count);
     return this;
   }
 
   public LruCacheSubject<K, V> hasSize(int size) {
-    assertThat(getSubject().size())
+    assertThat(actual().size())
         .named("size")
         .isEqualTo(size);
     return this;

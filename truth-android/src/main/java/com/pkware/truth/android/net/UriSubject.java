@@ -42,84 +42,84 @@ public class UriSubject extends Subject<UriSubject, Uri> {
   }
 
   public UriSubject hasPath(String path) {
-    assertThat(getSubject().getPath())
+    assertThat(actual().getPath())
         .named("path")
         .isEqualTo(path);
     return this;
   }
 
   public UriSubject doesNotHavePath() {
-    assertThat(getSubject().getPath())
+    assertThat(actual().getPath())
         .named("path")
         .isNull();
     return this;
   }
 
   public UriSubject hasPort(int port) {
-    assertThat(getSubject().getPort())
+    assertThat(actual().getPort())
         .named("port")
         .isEqualTo(port);
     return this;
   }
 
   public UriSubject hasHost(String host) {
-    assertThat(getSubject().getHost())
+    assertThat(actual().getHost())
         .named("host")
         .isEqualTo(host);
     return this;
   }
 
   public UriSubject hasFragment(String fragment) {
-    assertThat(getSubject().getFragment())
+    assertThat(actual().getFragment())
         .named("fragment")
         .isEqualTo(fragment);
     return this;
   }
 
   public UriSubject doesNotHaveFragment() {
-    assertThat(getSubject().getFragment())
+    assertThat(actual().getFragment())
         .named("fragment")
         .isNull();
     return this;
   }
 
   public UriSubject hasQuery(String query) {
-    assertThat(getSubject().getQuery())
+    assertThat(actual().getQuery())
         .named("query")
         .isEqualTo(query);
     return this;
   }
 
   public UriSubject doesNotHaveQuery() {
-    assertThat(getSubject().getQuery())
+    assertThat(actual().getQuery())
         .named("query")
         .isNull();
     return this;
   }
 
   public UriSubject hasScheme(String scheme) {
-    assertThat(getSubject().getScheme())
+    assertThat(actual().getScheme())
         .named("scheme")
         .isEqualTo(scheme);
     return this;
   }
 
   public UriSubject hasUserInfo(String userInfo) {
-    assertThat(getSubject().getUserInfo())
+    assertThat(actual().getUserInfo())
         .named("user info")
         .isEqualTo(userInfo);
     return this;
   }
 
   public UriSubject doesNotHaveUserInfo() {
-    assertThat(getSubject().getUserInfo())
+    assertThat(actual().getUserInfo())
         .named("user info")
         .isNull();
     return this;
   }
 
   public UriSubject isEqualTo(Uri uri) {
-    assertThat(getSubject().toString())
+    assertThat(actual().toString())
         .isEqualTo(uri.toString());
     return this;
   }

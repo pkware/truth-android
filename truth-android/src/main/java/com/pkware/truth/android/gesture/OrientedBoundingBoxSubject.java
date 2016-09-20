@@ -41,7 +41,7 @@ public class OrientedBoundingBoxSubject extends Subject<OrientedBoundingBoxSubje
   }
 
   public OrientedBoundingBoxSubject hasCenterX(float centerX, float tolerance) {
-    assertThat(getSubject().centerX)
+    assertThat(actual().centerX)
         .named("X center")
         .isWithin(tolerance)
         .of(centerX);
@@ -49,7 +49,7 @@ public class OrientedBoundingBoxSubject extends Subject<OrientedBoundingBoxSubje
   }
 
   public OrientedBoundingBoxSubject hasCenterY(float centerY, float tolerance) {
-    assertThat(getSubject().centerY)
+    assertThat(actual().centerY)
         .named("Y center")
         .isWithin(tolerance)
         .of(centerY);
@@ -57,7 +57,7 @@ public class OrientedBoundingBoxSubject extends Subject<OrientedBoundingBoxSubje
   }
 
   public OrientedBoundingBoxSubject hasHeight(float height, float tolerance) {
-    assertThat(getSubject().height)
+    assertThat(actual().height)
         .named("height")
         .isWithin(tolerance)
         .of(height);
@@ -65,7 +65,7 @@ public class OrientedBoundingBoxSubject extends Subject<OrientedBoundingBoxSubje
   }
 
   public OrientedBoundingBoxSubject hasOrientation(float orientation, float tolerance) {
-    assertThat(getSubject().orientation)
+    assertThat(actual().orientation)
         .named("orientation")
         .isWithin(tolerance)
         .of(orientation);
@@ -73,7 +73,7 @@ public class OrientedBoundingBoxSubject extends Subject<OrientedBoundingBoxSubje
   }
 
   public OrientedBoundingBoxSubject hasSquareness(float squareness, float tolerance) {
-    assertThat(getSubject().squareness)
+    assertThat(actual().squareness)
         .named("squareness")
         .isWithin(tolerance)
         .of(squareness);
@@ -81,7 +81,7 @@ public class OrientedBoundingBoxSubject extends Subject<OrientedBoundingBoxSubje
   }
 
   public OrientedBoundingBoxSubject hasWidth(float width, float tolerance) {
-    assertThat(getSubject().width)
+    assertThat(actual().width)
         .named("width")
         .isWithin(tolerance)
         .of(width);

@@ -15,6 +15,9 @@
  */
 package com.pkware.truth.android.content;
 
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Objects;
+
 public class ContentValuesEntry {
   private final String key;
   private final Object value;
@@ -38,28 +41,29 @@ public class ContentValuesEntry {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
 
     ContentValuesEntry that = (ContentValuesEntry) o;
 
-    if (key != null ? !key.equals(that.key) : that.key != null) return false;
-    return value != null ? value.equals(that.value) : that.value == null;
+    return Objects.equal(key, that.key) && Objects.equal(value, that.value);
 
   }
 
   @Override
   public int hashCode() {
-    int result = key != null ? key.hashCode() : 0;
-    result = 31 * result + (value != null ? value.hashCode() : 0);
-    return result;
+    return Objects.hashCode(key, value);
   }
 
   @Override
   public String toString() {
-    return "ContentValuesEntry{" +
-        "key='" + key + '\'' +
-        ", value=" + value +
-        '}';
+    return MoreObjects.toStringHelper(ContentValuesEntry.class)
+        .add("key", key)
+        .add("value", value)
+        .toString();
   }
 }

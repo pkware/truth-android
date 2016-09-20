@@ -40,21 +40,21 @@ public class TabWidgetSubject extends AbstractLinearLayoutSubject<TabWidgetSubje
   }
 
   public TabWidgetSubject hasTabCount(int count) {
-    assertThat(getSubject().getTabCount())
+    assertThat(actual().getTabCount())
         .named("tab count")
         .isEqualTo(count);
     return this;
   }
 
   public TabWidgetSubject isStripEnabled() {
-    assertThat(getSubject().isStripEnabled())
+    assertThat(actual().isStripEnabled())
         .named("is strip enabled")
         .isTrue();
     return this;
   }
 
   public TabWidgetSubject isStripDisabled() {
-    assertThat(!getSubject().isStripEnabled())
+    assertThat(!actual().isStripEnabled())
         .named("is strip disabled")
         .isTrue();
     return this;

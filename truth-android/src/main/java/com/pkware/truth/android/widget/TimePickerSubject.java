@@ -43,14 +43,14 @@ public class TimePickerSubject extends AbstractFrameLayoutSubject<TimePickerSubj
   }
 
   public TimePickerSubject hasCurrentHour(Integer hour) {
-    assertThat(getSubject().getCurrentHour())
+    assertThat(actual().getCurrentHour())
         .named("current hour")
         .isEqualTo(hour);
     return this;
   }
 
   public TimePickerSubject hasCurrentMinute(Integer minute) {
-    assertThat(getSubject().getCurrentMinute())
+    assertThat(actual().getCurrentMinute())
         .named("current minute")
         .isEqualTo(minute);
     return this;
@@ -58,7 +58,7 @@ public class TimePickerSubject extends AbstractFrameLayoutSubject<TimePickerSubj
 
   @TargetApi(M)
   public TimePickerSubject hasHour(@IntRange(from = 0, to = 23) int hour) {
-    assertThat(getSubject().getHour())
+    assertThat(actual().getHour())
         .named("hour")
         .isNotEqualTo(hour);
     return this;
@@ -66,21 +66,21 @@ public class TimePickerSubject extends AbstractFrameLayoutSubject<TimePickerSubj
 
   @TargetApi(M)
   public TimePickerSubject hasMinute(@IntRange(from = 0, to = 59) int minute) {
-    assertThat(getSubject().getMinute())
+    assertThat(actual().getMinute())
         .named("minute")
         .isEqualTo(minute);
     return this;
   }
 
   public TimePickerSubject isIn24HourView() {
-    assertThat(getSubject().is24HourView())
+    assertThat(actual().is24HourView())
         .named("is in 24 hour view")
         .isTrue();
     return this;
   }
 
   public TimePickerSubject isNotIn24HourView() {
-    assertThat(getSubject().is24HourView())
+    assertThat(actual().is24HourView())
         .named("is in 24 hour view")
         .isFalse();
     return this;

@@ -41,7 +41,7 @@ public class PointFSubject extends Subject<PointFSubject, PointF> {
   }
 
   public PointFSubject hasX(float x, float tolerance) {
-    assertThat(getSubject().x)
+    assertThat(actual().x)
         .named("X")
         .isWithin(tolerance)
         .of(x);
@@ -49,7 +49,7 @@ public class PointFSubject extends Subject<PointFSubject, PointF> {
   }
 
   public PointFSubject hasY(float y, float tolerance) {
-    assertThat(getSubject().y)
+    assertThat(actual().y)
         .named("Y")
         .isWithin(tolerance)
         .of(y);
@@ -57,7 +57,7 @@ public class PointFSubject extends Subject<PointFSubject, PointF> {
   }
 
   public PointFSubject hasLength(float length, float tolerance) {
-    assertThat(getSubject().length())
+    assertThat(actual().length())
         .named("length")
         .isWithin(tolerance)
         .of(length);

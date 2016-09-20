@@ -86,28 +86,28 @@ public class NotificationSubject extends Subject<NotificationSubject, Notificati
   }
 
   public NotificationSubject hasContentIntent(PendingIntent intent) {
-    assertThat(getSubject().contentIntent)
+    assertThat(actual().contentIntent)
         .named("content intent")
         .isEqualTo(intent);
     return this;
   }
 
   public NotificationSubject hasDefaults(int defaults) {
-    assertThat(getSubject().defaults)
+    assertThat(actual().defaults)
         .named("defaults")
         .isEqualTo(defaults);
     return this;
   }
 
   public NotificationSubject hasDeleteIntent(PendingIntent intent) {
-    assertThat(getSubject().deleteIntent)
+    assertThat(actual().deleteIntent)
         .named("delete intent")
         .isEqualTo(intent);
     return this;
   }
 
   public NotificationSubject hasFlags(@NotificationFlags int flags) {
-    int actualFlags = getSubject().flags;
+    int actualFlags = actual().flags;
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected flags <%s> but was <%s>.", flagsToString(flags), flagsToString(actualFlags & flags))
@@ -117,7 +117,7 @@ public class NotificationSubject extends Subject<NotificationSubject, Notificati
   }
 
   public NotificationSubject hasOnlyFlags(@NotificationFlags int flags) {
-    int actualFlags = getSubject().flags;
+    int actualFlags = actual().flags;
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected flags <%s> but was <%s>.", flagsToString(flags), flagsToString(actualFlags))
@@ -127,7 +127,7 @@ public class NotificationSubject extends Subject<NotificationSubject, Notificati
   }
 
   public NotificationSubject hasFullScreenIntent(PendingIntent intent) {
-    assertThat(getSubject().fullScreenIntent)
+    assertThat(actual().fullScreenIntent)
         .named("full screen intent")
         .isEqualTo(intent);
     return this;
@@ -135,35 +135,35 @@ public class NotificationSubject extends Subject<NotificationSubject, Notificati
 
   @TargetApi(KITKAT_WATCH)
   public NotificationSubject hasGroup(String group) {
-    assertThat(getSubject().getGroup())
+    assertThat(actual().getGroup())
         .named("group")
         .isEqualTo(group);
     return this;
   }
 
   public NotificationSubject hasIcon(@DrawableRes int resId) {
-    assertThat(getSubject().icon)
+    assertThat(actual().icon)
         .named("icon")
         .isEqualTo(resId);
     return this;
   }
 
   public NotificationSubject hasIconLevel(int level) {
-    assertThat(getSubject().iconLevel)
+    assertThat(actual().iconLevel)
         .named("icon level")
         .isEqualTo(level);
     return this;
   }
 
   public NotificationSubject hasLargeIcon(Bitmap bitmap) {
-    assertThat(getSubject().largeIcon)
+    assertThat(actual().largeIcon)
         .named("large icon")
         .isEqualTo(bitmap);
     return this;
   }
 
   public NotificationSubject hasLedColor(int color) {
-    int actualColor = getSubject().ledARGB;
+    int actualColor = actual().ledARGB;
     assert_()
         .withFailureMessage("Expected LED color <%s> but was <%s>.", Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
@@ -172,21 +172,21 @@ public class NotificationSubject extends Subject<NotificationSubject, Notificati
   }
 
   public NotificationSubject hasLedOffMs(int length) {
-    assertThat(getSubject().ledOffMS)
+    assertThat(actual().ledOffMS)
         .named("LED off time (ms)")
         .isEqualTo(length);
     return this;
   }
 
   public NotificationSubject hasLedOnMs(int length) {
-    assertThat(getSubject().ledOnMS)
+    assertThat(actual().ledOnMS)
         .named("LED on time (ms)")
         .isEqualTo(length);
     return this;
   }
 
   public NotificationSubject hasNumber(int number) {
-    assertThat(getSubject().number)
+    assertThat(actual().number)
         .named("number")
         .isEqualTo(number);
     return this;
@@ -194,7 +194,7 @@ public class NotificationSubject extends Subject<NotificationSubject, Notificati
 
   @TargetApi(JELLY_BEAN)
   public NotificationSubject hasPriority(@NotificationPriority int priority) {
-    int actualPriority = getSubject().priority;
+    int actualPriority = actual().priority;
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected priority <%s> but was <%s>.", priorityToString(priority), priorityToString(actualPriority))
@@ -205,21 +205,21 @@ public class NotificationSubject extends Subject<NotificationSubject, Notificati
 
   @TargetApi(KITKAT_WATCH)
   public NotificationSubject hasSortKey(String sortKey) {
-    assertThat(getSubject().getSortKey())
+    assertThat(actual().getSortKey())
         .named("sort key")
         .isEqualTo(sortKey);
     return this;
   }
 
   public NotificationSubject hasTickerText(CharSequence text) {
-    assertThat(getSubject().tickerText)
+    assertThat(actual().tickerText)
         .named("ticker text")
         .isEqualTo(text);
     return this;
   }
 
   public NotificationSubject hasVibration(long[] vibration) {
-    assertThat(getSubject().vibrate)
+    assertThat(actual().vibrate)
         .named("vibration")
         .asList()
         .containsExactly(vibration);
@@ -227,7 +227,7 @@ public class NotificationSubject extends Subject<NotificationSubject, Notificati
   }
 
   public NotificationSubject hasWhen(long when) {
-    assertThat(getSubject().when)
+    assertThat(actual().when)
         .named("when")
         .isEqualTo(when);
     return this;

@@ -45,7 +45,7 @@ public class SpinnerSubject extends AbstractAbsSpinnerSubject<SpinnerSubject, Sp
 
   @TargetApi(JELLY_BEAN)
   public SpinnerSubject hasDropDownHorizontalOffset(int offset) {
-    assertThat(getSubject().getDropDownHorizontalOffset())
+    assertThat(actual().getDropDownHorizontalOffset())
         .named("rop-down horizontal offset")
         .isEqualTo(offset);
     return this;
@@ -53,7 +53,7 @@ public class SpinnerSubject extends AbstractAbsSpinnerSubject<SpinnerSubject, Sp
 
   @TargetApi(JELLY_BEAN)
   public SpinnerSubject hasDropDownVerticalOffset(int offset) {
-    assertThat(getSubject().getDropDownVerticalOffset())
+    assertThat(actual().getDropDownVerticalOffset())
         .named("drop-down vertical offset")
         .isEqualTo(offset);
     return this;
@@ -61,7 +61,7 @@ public class SpinnerSubject extends AbstractAbsSpinnerSubject<SpinnerSubject, Sp
 
   @TargetApi(JELLY_BEAN)
   public SpinnerSubject hasDropDownWidth(int width) {
-    assertThat(getSubject().getDropDownWidth())
+    assertThat(actual().getDropDownWidth())
         .named("drop-down width")
         .isEqualTo(width);
     return this;
@@ -69,7 +69,7 @@ public class SpinnerSubject extends AbstractAbsSpinnerSubject<SpinnerSubject, Sp
 
   @TargetApi(JELLY_BEAN)
   public SpinnerSubject hasGravity(int gravity) {
-    assertThat(getSubject().getGravity())
+    assertThat(actual().getGravity())
         .named("gravity")
         .isEqualTo(gravity);
     return this;
@@ -77,20 +77,20 @@ public class SpinnerSubject extends AbstractAbsSpinnerSubject<SpinnerSubject, Sp
 
   @TargetApi(JELLY_BEAN)
   public SpinnerSubject hasPopupBackground(Drawable background) {
-    assertThat(getSubject().getPopupBackground())
+    assertThat(actual().getPopupBackground())
         .named("popup background")
         .isSameAs(background);
     return this;
   }
 
   public SpinnerSubject hasPrompt(String text) {
-    assertThat(getSubject().getPrompt().toString())
+    assertThat(actual().getPrompt().toString())
         .named("prompt")
         .isEqualTo(text);
     return this;
   }
 
   public SpinnerSubject hasPrompt(@StringRes int resId) {
-    return hasPrompt(getSubject().getContext().getString(resId));
+    return hasPrompt(actual().getContext().getString(resId));
   }
 }

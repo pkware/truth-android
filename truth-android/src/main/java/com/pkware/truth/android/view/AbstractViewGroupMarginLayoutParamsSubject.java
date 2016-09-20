@@ -29,7 +29,7 @@ public abstract class AbstractViewGroupMarginLayoutParamsSubject<S extends Abstr
   }
 
   public S hasBottomMargin(int margin) {
-    assertThat(getSubject().bottomMargin)
+    assertThat(actual().bottomMargin)
         .named("bottom margin")
         .isEqualTo(margin);
     //noinspection unchecked
@@ -37,7 +37,7 @@ public abstract class AbstractViewGroupMarginLayoutParamsSubject<S extends Abstr
   }
 
   public S hasLeftMargin(int margin) {
-    assertThat(getSubject().leftMargin)
+    assertThat(actual().leftMargin)
         .named("left margin")
         .isEqualTo(margin);
     //noinspection unchecked
@@ -45,7 +45,7 @@ public abstract class AbstractViewGroupMarginLayoutParamsSubject<S extends Abstr
   }
 
   public S hasRightMargin(int margin) {
-    assertThat(getSubject().rightMargin)
+    assertThat(actual().rightMargin)
         .named("right margin")
         .isEqualTo(margin);
     //noinspection unchecked
@@ -53,7 +53,7 @@ public abstract class AbstractViewGroupMarginLayoutParamsSubject<S extends Abstr
   }
 
   public S hasTopMargin(int margin) {
-    assertThat(getSubject().topMargin)
+    assertThat(actual().topMargin)
         .named("top margin")
         .isEqualTo(margin);
     //noinspection unchecked

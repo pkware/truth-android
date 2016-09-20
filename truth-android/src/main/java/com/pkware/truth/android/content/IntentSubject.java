@@ -106,21 +106,21 @@ public class IntentSubject extends Subject<IntentSubject, Intent> {
   }
 
   public IntentSubject hasAction(String action) {
-    assertThat(getSubject().getAction())
+    assertThat(actual().getAction())
         .named("action")
         .isEqualTo(action);
     return this;
   }
 
   public IntentSubject hasType(String type) {
-    assertThat(getSubject().getType())
+    assertThat(actual().getType())
         .named("type")
         .isEqualTo(type);
     return this;
   }
 
   public IntentSubject hasExtra(String name) {
-    assertThat(getSubject().hasExtra(name))
+    assertThat(actual().hasExtra(name))
         .named(String.format(Locale.ENGLISH, "has extra <%s>", name))
         .isTrue();
     return this;
@@ -128,14 +128,14 @@ public class IntentSubject extends Subject<IntentSubject, Intent> {
 
   public IntentSubject hasExtra(String name, Object expectedValue) {
     hasExtra(name);
-    Bundle extras = getSubject().getExtras();
+    Bundle extras = actual().getExtras();
     assert_().about(BundleSubject.type()).that(extras)
         .hasValue(name, expectedValue);
     return this;
   }
 
   public IntentSubject hasFlags(@IntentFlags int flags) {
-    int actualFlags = getSubject().getFlags();
+    int actualFlags = actual().getFlags();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected <%s> but was <%s>.", flagsToString(flags), flagsToString(actualFlags))
@@ -150,14 +150,14 @@ public class IntentSubject extends Subject<IntentSubject, Intent> {
 
   public IntentSubject hasData(Uri uri) {
     assert_().about(UriSubject.type())
-        .that(getSubject().getData())
+        .that(actual().getData())
         .named("data")
         .isEqualTo(uri);
     return this;
   }
 
   public IntentSubject hasComponent(ComponentName expected) {
-    ComponentName componentName = getSubject().getComponent();
+    ComponentName componentName = actual().getComponent();
     assert_()
         .withFailureMessage("Expected component name <%s> but was <%s>.", expected.flattenToString(), componentName.flattenToString())
         .that(componentName)

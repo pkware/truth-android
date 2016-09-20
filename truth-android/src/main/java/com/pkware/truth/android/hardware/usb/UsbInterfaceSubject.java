@@ -41,35 +41,35 @@ public class UsbInterfaceSubject extends Subject<UsbInterfaceSubject, UsbInterfa
   }
 
   public UsbInterfaceSubject hasEndpointCount(int count) {
-    assertThat(getSubject().getEndpointCount())
+    assertThat(actual().getEndpointCount())
         .named("endpoint count")
         .isEqualTo(count);
     return this;
   }
 
   public UsbInterfaceSubject hasId(int id) {
-    assertThat(getSubject().getId())
+    assertThat(actual().getId())
         .named("id")
         .isEqualTo(id);
     return this;
   }
 
   public UsbInterfaceSubject hasInterfaceClass(int interfaceClass) {
-    assertThat(getSubject().getInterfaceClass())
+    assertThat(actual().getInterfaceClass())
         .named("interface class")
         .isEqualTo(interfaceClass);
     return this;
   }
 
   public UsbInterfaceSubject hasInterfaceProtocol(int protocol) {
-    assertThat(getSubject().getInterfaceProtocol())
+    assertThat(actual().getInterfaceProtocol())
         .named("interface protocol")
         .isEqualTo(protocol);
     return this;
   }
 
   public UsbInterfaceSubject hasInterfaceSubclass(int subclass) {
-    assertThat(getSubject().getInterfaceSubclass())
+    assertThat(actual().getInterfaceSubclass())
         .named("interface subclass")
         .isEqualTo(subclass);
     return this;

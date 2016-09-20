@@ -28,7 +28,7 @@ public abstract class AbstractDialogSubject<S extends AbstractDialogSubject<S, T
   }
 
   public S isShowing() {
-    assertThat(getSubject().isShowing())
+    assertThat(actual().isShowing())
         .named("is showing")
         .isTrue();
     //noinspection unchecked
@@ -36,7 +36,7 @@ public abstract class AbstractDialogSubject<S extends AbstractDialogSubject<S, T
   }
 
   public S isNotShowing() {
-    assertThat(getSubject().isShowing())
+    assertThat(actual().isShowing())
         .named("is showing")
         .isFalse();
     //noinspection unchecked

@@ -40,14 +40,14 @@ public class RatingBarSubject extends AbstractAbsSeekBarSubject<RatingBarSubject
   }
 
   public RatingBarSubject hasStarCount(int count) {
-    assertThat(getSubject().getNumStars())
+    assertThat(actual().getNumStars())
         .named("star count")
         .isEqualTo(count);
     return this;
   }
 
   public RatingBarSubject hasRating(float rating, float tolerance) {
-    assertThat(getSubject().getRating())
+    assertThat(actual().getRating())
         .named("rating")
         .isWithin(tolerance)
         .of(rating);
@@ -55,7 +55,7 @@ public class RatingBarSubject extends AbstractAbsSeekBarSubject<RatingBarSubject
   }
 
   public RatingBarSubject hasStepSize(float size, float tolerance) {
-    assertThat(getSubject().getStepSize())
+    assertThat(actual().getStepSize())
         .named("step size")
         .isWithin(tolerance)
         .of(size);
@@ -63,14 +63,14 @@ public class RatingBarSubject extends AbstractAbsSeekBarSubject<RatingBarSubject
   }
 
   public RatingBarSubject isIndicator() {
-    assertThat(getSubject().isIndicator())
+    assertThat(actual().isIndicator())
         .named("is indicator")
         .isTrue();
     return this;
   }
 
   public RatingBarSubject isNotIndicator() {
-    assertThat(getSubject().isIndicator())
+    assertThat(actual().isIndicator())
         .named("is indicator")
         .isFalse();
     return this;

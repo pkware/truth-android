@@ -43,7 +43,7 @@ public class LoaderManagerSubject extends Subject<LoaderManagerSubject, LoaderMa
   }
 
   public LoaderManagerSubject hasLoader(int id) {
-    assertThat(getSubject().getLoader(id))
+    assertThat(actual().getLoader(id))
         .named(String.format(Locale.ENGLISH, "loader with id <%d>", id))
         .isNotNull();
     return this;

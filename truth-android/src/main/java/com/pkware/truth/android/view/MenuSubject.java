@@ -42,35 +42,35 @@ public class MenuSubject extends Subject<MenuSubject, Menu> {
   }
 
   public MenuSubject hasItem(@IdRes int id) {
-    assertThat(getSubject().findItem(id))
+    assertThat(actual().findItem(id))
         .named("menu item with ID " + id)
         .isNotNull();
     return this;
   }
 
   public MenuSubject hasItemAt(int index) {
-    assertThat(getSubject().getItem(index))
+    assertThat(actual().getItem(index))
         .named("menu item at index " + index)
         .isNotNull();
     return this;
   }
 
   public MenuSubject hasVisibleItems() {
-    assertThat(getSubject().hasVisibleItems())
+    assertThat(actual().hasVisibleItems())
         .named("has visible items")
         .isTrue();
     return this;
   }
 
   public MenuSubject hasNoVisibleItems() {
-    assertThat(getSubject().hasVisibleItems())
+    assertThat(actual().hasVisibleItems())
         .named("has visible items")
         .isFalse();
     return this;
   }
 
   public MenuSubject hasSize(int size) {
-    assertThat(getSubject().size())
+    assertThat(actual().size())
         .named("size")
         .isEqualTo(size);
     return this;

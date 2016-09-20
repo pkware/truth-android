@@ -40,14 +40,14 @@ public class MediaControllerSubject extends AbstractFrameLayoutSubject<MediaCont
   }
 
   public MediaControllerSubject isShowing() {
-    assertThat(getSubject().isShowing())
+    assertThat(actual().isShowing())
         .named("is showing")
         .isTrue();
     return this;
   }
 
   public MediaControllerSubject isNotShowing() {
-    assertThat(getSubject().isShowing())
+    assertThat(actual().isShowing())
         .named("is showing")
         .isFalse();
     return this;

@@ -33,7 +33,7 @@ public abstract class AbstractSharedPreferencesSubject<S extends AbstractSharedP
   public S hasKey(String key) {
     assert_()
         .withFailureMessage("Expected key <%s> to be present but it was not.", key)
-        .that(getSubject().contains(key))
+        .that(actual().contains(key))
         .isTrue();
     //noinspection unchecked
     return (S) this;
@@ -42,91 +42,91 @@ public abstract class AbstractSharedPreferencesSubject<S extends AbstractSharedP
   public S doesNotHaveKey(String key) {
     assert_()
         .withFailureMessage("Expected key <%s> not to be present but it was.", key)
-        .that(getSubject().contains(key))
+        .that(actual().contains(key))
         .isFalse();
     //noinspection unchecked
     return (S) this;
   }
 
   public S contains(String key, String value) {
-    assertThat(getSubject().getAll())
+    assertThat(actual().getAll())
         .containsEntry(key, value);
     //noinspection unchecked
     return (S) this;
   }
 
   public S doesNotContain(String key, String value) {
-    assertThat(getSubject().getAll())
+    assertThat(actual().getAll())
         .doesNotContainEntry(key, value);
     //noinspection unchecked
     return (S) this;
   }
 
   public S contains(String key, int value) {
-    assertThat(getSubject().getAll())
+    assertThat(actual().getAll())
         .containsEntry(key, value);
     //noinspection unchecked
     return (S) this;
   }
 
   public S doesNotContain(String key, int value) {
-    assertThat(getSubject().getAll())
+    assertThat(actual().getAll())
         .doesNotContainEntry(key, value);
     //noinspection unchecked
     return (S) this;
   }
 
   public S contains(String key, boolean value) {
-    assertThat(getSubject().getAll())
+    assertThat(actual().getAll())
         .containsEntry(key, value);
     //noinspection unchecked
     return (S) this;
   }
 
   public S doesNotContain(String key, boolean value) {
-    assertThat(getSubject().getAll())
+    assertThat(actual().getAll())
         .doesNotContainEntry(key, value);
     //noinspection unchecked
     return (S) this;
   }
 
   public S contains(String key, float value) {
-    assertThat(getSubject().getAll())
+    assertThat(actual().getAll())
         .containsEntry(key, value);
     //noinspection unchecked
     return (S) this;
   }
 
   public S doesNotContain(String key, float value) {
-    assertThat(getSubject().getAll())
+    assertThat(actual().getAll())
         .doesNotContainEntry(key, value);
     //noinspection unchecked
     return (S) this;
   }
 
   public S contains(String key, long value) {
-    assertThat(getSubject().getAll())
+    assertThat(actual().getAll())
         .containsEntry(key, value);
     //noinspection unchecked
     return (S) this;
   }
 
   public S doesNotContain(String key, long value) {
-    assertThat(getSubject().getAll())
+    assertThat(actual().getAll())
         .doesNotContainEntry(key, value);
     //noinspection unchecked
     return (S) this;
   }
 
   public S contains(String key, Set<String> value) {
-    assertThat(getSubject().getAll())
+    assertThat(actual().getAll())
         .containsEntry(key, value);
     //noinspection unchecked
     return (S) this;
   }
 
   public S doesNotContain(String key, Set<String> value) {
-    assertThat(getSubject().getAll())
+    assertThat(actual().getAll())
         .doesNotContainEntry(key, value);
     //noinspection unchecked
     return (S) this;

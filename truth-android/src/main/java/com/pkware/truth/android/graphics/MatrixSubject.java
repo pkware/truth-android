@@ -41,14 +41,14 @@ public class MatrixSubject extends Subject<MatrixSubject, Matrix> {
   }
 
   public MatrixSubject isIdentity() {
-    assertThat(getSubject().isIdentity())
+    assertThat(actual().isIdentity())
         .named("is identity matrix")
         .isTrue();
     return this;
   }
 
   public MatrixSubject isNotIdentity() {
-    assertThat(getSubject().isIdentity())
+    assertThat(actual().isIdentity())
         .named("is identity matrix")
         .isTrue();
     return this;

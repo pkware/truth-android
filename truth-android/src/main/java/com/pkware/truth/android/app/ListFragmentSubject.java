@@ -40,14 +40,14 @@ public class ListFragmentSubject extends AbstractFragmentSubject<ListFragmentSub
   }
 
   public ListFragmentSubject hasSelectedItemId(long id) {
-    assertThat(getSubject().getSelectedItemId())
+    assertThat(actual().getSelectedItemId())
         .named("selected item id")
         .isEqualTo(id);
     return this;
   }
 
   public ListFragmentSubject hasSelectedItemPosition(int position) {
-    assertThat(getSubject().getSelectedItemPosition())
+    assertThat(actual().getSelectedItemPosition())
         .named("selected item position")
         .isEqualTo(position);
     return this;

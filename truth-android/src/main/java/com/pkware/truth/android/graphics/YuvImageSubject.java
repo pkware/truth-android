@@ -41,21 +41,21 @@ public class YuvImageSubject extends Subject<YuvImageSubject, YuvImage> {
   }
 
   public YuvImageSubject hasHeight(int height) {
-    assertThat(getSubject().getHeight())
+    assertThat(actual().getHeight())
         .named("height")
         .isEqualTo(height);
     return this;
   }
 
   public YuvImageSubject hasWidth(int width) {
-    assertThat(getSubject().getWidth())
+    assertThat(actual().getWidth())
         .named("width")
         .isEqualTo(width);
     return this;
   }
 
   public YuvImageSubject hasYuvFormat(int format) {
-    assertThat(getSubject().getYuvFormat())
+    assertThat(actual().getYuvFormat())
         .named("YUV format")
         .isEqualTo(format);
     return this;

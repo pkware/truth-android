@@ -42,14 +42,14 @@ public class ViewTreeObserverSubject extends Subject<ViewTreeObserverSubject, Vi
   }
 
   public ViewTreeObserverSubject isAlive() {
-    assertThat(getSubject().isAlive())
+    assertThat(actual().isAlive())
         .named("is alive")
         .isTrue();
     return this;
   }
 
   public ViewTreeObserverSubject isNotAlive() {
-    assertThat(getSubject().isAlive())
+    assertThat(actual().isAlive())
         .named("is alive")
         .isFalse();
     return this;

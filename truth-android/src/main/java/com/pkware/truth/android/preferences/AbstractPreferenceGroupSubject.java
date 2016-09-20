@@ -28,7 +28,7 @@ public abstract class AbstractPreferenceGroupSubject<S extends AbstractPreferenc
   }
 
   public S hasPreferenceCount(int count) {
-    assertThat(getSubject().getPreferenceCount())
+    assertThat(actual().getPreferenceCount())
         .named("preference count")
         .isEqualTo(count);
     //noinspection unchecked
@@ -36,7 +36,7 @@ public abstract class AbstractPreferenceGroupSubject<S extends AbstractPreferenc
   }
 
   public S isOrderingAsAdded() {
-    assertThat(getSubject().isOrderingAsAdded())
+    assertThat(actual().isOrderingAsAdded())
         .named("is ordering as added")
         .isTrue();
     //noinspection unchecked
@@ -44,7 +44,7 @@ public abstract class AbstractPreferenceGroupSubject<S extends AbstractPreferenc
   }
 
   public S isNotOrderingAsAdded() {
-    assertThat(getSubject().isOrderingAsAdded())
+    assertThat(actual().isOrderingAsAdded())
         .named("is ordering as added")
         .isFalse();
     //noinspection unchecked

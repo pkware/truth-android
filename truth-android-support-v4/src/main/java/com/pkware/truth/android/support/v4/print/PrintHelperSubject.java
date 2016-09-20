@@ -69,7 +69,7 @@ public class PrintHelperSubject extends Subject<PrintHelperSubject, PrintHelper>
   }
 
   public PrintHelperSubject hasColorMode(@PrintHelperColorMode int colorMode) {
-    int actualColorMode = getSubject().getColorMode();
+    int actualColorMode = actual().getColorMode();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected color mode <%s> but was <%s>.",
@@ -80,7 +80,7 @@ public class PrintHelperSubject extends Subject<PrintHelperSubject, PrintHelper>
   }
 
   public PrintHelperSubject hasOrientation(@PrintHelperOrientation int orientation) {
-    int actualOrientation = getSubject().getOrientation();
+    int actualOrientation = actual().getOrientation();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected orientation <%s> but was <%s>.",
@@ -91,7 +91,7 @@ public class PrintHelperSubject extends Subject<PrintHelperSubject, PrintHelper>
   }
 
   public PrintHelperSubject hasScaleMode(@PrintHelperScaleMode int scaleMode) {
-    int actualScaleMode = getSubject().getScaleMode();
+    int actualScaleMode = actual().getScaleMode();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected scale mode <%s> but was <%s>.",

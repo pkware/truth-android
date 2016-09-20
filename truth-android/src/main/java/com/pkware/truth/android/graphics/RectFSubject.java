@@ -41,7 +41,7 @@ public class RectFSubject extends Subject<RectFSubject, RectF> {
   }
 
   public RectFSubject hasBottom(float bottom, float tolerance) {
-    assertThat(getSubject().bottom)
+    assertThat(actual().bottom)
         .named("bottom")
         .isWithin(tolerance)
         .of(bottom);
@@ -49,7 +49,7 @@ public class RectFSubject extends Subject<RectFSubject, RectF> {
   }
 
   public RectFSubject hasLeft(float left, float tolerance) {
-    assertThat(getSubject().left)
+    assertThat(actual().left)
         .named("left")
         .isWithin(tolerance)
         .of(left);
@@ -57,7 +57,7 @@ public class RectFSubject extends Subject<RectFSubject, RectF> {
   }
 
   public RectFSubject hasRight(float right, float tolerance) {
-    assertThat(getSubject().right)
+    assertThat(actual().right)
         .named("right")
         .isWithin(tolerance)
         .of(right);
@@ -65,7 +65,7 @@ public class RectFSubject extends Subject<RectFSubject, RectF> {
   }
 
   public RectFSubject hasTop(float top, float tolerance) {
-    assertThat(getSubject().top)
+    assertThat(actual().top)
         .named("top")
         .isWithin(tolerance)
         .of(top);
@@ -73,7 +73,7 @@ public class RectFSubject extends Subject<RectFSubject, RectF> {
   }
 
   public RectFSubject hasCenterX(float center, float tolerance) {
-    assertThat(getSubject().centerX())
+    assertThat(actual().centerX())
         .named("X center")
         .isWithin(tolerance)
         .of(center);
@@ -81,7 +81,7 @@ public class RectFSubject extends Subject<RectFSubject, RectF> {
   }
 
   public RectFSubject hasCenterY(float center, float tolerance) {
-    assertThat(getSubject().centerY())
+    assertThat(actual().centerY())
         .named("Y center")
         .isWithin(tolerance)
         .of(center);
@@ -89,7 +89,7 @@ public class RectFSubject extends Subject<RectFSubject, RectF> {
   }
 
   public RectFSubject hasHeight(float height, float tolerance) {
-    assertThat(getSubject().height())
+    assertThat(actual().height())
         .named("height")
         .isWithin(tolerance)
         .of(height);
@@ -97,21 +97,21 @@ public class RectFSubject extends Subject<RectFSubject, RectF> {
   }
 
   public RectFSubject isEmpty() {
-    assertThat(getSubject().isEmpty())
+    assertThat(actual().isEmpty())
         .named("is empty")
         .isTrue();
     return this;
   }
 
   public RectFSubject isNotEmpty() {
-    assertThat(getSubject().isEmpty())
+    assertThat(actual().isEmpty())
         .named("is empty")
         .isFalse();
     return this;
   }
 
   public RectFSubject hasWidth(float width, float tolerance) {
-    assertThat(getSubject().width())
+    assertThat(actual().width())
         .named("width")
         .isWithin(tolerance)
         .of(width);

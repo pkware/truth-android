@@ -64,7 +64,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S hasAscent(float ascent, float tolerance) {
-    assertThat(getSubject().ascent())
+    assertThat(actual().ascent())
         .named("ascent")
         .isWithin(tolerance)
         .of(ascent);
@@ -73,7 +73,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S hasDescent(float descent, float tolerance) {
-    assertThat(getSubject().descent())
+    assertThat(actual().descent())
         .named("descent")
         .isWithin(tolerance)
         .of(descent);
@@ -82,7 +82,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S hasAlpha(int alpha) {
-    assertThat(getSubject().getAlpha())
+    assertThat(actual().getAlpha())
         .named("alpha")
         .isEqualTo(alpha);
     //noinspection unchecked
@@ -90,7 +90,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S hasColor(int color) {
-    int actualColor = getSubject().getColor();
+    int actualColor = actual().getColor();
     assert_()
         .withFailureMessage("Expected color <%s> but was <%s>.", Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
@@ -100,7 +100,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S hasFlags(@PaintFlags int flags) {
-    int actualFlags = getSubject().getFlags();
+    int actualFlags = actual().getFlags();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected flags <%s> but was <%s>.", flagsToString(flags), flagsToString(actualFlags))
@@ -111,7 +111,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S hasFontSpacing(float spacing, float tolerance) {
-    assertThat(getSubject().getFontSpacing())
+    assertThat(actual().getFontSpacing())
         .named("font spacing")
         .isWithin(tolerance)
         .of(spacing);
@@ -120,7 +120,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S hasHinting(int hinting) {
-    assertThat(getSubject().getHinting())
+    assertThat(actual().getHinting())
         .named("hinting")
         .isEqualTo(hinting);
     //noinspection unchecked
@@ -128,7 +128,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S hasMaskFilter(MaskFilter filter) {
-    assertThat(getSubject().getMaskFilter())
+    assertThat(actual().getMaskFilter())
         .named("mask filter")
         .isSameAs(filter);
     //noinspection unchecked
@@ -136,7 +136,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S hasPathEffect(PathEffect effect) {
-    assertThat(getSubject().getPathEffect())
+    assertThat(actual().getPathEffect())
         .named("path effect")
         .isSameAs(effect);
     //noinspection unchecked
@@ -144,7 +144,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S hasRasterizer(Rasterizer rasterizer) {
-    assertThat(getSubject().getRasterizer())
+    assertThat(actual().getRasterizer())
         .named("rasterizer")
         .isSameAs(rasterizer);
     //noinspection unchecked
@@ -152,7 +152,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S hasShader(Shader shader) {
-    assertThat(getSubject().getShader())
+    assertThat(actual().getShader())
         .named("shader")
         .isSameAs(shader);
     //noinspection unchecked
@@ -160,7 +160,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S hasStrokeCap(Paint.Cap cap) {
-    assertThat(getSubject().getStrokeCap())
+    assertThat(actual().getStrokeCap())
         .named("stroke cap")
         .isEqualTo(cap);
     //noinspection unchecked
@@ -168,7 +168,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S hasStrokeJoin(Paint.Join join) {
-    assertThat(getSubject().getStrokeJoin())
+    assertThat(actual().getStrokeJoin())
         .named("stroke join")
         .isEqualTo(join);
     //noinspection unchecked
@@ -176,7 +176,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S hasStrokeMiter(float miter, float tolerance) {
-    assertThat(getSubject().getStrokeMiter())
+    assertThat(actual().getStrokeMiter())
         .named("stroke miter")
         .isWithin(tolerance)
         .of(miter);
@@ -185,7 +185,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S hasStrokeWidth(float width, float tolerance) {
-    assertThat(getSubject().getStrokeWidth())
+    assertThat(actual().getStrokeWidth())
         .named("stroke width")
         .isWithin(tolerance)
         .of(width);
@@ -194,7 +194,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S hasStyle(Paint.Style style) {
-    assertThat(getSubject().getStyle())
+    assertThat(actual().getStyle())
         .named("style")
         .isEqualTo(style);
     //noinspection unchecked
@@ -202,7 +202,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S hasTextAlign(Paint.Align align) {
-    assertThat(getSubject().getTextAlign())
+    assertThat(actual().getTextAlign())
         .named("text align")
         .isEqualTo(align);
     //noinspection unchecked
@@ -211,7 +211,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
 
   @TargetApi(JELLY_BEAN_MR1)
   public S hasTextLocale(Locale locale) {
-    assertThat(getSubject().getTextLocale())
+    assertThat(actual().getTextLocale())
         .named("text locale")
         .isEqualTo(locale);
     //noinspection unchecked
@@ -219,7 +219,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S hasTextScaleX(float scale, float tolerance) {
-    assertThat(getSubject().getTextScaleX())
+    assertThat(actual().getTextScaleX())
         .named("text X scale")
         .isWithin(tolerance)
         .of(scale);
@@ -228,7 +228,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S hasTextSize(float size, float tolerance) {
-    assertThat(getSubject().getTextSize())
+    assertThat(actual().getTextSize())
         .named("text size")
         .isWithin(tolerance)
         .of(size);
@@ -237,7 +237,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S hasTextSkewX(float skew, float tolerance) {
-    assertThat(getSubject().getTextSkewX())
+    assertThat(actual().getTextSkewX())
         .named("text X skew")
         .isWithin(tolerance)
         .of(skew);
@@ -246,7 +246,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S hasTypeface(Typeface typeface) {
-    assertThat(getSubject().getTypeface())
+    assertThat(actual().getTypeface())
         .named("typeface")
         .isSameAs(typeface);
     //noinspection unchecked
@@ -254,7 +254,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S isAntiAliased() {
-    assertThat(getSubject().isAntiAlias())
+    assertThat(actual().isAntiAlias())
         .named("is anti-aliased")
         .isTrue();
     //noinspection unchecked
@@ -262,7 +262,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S isNotAntiAliased() {
-    assertThat(getSubject().isAntiAlias())
+    assertThat(actual().isAntiAlias())
         .named("is anti-aliased")
         .isFalse();
     //noinspection unchecked
@@ -270,7 +270,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S isDithering() {
-    assertThat(getSubject().isDither())
+    assertThat(actual().isDither())
         .named("is dithering")
         .isTrue();
     //noinspection unchecked
@@ -278,7 +278,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S isNotDithering() {
-    assertThat(getSubject().isDither())
+    assertThat(actual().isDither())
         .named("is dithering")
         .isFalse();
     //noinspection unchecked
@@ -286,7 +286,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S isFakingBoldText() {
-    assertThat(getSubject().isFakeBoldText())
+    assertThat(actual().isFakeBoldText())
         .named("is faking bold text")
         .isTrue();
     //noinspection unchecked
@@ -294,7 +294,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S isNotFakingBoldText() {
-    assertThat(getSubject().isFakeBoldText())
+    assertThat(actual().isFakeBoldText())
         .named("is faking bold text")
         .isFalse();
     //noinspection unchecked
@@ -302,7 +302,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S isStrikingThroughText() {
-    assertThat(getSubject().isStrikeThruText())
+    assertThat(actual().isStrikeThruText())
         .named("is striking through text")
         .isTrue();
     //noinspection unchecked
@@ -310,7 +310,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S isNotStrikingThroughText() {
-    assertThat(getSubject().isStrikeThruText())
+    assertThat(actual().isStrikeThruText())
         .named("is striking through text")
         .isFalse();
     //noinspection unchecked
@@ -318,7 +318,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S isSubpixelText() {
-    assertThat(getSubject().isSubpixelText())
+    assertThat(actual().isSubpixelText())
         .named("has subpixel text")
         .isTrue();
     //noinspection unchecked
@@ -326,7 +326,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S isNotSubpixelText() {
-    assertThat(getSubject().isSubpixelText())
+    assertThat(actual().isSubpixelText())
         .named("has subpixel text")
         .isFalse();
     //noinspection unchecked
@@ -334,7 +334,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S isUnderliningText() {
-    assertThat(getSubject().isUnderlineText())
+    assertThat(actual().isUnderlineText())
         .named("is underlining text")
         .isTrue();
     //noinspection unchecked
@@ -342,7 +342,7 @@ public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extend
   }
 
   public S isNotUnderliningText() {
-    assertThat(getSubject().isUnderlineText())
+    assertThat(actual().isUnderlineText())
         .named("is underlining text")
         .isFalse();
     //noinspection unchecked

@@ -30,7 +30,7 @@ public abstract class AbstractAnimatorSubject<S extends AbstractAnimatorSubject<
   }
 
   public S hasDuration(long duration) {
-    assertThat(getSubject().getDuration())
+    assertThat(actual().getDuration())
         .named("duration")
         .isEqualTo(duration);
     //noinspection unchecked
@@ -38,7 +38,7 @@ public abstract class AbstractAnimatorSubject<S extends AbstractAnimatorSubject<
   }
 
   public S hasListener(Animator.AnimatorListener listener) {
-    assertThat(getSubject().getListeners())
+    assertThat(actual().getListeners())
         .named("listeners")
         .contains(listener);
     //noinspection unchecked
@@ -46,7 +46,7 @@ public abstract class AbstractAnimatorSubject<S extends AbstractAnimatorSubject<
   }
 
   public S hasStartDelay(long delay) {
-    assertThat(getSubject().getStartDelay())
+    assertThat(actual().getStartDelay())
         .named("start delay")
         .isEqualTo(delay);
     //noinspection unchecked
@@ -55,7 +55,7 @@ public abstract class AbstractAnimatorSubject<S extends AbstractAnimatorSubject<
 
   @TargetApi(KITKAT)
   public S isPaused() {
-    assertThat(getSubject().isPaused())
+    assertThat(actual().isPaused())
         .named("is paused")
         .isTrue();
     //noinspection unchecked
@@ -64,7 +64,7 @@ public abstract class AbstractAnimatorSubject<S extends AbstractAnimatorSubject<
 
   @TargetApi(KITKAT)
   public S isNotPaused() {
-    assertThat(getSubject().isPaused())
+    assertThat(actual().isPaused())
         .named("is paused")
         .isFalse();
     //noinspection unchecked
@@ -72,7 +72,7 @@ public abstract class AbstractAnimatorSubject<S extends AbstractAnimatorSubject<
   }
 
   public S isRunning() {
-    assertThat(getSubject().isRunning())
+    assertThat(actual().isRunning())
         .named("is running")
         .isTrue();
     //noinspection unchecked
@@ -80,7 +80,7 @@ public abstract class AbstractAnimatorSubject<S extends AbstractAnimatorSubject<
   }
 
   public S isNotRunning() {
-    assertThat(getSubject().isRunning())
+    assertThat(actual().isRunning())
         .named("is running")
         .isFalse();
     //noinspection unchecked
@@ -88,7 +88,7 @@ public abstract class AbstractAnimatorSubject<S extends AbstractAnimatorSubject<
   }
 
   public S isStarted() {
-    assertThat(getSubject().isStarted())
+    assertThat(actual().isStarted())
         .named("is started")
         .isTrue();
     //noinspection unchecked
@@ -96,7 +96,7 @@ public abstract class AbstractAnimatorSubject<S extends AbstractAnimatorSubject<
   }
 
   public S isNotStarted() {
-    assertThat(getSubject().isStarted())
+    assertThat(actual().isStarted())
         .named("is started")
         .isFalse();
     //noinspection unchecked

@@ -72,14 +72,14 @@ public class BluetoothDeviceSubject extends Subject<BluetoothDeviceSubject, Blue
   }
 
   public BluetoothDeviceSubject hasAddress(String address) {
-    assertThat(getSubject().getAddress())
+    assertThat(actual().getAddress())
         .named("address")
         .isEqualTo(address);
     return this;
   }
 
   public BluetoothDeviceSubject hasBondState(@BluetoothDeviceBondState int state) {
-    int actualState = getSubject().getBondState();
+    int actualState = actual().getBondState();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected bond state <%s> but was <%s>.",
@@ -91,7 +91,7 @@ public class BluetoothDeviceSubject extends Subject<BluetoothDeviceSubject, Blue
   }
 
   public BluetoothDeviceSubject hasName(String name) {
-    assertThat(getSubject().getName())
+    assertThat(actual().getName())
         .named("name")
         .isEqualTo(name);
     return this;
@@ -99,7 +99,7 @@ public class BluetoothDeviceSubject extends Subject<BluetoothDeviceSubject, Blue
 
   @TargetApi(JELLY_BEAN_MR2)
   public BluetoothDeviceSubject hasType(@BluetoothDeviceType int type) {
-    int actualType = getSubject().getType();
+    int actualType = actual().getType();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected type <%s> but was <%s>.",

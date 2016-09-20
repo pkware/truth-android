@@ -43,42 +43,42 @@ public class RecyclerViewSmoothScrollerSubject
   }
 
   public RecyclerViewSmoothScrollerSubject isPendingInitialRun() {
-    assertThat(getSubject().isPendingInitialRun())
+    assertThat(actual().isPendingInitialRun())
         .named("is pending initial run")
         .isTrue();
     return this;
   }
 
   public RecyclerViewSmoothScrollerSubject isNotPendingInitialRun() {
-    assertThat(getSubject().isPendingInitialRun())
+    assertThat(actual().isPendingInitialRun())
         .named("is pending initial run")
         .isFalse();
     return this;
   }
 
   public RecyclerViewSmoothScrollerSubject isRunning() {
-    assertThat(getSubject().isRunning())
+    assertThat(actual().isRunning())
         .named("is running")
         .isFalse();
     return this;
   }
 
   public RecyclerViewSmoothScrollerSubject isNotRunning() {
-    assertThat(getSubject().isRunning())
+    assertThat(actual().isRunning())
         .named("is running")
         .isFalse();
     return this;
   }
 
   public RecyclerViewSmoothScrollerSubject hasTargetPosition(int position) {
-    assertThat(getSubject().getTargetPosition())
+    assertThat(actual().getTargetPosition())
         .named("target position")
         .isEqualTo(position);
     return this;
   }
 
   public RecyclerViewSmoothScrollerSubject hasChildCount(int count) {
-    assertThat(getSubject().getChildCount())
+    assertThat(actual().getChildCount())
         .named("child count")
         .isEqualTo(count);
     return this;

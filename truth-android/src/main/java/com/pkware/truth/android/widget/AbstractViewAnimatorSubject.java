@@ -49,7 +49,7 @@ public abstract class AbstractViewAnimatorSubject<S extends AbstractViewAnimator
   }
 
   public S hasDisplayedChild(int index) {
-    assertThat(getSubject().getDisplayedChild())
+    assertThat(actual().getDisplayedChild())
         .named("displayed child index")
         .isEqualTo(index);
     //noinspection unchecked
@@ -57,6 +57,6 @@ public abstract class AbstractViewAnimatorSubject<S extends AbstractViewAnimator
   }
 
   private View getDisplayedView() {
-    return getSubject().getChildAt(getSubject().getDisplayedChild());
+    return actual().getChildAt(actual().getDisplayedChild());
   }
 }

@@ -41,35 +41,35 @@ public class TypefaceSubject extends Subject<TypefaceSubject, Typeface> {
   }
 
   public TypefaceSubject hasStyle(int style) {
-    assertThat(getSubject().getStyle())
+    assertThat(actual().getStyle())
         .named("style")
         .isEqualTo(style);
     return this;
   }
 
   public TypefaceSubject isBold() {
-    assertThat(getSubject().isBold())
+    assertThat(actual().isBold())
         .named("is bold")
         .isTrue();
     return this;
   }
 
   public TypefaceSubject isNotBold() {
-    assertThat(getSubject().isBold())
+    assertThat(actual().isBold())
         .named("is bold")
         .isFalse();
     return this;
   }
 
   public TypefaceSubject isItalic() {
-    assertThat(getSubject().isItalic())
+    assertThat(actual().isItalic())
         .named("is italic")
         .isTrue();
     return this;
   }
 
   public TypefaceSubject isNotItalic() {
-    assertThat(getSubject().isItalic())
+    assertThat(actual().isItalic())
         .named("is italic")
         .isFalse();
     return this;

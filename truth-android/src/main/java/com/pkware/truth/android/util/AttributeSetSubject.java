@@ -41,35 +41,35 @@ public class AttributeSetSubject extends Subject<AttributeSetSubject, AttributeS
   }
 
   public AttributeSetSubject hasAttributeCount(int count) {
-    assertThat(getSubject().getAttributeCount())
+    assertThat(actual().getAttributeCount())
         .named("attribute count")
         .isEqualTo(count);
     return this;
   }
 
   public AttributeSetSubject hasClassAttribute(String value) {
-    assertThat(getSubject().getClassAttribute())
+    assertThat(actual().getClassAttribute())
         .named("class attribute")
         .isEqualTo(value);
     return this;
   }
 
   public AttributeSetSubject hasIdAttribute(String value) {
-    assertThat(getSubject().getIdAttribute())
+    assertThat(actual().getIdAttribute())
         .named("ID attribute")
         .isEqualTo(value);
     return this;
   }
 
   public AttributeSetSubject hasPositionDescription(String position) {
-    assertThat(getSubject().getPositionDescription())
+    assertThat(actual().getPositionDescription())
         .named("position description")
         .isEqualTo(position);
     return this;
   }
 
   public AttributeSetSubject hasStyleAttribute(int value) {
-    assertThat(getSubject().getStyleAttribute())
+    assertThat(actual().getStyleAttribute())
         .named("style attribute")
         .isEqualTo(value);
     return this;

@@ -40,14 +40,14 @@ public class ExpandableListActivitySubject extends AbstractActivitySubject<Expan
   }
 
   public ExpandableListActivitySubject hasSelectedId(long id) {
-    assertThat(getSubject().getSelectedId())
+    assertThat(actual().getSelectedId())
         .named("selected id")
         .isEqualTo(id);
     return this;
   }
 
   public ExpandableListActivitySubject hasSelectedPosition(long position) {
-    assertThat(getSubject().getSelectedPosition())
+    assertThat(actual().getSelectedPosition())
         .named("selected position")
         .isEqualTo(position);
     return this;

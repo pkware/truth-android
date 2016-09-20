@@ -41,28 +41,28 @@ public class BitmapRegionDecoderSubject extends Subject<BitmapRegionDecoderSubje
   }
 
   public BitmapRegionDecoderSubject hasHeight(int height) {
-    assertThat(getSubject().getHeight())
+    assertThat(actual().getHeight())
         .named("height")
         .isEqualTo(height);
     return this;
   }
 
   public BitmapRegionDecoderSubject hasWidth(int width) {
-    assertThat(getSubject().getWidth())
+    assertThat(actual().getWidth())
         .named("width")
         .isEqualTo(width);
     return this;
   }
 
   public BitmapRegionDecoderSubject isRecycled() {
-    assertThat(getSubject().isRecycled())
+    assertThat(actual().isRecycled())
         .named("is recycled")
         .isTrue();
     return this;
   }
 
   public BitmapRegionDecoderSubject isNotRecycled() {
-    assertThat(getSubject().isRecycled())
+    assertThat(actual().isRecycled())
         .named("is recycled")
         .isFalse();
     return this;

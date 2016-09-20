@@ -43,49 +43,49 @@ public class RecyclerViewLayoutParamsSubject
   }
 
   public RecyclerViewLayoutParamsSubject viewNeedsUpdate() {
-    assertThat(getSubject().viewNeedsUpdate())
+    assertThat(actual().viewNeedsUpdate())
         .named("view needs update")
         .isTrue();
     return this;
   }
 
   public RecyclerViewLayoutParamsSubject viewDoesNotNeedUpdate() {
-    assertThat(getSubject().viewNeedsUpdate())
+    assertThat(actual().viewNeedsUpdate())
         .named("view needs update")
         .isFalse();
     return this;
   }
 
   public RecyclerViewLayoutParamsSubject isViewInvalid() {
-    assertThat(getSubject().isViewInvalid())
+    assertThat(actual().isViewInvalid())
         .named("is view invalid")
         .isTrue();
     return this;
   }
 
   public RecyclerViewLayoutParamsSubject isViewValid() {
-    assertThat(getSubject().isViewInvalid())
+    assertThat(actual().isViewInvalid())
         .named("is view invalid")
         .isFalse();
     return this;
   }
 
   public RecyclerViewLayoutParamsSubject isItemRemoved() {
-    assertThat(getSubject().isItemRemoved())
+    assertThat(actual().isItemRemoved())
         .named("is item removed")
         .isTrue();
     return this;
   }
 
   public RecyclerViewLayoutParamsSubject isItemNotRemoved() {
-    assertThat(getSubject().isItemRemoved())
+    assertThat(actual().isItemRemoved())
         .named("is item removed")
         .isFalse();
     return this;
   }
 
   public RecyclerViewLayoutParamsSubject hasViewPosition(int position) {
-    assertThat(getSubject().getViewPosition())
+    assertThat(actual().getViewPosition())
         .named("view position")
         .isEqualTo(position);
     return this;

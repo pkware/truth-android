@@ -41,21 +41,21 @@ public class UsbDeviceConnectionSubject extends Subject<UsbDeviceConnectionSubje
   }
 
   public UsbDeviceConnectionSubject hasFileDescriptor(int descriptor) {
-    assertThat(getSubject().getFileDescriptor())
+    assertThat(actual().getFileDescriptor())
         .named("file descriptor")
         .isEqualTo(descriptor);
     return this;
   }
 
   public UsbDeviceConnectionSubject hasRawDescriptors(byte[] descriptors) {
-    assertThat(getSubject().getRawDescriptors())
+    assertThat(actual().getRawDescriptors())
         .named("raw descriptors")
         .isEqualTo(descriptors);
     return this;
   }
 
   public UsbDeviceConnectionSubject hasSerial(String serial) {
-    assertThat(getSubject().getSerial())
+    assertThat(actual().getSerial())
         .named("serial")
         .isEqualTo(serial);
     return this;

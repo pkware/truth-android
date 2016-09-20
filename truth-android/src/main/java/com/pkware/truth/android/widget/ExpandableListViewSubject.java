@@ -41,21 +41,21 @@ public class ExpandableListViewSubject extends AbstractListViewSubject<Expandabl
   }
 
   public ExpandableListViewSubject hasExpandableListAdapter(ExpandableListAdapter adapter) {
-    assertThat(getSubject().getExpandableListAdapter())
+    assertThat(actual().getExpandableListAdapter())
         .named("expandable list adapter")
         .isSameAs(adapter);
     return this;
   }
 
   public ExpandableListViewSubject hasSelectedId(long id) {
-    assertThat(getSubject().getSelectedId())
+    assertThat(actual().getSelectedId())
         .named("selected ID")
         .isEqualTo(id);
     return this;
   }
 
   public ExpandableListViewSubject hasSelectedPosition(long position) {
-    assertThat(getSubject().getSelectedPosition())
+    assertThat(actual().getSelectedPosition())
         .named("selected position")
         .isEqualTo(position);
     return this;

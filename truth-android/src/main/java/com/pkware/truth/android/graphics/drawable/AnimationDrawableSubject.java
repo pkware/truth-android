@@ -40,35 +40,35 @@ public class AnimationDrawableSubject extends AbstractDrawableSubject<AnimationD
   }
 
   public AnimationDrawableSubject hasFrameCount(int count) {
-    assertThat(getSubject().getNumberOfFrames())
+    assertThat(actual().getNumberOfFrames())
         .named("frame count")
         .isEqualTo(count);
     return this;
   }
 
   public AnimationDrawableSubject isOneShot() {
-    assertThat(getSubject().isOneShot())
+    assertThat(actual().isOneShot())
         .named("is one-shot")
         .isTrue();
     return this;
   }
 
   public AnimationDrawableSubject isNotOneShot() {
-    assertThat(getSubject().isOneShot())
+    assertThat(actual().isOneShot())
         .named("is one-shot")
         .isFalse();
     return this;
   }
 
   public AnimationDrawableSubject isRunning() {
-    assertThat(getSubject().isRunning())
+    assertThat(actual().isRunning())
         .named("is running")
         .isTrue();
     return this;
   }
 
   public AnimationDrawableSubject isNotRunning() {
-    assertThat(getSubject().isRunning())
+    assertThat(actual().isRunning())
         .named("is running")
         .isFalse();
     return this;

@@ -41,14 +41,14 @@ public class PredictionSubject extends Subject<PredictionSubject, Prediction> {
   }
 
   public PredictionSubject hasName(String name) {
-    assertThat(getSubject().name)
+    assertThat(actual().name)
         .named("name")
         .isEqualTo(name);
     return this;
   }
 
   public PredictionSubject hasScore(double score, double tolerance) {
-    assertThat(getSubject().score)
+    assertThat(actual().score)
         .named("score")
         .isWithin(tolerance)
         .of(score);

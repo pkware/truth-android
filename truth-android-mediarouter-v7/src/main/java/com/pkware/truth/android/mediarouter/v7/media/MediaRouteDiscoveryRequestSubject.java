@@ -42,28 +42,28 @@ public class MediaRouteDiscoveryRequestSubject
   }
 
   public MediaRouteDiscoveryRequestSubject isActiveScan() {
-    assertThat(getSubject().isActiveScan())
+    assertThat(actual().isActiveScan())
         .named("is performing active scanning")
         .isTrue();
     return this;
   }
 
   public MediaRouteDiscoveryRequestSubject isNotActiveScan() {
-    assertThat(getSubject().isActiveScan())
+    assertThat(actual().isActiveScan())
         .named("is not performing active scanning")
         .isFalse();
     return this;
   }
 
   public MediaRouteDiscoveryRequestSubject isValid() {
-    assertThat(getSubject().isValid())
+    assertThat(actual().isValid())
         .named("is valid")
         .isTrue();
     return this;
   }
 
   public MediaRouteDiscoveryRequestSubject isNotValid() {
-    assertThat(getSubject().isValid())
+    assertThat(actual().isValid())
         .named("is valid")
         .isFalse();
     return this;

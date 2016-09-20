@@ -41,7 +41,7 @@ public class CameraPositionSubject extends Subject<CameraPositionSubject, Camera
   }
 
   public CameraPositionSubject hasBearing(float bearing, float tolerance) {
-    assertThat(getSubject().bearing)
+    assertThat(actual().bearing)
         .named("bearing")
         .isWithin(tolerance)
         .of(bearing);
@@ -49,15 +49,15 @@ public class CameraPositionSubject extends Subject<CameraPositionSubject, Camera
   }
 
   public CameraPositionSubject hasTarget(LatLng target) {
-    LatLng actualTarget = getSubject().target;
-    assertThat(getSubject().target)
+    LatLng actualTarget = actual().target;
+    assertThat(actual().target)
         .named("target")
         .isEqualTo(target);
     return this;
   }
 
   public CameraPositionSubject hasTilt(float tilt, float tolerance) {
-    assertThat(getSubject().tilt)
+    assertThat(actual().tilt)
         .named("tilt")
         .isWithin(tolerance)
         .of(tilt);
@@ -65,7 +65,7 @@ public class CameraPositionSubject extends Subject<CameraPositionSubject, Camera
   }
 
   public CameraPositionSubject hasZoom(float zoom, float tolerance) {
-    assertThat(getSubject().zoom)
+    assertThat(actual().zoom)
         .named("zoom")
         .isWithin(tolerance)
         .of(zoom);

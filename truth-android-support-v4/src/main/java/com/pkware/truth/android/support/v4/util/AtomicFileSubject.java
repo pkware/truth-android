@@ -43,7 +43,7 @@ public class AtomicFileSubject extends Subject<AtomicFileSubject, AtomicFile> {
   }
 
   public AtomicFileSubject hasBaseFile(File file) {
-    assertThat(getSubject().getBaseFile())
+    assertThat(actual().getBaseFile())
         .named("base file")
         .isEqualTo(file);
     return this;

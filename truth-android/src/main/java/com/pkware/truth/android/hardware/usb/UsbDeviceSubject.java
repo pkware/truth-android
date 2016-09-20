@@ -41,56 +41,56 @@ public class UsbDeviceSubject extends Subject<UsbDeviceSubject, UsbDevice> {
   }
 
   public UsbDeviceSubject hasDeviceClass(int value) {
-    assertThat(getSubject().getDeviceClass())
+    assertThat(actual().getDeviceClass())
         .named("device class")
         .isEqualTo(value);
     return this;
   }
 
   public UsbDeviceSubject hasDeviceId(int id) {
-    assertThat(getSubject().getDeviceId())
+    assertThat(actual().getDeviceId())
         .named("device id")
         .isEqualTo(id);
     return this;
   }
 
   public UsbDeviceSubject hasDeviceName(String name) {
-    assertThat(getSubject().getDeviceName())
+    assertThat(actual().getDeviceName())
         .named("device name")
         .isEqualTo(name);
     return this;
   }
 
   public UsbDeviceSubject hasDeviceProtocol(int protocol) {
-    assertThat(getSubject().getDeviceProtocol())
+    assertThat(actual().getDeviceProtocol())
         .named("device protocol")
         .isEqualTo(protocol);
     return this;
   }
 
   public UsbDeviceSubject hasDeviceSubclass(int subclass) {
-    assertThat(getSubject().getDeviceSubclass())
+    assertThat(actual().getDeviceSubclass())
         .named("device subclass")
         .isEqualTo(subclass);
     return this;
   }
 
   public UsbDeviceSubject hasInterfaceCount(int count) {
-    assertThat(getSubject().getInterfaceCount())
+    assertThat(actual().getInterfaceCount())
         .named("interface count")
         .isEqualTo(count);
     return this;
   }
 
   public UsbDeviceSubject hasProductId(int id) {
-    assertThat(getSubject().getProductId())
+    assertThat(actual().getProductId())
         .named("product id")
         .isEqualTo(id);
     return this;
   }
 
   public UsbDeviceSubject hasVendorId(int id) {
-    assertThat(getSubject().getVendorId())
+    assertThat(actual().getVendorId())
         .named("vendor id")
         .isEqualTo(id);
     return this;

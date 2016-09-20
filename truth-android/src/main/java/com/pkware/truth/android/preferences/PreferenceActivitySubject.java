@@ -42,28 +42,28 @@ public class PreferenceActivitySubject
   }
 
   public PreferenceActivitySubject hasHeaders() {
-    assertThat(getSubject().hasHeaders())
+    assertThat(actual().hasHeaders())
         .named("has headers")
         .isTrue();
     return this;
   }
 
   public PreferenceActivitySubject hasNoHeaders() {
-    assertThat(getSubject().hasHeaders())
+    assertThat(actual().hasHeaders())
         .named("has headers")
         .isFalse();
     return this;
   }
 
   public PreferenceActivitySubject isMultiPane() {
-    assertThat(getSubject().isMultiPane())
+    assertThat(actual().isMultiPane())
         .named("is multi-pane")
         .isTrue();
     return this;
   }
 
   public PreferenceActivitySubject isNotMultiPane() {
-    assertThat(getSubject().isMultiPane())
+    assertThat(actual().isMultiPane())
         .named("is multi-pane")
         .isFalse();
     return this;

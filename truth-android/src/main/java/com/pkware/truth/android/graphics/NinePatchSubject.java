@@ -44,35 +44,35 @@ public class NinePatchSubject extends Subject<NinePatchSubject, NinePatch> {
   }
 
   public NinePatchSubject hasDensity(int density) {
-    assertThat(getSubject().getDensity())
+    assertThat(actual().getDensity())
         .named("density")
         .isEqualTo(density);
     return this;
   }
 
   public NinePatchSubject hasHeight(int height) {
-    assertThat(getSubject().getHeight())
+    assertThat(actual().getHeight())
         .named("height")
         .isEqualTo(height);
     return this;
   }
 
   public NinePatchSubject hasWidth(int width) {
-    assertThat(getSubject().getWidth())
+    assertThat(actual().getWidth())
         .named("width")
         .isEqualTo(width);
     return this;
   }
 
   public NinePatchSubject hasAlpha() {
-    assertThat(getSubject().hasAlpha())
+    assertThat(actual().hasAlpha())
         .named("has alpha")
         .isTrue();
     return this;
   }
 
   public NinePatchSubject hasNoAlpha() {
-    assertThat(getSubject().hasAlpha())
+    assertThat(actual().hasAlpha())
         .named("has alpha")
         .isFalse();
     return this;
@@ -80,7 +80,7 @@ public class NinePatchSubject extends Subject<NinePatchSubject, NinePatch> {
 
   @TargetApi(KITKAT)
   public NinePatchSubject hasName(String name) {
-    assertThat(getSubject().getName())
+    assertThat(actual().getName())
         .named("name")
         .isEqualTo(name);
     return this;
@@ -88,7 +88,7 @@ public class NinePatchSubject extends Subject<NinePatchSubject, NinePatch> {
 
   @TargetApi(KITKAT)
   public NinePatchSubject hasBitmap(Bitmap bitmap) {
-    assertThat(getSubject().getBitmap())
+    assertThat(actual().getBitmap())
         .named("bitmap")
         .isEqualTo(bitmap);
     return this;

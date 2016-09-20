@@ -31,7 +31,7 @@ public abstract class AbstractAbsSeekBarSubject<S extends AbstractAbsSeekBarSubj
   }
 
   public S hasKeyProgressIncrement(int increment) {
-    assertThat(getSubject().getKeyProgressIncrement())
+    assertThat(actual().getKeyProgressIncrement())
         .named("key progress increment")
         .isEqualTo(increment);
     //noinspection unchecked
@@ -40,7 +40,7 @@ public abstract class AbstractAbsSeekBarSubject<S extends AbstractAbsSeekBarSubj
 
   @TargetApi(JELLY_BEAN)
   public S hasThumb(Drawable drawable) {
-    assertThat(getSubject().getThumb())
+    assertThat(actual().getThumb())
         .named("thumb")
         .isSameAs(drawable);
     //noinspection unchecked
@@ -48,7 +48,7 @@ public abstract class AbstractAbsSeekBarSubject<S extends AbstractAbsSeekBarSubj
   }
 
   public S hasThumbOffset(int offset) {
-    assertThat(getSubject().getThumbOffset())
+    assertThat(actual().getThumbOffset())
         .named("thumb offset")
         .isEqualTo(offset);
     //noinspection unchecked

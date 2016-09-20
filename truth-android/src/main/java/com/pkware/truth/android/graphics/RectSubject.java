@@ -41,49 +41,49 @@ public class RectSubject extends Subject<RectSubject, Rect> {
   }
 
   public RectSubject hasBottom(int bottom) {
-    assertThat(getSubject().bottom)
+    assertThat(actual().bottom)
         .named("bottom")
         .isEqualTo(bottom);
     return this;
   }
 
   public RectSubject hasLeft(int left) {
-    assertThat(getSubject().left)
+    assertThat(actual().left)
         .named("left")
         .isEqualTo(left);
     return this;
   }
 
   public RectSubject hasRight(int right) {
-    assertThat(getSubject().right)
+    assertThat(actual().right)
         .named("right")
         .isEqualTo(right);
     return this;
   }
 
   public RectSubject hasTop(int top) {
-    assertThat(getSubject().top)
+    assertThat(actual().top)
         .named("top")
         .isEqualTo(top);
     return this;
   }
 
   public RectSubject hasCenterX(int center) {
-    assertThat(getSubject().centerX())
+    assertThat(actual().centerX())
         .named("X center")
         .isEqualTo(center);
     return this;
   }
 
   public RectSubject hasCenterY(int center) {
-    assertThat(getSubject().centerY())
+    assertThat(actual().centerY())
         .named("Y center")
         .isEqualTo(center);
     return this;
   }
 
   public RectSubject hasExactCenterX(float center, float tolerance) {
-    assertThat(getSubject().exactCenterX())
+    assertThat(actual().exactCenterX())
         .named("exact X center")
         .isWithin(tolerance)
         .of(center);
@@ -91,7 +91,7 @@ public class RectSubject extends Subject<RectSubject, Rect> {
   }
 
   public RectSubject hasExactCenterY(float center, float tolerance) {
-    assertThat(getSubject().exactCenterY())
+    assertThat(actual().exactCenterY())
         .named("exact Y center")
         .isWithin(tolerance)
         .of(center);
@@ -99,28 +99,28 @@ public class RectSubject extends Subject<RectSubject, Rect> {
   }
 
   public RectSubject hasHeight(int height) {
-    assertThat(getSubject().height())
+    assertThat(actual().height())
         .named("height")
         .isEqualTo(height);
     return this;
   }
 
   public RectSubject isEmpty() {
-    assertThat(getSubject().isEmpty())
+    assertThat(actual().isEmpty())
         .named("is empty")
         .isTrue();
     return this;
   }
 
   public RectSubject isNotEmpty() {
-    assertThat(getSubject().isEmpty())
+    assertThat(actual().isEmpty())
         .named("is empty")
         .isFalse();
     return this;
   }
 
   public RectSubject hasWidth(int width) {
-    assertThat(getSubject().width())
+    assertThat(actual().width())
         .named("width")
         .isEqualTo(width);
     return this;

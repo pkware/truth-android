@@ -32,7 +32,7 @@ public abstract class AbstractRelativeLayoutSubject<S extends AbstractRelativeLa
 
   @TargetApi(JELLY_BEAN)
   public S hasGravity(int gravity) {
-    assertThat(getSubject().getGravity())
+    assertThat(actual().getGravity())
         .named("gravity")
         .isEqualTo(gravity);
     //noinspection unchecked

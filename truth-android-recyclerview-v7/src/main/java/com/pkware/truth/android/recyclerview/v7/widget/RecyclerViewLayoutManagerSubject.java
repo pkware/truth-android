@@ -45,63 +45,63 @@ public class RecyclerViewLayoutManagerSubject
   }
 
   public RecyclerViewLayoutManagerSubject supportsPredictiveItemAnimations() {
-    assertThat(getSubject().supportsPredictiveItemAnimations())
+    assertThat(actual().supportsPredictiveItemAnimations())
         .named("supports predictive item animations")
         .isTrue();
     return this;
   }
 
   public RecyclerViewLayoutManagerSubject doesNotSupportPredictiveItemAnimations() {
-    assertThat(getSubject().supportsPredictiveItemAnimations())
+    assertThat(actual().supportsPredictiveItemAnimations())
         .named("supports predictive item animations")
         .isFalse();
     return this;
   }
 
   public RecyclerViewLayoutManagerSubject canScrollHorizontally() {
-    assertThat(getSubject().canScrollHorizontally())
+    assertThat(actual().canScrollHorizontally())
         .named("can scroll horizontally")
         .isTrue();
     return this;
   }
 
   public RecyclerViewLayoutManagerSubject canNotScrollHorizontally() {
-    assertThat(getSubject().canScrollHorizontally())
+    assertThat(actual().canScrollHorizontally())
         .named("can scroll horizontally")
         .isFalse();
     return this;
   }
 
   public RecyclerViewLayoutManagerSubject canScrollVertically() {
-    assertThat(getSubject().canScrollVertically())
+    assertThat(actual().canScrollVertically())
         .named("can scroll vertically")
         .isTrue();
     return this;
   }
 
   public RecyclerViewLayoutManagerSubject canNotScrollVertically() {
-    assertThat(getSubject().canScrollVertically())
+    assertThat(actual().canScrollVertically())
         .named("can scroll vertically")
         .isFalse();
     return this;
   }
 
   public RecyclerViewLayoutManagerSubject isSmoothScrolling() {
-    assertThat(getSubject().isSmoothScrolling())
+    assertThat(actual().isSmoothScrolling())
         .named("is smooth scrolling")
         .isTrue();
     return this;
   }
 
   public RecyclerViewLayoutManagerSubject isNotSmoothScrolling() {
-    assertThat(getSubject().isSmoothScrolling())
+    assertThat(actual().isSmoothScrolling())
         .named("is smooth scrolling")
         .isFalse();
     return this;
   }
 
   public RecyclerViewLayoutManagerSubject hasLayoutDirection(int direction) {
-    int actualDirection = getSubject().getLayoutDirection();
+    int actualDirection = actual().getLayoutDirection();
     //noinspection WrongConstant
     assert_()
         .withFailureMessage("Expected layout direction <%s> but was <%s>.",
@@ -112,113 +112,113 @@ public class RecyclerViewLayoutManagerSubject
   }
 
   public RecyclerViewLayoutManagerSubject hasChildCount(int count) {
-    assertThat(getSubject().getChildCount())
+    assertThat(actual().getChildCount())
         .named("child count")
         .isEqualTo(count);
     return this;
   }
 
   public RecyclerViewLayoutManagerSubject hasWidth(int width) {
-    assertThat(getSubject().getWidth())
+    assertThat(actual().getWidth())
         .named("width")
         .isEqualTo(width);
     return this;
   }
 
   public RecyclerViewLayoutManagerSubject hasHeight(int height) {
-    assertThat(getSubject().getHeight())
+    assertThat(actual().getHeight())
         .named("height")
         .isEqualTo(height);
     return this;
   }
 
   public RecyclerViewLayoutManagerSubject hasPaddingLeft(int padding) {
-    assertThat(getSubject().getPaddingLeft())
+    assertThat(actual().getPaddingLeft())
         .named("left padding")
         .isEqualTo(padding);
     return this;
   }
 
   public RecyclerViewLayoutManagerSubject hasPaddingTop(int padding) {
-    assertThat(getSubject().getPaddingTop())
+    assertThat(actual().getPaddingTop())
         .named("top padding")
         .isEqualTo(padding);
     return this;
   }
 
   public RecyclerViewLayoutManagerSubject hasPaddingRight(int padding) {
-    assertThat(getSubject().getPaddingRight())
+    assertThat(actual().getPaddingRight())
         .named("right padding")
         .isEqualTo(padding);
     return this;
   }
 
   public RecyclerViewLayoutManagerSubject hasPaddingBottom(int padding) {
-    int actualPadding = getSubject().getPaddingBottom();
-    assertThat(getSubject().getPaddingBottom())
+    int actualPadding = actual().getPaddingBottom();
+    assertThat(actual().getPaddingBottom())
         .named("bottom padding")
         .isEqualTo(padding);
     return this;
   }
 
   public RecyclerViewLayoutManagerSubject hasPaddingStart(int padding) {
-    assertThat(getSubject().getPaddingStart())
+    assertThat(actual().getPaddingStart())
         .named("start padding")
         .isEqualTo(padding);
     return this;
   }
 
   public RecyclerViewLayoutManagerSubject hasPaddingEnd(int padding) {
-    assertThat(getSubject().getPaddingEnd())
+    assertThat(actual().getPaddingEnd())
         .named("end padding")
         .isEqualTo(padding);
     return this;
   }
 
   public RecyclerViewLayoutManagerSubject isFocused() {
-    assertThat(getSubject().isFocused())
+    assertThat(actual().isFocused())
         .named("is focused")
         .isTrue();
     return this;
   }
 
   public RecyclerViewLayoutManagerSubject isNotFocused() {
-    assertThat(getSubject().isFocused())
+    assertThat(actual().isFocused())
         .named("is focused")
         .isFalse();
     return this;
   }
 
   public RecyclerViewLayoutManagerSubject hasFocus() {
-    assertThat(getSubject().hasFocus())
+    assertThat(actual().hasFocus())
         .named("has focus")
         .isTrue();
     return this;
   }
 
   public RecyclerViewLayoutManagerSubject doesNotHaveFocus() {
-    assertThat(getSubject().hasFocus())
+    assertThat(actual().hasFocus())
         .named("has focus")
         .isFalse();
     return this;
   }
 
   public RecyclerViewLayoutManagerSubject hasItemCount(int count) {
-    assertThat(getSubject().getItemCount())
+    assertThat(actual().getItemCount())
         .named("item count")
         .isEqualTo(count);
     return this;
   }
 
   public RecyclerViewLayoutManagerSubject hasMinimumWidth(int width) {
-    assertThat(getSubject().getMinimumWidth())
+    assertThat(actual().getMinimumWidth())
         .named("minimum width")
         .isEqualTo(width);
     return this;
   }
 
   public RecyclerViewLayoutManagerSubject hasMinimumHeight(int height) {
-    assertThat(getSubject().getMinimumHeight())
+    assertThat(actual().getMinimumHeight())
         .named("minimum height")
         .isEqualTo(height);
     return this;

@@ -44,21 +44,21 @@ public class AccessibilityEventSubject
 
   @TargetApi(JELLY_BEAN)
   public AccessibilityEventSubject hasAction(int action) {
-    assertThat(getSubject().getAction())
+    assertThat(actual().getAction())
         .named("action")
         .isEqualTo(action);
     return this;
   }
 
   public AccessibilityEventSubject hasEventTime(long time) {
-    assertThat(getSubject().getEventTime())
+    assertThat(actual().getEventTime())
         .named("event time")
         .isEqualTo(time);
     return this;
   }
 
   public AccessibilityEventSubject hasEventType(int type) {
-    assertThat(getSubject().getEventType())
+    assertThat(actual().getEventType())
         .named("event type")
         .isEqualTo(type);
     return this;
@@ -66,14 +66,14 @@ public class AccessibilityEventSubject
 
   @TargetApi(JELLY_BEAN)
   public AccessibilityEventSubject hasMovementGranularity(int granularity) {
-    assertThat(getSubject().getMovementGranularity())
+    assertThat(actual().getMovementGranularity())
         .named("movement granularity")
         .isEqualTo(granularity);
     return this;
   }
 
   public AccessibilityEventSubject hasPackageName(CharSequence name) {
-    assertThat(getSubject().getPackageName())
+    assertThat(actual().getPackageName())
         .named("package name")
         .isEqualTo(name);
     return this;

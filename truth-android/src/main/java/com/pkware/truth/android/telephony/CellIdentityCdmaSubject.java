@@ -44,35 +44,35 @@ public final class CellIdentityCdmaSubject extends Subject<CellIdentityCdmaSubje
   }
 
   public CellIdentityCdmaSubject hasBaseStationId(int id) {
-    assertThat(getSubject().getBasestationId())
+    assertThat(actual().getBasestationId())
         .named("base station ID")
         .isEqualTo(id);
     return this;
   }
 
   public CellIdentityCdmaSubject hasLatitude(int latitude) {
-    assertThat(getSubject().getLatitude())
+    assertThat(actual().getLatitude())
         .named("latitude")
         .isEqualTo(latitude);
     return this;
   }
 
   public CellIdentityCdmaSubject hasLongitude(int longitude) {
-    assertThat(getSubject().getLongitude())
+    assertThat(actual().getLongitude())
         .named("longitude")
         .isEqualTo(longitude);
     return this;
   }
 
   public CellIdentityCdmaSubject hasNetworkId(int id) {
-    assertThat(getSubject().getNetworkId())
+    assertThat(actual().getNetworkId())
         .named("network ID")
         .isEqualTo(id);
     return this;
   }
 
   public CellIdentityCdmaSubject hasSystemId(int id) {
-    assertThat(getSubject().getSystemId())
+    assertThat(actual().getSystemId())
         .named("system ID")
         .isEqualTo(id);
     return this;

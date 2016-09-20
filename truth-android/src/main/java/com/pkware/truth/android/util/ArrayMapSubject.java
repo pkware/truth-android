@@ -45,20 +45,20 @@ public class ArrayMapSubject<K, V> extends Subject<ArrayMapSubject<K, V>, ArrayM
   }
 
   public ArrayMapSubject<K, V> hasKeyAt(int index, K key) {
-    assertThat(getSubject().keyAt(index))
+    assertThat(actual().keyAt(index))
         .named("key at index " + index)
         .isEqualTo(key);
     return this;
   }
 
   public ArrayMapSubject<K, V> hasValueAt(int index, V value) {
-    assertThat(getSubject().valueAt(index))
+    assertThat(actual().valueAt(index))
         .named("value at index " + index)
         .isEqualTo(value);
     return this;
   }
 
   public MapSubject asMap() {
-    return assertThat(getSubject());
+    return assertThat(actual());
   }
 }

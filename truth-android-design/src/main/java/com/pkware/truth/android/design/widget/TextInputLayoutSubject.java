@@ -41,8 +41,14 @@ public class TextInputLayoutSubject extends AbstractLinearLayoutSubject<TextInpu
   }
 
   public TextInputLayoutSubject hasError(String error) {
-    CharSequence actualError = getSubject().getError();
-    assertThat(actualError == null ? null : actualError.toString())
+    CharSequence actualError = actual().getError();
+    String actualErrorString;
+    if (actualError == null) {
+      actualErrorString = null;
+    } else {
+      actualErrorString = actualError.toString();
+    }
+    assertThat(actualErrorString)
         .named("error")
         .isEqualTo(error);
     return this;

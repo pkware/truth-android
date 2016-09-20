@@ -40,14 +40,14 @@ public class TransitionDrawableSubject extends AbstractDrawableSubject<Transitio
   }
 
   public TransitionDrawableSubject isCrossFadeEnabled() {
-    assertThat(getSubject().isCrossFadeEnabled())
+    assertThat(actual().isCrossFadeEnabled())
         .named("cross-fade is enabled")
         .isTrue();
     return this;
   }
 
   public TransitionDrawableSubject isCrossFadeDisabled() {
-    assertThat(!getSubject().isCrossFadeEnabled())
+    assertThat(!actual().isCrossFadeEnabled())
         .named("cross-fade is disabled")
         .isTrue();
     return this;

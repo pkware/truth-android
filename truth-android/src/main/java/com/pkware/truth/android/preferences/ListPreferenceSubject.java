@@ -45,7 +45,7 @@ public class ListPreferenceSubject extends AbstractDialogPreferenceSubject<ListP
   public ListPreferenceSubject hasEntries(String... entries) {
 
     // We convert to Strings b/c most of the time we are interested in the text content
-    String[] actualEntries = FluentIterable.of(getSubject().getEntries())
+    String[] actualEntries = FluentIterable.of(actual().getEntries())
         .transform(mapToString())
         .toArray(String.class);
 
@@ -56,20 +56,20 @@ public class ListPreferenceSubject extends AbstractDialogPreferenceSubject<ListP
   }
 
   public ListPreferenceSubject hasEntry(CharSequence entry) {
-    assertThat(getSubject().getEntry())
+    assertThat(actual().getEntry())
         .named("entry")
         .isEqualTo(entry);
     return this;
   }
 
   public ListPreferenceSubject hasEntry(@StringRes int resId) {
-    return hasEntry(getSubject().getContext().getString(resId));
+    return hasEntry(actual().getContext().getString(resId));
   }
 
   public ListPreferenceSubject hasEntryValues(String... values) {
 
     // We convert to Strings b/c most of the time we are interested in the text content
-    String[] actualValues = FluentIterable.of(getSubject().getEntryValues())
+    String[] actualValues = FluentIterable.of(actual().getEntryValues())
         .transform(mapToString())
         .toArray(String.class);
 
@@ -80,7 +80,7 @@ public class ListPreferenceSubject extends AbstractDialogPreferenceSubject<ListP
   }
 
   public ListPreferenceSubject hasValue(String value) {
-    assertThat(getSubject().getValue())
+    assertThat(actual().getValue())
         .named("value")
         .isEqualTo(value);
     return this;

@@ -43,98 +43,98 @@ public class SqliteDatabaseSubject extends Subject<SqliteDatabaseSubject, SQLite
   }
 
   public SqliteDatabaseSubject hasMaximumSize(long size) {
-    assertThat(getSubject().getMaximumSize())
+    assertThat(actual().getMaximumSize())
         .named("maximum size")
         .isEqualTo(size);
     return this;
   }
 
   public SqliteDatabaseSubject hasPageSize(long size) {
-    assertThat(getSubject().getPageSize())
+    assertThat(actual().getPageSize())
         .named("page size")
         .isEqualTo(size);
     return this;
   }
 
   public SqliteDatabaseSubject hasPath(String path) {
-    assertThat(getSubject().getPath())
+    assertThat(actual().getPath())
         .named("path")
         .isEqualTo(path);
     return this;
   }
 
   public SqliteDatabaseSubject hasVersion(int version) {
-    assertThat(getSubject().getVersion())
+    assertThat(actual().getVersion())
         .named("version")
         .isEqualTo(version);
     return this;
   }
 
   public SqliteDatabaseSubject isInTransaction() {
-    assertThat(getSubject().inTransaction())
+    assertThat(actual().inTransaction())
         .named("is in transaction")
         .isTrue();
     return this;
   }
 
   public SqliteDatabaseSubject isNotInTransaction() {
-    assertThat(getSubject().inTransaction())
+    assertThat(actual().inTransaction())
         .named("is in transaction")
         .isFalse();
     return this;
   }
 
   public SqliteDatabaseSubject isDatabaseIntegrityOk() {
-    assertThat(getSubject().isDatabaseIntegrityOk())
+    assertThat(actual().isDatabaseIntegrityOk())
         .named("is database integrity ok")
         .isTrue();
     return this;
   }
 
   public SqliteDatabaseSubject isDatabaseIntegrityNotOk() {
-    assertThat(getSubject().isDatabaseIntegrityOk())
+    assertThat(actual().isDatabaseIntegrityOk())
         .named("is database integrity ok")
         .isFalse();
     return this;
   }
 
   public SqliteDatabaseSubject isLockedByCurrentThread() {
-    assertThat(getSubject().isDbLockedByCurrentThread())
+    assertThat(actual().isDbLockedByCurrentThread())
         .named("is locked by current thread")
         .isTrue();
     return this;
   }
 
   public SqliteDatabaseSubject isNotLockedByCurrentThread() {
-    assertThat(getSubject().isDbLockedByCurrentThread())
+    assertThat(actual().isDbLockedByCurrentThread())
         .named("is locked by current thread")
         .isFalse();
     return this;
   }
 
   public SqliteDatabaseSubject isOpen() {
-    assertThat(getSubject().isOpen())
+    assertThat(actual().isOpen())
         .named("is open")
         .isTrue();
     return this;
   }
 
   public SqliteDatabaseSubject isNotOpen() {
-    assertThat(getSubject().isOpen())
+    assertThat(actual().isOpen())
         .named("is open")
         .isFalse();
     return this;
   }
 
   public SqliteDatabaseSubject isReadOnly() {
-    assertThat(getSubject().isReadOnly())
+    assertThat(actual().isReadOnly())
         .named("is read only")
         .isTrue();
     return this;
   }
 
   public SqliteDatabaseSubject isNotReadOnly() {
-    assertThat(getSubject().isReadOnly())
+    assertThat(actual().isReadOnly())
         .named("is read only")
         .isFalse();
     return this;
@@ -142,7 +142,7 @@ public class SqliteDatabaseSubject extends Subject<SqliteDatabaseSubject, SQLite
 
   @TargetApi(JELLY_BEAN)
   public SqliteDatabaseSubject isWriteAheadLoggingEnabled() {
-    assertThat(getSubject().isWriteAheadLoggingEnabled())
+    assertThat(actual().isWriteAheadLoggingEnabled())
         .named("write-ahead logging is enabled")
         .isTrue();
     return this;
@@ -150,7 +150,7 @@ public class SqliteDatabaseSubject extends Subject<SqliteDatabaseSubject, SQLite
 
   @TargetApi(JELLY_BEAN)
   public SqliteDatabaseSubject isWriteAheadLoggingDisabled() {
-    assertThat(!getSubject().isWriteAheadLoggingEnabled())
+    assertThat(!actual().isWriteAheadLoggingEnabled())
         .named("write-ahead logging is disabled")
         .isTrue();
     return this;

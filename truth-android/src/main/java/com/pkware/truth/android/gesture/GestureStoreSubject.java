@@ -41,28 +41,28 @@ public class GestureStoreSubject extends Subject<GestureStoreSubject, GestureSto
   }
 
   public GestureStoreSubject hasOrientationStyle(int style) {
-    assertThat(getSubject().getOrientationStyle())
+    assertThat(actual().getOrientationStyle())
         .named("orientation style")
         .isEqualTo(style);
     return this;
   }
 
   public GestureStoreSubject hasSequenceType(int type) {
-    assertThat(getSubject().getSequenceType())
+    assertThat(actual().getSequenceType())
         .named("sequence type")
         .isEqualTo(type);
     return this;
   }
 
   public GestureStoreSubject hasChanged() {
-    assertThat(getSubject().hasChanged())
+    assertThat(actual().hasChanged())
         .named("has changed")
         .isTrue();
     return this;
   }
 
   public GestureStoreSubject hasNotChanged() {
-    assertThat(getSubject().hasChanged())
+    assertThat(actual().hasChanged())
         .named("has changed")
         .isFalse();
     return this;

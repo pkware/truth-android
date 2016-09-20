@@ -46,7 +46,7 @@ public class UiModeManagerSubject extends Subject<UiModeManagerSubject, UiModeMa
   public UiModeManagerSubject isNightMode() {
     assert_()
         .withFailureMessage("Expected to be in night mode but was not in night mode.")
-        .that(getSubject().getNightMode())
+        .that(actual().getNightMode())
         .isNotEqualTo(MODE_NIGHT_NO);
     return this;
   }
@@ -54,13 +54,13 @@ public class UiModeManagerSubject extends Subject<UiModeManagerSubject, UiModeMa
   public UiModeManagerSubject isNotNightMode() {
     assert_()
         .withFailureMessage("Expected not to be in night mode but was in night mode.")
-        .that(getSubject().getNightMode())
+        .that(actual().getNightMode())
         .isEqualTo(MODE_NIGHT_NO);
     return this;
   }
 
   public UiModeManagerSubject isInUiModeType(@ConfigurationUiModeType int mode) {
-    int actualMode = getSubject().getCurrentModeType();
+    int actualMode = actual().getCurrentModeType();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected mode <%s> but was <%s>.", uiModeTypeToString(mode), uiModeTypeToString(actualMode))
@@ -70,7 +70,7 @@ public class UiModeManagerSubject extends Subject<UiModeManagerSubject, UiModeMa
   }
 
   public UiModeManagerSubject isNotInUiModeType(@ConfigurationUiModeType int mode) {
-    int actualMode = getSubject().getCurrentModeType();
+    int actualMode = actual().getCurrentModeType();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected not mode <%s> but was <%s>.", uiModeTypeToString(mode), uiModeTypeToString(actualMode))

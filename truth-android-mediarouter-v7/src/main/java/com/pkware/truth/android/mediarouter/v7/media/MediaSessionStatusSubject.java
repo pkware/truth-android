@@ -55,7 +55,7 @@ public class MediaSessionStatusSubject
   }
 
   public MediaSessionStatusSubject hasSessionState(@MediaSessionStatusState int state) {
-    int actualState = getSubject().getSessionState();
+    int actualState = actual().getSessionState();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected session state <%s> but was <%s>.",
@@ -66,21 +66,21 @@ public class MediaSessionStatusSubject
   }
 
   public MediaSessionStatusSubject hasTimestamp(long timestamp) {
-    assertThat(getSubject().getTimestamp())
+    assertThat(actual().getTimestamp())
         .named("timestamp")
         .isEqualTo(timestamp);
     return this;
   }
 
   public MediaSessionStatusSubject hasQueuePaused() {
-    assertThat(getSubject().isQueuePaused())
+    assertThat(actual().isQueuePaused())
         .named("is queue paused")
         .isTrue();
     return this;
   }
 
   public MediaSessionStatusSubject doesNotHaveQueuePaused() {
-    assertThat(getSubject().isQueuePaused())
+    assertThat(actual().isQueuePaused())
         .named("is queue paused")
         .isFalse();
     return this;

@@ -42,8 +42,8 @@ public class ViewSwitcherSubject
   }
 
   public ViewSwitcherSubject hasNextView(View view) {
-    View actualView = getSubject().getNextView();
-    assertThat(getSubject().getNextView())
+    View actualView = actual().getNextView();
+    assertThat(actual().getNextView())
         .named("next view")
         .isSameAs(view);
     return this;

@@ -41,14 +41,14 @@ public class OrientationEventListenerSubject extends Subject<OrientationEventLis
   }
 
   public OrientationEventListenerSubject isDetectingOrientation() {
-    assertThat(getSubject().canDetectOrientation())
+    assertThat(actual().canDetectOrientation())
         .named("is able to detect orientation")
         .isTrue();
     return this;
   }
 
   public OrientationEventListenerSubject isNotDetectingOrientation() {
-    assertThat(getSubject().canDetectOrientation())
+    assertThat(actual().canDetectOrientation())
         .named("is able to detect orientation")
         .isFalse();
     return this;

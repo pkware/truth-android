@@ -40,42 +40,42 @@ public class NumberPickerSubject extends AbstractLinearLayoutSubject<NumberPicke
   }
 
   public NumberPickerSubject hasDisplayedValues(String[] values) {
-    assertThat(getSubject().getDisplayedValues())
+    assertThat(actual().getDisplayedValues())
         .named("displayed values")
         .isEqualTo(values);
     return this;
   }
 
   public NumberPickerSubject hasMaxValue(int value) {
-    assertThat(getSubject().getMaxValue())
+    assertThat(actual().getMaxValue())
         .named("maximum value")
         .isEqualTo(value);
     return this;
   }
 
   public NumberPickerSubject hasMinValue(int value) {
-    assertThat(getSubject().getMinValue())
+    assertThat(actual().getMinValue())
         .named("minimum value")
         .isEqualTo(value);
     return this;
   }
 
   public NumberPickerSubject hasValue(int value) {
-    assertThat(getSubject().getValue())
+    assertThat(actual().getValue())
         .named("value")
         .isEqualTo(value);
     return this;
   }
 
   public NumberPickerSubject isWrappingSelectorWheel() {
-    assertThat(getSubject().getWrapSelectorWheel())
+    assertThat(actual().getWrapSelectorWheel())
         .named("is wrapping selector wheel")
         .isTrue();
     return this;
   }
 
   public NumberPickerSubject isNotWrappingSelectorWheel() {
-    assertThat(getSubject().getWrapSelectorWheel())
+    assertThat(actual().getWrapSelectorWheel())
         .named("is wrapping selector wheel")
         .isFalse();
     return this;

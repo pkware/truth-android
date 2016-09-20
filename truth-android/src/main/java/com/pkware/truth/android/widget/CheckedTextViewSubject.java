@@ -44,21 +44,21 @@ public class CheckedTextViewSubject extends AbstractTextViewSubject<CheckedTextV
 
   @TargetApi(JELLY_BEAN)
   public CheckedTextViewSubject hasCheckMarkDrawable(Drawable drawable) {
-    assertThat(getSubject().getCheckMarkDrawable())
+    assertThat(actual().getCheckMarkDrawable())
         .named("check mark drawable")
         .isSameAs(drawable);
     return this;
   }
 
   public CheckedTextViewSubject isChecked() {
-    assertThat(getSubject().isChecked())
+    assertThat(actual().isChecked())
         .named("is checked")
         .isTrue();
     return this;
   }
 
   public CheckedTextViewSubject isNotChecked() {
-    assertThat(getSubject().isChecked())
+    assertThat(actual().isChecked())
         .named("is checked")
         .isFalse();
     return this;

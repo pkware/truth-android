@@ -41,14 +41,14 @@ public class PairSubject<F, S> extends Subject<PairSubject<F, S>, Pair<F, S>> {
   }
 
   public PairSubject<F, S> hasFirst(F first) {
-    assertThat(getSubject().first)
+    assertThat(actual().first)
         .named("first value")
         .isEqualTo(first);
     return this;
   }
 
   public PairSubject<F, S> hasSecond(S second) {
-    assertThat(getSubject().second)
+    assertThat(actual().second)
         .named("second value")
         .isEqualTo(second);
     return this;

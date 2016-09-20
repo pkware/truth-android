@@ -41,14 +41,14 @@ public class GesturePointSubject extends Subject<GesturePointSubject, GesturePoi
   }
 
   public GesturePointSubject hasTimestamp(long timestamp) {
-    assertThat(getSubject().timestamp)
+    assertThat(actual().timestamp)
         .named("timestamp")
         .isEqualTo(timestamp);
     return this;
   }
 
   public GesturePointSubject hasX(float x, float tolerance) {
-    assertThat(getSubject().x)
+    assertThat(actual().x)
         .named("X")
         .isWithin(tolerance)
         .of(x);
@@ -56,7 +56,7 @@ public class GesturePointSubject extends Subject<GesturePointSubject, GesturePoi
   }
 
   public GesturePointSubject hasY(float y, float tolerance) {
-    assertThat(getSubject().y)
+    assertThat(actual().y)
         .named("Y")
         .isWithin(tolerance)
         .of(y);

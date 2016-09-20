@@ -32,7 +32,7 @@ public abstract class AbstractFrameLayoutSubject<S extends AbstractFrameLayoutSu
   }
 
   public S hasForeground(Drawable drawable) {
-    assertThat(getSubject().getForeground())
+    assertThat(actual().getForeground())
         .named("foreground drawable")
         .isSameAs(drawable);
     //noinspection unchecked
@@ -41,7 +41,7 @@ public abstract class AbstractFrameLayoutSubject<S extends AbstractFrameLayoutSu
 
   @TargetApi(JELLY_BEAN)
   public S hasForegroundGravity(int gravity) {
-    assertThat(getSubject().getForegroundGravity())
+    assertThat(actual().getForegroundGravity())
         .named("foreground gravity")
         .isEqualTo(gravity);
     //noinspection unchecked
@@ -49,7 +49,7 @@ public abstract class AbstractFrameLayoutSubject<S extends AbstractFrameLayoutSu
   }
 
   public S isMeasuringAllChildren() {
-    assertThat(getSubject().getMeasureAllChildren())
+    assertThat(actual().getMeasureAllChildren())
         .named("is measuring all children")
         .isTrue();
     //noinspection unchecked
@@ -57,7 +57,7 @@ public abstract class AbstractFrameLayoutSubject<S extends AbstractFrameLayoutSu
   }
 
   public S isNotMeasuringAllChildren() {
-    assertThat(getSubject().getMeasureAllChildren())
+    assertThat(actual().getMeasureAllChildren())
         .named("is measuring all children")
         .isFalse();
     //noinspection unchecked
@@ -65,7 +65,7 @@ public abstract class AbstractFrameLayoutSubject<S extends AbstractFrameLayoutSu
   }
 
   public S isDelayingChildPressedState() {
-    assertThat(getSubject().shouldDelayChildPressedState())
+    assertThat(actual().shouldDelayChildPressedState())
         .named("is delaying child pressed state")
         .isTrue();
     //noinspection unchecked
@@ -73,7 +73,7 @@ public abstract class AbstractFrameLayoutSubject<S extends AbstractFrameLayoutSu
   }
 
   public S isNotDelayingChildPressedState() {
-    assertThat(getSubject().shouldDelayChildPressedState())
+    assertThat(actual().shouldDelayChildPressedState())
         .named("is delaying child pressed state")
         .isFalse();
     //noinspection unchecked

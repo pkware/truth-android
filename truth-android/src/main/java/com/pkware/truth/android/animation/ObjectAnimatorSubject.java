@@ -40,14 +40,14 @@ public class ObjectAnimatorSubject extends AbstractValueAnimatorSubject<ObjectAn
   }
 
   public ObjectAnimatorSubject hasPropertyName(String name) {
-    assertThat(getSubject().getPropertyName())
+    assertThat(actual().getPropertyName())
         .named("property name")
         .isEqualTo(name);
     return this;
   }
 
   public ObjectAnimatorSubject hasTarget(Object target) {
-    assertThat(getSubject().getTarget())
+    assertThat(actual().getTarget())
         .named("target")
         .isSameAs(target);
     return this;

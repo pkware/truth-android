@@ -42,35 +42,35 @@ public class CircularArraySubject<E>
   }
 
   public CircularArraySubject<E> hasFirst(E first) {
-    assertThat(getSubject().getFirst())
+    assertThat(actual().getFirst())
         .named("first element")
         .isEqualTo(first);
     return this;
   }
 
   public CircularArraySubject<E> hasLast(E last) {
-    assertThat(getSubject().getLast())
+    assertThat(actual().getLast())
         .named("last element")
         .isEqualTo(last);
     return this;
   }
 
   public CircularArraySubject<E> isEmpty() {
-    assertThat(getSubject().isEmpty())
+    assertThat(actual().isEmpty())
         .named("is empty")
         .isTrue();
     return this;
   }
 
   public CircularArraySubject<E> isNotEmpty() {
-    assertThat(getSubject().isEmpty())
+    assertThat(actual().isEmpty())
         .named("is empty")
         .isFalse();
     return this;
   }
 
   public CircularArraySubject<E> hasSize(int size) {
-    assertThat(getSubject().size())
+    assertThat(actual().size())
         .named("size")
         .isEqualTo(size);
     return this;

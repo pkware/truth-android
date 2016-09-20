@@ -40,7 +40,7 @@ public class AnimatorSetSubject extends AbstractAnimatorSubject<AnimatorSetSubje
   }
 
   public AnimatorSetSubject hasAnimatorCount(int count) {
-    assertThat(getSubject().getChildAnimations().size())
+    assertThat(actual().getChildAnimations().size())
         .named("animator count")
         .isEqualTo(count);
     return this;

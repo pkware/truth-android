@@ -40,14 +40,14 @@ public class TextureViewSubject extends AbstractViewSubject<TextureViewSubject, 
   }
 
   public TextureViewSubject isAvailable() {
-    assertThat(getSubject().isAvailable())
+    assertThat(actual().isAvailable())
         .named("is available")
         .isTrue();
     return this;
   }
 
   public TextureViewSubject isNotAvailable() {
-    assertThat(getSubject().isAvailable())
+    assertThat(actual().isAvailable())
         .named("is available")
         .isFalse();
     return this;

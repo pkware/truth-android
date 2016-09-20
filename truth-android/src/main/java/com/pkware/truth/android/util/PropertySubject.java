@@ -41,28 +41,28 @@ public class PropertySubject<T, V> extends Subject<PropertySubject<T, V>, Proper
   }
 
   public PropertySubject<T, V> hasName(String name) {
-    assertThat(getSubject().getName())
+    assertThat(actual().getName())
         .named("name")
         .isEqualTo(name);
     return this;
   }
 
   public PropertySubject<T, V> hasType(Class<?> type) {
-    assertThat(getSubject().getType())
+    assertThat(actual().getType())
         .named("type")
         .isEqualTo(type);
     return this;
   }
 
   public PropertySubject<T, V> isReadOnly() {
-    assertThat(getSubject().isReadOnly())
+    assertThat(actual().isReadOnly())
         .named("is read only")
         .isTrue();
     return this;
   }
 
   public PropertySubject<T, V> isNotReadOnly() {
-    assertThat(getSubject().isReadOnly())
+    assertThat(actual().isReadOnly())
         .named("is read only")
         .isFalse();
     return this;

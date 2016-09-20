@@ -61,7 +61,7 @@ public class AccessibilityServiceInfoSubject extends Subject<AccessibilityServic
 
   @TargetApi(JELLY_BEAN_MR2)
   public AccessibilityServiceInfoSubject hasCapabilities(@AccessibilityServiceInfoCapabilities int capabilities) {
-    int actualCapabilities = getSubject().getCapabilities();
+    int actualCapabilities = actual().getCapabilities();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected capabilities <%s> but was <%s>.", capabilitiesToString(capabilities), capabilitiesToString(actualCapabilities))
@@ -75,7 +75,7 @@ public class AccessibilityServiceInfoSubject extends Subject<AccessibilityServic
    */
   @Deprecated
   public AccessibilityServiceInfoSubject hasDescription(String description) {
-    assertThat(getSubject().getDescription())
+    assertThat(actual().getDescription())
         .named("description")
         .isEqualTo(description);
     return this;
@@ -83,21 +83,21 @@ public class AccessibilityServiceInfoSubject extends Subject<AccessibilityServic
 
   @TargetApi(JELLY_BEAN)
   public AccessibilityServiceInfoSubject hasDescription(String description, PackageManager packageManager) {
-    assertThat(getSubject().loadDescription(packageManager))
+    assertThat(actual().loadDescription(packageManager))
         .named("description")
         .isEqualTo(description);
     return this;
   }
 
   public AccessibilityServiceInfoSubject hasId(String id) {
-    assertThat(getSubject().getId())
+    assertThat(actual().getId())
         .named("id")
         .isEqualTo(id);
     return this;
   }
 
   public AccessibilityServiceInfoSubject hasSettingsActivityName(String name) {
-    assertThat(getSubject().getSettingsActivityName())
+    assertThat(actual().getSettingsActivityName())
         .named("settings activity name")
         .isEqualTo(name);
     return this;

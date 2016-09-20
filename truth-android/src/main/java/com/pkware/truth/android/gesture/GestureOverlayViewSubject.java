@@ -61,14 +61,14 @@ public class GestureOverlayViewSubject extends Subject<GestureOverlayViewSubject
   }
 
   public GestureOverlayViewSubject hasFadeOffset(long offset) {
-    assertThat(getSubject().getFadeOffset())
+    assertThat(actual().getFadeOffset())
         .named("fade offset")
         .isEqualTo(offset);
     return this;
   }
 
   public GestureOverlayViewSubject hasGestureColor(int color) {
-    int actualColor = getSubject().getGestureColor();
+    int actualColor = actual().getGestureColor();
     assert_()
         .withFailureMessage("Expected gesture color <%s> but was <%s>.", Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
@@ -77,7 +77,7 @@ public class GestureOverlayViewSubject extends Subject<GestureOverlayViewSubject
   }
 
   public GestureOverlayViewSubject hasGestureStrokeAngleThreshold(float threshold, float tolerance) {
-    assertThat(getSubject().getGestureStrokeAngleThreshold())
+    assertThat(actual().getGestureStrokeAngleThreshold())
         .named("gesture stroke angle threshold")
         .isWithin(tolerance)
         .of(threshold);
@@ -85,7 +85,7 @@ public class GestureOverlayViewSubject extends Subject<GestureOverlayViewSubject
   }
 
   public GestureOverlayViewSubject hasGestureStrokeLengthThreshold(float threshold, float tolerance) {
-    assertThat(getSubject().getGestureStrokeLengthThreshold())
+    assertThat(actual().getGestureStrokeLengthThreshold())
         .named("gesture stroke length threshold")
         .isWithin(tolerance)
         .of(threshold);
@@ -93,7 +93,7 @@ public class GestureOverlayViewSubject extends Subject<GestureOverlayViewSubject
   }
 
   public GestureOverlayViewSubject hasGestureStrokeSquarenessThreshold(float threshold, float tolerance) {
-    assertThat(getSubject().getGestureStrokeSquarenessTreshold())
+    assertThat(actual().getGestureStrokeSquarenessTreshold())
         .named("gesture stroke squareness threshold")
         .isWithin(tolerance)
         .of(threshold);
@@ -101,7 +101,7 @@ public class GestureOverlayViewSubject extends Subject<GestureOverlayViewSubject
   }
 
   public GestureOverlayViewSubject hasGestureStokeType(@GestureOverlayViewGestureStrokeType int type) {
-    int actualType = getSubject().getGestureStrokeType();
+    int actualType = actual().getGestureStrokeType();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected gesture stroke type <%s> but was <%s>.", gestureStrokeTypeToString(type), gestureStrokeTypeToString(actualType))
@@ -111,7 +111,7 @@ public class GestureOverlayViewSubject extends Subject<GestureOverlayViewSubject
   }
 
   public GestureOverlayViewSubject hasGestureStrokeWidth(float width, float tolerance) {
-    assertThat(getSubject().getGestureStrokeWidth())
+    assertThat(actual().getGestureStrokeWidth())
         .named("gesture stroke width")
         .isWithin(tolerance)
         .of(width);
@@ -119,7 +119,7 @@ public class GestureOverlayViewSubject extends Subject<GestureOverlayViewSubject
   }
 
   public GestureOverlayViewSubject hasOrientation(@GestureOverlayViewOrientation int orientation) {
-    int actualOrientation = getSubject().getOrientation();
+    int actualOrientation = actual().getOrientation();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected orientation <%s> but was <%s>.", orientationToString(orientation), orientationToString(actualOrientation))
@@ -129,7 +129,7 @@ public class GestureOverlayViewSubject extends Subject<GestureOverlayViewSubject
   }
 
   public GestureOverlayViewSubject hasUncertainGestureColor(int color) {
-    int actualColor = getSubject().getUncertainGestureColor();
+    int actualColor = actual().getUncertainGestureColor();
     assert_()
         .withFailureMessage("Expected uncertain gesture color <%s> but was <%s>.", Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
@@ -138,56 +138,56 @@ public class GestureOverlayViewSubject extends Subject<GestureOverlayViewSubject
   }
 
   public GestureOverlayViewSubject isInterceptingEvents() {
-    assertThat(getSubject().isEventsInterceptionEnabled())
+    assertThat(actual().isEventsInterceptionEnabled())
         .named("events intercepting is enabled")
         .isTrue();
     return this;
   }
 
   public GestureOverlayViewSubject isNotInterceptingEvents() {
-    assertThat(getSubject().isEventsInterceptionEnabled())
+    assertThat(actual().isEventsInterceptionEnabled())
         .named("events intercepting is enabled")
         .isFalse();
     return this;
   }
 
   public GestureOverlayViewSubject isFadeEnabled() {
-    assertThat(getSubject().isFadeEnabled())
+    assertThat(actual().isFadeEnabled())
         .named("fade is enabled")
         .isTrue();
     return this;
   }
 
   public GestureOverlayViewSubject isFadeDisabled() {
-    assertThat(getSubject().isFadeEnabled())
+    assertThat(actual().isFadeEnabled())
         .named("fade is enabled")
         .isFalse();
     return this;
   }
 
   public GestureOverlayViewSubject isGestureVisible() {
-    assertThat(getSubject().isGestureVisible())
+    assertThat(actual().isGestureVisible())
         .named("gesture is visible")
         .isTrue();
     return this;
   }
 
   public GestureOverlayViewSubject isGestureNotVisible() {
-    assertThat(getSubject().isGestureVisible())
+    assertThat(actual().isGestureVisible())
         .named("gesture is visible")
         .isFalse();
     return this;
   }
 
   public GestureOverlayViewSubject isGesturing() {
-    assertThat(getSubject().isGesturing())
+    assertThat(actual().isGesturing())
         .named("is gesturing")
         .isTrue();
     return this;
   }
 
   public GestureOverlayViewSubject isNotGesturing() {
-    assertThat(getSubject().isGesturing())
+    assertThat(actual().isGesturing())
         .named("is gesturing")
         .isFalse();
     return this;

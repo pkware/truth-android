@@ -68,7 +68,7 @@ public class ConfigurationSubject extends Subject<ConfigurationSubject, Configur
 
   @TargetApi(JELLY_BEAN_MR1)
   public ConfigurationSubject hasLayoutDirection(@ViewLayoutDirection int layoutDirection) {
-    int actualLayoutDirection = getSubject().getLayoutDirection();
+    int actualLayoutDirection = actual().getLayoutDirection();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected layout direction to be <%s> but was <%s>.", layoutDirectionToString(layoutDirection), layoutDirectionToString(actualLayoutDirection))
@@ -79,7 +79,7 @@ public class ConfigurationSubject extends Subject<ConfigurationSubject, Configur
 
   @TargetApi(KITKAT)
   public ConfigurationSubject hasMnc(int mnc) {
-    assertThat(getSubject().mnc)
+    assertThat(actual().mnc)
         .named("mnc")
         .isEqualTo(mnc);
     return this;

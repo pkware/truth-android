@@ -28,7 +28,7 @@ public abstract class AbstractListAdapterSubject<S extends AbstractListAdapterSu
   }
 
   public S hasAllItemsEnabled() {
-    assertThat(getSubject().areAllItemsEnabled())
+    assertThat(actual().areAllItemsEnabled())
         .named("all items are enabled")
         .isTrue();
     //noinspection unchecked
@@ -36,7 +36,7 @@ public abstract class AbstractListAdapterSubject<S extends AbstractListAdapterSu
   }
 
   public S hasAllItemsNotEnabled() {
-    assertThat(getSubject().areAllItemsEnabled())
+    assertThat(actual().areAllItemsEnabled())
         .named("all items are enabled")
         .isFalse();
     //noinspection unchecked

@@ -49,28 +49,28 @@ public class ContentValuesSubject extends Subject<ContentValuesSubject, ContentV
   }
 
   public ContentValuesSubject isEmpty() {
-    assertThat(getSubject().size())
+    assertThat(actual().size())
         .named("is empty")
         .isEqualTo(0);
     return this;
   }
 
   public ContentValuesSubject isNotEmpty() {
-    assertThat(getSubject().size())
+    assertThat(actual().size())
         .named("is not empty")
         .isGreaterThan(0);
     return this;
   }
 
   public ContentValuesSubject containsKey(String key) {
-    assertThat(getSubject().containsKey(key))
+    assertThat(actual().containsKey(key))
         .named(String.format(Locale.ENGLISH, "contains key <%s>", key))
         .isTrue();
     return this;
   }
 
   public ContentValuesSubject containsValue(Object expectedValue) {
-    Set<Map.Entry<String, Object>> entries = getSubject().valueSet();
+    Set<Map.Entry<String, Object>> entries = actual().valueSet();
     List<Object> values = new ArrayList<>(entries.size());
     for (Map.Entry<String, Object> entry : entries) {
       values.add(entry.getValue());
@@ -82,7 +82,7 @@ public class ContentValuesSubject extends Subject<ContentValuesSubject, ContentV
   public ContentValuesSubject contains(@NonNull ContentValuesEntry... entries) {
     isNotEmptyOrNull(entries);
     Map<String, Object> actual = new LinkedHashMap<>();
-    for (Map.Entry<String, Object> entry : getSubject().valueSet()) {
+    for (Map.Entry<String, Object> entry : actual().valueSet()) {
       actual.put(entry.getKey(), entry.getValue());
     }
 
@@ -93,7 +93,7 @@ public class ContentValuesSubject extends Subject<ContentValuesSubject, ContentV
   }
 
   public ContentValuesSubject hasSize(int expected) {
-    assertThat(getSubject().size())
+    assertThat(actual().size())
         .named("size")
         .isEqualTo(expected);
     return this;

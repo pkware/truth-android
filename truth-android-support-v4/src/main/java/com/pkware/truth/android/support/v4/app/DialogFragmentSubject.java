@@ -41,14 +41,14 @@ public class DialogFragmentSubject
   }
 
   public DialogFragmentSubject isCancelable() {
-    assertThat(getSubject().isCancelable())
+    assertThat(actual().isCancelable())
         .named("is cancelable")
         .isTrue();
     return this;
   }
 
   public DialogFragmentSubject isNotCancelable() {
-    assertThat(getSubject().isCancelable())
+    assertThat(actual().isCancelable())
         .isFalse();
     return this;
   }

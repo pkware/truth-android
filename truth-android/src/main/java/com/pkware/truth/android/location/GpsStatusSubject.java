@@ -42,14 +42,14 @@ public class GpsStatusSubject extends Subject<GpsStatusSubject, GpsStatus> {
   }
 
   public GpsStatusSubject hasMaximumSatellites(int count) {
-    assertThat(getSubject().getMaxSatellites())
+    assertThat(actual().getMaxSatellites())
         .named("maximum satellites")
         .isEqualTo(count);
     return this;
   }
 
   public GpsStatusSubject hasTimeToFirstFix(int time) {
-    assertThat(getSubject().getTimeToFirstFix())
+    assertThat(actual().getTimeToFirstFix())
         .named("time to first fix")
         .isEqualTo(time);
     return this;

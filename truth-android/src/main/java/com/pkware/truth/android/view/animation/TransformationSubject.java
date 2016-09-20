@@ -57,7 +57,7 @@ public class TransformationSubject extends Subject<TransformationSubject, Transf
   }
 
   public TransformationSubject hasAlpha(float alpha, float tolerance) {
-    assertThat(getSubject().getAlpha())
+    assertThat(actual().getAlpha())
         .named("alpha")
         .isWithin(tolerance)
         .of(alpha);
@@ -65,14 +65,14 @@ public class TransformationSubject extends Subject<TransformationSubject, Transf
   }
 
   public TransformationSubject hasMatrix(Matrix matrix) {
-    assertThat(getSubject().getMatrix())
+    assertThat(actual().getMatrix())
         .named("matrix")
         .isEqualTo(matrix);
     return this;
   }
 
   public TransformationSubject hasTransformationType(@TransformationType int type) {
-    int actualType = getSubject().getTransformationType();
+    int actualType = actual().getTransformationType();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected transformation type <%s> but was <%s>.",

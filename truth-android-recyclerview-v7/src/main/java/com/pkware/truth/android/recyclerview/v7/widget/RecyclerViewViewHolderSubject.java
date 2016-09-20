@@ -43,35 +43,35 @@ public class RecyclerViewViewHolderSubject
   }
 
   public RecyclerViewViewHolderSubject hasPosition(int position) {
-    assertThat(getSubject().getPosition())
+    assertThat(actual().getPosition())
         .named("position")
         .isEqualTo(position);
     return this;
   }
 
   public RecyclerViewViewHolderSubject hasItemId(long itemId) {
-    assertThat(getSubject().getItemId())
+    assertThat(actual().getItemId())
         .named("item ID")
         .isEqualTo(itemId);
     return this;
   }
 
   public RecyclerViewViewHolderSubject hasItemViewType(int itemViewType) {
-    assertThat(getSubject().getItemViewType())
+    assertThat(actual().getItemViewType())
         .named("item view type")
         .isEqualTo(itemViewType);
     return this;
   }
 
   public RecyclerViewViewHolderSubject isRecyclable() {
-    assertThat(getSubject().isRecyclable())
+    assertThat(actual().isRecyclable())
         .named("is recyclable")
         .isTrue();
     return this;
   }
 
   public RecyclerViewViewHolderSubject isNotRecyclable() {
-    assertThat(getSubject().isRecyclable())
+    assertThat(actual().isRecyclable())
         .named("is recyclable")
         .isFalse();
     return this;

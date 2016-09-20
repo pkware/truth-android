@@ -42,77 +42,77 @@ public class CanvasSubject extends Subject<CanvasSubject, Canvas> {
   }
 
   public CanvasSubject hasClipBounds(Rect bounds) {
-    assertThat(getSubject().getClipBounds())
+    assertThat(actual().getClipBounds())
         .named("clip bound")
         .isEqualTo(bounds);
     return this;
   }
 
   public CanvasSubject hasDensity(int density) {
-    assertThat(getSubject().getDensity())
+    assertThat(actual().getDensity())
         .named("density")
         .isEqualTo(density);
     return this;
   }
 
   public CanvasSubject hasHeight(int height) {
-    assertThat(getSubject().getHeight())
+    assertThat(actual().getHeight())
         .named("height")
         .isEqualTo(height);
     return this;
   }
 
   public CanvasSubject hasMaximumBitmapHeight(int height) {
-    assertThat(getSubject().getMaximumBitmapHeight())
+    assertThat(actual().getMaximumBitmapHeight())
         .named("maximum bitmap height")
         .isEqualTo(height);
     return this;
   }
 
   public CanvasSubject hasMaximumBitmapWidth(int width) {
-    assertThat(getSubject().getMaximumBitmapWidth())
+    assertThat(actual().getMaximumBitmapWidth())
         .named("maximum bitmap width")
         .isEqualTo(width);
     return this;
   }
 
   public CanvasSubject hasSaveCount(int count) {
-    assertThat(getSubject().getSaveCount())
+    assertThat(actual().getSaveCount())
         .named("save count")
         .isEqualTo(count);
     return this;
   }
 
   public CanvasSubject hasWidth(int width) {
-    assertThat(getSubject().getWidth())
+    assertThat(actual().getWidth())
         .named("width")
         .isEqualTo(width);
     return this;
   }
 
   public CanvasSubject isHardwareAccelerated() {
-    assertThat(getSubject().isHardwareAccelerated())
+    assertThat(actual().isHardwareAccelerated())
         .named("is hardware accelerated")
         .isTrue();
     return this;
   }
 
   public CanvasSubject isNotHardwareAccelerated() {
-    assertThat(getSubject().isHardwareAccelerated())
+    assertThat(actual().isHardwareAccelerated())
         .named("is hardware accelerated")
         .isFalse();
     return this;
   }
 
   public CanvasSubject isOpaque() {
-    assertThat(getSubject().isOpaque())
+    assertThat(actual().isOpaque())
         .named("is opaque")
         .isTrue();
     return this;
   }
 
   public CanvasSubject isNotOpaque() {
-    assertThat(getSubject().isOpaque())
+    assertThat(actual().isOpaque())
         .named("is opaque")
         .isFalse();
     return this;

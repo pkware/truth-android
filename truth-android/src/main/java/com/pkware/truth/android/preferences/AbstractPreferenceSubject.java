@@ -36,7 +36,7 @@ public abstract class AbstractPreferenceSubject<S extends AbstractPreferenceSubj
   }
 
   public S hasContext(Context context) {
-    assertThat(getSubject().getContext())
+    assertThat(actual().getContext())
         .named("context")
         .isSameAs(context);
     //noinspection unchecked
@@ -44,7 +44,7 @@ public abstract class AbstractPreferenceSubject<S extends AbstractPreferenceSubj
   }
 
   public S hasDependency(String dependency) {
-    assertThat(getSubject().getDependency())
+    assertThat(actual().getDependency())
         .named("dependency")
         .isEqualTo(dependency);
     //noinspection unchecked
@@ -52,7 +52,7 @@ public abstract class AbstractPreferenceSubject<S extends AbstractPreferenceSubj
   }
 
   public S hasFragment(String fragment) {
-    assertThat(getSubject().getFragment())
+    assertThat(actual().getFragment())
         .named("fragment")
         .isEqualTo(fragment);
     //noinspection unchecked
@@ -60,7 +60,7 @@ public abstract class AbstractPreferenceSubject<S extends AbstractPreferenceSubj
   }
 
   public S hasIcon(Drawable icon) {
-    assertThat(getSubject().getIcon())
+    assertThat(actual().getIcon())
         .named("icon")
         .isSameAs(icon);
     //noinspection unchecked
@@ -68,7 +68,7 @@ public abstract class AbstractPreferenceSubject<S extends AbstractPreferenceSubj
   }
 
   public S hasIntent(Intent intent) {
-    assertThat(getSubject().getIntent())
+    assertThat(actual().getIntent())
         .named("intent")
         .isEqualTo(intent);
     //noinspection unchecked
@@ -76,7 +76,7 @@ public abstract class AbstractPreferenceSubject<S extends AbstractPreferenceSubj
   }
 
   public S hasKey(String key) {
-    assertThat(getSubject().getKey())
+    assertThat(actual().getKey())
         .named("key")
         .isEqualTo(key);
     //noinspection unchecked
@@ -84,7 +84,7 @@ public abstract class AbstractPreferenceSubject<S extends AbstractPreferenceSubj
   }
 
   public S hasLayoutResource(@LayoutRes int resource) {
-    assertThat(getSubject().getLayoutResource())
+    assertThat(actual().getLayoutResource())
         .named("layout resource id")
         .isEqualTo(resource);
     //noinspection unchecked
@@ -92,7 +92,7 @@ public abstract class AbstractPreferenceSubject<S extends AbstractPreferenceSubj
   }
 
   public S hasPreferenceChangeListener(Preference.OnPreferenceChangeListener listener) {
-    assertThat(getSubject().getOnPreferenceChangeListener())
+    assertThat(actual().getOnPreferenceChangeListener())
         .named("preference change listener")
         .isSameAs(listener);
     //noinspection unchecked
@@ -100,7 +100,7 @@ public abstract class AbstractPreferenceSubject<S extends AbstractPreferenceSubj
   }
 
   public S hasPreferenceClickListener(Preference.OnPreferenceClickListener listener) {
-    assertThat(getSubject().getOnPreferenceClickListener())
+    assertThat(actual().getOnPreferenceClickListener())
         .named("preference click listener")
         .isSameAs(listener);
     //noinspection unchecked
@@ -108,7 +108,7 @@ public abstract class AbstractPreferenceSubject<S extends AbstractPreferenceSubj
   }
 
   public S hasOrder(int order) {
-    assertThat(getSubject().getOrder())
+    assertThat(actual().getOrder())
         .named("order")
         .isEqualTo(order);
     //noinspection unchecked
@@ -116,7 +116,7 @@ public abstract class AbstractPreferenceSubject<S extends AbstractPreferenceSubj
   }
 
   public S hasPreferenceManager(PreferenceManager manager) {
-    assertThat(getSubject().getPreferenceManager())
+    assertThat(actual().getPreferenceManager())
         .named("preference manager")
         .isSameAs(manager);
     //noinspection unchecked
@@ -124,7 +124,7 @@ public abstract class AbstractPreferenceSubject<S extends AbstractPreferenceSubj
   }
 
   public S hasSharedPreferences(SharedPreferences preferences) {
-    assertThat(getSubject().getSharedPreferences())
+    assertThat(actual().getSharedPreferences())
         .named("shared preferences")
         .isSameAs(preferences);
     //noinspection unchecked
@@ -132,7 +132,7 @@ public abstract class AbstractPreferenceSubject<S extends AbstractPreferenceSubj
   }
 
   public S hasSummary(CharSequence summary) {
-    assertThat(getSubject().getSummary())
+    assertThat(actual().getSummary())
         .named("summary")
         .isEqualTo(summary);
     //noinspection unchecked
@@ -140,11 +140,11 @@ public abstract class AbstractPreferenceSubject<S extends AbstractPreferenceSubj
   }
 
   public S hasSummary(@StringRes int resId) {
-    return hasSummary(getSubject().getContext().getString(resId));
+    return hasSummary(actual().getContext().getString(resId));
   }
 
   public S hasTitle(CharSequence title) {
-    assertThat(getSubject().getTitle())
+    assertThat(actual().getTitle())
         .named("title")
         .isEqualTo(title);
     //noinspection unchecked
@@ -152,11 +152,11 @@ public abstract class AbstractPreferenceSubject<S extends AbstractPreferenceSubj
   }
 
   public S hasTitle(@StringRes int resId) {
-    return hasTitle(getSubject().getContext().getString(resId));
+    return hasTitle(actual().getContext().getString(resId));
   }
 
   public S hasTitleResource(@StringRes int resource) {
-    assertThat(getSubject().getTitleRes())
+    assertThat(actual().getTitleRes())
         .named("title resource")
         .isEqualTo(resource);
     //noinspection unchecked
@@ -164,7 +164,7 @@ public abstract class AbstractPreferenceSubject<S extends AbstractPreferenceSubj
   }
 
   public S hasWidgetLayoutResource(@LayoutRes int resource) {
-    assertThat(getSubject().getWidgetLayoutResource())
+    assertThat(actual().getWidgetLayoutResource())
         .named("widget layout resource")
         .isEqualTo(resource);
     //noinspection unchecked
@@ -172,7 +172,7 @@ public abstract class AbstractPreferenceSubject<S extends AbstractPreferenceSubj
   }
 
   public S hasKey() {
-    assertThat(getSubject().hasKey())
+    assertThat(actual().hasKey())
         .named("has key")
         .isTrue();
     //noinspection unchecked
@@ -180,7 +180,7 @@ public abstract class AbstractPreferenceSubject<S extends AbstractPreferenceSubj
   }
 
   public S isEnabled() {
-    assertThat(getSubject().isEnabled())
+    assertThat(actual().isEnabled())
         .named("is enabled")
         .isTrue();
     //noinspection unchecked
@@ -188,7 +188,7 @@ public abstract class AbstractPreferenceSubject<S extends AbstractPreferenceSubj
   }
 
   public S isDisabled() {
-    assertThat(!getSubject().isEnabled())
+    assertThat(!actual().isEnabled())
         .named("is disabled")
         .isTrue();
     //noinspection unchecked
@@ -196,7 +196,7 @@ public abstract class AbstractPreferenceSubject<S extends AbstractPreferenceSubj
   }
 
   public S isPersistent() {
-    assertThat(getSubject().isPersistent())
+    assertThat(actual().isPersistent())
         .named("is persistent")
         .isTrue();
     //noinspection unchecked
@@ -204,7 +204,7 @@ public abstract class AbstractPreferenceSubject<S extends AbstractPreferenceSubj
   }
 
   public S isNotPersistent() {
-    assertThat(getSubject().isPersistent())
+    assertThat(actual().isPersistent())
         .named("is persistent")
         .isFalse();
     //noinspection unchecked
@@ -212,7 +212,7 @@ public abstract class AbstractPreferenceSubject<S extends AbstractPreferenceSubj
   }
 
   public S isSelectable() {
-    assertThat(getSubject().isSelectable())
+    assertThat(actual().isSelectable())
         .named("is selectable")
         .isTrue();
     //noinspection unchecked
@@ -220,7 +220,7 @@ public abstract class AbstractPreferenceSubject<S extends AbstractPreferenceSubj
   }
 
   public S isNotSelectable() {
-    assertThat(getSubject().isSelectable())
+    assertThat(actual().isSelectable())
         .named("is selectable")
         .isFalse();
     //noinspection unchecked

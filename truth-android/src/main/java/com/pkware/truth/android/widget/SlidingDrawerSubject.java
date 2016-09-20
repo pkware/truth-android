@@ -43,42 +43,42 @@ public class SlidingDrawerSubject
   }
 
   public SlidingDrawerSubject hasContent(View view) {
-    assertThat(getSubject().getContent())
+    assertThat(actual().getContent())
         .named("content")
         .isSameAs(view);
     return this;
   }
 
   public SlidingDrawerSubject hasHandle(View view) {
-    assertThat(getSubject().getHandle())
+    assertThat(actual().getHandle())
         .named("handle")
         .isSameAs(view);
     return this;
   }
 
   public SlidingDrawerSubject isMoving() {
-    assertThat(getSubject().isMoving())
+    assertThat(actual().isMoving())
         .named("is moving")
         .isTrue();
     return this;
   }
 
   public SlidingDrawerSubject isNotMoving() {
-    assertThat(getSubject().isMoving())
+    assertThat(actual().isMoving())
         .named("is moving")
         .isFalse();
     return this;
   }
 
   public SlidingDrawerSubject isOpened() {
-    assertThat(getSubject().isMoving())
+    assertThat(actual().isMoving())
         .named("is opened")
         .isTrue();
     return this;
   }
 
   public SlidingDrawerSubject isClosed() {
-    assertThat(getSubject().isMoving())
+    assertThat(actual().isMoving())
         .named("is opened")
         .isFalse();
     return this;

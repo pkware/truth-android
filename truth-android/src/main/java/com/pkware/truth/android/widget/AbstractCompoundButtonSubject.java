@@ -28,7 +28,7 @@ public abstract class AbstractCompoundButtonSubject<S extends AbstractCompoundBu
   }
 
   public S isChecked() {
-    assertThat(getSubject().isChecked())
+    assertThat(actual().isChecked())
         .named("is checked")
         .isTrue();
     //noinspection unchecked
@@ -36,7 +36,7 @@ public abstract class AbstractCompoundButtonSubject<S extends AbstractCompoundBu
   }
 
   public S isNotChecked() {
-    assertThat(getSubject().isChecked())
+    assertThat(actual().isChecked())
         .named("is checked")
         .isFalse();
     //noinspection unchecked

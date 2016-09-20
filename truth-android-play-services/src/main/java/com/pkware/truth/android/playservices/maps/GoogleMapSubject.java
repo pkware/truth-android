@@ -40,14 +40,14 @@ public class GoogleMapSubject extends Subject<GoogleMapSubject, GoogleMap> {
   }
 
   public GoogleMapSubject hasMapType(int mapType) {
-    assertThat(getSubject().getMapType())
+    assertThat(actual().getMapType())
         .named("map type")
         .isEqualTo(mapType);
     return this;
   }
 
   public GoogleMapSubject hasMaxZoomLevel(float zoomLevel, float tolerance) {
-    assertThat(getSubject().getMaxZoomLevel())
+    assertThat(actual().getMaxZoomLevel())
         .named("maximum zoom level")
         .isWithin(tolerance)
         .of(zoomLevel);
@@ -55,7 +55,7 @@ public class GoogleMapSubject extends Subject<GoogleMapSubject, GoogleMap> {
   }
 
   public GoogleMapSubject hasMinZoomLevel(float zoomLevel, float tolerance) {
-    assertThat(getSubject().getMinZoomLevel())
+    assertThat(actual().getMinZoomLevel())
         .named("minimum zoom level")
         .isWithin(tolerance)
         .of(zoomLevel);
@@ -63,56 +63,56 @@ public class GoogleMapSubject extends Subject<GoogleMapSubject, GoogleMap> {
   }
 
   public GoogleMapSubject hasBuildingsEnabled() {
-    assertThat(getSubject().isBuildingsEnabled())
+    assertThat(actual().isBuildingsEnabled())
         .named("has buildings enabled")
         .isTrue();
     return this;
   }
 
   public GoogleMapSubject hasBuildingsDisabled() {
-    assertThat(!getSubject().isBuildingsEnabled())
+    assertThat(!actual().isBuildingsEnabled())
         .named("has buildings disabled")
         .isTrue();
     return this;
   }
 
   public GoogleMapSubject hasIndoorEnabled() {
-    assertThat(getSubject().isIndoorEnabled())
+    assertThat(actual().isIndoorEnabled())
         .named("has indoor enabled")
         .isTrue();
     return this;
   }
 
   public GoogleMapSubject hasIndoorDisabled() {
-    assertThat(!getSubject().isIndoorEnabled())
+    assertThat(!actual().isIndoorEnabled())
         .named("has indoor disabled")
         .isTrue();
     return this;
   }
 
   public GoogleMapSubject hasMyLocationEnabled() {
-    assertThat(getSubject().isMyLocationEnabled())
+    assertThat(actual().isMyLocationEnabled())
         .named("has 'my location' enabled")
         .isTrue();
     return this;
   }
 
   public GoogleMapSubject hasMyLocationDisabled() {
-    assertThat(!getSubject().isMyLocationEnabled())
+    assertThat(!actual().isMyLocationEnabled())
         .named("has 'my location' disabled")
         .isTrue();
     return this;
   }
 
   public GoogleMapSubject hasTrafficEnabled() {
-    assertThat(getSubject().isTrafficEnabled())
+    assertThat(actual().isTrafficEnabled())
         .named("has traffic enabled")
         .isTrue();
     return this;
   }
 
   public GoogleMapSubject hasTrafficDisabled() {
-    assertThat(!getSubject().isTrafficEnabled())
+    assertThat(!actual().isTrafficEnabled())
         .named("has traffic disabled")
         .isTrue();
     return this;

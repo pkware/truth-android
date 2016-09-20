@@ -41,14 +41,14 @@ public class AccountSubject extends Subject<AccountSubject, Account> {
   }
 
   public AccountSubject hasName(String name) {
-    assertThat(getSubject().name)
+    assertThat(actual().name)
         .named("name")
         .isEqualTo(name);
     return this;
   }
 
   public AccountSubject hasType(String type) {
-    assertThat(getSubject().type)
+    assertThat(actual().type)
         .named("type")
         .isEqualTo(type);
     return this;

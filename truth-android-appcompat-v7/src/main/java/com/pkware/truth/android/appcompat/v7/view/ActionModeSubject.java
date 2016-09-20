@@ -42,64 +42,64 @@ public class ActionModeSubject extends Subject<ActionModeSubject, ActionMode> {
   }
 
   public ActionModeSubject hasCustomView() {
-    assertThat(getSubject().getCustomView())
+    assertThat(actual().getCustomView())
         .named("custom view")
         .isNotNull();
     return this;
   }
 
   public ActionModeSubject hasCustomView(View view) {
-    View actualView = getSubject().getCustomView();
-    assertThat(getSubject().getCustomView())
+    View actualView = actual().getCustomView();
+    assertThat(actual().getCustomView())
         .named("custom view")
         .isEqualTo(view);
     return this;
   }
 
   public ActionModeSubject hasSubtitle(String subtitle) {
-    assertThat(getSubject().getSubtitle().toString())
+    assertThat(actual().getSubtitle().toString())
         .named("subtitle")
         .isEqualTo(subtitle);
     return this;
   }
 
   public ActionModeSubject hasTag(Object tag) {
-    assertThat(getSubject().getTag())
+    assertThat(actual().getTag())
         .named("tag")
         .isEqualTo(tag);
     return this;
   }
 
   public ActionModeSubject hasTitle(String title) {
-    assertThat(getSubject().getTitle().toString())
+    assertThat(actual().getTitle().toString())
         .named("title")
         .isEqualTo(title);
     return this;
   }
 
   public ActionModeSubject hasOptionalTitleHint() {
-    assertThat(getSubject().getTitleOptionalHint())
+    assertThat(actual().getTitleOptionalHint())
         .named("has optional title hint")
         .isTrue();
     return this;
   }
 
   public ActionModeSubject hasNonOptionalTitleHint() {
-    assertThat(getSubject().getTitleOptionalHint())
+    assertThat(actual().getTitleOptionalHint())
         .named("has optional title hint")
         .isFalse();
     return this;
   }
 
   public ActionModeSubject hasOptionalTitle() {
-    assertThat(getSubject().isTitleOptional())
+    assertThat(actual().isTitleOptional())
         .named("has optional title")
         .isTrue();
     return this;
   }
 
   public ActionModeSubject hasNonOptionalTitle() {
-    assertThat(getSubject().isTitleOptional())
+    assertThat(actual().isTitleOptional())
         .named("has optional title")
         .isFalse();
     return this;

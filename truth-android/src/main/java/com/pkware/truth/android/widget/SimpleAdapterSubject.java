@@ -42,14 +42,14 @@ public class SimpleAdapterSubject
   }
 
   public SimpleAdapterSubject hasFilter(Filter filter) {
-    assertThat(getSubject().getFilter())
+    assertThat(actual().getFilter())
         .named("filter")
         .isSameAs(filter);
     return this;
   }
 
   public SimpleAdapterSubject hasViewBinder(SimpleAdapter.ViewBinder binder) {
-    assertThat(getSubject().getViewBinder())
+    assertThat(actual().getViewBinder())
         .named("view binder")
         .isSameAs(binder);
     return this;

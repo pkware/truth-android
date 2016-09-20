@@ -71,14 +71,14 @@ public class ActionBarSubject extends Subject<ActionBarSubject, ActionBar> {
   }
 
   public ActionBarSubject hasCustomView() {
-    assertThat(getSubject().getCustomView())
+    assertThat(actual().getCustomView())
         .named("custom view")
         .isNotNull();
     return this;
   }
 
   public ActionBarSubject hasDisplayOptions(@ActionBarDisplayOptions int options) {
-    final int actualOptions = getSubject().getDisplayOptions();
+    final int actualOptions = actual().getDisplayOptions();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected display options <%s> but was <%s>.", displayOptionsToString(options), displayOptionsToString(actualOptions))
@@ -88,7 +88,7 @@ public class ActionBarSubject extends Subject<ActionBarSubject, ActionBar> {
   }
 
   public ActionBarSubject hasHeight(int height) {
-    int actualHeight = getSubject().getHeight();
+    int actualHeight = actual().getHeight();
     assertThat(actualHeight)
         .named("height")
         .isEqualTo(height);
@@ -96,7 +96,7 @@ public class ActionBarSubject extends Subject<ActionBarSubject, ActionBar> {
   }
 
   public ActionBarSubject hasNavigationItemCount(int count) {
-    int actualCount = getSubject().getNavigationItemCount();
+    int actualCount = actual().getNavigationItemCount();
     assertThat(actualCount)
         .named("navigation item count")
         .isEqualTo(count);
@@ -104,7 +104,7 @@ public class ActionBarSubject extends Subject<ActionBarSubject, ActionBar> {
   }
 
   public ActionBarSubject hasNavigationMode(@ActionBarNavigationMode int mode) {
-    int actualMode = getSubject().getNavigationMode();
+    int actualMode = actual().getNavigationMode();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected navigation mode <%s> but was <%s>.", navigationModeToString(mode), navigationModeToString(actualMode))
@@ -114,7 +114,7 @@ public class ActionBarSubject extends Subject<ActionBarSubject, ActionBar> {
   }
 
   public ActionBarSubject hasSelectedNavigationIndex(int index) {
-    int actualIndex = getSubject().getSelectedNavigationIndex();
+    int actualIndex = actual().getSelectedNavigationIndex();
     assertThat(actualIndex)
         .named("selected navigation index")
         .isEqualTo(index);
@@ -122,7 +122,7 @@ public class ActionBarSubject extends Subject<ActionBarSubject, ActionBar> {
   }
 
   public ActionBarSubject hasSubtitle(CharSequence subtitle) {
-    CharSequence actualSubtitle = getSubject().getSubtitle();
+    CharSequence actualSubtitle = actual().getSubtitle();
     assertThat(actualSubtitle)
         .named("subtitle")
         .isEqualTo(subtitle);
@@ -130,11 +130,11 @@ public class ActionBarSubject extends Subject<ActionBarSubject, ActionBar> {
   }
 
   public ActionBarSubject hasSubtitle(@StringRes int resId) {
-    return hasSubtitle(getSubject().getThemedContext().getString(resId));
+    return hasSubtitle(actual().getThemedContext().getString(resId));
   }
 
   public ActionBarSubject hasTabCount(int count) {
-    int actualCount = getSubject().getTabCount();
+    int actualCount = actual().getTabCount();
     assertThat(actualCount)
         .named("tab count")
         .isEqualTo(count);
@@ -142,7 +142,7 @@ public class ActionBarSubject extends Subject<ActionBarSubject, ActionBar> {
   }
 
   public ActionBarSubject hasTitle(CharSequence title) {
-    CharSequence actualTitle = getSubject().getTitle();
+    CharSequence actualTitle = actual().getTitle();
     assertThat(actualTitle)
         .named("title")
         .isEqualTo(title);
@@ -150,18 +150,18 @@ public class ActionBarSubject extends Subject<ActionBarSubject, ActionBar> {
   }
 
   public ActionBarSubject hasTitle(@StringRes int resId) {
-    return hasTitle(getSubject().getThemedContext().getString(resId));
+    return hasTitle(actual().getThemedContext().getString(resId));
   }
 
   public ActionBarSubject isShowing() {
-    assertThat(getSubject().isShowing())
+    assertThat(actual().isShowing())
         .named("is showing")
         .isTrue();
     return this;
   }
 
   public ActionBarSubject isNotShowing() {
-    assertThat(getSubject().isShowing())
+    assertThat(actual().isShowing())
         .named("is showing")
         .isFalse();
     return this;

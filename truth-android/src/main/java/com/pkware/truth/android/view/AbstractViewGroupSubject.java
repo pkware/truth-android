@@ -66,7 +66,7 @@ public abstract class AbstractViewGroupSubject<S extends AbstractViewGroupSubjec
   }
 
   public S isAddingStatesFromChildren() {
-    assertThat(getSubject().addStatesFromChildren())
+    assertThat(actual().addStatesFromChildren())
         .named("is adding states from children")
         .isTrue();
     //noinspection unchecked
@@ -74,7 +74,7 @@ public abstract class AbstractViewGroupSubject<S extends AbstractViewGroupSubjec
   }
 
   public S isNotAddingStatesFromChildren() {
-    assertThat(getSubject().addStatesFromChildren())
+    assertThat(actual().addStatesFromChildren())
         .named("is adding states from children")
         .isFalse();
     //noinspection unchecked
@@ -82,7 +82,7 @@ public abstract class AbstractViewGroupSubject<S extends AbstractViewGroupSubjec
   }
 
   public S hasChildCount(int count) {
-    assertThat(getSubject().getChildCount())
+    assertThat(actual().getChildCount())
         .named("child count")
         .isEqualTo(count);
     //noinspection unchecked
@@ -90,7 +90,7 @@ public abstract class AbstractViewGroupSubject<S extends AbstractViewGroupSubjec
   }
 
   public S hasDescendantFocusability(@ViewGroupDescendantFocusability int focusability) {
-    int actualFocusability = getSubject().getDescendantFocusability();
+    int actualFocusability = actual().getDescendantFocusability();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected descendant focusability <%s> but was <%s>",
@@ -103,7 +103,7 @@ public abstract class AbstractViewGroupSubject<S extends AbstractViewGroupSubjec
   }
 
   public S hasFocusedChild(View view) {
-    assertThat(getSubject().getFocusedChild())
+    assertThat(actual().getFocusedChild())
         .named("focused child")
         .isSameAs(view);
     //noinspection unchecked
@@ -112,7 +112,7 @@ public abstract class AbstractViewGroupSubject<S extends AbstractViewGroupSubjec
 
   @TargetApi(JELLY_BEAN_MR2)
   public S hasLayoutMode(@ViewGroupLayoutMode int layoutMode) {
-    int actualLayoutMode = getSubject().getLayoutMode();
+    int actualLayoutMode = actual().getLayoutMode();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected layout mode <%s> but was <%s>.",
@@ -124,7 +124,7 @@ public abstract class AbstractViewGroupSubject<S extends AbstractViewGroupSubjec
   }
 
   public S hasPersistentDrawingCache(@ViewGroupPersistentDrawingCache int cache) {
-    int actualCache = getSubject().getPersistentDrawingCache();
+    int actualCache = actual().getPersistentDrawingCache();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected persistent drawing cache <%s> but was <%s>",
@@ -136,7 +136,7 @@ public abstract class AbstractViewGroupSubject<S extends AbstractViewGroupSubjec
   }
 
   public S isAlwaysDrawnWithCache() {
-    assertThat(getSubject().isAlwaysDrawnWithCacheEnabled())
+    assertThat(actual().isAlwaysDrawnWithCacheEnabled())
         .named("is always drawn with cache enabled")
         .isTrue();
     //noinspection unchecked
@@ -144,7 +144,7 @@ public abstract class AbstractViewGroupSubject<S extends AbstractViewGroupSubjec
   }
 
   public S isNotAlwaysDrawnWithCache() {
-    assertThat(getSubject().isAlwaysDrawnWithCacheEnabled())
+    assertThat(actual().isAlwaysDrawnWithCacheEnabled())
         .named("is always drawn with cache enabled")
         .isFalse();
     //noinspection unchecked
@@ -153,7 +153,7 @@ public abstract class AbstractViewGroupSubject<S extends AbstractViewGroupSubjec
 
   @TargetApi(JELLY_BEAN_MR2)
   public S isClippingChildren() {
-    assertThat(getSubject().getClipChildren())
+    assertThat(actual().getClipChildren())
         .named("is clipping children")
         .isTrue();
     //noinspection unchecked
@@ -162,7 +162,7 @@ public abstract class AbstractViewGroupSubject<S extends AbstractViewGroupSubjec
 
   @TargetApi(JELLY_BEAN_MR2)
   public S isNotClippingChildren() {
-    assertThat(getSubject().getClipChildren())
+    assertThat(actual().getClipChildren())
         .named("is clipping children")
         .isFalse();
     //noinspection unchecked
@@ -170,7 +170,7 @@ public abstract class AbstractViewGroupSubject<S extends AbstractViewGroupSubjec
   }
 
   public S hasAnimationCacheEnabled() {
-    assertThat(getSubject().isAnimationCacheEnabled())
+    assertThat(actual().isAnimationCacheEnabled())
         .named("is animation cache enabled")
         .isTrue();
     //noinspection unchecked
@@ -178,7 +178,7 @@ public abstract class AbstractViewGroupSubject<S extends AbstractViewGroupSubjec
   }
 
   public S hasAnimationCacheDisabled() {
-    assertThat(getSubject().isAnimationCacheEnabled())
+    assertThat(actual().isAnimationCacheEnabled())
         .named("is animation cache enabled")
         .isFalse();
     //noinspection unchecked
@@ -186,7 +186,7 @@ public abstract class AbstractViewGroupSubject<S extends AbstractViewGroupSubjec
   }
 
   public S hasMotionEventSplittingEnabled() {
-    assertThat(getSubject().isMotionEventSplittingEnabled())
+    assertThat(actual().isMotionEventSplittingEnabled())
         .named("is motion event splitting enabled")
         .isTrue();
     //noinspection unchecked
@@ -194,7 +194,7 @@ public abstract class AbstractViewGroupSubject<S extends AbstractViewGroupSubjec
   }
 
   public S hasMotionEventSplittingDisabled() {
-    assertThat(getSubject().isMotionEventSplittingEnabled())
+    assertThat(actual().isMotionEventSplittingEnabled())
         .named("is motion event splitting enabled")
         .isFalse();
     //noinspection unchecked

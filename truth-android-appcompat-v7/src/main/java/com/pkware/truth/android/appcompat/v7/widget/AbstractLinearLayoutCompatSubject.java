@@ -59,7 +59,7 @@ public abstract class AbstractLinearLayoutCompatSubject<S extends AbstractLinear
 
   @TargetApi(ICE_CREAM_SANDWICH)
   public S hasDividerPadding(int padding) {
-    assertThat(getSubject().getDividerPadding())
+    assertThat(actual().getDividerPadding())
         .named("divider padding")
         .isEqualTo(padding);
     //noinspection unchecked
@@ -67,7 +67,7 @@ public abstract class AbstractLinearLayoutCompatSubject<S extends AbstractLinear
   }
 
   public S hasOrientation(@LinearLayoutOrientation int orientation) {
-    int actualOrientation = getSubject().getOrientation();
+    int actualOrientation = actual().getOrientation();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected orientation <%s> but was <%s>.",
@@ -88,7 +88,7 @@ public abstract class AbstractLinearLayoutCompatSubject<S extends AbstractLinear
 
   @TargetApi(HONEYCOMB)
   public S hasShowDividers(@LinearLayoutShowDividers int dividers) {
-    int actualDividers = getSubject().getShowDividers();
+    int actualDividers = actual().getShowDividers();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected showing dividers <%s> but was <%s>.",
@@ -100,7 +100,7 @@ public abstract class AbstractLinearLayoutCompatSubject<S extends AbstractLinear
   }
 
   public S hasWeightSum(float sum, float tolerance) {
-    assertThat(getSubject().getWeightSum())
+    assertThat(actual().getWeightSum())
         .named("weight sum")
         .isWithin(tolerance)
         .of(sum);
@@ -109,7 +109,7 @@ public abstract class AbstractLinearLayoutCompatSubject<S extends AbstractLinear
   }
 
   public S isBaselineAligned() {
-    assertThat(getSubject().isBaselineAligned())
+    assertThat(actual().isBaselineAligned())
         .named("is baseline aligned")
         .isTrue();
     //noinspection unchecked
@@ -117,7 +117,7 @@ public abstract class AbstractLinearLayoutCompatSubject<S extends AbstractLinear
   }
 
   public S isNotBaselineAligned() {
-    assertThat(getSubject().isBaselineAligned())
+    assertThat(actual().isBaselineAligned())
         .named("is baseline aligned")
         .isFalse();
     //noinspection unchecked
@@ -126,7 +126,7 @@ public abstract class AbstractLinearLayoutCompatSubject<S extends AbstractLinear
 
   @TargetApi(HONEYCOMB)
   public S isMeasuringWithLargestChild() {
-    assertThat(getSubject().isMeasureWithLargestChildEnabled())
+    assertThat(actual().isMeasureWithLargestChildEnabled())
         .named("is measuring with largest child")
         .isTrue();
     //noinspection unchecked
@@ -135,7 +135,7 @@ public abstract class AbstractLinearLayoutCompatSubject<S extends AbstractLinear
 
   @TargetApi(HONEYCOMB)
   public S isNotMeasuringWithLargestChild() {
-    assertThat(getSubject().isMeasureWithLargestChildEnabled())
+    assertThat(actual().isMeasureWithLargestChildEnabled())
         .named("is measuring with largest child")
         .isFalse();
     //noinspection unchecked

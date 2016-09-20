@@ -47,7 +47,7 @@ public class SwitchSubject extends AbstractCompoundButtonSubject<SwitchSubject, 
 
   @TargetApi(JELLY_BEAN)
   public SwitchSubject hasSwitchMinWidth(int width) {
-    assertThat(getSubject().getSwitchMinWidth())
+    assertThat(actual().getSwitchMinWidth())
         .named("switch minimum width")
         .isEqualTo(width);
     return this;
@@ -55,37 +55,37 @@ public class SwitchSubject extends AbstractCompoundButtonSubject<SwitchSubject, 
 
   @TargetApi(JELLY_BEAN)
   public SwitchSubject hasSwitchPadding(int padding) {
-    assertThat(getSubject().getSwitchPadding())
+    assertThat(actual().getSwitchPadding())
         .named("switch padding")
         .isEqualTo(padding);
     return this;
   }
 
   public SwitchSubject hasOnText(String text) {
-    assertThat(getSubject().getTextOn().toString())
+    assertThat(actual().getTextOn().toString())
         .named("'on' text")
         .isEqualTo(text);
     return this;
   }
 
   public SwitchSubject hasOnText(@StringRes int resId) {
-    return hasOnText(getSubject().getContext().getString(resId));
+    return hasOnText(actual().getContext().getString(resId));
   }
 
   public SwitchSubject hasOffText(String text) {
-    assertThat(getSubject().getTextOff().toString())
+    assertThat(actual().getTextOff().toString())
         .named("'off' text")
         .isEqualTo(text);
     return this;
   }
 
   public SwitchSubject hasOffText(@StringRes int resId) {
-    return hasOffText(getSubject().getContext().getString(resId));
+    return hasOffText(actual().getContext().getString(resId));
   }
 
   @TargetApi(JELLY_BEAN)
   public SwitchSubject hasThumbDrawable(Drawable drawable) {
-    assertThat(getSubject().getThumbDrawable())
+    assertThat(actual().getThumbDrawable())
         .named("thumb drawable")
         .isSameAs(drawable);
     return this;
@@ -93,7 +93,7 @@ public class SwitchSubject extends AbstractCompoundButtonSubject<SwitchSubject, 
 
   @TargetApi(JELLY_BEAN)
   public SwitchSubject hasThumbTextPadding(int padding) {
-    assertThat(getSubject().getThumbTextPadding())
+    assertThat(actual().getThumbTextPadding())
         .named("thumb text padding")
         .isEqualTo(padding);
     return this;
@@ -101,7 +101,7 @@ public class SwitchSubject extends AbstractCompoundButtonSubject<SwitchSubject, 
 
   @TargetApi(JELLY_BEAN)
   public SwitchSubject hasTrackDrawable(Drawable drawable) {
-    assertThat(getSubject().getTrackDrawable())
+    assertThat(actual().getTrackDrawable())
         .named("track drawable")
         .isSameAs(drawable);
     return this;

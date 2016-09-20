@@ -43,56 +43,56 @@ public class RegionSubject extends Subject<RegionSubject, Region> {
   }
 
   public RegionSubject hasBoundaryPath(Path path) {
-    assertThat(getSubject().getBoundaryPath())
+    assertThat(actual().getBoundaryPath())
         .named("boundary path")
         .isEqualTo(path);
     return this;
   }
 
   public RegionSubject hasBounds(Rect bounds) {
-    assertThat(getSubject().getBounds())
+    assertThat(actual().getBounds())
         .named("bounds")
         .isEqualTo(bounds);
     return this;
   }
 
   public RegionSubject isComplex() {
-    assertThat(getSubject().isComplex())
+    assertThat(actual().isComplex())
         .named("is complex")
         .isTrue();
     return this;
   }
 
   public RegionSubject isNotComplex() {
-    assertThat(getSubject().isComplex())
+    assertThat(actual().isComplex())
         .named("is complex")
         .isFalse();
     return this;
   }
 
   public RegionSubject isEmpty() {
-    assertThat(getSubject().isEmpty())
+    assertThat(actual().isEmpty())
         .named("is empty")
         .isTrue();
     return this;
   }
 
   public RegionSubject isNotEmpty() {
-    assertThat(getSubject().isEmpty())
+    assertThat(actual().isEmpty())
         .named("is empty")
         .isFalse();
     return this;
   }
 
   public RegionSubject isRect() {
-    assertThat(getSubject().isRect())
+    assertThat(actual().isRect())
         .named("is rectangle")
         .isTrue();
     return this;
   }
 
   public RegionSubject isNotRect() {
-    assertThat(getSubject().isRect())
+    assertThat(actual().isRect())
         .named("is rectangle")
         .isTrue();
     return this;

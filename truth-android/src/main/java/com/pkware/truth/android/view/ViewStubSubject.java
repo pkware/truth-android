@@ -41,14 +41,14 @@ public class ViewStubSubject extends AbstractViewSubject<ViewStubSubject, ViewSt
   }
 
   public ViewStubSubject hasInflatedId(int id) {
-    assertThat(getSubject().getInflatedId())
+    assertThat(actual().getInflatedId())
         .named("view stub inflated ID")
         .isEqualTo(id);
     return this;
   }
 
   public ViewStubSubject hasLayoutResource(@LayoutRes int resId) {
-    assertThat(getSubject().getLayoutResource())
+    assertThat(actual().getLayoutResource())
         .named("view stub layout resource")
         .isEqualTo(resId);
     return this;

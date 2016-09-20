@@ -94,7 +94,7 @@ public class SensorSubject extends Subject<SensorSubject, Sensor> {
   }
 
   public SensorSubject hasMaximumRange(float range, float tolerance) {
-    assertThat(getSubject().getMaximumRange())
+    assertThat(actual().getMaximumRange())
         .named("maximum range")
         .isWithin(tolerance)
         .of(range);
@@ -102,21 +102,21 @@ public class SensorSubject extends Subject<SensorSubject, Sensor> {
   }
 
   public SensorSubject hasMinDelay(int delay) {
-    assertThat(getSubject().getMinDelay())
+    assertThat(actual().getMinDelay())
         .named("minimum delay")
         .isEqualTo(delay);
     return this;
   }
 
   public SensorSubject hasName(String name) {
-    assertThat(getSubject().getName())
+    assertThat(actual().getName())
         .named("name")
         .isEqualTo(name);
     return this;
   }
 
   public SensorSubject hasPower(float power, float tolerance) {
-    assertThat(getSubject().getPower())
+    assertThat(actual().getPower())
         .named("power")
         .isWithin(tolerance)
         .of(power);
@@ -124,7 +124,7 @@ public class SensorSubject extends Subject<SensorSubject, Sensor> {
   }
 
   public SensorSubject hasResolution(float resolution, float tolerance) {
-    assertThat(getSubject().getResolution())
+    assertThat(actual().getResolution())
         .named("resolution")
         .isWithin(tolerance)
         .of(resolution);
@@ -132,7 +132,7 @@ public class SensorSubject extends Subject<SensorSubject, Sensor> {
   }
 
   public SensorSubject hasType(@SensorType int type) {
-    int actualType = getSubject().getType();
+    int actualType = actual().getType();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected type <%s> but was <%s>.", typeToString(type), typeToString(actualType))
@@ -142,14 +142,14 @@ public class SensorSubject extends Subject<SensorSubject, Sensor> {
   }
 
   public SensorSubject hasVendor(String vendor) {
-    assertThat(getSubject().getVendor())
+    assertThat(actual().getVendor())
         .named("vendor")
         .isEqualTo(vendor);
     return this;
   }
 
   public SensorSubject hasVersion(int version) {
-    assertThat(getSubject().getVersion())
+    assertThat(actual().getVersion())
         .named("version")
         .isEqualTo(version);
     return this;
@@ -157,7 +157,7 @@ public class SensorSubject extends Subject<SensorSubject, Sensor> {
 
   @TargetApi(KITKAT)
   public SensorSubject hasFifoMaxEventCount(int count) {
-    assertThat(getSubject().getFifoMaxEventCount())
+    assertThat(actual().getFifoMaxEventCount())
         .named("max event count")
         .isEqualTo(count);
     return this;
@@ -165,7 +165,7 @@ public class SensorSubject extends Subject<SensorSubject, Sensor> {
 
   @TargetApi(KITKAT)
   public SensorSubject hasFifoReservedEventCount(int count) {
-    assertThat(getSubject().getFifoReservedEventCount())
+    assertThat(actual().getFifoReservedEventCount())
         .named("reserved event count")
         .isEqualTo(count);
     return this;

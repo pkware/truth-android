@@ -45,7 +45,7 @@ public class PendingIntentSubject extends Subject<PendingIntentSubject, PendingI
 
   @TargetApi(JELLY_BEAN_MR1)
   public PendingIntentSubject hasCreatorPackage(String packageName) {
-    assertThat(getSubject().getCreatorPackage())
+    assertThat(actual().getCreatorPackage())
         .named("creator package")
         .isEqualTo(packageName);
     return this;
@@ -53,14 +53,14 @@ public class PendingIntentSubject extends Subject<PendingIntentSubject, PendingI
 
   @TargetApi(JELLY_BEAN_MR1)
   public PendingIntentSubject hasCreatorUid(int uid) {
-    assertThat(getSubject().getCreatorUid())
+    assertThat(actual().getCreatorUid())
         .named("creator UID")
         .isEqualTo(uid);
     return this;
   }
 
   public PendingIntentSubject hasTargetPackage(String targetPackage) {
-    assertThat(getSubject().getTargetPackage())
+    assertThat(actual().getTargetPackage())
         .named("target package")
         .isEqualTo(targetPackage);
     return this;

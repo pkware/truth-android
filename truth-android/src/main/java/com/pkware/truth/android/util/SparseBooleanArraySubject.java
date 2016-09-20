@@ -47,14 +47,14 @@ public class SparseBooleanArraySubject extends Subject<SparseBooleanArraySubject
   }
 
   public SparseBooleanArraySubject keyIsTrue(int key) {
-    assertThat(getSubject().get(key))
+    assertThat(actual().get(key))
         .named(String.format(Locale.ENGLISH, "key %d", key))
         .isTrue();
     return this;
   }
 
   public SparseBooleanArraySubject keyIsFalse(int key) {
-    assertThat(getSubject().get(key))
+    assertThat(actual().get(key))
         .named(String.format(Locale.ENGLISH, "key %d", key))
         .isFalse();
     return this;
@@ -63,7 +63,7 @@ public class SparseBooleanArraySubject extends Subject<SparseBooleanArraySubject
   public SparseBooleanArraySubject hasKey(int key) {
     assert_()
         .withFailureMessage("Expected key <%s> to be present but was not.", key)
-        .that(getSubject().indexOfKey(key))
+        .that(actual().indexOfKey(key))
         .isGreaterThan(-1);
     return this;
   }
@@ -71,13 +71,13 @@ public class SparseBooleanArraySubject extends Subject<SparseBooleanArraySubject
   public SparseBooleanArraySubject doesNotHaveKey(int key) {
     assert_()
         .withFailureMessage("Expected key <%s> to not be present but was.")
-        .that(getSubject().indexOfKey(key))
+        .that(actual().indexOfKey(key))
         .isLessThan(0);
     return this;
   }
 
   public SparseBooleanArraySubject hasSize(int size) {
-    assertThat(getSubject().size())
+    assertThat(actual().size())
         .named("size")
         .isEqualTo(size);
     return this;

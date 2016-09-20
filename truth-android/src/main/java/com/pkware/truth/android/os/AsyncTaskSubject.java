@@ -41,21 +41,21 @@ public class AsyncTaskSubject extends Subject<AsyncTaskSubject, AsyncTask> {
   }
 
   public AsyncTaskSubject hasStatus(AsyncTask.Status status) {
-    assertThat(getSubject().getStatus())
+    assertThat(actual().getStatus())
         .named("status")
         .isEqualTo(status);
     return this;
   }
 
   public AsyncTaskSubject isCancelled() {
-    assertThat(getSubject().isCancelled())
+    assertThat(actual().isCancelled())
         .named("is cancelled")
         .isTrue();
     return this;
   }
 
   public AsyncTaskSubject isNotCancelled() {
-    assertThat(getSubject().isCancelled())
+    assertThat(actual().isCancelled())
         .named("is not cancelled")
         .isFalse();
     return this;

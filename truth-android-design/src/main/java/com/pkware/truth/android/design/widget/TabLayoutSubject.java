@@ -58,14 +58,14 @@ public class TabLayoutSubject extends
   }
 
   public TabLayoutSubject hasTabCount(int count) {
-    assertThat(getSubject().getTabCount())
+    assertThat(actual().getTabCount())
         .named("tab count")
         .isEqualTo(count);
     return this;
   }
 
   public TabLayoutSubject hasTabGravity(@TabGravity int gravity) {
-    int actualGravity = getSubject().getTabGravity();
+    int actualGravity = actual().getTabGravity();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected tab gravity of <%s> but was <%s>.",
@@ -76,7 +76,7 @@ public class TabLayoutSubject extends
   }
 
   public TabLayoutSubject hasTabMode(@TabMode int mode) {
-    int actualMode = getSubject().getTabMode();
+    int actualMode = actual().getTabMode();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected tab mode of <%s> but was <%s>.", modeToString(mode),

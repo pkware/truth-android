@@ -40,42 +40,42 @@ public class TableLayoutSubject extends AbstractLinearLayoutSubject<TableLayoutS
   }
 
   public TableLayoutSubject isCollapsedColumn(int index) {
-    assertThat(getSubject().isColumnCollapsed(index))
+    assertThat(actual().isColumnCollapsed(index))
         .named("column " + index + " is collapsed")
         .isTrue();
     return this;
   }
 
   public TableLayoutSubject isNotCollapsedColumn(int index) {
-    assertThat(getSubject().isColumnCollapsed(index))
+    assertThat(actual().isColumnCollapsed(index))
         .named("column " + index + " is collapsed")
         .isFalse();
     return this;
   }
 
   public TableLayoutSubject isShrinkableColumn(int index) {
-    assertThat(getSubject().isColumnShrinkable(index))
+    assertThat(actual().isColumnShrinkable(index))
         .named("column " + index + " is shrinkable")
         .isTrue();
     return this;
   }
 
   public TableLayoutSubject isNotShrinkableColumn(int index) {
-    assertThat(getSubject().isColumnShrinkable(index))
+    assertThat(actual().isColumnShrinkable(index))
         .named("column " + index + " is shrinkable")
         .isFalse();
     return this;
   }
 
   public TableLayoutSubject isStretchableColumn(int index) {
-    assertThat(getSubject().isColumnStretchable(index))
+    assertThat(actual().isColumnStretchable(index))
         .named("column " + index + " is stretchable")
         .isTrue();
     return this;
   }
 
   public TableLayoutSubject isNotStretchableColumn(int index) {
-    assertThat(getSubject().isColumnStretchable(index))
+    assertThat(actual().isColumnStretchable(index))
         .named("column " + index + " is stretchable")
         .isFalse();
     return this;

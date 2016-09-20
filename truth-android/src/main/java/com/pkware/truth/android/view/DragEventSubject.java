@@ -60,7 +60,7 @@ public class DragEventSubject extends Subject<DragEventSubject, DragEvent> {
   }
 
   public DragEventSubject hasAction(@DragEventAction int action) {
-    int actualAction = getSubject().getAction();
+    int actualAction = actual().getAction();
     //noinspection ResourceType
     assert_()
         .withFailureMessage("Expected action <%s> but was <%s>",
@@ -71,28 +71,28 @@ public class DragEventSubject extends Subject<DragEventSubject, DragEvent> {
   }
 
   public DragEventSubject hasLocalState(Object localState) {
-    assertThat(getSubject().getLocalState())
+    assertThat(actual().getLocalState())
         .named("local state")
         .isEqualTo(localState);
     return this;
   }
 
   public DragEventSubject hasSuccessfulResult() {
-    assertThat(getSubject().getResult())
+    assertThat(actual().getResult())
         .named("has successful result")
         .isTrue();
     return this;
   }
 
   public DragEventSubject hasUnsuccessfulResult() {
-    assertThat(getSubject().getResult())
+    assertThat(actual().getResult())
         .named("has successful result")
         .isFalse();
     return this;
   }
 
   public DragEventSubject hasX(float x, float tolerance) {
-    assertThat(getSubject().getX())
+    assertThat(actual().getX())
         .named("X")
         .isWithin(tolerance)
         .of(x);
@@ -100,7 +100,7 @@ public class DragEventSubject extends Subject<DragEventSubject, DragEvent> {
   }
 
   public DragEventSubject hasY(float y, float tolerance) {
-    assertThat(getSubject().getY())
+    assertThat(actual().getY())
         .named("Y")
         .isWithin(tolerance)
         .of(y);

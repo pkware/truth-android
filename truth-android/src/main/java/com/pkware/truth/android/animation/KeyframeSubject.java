@@ -41,14 +41,14 @@ public class KeyframeSubject extends Subject<KeyframeSubject, Keyframe> {
   }
 
   public KeyframeSubject hasType(Class type) {
-    assertThat(getSubject().getType())
+    assertThat(actual().getType())
         .named("type")
         .isEqualTo(type);
     return this;
   }
 
   public KeyframeSubject hasValue(Object value) {
-    assertThat(getSubject().getValue())
+    assertThat(actual().getValue())
         .named("value")
         .isEqualTo(value);
     return this;

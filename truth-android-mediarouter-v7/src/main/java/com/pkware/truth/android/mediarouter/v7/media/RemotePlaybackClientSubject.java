@@ -42,63 +42,63 @@ public class RemotePlaybackClientSubject
   }
 
   public RemotePlaybackClientSubject hasSessionId(String sessionId) {
-    assertThat(getSubject().getSessionId())
+    assertThat(actual().getSessionId())
         .named("session ID")
         .isEqualTo(sessionId);
     return this;
   }
 
   public RemotePlaybackClientSubject hasSession() {
-    assertThat(getSubject().hasSession())
+    assertThat(actual().hasSession())
         .named("has session")
         .isTrue();
     return this;
   }
 
   public RemotePlaybackClientSubject doesNotHaveSession() {
-    assertThat(getSubject().hasSession())
+    assertThat(actual().hasSession())
         .named("has session")
         .isFalse();
     return this;
   }
 
   public RemotePlaybackClientSubject hasQueuingSupported() {
-    assertThat(getSubject().isQueuingSupported())
+    assertThat(actual().isQueuingSupported())
         .named("supports queueing")
         .isTrue();
     return this;
   }
 
   public RemotePlaybackClientSubject doesNotHaveQueuingSupported() {
-    assertThat(getSubject().isQueuingSupported())
+    assertThat(actual().isQueuingSupported())
         .named("supports queueing")
         .isFalse();
     return this;
   }
 
   public RemotePlaybackClientSubject hasRemotePlaybackSupported() {
-    assertThat(getSubject().isRemotePlaybackSupported())
+    assertThat(actual().isRemotePlaybackSupported())
         .named("supports remote playback")
         .isTrue();
     return this;
   }
 
   public RemotePlaybackClientSubject doesNotHaveRemotePlaybackSupported() {
-    assertThat(getSubject().isRemotePlaybackSupported())
+    assertThat(actual().isRemotePlaybackSupported())
         .named("supports remote playback")
         .isFalse();
     return this;
   }
 
   public RemotePlaybackClientSubject hasSessionManagementSupported() {
-    assertThat(getSubject().isSessionManagementSupported())
+    assertThat(actual().isSessionManagementSupported())
         .named("supports session management")
         .isTrue();
     return this;
   }
 
   public RemotePlaybackClientSubject doesNotHaveSessionManagementSupported() {
-    assertThat(getSubject().isSessionManagementSupported())
+    assertThat(actual().isSessionManagementSupported())
         .named("supports session management")
         .isFalse();
     return this;

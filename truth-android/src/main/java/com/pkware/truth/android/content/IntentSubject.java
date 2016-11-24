@@ -145,6 +145,14 @@ public class IntentSubject extends Subject<IntentSubject, Intent> {
     return this;
   }
 
+  public IntentSubject hasPackage(String packageName) {
+    String actualPackage = actual().getPackage();
+    assertThat(actualPackage)
+        .named("package name")
+        .isEqualTo(packageName);
+    return this;
+  }
+
   public IntentSubject hasData(String uri) {
     return hasData(Uri.parse(uri));
   }

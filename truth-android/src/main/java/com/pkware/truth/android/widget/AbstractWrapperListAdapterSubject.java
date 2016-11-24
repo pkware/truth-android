@@ -23,7 +23,7 @@ import com.google.common.truth.FailureStrategy;
 
 import static com.google.common.truth.Truth.assertThat;
 
-public class AbstractWrapperListAdapterSubject<S extends AbstractWrapperListAdapterSubject<S, T>, T extends WrapperListAdapter>
+public abstract class AbstractWrapperListAdapterSubject<S extends AbstractWrapperListAdapterSubject<S, T>, T extends WrapperListAdapter>
     extends AbstractListAdapterSubject<S, T> {
   protected AbstractWrapperListAdapterSubject(FailureStrategy failureStrategy, T subject) {
     super(failureStrategy, subject);

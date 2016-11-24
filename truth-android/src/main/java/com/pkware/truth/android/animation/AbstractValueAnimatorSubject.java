@@ -28,7 +28,7 @@ import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
-public class AbstractValueAnimatorSubject<S extends AbstractValueAnimatorSubject<S, T>, T extends ValueAnimator> extends Subject<S, T> {
+public abstract class AbstractValueAnimatorSubject<S extends AbstractValueAnimatorSubject<S, T>, T extends ValueAnimator> extends Subject<S, T> {
   protected AbstractValueAnimatorSubject(FailureStrategy failureStrategy, T subject) {
     super(failureStrategy, subject);
   }

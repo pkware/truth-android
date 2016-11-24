@@ -44,7 +44,7 @@ import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildBitMaskString;
 
-public class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extends Paint> extends Subject<S, T> {
+public abstract class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extends Paint> extends Subject<S, T> {
   protected AbstractPaintSubject(FailureStrategy failureStrategy, T subject) {
     super(failureStrategy, subject);
   }

@@ -26,7 +26,7 @@ import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
 import static com.google.common.truth.Truth.assertThat;
 
 @TargetApi(JELLY_BEAN_MR1)
-public class AbstractCellSignalStrengthSubject<S extends AbstractCellSignalStrengthSubject<S, T>, T extends CellSignalStrength> extends Subject<S, T> {
+public abstract class AbstractCellSignalStrengthSubject<S extends AbstractCellSignalStrengthSubject<S, T>, T extends CellSignalStrength> extends Subject<S, T> {
   protected AbstractCellSignalStrengthSubject(FailureStrategy failureStrategy, T subject) {
     super(failureStrategy, subject);
   }

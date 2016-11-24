@@ -21,7 +21,7 @@ import android.app.Service;
 import com.google.common.truth.FailureStrategy;
 import com.google.common.truth.Subject;
 
-public class AbstractServiceSubject<S extends AbstractServiceSubject<S, T>, T extends Service> extends Subject<S, T> {
+public abstract class AbstractServiceSubject<S extends AbstractServiceSubject<S, T>, T extends Service> extends Subject<S, T> {
   protected AbstractServiceSubject(FailureStrategy failureStrategy, T subject) {
     super(failureStrategy, subject);
   }

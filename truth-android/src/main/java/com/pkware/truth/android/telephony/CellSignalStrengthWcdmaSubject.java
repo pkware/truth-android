@@ -17,7 +17,7 @@
 package com.pkware.truth.android.telephony;
 
 import android.annotation.TargetApi;
-import android.telephony.CellSignalStrengthCdma;
+import android.telephony.CellSignalStrengthWcdma;
 
 import com.google.common.truth.FailureStrategy;
 import com.google.common.truth.SubjectFactory;
@@ -25,21 +25,21 @@ import com.google.common.truth.SubjectFactory;
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
 
 /**
- * Propositions for {@link CellSignalStrengthCdma} subjects.
+ * Propositions for {@link CellSignalStrengthWcdma} subjects.
  * <p/>
  * This class is final. To extend use {@link AbstractCellSignalStrengthSubject}.
  */
 @TargetApi(JELLY_BEAN_MR2)
 public final class CellSignalStrengthWcdmaSubject
-    extends AbstractCellSignalStrengthSubject<CellSignalStrengthWcdmaSubject, CellSignalStrengthCdma> {
-  private CellSignalStrengthWcdmaSubject(FailureStrategy failureStrategy, CellSignalStrengthCdma subject) {
+    extends AbstractCellSignalStrengthSubject<CellSignalStrengthWcdmaSubject, CellSignalStrengthWcdma> {
+  private CellSignalStrengthWcdmaSubject(FailureStrategy failureStrategy, CellSignalStrengthWcdma subject) {
     super(failureStrategy, subject);
   }
 
-  public static SubjectFactory<CellSignalStrengthWcdmaSubject, CellSignalStrengthCdma> type() {
-    return new SubjectFactory<CellSignalStrengthWcdmaSubject, CellSignalStrengthCdma>() {
+  public static SubjectFactory<CellSignalStrengthWcdmaSubject, CellSignalStrengthWcdma> type() {
+    return new SubjectFactory<CellSignalStrengthWcdmaSubject, CellSignalStrengthWcdma>() {
       @Override
-      public CellSignalStrengthWcdmaSubject getSubject(FailureStrategy fs, CellSignalStrengthCdma that) {
+      public CellSignalStrengthWcdmaSubject getSubject(FailureStrategy fs, CellSignalStrengthWcdma that) {
         return new CellSignalStrengthWcdmaSubject(fs, that);
       }
     };

@@ -1,0 +1,32 @@
+language: android
+
+android:
+  components:
+    - tools
+    - platform-tools
+    - build-tools-25.0.0
+    - extra-android-m2repository
+    - extra-google-m2repository
+    - android-25
+
+jdk:
+  - oraclejdk8
+
+before_install:
+  - ./check-missing-assertions.sh
+
+script:
+  - ./gradlew clean check
+
+branches:
+  except:
+    - gh-pages
+
+notifications:
+  email: false
+
+sudo: false
+
+cache:
+  directories:
+    - $HOME/.gradle

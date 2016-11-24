@@ -1,4 +1,5 @@
 /*
+ * Copyright 2013 Square, Inc.
  * Copyright 2016 PKWARE, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");

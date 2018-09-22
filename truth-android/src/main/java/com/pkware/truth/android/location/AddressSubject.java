@@ -18,24 +18,23 @@ package com.pkware.truth.android.location;
 
 import android.location.Address;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import java.util.Locale;
 
 import static com.google.common.truth.Truth.assertThat;
 
 public class AddressSubject extends Subject<AddressSubject, Address> {
-  protected AddressSubject(FailureStrategy failureStrategy, Address subject) {
-    super(failureStrategy, subject);
+  protected AddressSubject(FailureMetadata failureMetadata, Address subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<AddressSubject, Address> type() {
-    return new SubjectFactory<AddressSubject, Address>() {
+  public static Subject.Factory<AddressSubject, Address> type() {
+    return new Subject.Factory<AddressSubject, Address>() {
       @Override
-      public AddressSubject getSubject(FailureStrategy fs, Address that) {
-        return new AddressSubject(fs, that);
+      public AddressSubject createSubject(FailureMetadata fm, Address that) {
+        return new AddressSubject(fm, that);
       }
     };
   }

@@ -18,9 +18,8 @@ package com.pkware.truth.android.app;
 
 import android.app.LocalActivityManager;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import java.util.Locale;
 
@@ -30,15 +29,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link LocalActivityManager} subjects.
  */
 public class LocalActivityManagerSubject extends Subject<LocalActivityManagerSubject, LocalActivityManager> {
-  protected LocalActivityManagerSubject(FailureStrategy failureStrategy, LocalActivityManager subject) {
-    super(failureStrategy, subject);
+  protected LocalActivityManagerSubject(FailureMetadata failureMetadata, LocalActivityManager subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<LocalActivityManagerSubject, LocalActivityManager> type() {
-    return new SubjectFactory<LocalActivityManagerSubject, LocalActivityManager>() {
+  public static Subject.Factory<LocalActivityManagerSubject, LocalActivityManager> type() {
+    return new Subject.Factory<LocalActivityManagerSubject, LocalActivityManager>() {
       @Override
-      public LocalActivityManagerSubject getSubject(FailureStrategy fs, LocalActivityManager that) {
-        return new LocalActivityManagerSubject(fs, that);
+      public LocalActivityManagerSubject createSubject(FailureMetadata fm, LocalActivityManager that) {
+        return new LocalActivityManagerSubject(fm, that);
       }
     };
   }

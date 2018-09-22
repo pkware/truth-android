@@ -19,8 +19,8 @@ package com.pkware.truth.android.widget;
 import android.annotation.TargetApi;
 import android.widget.VideoView;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 import com.pkware.truth.android.view.AbstractViewSubject;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
@@ -30,15 +30,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link VideoView} subjects.
  */
 public class VideoViewSubject extends AbstractViewSubject<VideoViewSubject, VideoView> {
-  protected VideoViewSubject(FailureStrategy failureStrategy, VideoView subject) {
-    super(failureStrategy, subject);
+  protected VideoViewSubject(FailureMetadata failureMetadata, VideoView subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<VideoViewSubject, VideoView> type() {
-    return new SubjectFactory<VideoViewSubject, VideoView>() {
+  public static Subject.Factory<VideoViewSubject, VideoView> type() {
+    return new Subject.Factory<VideoViewSubject, VideoView>() {
       @Override
-      public VideoViewSubject getSubject(FailureStrategy fs, VideoView that) {
-        return new VideoViewSubject(fs, that);
+      public VideoViewSubject createSubject(FailureMetadata fm, VideoView that) {
+        return new VideoViewSubject(fm, that);
       }
     };
   }

@@ -18,7 +18,7 @@ package com.pkware.truth.android.support.v4.app;
 
 import android.support.v4.app.Fragment;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -26,8 +26,8 @@ import static com.google.common.truth.Truth.assertThat;
 public abstract class AbstractFragmentSubject<S extends AbstractFragmentSubject<S, T>, T extends Fragment>
     extends Subject<S, T> {
 
-  protected AbstractFragmentSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractFragmentSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S hasId(int id) {

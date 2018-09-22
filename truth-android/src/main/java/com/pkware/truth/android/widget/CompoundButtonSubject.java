@@ -18,8 +18,8 @@ package com.pkware.truth.android.widget;
 
 import android.widget.CompoundButton;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link CompoundButton} subjects.
@@ -27,15 +27,15 @@ import com.google.common.truth.SubjectFactory;
  * This class is final. To extend use {@link AbstractCompoundButtonSubject}.
  */
 public final class CompoundButtonSubject extends AbstractCompoundButtonSubject<CompoundButtonSubject, CompoundButton> {
-  private CompoundButtonSubject(FailureStrategy failureStrategy, CompoundButton subject) {
-    super(failureStrategy, subject);
+  private CompoundButtonSubject(FailureMetadata failureMetadata, CompoundButton subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<CompoundButtonSubject, CompoundButton> type() {
-    return new SubjectFactory<CompoundButtonSubject, CompoundButton>() {
+  public static Subject.Factory<CompoundButtonSubject, CompoundButton> type() {
+    return new Subject.Factory<CompoundButtonSubject, CompoundButton>() {
       @Override
-      public CompoundButtonSubject getSubject(FailureStrategy fs, CompoundButton that) {
-        return new CompoundButtonSubject(fs, that);
+      public CompoundButtonSubject createSubject(FailureMetadata fm, CompoundButton that) {
+        return new CompoundButtonSubject(fm, that);
       }
     };
   }

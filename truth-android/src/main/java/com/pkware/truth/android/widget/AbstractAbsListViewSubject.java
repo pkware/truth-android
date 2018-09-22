@@ -19,7 +19,7 @@ package com.pkware.truth.android.widget;
 import android.annotation.TargetApi;
 import android.widget.AbsListView;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.util.SparseBooleanArraySubject;
 
 import static android.os.Build.VERSION_CODES.KITKAT;
@@ -28,8 +28,8 @@ import static com.google.common.truth.Truth.assert_;
 
 public abstract class AbstractAbsListViewSubject<S extends AbstractAbsListViewSubject<S, T>, T extends AbsListView>
     extends AbstractAdapterViewSubject<S, T> {
-  protected AbstractAbsListViewSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractAbsListViewSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   static String scrollDirectionToString(int direction) {
@@ -78,7 +78,7 @@ public abstract class AbstractAbsListViewSubject<S extends AbstractAbsListViewSu
   @TargetApi(KITKAT)
   public S canScrollList(int direction) {
     assert_()
-        .withFailureMessage("Expected to be able to scroll <%s> but cannot.",
+        .withMessage("Expected to be able to scroll <%s> but cannot.",
             scrollDirectionToString(direction))
         .that(actual().canScrollList(direction))
         .isTrue();

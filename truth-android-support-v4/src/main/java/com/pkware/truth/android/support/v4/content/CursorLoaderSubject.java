@@ -19,8 +19,8 @@ package com.pkware.truth.android.support.v4.content;
 import android.net.Uri;
 import android.support.v4.content.CursorLoader;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 import com.pkware.truth.android.net.UriSubject;
 
 import java.util.Arrays;
@@ -32,15 +32,15 @@ import static com.google.common.truth.Truth.assert_;
  * Propositions for {@link CursorLoader} subjects.
  */
 public class CursorLoaderSubject extends AbstractLoaderSubject<CursorLoaderSubject, CursorLoader> {
-  protected CursorLoaderSubject(FailureStrategy failureStrategy, CursorLoader subject) {
-    super(failureStrategy, subject);
+  protected CursorLoaderSubject(FailureMetadata failureMetadata, CursorLoader subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<CursorLoaderSubject, CursorLoader> type() {
-    return new SubjectFactory<CursorLoaderSubject, CursorLoader>() {
+  public static Subject.Factory<CursorLoaderSubject, CursorLoader> type() {
+    return new Subject.Factory<CursorLoaderSubject, CursorLoader>() {
       @Override
-      public CursorLoaderSubject getSubject(FailureStrategy fs, CursorLoader that) {
-        return new CursorLoaderSubject(fs, that);
+      public CursorLoaderSubject createSubject(FailureMetadata fm, CursorLoader that) {
+        return new CursorLoaderSubject(fm, that);
       }
     };
   }

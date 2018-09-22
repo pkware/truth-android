@@ -18,8 +18,8 @@ package com.pkware.truth.android.recyclerview.v7.widget;
 
 import android.support.v7.widget.RecyclerView;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 
 import static android.support.v7.widget.RecyclerView.Adapter;
@@ -38,15 +38,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link RecyclerView} subjects.
  */
 public class RecyclerViewSubject extends AbstractViewGroupSubject<RecyclerViewSubject, RecyclerView> {
-  protected RecyclerViewSubject(FailureStrategy failureStrategy, RecyclerView subject) {
-    super(failureStrategy, subject);
+  protected RecyclerViewSubject(FailureMetadata failureMetadata, RecyclerView subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<RecyclerViewSubject, RecyclerView> type() {
-    return new SubjectFactory<RecyclerViewSubject, RecyclerView>() {
+  public static Subject.Factory<RecyclerViewSubject, RecyclerView> type() {
+    return new Subject.Factory<RecyclerViewSubject, RecyclerView>() {
       @Override
-      public RecyclerViewSubject getSubject(FailureStrategy fs, RecyclerView that) {
-        return new RecyclerViewSubject(fs, that);
+      public RecyclerViewSubject createSubject(FailureMetadata fm, RecyclerView that) {
+        return new RecyclerViewSubject(fm, that);
       }
     };
   }
@@ -91,7 +91,7 @@ public class RecyclerViewSubject extends AbstractViewGroupSubject<RecyclerViewSu
     int actualScrollState = actual().getScrollState();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected scroll state <%s> but was <%s>.",
+        .withMessage("Expected scroll state <%s> but was <%s>.",
             scrollStateToString(scrollState), scrollStateToString(actualScrollState))
         .that(actualScrollState)
         .isEqualTo(scrollState);

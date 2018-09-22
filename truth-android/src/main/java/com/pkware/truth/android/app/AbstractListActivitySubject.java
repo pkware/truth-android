@@ -20,13 +20,13 @@ import android.app.ListActivity;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 
 import static com.google.common.truth.Truth.assertThat;
 
 public abstract class AbstractListActivitySubject<S extends AbstractListActivitySubject<S, T>, T extends ListActivity> extends AbstractActivitySubject<S, T> {
-  protected AbstractListActivitySubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractListActivitySubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S hasListAdapter(ListAdapter adapter) {

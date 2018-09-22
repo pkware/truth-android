@@ -18,9 +18,8 @@ package com.pkware.truth.android.graphics;
 
 import android.graphics.Movie;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Movie} subjects.
  */
 public class MovieSubject extends Subject<MovieSubject, Movie> {
-  protected MovieSubject(FailureStrategy failureStrategy, Movie subject) {
-    super(failureStrategy, subject);
+  protected MovieSubject(FailureMetadata failureMetadata, Movie subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<MovieSubject, Movie> type() {
-    return new SubjectFactory<MovieSubject, Movie>() {
+  public static Subject.Factory<MovieSubject, Movie> type() {
+    return new Subject.Factory<MovieSubject, Movie>() {
       @Override
-      public MovieSubject getSubject(FailureStrategy fs, Movie that) {
-        return new MovieSubject(fs, that);
+      public MovieSubject createSubject(FailureMetadata fm, Movie that) {
+        return new MovieSubject(fm, that);
       }
     };
   }

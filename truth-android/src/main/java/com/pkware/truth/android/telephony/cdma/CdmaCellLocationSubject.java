@@ -18,9 +18,8 @@ package com.pkware.truth.android.telephony.cdma;
 
 import android.telephony.cdma.CdmaCellLocation;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link CdmaCellLocation} subjects.
  */
 public class CdmaCellLocationSubject extends Subject<CdmaCellLocationSubject, CdmaCellLocation> {
-  protected CdmaCellLocationSubject(FailureStrategy failureStrategy, CdmaCellLocation subject) {
-    super(failureStrategy, subject);
+  protected CdmaCellLocationSubject(FailureMetadata failureMetadata, CdmaCellLocation subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<CdmaCellLocationSubject, CdmaCellLocation> type() {
-    return new SubjectFactory<CdmaCellLocationSubject, CdmaCellLocation>() {
+  public static Subject.Factory<CdmaCellLocationSubject, CdmaCellLocation> type() {
+    return new Subject.Factory<CdmaCellLocationSubject, CdmaCellLocation>() {
       @Override
-      public CdmaCellLocationSubject getSubject(FailureStrategy fs, CdmaCellLocation that) {
-        return new CdmaCellLocationSubject(fs, that);
+      public CdmaCellLocationSubject createSubject(FailureMetadata fm, CdmaCellLocation that) {
+        return new CdmaCellLocationSubject(fm, that);
       }
     };
   }

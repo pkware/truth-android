@@ -20,8 +20,8 @@ import android.preference.MultiSelectListPreference;
 
 import com.google.common.base.Function;
 import com.google.common.collect.FluentIterable;
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import java.util.Arrays;
 
@@ -32,15 +32,15 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class MultiSelectListPreferenceSubject extends
     AbstractDialogPreferenceSubject<MultiSelectListPreferenceSubject, MultiSelectListPreference> {
-  protected MultiSelectListPreferenceSubject(FailureStrategy failureStrategy, MultiSelectListPreference subject) {
-    super(failureStrategy, subject);
+  protected MultiSelectListPreferenceSubject(FailureMetadata failureMetadata, MultiSelectListPreference subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<MultiSelectListPreferenceSubject, MultiSelectListPreference> type() {
-    return new SubjectFactory<MultiSelectListPreferenceSubject, MultiSelectListPreference>() {
+  public static Subject.Factory<MultiSelectListPreferenceSubject, MultiSelectListPreference> type() {
+    return new Subject.Factory<MultiSelectListPreferenceSubject, MultiSelectListPreference>() {
       @Override
-      public MultiSelectListPreferenceSubject getSubject(FailureStrategy fs, MultiSelectListPreference that) {
-        return new MultiSelectListPreferenceSubject(fs, that);
+      public MultiSelectListPreferenceSubject createSubject(FailureMetadata fm, MultiSelectListPreference that) {
+        return new MultiSelectListPreferenceSubject(fm, that);
       }
     };
   }
@@ -48,7 +48,7 @@ public class MultiSelectListPreferenceSubject extends
   public MultiSelectListPreferenceSubject hasEntries(String... entries) {
 
     // We convert to Strings b/c most of the time we are interested in the text content
-    String[] actualEntries = FluentIterable.of(actual().getEntries())
+    String[] actualEntries = FluentIterable.from(actual().getEntries())
         .transform(mapToString())
         .toArray(String.class);
 
@@ -61,7 +61,7 @@ public class MultiSelectListPreferenceSubject extends
   public MultiSelectListPreferenceSubject hasEntryValues(String... values) {
 
     // We convert to Strings b/c most of the time we are interested in the text content
-    String[] actualValues = FluentIterable.of(actual().getEntryValues())
+    String[] actualValues = FluentIterable.from(actual().getEntryValues())
         .transform(mapToString())
         .toArray(String.class);
 

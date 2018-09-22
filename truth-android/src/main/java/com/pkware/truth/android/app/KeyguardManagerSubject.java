@@ -19,9 +19,8 @@ package com.pkware.truth.android.app;
 import android.annotation.TargetApi;
 import android.app.KeyguardManager;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 import static com.google.common.truth.Truth.assertThat;
@@ -30,15 +29,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link KeyguardManager} subjects.
  */
 public class KeyguardManagerSubject extends Subject<KeyguardManagerSubject, KeyguardManager> {
-  protected KeyguardManagerSubject(FailureStrategy failureStrategy, KeyguardManager subject) {
-    super(failureStrategy, subject);
+  protected KeyguardManagerSubject(FailureMetadata failureMetadata, KeyguardManager subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<KeyguardManagerSubject, KeyguardManager> type() {
-    return new SubjectFactory<KeyguardManagerSubject, KeyguardManager>() {
+  public static Subject.Factory<KeyguardManagerSubject, KeyguardManager> type() {
+    return new Subject.Factory<KeyguardManagerSubject, KeyguardManager>() {
       @Override
-      public KeyguardManagerSubject getSubject(FailureStrategy fs, KeyguardManager that) {
-        return new KeyguardManagerSubject(fs, that);
+      public KeyguardManagerSubject createSubject(FailureMetadata fm, KeyguardManager that) {
+        return new KeyguardManagerSubject(fm, that);
       }
     };
   }

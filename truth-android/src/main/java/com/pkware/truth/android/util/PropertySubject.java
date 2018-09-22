@@ -18,9 +18,8 @@ package com.pkware.truth.android.util;
 
 import android.util.Property;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Property} subjects.
  */
 public class PropertySubject<T, V> extends Subject<PropertySubject<T, V>, Property<T, V>> {
-  protected PropertySubject(FailureStrategy failureStrategy, Property<T, V> subject) {
-    super(failureStrategy, subject);
+  protected PropertySubject(FailureMetadata failureMetadata, Property<T, V> subject) {
+    super(failureMetadata, subject);
   }
 
-  public static <T, V> SubjectFactory<PropertySubject<T, V>, Property<T, V>> type() {
-    return new SubjectFactory<PropertySubject<T, V>, Property<T, V>>() {
+  public static <T, V> Subject.Factory<PropertySubject<T, V>, Property<T, V>> type() {
+    return new Subject.Factory<PropertySubject<T, V>, Property<T, V>>() {
       @Override
-      public PropertySubject<T, V> getSubject(FailureStrategy fs, Property<T, V> that) {
-        return new PropertySubject<T, V>(fs, that);
+      public PropertySubject<T, V> createSubject(FailureMetadata fm, Property<T, V> that) {
+        return new PropertySubject<T, V>(fm, that);
       }
     };
   }

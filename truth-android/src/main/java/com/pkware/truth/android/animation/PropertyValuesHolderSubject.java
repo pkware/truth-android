@@ -18,9 +18,8 @@ package com.pkware.truth.android.animation;
 
 import android.animation.PropertyValuesHolder;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link PropertyValuesHolder} subjects.
  */
 public class PropertyValuesHolderSubject extends Subject<PropertyValuesHolderSubject, PropertyValuesHolder> {
-  private PropertyValuesHolderSubject(FailureStrategy failureStrategy, PropertyValuesHolder subject) {
-    super(failureStrategy, subject);
+  private PropertyValuesHolderSubject(FailureMetadata failureMetadata, PropertyValuesHolder subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<PropertyValuesHolderSubject, PropertyValuesHolder> type() {
-    return new SubjectFactory<PropertyValuesHolderSubject, PropertyValuesHolder>() {
+  public static Subject.Factory<PropertyValuesHolderSubject, PropertyValuesHolder> type() {
+    return new Subject.Factory<PropertyValuesHolderSubject, PropertyValuesHolder>() {
       @Override
-      public PropertyValuesHolderSubject getSubject(FailureStrategy fs, PropertyValuesHolder that) {
-        return new PropertyValuesHolderSubject(fs, that);
+      public PropertyValuesHolderSubject createSubject(FailureMetadata fm, PropertyValuesHolder that) {
+        return new PropertyValuesHolderSubject(fm, that);
       }
     };
   }

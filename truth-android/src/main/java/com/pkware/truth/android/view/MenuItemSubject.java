@@ -22,9 +22,8 @@ import android.support.annotation.IdRes;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -32,15 +31,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link MenuItem} subjects.
  */
 public class MenuItemSubject extends Subject<MenuItemSubject, MenuItem> {
-  protected MenuItemSubject(FailureStrategy failureStrategy, MenuItem subject) {
-    super(failureStrategy, subject);
+  protected MenuItemSubject(FailureMetadata failureMetadata, MenuItem subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<MenuItemSubject, MenuItem> type() {
-    return new SubjectFactory<MenuItemSubject, MenuItem>() {
+  public static Subject.Factory<MenuItemSubject, MenuItem> type() {
+    return new Subject.Factory<MenuItemSubject, MenuItem>() {
       @Override
-      public MenuItemSubject getSubject(FailureStrategy fs, MenuItem that) {
-        return new MenuItemSubject(fs, that);
+      public MenuItemSubject createSubject(FailureMetadata fm, MenuItem that) {
+        return new MenuItemSubject(fm, that);
       }
     };
   }

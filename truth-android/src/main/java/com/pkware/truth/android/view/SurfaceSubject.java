@@ -18,9 +18,8 @@ package com.pkware.truth.android.view;
 
 import android.view.Surface;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Surface} subjects.
  */
 public class SurfaceSubject extends Subject<SurfaceSubject, Surface> {
-  protected SurfaceSubject(FailureStrategy failureStrategy, Surface subject) {
-    super(failureStrategy, subject);
+  protected SurfaceSubject(FailureMetadata failureMetadata, Surface subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<SurfaceSubject, Surface> type() {
-    return new SubjectFactory<SurfaceSubject, Surface>() {
+  public static Subject.Factory<SurfaceSubject, Surface> type() {
+    return new Subject.Factory<SurfaceSubject, Surface>() {
       @Override
-      public SurfaceSubject getSubject(FailureStrategy fs, Surface that) {
-        return new SurfaceSubject(fs, that);
+      public SurfaceSubject createSubject(FailureMetadata fm, Surface that) {
+        return new SurfaceSubject(fm, that);
       }
     };
   }

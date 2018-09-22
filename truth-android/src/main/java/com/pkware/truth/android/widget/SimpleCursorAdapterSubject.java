@@ -18,8 +18,8 @@ package com.pkware.truth.android.widget;
 
 import android.widget.SimpleCursorAdapter;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static android.widget.SimpleCursorAdapter.CursorToStringConverter;
 import static android.widget.SimpleCursorAdapter.ViewBinder;
@@ -30,15 +30,15 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class SimpleCursorAdapterSubject
     extends AbstractCursorAdapterSubject<SimpleCursorAdapterSubject, SimpleCursorAdapter> {
-  protected SimpleCursorAdapterSubject(FailureStrategy failureStrategy, SimpleCursorAdapter subject) {
-    super(failureStrategy, subject);
+  protected SimpleCursorAdapterSubject(FailureMetadata failureMetadata, SimpleCursorAdapter subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<SimpleCursorAdapterSubject, SimpleCursorAdapter> type() {
-    return new SubjectFactory<SimpleCursorAdapterSubject, SimpleCursorAdapter>() {
+  public static Subject.Factory<SimpleCursorAdapterSubject, SimpleCursorAdapter> type() {
+    return new Subject.Factory<SimpleCursorAdapterSubject, SimpleCursorAdapter>() {
       @Override
-      public SimpleCursorAdapterSubject getSubject(FailureStrategy fs, SimpleCursorAdapter that) {
-        return new SimpleCursorAdapterSubject(fs, that);
+      public SimpleCursorAdapterSubject createSubject(FailureMetadata fm, SimpleCursorAdapter that) {
+        return new SimpleCursorAdapterSubject(fm, that);
       }
     };
   }

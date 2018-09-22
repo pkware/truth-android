@@ -18,8 +18,8 @@ package com.pkware.truth.android.graphics.drawable;
 
 import android.graphics.drawable.ColorDrawable;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assert_;
 
@@ -27,15 +27,15 @@ import static com.google.common.truth.Truth.assert_;
  * Propositions for {@link ColorDrawable} subjects.
  */
 public class ColorDrawableSubject extends AbstractDrawableSubject<ColorDrawableSubject, ColorDrawable> {
-  protected ColorDrawableSubject(FailureStrategy failureStrategy, ColorDrawable subject) {
-    super(failureStrategy, subject);
+  protected ColorDrawableSubject(FailureMetadata failureMetadata, ColorDrawable subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ColorDrawableSubject, ColorDrawable> type() {
-    return new SubjectFactory<ColorDrawableSubject, ColorDrawable>() {
+  public static Subject.Factory<ColorDrawableSubject, ColorDrawable> type() {
+    return new Subject.Factory<ColorDrawableSubject, ColorDrawable>() {
       @Override
-      public ColorDrawableSubject getSubject(FailureStrategy fs, ColorDrawable that) {
-        return new ColorDrawableSubject(fs, that);
+      public ColorDrawableSubject createSubject(FailureMetadata fm, ColorDrawable that) {
+        return new ColorDrawableSubject(fm, that);
       }
     };
   }
@@ -43,7 +43,7 @@ public class ColorDrawableSubject extends AbstractDrawableSubject<ColorDrawableS
   public ColorDrawableSubject hasColor(int color) {
     int actualColor = actual().getColor();
     assert_()
-        .withFailureMessage("Expected color <%s> but was <%s>.", Integer.toHexString(color), Integer.toHexString(actualColor))
+        .withMessage("Expected color <%s> but was <%s>.", Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
     return this;

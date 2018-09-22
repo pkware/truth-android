@@ -18,22 +18,22 @@ package com.pkware.truth.android.preferences;
 
 import android.preference.DialogPreference;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link DialogPreference} subjects.
  */
 public class DialogPreferenceSubject extends AbstractDialogPreferenceSubject<DialogPreferenceSubject, DialogPreference> {
-  protected DialogPreferenceSubject(FailureStrategy failureStrategy, DialogPreference subject) {
-    super(failureStrategy, subject);
+  protected DialogPreferenceSubject(FailureMetadata failureMetadata, DialogPreference subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<DialogPreferenceSubject, DialogPreference> type() {
-    return new SubjectFactory<DialogPreferenceSubject, DialogPreference>() {
+  public static Subject.Factory<DialogPreferenceSubject, DialogPreference> type() {
+    return new Subject.Factory<DialogPreferenceSubject, DialogPreference>() {
       @Override
-      public DialogPreferenceSubject getSubject(FailureStrategy fs, DialogPreference that) {
-        return new DialogPreferenceSubject(fs, that);
+      public DialogPreferenceSubject createSubject(FailureMetadata fm, DialogPreference that) {
+        return new DialogPreferenceSubject(fm, that);
       }
     };
   }

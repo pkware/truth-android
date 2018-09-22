@@ -18,8 +18,8 @@ package com.pkware.truth.android.app;
 
 import android.app.Dialog;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link Dialog} subjects.
@@ -27,15 +27,15 @@ import com.google.common.truth.SubjectFactory;
  * This class is final. To extend use {@link AbstractDialogSubject}.
  */
 public final class DialogSubject extends AbstractDialogSubject<DialogSubject, Dialog> {
-  private DialogSubject(FailureStrategy failureStrategy, Dialog subject) {
-    super(failureStrategy, subject);
+  private DialogSubject(FailureMetadata failureMetadata, Dialog subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<DialogSubject, Dialog> type() {
-    return new SubjectFactory<DialogSubject, Dialog>() {
+  public static Subject.Factory<DialogSubject, Dialog> type() {
+    return new Subject.Factory<DialogSubject, Dialog>() {
       @Override
-      public DialogSubject getSubject(FailureStrategy fs, Dialog that) {
-        return new DialogSubject(fs, that);
+      public DialogSubject createSubject(FailureMetadata fm, Dialog that) {
+        return new DialogSubject(fm, that);
       }
     };
   }

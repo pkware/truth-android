@@ -18,9 +18,8 @@ package com.pkware.truth.android.mediarouter.v7.media;
 
 import android.support.v7.media.MediaItemStatus;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.support.v7.media.MediaItemStatus.PLAYBACK_STATE_BUFFERING;
 import static android.support.v7.media.MediaItemStatus.PLAYBACK_STATE_CANCELED;
@@ -38,15 +37,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link MediaItemStatus} subjects.
  */
 public class MediaItemStatusSubject extends Subject<MediaItemStatusSubject, MediaItemStatus> {
-  protected MediaItemStatusSubject(FailureStrategy failureStrategy, MediaItemStatus subject) {
-    super(failureStrategy, subject);
+  protected MediaItemStatusSubject(FailureMetadata failureMetadata, MediaItemStatus subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<MediaItemStatusSubject, MediaItemStatus> type() {
-    return new SubjectFactory<MediaItemStatusSubject, MediaItemStatus>() {
+  public static Subject.Factory<MediaItemStatusSubject, MediaItemStatus> type() {
+    return new Subject.Factory<MediaItemStatusSubject, MediaItemStatus>() {
       @Override
-      public MediaItemStatusSubject getSubject(FailureStrategy fs, MediaItemStatus that) {
-        return new MediaItemStatusSubject(fs, that);
+      public MediaItemStatusSubject createSubject(FailureMetadata fm, MediaItemStatus that) {
+        return new MediaItemStatusSubject(fm, that);
       }
     };
   }
@@ -82,7 +81,7 @@ public class MediaItemStatusSubject extends Subject<MediaItemStatusSubject, Medi
     int actualState = actual().getPlaybackState();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected playback state <%s> but was <%s>.",
+        .withMessage("Expected playback state <%s> but was <%s>.",
             playbackStateToString(state), playbackStateToString(actualState))
         .that(actualState)
         .isEqualTo(state);

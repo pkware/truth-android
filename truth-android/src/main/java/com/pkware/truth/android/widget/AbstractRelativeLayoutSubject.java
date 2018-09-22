@@ -19,7 +19,7 @@ package com.pkware.truth.android.widget;
 import android.annotation.TargetApi;
 import android.widget.RelativeLayout;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
@@ -27,8 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
 
 public abstract class AbstractRelativeLayoutSubject<S extends AbstractRelativeLayoutSubject<S, T>, T extends RelativeLayout>
     extends AbstractViewGroupSubject<S, T> {
-  protected AbstractRelativeLayoutSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractRelativeLayoutSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   @TargetApi(JELLY_BEAN)

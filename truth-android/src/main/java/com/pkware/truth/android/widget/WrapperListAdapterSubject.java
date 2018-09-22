@@ -18,8 +18,8 @@ package com.pkware.truth.android.widget;
 
 import android.widget.WrapperListAdapter;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link WrapperListAdapter} subjects.
@@ -28,15 +28,15 @@ import com.google.common.truth.SubjectFactory;
  */
 public final class WrapperListAdapterSubject
     extends AbstractWrapperListAdapterSubject<WrapperListAdapterSubject, WrapperListAdapter> {
-  protected WrapperListAdapterSubject(FailureStrategy failureStrategy, WrapperListAdapter subject) {
-    super(failureStrategy, subject);
+  protected WrapperListAdapterSubject(FailureMetadata failureMetadata, WrapperListAdapter subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<WrapperListAdapterSubject, WrapperListAdapter> type() {
-    return new SubjectFactory<WrapperListAdapterSubject, WrapperListAdapter>() {
+  public static Subject.Factory<WrapperListAdapterSubject, WrapperListAdapter> type() {
+    return new Subject.Factory<WrapperListAdapterSubject, WrapperListAdapter>() {
       @Override
-      public WrapperListAdapterSubject getSubject(FailureStrategy fs, WrapperListAdapter that) {
-        return new WrapperListAdapterSubject(fs, that);
+      public WrapperListAdapterSubject createSubject(FailureMetadata fm, WrapperListAdapter that) {
+        return new WrapperListAdapterSubject(fm, that);
       }
     };
   }

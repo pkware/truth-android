@@ -18,9 +18,8 @@ package com.pkware.truth.android.support.v4.view;
 
 import android.support.v4.view.PagerAdapter;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link PagerAdapter} subjects.
  */
 public class PagerAdapterSubject extends Subject<PagerAdapterSubject, PagerAdapter> {
-  protected PagerAdapterSubject(FailureStrategy failureStrategy, PagerAdapter subject) {
-    super(failureStrategy, subject);
+  protected PagerAdapterSubject(FailureMetadata failureMetadata, PagerAdapter subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<PagerAdapterSubject, PagerAdapter> type() {
-    return new SubjectFactory<PagerAdapterSubject, PagerAdapter>() {
+  public static Subject.Factory<PagerAdapterSubject, PagerAdapter> type() {
+    return new Subject.Factory<PagerAdapterSubject, PagerAdapter>() {
       @Override
-      public PagerAdapterSubject getSubject(FailureStrategy fs, PagerAdapter that) {
-        return new PagerAdapterSubject(fs, that);
+      public PagerAdapterSubject createSubject(FailureMetadata fm, PagerAdapter that) {
+        return new PagerAdapterSubject(fm, that);
       }
     };
   }

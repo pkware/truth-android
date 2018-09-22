@@ -18,9 +18,8 @@ package com.pkware.truth.android.bluetooth;
 
 import android.bluetooth.BluetoothClass;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import java.util.Locale;
 
@@ -32,15 +31,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link BluetoothClass} subjects.
  */
 public class BluetoothClassSubject extends Subject<BluetoothClassSubject, BluetoothClass> {
-  protected BluetoothClassSubject(FailureStrategy failureStrategy, BluetoothClass subject) {
-    super(failureStrategy, subject);
+  protected BluetoothClassSubject(FailureMetadata failureMetadata, BluetoothClass subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<BluetoothClassSubject, BluetoothClass> type() {
-    return new SubjectFactory<BluetoothClassSubject, BluetoothClass>() {
+  public static Subject.Factory<BluetoothClassSubject, BluetoothClass> type() {
+    return new Subject.Factory<BluetoothClassSubject, BluetoothClass>() {
       @Override
-      public BluetoothClassSubject getSubject(FailureStrategy fs, BluetoothClass that) {
-        return new BluetoothClassSubject(fs, that);
+      public BluetoothClassSubject createSubject(FailureMetadata fm, BluetoothClass that) {
+        return new BluetoothClassSubject(fm, that);
       }
     };
   }
@@ -135,7 +134,7 @@ public class BluetoothClassSubject extends Subject<BluetoothClassSubject, Blueto
   public BluetoothClassSubject hasDeviceClass(int deviceClass) {
     int actualClass = actual().getDeviceClass();
     assert_()
-        .withFailureMessage("Expected device class <%s> but was <%s>.",
+        .withMessage("Expected device class <%s> but was <%s>.",
             deviceClassToString(deviceClass),
             deviceClassToString(actualClass))
         .that(actualClass)
@@ -146,7 +145,7 @@ public class BluetoothClassSubject extends Subject<BluetoothClassSubject, Blueto
   public BluetoothClassSubject hasMajorDeviceClass(int majorDeviceClass) {
     int actualMajorDeviceClass = actual().getMajorDeviceClass();
     assert_()
-        .withFailureMessage("Expected major device class <%s> but was <%s>.",
+        .withMessage("Expected major device class <%s> but was <%s>.",
             majorDeviceClassToString(majorDeviceClass),
             majorDeviceClassToString(actualMajorDeviceClass))
         .that(actualMajorDeviceClass)

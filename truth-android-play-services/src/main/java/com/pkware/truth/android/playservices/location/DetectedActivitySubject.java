@@ -17,9 +17,8 @@
 package com.pkware.truth.android.playservices.location;
 
 import com.google.android.gms.location.DetectedActivity;
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.android.gms.location.DetectedActivity.IN_VEHICLE;
 import static com.google.android.gms.location.DetectedActivity.ON_BICYCLE;
@@ -38,15 +37,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  */
 public class DetectedActivitySubject
     extends Subject<DetectedActivitySubject, DetectedActivity> {
-  protected DetectedActivitySubject(FailureStrategy failureStrategy, DetectedActivity subject) {
-    super(failureStrategy, subject);
+  protected DetectedActivitySubject(FailureMetadata failureMetadata, DetectedActivity subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<DetectedActivitySubject, DetectedActivity> type() {
-    return new SubjectFactory<DetectedActivitySubject, DetectedActivity>() {
+  public static Subject.Factory<DetectedActivitySubject, DetectedActivity> type() {
+    return new Subject.Factory<DetectedActivitySubject, DetectedActivity>() {
       @Override
-      public DetectedActivitySubject getSubject(FailureStrategy fs, DetectedActivity that) {
-        return new DetectedActivitySubject(fs, that);
+      public DetectedActivitySubject createSubject(FailureMetadata fm, DetectedActivity that) {
+        return new DetectedActivitySubject(fm, that);
       }
     };
   }
@@ -76,7 +75,7 @@ public class DetectedActivitySubject
     int actualType = actual().getType();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected type <%s> but was <%s>.", typeToString(type),
+        .withMessage("Expected type <%s> but was <%s>.", typeToString(type),
             typeToString(actualType))
         .that(actualType)
         .isEqualTo(type);

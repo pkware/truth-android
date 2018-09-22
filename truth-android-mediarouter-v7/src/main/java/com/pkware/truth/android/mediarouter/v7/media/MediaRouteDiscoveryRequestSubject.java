@@ -18,9 +18,8 @@ package com.pkware.truth.android.mediarouter.v7.media;
 
 import android.support.v7.media.MediaRouteDiscoveryRequest;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -29,15 +28,15 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class MediaRouteDiscoveryRequestSubject
     extends Subject<MediaRouteDiscoveryRequestSubject, MediaRouteDiscoveryRequest> {
-  protected MediaRouteDiscoveryRequestSubject(FailureStrategy failureStrategy, MediaRouteDiscoveryRequest subject) {
-    super(failureStrategy, subject);
+  protected MediaRouteDiscoveryRequestSubject(FailureMetadata failureMetadata, MediaRouteDiscoveryRequest subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<MediaRouteDiscoveryRequestSubject, MediaRouteDiscoveryRequest> type() {
-    return new SubjectFactory<MediaRouteDiscoveryRequestSubject, MediaRouteDiscoveryRequest>() {
+  public static Subject.Factory<MediaRouteDiscoveryRequestSubject, MediaRouteDiscoveryRequest> type() {
+    return new Subject.Factory<MediaRouteDiscoveryRequestSubject, MediaRouteDiscoveryRequest>() {
       @Override
-      public MediaRouteDiscoveryRequestSubject getSubject(FailureStrategy fs, MediaRouteDiscoveryRequest that) {
-        return new MediaRouteDiscoveryRequestSubject(fs, that);
+      public MediaRouteDiscoveryRequestSubject createSubject(FailureMetadata fm, MediaRouteDiscoveryRequest that) {
+        return new MediaRouteDiscoveryRequestSubject(fm, that);
       }
     };
   }

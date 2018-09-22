@@ -18,8 +18,8 @@ package com.pkware.truth.android.widget;
 
 import android.widget.TextView;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link TextView} subjects.
@@ -27,15 +27,15 @@ import com.google.common.truth.SubjectFactory;
  * This class is final. To extend use {@link AbstractTextViewSubject}.
  */
 public final class TextViewSubject extends AbstractTextViewSubject<TextViewSubject, TextView> {
-  private TextViewSubject(FailureStrategy failureStrategy, TextView subject) {
-    super(failureStrategy, subject);
+  private TextViewSubject(FailureMetadata failureMetadata, TextView subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<TextViewSubject, TextView> type() {
-    return new SubjectFactory<TextViewSubject, TextView>() {
+  public static Subject.Factory<TextViewSubject, TextView> type() {
+    return new Subject.Factory<TextViewSubject, TextView>() {
       @Override
-      public TextViewSubject getSubject(FailureStrategy fs, TextView that) {
-        return new TextViewSubject(fs, that);
+      public TextViewSubject createSubject(FailureMetadata fm, TextView that) {
+        return new TextViewSubject(fm, that);
       }
     };
   }

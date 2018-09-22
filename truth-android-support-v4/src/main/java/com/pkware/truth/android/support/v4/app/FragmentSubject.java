@@ -18,8 +18,8 @@ package com.pkware.truth.android.support.v4.app;
 
 import android.support.v4.app.Fragment;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link Fragment} subjects.
@@ -27,15 +27,15 @@ import com.google.common.truth.SubjectFactory;
  * This class is final. To extend use {@link AbstractFragmentSubject}.
  */
 public final class FragmentSubject extends AbstractFragmentSubject<FragmentSubject, Fragment> {
-  private FragmentSubject(FailureStrategy failureStrategy, Fragment subject) {
-    super(failureStrategy, subject);
+  private FragmentSubject(FailureMetadata failureMetadata, Fragment subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<FragmentSubject, Fragment> type() {
-    return new SubjectFactory<FragmentSubject, Fragment>() {
+  public static Subject.Factory<FragmentSubject, Fragment> type() {
+    return new Subject.Factory<FragmentSubject, Fragment>() {
       @Override
-      public FragmentSubject getSubject(FailureStrategy fs, Fragment that) {
-        return new FragmentSubject(fs, that);
+      public FragmentSubject createSubject(FailureMetadata fm, Fragment that) {
+        return new FragmentSubject(fm, that);
       }
     };
   }

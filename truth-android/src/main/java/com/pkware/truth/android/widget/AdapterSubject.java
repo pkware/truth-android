@@ -18,8 +18,8 @@ package com.pkware.truth.android.widget;
 
 import android.widget.Adapter;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link Adapter} subjects.
@@ -27,15 +27,15 @@ import com.google.common.truth.SubjectFactory;
  * This class is final. To extend use {@link AbstractAdapterSubject}.
  */
 public final class AdapterSubject extends AbstractAdapterSubject<AdapterSubject, Adapter> {
-  private AdapterSubject(FailureStrategy failureStrategy, Adapter subject) {
-    super(failureStrategy, subject);
+  private AdapterSubject(FailureMetadata failureMetadata, Adapter subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<AdapterSubject, Adapter> type() {
-    return new SubjectFactory<AdapterSubject, Adapter>() {
+  public static Subject.Factory<AdapterSubject, Adapter> type() {
+    return new Subject.Factory<AdapterSubject, Adapter>() {
       @Override
-      public AdapterSubject getSubject(FailureStrategy fs, Adapter that) {
-        return new AdapterSubject(fs, that);
+      public AdapterSubject createSubject(FailureMetadata fm, Adapter that) {
+        return new AdapterSubject(fm, that);
       }
     };
   }

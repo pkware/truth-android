@@ -18,8 +18,8 @@ package com.pkware.truth.android.database;
 
 import android.database.Cursor;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link Cursor} subjects.
@@ -27,15 +27,15 @@ import com.google.common.truth.SubjectFactory;
  * This class is final. To extend use {@link AbstractCursorSubject}.
  */
 public final class CursorSubject extends AbstractCursorSubject<CursorSubject, Cursor> {
-  protected CursorSubject(FailureStrategy failureStrategy, Cursor subject) {
-    super(failureStrategy, subject);
+  protected CursorSubject(FailureMetadata failureMetadata, Cursor subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<CursorSubject, Cursor> type() {
-    return new SubjectFactory<CursorSubject, Cursor>() {
+  public static Subject.Factory<CursorSubject, Cursor> type() {
+    return new Subject.Factory<CursorSubject, Cursor>() {
       @Override
-      public CursorSubject getSubject(FailureStrategy fs, Cursor that) {
-        return new CursorSubject(fs, that);
+      public CursorSubject createSubject(FailureMetadata fm, Cursor that) {
+        return new CursorSubject(fm, that);
       }
     };
   }

@@ -21,8 +21,8 @@ import android.support.annotation.StringRes;
 
 import com.google.common.base.Function;
 import com.google.common.collect.FluentIterable;
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -30,15 +30,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ListPreference} subjects.
  */
 public class ListPreferenceSubject extends AbstractDialogPreferenceSubject<ListPreferenceSubject, ListPreference> {
-  protected ListPreferenceSubject(FailureStrategy failureStrategy, ListPreference subject) {
-    super(failureStrategy, subject);
+  protected ListPreferenceSubject(FailureMetadata failureMetadata, ListPreference subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ListPreferenceSubject, ListPreference> type() {
-    return new SubjectFactory<ListPreferenceSubject, ListPreference>() {
+  public static Subject.Factory<ListPreferenceSubject, ListPreference> type() {
+    return new Subject.Factory<ListPreferenceSubject, ListPreference>() {
       @Override
-      public ListPreferenceSubject getSubject(FailureStrategy fs, ListPreference that) {
-        return new ListPreferenceSubject(fs, that);
+      public ListPreferenceSubject createSubject(FailureMetadata fm, ListPreference that) {
+        return new ListPreferenceSubject(fm, that);
       }
     };
   }
@@ -46,7 +46,7 @@ public class ListPreferenceSubject extends AbstractDialogPreferenceSubject<ListP
   public ListPreferenceSubject hasEntries(String... entries) {
 
     // We convert to Strings b/c most of the time we are interested in the text content
-    String[] actualEntries = FluentIterable.of(actual().getEntries())
+    String[] actualEntries = FluentIterable.from(actual().getEntries())
         .transform(mapToString())
         .toArray(String.class);
 
@@ -70,7 +70,7 @@ public class ListPreferenceSubject extends AbstractDialogPreferenceSubject<ListP
   public ListPreferenceSubject hasEntryValues(String... values) {
 
     // We convert to Strings b/c most of the time we are interested in the text content
-    String[] actualValues = FluentIterable.of(actual().getEntryValues())
+    String[] actualValues = FluentIterable.from(actual().getEntryValues())
         .transform(mapToString())
         .toArray(String.class);
 

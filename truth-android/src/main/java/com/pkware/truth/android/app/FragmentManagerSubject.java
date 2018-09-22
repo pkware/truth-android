@@ -18,9 +18,8 @@ package com.pkware.truth.android.app;
 
 import android.app.FragmentManager;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import java.util.Locale;
 
@@ -30,15 +29,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link FragmentManager} subjects.
  */
 public class FragmentManagerSubject extends Subject<FragmentManagerSubject, FragmentManager> {
-  protected FragmentManagerSubject(FailureStrategy failureStrategy, FragmentManager subject) {
-    super(failureStrategy, subject);
+  protected FragmentManagerSubject(FailureMetadata failureMetadata, FragmentManager subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<FragmentManagerSubject, FragmentManager> type() {
-    return new SubjectFactory<FragmentManagerSubject, FragmentManager>() {
+  public static Subject.Factory<FragmentManagerSubject, FragmentManager> type() {
+    return new Subject.Factory<FragmentManagerSubject, FragmentManager>() {
       @Override
-      public FragmentManagerSubject getSubject(FailureStrategy fs, FragmentManager that) {
-        return new FragmentManagerSubject(fs, that);
+      public FragmentManagerSubject createSubject(FailureMetadata fm, FragmentManager that) {
+        return new FragmentManagerSubject(fm, that);
       }
     };
   }

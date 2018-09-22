@@ -20,9 +20,8 @@ import android.annotation.TargetApi;
 import android.graphics.Point;
 import android.view.Display;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.graphics.PixelFormat.A_8;
 import static android.graphics.PixelFormat.JPEG;
@@ -66,15 +65,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link Display} subjects.
  */
 public class DisplaySubject extends Subject<DisplaySubject, Display> {
-  protected DisplaySubject(FailureStrategy failureStrategy, Display subject) {
-    super(failureStrategy, subject);
+  protected DisplaySubject(FailureMetadata failureMetadata, Display subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<DisplaySubject, Display> type() {
-    return new SubjectFactory<DisplaySubject, Display>() {
+  public static Subject.Factory<DisplaySubject, Display> type() {
+    return new Subject.Factory<DisplaySubject, Display>() {
       @Override
-      public DisplaySubject getSubject(FailureStrategy fs, Display that) {
-        return new DisplaySubject(fs, that);
+      public DisplaySubject createSubject(FailureMetadata fm, Display that) {
+        return new DisplaySubject(fm, that);
       }
     };
   }
@@ -141,7 +140,7 @@ public class DisplaySubject extends Subject<DisplaySubject, Display> {
   @TargetApi(JELLY_BEAN_MR1)
   public DisplaySubject hasFlag(int flag) {
     assert_()
-        .withFailureMessage("Expected flag <%s> but was not present", flag)
+        .withMessage("Expected flag <%s> but was not present", flag)
         .that(actual().getFlags() & flag)
         .isNotEqualTo(0);
     return this;
@@ -152,7 +151,7 @@ public class DisplaySubject extends Subject<DisplaySubject, Display> {
     int actualFlags = actual().getFlags();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected flags <%s> but was <%s>", flagsToString(flags),
+        .withMessage("Expected flags <%s> but was <%s>", flagsToString(flags),
             flagsToString(actualFlags))
         .that(actualFlags)
         .isEqualTo(flags);
@@ -178,7 +177,7 @@ public class DisplaySubject extends Subject<DisplaySubject, Display> {
     int actualOrientation = actual().getOrientation();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected orientation <%s> but was <%s>",
+        .withMessage("Expected orientation <%s> but was <%s>",
             orientationToString(orientation), orientationToString(actualOrientation))
         .that(actualOrientation)
         .isEqualTo(orientation);
@@ -189,7 +188,7 @@ public class DisplaySubject extends Subject<DisplaySubject, Display> {
     int actualOrientation = actual().getOrientation();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected orientation <%s> or <%s>, but was <%s>",
+        .withMessage("Expected orientation <%s> or <%s>, but was <%s>",
             orientationToString(ROTATION_0), orientationToString(ROTATION_180),
             orientationToString(actualOrientation))
         .that(actualOrientation)
@@ -201,7 +200,7 @@ public class DisplaySubject extends Subject<DisplaySubject, Display> {
     int actualOrientation = actual().getOrientation();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected orientation <%s> or <%s>, but was <%s>",
+        .withMessage("Expected orientation <%s> or <%s>, but was <%s>",
             orientationToString(ROTATION_270), orientationToString(ROTATION_90),
             orientationToString(actualOrientation))
         .that(actualOrientation)
@@ -213,7 +212,7 @@ public class DisplaySubject extends Subject<DisplaySubject, Display> {
     int actualFormat = actual().getPixelFormat();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected pixel format <%s> but was <%s>",
+        .withMessage("Expected pixel format <%s> but was <%s>",
             pixelFormatToString(format), pixelFormatToString(actualFormat))
         .that(actualFormat)
         .isEqualTo(format);
@@ -225,12 +224,12 @@ public class DisplaySubject extends Subject<DisplaySubject, Display> {
     Point actualSize = new Point();
     actual().getRealSize(actualSize);
     assert_()
-        .withFailureMessage("Expected real size of <%s, %s> but was <%s, %s>", width, height,
+        .withMessage("Expected real size of <%s, %s> but was <%s, %s>", width, height,
             actualSize.x, actualSize.y)
         .that(actualSize.x)
         .isNotEqualTo(width);
     assert_()
-        .withFailureMessage("Expected real size of <%s, %s> but was <%s, %s>", width, height,
+        .withMessage("Expected real size of <%s, %s> but was <%s, %s>", width, height,
             actualSize.x, actualSize.y)
         .that(actualSize.y)
         .isNotEqualTo(height);
@@ -256,12 +255,12 @@ public class DisplaySubject extends Subject<DisplaySubject, Display> {
     Point actualSize = new Point();
     actual().getSize(actualSize);
     assert_()
-        .withFailureMessage("Expected size of <%s, %s> but was <%s, %s>", width, height,
+        .withMessage("Expected size of <%s, %s> but was <%s, %s>", width, height,
             actualSize.x, actualSize.y)
         .that(actualSize.x)
         .isNotEqualTo(width);
     assert_()
-        .withFailureMessage("Expected size of <%s, %s> but was <%s, %s>", width, height,
+        .withMessage("Expected size of <%s, %s> but was <%s, %s>", width, height,
             actualSize.x, actualSize.y)
         .that(actualSize.y)
         .isNotEqualTo(height);
@@ -273,7 +272,7 @@ public class DisplaySubject extends Subject<DisplaySubject, Display> {
     int actualState = actual().getState();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected state <%s> but was <%s>", stateToString(state),
+        .withMessage("Expected state <%s> but was <%s>", stateToString(state),
             stateToString(actualState))
         .that(actualState)
         .isEqualTo(state);

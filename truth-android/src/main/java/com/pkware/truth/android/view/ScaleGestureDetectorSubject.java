@@ -19,9 +19,8 @@ package com.pkware.truth.android.view;
 import android.annotation.TargetApi;
 import android.view.ScaleGestureDetector;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.os.Build.VERSION_CODES.KITKAT;
 import static com.google.common.truth.Truth.assertThat;
@@ -30,15 +29,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ScaleGestureDetector} subjects.
  */
 public class ScaleGestureDetectorSubject extends Subject<ScaleGestureDetectorSubject, ScaleGestureDetector> {
-  protected ScaleGestureDetectorSubject(FailureStrategy failureStrategy, ScaleGestureDetector subject) {
-    super(failureStrategy, subject);
+  protected ScaleGestureDetectorSubject(FailureMetadata failureMetadata, ScaleGestureDetector subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ScaleGestureDetectorSubject, ScaleGestureDetector> type() {
-    return new SubjectFactory<ScaleGestureDetectorSubject, ScaleGestureDetector>() {
+  public static Subject.Factory<ScaleGestureDetectorSubject, ScaleGestureDetector> type() {
+    return new Subject.Factory<ScaleGestureDetectorSubject, ScaleGestureDetector>() {
       @Override
-      public ScaleGestureDetectorSubject getSubject(FailureStrategy fs, ScaleGestureDetector that) {
-        return new ScaleGestureDetectorSubject(fs, that);
+      public ScaleGestureDetectorSubject createSubject(FailureMetadata fm, ScaleGestureDetector that) {
+        return new ScaleGestureDetectorSubject(fm, that);
       }
     };
   }

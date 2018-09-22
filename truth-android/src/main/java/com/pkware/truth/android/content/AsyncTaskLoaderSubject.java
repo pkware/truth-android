@@ -19,8 +19,8 @@ package com.pkware.truth.android.content;
 import android.annotation.TargetApi;
 import android.content.AsyncTaskLoader;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 import static com.google.common.truth.Truth.assertThat;
@@ -30,15 +30,15 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class AsyncTaskLoaderSubject extends AbstractLoaderSubject<AsyncTaskLoaderSubject, AsyncTaskLoader> {
 
-  protected AsyncTaskLoaderSubject(FailureStrategy failureStrategy, AsyncTaskLoader subject) {
-    super(failureStrategy, subject);
+  protected AsyncTaskLoaderSubject(FailureMetadata failureMetadata, AsyncTaskLoader subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<AsyncTaskLoaderSubject, AsyncTaskLoader> type() {
-    return new SubjectFactory<AsyncTaskLoaderSubject, AsyncTaskLoader>() {
+  public static Subject.Factory<AsyncTaskLoaderSubject, AsyncTaskLoader> type() {
+    return new Subject.Factory<AsyncTaskLoaderSubject, AsyncTaskLoader>() {
       @Override
-      public AsyncTaskLoaderSubject getSubject(FailureStrategy fs, AsyncTaskLoader that) {
-        return new AsyncTaskLoaderSubject(fs, that);
+      public AsyncTaskLoaderSubject createSubject(FailureMetadata fm, AsyncTaskLoader that) {
+        return new AsyncTaskLoaderSubject(fm, that);
       }
     };
   }

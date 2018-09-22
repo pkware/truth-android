@@ -17,9 +17,8 @@
 package com.pkware.truth.android.playservices.maps;
 
 import com.google.android.gms.maps.GoogleMap;
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,15 +26,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link GoogleMap} subjects.
  */
 public class GoogleMapSubject extends Subject<GoogleMapSubject, GoogleMap> {
-  protected GoogleMapSubject(FailureStrategy failureStrategy, GoogleMap subject) {
-    super(failureStrategy, subject);
+  protected GoogleMapSubject(FailureMetadata failureMetadata, GoogleMap subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<GoogleMapSubject, GoogleMap> type() {
-    return new SubjectFactory<GoogleMapSubject, GoogleMap>() {
+  public static Subject.Factory<GoogleMapSubject, GoogleMap> type() {
+    return new Subject.Factory<GoogleMapSubject, GoogleMap>() {
       @Override
-      public GoogleMapSubject getSubject(FailureStrategy fs, GoogleMap that) {
-        return new GoogleMapSubject(fs, that);
+      public GoogleMapSubject createSubject(FailureMetadata fm, GoogleMap that) {
+        return new GoogleMapSubject(fm, that);
       }
     };
   }

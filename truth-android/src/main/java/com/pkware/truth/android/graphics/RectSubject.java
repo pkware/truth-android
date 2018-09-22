@@ -18,9 +18,8 @@ package com.pkware.truth.android.graphics;
 
 import android.graphics.Rect;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Rect} subjects.
  */
 public class RectSubject extends Subject<RectSubject, Rect> {
-  protected RectSubject(FailureStrategy failureStrategy, Rect subject) {
-    super(failureStrategy, subject);
+  protected RectSubject(FailureMetadata failureMetadata, Rect subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<RectSubject, Rect> type() {
-    return new SubjectFactory<RectSubject, Rect>() {
+  public static Subject.Factory<RectSubject, Rect> type() {
+    return new Subject.Factory<RectSubject, Rect>() {
       @Override
-      public RectSubject getSubject(FailureStrategy fs, Rect that) {
-        return new RectSubject(fs, that);
+      public RectSubject createSubject(FailureMetadata fm, Rect that) {
+        return new RectSubject(fm, that);
       }
     };
   }

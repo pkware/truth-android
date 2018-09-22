@@ -18,8 +18,8 @@ package com.pkware.truth.android.view.animation;
 
 import android.view.animation.LayoutAnimationController;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link LayoutAnimationController} subjects.
@@ -28,15 +28,15 @@ import com.google.common.truth.SubjectFactory;
  */
 public final class LayoutAnimationControllerSubject extends
     AbstractLayoutAnimationControllerSubject<LayoutAnimationControllerSubject, LayoutAnimationController> {
-  private LayoutAnimationControllerSubject(FailureStrategy failureStrategy, LayoutAnimationController subject) {
-    super(failureStrategy, subject);
+  private LayoutAnimationControllerSubject(FailureMetadata failureMetadata, LayoutAnimationController subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<LayoutAnimationControllerSubject, LayoutAnimationController> type() {
-    return new SubjectFactory<LayoutAnimationControllerSubject, LayoutAnimationController>() {
+  public static Subject.Factory<LayoutAnimationControllerSubject, LayoutAnimationController> type() {
+    return new Subject.Factory<LayoutAnimationControllerSubject, LayoutAnimationController>() {
       @Override
-      public LayoutAnimationControllerSubject getSubject(FailureStrategy fs, LayoutAnimationController that) {
-        return new LayoutAnimationControllerSubject(fs, that);
+      public LayoutAnimationControllerSubject createSubject(FailureMetadata fm, LayoutAnimationController that) {
+        return new LayoutAnimationControllerSubject(fm, that);
       }
     };
   }

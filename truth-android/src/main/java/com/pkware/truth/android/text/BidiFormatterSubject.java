@@ -19,24 +19,23 @@ package com.pkware.truth.android.text;
 import android.annotation.TargetApi;
 import android.text.BidiFormatter;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
 import static com.google.common.truth.Truth.assertThat;
 
 @TargetApi(JELLY_BEAN_MR2)
 public class BidiFormatterSubject extends Subject<BidiFormatterSubject, BidiFormatter> {
-  protected BidiFormatterSubject(FailureStrategy failureStrategy, BidiFormatter subject) {
-    super(failureStrategy, subject);
+  protected BidiFormatterSubject(FailureMetadata failureMetadata, BidiFormatter subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<BidiFormatterSubject, BidiFormatter> type() {
-    return new SubjectFactory<BidiFormatterSubject, BidiFormatter>() {
+  public static Subject.Factory<BidiFormatterSubject, BidiFormatter> type() {
+    return new Subject.Factory<BidiFormatterSubject, BidiFormatter>() {
       @Override
-      public BidiFormatterSubject getSubject(FailureStrategy fs, BidiFormatter that) {
-        return new BidiFormatterSubject(fs, that);
+      public BidiFormatterSubject createSubject(FailureMetadata fm, BidiFormatter that) {
+        return new BidiFormatterSubject(fm, that);
       }
     };
   }

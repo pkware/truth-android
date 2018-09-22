@@ -19,9 +19,8 @@ package com.pkware.truth.android.telephony;
 import android.annotation.TargetApi;
 import android.telephony.CellIdentityGsm;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
 import static com.google.common.truth.Truth.assertThat;
@@ -31,15 +30,15 @@ import static com.google.common.truth.Truth.assertThat;
  */
 @TargetApi(JELLY_BEAN_MR1)
 public final class CellIdentityGsmSubject extends Subject<CellIdentityGsmSubject, CellIdentityGsm> {
-  private CellIdentityGsmSubject(FailureStrategy failureStrategy, CellIdentityGsm subject) {
-    super(failureStrategy, subject);
+  private CellIdentityGsmSubject(FailureMetadata failureMetadata, CellIdentityGsm subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<CellIdentityGsmSubject, CellIdentityGsm> type() {
-    return new SubjectFactory<CellIdentityGsmSubject, CellIdentityGsm>() {
+  public static Subject.Factory<CellIdentityGsmSubject, CellIdentityGsm> type() {
+    return new Subject.Factory<CellIdentityGsmSubject, CellIdentityGsm>() {
       @Override
-      public CellIdentityGsmSubject getSubject(FailureStrategy fs, CellIdentityGsm that) {
-        return new CellIdentityGsmSubject(fs, that);
+      public CellIdentityGsmSubject createSubject(FailureMetadata fm, CellIdentityGsm that) {
+        return new CellIdentityGsmSubject(fm, that);
       }
     };
   }

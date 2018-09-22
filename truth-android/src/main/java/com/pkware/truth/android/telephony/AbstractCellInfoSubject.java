@@ -19,7 +19,7 @@ package com.pkware.truth.android.telephony;
 import android.annotation.TargetApi;
 import android.telephony.CellInfo;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
@@ -29,8 +29,8 @@ import static com.google.common.truth.Truth.assertThat;
 public abstract class AbstractCellInfoSubject<S extends AbstractCellInfoSubject<S, T>, T extends CellInfo>
     extends Subject<S, T> {
 
-  protected AbstractCellInfoSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractCellInfoSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S hasTimeStamp(long timeStamp) {

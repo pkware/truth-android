@@ -18,14 +18,14 @@ package com.pkware.truth.android.app;
 
 import android.app.Dialog;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
 public abstract class AbstractDialogSubject<S extends AbstractDialogSubject<S, T>, T extends Dialog> extends Subject<S, T> {
-  protected AbstractDialogSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractDialogSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S isShowing() {

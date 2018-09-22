@@ -19,8 +19,8 @@ package com.pkware.truth.android.widget;
 import android.view.View;
 import android.widget.ViewSwitcher;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -29,15 +29,15 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class ViewSwitcherSubject
     extends AbstractViewAnimatorSubject<ViewSwitcherSubject, ViewSwitcher> {
-  protected ViewSwitcherSubject(FailureStrategy failureStrategy, ViewSwitcher subject) {
-    super(failureStrategy, subject);
+  protected ViewSwitcherSubject(FailureMetadata failureMetadata, ViewSwitcher subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ViewSwitcherSubject, ViewSwitcher> type() {
-    return new SubjectFactory<ViewSwitcherSubject, ViewSwitcher>() {
+  public static Subject.Factory<ViewSwitcherSubject, ViewSwitcher> type() {
+    return new Subject.Factory<ViewSwitcherSubject, ViewSwitcher>() {
       @Override
-      public ViewSwitcherSubject getSubject(FailureStrategy fs, ViewSwitcher that) {
-        return new ViewSwitcherSubject(fs, that);
+      public ViewSwitcherSubject createSubject(FailureMetadata fm, ViewSwitcher that) {
+        return new ViewSwitcherSubject(fm, that);
       }
     };
   }

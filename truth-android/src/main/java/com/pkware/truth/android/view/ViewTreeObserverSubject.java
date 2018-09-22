@@ -18,9 +18,8 @@ package com.pkware.truth.android.view;
 
 import android.view.ViewTreeObserver;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -29,15 +28,15 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class ViewTreeObserverSubject extends Subject<ViewTreeObserverSubject, ViewTreeObserver> {
 
-  protected ViewTreeObserverSubject(FailureStrategy failureStrategy, ViewTreeObserver subject) {
-    super(failureStrategy, subject);
+  protected ViewTreeObserverSubject(FailureMetadata failureMetadata, ViewTreeObserver subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ViewTreeObserverSubject, ViewTreeObserver> type() {
-    return new SubjectFactory<ViewTreeObserverSubject, ViewTreeObserver>() {
+  public static Subject.Factory<ViewTreeObserverSubject, ViewTreeObserver> type() {
+    return new Subject.Factory<ViewTreeObserverSubject, ViewTreeObserver>() {
       @Override
-      public ViewTreeObserverSubject getSubject(FailureStrategy fs, ViewTreeObserver that) {
-        return new ViewTreeObserverSubject(fs, that);
+      public ViewTreeObserverSubject createSubject(FailureMetadata fm, ViewTreeObserver that) {
+        return new ViewTreeObserverSubject(fm, that);
       }
     };
   }

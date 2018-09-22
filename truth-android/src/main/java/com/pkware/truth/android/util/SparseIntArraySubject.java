@@ -19,9 +19,8 @@ package com.pkware.truth.android.util;
 import android.annotation.TargetApi;
 import android.util.SparseIntArray;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
 import static com.google.common.truth.Truth.assertThat;
@@ -32,22 +31,22 @@ import static com.google.common.truth.Truth.assert_;
  */
 @TargetApi(JELLY_BEAN_MR2)
 public class SparseIntArraySubject extends Subject<SparseIntArraySubject, SparseIntArray> {
-  protected SparseIntArraySubject(FailureStrategy failureStrategy, SparseIntArray subject) {
-    super(failureStrategy, subject);
+  protected SparseIntArraySubject(FailureMetadata failureMetadata, SparseIntArray subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<SparseIntArraySubject, SparseIntArray> type() {
-    return new SubjectFactory<SparseIntArraySubject, SparseIntArray>() {
+  public static Subject.Factory<SparseIntArraySubject, SparseIntArray> type() {
+    return new Subject.Factory<SparseIntArraySubject, SparseIntArray>() {
       @Override
-      public SparseIntArraySubject getSubject(FailureStrategy fs, SparseIntArray that) {
-        return new SparseIntArraySubject(fs, that);
+      public SparseIntArraySubject createSubject(FailureMetadata fm, SparseIntArray that) {
+        return new SparseIntArraySubject(fm, that);
       }
     };
   }
 
   public SparseIntArraySubject hasKey(int key) {
     assert_()
-        .withFailureMessage("Expected key <%s> to be present but was not.", key)
+        .withMessage("Expected key <%s> to be present but was not.", key)
         .that(actual().indexOfKey(key))
         .isGreaterThan(-1);
     return this;
@@ -55,7 +54,7 @@ public class SparseIntArraySubject extends Subject<SparseIntArraySubject, Sparse
 
   public SparseIntArraySubject doesNotHaveKey(int key) {
     assert_()
-        .withFailureMessage("Expected key <%s> to not be present but was.")
+        .withMessage("Expected key <%s> to not be present but was.")
         .that(actual().indexOfKey(key))
         .isLessThan(0);
     return this;

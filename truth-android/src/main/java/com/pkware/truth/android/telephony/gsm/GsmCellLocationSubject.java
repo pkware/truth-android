@@ -18,9 +18,8 @@ package com.pkware.truth.android.telephony.gsm;
 
 import android.telephony.gsm.GsmCellLocation;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link GsmCellLocation} subjects.
  */
 public class GsmCellLocationSubject extends Subject<GsmCellLocationSubject, GsmCellLocation> {
-  protected GsmCellLocationSubject(FailureStrategy failureStrategy, GsmCellLocation subject) {
-    super(failureStrategy, subject);
+  protected GsmCellLocationSubject(FailureMetadata failureMetadata, GsmCellLocation subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<GsmCellLocationSubject, GsmCellLocation> type() {
-    return new SubjectFactory<GsmCellLocationSubject, GsmCellLocation>() {
+  public static Subject.Factory<GsmCellLocationSubject, GsmCellLocation> type() {
+    return new Subject.Factory<GsmCellLocationSubject, GsmCellLocation>() {
       @Override
-      public GsmCellLocationSubject getSubject(FailureStrategy fs, GsmCellLocation that) {
-        return new GsmCellLocationSubject(fs, that);
+      public GsmCellLocationSubject createSubject(FailureMetadata fm, GsmCellLocation that) {
+        return new GsmCellLocationSubject(fm, that);
       }
     };
   }

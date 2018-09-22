@@ -19,9 +19,8 @@ package com.pkware.truth.android.widget;
 import android.view.View;
 import android.widget.Toast;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -29,15 +28,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Toast} subjects.
  */
 public class ToastSubject extends Subject<ToastSubject, Toast> {
-  protected ToastSubject(FailureStrategy failureStrategy, Toast subject) {
-    super(failureStrategy, subject);
+  protected ToastSubject(FailureMetadata failureMetadata, Toast subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ToastSubject, Toast> type() {
-    return new SubjectFactory<ToastSubject, Toast>() {
+  public static Subject.Factory<ToastSubject, Toast> type() {
+    return new Subject.Factory<ToastSubject, Toast>() {
       @Override
-      public ToastSubject getSubject(FailureStrategy fs, Toast that) {
-        return new ToastSubject(fs, that);
+      public ToastSubject createSubject(FailureMetadata fm, Toast that) {
+        return new ToastSubject(fm, that);
       }
     };
   }

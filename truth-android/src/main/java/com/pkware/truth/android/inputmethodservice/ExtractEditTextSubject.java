@@ -18,9 +18,8 @@ package com.pkware.truth.android.inputmethodservice;
 
 import android.inputmethodservice.ExtractEditText;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ExtractEditText} subjects.
  */
 public class ExtractEditTextSubject extends Subject<ExtractEditTextSubject, ExtractEditText> {
-  protected ExtractEditTextSubject(FailureStrategy failureStrategy, ExtractEditText subject) {
-    super(failureStrategy, subject);
+  protected ExtractEditTextSubject(FailureMetadata failureMetadata, ExtractEditText subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ExtractEditTextSubject, ExtractEditText> type() {
-    return new SubjectFactory<ExtractEditTextSubject, ExtractEditText>() {
+  public static Subject.Factory<ExtractEditTextSubject, ExtractEditText> type() {
+    return new Subject.Factory<ExtractEditTextSubject, ExtractEditText>() {
       @Override
-      public ExtractEditTextSubject getSubject(FailureStrategy fs, ExtractEditText that) {
-        return new ExtractEditTextSubject(fs, that);
+      public ExtractEditTextSubject createSubject(FailureMetadata fm, ExtractEditText that) {
+        return new ExtractEditTextSubject(fm, that);
       }
     };
   }

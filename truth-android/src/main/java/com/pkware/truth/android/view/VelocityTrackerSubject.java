@@ -18,9 +18,8 @@ package com.pkware.truth.android.view;
 
 import android.view.VelocityTracker;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link VelocityTracker} subjects.
  */
 public class VelocityTrackerSubject extends Subject<VelocityTrackerSubject, VelocityTracker> {
-  protected VelocityTrackerSubject(FailureStrategy failureStrategy, VelocityTracker subject) {
-    super(failureStrategy, subject);
+  protected VelocityTrackerSubject(FailureMetadata failureMetadata, VelocityTracker subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<VelocityTrackerSubject, VelocityTracker> type() {
-    return new SubjectFactory<VelocityTrackerSubject, VelocityTracker>() {
+  public static Subject.Factory<VelocityTrackerSubject, VelocityTracker> type() {
+    return new Subject.Factory<VelocityTrackerSubject, VelocityTracker>() {
       @Override
-      public VelocityTrackerSubject getSubject(FailureStrategy fs, VelocityTracker that) {
-        return new VelocityTrackerSubject(fs, that);
+      public VelocityTrackerSubject createSubject(FailureMetadata fm, VelocityTracker that) {
+        return new VelocityTrackerSubject(fm, that);
       }
     };
   }

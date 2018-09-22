@@ -19,8 +19,8 @@ package com.pkware.truth.android.view;
 import android.support.annotation.LayoutRes;
 import android.view.ViewStub;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +28,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ViewStub} subjects.
  */
 public class ViewStubSubject extends AbstractViewSubject<ViewStubSubject, ViewStub> {
-  protected ViewStubSubject(FailureStrategy failureStrategy, ViewStub subject) {
-    super(failureStrategy, subject);
+  protected ViewStubSubject(FailureMetadata failureMetadata, ViewStub subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ViewStubSubject, ViewStub> type() {
-    return new SubjectFactory<ViewStubSubject, ViewStub>() {
+  public static Subject.Factory<ViewStubSubject, ViewStub> type() {
+    return new Subject.Factory<ViewStubSubject, ViewStub>() {
       @Override
-      public ViewStubSubject getSubject(FailureStrategy fs, ViewStub that) {
-        return new ViewStubSubject(fs, that);
+      public ViewStubSubject createSubject(FailureMetadata fm, ViewStub that) {
+        return new ViewStubSubject(fm, that);
       }
     };
   }

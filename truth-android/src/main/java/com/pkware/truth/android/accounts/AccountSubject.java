@@ -18,9 +18,8 @@ package com.pkware.truth.android.accounts;
 
 import android.accounts.Account;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Account} subjects.
  */
 public class AccountSubject extends Subject<AccountSubject, Account> {
-  private AccountSubject(FailureStrategy failureStrategy, Account subject) {
-    super(failureStrategy, subject);
+  private AccountSubject(FailureMetadata failureMetadata, Account subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<AccountSubject, Account> type() {
-    return new SubjectFactory<AccountSubject, Account>() {
+  public static Subject.Factory<AccountSubject, Account> type() {
+    return new Subject.Factory<AccountSubject, Account>() {
       @Override
-      public AccountSubject getSubject(FailureStrategy fs, Account that) {
-        return new AccountSubject(fs, that);
+      public AccountSubject createSubject(FailureMetadata fm, Account that) {
+        return new AccountSubject(fm, that);
       }
     };
   }

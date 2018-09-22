@@ -20,8 +20,8 @@ import android.content.Context;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -29,15 +29,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ArrayAdapter} subjects.
  */
 public class ArrayAdapterSubject extends AbstractListAdapterSubject<ArrayAdapterSubject, ArrayAdapter> {
-  protected ArrayAdapterSubject(FailureStrategy failureStrategy, ArrayAdapter subject) {
-    super(failureStrategy, subject);
+  protected ArrayAdapterSubject(FailureMetadata failureMetadata, ArrayAdapter subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ArrayAdapterSubject, ArrayAdapter> type() {
-    return new SubjectFactory<ArrayAdapterSubject, ArrayAdapter>() {
+  public static Subject.Factory<ArrayAdapterSubject, ArrayAdapter> type() {
+    return new Subject.Factory<ArrayAdapterSubject, ArrayAdapter>() {
       @Override
-      public ArrayAdapterSubject getSubject(FailureStrategy fs, ArrayAdapter that) {
-        return new ArrayAdapterSubject(fs, that);
+      public ArrayAdapterSubject createSubject(FailureMetadata fm, ArrayAdapter that) {
+        return new ArrayAdapterSubject(fm, that);
       }
     };
   }

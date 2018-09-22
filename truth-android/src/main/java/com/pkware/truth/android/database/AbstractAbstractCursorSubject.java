@@ -19,15 +19,15 @@ package com.pkware.truth.android.database;
 import android.database.AbstractCursor;
 import android.net.Uri;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 import com.pkware.truth.android.net.UriSubject;
 
 import static com.google.common.truth.Truth.assert_;
 
 public abstract class AbstractAbstractCursorSubject<S extends AbstractAbstractCursorSubject<S, T>, T extends AbstractCursor> extends Subject<S, T> {
-  protected AbstractAbstractCursorSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractAbstractCursorSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S hasNotificationUri(Uri uri) {

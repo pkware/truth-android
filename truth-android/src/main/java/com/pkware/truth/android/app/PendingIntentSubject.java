@@ -19,9 +19,8 @@ package com.pkware.truth.android.app;
 import android.annotation.TargetApi;
 import android.app.PendingIntent;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
 import static com.google.common.truth.Truth.assertThat;
@@ -31,15 +30,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link PendingIntent} subjects.
  */
 public class PendingIntentSubject extends Subject<PendingIntentSubject, PendingIntent> {
-  protected PendingIntentSubject(FailureStrategy failureStrategy, PendingIntent subject) {
-    super(failureStrategy, subject);
+  protected PendingIntentSubject(FailureMetadata failureMetadata, PendingIntent subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<PendingIntentSubject, PendingIntent> type() {
-    return new SubjectFactory<PendingIntentSubject, PendingIntent>() {
+  public static Subject.Factory<PendingIntentSubject, PendingIntent> type() {
+    return new Subject.Factory<PendingIntentSubject, PendingIntent>() {
       @Override
-      public PendingIntentSubject getSubject(FailureStrategy fs, PendingIntent that) {
-        return new PendingIntentSubject(fs, that);
+      public PendingIntentSubject createSubject(FailureMetadata fm, PendingIntent that) {
+        return new PendingIntentSubject(fm, that);
       }
     };
   }

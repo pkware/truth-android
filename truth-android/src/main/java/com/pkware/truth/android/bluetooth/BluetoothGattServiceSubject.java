@@ -19,9 +19,8 @@ package com.pkware.truth.android.bluetooth;
 import android.annotation.TargetApi;
 import android.bluetooth.BluetoothGattService;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import java.util.UUID;
 
@@ -37,15 +36,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  */
 @TargetApi(JELLY_BEAN_MR2)
 public class BluetoothGattServiceSubject extends Subject<BluetoothGattServiceSubject, BluetoothGattService> {
-  protected BluetoothGattServiceSubject(FailureStrategy failureStrategy, BluetoothGattService subject) {
-    super(failureStrategy, subject);
+  protected BluetoothGattServiceSubject(FailureMetadata failureMetadata, BluetoothGattService subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<BluetoothGattServiceSubject, BluetoothGattService> type() {
-    return new SubjectFactory<BluetoothGattServiceSubject, BluetoothGattService>() {
+  public static Subject.Factory<BluetoothGattServiceSubject, BluetoothGattService> type() {
+    return new Subject.Factory<BluetoothGattServiceSubject, BluetoothGattService>() {
       @Override
-      public BluetoothGattServiceSubject getSubject(FailureStrategy fs, BluetoothGattService that) {
-        return new BluetoothGattServiceSubject(fs, that);
+      public BluetoothGattServiceSubject createSubject(FailureMetadata fm, BluetoothGattService that) {
+        return new BluetoothGattServiceSubject(fm, that);
       }
     };
   }
@@ -68,7 +67,7 @@ public class BluetoothGattServiceSubject extends Subject<BluetoothGattServiceSub
     int actualType = actual().getType();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected type <%s> but was <%s>.",
+        .withMessage("Expected type <%s> but was <%s>.",
             typeToString(type),
             typeToString(actualType))
         .that(actualType)

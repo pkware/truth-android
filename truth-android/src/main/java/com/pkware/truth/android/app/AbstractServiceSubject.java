@@ -18,11 +18,11 @@ package com.pkware.truth.android.app;
 
 import android.app.Service;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
 public abstract class AbstractServiceSubject<S extends AbstractServiceSubject<S, T>, T extends Service> extends Subject<S, T> {
-  protected AbstractServiceSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractServiceSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 }

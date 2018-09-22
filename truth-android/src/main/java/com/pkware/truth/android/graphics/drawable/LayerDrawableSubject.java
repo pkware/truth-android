@@ -18,8 +18,8 @@ package com.pkware.truth.android.graphics.drawable;
 
 import android.graphics.drawable.LayerDrawable;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link LayerDrawable} subjects.
  */
 public class LayerDrawableSubject extends AbstractDrawableSubject<LayerDrawableSubject, LayerDrawable> {
-  protected LayerDrawableSubject(FailureStrategy failureStrategy, LayerDrawable subject) {
-    super(failureStrategy, subject);
+  protected LayerDrawableSubject(FailureMetadata failureMetadata, LayerDrawable subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<LayerDrawableSubject, LayerDrawable> type() {
-    return new SubjectFactory<LayerDrawableSubject, LayerDrawable>() {
+  public static Subject.Factory<LayerDrawableSubject, LayerDrawable> type() {
+    return new Subject.Factory<LayerDrawableSubject, LayerDrawable>() {
       @Override
-      public LayerDrawableSubject getSubject(FailureStrategy fs, LayerDrawable that) {
-        return new LayerDrawableSubject(fs, that);
+      public LayerDrawableSubject createSubject(FailureMetadata fm, LayerDrawable that) {
+        return new LayerDrawableSubject(fm, that);
       }
     };
   }

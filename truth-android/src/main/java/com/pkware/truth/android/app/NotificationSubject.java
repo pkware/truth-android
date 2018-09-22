@@ -22,9 +22,8 @@ import android.app.PendingIntent;
 import android.graphics.Bitmap;
 import android.support.annotation.DrawableRes;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.app.Notification.FLAG_AUTO_CANCEL;
 import static android.app.Notification.FLAG_FOREGROUND_SERVICE;
@@ -50,15 +49,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link Notification} subjects.
  */
 public class NotificationSubject extends Subject<NotificationSubject, Notification> {
-  protected NotificationSubject(FailureStrategy failureStrategy, Notification subject) {
-    super(failureStrategy, subject);
+  protected NotificationSubject(FailureMetadata failureMetadata, Notification subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<NotificationSubject, Notification> type() {
-    return new SubjectFactory<NotificationSubject, Notification>() {
+  public static Subject.Factory<NotificationSubject, Notification> type() {
+    return new Subject.Factory<NotificationSubject, Notification>() {
       @Override
-      public NotificationSubject getSubject(FailureStrategy fs, Notification that) {
-        return new NotificationSubject(fs, that);
+      public NotificationSubject createSubject(FailureMetadata fm, Notification that) {
+        return new NotificationSubject(fm, that);
       }
     };
   }
@@ -111,7 +110,7 @@ public class NotificationSubject extends Subject<NotificationSubject, Notificati
     int actualFlags = actual().flags;
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected flags <%s> but was <%s>.", flagsToString(flags), flagsToString(actualFlags & flags))
+        .withMessage("Expected flags <%s> but was <%s>.", flagsToString(flags), flagsToString(actualFlags & flags))
         .that(actualFlags & flags)
         .isEqualTo(flags);
     return this;
@@ -121,7 +120,7 @@ public class NotificationSubject extends Subject<NotificationSubject, Notificati
     int actualFlags = actual().flags;
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected flags <%s> but was <%s>.", flagsToString(flags), flagsToString(actualFlags))
+        .withMessage("Expected flags <%s> but was <%s>.", flagsToString(flags), flagsToString(actualFlags))
         .that(actualFlags)
         .isEqualTo(flags);
     return this;
@@ -166,7 +165,7 @@ public class NotificationSubject extends Subject<NotificationSubject, Notificati
   public NotificationSubject hasLedColor(int color) {
     int actualColor = actual().ledARGB;
     assert_()
-        .withFailureMessage("Expected LED color <%s> but was <%s>.", Integer.toHexString(color), Integer.toHexString(actualColor))
+        .withMessage("Expected LED color <%s> but was <%s>.", Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
     return this;
@@ -198,7 +197,7 @@ public class NotificationSubject extends Subject<NotificationSubject, Notificati
     int actualPriority = actual().priority;
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected priority <%s> but was <%s>.", priorityToString(priority), priorityToString(actualPriority))
+        .withMessage("Expected priority <%s> but was <%s>.", priorityToString(priority), priorityToString(actualPriority))
         .that(actualPriority)
         .isEqualTo(priority);
     return this;

@@ -18,9 +18,8 @@ package com.pkware.truth.android.view;
 
 import android.view.KeyCharacterMap;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.view.KeyCharacterMap.ALPHA;
 import static android.view.KeyCharacterMap.FULL;
@@ -35,15 +34,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link KeyCharacterMap} subjects.
  */
 public class KeyCharacterMapSubject extends Subject<KeyCharacterMapSubject, KeyCharacterMap> {
-  protected KeyCharacterMapSubject(FailureStrategy failureStrategy, KeyCharacterMap subject) {
-    super(failureStrategy, subject);
+  protected KeyCharacterMapSubject(FailureMetadata failureMetadata, KeyCharacterMap subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<KeyCharacterMapSubject, KeyCharacterMap> type() {
-    return new SubjectFactory<KeyCharacterMapSubject, KeyCharacterMap>() {
+  public static Subject.Factory<KeyCharacterMapSubject, KeyCharacterMap> type() {
+    return new Subject.Factory<KeyCharacterMapSubject, KeyCharacterMap>() {
       @Override
-      public KeyCharacterMapSubject getSubject(FailureStrategy fs, KeyCharacterMap that) {
-        return new KeyCharacterMapSubject(fs, that);
+      public KeyCharacterMapSubject createSubject(FailureMetadata fm, KeyCharacterMap that) {
+        return new KeyCharacterMapSubject(fm, that);
       }
     };
   }
@@ -62,7 +61,7 @@ public class KeyCharacterMapSubject extends Subject<KeyCharacterMapSubject, KeyC
     int actualType = actual().getKeyboardType();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected keyboard type <%s> but was <%s>.",
+        .withMessage("Expected keyboard type <%s> but was <%s>.",
             keyboardTypeToString(type), keyboardTypeToString(actualType))
         .that(actualType)
         .isEqualTo(type);

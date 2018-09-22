@@ -19,8 +19,8 @@ package com.pkware.truth.android.widget;
 import android.support.annotation.StringRes;
 import android.widget.ToggleButton;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -29,15 +29,15 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class ToggleButtonSubject
     extends AbstractCompoundButtonSubject<ToggleButtonSubject, ToggleButton> {
-  protected ToggleButtonSubject(FailureStrategy failureStrategy, ToggleButton subject) {
-    super(failureStrategy, subject);
+  protected ToggleButtonSubject(FailureMetadata failureMetadata, ToggleButton subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ToggleButtonSubject, ToggleButton> type() {
-    return new SubjectFactory<ToggleButtonSubject, ToggleButton>() {
+  public static Subject.Factory<ToggleButtonSubject, ToggleButton> type() {
+    return new Subject.Factory<ToggleButtonSubject, ToggleButton>() {
       @Override
-      public ToggleButtonSubject getSubject(FailureStrategy fs, ToggleButton that) {
-        return new ToggleButtonSubject(fs, that);
+      public ToggleButtonSubject createSubject(FailureMetadata fm, ToggleButton that) {
+        return new ToggleButtonSubject(fm, that);
       }
     };
   }

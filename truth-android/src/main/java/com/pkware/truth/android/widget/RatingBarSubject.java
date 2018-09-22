@@ -18,8 +18,8 @@ package com.pkware.truth.android.widget;
 
 import android.widget.RatingBar;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link RatingBar} subjects.
  */
 public class RatingBarSubject extends AbstractAbsSeekBarSubject<RatingBarSubject, RatingBar> {
-  protected RatingBarSubject(FailureStrategy failureStrategy, RatingBar subject) {
-    super(failureStrategy, subject);
+  protected RatingBarSubject(FailureMetadata failureMetadata, RatingBar subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<RatingBarSubject, RatingBar> type() {
-    return new SubjectFactory<RatingBarSubject, RatingBar>() {
+  public static Subject.Factory<RatingBarSubject, RatingBar> type() {
+    return new Subject.Factory<RatingBarSubject, RatingBar>() {
       @Override
-      public RatingBarSubject getSubject(FailureStrategy fs, RatingBar that) {
-        return new RatingBarSubject(fs, that);
+      public RatingBarSubject createSubject(FailureMetadata fm, RatingBar that) {
+        return new RatingBarSubject(fm, that);
       }
     };
   }

@@ -19,9 +19,8 @@ package com.pkware.truth.android.os;
 import android.os.Bundle;
 import android.os.Parcelable;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import java.io.Serializable;
 import java.util.Locale;
@@ -34,22 +33,22 @@ import static com.google.common.truth.Truth.assert_;
  */
 //TODO consider adding hasValue for array types
 public class BundleSubject extends Subject<BundleSubject, Bundle> {
-  protected BundleSubject(FailureStrategy failureStrategy, Bundle subject) {
-    super(failureStrategy, subject);
+  protected BundleSubject(FailureMetadata failureMetadata, Bundle subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<BundleSubject, Bundle> type() {
-    return new SubjectFactory<BundleSubject, Bundle>() {
+  public static Subject.Factory<BundleSubject, Bundle> type() {
+    return new Subject.Factory<BundleSubject, Bundle>() {
       @Override
-      public BundleSubject getSubject(FailureStrategy fs, Bundle that) {
-        return new BundleSubject(fs, that);
+      public BundleSubject createSubject(FailureMetadata fm, Bundle that) {
+        return new BundleSubject(fm, that);
       }
     };
   }
 
   public BundleSubject hasKey(String key) {
     assert_()
-        .withFailureMessage("Expected to contain key <%s> but did not.", key)
+        .withMessage("Expected to contain key <%s> but did not.", key)
         .that(actual().containsKey(key))
         .isTrue();
     return this;

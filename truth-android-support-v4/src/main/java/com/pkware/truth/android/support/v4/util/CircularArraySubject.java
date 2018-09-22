@@ -18,9 +18,8 @@ package com.pkware.truth.android.support.v4.util;
 
 import android.support.v4.util.CircularArray;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -29,15 +28,15 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class CircularArraySubject<E>
     extends Subject<CircularArraySubject<E>, CircularArray<E>> {
-  protected CircularArraySubject(FailureStrategy failureStrategy, CircularArray<E> subject) {
-    super(failureStrategy, subject);
+  protected CircularArraySubject(FailureMetadata failureMetadata, CircularArray<E> subject) {
+    super(failureMetadata, subject);
   }
 
-  public static <E> SubjectFactory<CircularArraySubject<E>, CircularArray<E>> type() {
-    return new SubjectFactory<CircularArraySubject<E>, CircularArray<E>>() {
+  public static <E> Subject.Factory<CircularArraySubject<E>, CircularArray<E>> type() {
+    return new Subject.Factory<CircularArraySubject<E>, CircularArray<E>>() {
       @Override
-      public CircularArraySubject<E> getSubject(FailureStrategy fs, CircularArray<E> that) {
-        return new CircularArraySubject<E>(fs, that);
+      public CircularArraySubject<E> createSubject(FailureMetadata fm, CircularArray<E> that) {
+        return new CircularArraySubject<E>(fm, that);
       }
     };
   }

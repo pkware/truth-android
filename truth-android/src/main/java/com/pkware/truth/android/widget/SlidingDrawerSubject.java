@@ -19,8 +19,8 @@ package com.pkware.truth.android.widget;
 import android.view.View;
 import android.widget.SlidingDrawer;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -30,15 +30,15 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class SlidingDrawerSubject
     extends AbstractViewGroupSubject<SlidingDrawerSubject, SlidingDrawer> {
-  protected SlidingDrawerSubject(FailureStrategy failureStrategy, SlidingDrawer subject) {
-    super(failureStrategy, subject);
+  protected SlidingDrawerSubject(FailureMetadata failureMetadata, SlidingDrawer subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<SlidingDrawerSubject, SlidingDrawer> type() {
-    return new SubjectFactory<SlidingDrawerSubject, SlidingDrawer>() {
+  public static Subject.Factory<SlidingDrawerSubject, SlidingDrawer> type() {
+    return new Subject.Factory<SlidingDrawerSubject, SlidingDrawer>() {
       @Override
-      public SlidingDrawerSubject getSubject(FailureStrategy fs, SlidingDrawer that) {
-        return new SlidingDrawerSubject(fs, that);
+      public SlidingDrawerSubject createSubject(FailureMetadata fm, SlidingDrawer that) {
+        return new SlidingDrawerSubject(fm, that);
       }
     };
   }

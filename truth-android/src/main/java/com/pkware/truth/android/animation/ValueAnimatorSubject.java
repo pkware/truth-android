@@ -18,8 +18,8 @@ package com.pkware.truth.android.animation;
 
 import android.animation.ValueAnimator;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link ValueAnimator} subjects.
@@ -27,15 +27,15 @@ import com.google.common.truth.SubjectFactory;
  * This class is final. To extend use {@link AbstractValueAnimatorSubject}.
  */
 public final class ValueAnimatorSubject extends AbstractValueAnimatorSubject<ValueAnimatorSubject, ValueAnimator> {
-  private ValueAnimatorSubject(FailureStrategy failureStrategy, ValueAnimator subject) {
-    super(failureStrategy, subject);
+  private ValueAnimatorSubject(FailureMetadata failureMetadata, ValueAnimator subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ValueAnimatorSubject, ValueAnimator> type() {
-    return new SubjectFactory<ValueAnimatorSubject, ValueAnimator>() {
+  public static Subject.Factory<ValueAnimatorSubject, ValueAnimator> type() {
+    return new Subject.Factory<ValueAnimatorSubject, ValueAnimator>() {
       @Override
-      public ValueAnimatorSubject getSubject(FailureStrategy fs, ValueAnimator that) {
-        return new ValueAnimatorSubject(fs, that);
+      public ValueAnimatorSubject createSubject(FailureMetadata fm, ValueAnimator that) {
+        return new ValueAnimatorSubject(fm, that);
       }
     };
   }

@@ -18,8 +18,8 @@ package com.pkware.truth.android.app;
 
 import android.app.Activity;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link Activity} subjects.
@@ -27,15 +27,15 @@ import com.google.common.truth.SubjectFactory;
  * This class is final. To extend use {@link AbstractActivitySubject}.
  */
 public final class ActivitySubject extends AbstractActivitySubject<ActivitySubject, Activity> {
-  private ActivitySubject(FailureStrategy failureStrategy, Activity subject) {
-    super(failureStrategy, subject);
+  private ActivitySubject(FailureMetadata failureMetadata, Activity subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ActivitySubject, Activity> type() {
-    return new SubjectFactory<ActivitySubject, Activity>() {
+  public static Subject.Factory<ActivitySubject, Activity> type() {
+    return new Subject.Factory<ActivitySubject, Activity>() {
       @Override
-      public ActivitySubject getSubject(FailureStrategy fs, Activity that) {
-        return new ActivitySubject(fs, that);
+      public ActivitySubject createSubject(FailureMetadata fm, Activity that) {
+        return new ActivitySubject(fm, that);
       }
     };
   }

@@ -18,9 +18,8 @@ package com.pkware.truth.android.recyclerview.v7.widget;
 
 import android.support.v7.widget.RecyclerView;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.support.v7.widget.RecyclerView.ViewHolder;
 import static com.google.common.truth.Truth.assertThat;
@@ -31,15 +30,15 @@ import static com.google.common.truth.Truth.assertThat;
 public class RecyclerViewAdapterSubject<VH extends ViewHolder>
     extends Subject<RecyclerViewAdapterSubject<VH>, RecyclerView.Adapter<VH>> {
 
-  protected RecyclerViewAdapterSubject(FailureStrategy failureStrategy, RecyclerView.Adapter<VH> subject) {
-    super(failureStrategy, subject);
+  protected RecyclerViewAdapterSubject(FailureMetadata failureMetadata, RecyclerView.Adapter<VH> subject) {
+    super(failureMetadata, subject);
   }
 
-  public static <VH extends ViewHolder> SubjectFactory<RecyclerViewAdapterSubject<VH>, RecyclerView.Adapter<VH>> type() {
-    return new SubjectFactory<RecyclerViewAdapterSubject<VH>, RecyclerView.Adapter<VH>>() {
+  public static <VH extends ViewHolder> Subject.Factory<RecyclerViewAdapterSubject<VH>, RecyclerView.Adapter<VH>> type() {
+    return new Subject.Factory<RecyclerViewAdapterSubject<VH>, RecyclerView.Adapter<VH>>() {
       @Override
-      public RecyclerViewAdapterSubject<VH> getSubject(FailureStrategy fs, RecyclerView.Adapter<VH> that) {
-        return new RecyclerViewAdapterSubject<VH>(fs, that);
+      public RecyclerViewAdapterSubject<VH> createSubject(FailureMetadata fm, RecyclerView.Adapter<VH> that) {
+        return new RecyclerViewAdapterSubject<VH>(fm, that);
       }
     };
   }

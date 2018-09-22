@@ -18,8 +18,8 @@ package com.pkware.truth.android.widget;
 
 import android.widget.DatePicker;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link DatePicker} subjects.
  */
 public class DatePickerSubject extends AbstractFrameLayoutSubject<DatePickerSubject, DatePicker> {
-  protected DatePickerSubject(FailureStrategy failureStrategy, DatePicker subject) {
-    super(failureStrategy, subject);
+  protected DatePickerSubject(FailureMetadata failureMetadata, DatePicker subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<DatePickerSubject, DatePicker> type() {
-    return new SubjectFactory<DatePickerSubject, DatePicker>() {
+  public static Subject.Factory<DatePickerSubject, DatePicker> type() {
+    return new Subject.Factory<DatePickerSubject, DatePicker>() {
       @Override
-      public DatePickerSubject getSubject(FailureStrategy fs, DatePicker that) {
-        return new DatePickerSubject(fs, that);
+      public DatePickerSubject createSubject(FailureMetadata fm, DatePicker that) {
+        return new DatePickerSubject(fm, that);
       }
     };
   }

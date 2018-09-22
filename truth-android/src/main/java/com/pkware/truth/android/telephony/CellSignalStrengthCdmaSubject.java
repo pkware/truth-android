@@ -19,8 +19,8 @@ package com.pkware.truth.android.telephony;
 import android.annotation.TargetApi;
 import android.telephony.CellSignalStrengthCdma;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
 import static com.google.common.truth.Truth.assertThat;
@@ -33,15 +33,15 @@ import static com.google.common.truth.Truth.assertThat;
 @TargetApi(JELLY_BEAN_MR1)
 public final class CellSignalStrengthCdmaSubject
     extends AbstractCellSignalStrengthSubject<CellSignalStrengthCdmaSubject, CellSignalStrengthCdma> {
-  private CellSignalStrengthCdmaSubject(FailureStrategy failureStrategy, CellSignalStrengthCdma subject) {
-    super(failureStrategy, subject);
+  private CellSignalStrengthCdmaSubject(FailureMetadata failureMetadata, CellSignalStrengthCdma subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<CellSignalStrengthCdmaSubject, CellSignalStrengthCdma> type() {
-    return new SubjectFactory<CellSignalStrengthCdmaSubject, CellSignalStrengthCdma>() {
+  public static Subject.Factory<CellSignalStrengthCdmaSubject, CellSignalStrengthCdma> type() {
+    return new Subject.Factory<CellSignalStrengthCdmaSubject, CellSignalStrengthCdma>() {
       @Override
-      public CellSignalStrengthCdmaSubject getSubject(FailureStrategy fs, CellSignalStrengthCdma that) {
-        return new CellSignalStrengthCdmaSubject(fs, that);
+      public CellSignalStrengthCdmaSubject createSubject(FailureMetadata fm, CellSignalStrengthCdma that) {
+        return new CellSignalStrengthCdmaSubject(fm, that);
       }
     };
   }

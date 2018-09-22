@@ -19,9 +19,8 @@ package com.pkware.truth.android.database.sqlite;
 import android.annotation.TargetApi;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 import static com.google.common.truth.Truth.assertThat;
@@ -30,15 +29,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link SQLiteDatabase} subjects.
  */
 public class SqliteDatabaseSubject extends Subject<SqliteDatabaseSubject, SQLiteDatabase> {
-  protected SqliteDatabaseSubject(FailureStrategy failureStrategy, SQLiteDatabase subject) {
-    super(failureStrategy, subject);
+  protected SqliteDatabaseSubject(FailureMetadata failureMetadata, SQLiteDatabase subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<SqliteDatabaseSubject, SQLiteDatabase> type() {
-    return new SubjectFactory<SqliteDatabaseSubject, SQLiteDatabase>() {
+  public static Subject.Factory<SqliteDatabaseSubject, SQLiteDatabase> type() {
+    return new Subject.Factory<SqliteDatabaseSubject, SQLiteDatabase>() {
       @Override
-      public SqliteDatabaseSubject getSubject(FailureStrategy fs, SQLiteDatabase that) {
-        return new SqliteDatabaseSubject(fs, that);
+      public SqliteDatabaseSubject createSubject(FailureMetadata fm, SQLiteDatabase that) {
+        return new SqliteDatabaseSubject(fm, that);
       }
     };
   }

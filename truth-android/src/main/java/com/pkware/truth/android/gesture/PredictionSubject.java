@@ -18,9 +18,8 @@ package com.pkware.truth.android.gesture;
 
 import android.gesture.Prediction;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Prediction} subjects.
  */
 public class PredictionSubject extends Subject<PredictionSubject, Prediction> {
-  protected PredictionSubject(FailureStrategy failureStrategy, Prediction subject) {
-    super(failureStrategy, subject);
+  protected PredictionSubject(FailureMetadata failureMetadata, Prediction subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<PredictionSubject, Prediction> type() {
-    return new SubjectFactory<PredictionSubject, Prediction>() {
+  public static Subject.Factory<PredictionSubject, Prediction> type() {
+    return new Subject.Factory<PredictionSubject, Prediction>() {
       @Override
-      public PredictionSubject getSubject(FailureStrategy fs, Prediction that) {
-        return new PredictionSubject(fs, that);
+      public PredictionSubject createSubject(FailureMetadata fm, Prediction that) {
+        return new PredictionSubject(fm, that);
       }
     };
   }

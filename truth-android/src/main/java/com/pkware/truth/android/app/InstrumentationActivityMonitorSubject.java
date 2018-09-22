@@ -19,9 +19,8 @@ package com.pkware.truth.android.app;
 import android.app.Activity;
 import android.app.Instrumentation;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -29,15 +28,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Instrumentation.ActivityMonitor} subjects.
  */
 public class InstrumentationActivityMonitorSubject extends Subject<InstrumentationActivityMonitorSubject, Instrumentation.ActivityMonitor> {
-  protected InstrumentationActivityMonitorSubject(FailureStrategy failureStrategy, Instrumentation.ActivityMonitor subject) {
-    super(failureStrategy, subject);
+  protected InstrumentationActivityMonitorSubject(FailureMetadata failureMetadata, Instrumentation.ActivityMonitor subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<InstrumentationActivityMonitorSubject, Instrumentation.ActivityMonitor> type() {
-    return new SubjectFactory<InstrumentationActivityMonitorSubject, Instrumentation.ActivityMonitor>() {
+  public static Subject.Factory<InstrumentationActivityMonitorSubject, Instrumentation.ActivityMonitor> type() {
+    return new Subject.Factory<InstrumentationActivityMonitorSubject, Instrumentation.ActivityMonitor>() {
       @Override
-      public InstrumentationActivityMonitorSubject getSubject(FailureStrategy fs, Instrumentation.ActivityMonitor that) {
-        return new InstrumentationActivityMonitorSubject(fs, that);
+      public InstrumentationActivityMonitorSubject createSubject(FailureMetadata fm, Instrumentation.ActivityMonitor that) {
+        return new InstrumentationActivityMonitorSubject(fm, that);
       }
     };
   }

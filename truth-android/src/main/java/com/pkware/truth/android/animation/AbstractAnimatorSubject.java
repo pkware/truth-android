@@ -19,15 +19,15 @@ package com.pkware.truth.android.animation;
 import android.animation.Animator;
 import android.annotation.TargetApi;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.KITKAT;
 import static com.google.common.truth.Truth.assertThat;
 
 public abstract class AbstractAnimatorSubject<S extends AbstractAnimatorSubject<S, T>, T extends Animator> extends Subject<S, T> {
-  protected AbstractAnimatorSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractAnimatorSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S hasDuration(long duration) {

@@ -20,9 +20,8 @@ import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.Region;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -30,15 +29,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Region} subjects.
  */
 public class RegionSubject extends Subject<RegionSubject, Region> {
-  protected RegionSubject(FailureStrategy failureStrategy, Region subject) {
-    super(failureStrategy, subject);
+  protected RegionSubject(FailureMetadata failureMetadata, Region subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<RegionSubject, Region> type() {
-    return new SubjectFactory<RegionSubject, Region>() {
+  public static Subject.Factory<RegionSubject, Region> type() {
+    return new Subject.Factory<RegionSubject, Region>() {
       @Override
-      public RegionSubject getSubject(FailureStrategy fs, Region that) {
-        return new RegionSubject(fs, that);
+      public RegionSubject createSubject(FailureMetadata fm, Region that) {
+        return new RegionSubject(fm, that);
       }
     };
   }

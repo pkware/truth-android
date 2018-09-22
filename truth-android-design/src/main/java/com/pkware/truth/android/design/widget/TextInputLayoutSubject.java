@@ -18,8 +18,8 @@ package com.pkware.truth.android.design.widget;
 
 import android.support.design.widget.TextInputLayout;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 import com.pkware.truth.android.widget.AbstractLinearLayoutSubject;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -28,15 +28,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link TextInputLayout} subjects.
  */
 public class TextInputLayoutSubject extends AbstractLinearLayoutSubject<TextInputLayoutSubject, TextInputLayout> {
-  protected TextInputLayoutSubject(FailureStrategy failureStrategy, TextInputLayout subject) {
-    super(failureStrategy, subject);
+  protected TextInputLayoutSubject(FailureMetadata failureMetadata, TextInputLayout subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<TextInputLayoutSubject, TextInputLayout> type() {
-    return new SubjectFactory<TextInputLayoutSubject, TextInputLayout>() {
+  public static Subject.Factory<TextInputLayoutSubject, TextInputLayout> type() {
+    return new Subject.Factory<TextInputLayoutSubject, TextInputLayout>() {
       @Override
-      public TextInputLayoutSubject getSubject(FailureStrategy fs, TextInputLayout that) {
-        return new TextInputLayoutSubject(fs, that);
+      public TextInputLayoutSubject createSubject(FailureMetadata fm, TextInputLayout that) {
+        return new TextInputLayoutSubject(fm, that);
       }
     };
   }

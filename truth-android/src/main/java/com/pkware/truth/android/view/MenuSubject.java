@@ -19,9 +19,8 @@ package com.pkware.truth.android.view;
 import android.support.annotation.IdRes;
 import android.view.Menu;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -29,15 +28,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Menu} subjects.
  */
 public class MenuSubject extends Subject<MenuSubject, Menu> {
-  protected MenuSubject(FailureStrategy failureStrategy, Menu subject) {
-    super(failureStrategy, subject);
+  protected MenuSubject(FailureMetadata failureMetadata, Menu subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<MenuSubject, Menu> type() {
-    return new SubjectFactory<MenuSubject, Menu>() {
+  public static Subject.Factory<MenuSubject, Menu> type() {
+    return new Subject.Factory<MenuSubject, Menu>() {
       @Override
-      public MenuSubject getSubject(FailureStrategy fs, Menu that) {
-        return new MenuSubject(fs, that);
+      public MenuSubject createSubject(FailureMetadata fm, Menu that) {
+        return new MenuSubject(fm, that);
       }
     };
   }

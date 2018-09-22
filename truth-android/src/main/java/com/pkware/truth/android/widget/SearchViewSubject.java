@@ -21,8 +21,8 @@ import android.support.annotation.StringRes;
 import android.widget.CursorAdapter;
 import android.widget.SearchView;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.HONEYCOMB;
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
@@ -33,15 +33,15 @@ import static com.google.common.truth.Truth.assertThat;
  */
 @TargetApi(HONEYCOMB)
 public class SearchViewSubject extends AbstractLinearLayoutSubject<SearchViewSubject, SearchView> {
-  protected SearchViewSubject(FailureStrategy failureStrategy, SearchView subject) {
-    super(failureStrategy, subject);
+  protected SearchViewSubject(FailureMetadata failureMetadata, SearchView subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<SearchViewSubject, SearchView> type() {
-    return new SubjectFactory<SearchViewSubject, SearchView>() {
+  public static Subject.Factory<SearchViewSubject, SearchView> type() {
+    return new Subject.Factory<SearchViewSubject, SearchView>() {
       @Override
-      public SearchViewSubject getSubject(FailureStrategy fs, SearchView that) {
-        return new SearchViewSubject(fs, that);
+      public SearchViewSubject createSubject(FailureMetadata fm, SearchView that) {
+        return new SearchViewSubject(fm, that);
       }
     };
   }

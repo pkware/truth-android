@@ -18,9 +18,8 @@ package com.pkware.truth.android.database;
 
 import android.database.CursorWindow;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link CursorWindow} subjects.
  */
 public class CursorWindowSubject extends Subject<CursorWindowSubject, CursorWindow> {
-  protected CursorWindowSubject(FailureStrategy failureStrategy, CursorWindow subject) {
-    super(failureStrategy, subject);
+  protected CursorWindowSubject(FailureMetadata failureMetadata, CursorWindow subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<CursorWindowSubject, CursorWindow> type() {
-    return new SubjectFactory<CursorWindowSubject, CursorWindow>() {
+  public static Subject.Factory<CursorWindowSubject, CursorWindow> type() {
+    return new Subject.Factory<CursorWindowSubject, CursorWindow>() {
       @Override
-      public CursorWindowSubject getSubject(FailureStrategy fs, CursorWindow that) {
-        return new CursorWindowSubject(fs, that);
+      public CursorWindowSubject createSubject(FailureMetadata fm, CursorWindow that) {
+        return new CursorWindowSubject(fm, that);
       }
     };
   }

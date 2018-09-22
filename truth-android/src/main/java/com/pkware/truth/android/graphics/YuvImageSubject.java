@@ -18,9 +18,8 @@ package com.pkware.truth.android.graphics;
 
 import android.graphics.YuvImage;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link YuvImage} subjects.
  */
 public class YuvImageSubject extends Subject<YuvImageSubject, YuvImage> {
-  protected YuvImageSubject(FailureStrategy failureStrategy, YuvImage subject) {
-    super(failureStrategy, subject);
+  protected YuvImageSubject(FailureMetadata failureMetadata, YuvImage subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<YuvImageSubject, YuvImage> type() {
-    return new SubjectFactory<YuvImageSubject, YuvImage>() {
+  public static Subject.Factory<YuvImageSubject, YuvImage> type() {
+    return new Subject.Factory<YuvImageSubject, YuvImage>() {
       @Override
-      public YuvImageSubject getSubject(FailureStrategy fs, YuvImage that) {
-        return new YuvImageSubject(fs, that);
+      public YuvImageSubject createSubject(FailureMetadata fm, YuvImage that) {
+        return new YuvImageSubject(fm, that);
       }
     };
   }

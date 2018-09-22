@@ -18,15 +18,15 @@ package com.pkware.truth.android.view;
 
 import android.view.ViewGroup;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
 public abstract class AbstractViewGroupMarginLayoutParamsSubject<S extends AbstractViewGroupMarginLayoutParamsSubject<S, T>, T extends ViewGroup.MarginLayoutParams>
     extends Subject<S, T> {
-  protected AbstractViewGroupMarginLayoutParamsSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractViewGroupMarginLayoutParamsSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S hasBottomMargin(int margin) {

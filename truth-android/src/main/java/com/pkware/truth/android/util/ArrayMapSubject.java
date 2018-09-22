@@ -19,10 +19,9 @@ package com.pkware.truth.android.util;
 import android.annotation.TargetApi;
 import android.util.ArrayMap;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.MapSubject;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.os.Build.VERSION_CODES.KITKAT;
 import static com.google.common.truth.Truth.assertThat;
@@ -32,15 +31,15 @@ import static com.google.common.truth.Truth.assertThat;
  */
 @TargetApi(KITKAT)
 public class ArrayMapSubject<K, V> extends Subject<ArrayMapSubject<K, V>, ArrayMap<K, V>> {
-  protected ArrayMapSubject(FailureStrategy failureStrategy, ArrayMap<K, V> subject) {
-    super(failureStrategy, subject);
+  protected ArrayMapSubject(FailureMetadata failureMetadata, ArrayMap<K, V> subject) {
+    super(failureMetadata, subject);
   }
 
-  public static <K, V> SubjectFactory<ArrayMapSubject<K, V>, ArrayMap<K, V>> type() {
-    return new SubjectFactory<ArrayMapSubject<K, V>, ArrayMap<K, V>>() {
+  public static <K, V> Subject.Factory<ArrayMapSubject<K, V>, ArrayMap<K, V>> type() {
+    return new Subject.Factory<ArrayMapSubject<K, V>, ArrayMap<K, V>>() {
       @Override
-      public ArrayMapSubject<K, V> getSubject(FailureStrategy fs, ArrayMap<K, V> that) {
-        return new ArrayMapSubject<K, V>(fs, that);
+      public ArrayMapSubject<K, V> createSubject(FailureMetadata fm, ArrayMap<K, V> that) {
+        return new ArrayMapSubject<K, V>(fm, that);
       }
     };
   }

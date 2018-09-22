@@ -18,8 +18,8 @@ package com.pkware.truth.android.view;
 
 import android.view.ViewGroup;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link ViewGroup} subjects.
@@ -27,15 +27,15 @@ import com.google.common.truth.SubjectFactory;
  * This class is final. To extend use {@link AbstractViewGroupSubject}.
  */
 public final class ViewGroupSubject extends AbstractViewGroupSubject<ViewGroupSubject, ViewGroup> {
-  private ViewGroupSubject(FailureStrategy failureStrategy, ViewGroup subject) {
-    super(failureStrategy, subject);
+  private ViewGroupSubject(FailureMetadata failureMetadata, ViewGroup subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ViewGroupSubject, ViewGroup> type() {
-    return new SubjectFactory<ViewGroupSubject, ViewGroup>() {
+  public static Subject.Factory<ViewGroupSubject, ViewGroup> type() {
+    return new Subject.Factory<ViewGroupSubject, ViewGroup>() {
       @Override
-      public ViewGroupSubject getSubject(FailureStrategy fs, ViewGroup that) {
-        return new ViewGroupSubject(fs, that);
+      public ViewGroupSubject createSubject(FailureMetadata fm, ViewGroup that) {
+        return new ViewGroupSubject(fm, that);
       }
     };
   }

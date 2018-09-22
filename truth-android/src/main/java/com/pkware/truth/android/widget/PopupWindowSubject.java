@@ -20,9 +20,8 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.PopupWindow;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assert_;
@@ -32,15 +31,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link PopupWindow} subjects.
  */
 public class PopupWindowSubject extends Subject<PopupWindowSubject, PopupWindow> {
-  protected PopupWindowSubject(FailureStrategy failureStrategy, PopupWindow subject) {
-    super(failureStrategy, subject);
+  protected PopupWindowSubject(FailureMetadata failureMetadata, PopupWindow subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<PopupWindowSubject, PopupWindow> type() {
-    return new SubjectFactory<PopupWindowSubject, PopupWindow>() {
+  public static Subject.Factory<PopupWindowSubject, PopupWindow> type() {
+    return new Subject.Factory<PopupWindowSubject, PopupWindow>() {
       @Override
-      public PopupWindowSubject getSubject(FailureStrategy fs, PopupWindow that) {
-        return new PopupWindowSubject(fs, that);
+      public PopupWindowSubject createSubject(FailureMetadata fm, PopupWindow that) {
+        return new PopupWindowSubject(fm, that);
       }
     };
   }
@@ -85,7 +84,7 @@ public class PopupWindowSubject extends Subject<PopupWindowSubject, PopupWindow>
     int actualMode = actual().getInputMethodMode();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected input method mode <%s> but was <%s>.",
+        .withMessage("Expected input method mode <%s> but was <%s>.",
             inputMethodModeToString(mode), inputMethodModeToString(actualMode))
         .that(actualMode)
         .isEqualTo(mode);

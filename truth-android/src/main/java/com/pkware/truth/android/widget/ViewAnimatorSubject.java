@@ -18,8 +18,8 @@ package com.pkware.truth.android.widget;
 
 import android.widget.ViewAnimator;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link ViewAnimator} subjects.
@@ -27,15 +27,15 @@ import com.google.common.truth.SubjectFactory;
  * This class is final. To extend use {@link AbstractViewAnimatorSubject}.
  */
 public final class ViewAnimatorSubject extends AbstractViewAnimatorSubject<ViewAnimatorSubject, ViewAnimator> {
-  protected ViewAnimatorSubject(FailureStrategy failureStrategy, ViewAnimator subject) {
-    super(failureStrategy, subject);
+  protected ViewAnimatorSubject(FailureMetadata failureMetadata, ViewAnimator subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ViewAnimatorSubject, ViewAnimator> type() {
-    return new SubjectFactory<ViewAnimatorSubject, ViewAnimator>() {
+  public static Subject.Factory<ViewAnimatorSubject, ViewAnimator> type() {
+    return new Subject.Factory<ViewAnimatorSubject, ViewAnimator>() {
       @Override
-      public ViewAnimatorSubject getSubject(FailureStrategy fs, ViewAnimator that) {
-        return new ViewAnimatorSubject(fs, that);
+      public ViewAnimatorSubject createSubject(FailureMetadata fm, ViewAnimator that) {
+        return new ViewAnimatorSubject(fm, that);
       }
     };
   }

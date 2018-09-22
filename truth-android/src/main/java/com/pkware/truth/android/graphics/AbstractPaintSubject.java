@@ -23,7 +23,7 @@ import android.graphics.PathEffect;
 import android.graphics.Shader;
 import android.graphics.Typeface;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
 import java.util.Locale;
@@ -44,8 +44,8 @@ import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildBitMaskString;
 
 public abstract class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extends Paint> extends Subject<S, T> {
-  protected AbstractPaintSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractPaintSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   private static String flagsToString(@PaintFlags int flags) {
@@ -92,7 +92,7 @@ public abstract class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>,
   public S hasColor(int color) {
     int actualColor = actual().getColor();
     assert_()
-        .withFailureMessage("Expected color <%s> but was <%s>.", Integer.toHexString(color), Integer.toHexString(actualColor))
+        .withMessage("Expected color <%s> but was <%s>.", Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
     //noinspection unchecked
@@ -103,7 +103,7 @@ public abstract class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>,
     int actualFlags = actual().getFlags();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected flags <%s> but was <%s>.", flagsToString(flags), flagsToString(actualFlags))
+        .withMessage("Expected flags <%s> but was <%s>.", flagsToString(flags), flagsToString(actualFlags))
         .that(actualFlags)
         .isEqualTo(flags);
     //noinspection unchecked

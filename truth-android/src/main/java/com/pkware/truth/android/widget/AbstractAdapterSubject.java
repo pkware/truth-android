@@ -18,7 +18,7 @@ package com.pkware.truth.android.widget;
 
 import android.widget.Adapter;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -27,8 +27,8 @@ import static com.google.common.truth.Truth.assert_;
 public abstract class AbstractAdapterSubject<S extends AbstractAdapterSubject<S, T>, T extends Adapter>
     extends Subject<S, T> {
 
-  protected AbstractAdapterSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractAdapterSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S hasCount(int count) {
@@ -82,7 +82,7 @@ public abstract class AbstractAdapterSubject<S extends AbstractAdapterSubject<S,
   public S hasItem(Object expected, int index) {
     int count = actual().getCount();
     assert_()
-        .withFailureMessage("Index %s is out of bounds. The adapter holds %s items.", index, count)
+        .withMessage("Index %s is out of bounds. The adapter holds %s items.", index, count)
         .that(count)
         .isGreaterThan(index);
 
@@ -98,7 +98,7 @@ public abstract class AbstractAdapterSubject<S extends AbstractAdapterSubject<S,
   public S doesNotHaveItem(Object notExpected, int index) {
     int count = actual().getCount();
     assert_()
-        .withFailureMessage("Index %s is out of bounds. The adapter holds %s items.", index, count)
+        .withMessage("Index %s is out of bounds. The adapter holds %s items.", index, count)
         .that(count)
         .isGreaterThan(index);
 

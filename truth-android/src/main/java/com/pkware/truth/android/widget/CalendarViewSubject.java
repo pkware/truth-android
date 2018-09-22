@@ -20,8 +20,8 @@ import android.annotation.TargetApi;
 import android.graphics.drawable.Drawable;
 import android.widget.CalendarView;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import java.util.Calendar;
 
@@ -33,15 +33,15 @@ import static com.google.common.truth.Truth.assert_;
  * Propositions for {@link CalendarView} subjects.
  */
 public class CalendarViewSubject extends AbstractFrameLayoutSubject<CalendarViewSubject, CalendarView> {
-  protected CalendarViewSubject(FailureStrategy failureStrategy, CalendarView subject) {
-    super(failureStrategy, subject);
+  protected CalendarViewSubject(FailureMetadata failureMetadata, CalendarView subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<CalendarViewSubject, CalendarView> type() {
-    return new SubjectFactory<CalendarViewSubject, CalendarView>() {
+  public static Subject.Factory<CalendarViewSubject, CalendarView> type() {
+    return new Subject.Factory<CalendarViewSubject, CalendarView>() {
       @Override
-      public CalendarViewSubject getSubject(FailureStrategy fs, CalendarView that) {
-        return new CalendarViewSubject(fs, that);
+      public CalendarViewSubject createSubject(FailureMetadata fm, CalendarView that) {
+        return new CalendarViewSubject(fm, that);
       }
     };
   }
@@ -86,7 +86,7 @@ public class CalendarViewSubject extends AbstractFrameLayoutSubject<CalendarView
     int actualDay = actual().getFirstDayOfWeek();
     //noinspection WrongConstant
     assert_()
-        .withFailureMessage("Expected first day of the week to be <%s> but was <%s>",
+        .withMessage("Expected first day of the week to be <%s> but was <%s>",
             dayOfWeekToString(day), dayOfWeekToString(actualDay))
         .that(actualDay)
         .isEqualTo(day);
@@ -97,7 +97,7 @@ public class CalendarViewSubject extends AbstractFrameLayoutSubject<CalendarView
   public CalendarViewSubject hasFocusedMonthDateColor(int color) {
     int actualColor = actual().getFocusedMonthDateColor();
     assert_()
-        .withFailureMessage("Expected focused month date color <%s> but was <%s>.",
+        .withMessage("Expected focused month date color <%s> but was <%s>.",
             Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
@@ -130,7 +130,7 @@ public class CalendarViewSubject extends AbstractFrameLayoutSubject<CalendarView
   public CalendarViewSubject hasSelectedWeekBackgroundColor(int color) {
     int actualColor = actual().getSelectedWeekBackgroundColor();
     assert_()
-        .withFailureMessage("Expected selected week background color <%s> but was <%s>.",
+        .withMessage("Expected selected week background color <%s> but was <%s>.",
             Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
@@ -163,7 +163,7 @@ public class CalendarViewSubject extends AbstractFrameLayoutSubject<CalendarView
   public CalendarViewSubject hasUnfocusedMonthDateColor(int color) {
     int actualColor = actual().getUnfocusedMonthDateColor();
     assert_()
-        .withFailureMessage("Expected unfocused month date color <%s> but was <%s>.",
+        .withMessage("Expected unfocused month date color <%s> but was <%s>.",
             Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
@@ -182,7 +182,7 @@ public class CalendarViewSubject extends AbstractFrameLayoutSubject<CalendarView
   public CalendarViewSubject hasWeekNumberColor(int color) {
     int actualColor = actual().getWeekNumberColor();
     assert_()
-        .withFailureMessage("Expected week number color <%s> but was <%s>.",
+        .withMessage("Expected week number color <%s> but was <%s>.",
             Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
@@ -193,7 +193,7 @@ public class CalendarViewSubject extends AbstractFrameLayoutSubject<CalendarView
   public CalendarViewSubject hasWeekSeparatorLineColor(int color) {
     int actualColor = actual().getWeekSeparatorLineColor();
     assert_()
-        .withFailureMessage("Expected week separator line color <%s> but was <%s>.",
+        .withMessage("Expected week separator line color <%s> but was <%s>.",
             Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);

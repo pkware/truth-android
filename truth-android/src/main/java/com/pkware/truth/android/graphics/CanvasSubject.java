@@ -19,9 +19,8 @@ package com.pkware.truth.android.graphics;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -29,15 +28,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Canvas} subjects.
  */
 public class CanvasSubject extends Subject<CanvasSubject, Canvas> {
-  protected CanvasSubject(FailureStrategy failureStrategy, Canvas subject) {
-    super(failureStrategy, subject);
+  protected CanvasSubject(FailureMetadata failureMetadata, Canvas subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<CanvasSubject, Canvas> type() {
-    return new SubjectFactory<CanvasSubject, Canvas>() {
+  public static Subject.Factory<CanvasSubject, Canvas> type() {
+    return new Subject.Factory<CanvasSubject, Canvas>() {
       @Override
-      public CanvasSubject getSubject(FailureStrategy fs, Canvas that) {
-        return new CanvasSubject(fs, that);
+      public CanvasSubject createSubject(FailureMetadata fm, Canvas that) {
+        return new CanvasSubject(fm, that);
       }
     };
   }

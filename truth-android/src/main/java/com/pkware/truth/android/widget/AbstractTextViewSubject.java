@@ -22,7 +22,7 @@ import android.support.annotation.StringRes;
 import android.text.TextUtils;
 import android.widget.TextView;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.view.AbstractViewSubject;
 
 import java.util.Locale;
@@ -67,8 +67,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildBitMaskString;
 
 public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<S, T>, T extends TextView>
     extends AbstractViewSubject<S, T> {
-  protected AbstractTextViewSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractTextViewSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public static String gravityToString(@TextViewGravity int gravity) {
@@ -181,7 +181,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   public S hasCurrentHintTextColor(int color) {
     int actualColor = actual().getCurrentHintTextColor();
     assert_()
-        .withFailureMessage("Expected current hint text color <%s> but was <%s>.",
+        .withMessage("Expected current hint text color <%s> but was <%s>.",
             Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
@@ -192,7 +192,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   public S hasCurrentTextColor(int color) {
     int actualColor = actual().getCurrentTextColor();
     assert_()
-        .withFailureMessage("Expected current text color <%s> but was <%s>.",
+        .withMessage("Expected current text color <%s> but was <%s>.",
             Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
@@ -266,7 +266,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
     int actualGravity = actual().getGravity();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected gravity <%s> but was <%s>.", gravityToString(gravity),
+        .withMessage("Expected gravity <%s> but was <%s>.", gravityToString(gravity),
             gravityToString(actualGravity))
         .that(actualGravity)
         .isEqualTo(gravity);
@@ -278,7 +278,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   public S hasHighlightColor(int color) {
     int actualColor = actual().getHighlightColor();
     assert_()
-        .withFailureMessage("Expected highlight color <%s> but was <%s>.",
+        .withMessage("Expected highlight color <%s> but was <%s>.",
             Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
@@ -322,7 +322,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
     int actualOptions = actual().getImeOptions();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected IME options <%s> but was <%s>.",
+        .withMessage("Expected IME options <%s> but was <%s>.",
             imeOptionsToString(options), imeOptionsToString(actualOptions))
         .that(actualOptions)
         .isEqualTo(options);
@@ -503,7 +503,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   public S hasShadowColor(int color) {
     int actualColor = actual().getShadowColor();
     assert_()
-        .withFailureMessage("Expected shadow color <%s> but was <%s>.",
+        .withMessage("Expected shadow color <%s> but was <%s>.",
             Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
@@ -568,7 +568,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   public S matches(Pattern pattern) {
     String text = actual().getText().toString();
     assert_()
-        .withFailureMessage("Expected text <%s> to match <%s>, but did not.", text, pattern.pattern())
+        .withMessage("Expected text <%s> to match <%s>, but did not.", text, pattern.pattern())
         .that(pattern.matcher(text).matches())
         .isTrue();
     //noinspection unchecked
@@ -578,7 +578,7 @@ public abstract class AbstractTextViewSubject<S extends AbstractTextViewSubject<
   public S doesNotMatch(Pattern pattern) {
     String text = actual().getText().toString();
     assert_()
-        .withFailureMessage("Expected text <%s> to not match <%s>, but did.", text, pattern.pattern())
+        .withMessage("Expected text <%s> to not match <%s>, but did.", text, pattern.pattern())
         .that(pattern.matcher(text).matches())
         .isFalse();
     //noinspection unchecked

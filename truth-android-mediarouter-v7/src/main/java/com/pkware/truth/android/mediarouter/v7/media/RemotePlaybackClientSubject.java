@@ -18,9 +18,8 @@ package com.pkware.truth.android.mediarouter.v7.media;
 
 import android.support.v7.media.RemotePlaybackClient;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -29,15 +28,15 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class RemotePlaybackClientSubject
     extends Subject<RemotePlaybackClientSubject, RemotePlaybackClient> {
-  protected RemotePlaybackClientSubject(FailureStrategy failureStrategy, RemotePlaybackClient subject) {
-    super(failureStrategy, subject);
+  protected RemotePlaybackClientSubject(FailureMetadata failureMetadata, RemotePlaybackClient subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<RemotePlaybackClientSubject, RemotePlaybackClient> type() {
-    return new SubjectFactory<RemotePlaybackClientSubject, RemotePlaybackClient>() {
+  public static Subject.Factory<RemotePlaybackClientSubject, RemotePlaybackClient> type() {
+    return new Subject.Factory<RemotePlaybackClientSubject, RemotePlaybackClient>() {
       @Override
-      public RemotePlaybackClientSubject getSubject(FailureStrategy fs, RemotePlaybackClient that) {
-        return new RemotePlaybackClientSubject(fs, that);
+      public RemotePlaybackClientSubject createSubject(FailureMetadata fm, RemotePlaybackClient that) {
+        return new RemotePlaybackClientSubject(fm, that);
       }
     };
   }

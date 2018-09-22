@@ -19,7 +19,7 @@ package com.pkware.truth.android.view;
 import android.annotation.TargetApi;
 import android.view.InputEvent;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
@@ -27,8 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
 
 public abstract class AbstractInputEventSubject<S extends AbstractInputEventSubject<S, T>, T extends InputEvent>
     extends Subject<S, T> {
-  protected AbstractInputEventSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractInputEventSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S hasDeviceId(int id) {

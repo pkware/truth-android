@@ -22,14 +22,14 @@ import android.preference.DialogPreference;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.StringRes;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 
 import static com.google.common.truth.Truth.assertThat;
 
 public abstract class AbstractDialogPreferenceSubject<S extends AbstractDialogPreferenceSubject<S, T>, T extends DialogPreference>
     extends AbstractPreferenceSubject<S, T> {
-  protected AbstractDialogPreferenceSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractDialogPreferenceSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S hasDialog(Dialog dialog) {

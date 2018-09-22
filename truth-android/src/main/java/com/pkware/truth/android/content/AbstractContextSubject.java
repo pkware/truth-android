@@ -18,11 +18,11 @@ package com.pkware.truth.android.content;
 
 import android.content.Context;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
 public abstract class AbstractContextSubject<S extends AbstractContextSubject<S, T>, T extends Context> extends Subject<S, T> {
-  protected AbstractContextSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractContextSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 }

@@ -20,15 +20,15 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 
 import static com.google.common.truth.Truth.assertThat;
 
 public abstract class AbstractAdapterViewSubject<S extends AbstractAdapterViewSubject<S, T>, T extends AdapterView>
     extends AbstractViewGroupSubject<S, T> {
-  protected AbstractAdapterViewSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractAdapterViewSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S hasAdapter(Adapter adapter) {

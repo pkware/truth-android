@@ -18,9 +18,8 @@ package com.pkware.truth.android.net;
 
 import android.net.Uri;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -29,15 +28,15 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class UriSubject extends Subject<UriSubject, Uri> {
 
-  protected UriSubject(FailureStrategy failureStrategy, Uri subject) {
-    super(failureStrategy, subject);
+  protected UriSubject(FailureMetadata failureMetadata, Uri subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<UriSubject, Uri> type() {
-    return new SubjectFactory<UriSubject, Uri>() {
+  public static Subject.Factory<UriSubject, Uri> type() {
+    return new Subject.Factory<UriSubject, Uri>() {
       @Override
-      public UriSubject getSubject(FailureStrategy fs, Uri that) {
-        return new UriSubject(fs, that);
+      public UriSubject createSubject(FailureMetadata fm, Uri that) {
+        return new UriSubject(fm, that);
       }
     };
   }

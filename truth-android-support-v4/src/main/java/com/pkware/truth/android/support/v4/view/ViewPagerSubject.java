@@ -19,8 +19,8 @@ package com.pkware.truth.android.support.v4.view;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -29,15 +29,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ViewPager} subjects.
  */
 public class ViewPagerSubject extends AbstractViewGroupSubject<ViewPagerSubject, ViewPager> {
-  protected ViewPagerSubject(FailureStrategy failureStrategy, ViewPager subject) {
-    super(failureStrategy, subject);
+  protected ViewPagerSubject(FailureMetadata failureMetadata, ViewPager subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ViewPagerSubject, ViewPager> type() {
-    return new SubjectFactory<ViewPagerSubject, ViewPager>() {
+  public static Subject.Factory<ViewPagerSubject, ViewPager> type() {
+    return new Subject.Factory<ViewPagerSubject, ViewPager>() {
       @Override
-      public ViewPagerSubject getSubject(FailureStrategy fs, ViewPager that) {
-        return new ViewPagerSubject(fs, that);
+      public ViewPagerSubject createSubject(FailureMetadata fm, ViewPager that) {
+        return new ViewPagerSubject(fm, that);
       }
     };
   }

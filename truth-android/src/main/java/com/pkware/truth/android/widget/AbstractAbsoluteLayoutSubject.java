@@ -18,15 +18,15 @@ package com.pkware.truth.android.widget;
 
 import android.widget.AbsoluteLayout;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 
 import static com.google.common.truth.Truth.assertThat;
 
 public abstract class AbstractAbsoluteLayoutSubject<S extends AbstractAbsoluteLayoutSubject<S, T>, T extends AbsoluteLayout>
     extends AbstractViewGroupSubject<S, T> {
-  protected AbstractAbsoluteLayoutSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractAbsoluteLayoutSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S isDelayingChildPressedState() {

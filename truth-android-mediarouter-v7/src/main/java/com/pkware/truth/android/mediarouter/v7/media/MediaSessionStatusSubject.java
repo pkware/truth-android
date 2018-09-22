@@ -18,9 +18,8 @@ package com.pkware.truth.android.mediarouter.v7.media;
 
 import android.support.v7.media.MediaSessionStatus;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.support.v7.media.MediaSessionStatus.SESSION_STATE_ACTIVE;
 import static android.support.v7.media.MediaSessionStatus.SESSION_STATE_ENDED;
@@ -34,15 +33,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  */
 public class MediaSessionStatusSubject
     extends Subject<MediaSessionStatusSubject, MediaSessionStatus> {
-  protected MediaSessionStatusSubject(FailureStrategy failureStrategy, MediaSessionStatus subject) {
-    super(failureStrategy, subject);
+  protected MediaSessionStatusSubject(FailureMetadata failureMetadata, MediaSessionStatus subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<MediaSessionStatusSubject, MediaSessionStatus> type() {
-    return new SubjectFactory<MediaSessionStatusSubject, MediaSessionStatus>() {
+  public static Subject.Factory<MediaSessionStatusSubject, MediaSessionStatus> type() {
+    return new Subject.Factory<MediaSessionStatusSubject, MediaSessionStatus>() {
       @Override
-      public MediaSessionStatusSubject getSubject(FailureStrategy fs, MediaSessionStatus that) {
-        return new MediaSessionStatusSubject(fs, that);
+      public MediaSessionStatusSubject createSubject(FailureMetadata fm, MediaSessionStatus that) {
+        return new MediaSessionStatusSubject(fm, that);
       }
     };
   }
@@ -59,7 +58,7 @@ public class MediaSessionStatusSubject
     int actualState = actual().getSessionState();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected session state <%s> but was <%s>.",
+        .withMessage("Expected session state <%s> but was <%s>.",
             sessionStateToString(state), sessionStateToString(actualState))
         .that(actualState)
         .isEqualTo(state);

@@ -19,9 +19,8 @@ package com.pkware.truth.android.bluetooth;
 import android.annotation.TargetApi;
 import android.bluetooth.BluetoothGattCharacteristic;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import java.util.UUID;
 
@@ -55,15 +54,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  */
 @TargetApi(JELLY_BEAN_MR2)
 public class BluetoothGattCharacteristicSubject extends Subject<BluetoothGattCharacteristicSubject, BluetoothGattCharacteristic> {
-  protected BluetoothGattCharacteristicSubject(FailureStrategy failureStrategy, BluetoothGattCharacteristic subject) {
-    super(failureStrategy, subject);
+  protected BluetoothGattCharacteristicSubject(FailureMetadata failureMetadata, BluetoothGattCharacteristic subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<BluetoothGattCharacteristicSubject, BluetoothGattCharacteristic> type() {
-    return new SubjectFactory<BluetoothGattCharacteristicSubject, BluetoothGattCharacteristic>() {
+  public static Subject.Factory<BluetoothGattCharacteristicSubject, BluetoothGattCharacteristic> type() {
+    return new Subject.Factory<BluetoothGattCharacteristicSubject, BluetoothGattCharacteristic>() {
       @Override
-      public BluetoothGattCharacteristicSubject getSubject(FailureStrategy fs, BluetoothGattCharacteristic that) {
-        return new BluetoothGattCharacteristicSubject(fs, that);
+      public BluetoothGattCharacteristicSubject createSubject(FailureMetadata fm, BluetoothGattCharacteristic that) {
+        return new BluetoothGattCharacteristicSubject(fm, that);
       }
     };
   }
@@ -113,7 +112,7 @@ public class BluetoothGattCharacteristicSubject extends Subject<BluetoothGattCha
     int actualPermissions = actual().getPermissions();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected permissions <%s> but was <%s>.",
+        .withMessage("Expected permissions <%s> but was <%s>.",
             permissionsToString(permissions),
             permissionsToString(actualPermissions))
         .that(actualPermissions)
@@ -125,7 +124,7 @@ public class BluetoothGattCharacteristicSubject extends Subject<BluetoothGattCha
     int actualProperties = actual().getProperties();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected properties <%s> but was <%s>.",
+        .withMessage("Expected properties <%s> but was <%s>.",
             propertiesToString(properties),
             propertiesToString(actualProperties))
         .that(actualProperties)
@@ -152,7 +151,7 @@ public class BluetoothGattCharacteristicSubject extends Subject<BluetoothGattCha
     int actualWriteType = actual().getWriteType();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected write type <%s> but was <%s>.",
+        .withMessage("Expected write type <%s> but was <%s>.",
             writeTypeToString(writeType),
             writeTypeToString(actualWriteType))
         .that(actualWriteType)

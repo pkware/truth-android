@@ -18,8 +18,8 @@ package com.pkware.truth.android.graphics.drawable;
 
 import android.graphics.drawable.TransitionDrawable;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link TransitionDrawable} subjects.
  */
 public class TransitionDrawableSubject extends AbstractDrawableSubject<TransitionDrawableSubject, TransitionDrawable> {
-  protected TransitionDrawableSubject(FailureStrategy failureStrategy, TransitionDrawable subject) {
-    super(failureStrategy, subject);
+  protected TransitionDrawableSubject(FailureMetadata failureMetadata, TransitionDrawable subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<TransitionDrawableSubject, TransitionDrawable> type() {
-    return new SubjectFactory<TransitionDrawableSubject, TransitionDrawable>() {
+  public static Subject.Factory<TransitionDrawableSubject, TransitionDrawable> type() {
+    return new Subject.Factory<TransitionDrawableSubject, TransitionDrawable>() {
       @Override
-      public TransitionDrawableSubject getSubject(FailureStrategy fs, TransitionDrawable that) {
-        return new TransitionDrawableSubject(fs, that);
+      public TransitionDrawableSubject createSubject(FailureMetadata fm, TransitionDrawable that) {
+        return new TransitionDrawableSubject(fm, that);
       }
     };
   }

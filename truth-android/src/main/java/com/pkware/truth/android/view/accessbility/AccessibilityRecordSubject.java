@@ -18,8 +18,8 @@ package com.pkware.truth.android.view.accessbility;
 
 import android.view.accessibility.AccessibilityRecord;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link AccessibilityRecord} subjects.
@@ -28,15 +28,15 @@ import com.google.common.truth.SubjectFactory;
  */
 public final class AccessibilityRecordSubject
     extends AbstractAccessibilityRecordSubject<AccessibilityRecordSubject, AccessibilityRecord> {
-  private AccessibilityRecordSubject(FailureStrategy failureStrategy, AccessibilityRecord subject) {
-    super(failureStrategy, subject);
+  private AccessibilityRecordSubject(FailureMetadata failureMetadata, AccessibilityRecord subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<AccessibilityRecordSubject, AccessibilityRecord> type() {
-    return new SubjectFactory<AccessibilityRecordSubject, AccessibilityRecord>() {
+  public static Subject.Factory<AccessibilityRecordSubject, AccessibilityRecord> type() {
+    return new Subject.Factory<AccessibilityRecordSubject, AccessibilityRecord>() {
       @Override
-      public AccessibilityRecordSubject getSubject(FailureStrategy fs, AccessibilityRecord that) {
-        return new AccessibilityRecordSubject(fs, that);
+      public AccessibilityRecordSubject createSubject(FailureMetadata fm, AccessibilityRecord that) {
+        return new AccessibilityRecordSubject(fm, that);
       }
     };
   }

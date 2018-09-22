@@ -18,14 +18,14 @@ package com.pkware.truth.android.widget;
 
 import android.widget.CompoundButton;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 
 import static com.google.common.truth.Truth.assertThat;
 
 public abstract class AbstractCompoundButtonSubject<S extends AbstractCompoundButtonSubject<S, T>, T extends CompoundButton>
     extends AbstractTextViewSubject<S, T> {
-  protected AbstractCompoundButtonSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractCompoundButtonSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S isChecked() {

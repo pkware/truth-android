@@ -19,9 +19,8 @@ package com.pkware.truth.android.location;
 import android.annotation.TargetApi;
 import android.location.Location;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
@@ -31,15 +30,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Location} subjects.
  */
 public class LocationSubject extends Subject<LocationSubject, Location> {
-  protected LocationSubject(FailureStrategy failureStrategy, Location subject) {
-    super(failureStrategy, subject);
+  protected LocationSubject(FailureMetadata failureMetadata, Location subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<LocationSubject, Location> type() {
-    return new SubjectFactory<LocationSubject, Location>() {
+  public static Subject.Factory<LocationSubject, Location> type() {
+    return new Subject.Factory<LocationSubject, Location>() {
       @Override
-      public LocationSubject getSubject(FailureStrategy fs, Location that) {
-        return new LocationSubject(fs, that);
+      public LocationSubject createSubject(FailureMetadata fm, Location that) {
+        return new LocationSubject(fm, that);
       }
     };
   }

@@ -18,9 +18,8 @@ package com.pkware.truth.android.support.v4.app;
 
 import android.support.v4.app.LoaderManager;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link LoaderManager} subjects.
  */
 public class LoaderManagerSubject extends Subject<LoaderManagerSubject, LoaderManager> {
-  protected LoaderManagerSubject(FailureStrategy failureStrategy, LoaderManager subject) {
-    super(failureStrategy, subject);
+  protected LoaderManagerSubject(FailureMetadata failureMetadata, LoaderManager subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<LoaderManagerSubject, LoaderManager> type() {
-    return new SubjectFactory<LoaderManagerSubject, LoaderManager>() {
+  public static Subject.Factory<LoaderManagerSubject, LoaderManager> type() {
+    return new Subject.Factory<LoaderManagerSubject, LoaderManager>() {
       @Override
-      public LoaderManagerSubject getSubject(FailureStrategy fs, LoaderManager that) {
-        return new LoaderManagerSubject(fs, that);
+      public LoaderManagerSubject createSubject(FailureMetadata fm, LoaderManager that) {
+        return new LoaderManagerSubject(fm, that);
       }
     };
   }

@@ -20,15 +20,15 @@ import android.annotation.TargetApi;
 import android.graphics.drawable.Drawable;
 import android.widget.AbsSeekBar;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 import static com.google.common.truth.Truth.assertThat;
 
 public abstract class AbstractAbsSeekBarSubject<S extends AbstractAbsSeekBarSubject<S, T>, T extends AbsSeekBar>
     extends AbstractProgressBarSubject<S, T> {
-  protected AbstractAbsSeekBarSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractAbsSeekBarSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S hasKeyProgressIncrement(int increment) {

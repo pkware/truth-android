@@ -18,8 +18,8 @@ package com.pkware.truth.android.graphics.drawable;
 
 import android.graphics.drawable.Drawable;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link Drawable} subjects.
@@ -27,15 +27,15 @@ import com.google.common.truth.SubjectFactory;
  * This class is final. To extend use {@link AbstractDrawableSubject}.
  */
 public final class DrawableSubject extends AbstractDrawableSubject<DrawableSubject, Drawable> {
-  protected DrawableSubject(FailureStrategy failureStrategy, Drawable subject) {
-    super(failureStrategy, subject);
+  protected DrawableSubject(FailureMetadata failureMetadata, Drawable subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<DrawableSubject, Drawable> type() {
-    return new SubjectFactory<DrawableSubject, Drawable>() {
+  public static Subject.Factory<DrawableSubject, Drawable> type() {
+    return new Subject.Factory<DrawableSubject, Drawable>() {
       @Override
-      public DrawableSubject getSubject(FailureStrategy fs, Drawable that) {
-        return new DrawableSubject(fs, that);
+      public DrawableSubject createSubject(FailureMetadata fm, Drawable that) {
+        return new DrawableSubject(fm, that);
       }
     };
   }

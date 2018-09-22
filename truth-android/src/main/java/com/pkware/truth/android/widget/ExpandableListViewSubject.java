@@ -19,8 +19,8 @@ package com.pkware.truth.android.widget;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +28,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ExpandableListView} subjects.
  */
 public class ExpandableListViewSubject extends AbstractListViewSubject<ExpandableListViewSubject, ExpandableListView> {
-  protected ExpandableListViewSubject(FailureStrategy failureStrategy, ExpandableListView subject) {
-    super(failureStrategy, subject);
+  protected ExpandableListViewSubject(FailureMetadata failureMetadata, ExpandableListView subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ExpandableListViewSubject, ExpandableListView> type() {
-    return new SubjectFactory<ExpandableListViewSubject, ExpandableListView>() {
+  public static Subject.Factory<ExpandableListViewSubject, ExpandableListView> type() {
+    return new Subject.Factory<ExpandableListViewSubject, ExpandableListView>() {
       @Override
-      public ExpandableListViewSubject getSubject(FailureStrategy fs, ExpandableListView that) {
-        return new ExpandableListViewSubject(fs, that);
+      public ExpandableListViewSubject createSubject(FailureMetadata fm, ExpandableListView that) {
+        return new ExpandableListViewSubject(fm, that);
       }
     };
   }

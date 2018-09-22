@@ -18,9 +18,8 @@ package com.pkware.truth.android.os;
 
 import android.os.Vibrator;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Vibrator} subjects.
  */
 public class VibratorSubject extends Subject<VibratorSubject, Vibrator> {
-  protected VibratorSubject(FailureStrategy failureStrategy, Vibrator subject) {
-    super(failureStrategy, subject);
+  protected VibratorSubject(FailureMetadata failureMetadata, Vibrator subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<VibratorSubject, Vibrator> type() {
-    return new SubjectFactory<VibratorSubject, Vibrator>() {
+  public static Subject.Factory<VibratorSubject, Vibrator> type() {
+    return new Subject.Factory<VibratorSubject, Vibrator>() {
       @Override
-      public VibratorSubject getSubject(FailureStrategy fs, Vibrator that) {
-        return new VibratorSubject(fs, that);
+      public VibratorSubject createSubject(FailureMetadata fm, Vibrator that) {
+        return new VibratorSubject(fm, that);
       }
     };
   }

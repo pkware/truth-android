@@ -17,9 +17,8 @@
 package com.pkware.truth.android.playservices.maps;
 
 import com.google.android.gms.maps.UiSettings;
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,15 +26,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link UiSettings} subjects.
  */
 public class UiSettingsSubject extends Subject<UiSettingsSubject, UiSettings> {
-  protected UiSettingsSubject(FailureStrategy failureStrategy, UiSettings subject) {
-    super(failureStrategy, subject);
+  protected UiSettingsSubject(FailureMetadata failureMetadata, UiSettings subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<UiSettingsSubject, UiSettings> type() {
-    return new SubjectFactory<UiSettingsSubject, UiSettings>() {
+  public static Subject.Factory<UiSettingsSubject, UiSettings> type() {
+    return new Subject.Factory<UiSettingsSubject, UiSettings>() {
       @Override
-      public UiSettingsSubject getSubject(FailureStrategy fs, UiSettings that) {
-        return new UiSettingsSubject(fs, that);
+      public UiSettingsSubject createSubject(FailureMetadata fm, UiSettings that) {
+        return new UiSettingsSubject(fm, that);
       }
     };
   }

@@ -20,9 +20,8 @@ import android.animation.TimeInterpolator;
 import android.annotation.TargetApi;
 import android.view.ViewPropertyAnimator;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
 import static com.google.common.truth.Truth.assertThat;
@@ -31,15 +30,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ViewPropertyAnimator} subjects.
  */
 public class ViewPropertyAnimatorSubject extends Subject<ViewPropertyAnimatorSubject, ViewPropertyAnimator> {
-  protected ViewPropertyAnimatorSubject(FailureStrategy failureStrategy, ViewPropertyAnimator subject) {
-    super(failureStrategy, subject);
+  protected ViewPropertyAnimatorSubject(FailureMetadata failureMetadata, ViewPropertyAnimator subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ViewPropertyAnimatorSubject, ViewPropertyAnimator> type() {
-    return new SubjectFactory<ViewPropertyAnimatorSubject, ViewPropertyAnimator>() {
+  public static Subject.Factory<ViewPropertyAnimatorSubject, ViewPropertyAnimator> type() {
+    return new Subject.Factory<ViewPropertyAnimatorSubject, ViewPropertyAnimator>() {
       @Override
-      public ViewPropertyAnimatorSubject getSubject(FailureStrategy fs, ViewPropertyAnimator that) {
-        return new ViewPropertyAnimatorSubject(fs, that);
+      public ViewPropertyAnimatorSubject createSubject(FailureMetadata fm, ViewPropertyAnimator that) {
+        return new ViewPropertyAnimatorSubject(fm, that);
       }
     };
   }

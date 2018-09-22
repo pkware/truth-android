@@ -18,9 +18,8 @@ package com.pkware.truth.android.view.accessbility;
 
 import android.view.accessibility.AccessibilityManager;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link AccessibilityManager} subjects.
  */
 public class AccessibilityManagerSubject extends Subject<AccessibilityManagerSubject, AccessibilityManager> {
-  protected AccessibilityManagerSubject(FailureStrategy failureStrategy, AccessibilityManager subject) {
-    super(failureStrategy, subject);
+  protected AccessibilityManagerSubject(FailureMetadata failureMetadata, AccessibilityManager subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<AccessibilityManagerSubject, AccessibilityManager> type() {
-    return new SubjectFactory<AccessibilityManagerSubject, AccessibilityManager>() {
+  public static Subject.Factory<AccessibilityManagerSubject, AccessibilityManager> type() {
+    return new Subject.Factory<AccessibilityManagerSubject, AccessibilityManager>() {
       @Override
-      public AccessibilityManagerSubject getSubject(FailureStrategy fs, AccessibilityManager that) {
-        return new AccessibilityManagerSubject(fs, that);
+      public AccessibilityManagerSubject createSubject(FailureMetadata fm, AccessibilityManager that) {
+        return new AccessibilityManagerSubject(fm, that);
       }
     };
   }

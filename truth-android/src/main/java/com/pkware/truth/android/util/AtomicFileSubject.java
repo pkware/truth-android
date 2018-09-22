@@ -19,9 +19,8 @@ package com.pkware.truth.android.util;
 import android.annotation.TargetApi;
 import android.util.AtomicFile;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import java.io.File;
 
@@ -33,15 +32,15 @@ import static com.google.common.truth.Truth.assertThat;
  */
 @TargetApi(JELLY_BEAN_MR1)
 public class AtomicFileSubject extends Subject<AtomicFileSubject, AtomicFile> {
-  protected AtomicFileSubject(FailureStrategy failureStrategy, AtomicFile subject) {
-    super(failureStrategy, subject);
+  protected AtomicFileSubject(FailureMetadata failureMetadata, AtomicFile subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<AtomicFileSubject, AtomicFile> type() {
-    return new SubjectFactory<AtomicFileSubject, AtomicFile>() {
+  public static Subject.Factory<AtomicFileSubject, AtomicFile> type() {
+    return new Subject.Factory<AtomicFileSubject, AtomicFile>() {
       @Override
-      public AtomicFileSubject getSubject(FailureStrategy fs, AtomicFile that) {
-        return new AtomicFileSubject(fs, that);
+      public AtomicFileSubject createSubject(FailureMetadata fm, AtomicFile that) {
+        return new AtomicFileSubject(fm, that);
       }
     };
   }

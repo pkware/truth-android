@@ -18,9 +18,8 @@ package com.pkware.truth.android.graphics;
 
 import android.graphics.PathMeasure;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link PathMeasure} subjects.
  */
 public class PathMeasureSubject extends Subject<PathMeasureSubject, PathMeasure> {
-  protected PathMeasureSubject(FailureStrategy failureStrategy, PathMeasure subject) {
-    super(failureStrategy, subject);
+  protected PathMeasureSubject(FailureMetadata failureMetadata, PathMeasure subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<PathMeasureSubject, PathMeasure> type() {
-    return new SubjectFactory<PathMeasureSubject, PathMeasure>() {
+  public static Subject.Factory<PathMeasureSubject, PathMeasure> type() {
+    return new Subject.Factory<PathMeasureSubject, PathMeasure>() {
       @Override
-      public PathMeasureSubject getSubject(FailureStrategy fs, PathMeasure that) {
-        return new PathMeasureSubject(fs, that);
+      public PathMeasureSubject createSubject(FailureMetadata fm, PathMeasure that) {
+        return new PathMeasureSubject(fm, that);
       }
     };
   }

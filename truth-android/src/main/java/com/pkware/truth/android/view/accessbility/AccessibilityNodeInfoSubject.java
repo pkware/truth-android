@@ -19,9 +19,8 @@ package com.pkware.truth.android.view.accessbility;
 import android.annotation.TargetApi;
 import android.view.accessibility.AccessibilityNodeInfo;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
@@ -31,15 +30,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link AccessibilityNodeInfo} subjects.
  */
 public class AccessibilityNodeInfoSubject extends Subject<AccessibilityNodeInfoSubject, AccessibilityNodeInfo> {
-  protected AccessibilityNodeInfoSubject(FailureStrategy failureStrategy, AccessibilityNodeInfo subject) {
-    super(failureStrategy, subject);
+  protected AccessibilityNodeInfoSubject(FailureMetadata failureMetadata, AccessibilityNodeInfo subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<AccessibilityNodeInfoSubject, AccessibilityNodeInfo> type() {
-    return new SubjectFactory<AccessibilityNodeInfoSubject, AccessibilityNodeInfo>() {
+  public static Subject.Factory<AccessibilityNodeInfoSubject, AccessibilityNodeInfo> type() {
+    return new Subject.Factory<AccessibilityNodeInfoSubject, AccessibilityNodeInfo>() {
       @Override
-      public AccessibilityNodeInfoSubject getSubject(FailureStrategy fs, AccessibilityNodeInfo that) {
-        return new AccessibilityNodeInfoSubject(fs, that);
+      public AccessibilityNodeInfoSubject createSubject(FailureMetadata fm, AccessibilityNodeInfo that) {
+        return new AccessibilityNodeInfoSubject(fm, that);
       }
     };
   }

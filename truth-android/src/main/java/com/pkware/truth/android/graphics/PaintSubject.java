@@ -18,8 +18,8 @@ package com.pkware.truth.android.graphics;
 
 import android.graphics.Paint;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link Paint} instances.
@@ -27,15 +27,15 @@ import com.google.common.truth.SubjectFactory;
  * This class is final. To extend use {@link AbstractPaintSubject}.
  */
 public final class PaintSubject extends AbstractPaintSubject<PaintSubject, Paint> {
-  protected PaintSubject(FailureStrategy failureStrategy, Paint subject) {
-    super(failureStrategy, subject);
+  protected PaintSubject(FailureMetadata failureMetadata, Paint subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<PaintSubject, Paint> type() {
-    return new SubjectFactory<PaintSubject, Paint>() {
+  public static Subject.Factory<PaintSubject, Paint> type() {
+    return new Subject.Factory<PaintSubject, Paint>() {
       @Override
-      public PaintSubject getSubject(FailureStrategy fs, Paint that) {
-        return new PaintSubject(fs, that);
+      public PaintSubject createSubject(FailureMetadata fm, Paint that) {
+        return new PaintSubject(fm, that);
       }
     };
   }

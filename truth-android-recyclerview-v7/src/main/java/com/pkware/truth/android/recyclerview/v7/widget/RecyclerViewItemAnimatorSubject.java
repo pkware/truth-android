@@ -18,9 +18,8 @@ package com.pkware.truth.android.recyclerview.v7.widget;
 
 import android.support.v7.widget.RecyclerView;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -30,15 +29,15 @@ import static com.google.common.truth.Truth.assertThat;
 public class RecyclerViewItemAnimatorSubject
     extends Subject<RecyclerViewItemAnimatorSubject, RecyclerView.ItemAnimator> {
 
-  protected RecyclerViewItemAnimatorSubject(FailureStrategy failureStrategy, RecyclerView.ItemAnimator subject) {
-    super(failureStrategy, subject);
+  protected RecyclerViewItemAnimatorSubject(FailureMetadata failureMetadata, RecyclerView.ItemAnimator subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<RecyclerViewItemAnimatorSubject, RecyclerView.ItemAnimator> type() {
-    return new SubjectFactory<RecyclerViewItemAnimatorSubject, RecyclerView.ItemAnimator>() {
+  public static Subject.Factory<RecyclerViewItemAnimatorSubject, RecyclerView.ItemAnimator> type() {
+    return new Subject.Factory<RecyclerViewItemAnimatorSubject, RecyclerView.ItemAnimator>() {
       @Override
-      public RecyclerViewItemAnimatorSubject getSubject(FailureStrategy fs, RecyclerView.ItemAnimator that) {
-        return new RecyclerViewItemAnimatorSubject(fs, that);
+      public RecyclerViewItemAnimatorSubject createSubject(FailureMetadata fm, RecyclerView.ItemAnimator that) {
+        return new RecyclerViewItemAnimatorSubject(fm, that);
       }
     };
   }

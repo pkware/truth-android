@@ -18,9 +18,8 @@ package com.pkware.truth.android.util;
 
 import android.util.DisplayMetrics;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link DisplayMetrics} subjects.
  */
 public class DisplayMetricsSubject extends Subject<DisplayMetricsSubject, DisplayMetrics> {
-  protected DisplayMetricsSubject(FailureStrategy failureStrategy, DisplayMetrics subject) {
-    super(failureStrategy, subject);
+  protected DisplayMetricsSubject(FailureMetadata failureMetadata, DisplayMetrics subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<DisplayMetricsSubject, DisplayMetrics> type() {
-    return new SubjectFactory<DisplayMetricsSubject, DisplayMetrics>() {
+  public static Subject.Factory<DisplayMetricsSubject, DisplayMetrics> type() {
+    return new Subject.Factory<DisplayMetricsSubject, DisplayMetrics>() {
       @Override
-      public DisplayMetricsSubject getSubject(FailureStrategy fs, DisplayMetrics that) {
-        return new DisplayMetricsSubject(fs, that);
+      public DisplayMetricsSubject createSubject(FailureMetadata fm, DisplayMetrics that) {
+        return new DisplayMetricsSubject(fm, that);
       }
     };
   }

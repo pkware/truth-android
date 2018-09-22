@@ -18,7 +18,7 @@ package com.pkware.truth.android.support.v4.content;
 
 import android.support.v4.content.Loader;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -26,8 +26,8 @@ import static com.google.common.truth.Truth.assertThat;
 public abstract class AbstractLoaderSubject<S extends AbstractLoaderSubject<S, T>, T extends Loader>
     extends Subject<S, T> {
 
-  protected AbstractLoaderSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractLoaderSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S hasId(int id) {

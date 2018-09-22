@@ -19,9 +19,8 @@ package com.pkware.truth.android.os;
 import android.annotation.TargetApi;
 import android.os.PowerManager;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.os.Build.VERSION_CODES.KITKAT_WATCH;
 import static com.google.common.truth.Truth.assertThat;
@@ -30,15 +29,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link PowerManager} subjects.
  */
 public class PowerManagerSubject extends Subject<PowerManagerSubject, PowerManager> {
-  protected PowerManagerSubject(FailureStrategy failureStrategy, PowerManager subject) {
-    super(failureStrategy, subject);
+  protected PowerManagerSubject(FailureMetadata failureMetadata, PowerManager subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<PowerManagerSubject, PowerManager> type() {
-    return new SubjectFactory<PowerManagerSubject, PowerManager>() {
+  public static Subject.Factory<PowerManagerSubject, PowerManager> type() {
+    return new Subject.Factory<PowerManagerSubject, PowerManager>() {
       @Override
-      public PowerManagerSubject getSubject(FailureStrategy fs, PowerManager that) {
-        return new PowerManagerSubject(fs, that);
+      public PowerManagerSubject createSubject(FailureMetadata fm, PowerManager that) {
+        return new PowerManagerSubject(fm, that);
       }
     };
   }

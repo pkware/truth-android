@@ -18,9 +18,8 @@ package com.pkware.truth.android.graphics;
 
 import android.graphics.PointF;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link PointF} subjects.
  */
 public class PointFSubject extends Subject<PointFSubject, PointF> {
-  protected PointFSubject(FailureStrategy failureStrategy, PointF subject) {
-    super(failureStrategy, subject);
+  protected PointFSubject(FailureMetadata failureMetadata, PointF subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<PointFSubject, PointF> type() {
-    return new SubjectFactory<PointFSubject, PointF>() {
+  public static Subject.Factory<PointFSubject, PointF> type() {
+    return new Subject.Factory<PointFSubject, PointF>() {
       @Override
-      public PointFSubject getSubject(FailureStrategy fs, PointF that) {
-        return new PointFSubject(fs, that);
+      public PointFSubject createSubject(FailureMetadata fm, PointF that) {
+        return new PointFSubject(fm, that);
       }
     };
   }

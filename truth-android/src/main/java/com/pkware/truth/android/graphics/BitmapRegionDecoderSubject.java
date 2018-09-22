@@ -18,9 +18,8 @@ package com.pkware.truth.android.graphics;
 
 import android.graphics.BitmapRegionDecoder;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link BitmapRegionDecoder} subjects.
  */
 public class BitmapRegionDecoderSubject extends Subject<BitmapRegionDecoderSubject, BitmapRegionDecoder> {
-  protected BitmapRegionDecoderSubject(FailureStrategy failureStrategy, BitmapRegionDecoder subject) {
-    super(failureStrategy, subject);
+  protected BitmapRegionDecoderSubject(FailureMetadata failureMetadata, BitmapRegionDecoder subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<BitmapRegionDecoderSubject, BitmapRegionDecoder> type() {
-    return new SubjectFactory<BitmapRegionDecoderSubject, BitmapRegionDecoder>() {
+  public static Subject.Factory<BitmapRegionDecoderSubject, BitmapRegionDecoder> type() {
+    return new Subject.Factory<BitmapRegionDecoderSubject, BitmapRegionDecoder>() {
       @Override
-      public BitmapRegionDecoderSubject getSubject(FailureStrategy fs, BitmapRegionDecoder that) {
-        return new BitmapRegionDecoderSubject(fs, that);
+      public BitmapRegionDecoderSubject createSubject(FailureMetadata fm, BitmapRegionDecoder that) {
+        return new BitmapRegionDecoderSubject(fm, that);
       }
     };
   }

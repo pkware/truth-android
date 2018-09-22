@@ -18,9 +18,8 @@ package com.pkware.truth.android.telephony;
 
 import android.telephony.NeighboringCellInfo;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assert_;
@@ -30,15 +29,15 @@ import static com.pkware.truth.android.telephony.TelephonyManagerSubject.network
  * Propositions for {@link NeighboringCellInfo} subjects.
  */
 public class NeighboringCellInfoSubject extends Subject<NeighboringCellInfoSubject, NeighboringCellInfo> {
-  protected NeighboringCellInfoSubject(FailureStrategy failureStrategy, NeighboringCellInfo subject) {
-    super(failureStrategy, subject);
+  protected NeighboringCellInfoSubject(FailureMetadata failureMetadata, NeighboringCellInfo subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<NeighboringCellInfoSubject, NeighboringCellInfo> type() {
-    return new SubjectFactory<NeighboringCellInfoSubject, NeighboringCellInfo>() {
+  public static Subject.Factory<NeighboringCellInfoSubject, NeighboringCellInfo> type() {
+    return new Subject.Factory<NeighboringCellInfoSubject, NeighboringCellInfo>() {
       @Override
-      public NeighboringCellInfoSubject getSubject(FailureStrategy fs, NeighboringCellInfo that) {
-        return new NeighboringCellInfoSubject(fs, that);
+      public NeighboringCellInfoSubject createSubject(FailureMetadata fm, NeighboringCellInfo that) {
+        return new NeighboringCellInfoSubject(fm, that);
       }
     };
   }
@@ -61,7 +60,7 @@ public class NeighboringCellInfoSubject extends Subject<NeighboringCellInfoSubje
     int actualNetworkType = actual().getNetworkType();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected network type <%s> but was <%s>.",
+        .withMessage("Expected network type <%s> but was <%s>.",
             networkTypeToString(networkType), networkTypeToString(actualNetworkType))
         .that(actualNetworkType)
         .isEqualTo(networkType);

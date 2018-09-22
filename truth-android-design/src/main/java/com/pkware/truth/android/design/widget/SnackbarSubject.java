@@ -19,9 +19,8 @@ package com.pkware.truth.android.design.widget;
 import android.support.design.widget.Snackbar;
 import android.view.View;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -29,15 +28,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Snackbar} subjects.
  */
 public class SnackbarSubject extends Subject<SnackbarSubject, Snackbar> {
-  protected SnackbarSubject(FailureStrategy failureStrategy, Snackbar subject) {
-    super(failureStrategy, subject);
+  protected SnackbarSubject(FailureMetadata failureMetadata, Snackbar subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<SnackbarSubject, Snackbar> type() {
-    return new SubjectFactory<SnackbarSubject, Snackbar>() {
+  public static Subject.Factory<SnackbarSubject, Snackbar> type() {
+    return new Subject.Factory<SnackbarSubject, Snackbar>() {
       @Override
-      public SnackbarSubject getSubject(FailureStrategy fs, Snackbar that) {
-        return new SnackbarSubject(fs, that);
+      public SnackbarSubject createSubject(FailureMetadata fm, Snackbar that) {
+        return new SnackbarSubject(fm, that);
       }
     };
   }

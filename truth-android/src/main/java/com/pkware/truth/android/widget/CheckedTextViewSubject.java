@@ -20,8 +20,8 @@ import android.annotation.TargetApi;
 import android.graphics.drawable.Drawable;
 import android.widget.CheckedTextView;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 import static com.google.common.truth.Truth.assertThat;
@@ -30,15 +30,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link CheckedTextView} subjects.
  */
 public class CheckedTextViewSubject extends AbstractTextViewSubject<CheckedTextViewSubject, CheckedTextView> {
-  protected CheckedTextViewSubject(FailureStrategy failureStrategy, CheckedTextView subject) {
-    super(failureStrategy, subject);
+  protected CheckedTextViewSubject(FailureMetadata failureMetadata, CheckedTextView subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<CheckedTextViewSubject, CheckedTextView> type() {
-    return new SubjectFactory<CheckedTextViewSubject, CheckedTextView>() {
+  public static Subject.Factory<CheckedTextViewSubject, CheckedTextView> type() {
+    return new Subject.Factory<CheckedTextViewSubject, CheckedTextView>() {
       @Override
-      public CheckedTextViewSubject getSubject(FailureStrategy fs, CheckedTextView that) {
-        return new CheckedTextViewSubject(fs, that);
+      public CheckedTextViewSubject createSubject(FailureMetadata fm, CheckedTextView that) {
+        return new CheckedTextViewSubject(fm, that);
       }
     };
   }

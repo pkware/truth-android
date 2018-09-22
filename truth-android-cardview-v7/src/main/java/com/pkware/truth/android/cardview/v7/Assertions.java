@@ -1,9 +1,9 @@
-// Copyright 2016 PKWARE, Inc.
+// Copyright 2018 PKWARE, Inc.
 //
 // This class is generated. Do not modify directly!
 package com.pkware.truth.android.cardview.v7;
 
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertAbout;
 
@@ -12,7 +12,7 @@ import static com.google.common.truth.Truth.assertAbout;
 public final class Assertions {
   public static com.pkware.truth.android.cardview.v7.widget.CardViewSubject assertThat(
       android.support.v7.widget.CardView target) {
-    SubjectFactory<com.pkware.truth.android.cardview.v7.widget.CardViewSubject, android.support.v7.widget.CardView> type = com.pkware.truth.android.cardview.v7.widget.CardViewSubject.type();
+    Subject.Factory<com.pkware.truth.android.cardview.v7.widget.CardViewSubject, android.support.v7.widget.CardView> type = com.pkware.truth.android.cardview.v7.widget.CardViewSubject.type();
     return assertAbout(type).that(target);
   }
 

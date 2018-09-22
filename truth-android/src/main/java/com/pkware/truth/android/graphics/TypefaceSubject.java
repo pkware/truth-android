@@ -18,9 +18,8 @@ package com.pkware.truth.android.graphics;
 
 import android.graphics.Typeface;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Typeface} subjects.
  */
 public class TypefaceSubject extends Subject<TypefaceSubject, Typeface> {
-  protected TypefaceSubject(FailureStrategy failureStrategy, Typeface subject) {
-    super(failureStrategy, subject);
+  protected TypefaceSubject(FailureMetadata failureMetadata, Typeface subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<TypefaceSubject, Typeface> type() {
-    return new SubjectFactory<TypefaceSubject, Typeface>() {
+  public static Subject.Factory<TypefaceSubject, Typeface> type() {
+    return new Subject.Factory<TypefaceSubject, Typeface>() {
       @Override
-      public TypefaceSubject getSubject(FailureStrategy fs, Typeface that) {
-        return new TypefaceSubject(fs, that);
+      public TypefaceSubject createSubject(FailureMetadata fm, Typeface that) {
+        return new TypefaceSubject(fm, that);
       }
     };
   }

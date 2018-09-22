@@ -18,9 +18,8 @@ package com.pkware.truth.android.telephony;
 
 import android.telephony.SmsMessage;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link SmsMessage} subjects.
  */
 public class SmsMessageSubject extends Subject<SmsMessageSubject, SmsMessage> {
-  protected SmsMessageSubject(FailureStrategy failureStrategy, SmsMessage subject) {
-    super(failureStrategy, subject);
+  protected SmsMessageSubject(FailureMetadata failureMetadata, SmsMessage subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<SmsMessageSubject, SmsMessage> type() {
-    return new SubjectFactory<SmsMessageSubject, SmsMessage>() {
+  public static Subject.Factory<SmsMessageSubject, SmsMessage> type() {
+    return new Subject.Factory<SmsMessageSubject, SmsMessage>() {
       @Override
-      public SmsMessageSubject getSubject(FailureStrategy fs, SmsMessage that) {
-        return new SmsMessageSubject(fs, that);
+      public SmsMessageSubject createSubject(FailureMetadata fm, SmsMessage that) {
+        return new SmsMessageSubject(fm, that);
       }
     };
   }

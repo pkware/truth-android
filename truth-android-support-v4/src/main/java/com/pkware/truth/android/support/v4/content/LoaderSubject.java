@@ -18,8 +18,8 @@ package com.pkware.truth.android.support.v4.content;
 
 import android.support.v4.content.Loader;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link Loader} subjects.
@@ -27,15 +27,15 @@ import com.google.common.truth.SubjectFactory;
  * This class is final. To extend use {@link AbstractLoaderSubject}.
  */
 public final class LoaderSubject extends AbstractLoaderSubject<LoaderSubject, Loader> {
-  protected LoaderSubject(FailureStrategy failureStrategy, Loader subject) {
-    super(failureStrategy, subject);
+  protected LoaderSubject(FailureMetadata failureMetadata, Loader subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<LoaderSubject, Loader> type() {
-    return new SubjectFactory<LoaderSubject, Loader>() {
+  public static Subject.Factory<LoaderSubject, Loader> type() {
+    return new Subject.Factory<LoaderSubject, Loader>() {
       @Override
-      public LoaderSubject getSubject(FailureStrategy fs, Loader that) {
-        return new LoaderSubject(fs, that);
+      public LoaderSubject createSubject(FailureMetadata fm, Loader that) {
+        return new LoaderSubject(fm, that);
       }
     };
   }

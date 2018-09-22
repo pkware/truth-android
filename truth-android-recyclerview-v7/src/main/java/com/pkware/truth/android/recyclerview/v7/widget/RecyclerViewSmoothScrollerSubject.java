@@ -18,9 +18,8 @@ package com.pkware.truth.android.recyclerview.v7.widget;
 
 import android.support.v7.widget.RecyclerView;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -30,15 +29,15 @@ import static com.google.common.truth.Truth.assertThat;
 public class RecyclerViewSmoothScrollerSubject
     extends Subject<RecyclerViewSmoothScrollerSubject, RecyclerView.SmoothScroller> {
 
-  protected RecyclerViewSmoothScrollerSubject(FailureStrategy failureStrategy, RecyclerView.SmoothScroller subject) {
-    super(failureStrategy, subject);
+  protected RecyclerViewSmoothScrollerSubject(FailureMetadata failureMetadata, RecyclerView.SmoothScroller subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<RecyclerViewSmoothScrollerSubject, RecyclerView.SmoothScroller> type() {
-    return new SubjectFactory<RecyclerViewSmoothScrollerSubject, RecyclerView.SmoothScroller>() {
+  public static Subject.Factory<RecyclerViewSmoothScrollerSubject, RecyclerView.SmoothScroller> type() {
+    return new Subject.Factory<RecyclerViewSmoothScrollerSubject, RecyclerView.SmoothScroller>() {
       @Override
-      public RecyclerViewSmoothScrollerSubject getSubject(FailureStrategy fs, RecyclerView.SmoothScroller that) {
-        return new RecyclerViewSmoothScrollerSubject(fs, that);
+      public RecyclerViewSmoothScrollerSubject createSubject(FailureMetadata fm, RecyclerView.SmoothScroller that) {
+        return new RecyclerViewSmoothScrollerSubject(fm, that);
       }
     };
   }

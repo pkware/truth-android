@@ -19,7 +19,7 @@ package com.pkware.truth.android.telephony;
 import android.annotation.TargetApi;
 import android.telephony.CellSignalStrength;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
@@ -27,8 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
 
 @TargetApi(JELLY_BEAN_MR1)
 public abstract class AbstractCellSignalStrengthSubject<S extends AbstractCellSignalStrengthSubject<S, T>, T extends CellSignalStrength> extends Subject<S, T> {
-  protected AbstractCellSignalStrengthSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractCellSignalStrengthSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S hasAsuLevel(int level) {

@@ -21,9 +21,8 @@ import android.view.View;
 import android.widget.ListPopupWindow;
 import android.widget.ListView;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.widget.ListPopupWindow.INPUT_METHOD_FROM_FOCUSABLE;
 import static android.widget.ListPopupWindow.INPUT_METHOD_NEEDED;
@@ -36,15 +35,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link ListPopupWindow} subjects.
  */
 public class ListPopupWindowSubject extends Subject<ListPopupWindowSubject, ListPopupWindow> {
-  protected ListPopupWindowSubject(FailureStrategy failureStrategy, ListPopupWindow subject) {
-    super(failureStrategy, subject);
+  protected ListPopupWindowSubject(FailureMetadata failureMetadata, ListPopupWindow subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ListPopupWindowSubject, ListPopupWindow> type() {
-    return new SubjectFactory<ListPopupWindowSubject, ListPopupWindow>() {
+  public static Subject.Factory<ListPopupWindowSubject, ListPopupWindow> type() {
+    return new Subject.Factory<ListPopupWindowSubject, ListPopupWindow>() {
       @Override
-      public ListPopupWindowSubject getSubject(FailureStrategy fs, ListPopupWindow that) {
-        return new ListPopupWindowSubject(fs, that);
+      public ListPopupWindowSubject createSubject(FailureMetadata fm, ListPopupWindow that) {
+        return new ListPopupWindowSubject(fm, that);
       }
     };
   }
@@ -96,7 +95,7 @@ public class ListPopupWindowSubject extends Subject<ListPopupWindowSubject, List
     int actualMode = actual().getInputMethodMode();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected input method mode <%s> but was <%s>.",
+        .withMessage("Expected input method mode <%s> but was <%s>.",
             inputMethodModeToString(mode), inputMethodModeToString(actualMode))
         .that(actualMode)
         .isEqualTo(mode);

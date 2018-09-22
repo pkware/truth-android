@@ -18,8 +18,8 @@ package com.pkware.truth.android.widget;
 
 import android.widget.LinearLayout;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link LinearLayout} subjects.
@@ -27,15 +27,15 @@ import com.google.common.truth.SubjectFactory;
  * This class is final. To extend use {@link AbstractLinearLayoutSubject}.
  */
 public final class LinearLayoutSubject extends AbstractLinearLayoutSubject<LinearLayoutSubject, LinearLayout> {
-  private LinearLayoutSubject(FailureStrategy failureStrategy, LinearLayout subject) {
-    super(failureStrategy, subject);
+  private LinearLayoutSubject(FailureMetadata failureMetadata, LinearLayout subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<LinearLayoutSubject, LinearLayout> type() {
-    return new SubjectFactory<LinearLayoutSubject, LinearLayout>() {
+  public static Subject.Factory<LinearLayoutSubject, LinearLayout> type() {
+    return new Subject.Factory<LinearLayoutSubject, LinearLayout>() {
       @Override
-      public LinearLayoutSubject getSubject(FailureStrategy fs, LinearLayout that) {
-        return new LinearLayoutSubject(fs, that);
+      public LinearLayoutSubject createSubject(FailureMetadata fm, LinearLayout that) {
+        return new LinearLayoutSubject(fm, that);
       }
     };
   }

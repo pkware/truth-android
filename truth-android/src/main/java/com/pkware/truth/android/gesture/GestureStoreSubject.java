@@ -18,9 +18,8 @@ package com.pkware.truth.android.gesture;
 
 import android.gesture.GestureStore;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link GestureStore} subjects.
  */
 public class GestureStoreSubject extends Subject<GestureStoreSubject, GestureStore> {
-  protected GestureStoreSubject(FailureStrategy failureStrategy, GestureStore subject) {
-    super(failureStrategy, subject);
+  protected GestureStoreSubject(FailureMetadata failureMetadata, GestureStore subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<GestureStoreSubject, GestureStore> type() {
-    return new SubjectFactory<GestureStoreSubject, GestureStore>() {
+  public static Subject.Factory<GestureStoreSubject, GestureStore> type() {
+    return new Subject.Factory<GestureStoreSubject, GestureStore>() {
       @Override
-      public GestureStoreSubject getSubject(FailureStrategy fs, GestureStore that) {
-        return new GestureStoreSubject(fs, that);
+      public GestureStoreSubject createSubject(FailureMetadata fm, GestureStore that) {
+        return new GestureStoreSubject(fm, that);
       }
     };
   }

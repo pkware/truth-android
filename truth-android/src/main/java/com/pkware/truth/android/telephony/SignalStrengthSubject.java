@@ -18,9 +18,8 @@ package com.pkware.truth.android.telephony;
 
 import android.telephony.SignalStrength;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link SignalStrength} subjects.
  */
 public class SignalStrengthSubject extends Subject<SignalStrengthSubject, SignalStrength> {
-  protected SignalStrengthSubject(FailureStrategy failureStrategy, SignalStrength subject) {
-    super(failureStrategy, subject);
+  protected SignalStrengthSubject(FailureMetadata failureMetadata, SignalStrength subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<SignalStrengthSubject, SignalStrength> type() {
-    return new SubjectFactory<SignalStrengthSubject, SignalStrength>() {
+  public static Subject.Factory<SignalStrengthSubject, SignalStrength> type() {
+    return new Subject.Factory<SignalStrengthSubject, SignalStrength>() {
       @Override
-      public SignalStrengthSubject getSubject(FailureStrategy fs, SignalStrength that) {
-        return new SignalStrengthSubject(fs, that);
+      public SignalStrengthSubject createSubject(FailureMetadata fm, SignalStrength that) {
+        return new SignalStrengthSubject(fm, that);
       }
     };
   }

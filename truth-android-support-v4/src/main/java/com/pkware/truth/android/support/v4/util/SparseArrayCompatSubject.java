@@ -18,9 +18,8 @@ package com.pkware.truth.android.support.v4.util;
 
 import android.support.v4.util.SparseArrayCompat;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assert_;
@@ -30,22 +29,22 @@ import static com.google.common.truth.Truth.assert_;
  */
 public class SparseArrayCompatSubject<E>
     extends Subject<SparseArrayCompatSubject<E>, SparseArrayCompat<E>> {
-  protected SparseArrayCompatSubject(FailureStrategy failureStrategy, SparseArrayCompat<E> subject) {
-    super(failureStrategy, subject);
+  protected SparseArrayCompatSubject(FailureMetadata failureMetadata, SparseArrayCompat<E> subject) {
+    super(failureMetadata, subject);
   }
 
-  public static <E> SubjectFactory<SparseArrayCompatSubject<E>, SparseArrayCompat<E>> type() {
-    return new SubjectFactory<SparseArrayCompatSubject<E>, SparseArrayCompat<E>>() {
+  public static <E> Subject.Factory<SparseArrayCompatSubject<E>, SparseArrayCompat<E>> type() {
+    return new Subject.Factory<SparseArrayCompatSubject<E>, SparseArrayCompat<E>>() {
       @Override
-      public SparseArrayCompatSubject<E> getSubject(FailureStrategy fs, SparseArrayCompat<E> that) {
-        return new SparseArrayCompatSubject<E>(fs, that);
+      public SparseArrayCompatSubject<E> createSubject(FailureMetadata fm, SparseArrayCompat<E> that) {
+        return new SparseArrayCompatSubject<E>(fm, that);
       }
     };
   }
 
   public SparseArrayCompatSubject<E> hasKey(int key) {
     assert_()
-        .withFailureMessage("Expected key <%s> to be present but was not.", key)
+        .withMessage("Expected key <%s> to be present but was not.", key)
         .that(actual().indexOfKey(key))
         .isGreaterThan(-1);
     return this;
@@ -53,7 +52,7 @@ public class SparseArrayCompatSubject<E>
 
   public SparseArrayCompatSubject<E> doesNotHaveKey(int key) {
     assert_()
-        .withFailureMessage("Expected key <%s> to not be present but was.")
+        .withMessage("Expected key <%s> to not be present but was.")
         .that(actual().indexOfKey(key))
         .isLessThan(0);
     return this;

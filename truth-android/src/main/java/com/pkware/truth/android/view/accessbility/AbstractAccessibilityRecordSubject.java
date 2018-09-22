@@ -21,7 +21,7 @@ import android.view.accessibility.AccessibilityRecord;
 
 import com.google.common.base.Function;
 import com.google.common.collect.FluentIterable;
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
 import java.util.List;
@@ -30,8 +30,8 @@ import static com.google.common.truth.Truth.assertThat;
 
 public abstract class AbstractAccessibilityRecordSubject<S extends AbstractAccessibilityRecordSubject<S, T>, T extends AccessibilityRecord>
     extends Subject<S, T> {
-  protected AbstractAccessibilityRecordSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractAccessibilityRecordSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   private static Function<CharSequence, String> mapToString() {

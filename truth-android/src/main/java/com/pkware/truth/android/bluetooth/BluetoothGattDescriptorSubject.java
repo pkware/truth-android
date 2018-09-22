@@ -19,9 +19,8 @@ package com.pkware.truth.android.bluetooth;
 import android.annotation.TargetApi;
 import android.bluetooth.BluetoothGattDescriptor;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import java.util.UUID;
 
@@ -43,15 +42,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildBitMaskString;
  */
 @TargetApi(JELLY_BEAN_MR2)
 public class BluetoothGattDescriptorSubject extends Subject<BluetoothGattDescriptorSubject, BluetoothGattDescriptor> {
-  protected BluetoothGattDescriptorSubject(FailureStrategy failureStrategy, BluetoothGattDescriptor subject) {
-    super(failureStrategy, subject);
+  protected BluetoothGattDescriptorSubject(FailureMetadata failureMetadata, BluetoothGattDescriptor subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<BluetoothGattDescriptorSubject, BluetoothGattDescriptor> type() {
-    return new SubjectFactory<BluetoothGattDescriptorSubject, BluetoothGattDescriptor>() {
+  public static Subject.Factory<BluetoothGattDescriptorSubject, BluetoothGattDescriptor> type() {
+    return new Subject.Factory<BluetoothGattDescriptorSubject, BluetoothGattDescriptor>() {
       @Override
-      public BluetoothGattDescriptorSubject getSubject(FailureStrategy fs, BluetoothGattDescriptor that) {
-        return new BluetoothGattDescriptorSubject(fs, that);
+      public BluetoothGattDescriptorSubject createSubject(FailureMetadata fm, BluetoothGattDescriptor that) {
+        return new BluetoothGattDescriptorSubject(fm, that);
       }
     };
   }
@@ -73,7 +72,7 @@ public class BluetoothGattDescriptorSubject extends Subject<BluetoothGattDescrip
     int actualPermissions = actual().getPermissions();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected permissions <%s> but was <%s>.",
+        .withMessage("Expected permissions <%s> but was <%s>.",
             permissionsToString(permissions),
             permissionsToString(actualPermissions))
         .that(actualPermissions)

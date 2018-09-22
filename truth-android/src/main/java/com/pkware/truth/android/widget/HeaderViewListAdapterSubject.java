@@ -19,8 +19,8 @@ package com.pkware.truth.android.widget;
 import android.widget.Filter;
 import android.widget.HeaderViewListAdapter;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +28,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link HeaderViewListAdapter} subjects.
  */
 public class HeaderViewListAdapterSubject extends AbstractWrapperListAdapterSubject<HeaderViewListAdapterSubject, HeaderViewListAdapter> {
-  protected HeaderViewListAdapterSubject(FailureStrategy failureStrategy, HeaderViewListAdapter subject) {
-    super(failureStrategy, subject);
+  protected HeaderViewListAdapterSubject(FailureMetadata failureMetadata, HeaderViewListAdapter subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<HeaderViewListAdapterSubject, HeaderViewListAdapter> type() {
-    return new SubjectFactory<HeaderViewListAdapterSubject, HeaderViewListAdapter>() {
+  public static Subject.Factory<HeaderViewListAdapterSubject, HeaderViewListAdapter> type() {
+    return new Subject.Factory<HeaderViewListAdapterSubject, HeaderViewListAdapter>() {
       @Override
-      public HeaderViewListAdapterSubject getSubject(FailureStrategy fs, HeaderViewListAdapter that) {
-        return new HeaderViewListAdapterSubject(fs, that);
+      public HeaderViewListAdapterSubject createSubject(FailureMetadata fm, HeaderViewListAdapter that) {
+        return new HeaderViewListAdapterSubject(fm, that);
       }
     };
   }

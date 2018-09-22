@@ -24,7 +24,7 @@ import android.view.View;
 import android.view.ViewParent;
 import android.view.animation.Animation;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
@@ -70,8 +70,8 @@ import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
 public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T extends View> extends Subject<S, T> {
-  protected AbstractViewSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractViewSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public static String visibilityToString(@ViewVisibility int visibility) {
@@ -204,7 +204,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   public S hasDrawingCacheBackgroundColor(int color) {
     int actualColor = actual().getDrawingCacheBackgroundColor();
     assert_()
-        .withFailureMessage("Expected drawing cache background color <%s> but was <%s>",
+        .withMessage("Expected drawing cache background color <%s> but was <%s>",
             Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
@@ -249,7 +249,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   public S hasId(int id) {
     int actualId = actual().getId();
     assert_()
-        .withFailureMessage("Expected ID <%s> but was <%s>", Integer.toHexString(id),
+        .withMessage("Expected ID <%s> but was <%s>", Integer.toHexString(id),
             Integer.toHexString(actualId))
         .that(actualId)
         .isEqualTo(id);
@@ -304,7 +304,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
     int actualType = actual().getLayerType();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected layer type <%s> but was <%s>", layerTypeToString(type),
+        .withMessage("Expected layer type <%s> but was <%s>", layerTypeToString(type),
             layerTypeToString(actualType))
         .that(actualType)
         .isEqualTo(type);
@@ -316,7 +316,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   public S hasLayoutDirection(int direction) {
     int actualDirection = actual().getLayoutDirection();
     assert_()
-        .withFailureMessage("Expected layout direction <%s> but was <%s>",
+        .withMessage("Expected layout direction <%s> but was <%s>",
             layoutDirectionToString(direction), layoutDirectionToString(actualDirection))
         .that(actualDirection)
         .isEqualTo(direction);
@@ -434,7 +434,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
     int actualMode = actual().getOverScrollMode();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected over scroll mode <%s> but was <%s>",
+        .withMessage("Expected over scroll mode <%s> but was <%s>",
             overScrollModeToString(mode), overScrollModeToString(actualMode))
         .that(actualMode)
         .isEqualTo(mode);
@@ -619,7 +619,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
     int actualStyle = actual().getScrollBarStyle();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected scroll bar style <%s> but was <%s>",
+        .withMessage("Expected scroll bar style <%s> but was <%s>",
             scrollBarStyleToString(style), scrollBarStyleToString(actualStyle))
         .that(actualStyle)
         .isEqualTo(style);
@@ -646,7 +646,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   public S hasSolidColor(int color) {
     int actualColor = actual().getSolidColor();
     assert_()
-        .withFailureMessage("Expected solid color <%s> but was <%s>",
+        .withMessage("Expected solid color <%s> but was <%s>",
             Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
@@ -682,7 +682,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   public S hasTextAlignment(@ViewTextAlignment int alignment) {
     int actualAlignment = actual().getTextAlignment();
     assert_()
-        .withFailureMessage("Expected text alignment <%s> but was <%s>",
+        .withMessage("Expected text alignment <%s> but was <%s>",
             textAlignmentToString(alignment), textAlignmentToString(actualAlignment))
         .that(actualAlignment)
         .isEqualTo(alignment);
@@ -695,7 +695,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
     int actualDirection = actual().getTextDirection();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected text direction <%s> but was <%s>",
+        .withMessage("Expected text direction <%s> but was <%s>",
             textDirectionToString(direction), textDirectionToString(actualDirection))
         .that(actualDirection)
         .isEqualTo(direction);
@@ -751,7 +751,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
     int actualPosition = actual().getVerticalScrollbarPosition();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected vertical scroll bar position <%s> but was <%s>",
+        .withMessage("Expected vertical scroll bar position <%s> but was <%s>",
             verticalScrollBarPositionToString(position),
             verticalScrollBarPositionToString(actualPosition))
         .that(actualPosition)
@@ -771,7 +771,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   public S hasVisibility(@ViewVisibility int visibility) {
     int actualVisibility = actual().getVisibility();
     assert_()
-        .withFailureMessage("Expected visibility <%s> but was <%s>.",
+        .withMessage("Expected visibility <%s> but was <%s>.",
             visibilityToString(visibility), visibilityToString(actualVisibility))
         .that(actualVisibility)
         .isEqualTo(visibility);
@@ -783,7 +783,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
     int actualVisibility = actual().getVisibility();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected to be visible but was %s", visibilityToString(actualVisibility))
+        .withMessage("Expected to be visible but was %s", visibilityToString(actualVisibility))
         .that(actualVisibility)
         .isEqualTo(VISIBLE);
     //noinspection unchecked
@@ -793,7 +793,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   public S isNotVisible() {
     int actualVisibility = actual().getVisibility();
     assert_()
-        .withFailureMessage("Expected to be not visible but was visible")
+        .withMessage("Expected to be not visible but was visible")
         .that(actualVisibility)
         .isNotEqualTo(VISIBLE);
     //noinspection unchecked
@@ -803,7 +803,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   public S isInvisible() {
     int actualVisibility = actual().getVisibility();
     assert_()
-        .withFailureMessage("Expected to be invisible but was %s",
+        .withMessage("Expected to be invisible but was %s",
             visibilityToString(actualVisibility))
         .that(actualVisibility)
         .isEqualTo(INVISIBLE);
@@ -814,7 +814,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   public S isNotInvisible() {
     int actualVisibility = actual().getVisibility();
     assert_()
-        .withFailureMessage("Expected to be not invisible but was invisible")
+        .withMessage("Expected to be not invisible but was invisible")
         .that(actualVisibility)
         .isNotEqualTo(INVISIBLE);
     //noinspection unchecked
@@ -824,7 +824,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   public S isGone() {
     int actualVisibility = actual().getVisibility();
     assert_()
-        .withFailureMessage("Expected to be gone but was %s", visibilityToString(actualVisibility))
+        .withMessage("Expected to be gone but was %s", visibilityToString(actualVisibility))
         .that(actualVisibility)
         .isEqualTo(GONE);
     //noinspection unchecked
@@ -834,7 +834,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   public S isNotGone() {
     int actualVisibility = actual().getVisibility();
     assert_()
-        .withFailureMessage("Expected to be not gone but was gone")
+        .withMessage("Expected to be not gone but was gone")
         .that(actualVisibility)
         .isNotEqualTo(GONE);
     //noinspection unchecked
@@ -852,7 +852,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
   public S hasWindowVisibility(int visibility) {
     int actualVisibility = actual().getWindowVisibility();
     assert_()
-        .withFailureMessage("Expected window visibility <%s> but was <%s>",
+        .withMessage("Expected window visibility <%s> but was <%s>",
             visibilityToString(visibility), visibilityToString(actualVisibility))
         .that(actualVisibility)
         .isEqualTo(visibility);

@@ -18,14 +18,14 @@ package com.pkware.truth.android.widget;
 
 import android.widget.ListAdapter;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 
 import static com.google.common.truth.Truth.assertThat;
 
 public abstract class AbstractListAdapterSubject<S extends AbstractListAdapterSubject<S, T>, T extends ListAdapter>
     extends AbstractAdapterSubject<S, T> {
-  protected AbstractListAdapterSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractListAdapterSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S hasAllItemsEnabled() {

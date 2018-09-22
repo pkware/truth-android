@@ -19,9 +19,8 @@ package com.pkware.truth.android.view;
 import android.view.View;
 import android.view.Window;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.view.Window.FEATURE_ACTION_BAR;
 import static android.view.Window.FEATURE_ACTION_BAR_OVERLAY;
@@ -43,15 +42,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link Window} subjects.
  */
 public class WindowSubject extends Subject<WindowSubject, Window> {
-  protected WindowSubject(FailureStrategy failureStrategy, Window subject) {
-    super(failureStrategy, subject);
+  protected WindowSubject(FailureMetadata failureMetadata, Window subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<WindowSubject, Window> type() {
-    return new SubjectFactory<WindowSubject, Window>() {
+  public static Subject.Factory<WindowSubject, Window> type() {
+    return new Subject.Factory<WindowSubject, Window>() {
       @Override
-      public WindowSubject getSubject(FailureStrategy fs, Window that) {
-        return new WindowSubject(fs, that);
+      public WindowSubject createSubject(FailureMetadata fm, Window that) {
+        return new WindowSubject(fm, that);
       }
     };
   }
@@ -97,7 +96,7 @@ public class WindowSubject extends Subject<WindowSubject, Window> {
   public WindowSubject hasFeature(@WindowFeature int feature) {
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected feature <%s> but was not present.",
+        .withMessage("Expected feature <%s> but was not present.",
             featureToString(feature))
         .that(actual().hasFeature(feature))
         .isTrue();

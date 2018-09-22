@@ -18,9 +18,8 @@ package com.pkware.truth.android.gesture;
 
 import android.gesture.GestureOverlayView;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.gesture.GestureOverlayView.GESTURE_STROKE_TYPE_MULTIPLE;
 import static android.gesture.GestureOverlayView.GESTURE_STROKE_TYPE_SINGLE;
@@ -34,15 +33,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link GestureOverlayView} subjects.
  */
 public class GestureOverlayViewSubject extends Subject<GestureOverlayViewSubject, GestureOverlayView> {
-  protected GestureOverlayViewSubject(FailureStrategy failureStrategy, GestureOverlayView subject) {
-    super(failureStrategy, subject);
+  protected GestureOverlayViewSubject(FailureMetadata failureMetadata, GestureOverlayView subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<GestureOverlayViewSubject, GestureOverlayView> type() {
-    return new SubjectFactory<GestureOverlayViewSubject, GestureOverlayView>() {
+  public static Subject.Factory<GestureOverlayViewSubject, GestureOverlayView> type() {
+    return new Subject.Factory<GestureOverlayViewSubject, GestureOverlayView>() {
       @Override
-      public GestureOverlayViewSubject getSubject(FailureStrategy fs, GestureOverlayView that) {
-        return new GestureOverlayViewSubject(fs, that);
+      public GestureOverlayViewSubject createSubject(FailureMetadata fm, GestureOverlayView that) {
+        return new GestureOverlayViewSubject(fm, that);
       }
     };
   }
@@ -71,7 +70,7 @@ public class GestureOverlayViewSubject extends Subject<GestureOverlayViewSubject
   public GestureOverlayViewSubject hasGestureColor(int color) {
     int actualColor = actual().getGestureColor();
     assert_()
-        .withFailureMessage("Expected gesture color <%s> but was <%s>.", Integer.toHexString(color), Integer.toHexString(actualColor))
+        .withMessage("Expected gesture color <%s> but was <%s>.", Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
     return this;
@@ -105,7 +104,7 @@ public class GestureOverlayViewSubject extends Subject<GestureOverlayViewSubject
     int actualType = actual().getGestureStrokeType();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected gesture stroke type <%s> but was <%s>.", gestureStrokeTypeToString(type), gestureStrokeTypeToString(actualType))
+        .withMessage("Expected gesture stroke type <%s> but was <%s>.", gestureStrokeTypeToString(type), gestureStrokeTypeToString(actualType))
         .that(actualType)
         .isEqualTo(type);
     return this;
@@ -123,7 +122,7 @@ public class GestureOverlayViewSubject extends Subject<GestureOverlayViewSubject
     int actualOrientation = actual().getOrientation();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected orientation <%s> but was <%s>.", orientationToString(orientation), orientationToString(actualOrientation))
+        .withMessage("Expected orientation <%s> but was <%s>.", orientationToString(orientation), orientationToString(actualOrientation))
         .that(actualOrientation)
         .isEqualTo(orientation);
     return this;
@@ -132,7 +131,7 @@ public class GestureOverlayViewSubject extends Subject<GestureOverlayViewSubject
   public GestureOverlayViewSubject hasUncertainGestureColor(int color) {
     int actualColor = actual().getUncertainGestureColor();
     assert_()
-        .withFailureMessage("Expected uncertain gesture color <%s> but was <%s>.", Integer.toHexString(color), Integer.toHexString(actualColor))
+        .withMessage("Expected uncertain gesture color <%s> but was <%s>.", Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
     return this;

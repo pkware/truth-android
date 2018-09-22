@@ -18,8 +18,8 @@ package com.pkware.truth.android.widget;
 
 import android.widget.ViewFlipper;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ViewFlipper} subjects.
  */
 public class ViewFlipperSubject extends AbstractViewAnimatorSubject<ViewFlipperSubject, ViewFlipper> {
-  protected ViewFlipperSubject(FailureStrategy failureStrategy, ViewFlipper subject) {
-    super(failureStrategy, subject);
+  protected ViewFlipperSubject(FailureMetadata failureMetadata, ViewFlipper subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ViewFlipperSubject, ViewFlipper> type() {
-    return new SubjectFactory<ViewFlipperSubject, ViewFlipper>() {
+  public static Subject.Factory<ViewFlipperSubject, ViewFlipper> type() {
+    return new Subject.Factory<ViewFlipperSubject, ViewFlipper>() {
       @Override
-      public ViewFlipperSubject getSubject(FailureStrategy fs, ViewFlipper that) {
-        return new ViewFlipperSubject(fs, that);
+      public ViewFlipperSubject createSubject(FailureMetadata fm, ViewFlipper that) {
+        return new ViewFlipperSubject(fm, that);
       }
     };
   }

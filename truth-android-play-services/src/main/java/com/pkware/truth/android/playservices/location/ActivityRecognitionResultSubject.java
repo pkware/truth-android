@@ -17,9 +17,8 @@
 package com.pkware.truth.android.playservices.location;
 
 import com.google.android.gms.location.ActivityRecognitionResult;
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class ActivityRecognitionResultSubject
     extends Subject<ActivityRecognitionResultSubject, ActivityRecognitionResult> {
-  protected ActivityRecognitionResultSubject(FailureStrategy failureStrategy, ActivityRecognitionResult subject) {
-    super(failureStrategy, subject);
+  protected ActivityRecognitionResultSubject(FailureMetadata failureMetadata, ActivityRecognitionResult subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ActivityRecognitionResultSubject, ActivityRecognitionResult> type() {
-    return new SubjectFactory<ActivityRecognitionResultSubject, ActivityRecognitionResult>() {
+  public static Subject.Factory<ActivityRecognitionResultSubject, ActivityRecognitionResult> type() {
+    return new Subject.Factory<ActivityRecognitionResultSubject, ActivityRecognitionResult>() {
       @Override
-      public ActivityRecognitionResultSubject getSubject(FailureStrategy fs, ActivityRecognitionResult that) {
-        return new ActivityRecognitionResultSubject(fs, that);
+      public ActivityRecognitionResultSubject createSubject(FailureMetadata fm, ActivityRecognitionResult that) {
+        return new ActivityRecognitionResultSubject(fm, that);
       }
     };
   }

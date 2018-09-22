@@ -18,9 +18,8 @@ package com.pkware.truth.android.view;
 
 import android.view.DragEvent;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.view.DragEvent.ACTION_DRAG_ENDED;
 import static android.view.DragEvent.ACTION_DRAG_ENTERED;
@@ -36,15 +35,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link DragEvent} subjects.
  */
 public class DragEventSubject extends Subject<DragEventSubject, DragEvent> {
-  protected DragEventSubject(FailureStrategy failureStrategy, DragEvent subject) {
-    super(failureStrategy, subject);
+  protected DragEventSubject(FailureMetadata failureMetadata, DragEvent subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<DragEventSubject, DragEvent> type() {
-    return new SubjectFactory<DragEventSubject, DragEvent>() {
+  public static Subject.Factory<DragEventSubject, DragEvent> type() {
+    return new Subject.Factory<DragEventSubject, DragEvent>() {
       @Override
-      public DragEventSubject getSubject(FailureStrategy fs, DragEvent that) {
-        return new DragEventSubject(fs, that);
+      public DragEventSubject createSubject(FailureMetadata fm, DragEvent that) {
+        return new DragEventSubject(fm, that);
       }
     };
   }
@@ -64,7 +63,7 @@ public class DragEventSubject extends Subject<DragEventSubject, DragEvent> {
     int actualAction = actual().getAction();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected action <%s> but was <%s>",
+        .withMessage("Expected action <%s> but was <%s>",
             dragEventActionToString(action), dragEventActionToString(actualAction))
         .that(actualAction)
         .isEqualTo(action);

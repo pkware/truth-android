@@ -19,9 +19,8 @@ package com.pkware.truth.android.design.widget;
 import android.graphics.drawable.Drawable;
 import android.support.design.widget.TabLayout;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -29,15 +28,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link TabLayout.Tab} subjects.
  */
 public class TabLayoutTabSubject extends Subject<TabLayoutTabSubject, TabLayout.Tab> {
-  protected TabLayoutTabSubject(FailureStrategy failureStrategy, TabLayout.Tab subject) {
-    super(failureStrategy, subject);
+  protected TabLayoutTabSubject(FailureMetadata failureMetadata, TabLayout.Tab subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<TabLayoutTabSubject, TabLayout.Tab> type() {
-    return new SubjectFactory<TabLayoutTabSubject, TabLayout.Tab>() {
+  public static Subject.Factory<TabLayoutTabSubject, TabLayout.Tab> type() {
+    return new Subject.Factory<TabLayoutTabSubject, TabLayout.Tab>() {
       @Override
-      public TabLayoutTabSubject getSubject(FailureStrategy fs, TabLayout.Tab that) {
-        return new TabLayoutTabSubject(fs, that);
+      public TabLayoutTabSubject createSubject(FailureMetadata fm, TabLayout.Tab that) {
+        return new TabLayoutTabSubject(fm, that);
       }
     };
   }

@@ -18,7 +18,7 @@ package com.pkware.truth.android.database;
 
 import android.database.Cursor;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
 import java.util.Arrays;
@@ -26,8 +26,8 @@ import java.util.Arrays;
 import static com.google.common.truth.Truth.assertThat;
 
 public abstract class AbstractCursorSubject<S extends AbstractCursorSubject<S, T>, T extends Cursor> extends Subject<S, T> {
-  protected AbstractCursorSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractCursorSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S hasColumnCount(int count) {

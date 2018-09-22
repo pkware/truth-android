@@ -18,9 +18,8 @@ package com.pkware.truth.android.util;
 
 import android.util.AttributeSet;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link AttributeSet} subjects.
  */
 public class AttributeSetSubject extends Subject<AttributeSetSubject, AttributeSet> {
-  protected AttributeSetSubject(FailureStrategy failureStrategy, AttributeSet subject) {
-    super(failureStrategy, subject);
+  protected AttributeSetSubject(FailureMetadata failureMetadata, AttributeSet subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<AttributeSetSubject, AttributeSet> type() {
-    return new SubjectFactory<AttributeSetSubject, AttributeSet>() {
+  public static Subject.Factory<AttributeSetSubject, AttributeSet> type() {
+    return new Subject.Factory<AttributeSetSubject, AttributeSet>() {
       @Override
-      public AttributeSetSubject getSubject(FailureStrategy fs, AttributeSet that) {
-        return new AttributeSetSubject(fs, that);
+      public AttributeSetSubject createSubject(FailureMetadata fm, AttributeSet that) {
+        return new AttributeSetSubject(fm, that);
       }
     };
   }

@@ -19,14 +19,14 @@ package com.pkware.truth.android.preferences;
 import android.preference.TwoStatePreference;
 import android.support.annotation.StringRes;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 
 import static com.google.common.truth.Truth.assertThat;
 
 public abstract class AbstractTwoStatePreferenceSubject<S extends AbstractTwoStatePreferenceSubject<S, T>, T extends TwoStatePreference>
     extends AbstractPreferenceSubject<S, T> {
-  protected AbstractTwoStatePreferenceSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractTwoStatePreferenceSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S hasSummaryOff(CharSequence summary) {

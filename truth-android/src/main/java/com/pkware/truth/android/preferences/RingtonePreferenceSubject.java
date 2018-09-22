@@ -18,8 +18,8 @@ package com.pkware.truth.android.preferences;
 
 import android.preference.RingtonePreference;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static android.media.RingtoneManager.TYPE_ALARM;
 import static android.media.RingtoneManager.TYPE_NOTIFICATION;
@@ -32,15 +32,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildBitMaskString;
  * Propositions for {@link RingtonePreference} subjects.
  */
 public class RingtonePreferenceSubject extends AbstractPreferenceSubject<RingtonePreferenceSubject, RingtonePreference> {
-  protected RingtonePreferenceSubject(FailureStrategy failureStrategy, RingtonePreference subject) {
-    super(failureStrategy, subject);
+  protected RingtonePreferenceSubject(FailureMetadata failureMetadata, RingtonePreference subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<RingtonePreferenceSubject, RingtonePreference> type() {
-    return new SubjectFactory<RingtonePreferenceSubject, RingtonePreference>() {
+  public static Subject.Factory<RingtonePreferenceSubject, RingtonePreference> type() {
+    return new Subject.Factory<RingtonePreferenceSubject, RingtonePreference>() {
       @Override
-      public RingtonePreferenceSubject getSubject(FailureStrategy fs, RingtonePreference that) {
-        return new RingtonePreferenceSubject(fs, that);
+      public RingtonePreferenceSubject createSubject(FailureMetadata fm, RingtonePreference that) {
+        return new RingtonePreferenceSubject(fm, that);
       }
     };
   }
@@ -57,7 +57,7 @@ public class RingtonePreferenceSubject extends AbstractPreferenceSubject<Rington
     int actualType = actual().getRingtoneType();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected ringtone type <%s> but was <%s>.",
+        .withMessage("Expected ringtone type <%s> but was <%s>.",
             ringtoneTypeToString(type), ringtoneTypeToString(actualType))
         .that(actualType)
         .isEqualTo(type);

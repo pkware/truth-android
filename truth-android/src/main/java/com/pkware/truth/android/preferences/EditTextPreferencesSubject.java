@@ -18,8 +18,8 @@ package com.pkware.truth.android.preferences;
 
 import android.preference.EditTextPreference;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link EditTextPreference} subjects.
  */
 public class EditTextPreferencesSubject extends AbstractDialogPreferenceSubject<EditTextPreferencesSubject, EditTextPreference> {
-  protected EditTextPreferencesSubject(FailureStrategy failureStrategy, EditTextPreference subject) {
-    super(failureStrategy, subject);
+  protected EditTextPreferencesSubject(FailureMetadata failureMetadata, EditTextPreference subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<EditTextPreferencesSubject, EditTextPreference> type() {
-    return new SubjectFactory<EditTextPreferencesSubject, EditTextPreference>() {
+  public static Subject.Factory<EditTextPreferencesSubject, EditTextPreference> type() {
+    return new Subject.Factory<EditTextPreferencesSubject, EditTextPreference>() {
       @Override
-      public EditTextPreferencesSubject getSubject(FailureStrategy fs, EditTextPreference that) {
-        return new EditTextPreferencesSubject(fs, that);
+      public EditTextPreferencesSubject createSubject(FailureMetadata fm, EditTextPreference that) {
+        return new EditTextPreferencesSubject(fm, that);
       }
     };
   }

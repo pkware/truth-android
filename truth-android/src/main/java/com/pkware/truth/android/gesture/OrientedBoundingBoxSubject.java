@@ -18,9 +18,8 @@ package com.pkware.truth.android.gesture;
 
 import android.gesture.OrientedBoundingBox;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link OrientedBoundingBox} subjects.
  */
 public class OrientedBoundingBoxSubject extends Subject<OrientedBoundingBoxSubject, OrientedBoundingBox> {
-  protected OrientedBoundingBoxSubject(FailureStrategy failureStrategy, OrientedBoundingBox subject) {
-    super(failureStrategy, subject);
+  protected OrientedBoundingBoxSubject(FailureMetadata failureMetadata, OrientedBoundingBox subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<OrientedBoundingBoxSubject, OrientedBoundingBox> type() {
-    return new SubjectFactory<OrientedBoundingBoxSubject, OrientedBoundingBox>() {
+  public static Subject.Factory<OrientedBoundingBoxSubject, OrientedBoundingBox> type() {
+    return new Subject.Factory<OrientedBoundingBoxSubject, OrientedBoundingBox>() {
       @Override
-      public OrientedBoundingBoxSubject getSubject(FailureStrategy fs, OrientedBoundingBox that) {
-        return new OrientedBoundingBoxSubject(fs, that);
+      public OrientedBoundingBoxSubject createSubject(FailureMetadata fm, OrientedBoundingBox that) {
+        return new OrientedBoundingBoxSubject(fm, that);
       }
     };
   }

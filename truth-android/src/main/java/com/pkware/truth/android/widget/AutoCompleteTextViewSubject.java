@@ -22,8 +22,8 @@ import android.support.annotation.StringRes;
 import android.widget.AutoCompleteTextView;
 import android.widget.ListAdapter;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 import static com.google.common.truth.Truth.assertThat;
@@ -32,15 +32,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link AutoCompleteTextView} subjects.
  */
 public class AutoCompleteTextViewSubject extends AbstractTextViewSubject<AutoCompleteTextViewSubject, AutoCompleteTextView> {
-  protected AutoCompleteTextViewSubject(FailureStrategy failureStrategy, AutoCompleteTextView subject) {
-    super(failureStrategy, subject);
+  protected AutoCompleteTextViewSubject(FailureMetadata failureMetadata, AutoCompleteTextView subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<AutoCompleteTextViewSubject, AutoCompleteTextView> type() {
-    return new SubjectFactory<AutoCompleteTextViewSubject, AutoCompleteTextView>() {
+  public static Subject.Factory<AutoCompleteTextViewSubject, AutoCompleteTextView> type() {
+    return new Subject.Factory<AutoCompleteTextViewSubject, AutoCompleteTextView>() {
       @Override
-      public AutoCompleteTextViewSubject getSubject(FailureStrategy fs, AutoCompleteTextView that) {
-        return new AutoCompleteTextViewSubject(fs, that);
+      public AutoCompleteTextViewSubject createSubject(FailureMetadata fm, AutoCompleteTextView that) {
+        return new AutoCompleteTextViewSubject(fm, that);
       }
     };
   }

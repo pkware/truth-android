@@ -24,7 +24,7 @@ ext {
     buildToolsVersion = '28.0.2'
     supportLibVersion = '28.0.0'
 
-    truth = 'com.google.truth:truth:0.30'
+    truth = 'com.google.truth:truth:0.42'
     supportAnnotations = "com.android.support:support-annotations:${supportLibVersion}"
     supportV4 = "com.android.support:support-v4:${supportLibVersion}"
     supportAppCompat = "com.android.support:appcompat-v7:${supportLibVersion}"

@@ -20,15 +20,15 @@ import android.annotation.TargetApi;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.KITKAT;
 import static com.google.common.truth.Truth.assertThat;
 
 public abstract class AbstractDrawableSubject<S extends AbstractDrawableSubject<S, T>, T extends Drawable> extends Subject<S, T> {
-  protected AbstractDrawableSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractDrawableSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S hasBounds(Rect bounds) {

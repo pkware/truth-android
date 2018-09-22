@@ -18,8 +18,8 @@ package com.pkware.truth.android.preferences;
 
 import android.preference.TwoStatePreference;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link android.preference.TwoStatePreference} subjects.
@@ -28,15 +28,15 @@ import com.google.common.truth.SubjectFactory;
  */
 public final class TwoStatePreferenceSubject
     extends AbstractTwoStatePreferenceSubject<TwoStatePreferenceSubject, TwoStatePreference> {
-  private TwoStatePreferenceSubject(FailureStrategy failureStrategy, TwoStatePreference subject) {
-    super(failureStrategy, subject);
+  private TwoStatePreferenceSubject(FailureMetadata failureMetadata, TwoStatePreference subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<TwoStatePreferenceSubject, TwoStatePreference> type() {
-    return new SubjectFactory<TwoStatePreferenceSubject, TwoStatePreference>() {
+  public static Subject.Factory<TwoStatePreferenceSubject, TwoStatePreference> type() {
+    return new Subject.Factory<TwoStatePreferenceSubject, TwoStatePreference>() {
       @Override
-      public TwoStatePreferenceSubject getSubject(FailureStrategy fs, TwoStatePreference that) {
-        return new TwoStatePreferenceSubject(fs, that);
+      public TwoStatePreferenceSubject createSubject(FailureMetadata fm, TwoStatePreference that) {
+        return new TwoStatePreferenceSubject(fm, that);
       }
     };
   }

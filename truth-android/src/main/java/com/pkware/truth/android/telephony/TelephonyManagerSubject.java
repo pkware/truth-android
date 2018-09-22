@@ -20,9 +20,8 @@ import android.annotation.TargetApi;
 import android.telephony.CellLocation;
 import android.telephony.TelephonyManager;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
 import static android.os.Build.VERSION_CODES.KITKAT;
@@ -72,15 +71,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link TelephonyManager} subjects.
  */
 public class TelephonyManagerSubject extends Subject<TelephonyManagerSubject, TelephonyManager> {
-  protected TelephonyManagerSubject(FailureStrategy failureStrategy, TelephonyManager subject) {
-    super(failureStrategy, subject);
+  protected TelephonyManagerSubject(FailureMetadata failureMetadata, TelephonyManager subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<TelephonyManagerSubject, TelephonyManager> type() {
-    return new SubjectFactory<TelephonyManagerSubject, TelephonyManager>() {
+  public static Subject.Factory<TelephonyManagerSubject, TelephonyManager> type() {
+    return new Subject.Factory<TelephonyManagerSubject, TelephonyManager>() {
       @Override
-      public TelephonyManagerSubject getSubject(FailureStrategy fs, TelephonyManager that) {
-        return new TelephonyManagerSubject(fs, that);
+      public TelephonyManagerSubject createSubject(FailureMetadata fm, TelephonyManager that) {
+        return new TelephonyManagerSubject(fm, that);
       }
     };
   }
@@ -157,7 +156,7 @@ public class TelephonyManagerSubject extends Subject<TelephonyManagerSubject, Te
     int actualState = actual().getCallState();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected call state <%s> but was <%s>.", callStateToString(state),
+        .withMessage("Expected call state <%s> but was <%s>.", callStateToString(state),
             callStateToString(actualState))
         .that(actualState)
         .isEqualTo(state);
@@ -175,7 +174,7 @@ public class TelephonyManagerSubject extends Subject<TelephonyManagerSubject, Te
     int actualDataActivity = actual().getDataActivity();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected data activity <%s> but was <%s>.",
+        .withMessage("Expected data activity <%s> but was <%s>.",
             dataActivityToString(dataActivity), dataActivityToString(actualDataActivity))
         .that(actualDataActivity)
         .isEqualTo(dataActivity);
@@ -186,7 +185,7 @@ public class TelephonyManagerSubject extends Subject<TelephonyManagerSubject, Te
     int actualDataState = actual().getDataState();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected data state <%s> but was <%s>.",
+        .withMessage("Expected data state <%s> but was <%s>.",
             dataStateToString(dataState), dataStateToString(actualDataState))
         .that(actualDataState)
         .isEqualTo(dataState);
@@ -263,7 +262,7 @@ public class TelephonyManagerSubject extends Subject<TelephonyManagerSubject, Te
     int actualType = actual().getNetworkType();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected network type <%s> but was <%s>.",
+        .withMessage("Expected network type <%s> but was <%s>.",
             networkTypeToString(type), networkTypeToString(actualType))
         .that(actualType)
         .isEqualTo(type);
@@ -274,7 +273,7 @@ public class TelephonyManagerSubject extends Subject<TelephonyManagerSubject, Te
     int actualType = actual().getPhoneType();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected phone type <%s> but was <%s>.", phoneTypeToString(type),
+        .withMessage("Expected phone type <%s> but was <%s>.", phoneTypeToString(type),
             phoneTypeToString(actualType))
         .that(actualType)
         .isEqualTo(type);
@@ -313,7 +312,7 @@ public class TelephonyManagerSubject extends Subject<TelephonyManagerSubject, Te
     int actualState = actual().getSimState();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected SIM state <%s> but was <%s>.", simStateToString(state),
+        .withMessage("Expected SIM state <%s> but was <%s>.", simStateToString(state),
             simStateToString(actualState))
         .that(actualState)
         .isEqualTo(state);

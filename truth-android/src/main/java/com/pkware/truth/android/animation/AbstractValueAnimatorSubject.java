@@ -18,7 +18,7 @@ package com.pkware.truth.android.animation;
 
 import android.animation.ValueAnimator;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
 import static android.animation.ValueAnimator.INFINITE;
@@ -29,8 +29,8 @@ import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
 public abstract class AbstractValueAnimatorSubject<S extends AbstractValueAnimatorSubject<S, T>, T extends ValueAnimator> extends Subject<S, T> {
-  protected AbstractValueAnimatorSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractValueAnimatorSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public static String repeatCountToString(int count) {
@@ -65,7 +65,7 @@ public abstract class AbstractValueAnimatorSubject<S extends AbstractValueAnimat
   public S hasRepeatCount(int count) {
     int actualCount = actual().getRepeatCount();
     assert_()
-        .withFailureMessage("Expected repeat count <%s> but was <%s>.", repeatCountToString(count), repeatCountToString(actualCount))
+        .withMessage("Expected repeat count <%s> but was <%s>.", repeatCountToString(count), repeatCountToString(actualCount))
         .that(actualCount)
         .isEqualTo(count);
     //noinspection unchecked
@@ -76,7 +76,7 @@ public abstract class AbstractValueAnimatorSubject<S extends AbstractValueAnimat
     int actualMode = actual().getRepeatMode();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected repeat mode <%s> but was <%s>.", repeatModeToString(mode), repeatModeToString(actualMode))
+        .withMessage("Expected repeat mode <%s> but was <%s>.", repeatModeToString(mode), repeatModeToString(actualMode))
         .that(actualMode)
         .isEqualTo(mode);
     //noinspection unchecked

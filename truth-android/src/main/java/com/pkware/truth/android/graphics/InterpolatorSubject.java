@@ -18,9 +18,8 @@ package com.pkware.truth.android.graphics;
 
 import android.graphics.Interpolator;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Interpolator} subjects.
  */
 public class InterpolatorSubject extends Subject<InterpolatorSubject, Interpolator> {
-  protected InterpolatorSubject(FailureStrategy failureStrategy, Interpolator subject) {
-    super(failureStrategy, subject);
+  protected InterpolatorSubject(FailureMetadata failureMetadata, Interpolator subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<InterpolatorSubject, Interpolator> type() {
-    return new SubjectFactory<InterpolatorSubject, Interpolator>() {
+  public static Subject.Factory<InterpolatorSubject, Interpolator> type() {
+    return new Subject.Factory<InterpolatorSubject, Interpolator>() {
       @Override
-      public InterpolatorSubject getSubject(FailureStrategy fs, Interpolator that) {
-        return new InterpolatorSubject(fs, that);
+      public InterpolatorSubject createSubject(FailureMetadata fm, Interpolator that) {
+        return new InterpolatorSubject(fm, that);
       }
     };
   }

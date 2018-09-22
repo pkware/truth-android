@@ -18,9 +18,8 @@ package com.pkware.truth.android.playservices.maps;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Marker} subjects.
  */
 public class MarkerSubject extends Subject<MarkerSubject, Marker> {
-  protected MarkerSubject(FailureStrategy failureStrategy, Marker subject) {
-    super(failureStrategy, subject);
+  protected MarkerSubject(FailureMetadata failureMetadata, Marker subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<MarkerSubject, Marker> type() {
-    return new SubjectFactory<MarkerSubject, Marker>() {
+  public static Subject.Factory<MarkerSubject, Marker> type() {
+    return new Subject.Factory<MarkerSubject, Marker>() {
       @Override
-      public MarkerSubject getSubject(FailureStrategy fs, Marker that) {
-        return new MarkerSubject(fs, that);
+      public MarkerSubject createSubject(FailureMetadata fm, Marker that) {
+        return new MarkerSubject(fm, that);
       }
     };
   }

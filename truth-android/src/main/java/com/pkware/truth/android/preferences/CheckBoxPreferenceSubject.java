@@ -18,22 +18,22 @@ package com.pkware.truth.android.preferences;
 
 import android.preference.CheckBoxPreference;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link CheckBoxPreference} subjects.
  */
 public class CheckBoxPreferenceSubject extends AbstractTwoStatePreferenceSubject<CheckBoxPreferenceSubject, CheckBoxPreference> {
-  protected CheckBoxPreferenceSubject(FailureStrategy failureStrategy, CheckBoxPreference subject) {
-    super(failureStrategy, subject);
+  protected CheckBoxPreferenceSubject(FailureMetadata failureMetadata, CheckBoxPreference subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<CheckBoxPreferenceSubject, CheckBoxPreference> type() {
-    return new SubjectFactory<CheckBoxPreferenceSubject, CheckBoxPreference>() {
+  public static Subject.Factory<CheckBoxPreferenceSubject, CheckBoxPreference> type() {
+    return new Subject.Factory<CheckBoxPreferenceSubject, CheckBoxPreference>() {
       @Override
-      public CheckBoxPreferenceSubject getSubject(FailureStrategy fs, CheckBoxPreference that) {
-        return new CheckBoxPreferenceSubject(fs, that);
+      public CheckBoxPreferenceSubject createSubject(FailureMetadata fm, CheckBoxPreference that) {
+        return new CheckBoxPreferenceSubject(fm, that);
       }
     };
   }

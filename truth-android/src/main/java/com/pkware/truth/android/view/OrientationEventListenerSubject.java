@@ -18,9 +18,8 @@ package com.pkware.truth.android.view;
 
 import android.view.OrientationEventListener;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link OrientationEventListener} subjects.
  */
 public class OrientationEventListenerSubject extends Subject<OrientationEventListenerSubject, OrientationEventListener> {
-  protected OrientationEventListenerSubject(FailureStrategy failureStrategy, OrientationEventListener subject) {
-    super(failureStrategy, subject);
+  protected OrientationEventListenerSubject(FailureMetadata failureMetadata, OrientationEventListener subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<OrientationEventListenerSubject, OrientationEventListener> type() {
-    return new SubjectFactory<OrientationEventListenerSubject, OrientationEventListener>() {
+  public static Subject.Factory<OrientationEventListenerSubject, OrientationEventListener> type() {
+    return new Subject.Factory<OrientationEventListenerSubject, OrientationEventListener>() {
       @Override
-      public OrientationEventListenerSubject getSubject(FailureStrategy fs, OrientationEventListener that) {
-        return new OrientationEventListenerSubject(fs, that);
+      public OrientationEventListenerSubject createSubject(FailureMetadata fm, OrientationEventListener that) {
+        return new OrientationEventListenerSubject(fm, that);
       }
     };
   }

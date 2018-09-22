@@ -20,7 +20,7 @@ import android.database.Cursor;
 import android.support.v4.widget.CursorAdapter;
 import android.widget.Filter;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.widget.AbstractListAdapterSubject;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -28,8 +28,8 @@ import static com.google.common.truth.Truth.assertThat;
 public abstract class AbstractCursorAdapterSubject<S extends AbstractCursorAdapterSubject<S, T>, T extends CursorAdapter>
     extends AbstractListAdapterSubject<S, T> {
 
-  protected AbstractCursorAdapterSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractCursorAdapterSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S hasCursor(Cursor cursor) {

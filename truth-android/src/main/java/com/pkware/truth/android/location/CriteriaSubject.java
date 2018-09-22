@@ -18,9 +18,8 @@ package com.pkware.truth.android.location;
 
 import android.location.Criteria;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.location.Criteria.ACCURACY_COARSE;
 import static android.location.Criteria.ACCURACY_FINE;
@@ -39,15 +38,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link Criteria} subjects.
  */
 public class CriteriaSubject extends Subject<CriteriaSubject, Criteria> {
-  protected CriteriaSubject(FailureStrategy failureStrategy, Criteria subject) {
-    super(failureStrategy, subject);
+  protected CriteriaSubject(FailureMetadata failureMetadata, Criteria subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<CriteriaSubject, Criteria> type() {
-    return new SubjectFactory<CriteriaSubject, Criteria>() {
+  public static Subject.Factory<CriteriaSubject, Criteria> type() {
+    return new Subject.Factory<CriteriaSubject, Criteria>() {
       @Override
-      public CriteriaSubject getSubject(FailureStrategy fs, Criteria that) {
-        return new CriteriaSubject(fs, that);
+      public CriteriaSubject createSubject(FailureMetadata fm, Criteria that) {
+        return new CriteriaSubject(fm, that);
       }
     };
   }
@@ -80,7 +79,7 @@ public class CriteriaSubject extends Subject<CriteriaSubject, Criteria> {
     int actualAccuracy = actual().getAccuracy();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected accuracy <%s> but was <%s>.", accuracyRequirementToString(accuracy), accuracyRequirementToString(actualAccuracy))
+        .withMessage("Expected accuracy <%s> but was <%s>.", accuracyRequirementToString(accuracy), accuracyRequirementToString(actualAccuracy))
         .that(actualAccuracy)
         .isEqualTo(accuracy);
     return this;
@@ -90,7 +89,7 @@ public class CriteriaSubject extends Subject<CriteriaSubject, Criteria> {
     int actualAccuracy = actual().getBearingAccuracy();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected bearing accuracy <%s> but was <%s>.", accuracyToString(accuracy), accuracyToString(actualAccuracy))
+        .withMessage("Expected bearing accuracy <%s> but was <%s>.", accuracyToString(accuracy), accuracyToString(actualAccuracy))
         .that(actualAccuracy)
         .isEqualTo(accuracy);
     return this;
@@ -100,7 +99,7 @@ public class CriteriaSubject extends Subject<CriteriaSubject, Criteria> {
     int actualAccuracy = actual().getHorizontalAccuracy();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected horizontal accuracy <%s> but was <%s>.", accuracyToString(accuracy), accuracyToString(actualAccuracy))
+        .withMessage("Expected horizontal accuracy <%s> but was <%s>.", accuracyToString(accuracy), accuracyToString(actualAccuracy))
         .that(actualAccuracy)
         .isEqualTo(accuracy);
     return this;
@@ -110,7 +109,7 @@ public class CriteriaSubject extends Subject<CriteriaSubject, Criteria> {
     int actualRequirement = actual().getPowerRequirement();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected power requirement <%s> but was <%s>.", powerRequirementToString(requirement), powerRequirementToString(actualRequirement))
+        .withMessage("Expected power requirement <%s> but was <%s>.", powerRequirementToString(requirement), powerRequirementToString(actualRequirement))
         .that(actualRequirement)
         .isEqualTo(requirement);
     return this;
@@ -120,7 +119,7 @@ public class CriteriaSubject extends Subject<CriteriaSubject, Criteria> {
     int actualAccuracy = actual().getSpeedAccuracy();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected speed accuracy <%s> but was <%s>.", accuracyToString(accuracy), accuracyToString(actualAccuracy))
+        .withMessage("Expected speed accuracy <%s> but was <%s>.", accuracyToString(accuracy), accuracyToString(actualAccuracy))
         .that(actualAccuracy)
         .isEqualTo(accuracy);
     return this;
@@ -130,7 +129,7 @@ public class CriteriaSubject extends Subject<CriteriaSubject, Criteria> {
     int actualAccuracy = actual().getVerticalAccuracy();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected vertical accuracy <%s> but was <%s>.", accuracyToString(accuracy), accuracyToString(actualAccuracy))
+        .withMessage("Expected vertical accuracy <%s> but was <%s>.", accuracyToString(accuracy), accuracyToString(actualAccuracy))
         .that(actualAccuracy)
         .isEqualTo(accuracy);
     return this;

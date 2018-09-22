@@ -18,8 +18,8 @@ package com.pkware.truth.android.preferences;
 
 import android.preference.PreferenceActivity;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 import com.pkware.truth.android.app.AbstractListActivitySubject;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -29,15 +29,15 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class PreferenceActivitySubject
     extends AbstractListActivitySubject<PreferenceActivitySubject, PreferenceActivity> {
-  protected PreferenceActivitySubject(FailureStrategy failureStrategy, PreferenceActivity subject) {
-    super(failureStrategy, subject);
+  protected PreferenceActivitySubject(FailureMetadata failureMetadata, PreferenceActivity subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<PreferenceActivitySubject, PreferenceActivity> type() {
-    return new SubjectFactory<PreferenceActivitySubject, PreferenceActivity>() {
+  public static Subject.Factory<PreferenceActivitySubject, PreferenceActivity> type() {
+    return new Subject.Factory<PreferenceActivitySubject, PreferenceActivity>() {
       @Override
-      public PreferenceActivitySubject getSubject(FailureStrategy fs, PreferenceActivity that) {
-        return new PreferenceActivitySubject(fs, that);
+      public PreferenceActivitySubject createSubject(FailureMetadata fm, PreferenceActivity that) {
+        return new PreferenceActivitySubject(fm, that);
       }
     };
   }

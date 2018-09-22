@@ -19,7 +19,7 @@ package com.pkware.truth.android.widget;
 import android.view.View;
 import android.widget.ViewAnimator;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 import com.pkware.truth.android.view.ViewSubject;
 
@@ -28,8 +28,8 @@ import static com.google.common.truth.Truth.assert_;
 
 public abstract class AbstractViewAnimatorSubject<S extends AbstractViewAnimatorSubject<S, T>, T extends ViewAnimator>
     extends AbstractViewGroupSubject<S, T> {
-  protected AbstractViewAnimatorSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractViewAnimatorSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S hasDisplayedChild(View view) {

@@ -18,8 +18,8 @@ package com.pkware.truth.android.widget;
 
 import android.widget.TableRow;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link TableRow} subjects.
  */
 public class TableRowSubject extends AbstractLinearLayoutSubject<TableRowSubject, TableRow> {
-  protected TableRowSubject(FailureStrategy failureStrategy, TableRow subject) {
-    super(failureStrategy, subject);
+  protected TableRowSubject(FailureMetadata failureMetadata, TableRow subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<TableRowSubject, TableRow> type() {
-    return new SubjectFactory<TableRowSubject, TableRow>() {
+  public static Subject.Factory<TableRowSubject, TableRow> type() {
+    return new Subject.Factory<TableRowSubject, TableRow>() {
       @Override
-      public TableRowSubject getSubject(FailureStrategy fs, TableRow that) {
-        return new TableRowSubject(fs, that);
+      public TableRowSubject createSubject(FailureMetadata fm, TableRow that) {
+        return new TableRowSubject(fm, that);
       }
     };
   }

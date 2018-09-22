@@ -19,8 +19,8 @@ package com.pkware.truth.android.preferences;
 import android.preference.SwitchPreference;
 import android.support.annotation.StringRes;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +28,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link SwitchPreference} subjects.
  */
 public class SwitchPreferenceSubject extends AbstractTwoStatePreferenceSubject<SwitchPreferenceSubject, SwitchPreference> {
-  protected SwitchPreferenceSubject(FailureStrategy failureStrategy, SwitchPreference subject) {
-    super(failureStrategy, subject);
+  protected SwitchPreferenceSubject(FailureMetadata failureMetadata, SwitchPreference subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<SwitchPreferenceSubject, SwitchPreference> type() {
-    return new SubjectFactory<SwitchPreferenceSubject, SwitchPreference>() {
+  public static Subject.Factory<SwitchPreferenceSubject, SwitchPreference> type() {
+    return new Subject.Factory<SwitchPreferenceSubject, SwitchPreference>() {
       @Override
-      public SwitchPreferenceSubject getSubject(FailureStrategy fs, SwitchPreference that) {
-        return new SwitchPreferenceSubject(fs, that);
+      public SwitchPreferenceSubject createSubject(FailureMetadata fm, SwitchPreference that) {
+        return new SwitchPreferenceSubject(fm, that);
       }
     };
   }

@@ -18,9 +18,8 @@ package com.pkware.truth.android.os;
 
 import android.os.AsyncTask;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link AsyncTask} subjects.
  */
 public class AsyncTaskSubject extends Subject<AsyncTaskSubject, AsyncTask> {
-  protected AsyncTaskSubject(FailureStrategy failureStrategy, AsyncTask subject) {
-    super(failureStrategy, subject);
+  protected AsyncTaskSubject(FailureMetadata failureMetadata, AsyncTask subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<AsyncTaskSubject, AsyncTask> type() {
-    return new SubjectFactory<AsyncTaskSubject, AsyncTask>() {
+  public static Subject.Factory<AsyncTaskSubject, AsyncTask> type() {
+    return new Subject.Factory<AsyncTaskSubject, AsyncTask>() {
       @Override
-      public AsyncTaskSubject getSubject(FailureStrategy fs, AsyncTask that) {
-        return new AsyncTaskSubject(fs, that);
+      public AsyncTaskSubject createSubject(FailureMetadata fm, AsyncTask that) {
+        return new AsyncTaskSubject(fm, that);
       }
     };
   }

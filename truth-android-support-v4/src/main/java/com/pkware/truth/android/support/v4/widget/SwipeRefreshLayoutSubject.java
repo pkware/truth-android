@@ -18,8 +18,8 @@ package com.pkware.truth.android.support.v4.widget;
 
 import android.support.v4.widget.SwipeRefreshLayout;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -29,15 +29,15 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class SwipeRefreshLayoutSubject
     extends AbstractViewGroupSubject<SwipeRefreshLayoutSubject, SwipeRefreshLayout> {
-  protected SwipeRefreshLayoutSubject(FailureStrategy failureStrategy, SwipeRefreshLayout subject) {
-    super(failureStrategy, subject);
+  protected SwipeRefreshLayoutSubject(FailureMetadata failureMetadata, SwipeRefreshLayout subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<SwipeRefreshLayoutSubject, SwipeRefreshLayout> type() {
-    return new SubjectFactory<SwipeRefreshLayoutSubject, SwipeRefreshLayout>() {
+  public static Subject.Factory<SwipeRefreshLayoutSubject, SwipeRefreshLayout> type() {
+    return new Subject.Factory<SwipeRefreshLayoutSubject, SwipeRefreshLayout>() {
       @Override
-      public SwipeRefreshLayoutSubject getSubject(FailureStrategy fs, SwipeRefreshLayout that) {
-        return new SwipeRefreshLayoutSubject(fs, that);
+      public SwipeRefreshLayoutSubject createSubject(FailureMetadata fm, SwipeRefreshLayout that) {
+        return new SwipeRefreshLayoutSubject(fm, that);
       }
     };
   }

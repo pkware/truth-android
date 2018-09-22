@@ -19,8 +19,8 @@ package com.pkware.truth.android.design.widget;
 import android.graphics.drawable.Drawable;
 import android.support.design.widget.NavigationView;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 import com.pkware.truth.android.widget.AbstractFrameLayoutSubject;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -30,15 +30,15 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class NavigationViewSubject
     extends AbstractFrameLayoutSubject<NavigationViewSubject, NavigationView> {
-  protected NavigationViewSubject(FailureStrategy failureStrategy, NavigationView subject) {
-    super(failureStrategy, subject);
+  protected NavigationViewSubject(FailureMetadata failureMetadata, NavigationView subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<NavigationViewSubject, NavigationView> type() {
-    return new SubjectFactory<NavigationViewSubject, NavigationView>() {
+  public static Subject.Factory<NavigationViewSubject, NavigationView> type() {
+    return new Subject.Factory<NavigationViewSubject, NavigationView>() {
       @Override
-      public NavigationViewSubject getSubject(FailureStrategy fs, NavigationView that) {
-        return new NavigationViewSubject(fs, that);
+      public NavigationViewSubject createSubject(FailureMetadata fm, NavigationView that) {
+        return new NavigationViewSubject(fm, that);
       }
     };
   }

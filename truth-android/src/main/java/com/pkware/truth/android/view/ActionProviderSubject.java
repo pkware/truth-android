@@ -19,9 +19,8 @@ package com.pkware.truth.android.view;
 import android.annotation.TargetApi;
 import android.view.ActionProvider;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 import static com.google.common.truth.Truth.assertThat;
@@ -30,15 +29,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ActionProvider} subjects.
  */
 public class ActionProviderSubject extends Subject<ActionProviderSubject, ActionProvider> {
-  protected ActionProviderSubject(FailureStrategy failureStrategy, ActionProvider subject) {
-    super(failureStrategy, subject);
+  protected ActionProviderSubject(FailureMetadata failureMetadata, ActionProvider subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ActionProviderSubject, ActionProvider> type() {
-    return new SubjectFactory<ActionProviderSubject, ActionProvider>() {
+  public static Subject.Factory<ActionProviderSubject, ActionProvider> type() {
+    return new Subject.Factory<ActionProviderSubject, ActionProvider>() {
       @Override
-      public ActionProviderSubject getSubject(FailureStrategy fs, ActionProvider that) {
-        return new ActionProviderSubject(fs, that);
+      public ActionProviderSubject createSubject(FailureMetadata fm, ActionProvider that) {
+        return new ActionProviderSubject(fm, that);
       }
     };
   }

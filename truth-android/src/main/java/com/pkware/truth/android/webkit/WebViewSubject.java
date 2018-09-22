@@ -19,9 +19,8 @@ package com.pkware.truth.android.webkit;
 import android.net.http.SslCertificate;
 import android.webkit.WebView;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -29,15 +28,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link WebView} subjects.
  */
 public class WebViewSubject extends Subject<WebViewSubject, WebView> {
-  protected WebViewSubject(FailureStrategy failureStrategy, WebView subject) {
-    super(failureStrategy, subject);
+  protected WebViewSubject(FailureMetadata failureMetadata, WebView subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<WebViewSubject, WebView> type() {
-    return new SubjectFactory<WebViewSubject, WebView>() {
+  public static Subject.Factory<WebViewSubject, WebView> type() {
+    return new Subject.Factory<WebViewSubject, WebView>() {
       @Override
-      public WebViewSubject getSubject(FailureStrategy fs, WebView that) {
-        return new WebViewSubject(fs, that);
+      public WebViewSubject createSubject(FailureMetadata fm, WebView that) {
+        return new WebViewSubject(fm, that);
       }
     };
   }

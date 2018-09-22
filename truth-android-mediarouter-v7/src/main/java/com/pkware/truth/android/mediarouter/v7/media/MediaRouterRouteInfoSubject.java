@@ -18,9 +18,8 @@ package com.pkware.truth.android.mediarouter.v7.media;
 
 import android.support.v7.media.MediaRouter;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assert_;
@@ -32,15 +31,15 @@ import static com.pkware.truth.android.mediarouter.v7.media.MediaRouteDescriptor
 public class MediaRouterRouteInfoSubject
     extends Subject<MediaRouterRouteInfoSubject, MediaRouter.RouteInfo> {
 
-  protected MediaRouterRouteInfoSubject(FailureStrategy failureStrategy, MediaRouter.RouteInfo subject) {
-    super(failureStrategy, subject);
+  protected MediaRouterRouteInfoSubject(FailureMetadata failureMetadata, MediaRouter.RouteInfo subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<MediaRouterRouteInfoSubject, MediaRouter.RouteInfo> type() {
-    return new SubjectFactory<MediaRouterRouteInfoSubject, MediaRouter.RouteInfo>() {
+  public static Subject.Factory<MediaRouterRouteInfoSubject, MediaRouter.RouteInfo> type() {
+    return new Subject.Factory<MediaRouterRouteInfoSubject, MediaRouter.RouteInfo>() {
       @Override
-      public MediaRouterRouteInfoSubject getSubject(FailureStrategy fs, MediaRouter.RouteInfo that) {
-        return new MediaRouterRouteInfoSubject(fs, that);
+      public MediaRouterRouteInfoSubject createSubject(FailureMetadata fm, MediaRouter.RouteInfo that) {
+        return new MediaRouterRouteInfoSubject(fm, that);
       }
     };
   }
@@ -93,7 +92,7 @@ public class MediaRouterRouteInfoSubject
     int actualHandling = actual().getVolumeHandling();
     //noinspection WrongConstant
     assert_()
-        .withFailureMessage("Expected volume handling <%s> but was <%s>.",
+        .withMessage("Expected volume handling <%s> but was <%s>.",
             volumeHandling(volumeHandling), volumeHandling(actualHandling))
         .that(actualHandling)
         .isEqualTo(volumeHandling);

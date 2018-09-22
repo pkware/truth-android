@@ -18,7 +18,7 @@ package com.pkware.truth.android.content;
 
 import android.content.SharedPreferences;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
 import java.util.Set;
@@ -27,13 +27,13 @@ import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assert_;
 
 public abstract class AbstractSharedPreferencesSubject<S extends AbstractSharedPreferencesSubject<S, T>, T extends SharedPreferences> extends Subject<S, T> {
-  protected AbstractSharedPreferencesSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractSharedPreferencesSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S hasKey(String key) {
     assert_()
-        .withFailureMessage("Expected key <%s> to be present but it was not.", key)
+        .withMessage("Expected key <%s> to be present but it was not.", key)
         .that(actual().contains(key))
         .isTrue();
     //noinspection unchecked
@@ -42,7 +42,7 @@ public abstract class AbstractSharedPreferencesSubject<S extends AbstractSharedP
 
   public S doesNotHaveKey(String key) {
     assert_()
-        .withFailureMessage("Expected key <%s> not to be present but it was.", key)
+        .withMessage("Expected key <%s> not to be present but it was.", key)
         .that(actual().contains(key))
         .isFalse();
     //noinspection unchecked

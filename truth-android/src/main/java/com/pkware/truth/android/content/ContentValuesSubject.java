@@ -19,9 +19,8 @@ package com.pkware.truth.android.content;
 import android.content.ContentValues;
 import android.support.annotation.NonNull;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -36,15 +35,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ContentValues} subjects.
  */
 public class ContentValuesSubject extends Subject<ContentValuesSubject, ContentValues> {
-  protected ContentValuesSubject(FailureStrategy failureStrategy, ContentValues subject) {
-    super(failureStrategy, subject);
+  protected ContentValuesSubject(FailureMetadata failureMetadata, ContentValues subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ContentValuesSubject, ContentValues> type() {
-    return new SubjectFactory<ContentValuesSubject, ContentValues>() {
+  public static Subject.Factory<ContentValuesSubject, ContentValues> type() {
+    return new Subject.Factory<ContentValuesSubject, ContentValues>() {
       @Override
-      public ContentValuesSubject getSubject(FailureStrategy fs, ContentValues that) {
-        return new ContentValuesSubject(fs, that);
+      public ContentValuesSubject createSubject(FailureMetadata fm, ContentValues that) {
+        return new ContentValuesSubject(fm, that);
       }
     };
   }

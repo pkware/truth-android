@@ -18,8 +18,8 @@ package com.pkware.truth.android.widget;
 
 import android.widget.ScrollView;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ScrollView} subjects.
  */
 public class ScrollViewSubject extends AbstractFrameLayoutSubject<ScrollViewSubject, ScrollView> {
-  protected ScrollViewSubject(FailureStrategy failureStrategy, ScrollView subject) {
-    super(failureStrategy, subject);
+  protected ScrollViewSubject(FailureMetadata failureMetadata, ScrollView subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ScrollViewSubject, ScrollView> type() {
-    return new SubjectFactory<ScrollViewSubject, ScrollView>() {
+  public static Subject.Factory<ScrollViewSubject, ScrollView> type() {
+    return new Subject.Factory<ScrollViewSubject, ScrollView>() {
       @Override
-      public ScrollViewSubject getSubject(FailureStrategy fs, ScrollView that) {
-        return new ScrollViewSubject(fs, that);
+      public ScrollViewSubject createSubject(FailureMetadata fm, ScrollView that) {
+        return new ScrollViewSubject(fm, that);
       }
     };
   }

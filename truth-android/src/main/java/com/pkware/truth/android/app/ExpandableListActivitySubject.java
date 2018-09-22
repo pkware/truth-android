@@ -18,8 +18,8 @@ package com.pkware.truth.android.app;
 
 import android.app.ExpandableListActivity;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ExpandableListActivity} subjects.
  */
 public class ExpandableListActivitySubject extends AbstractActivitySubject<ExpandableListActivitySubject, ExpandableListActivity> {
-  protected ExpandableListActivitySubject(FailureStrategy failureStrategy, ExpandableListActivity subject) {
-    super(failureStrategy, subject);
+  protected ExpandableListActivitySubject(FailureMetadata failureMetadata, ExpandableListActivity subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ExpandableListActivitySubject, ExpandableListActivity> type() {
-    return new SubjectFactory<ExpandableListActivitySubject, ExpandableListActivity>() {
+  public static Subject.Factory<ExpandableListActivitySubject, ExpandableListActivity> type() {
+    return new Subject.Factory<ExpandableListActivitySubject, ExpandableListActivity>() {
       @Override
-      public ExpandableListActivitySubject getSubject(FailureStrategy fs, ExpandableListActivity that) {
-        return new ExpandableListActivitySubject(fs, that);
+      public ExpandableListActivitySubject createSubject(FailureMetadata fm, ExpandableListActivity that) {
+        return new ExpandableListActivitySubject(fm, that);
       }
     };
   }

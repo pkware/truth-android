@@ -19,14 +19,14 @@ package com.pkware.truth.android.widget;
 import android.widget.AbsSpinner;
 import android.widget.SpinnerAdapter;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 
 import static com.google.common.truth.Truth.assertThat;
 
 public abstract class AbstractAbsSpinnerSubject<S extends AbstractAbsSpinnerSubject<S, T>, T extends AbsSpinner>
     extends AbstractAdapterViewSubject<S, T> {
-  protected AbstractAbsSpinnerSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractAbsSpinnerSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S hasAdapter(SpinnerAdapter adapter) {

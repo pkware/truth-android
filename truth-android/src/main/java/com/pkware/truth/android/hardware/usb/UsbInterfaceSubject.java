@@ -18,9 +18,8 @@ package com.pkware.truth.android.hardware.usb;
 
 import android.hardware.usb.UsbInterface;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link UsbInterface} subjects.
  */
 public class UsbInterfaceSubject extends Subject<UsbInterfaceSubject, UsbInterface> {
-  protected UsbInterfaceSubject(FailureStrategy failureStrategy, UsbInterface subject) {
-    super(failureStrategy, subject);
+  protected UsbInterfaceSubject(FailureMetadata failureMetadata, UsbInterface subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<UsbInterfaceSubject, UsbInterface> type() {
-    return new SubjectFactory<UsbInterfaceSubject, UsbInterface>() {
+  public static Subject.Factory<UsbInterfaceSubject, UsbInterface> type() {
+    return new Subject.Factory<UsbInterfaceSubject, UsbInterface>() {
       @Override
-      public UsbInterfaceSubject getSubject(FailureStrategy fs, UsbInterface that) {
-        return new UsbInterfaceSubject(fs, that);
+      public UsbInterfaceSubject createSubject(FailureMetadata fm, UsbInterface that) {
+        return new UsbInterfaceSubject(fm, that);
       }
     };
   }

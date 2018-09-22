@@ -18,8 +18,8 @@ package com.pkware.truth.android.preferences;
 
 import android.preference.PreferenceGroup;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link PreferenceGroup} subjects.
@@ -27,15 +27,15 @@ import com.google.common.truth.SubjectFactory;
  * This class is final. To extend use {@link AbstractPreferenceGroupSubject}.
  */
 public final class PreferenceGroupSubject extends AbstractPreferenceGroupSubject<PreferenceGroupSubject, PreferenceGroup> {
-  protected PreferenceGroupSubject(FailureStrategy failureStrategy, PreferenceGroup subject) {
-    super(failureStrategy, subject);
+  protected PreferenceGroupSubject(FailureMetadata failureMetadata, PreferenceGroup subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<PreferenceGroupSubject, PreferenceGroup> type() {
-    return new SubjectFactory<PreferenceGroupSubject, PreferenceGroup>() {
+  public static Subject.Factory<PreferenceGroupSubject, PreferenceGroup> type() {
+    return new Subject.Factory<PreferenceGroupSubject, PreferenceGroup>() {
       @Override
-      public PreferenceGroupSubject getSubject(FailureStrategy fs, PreferenceGroup that) {
-        return new PreferenceGroupSubject(fs, that);
+      public PreferenceGroupSubject createSubject(FailureMetadata fm, PreferenceGroup that) {
+        return new PreferenceGroupSubject(fm, that);
       }
     };
   }

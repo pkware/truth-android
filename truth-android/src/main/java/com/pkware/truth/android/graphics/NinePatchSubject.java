@@ -20,9 +20,8 @@ import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.graphics.NinePatch;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.os.Build.VERSION_CODES.KITKAT;
 import static com.google.common.truth.Truth.assertThat;
@@ -31,15 +30,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link NinePatch} subjects.
  */
 public class NinePatchSubject extends Subject<NinePatchSubject, NinePatch> {
-  protected NinePatchSubject(FailureStrategy failureStrategy, NinePatch subject) {
-    super(failureStrategy, subject);
+  protected NinePatchSubject(FailureMetadata failureMetadata, NinePatch subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<NinePatchSubject, NinePatch> type() {
-    return new SubjectFactory<NinePatchSubject, NinePatch>() {
+  public static Subject.Factory<NinePatchSubject, NinePatch> type() {
+    return new Subject.Factory<NinePatchSubject, NinePatch>() {
       @Override
-      public NinePatchSubject getSubject(FailureStrategy fs, NinePatch that) {
-        return new NinePatchSubject(fs, that);
+      public NinePatchSubject createSubject(FailureMetadata fm, NinePatch that) {
+        return new NinePatchSubject(fm, that);
       }
     };
   }

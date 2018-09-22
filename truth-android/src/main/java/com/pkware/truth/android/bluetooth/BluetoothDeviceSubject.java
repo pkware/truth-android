@@ -19,9 +19,8 @@ package com.pkware.truth.android.bluetooth;
 import android.annotation.TargetApi;
 import android.bluetooth.BluetoothDevice;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.bluetooth.BluetoothDevice.BOND_BONDED;
 import static android.bluetooth.BluetoothDevice.BOND_BONDING;
@@ -41,15 +40,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
 @SuppressWarnings("MissingPermission")
 public class BluetoothDeviceSubject extends Subject<BluetoothDeviceSubject, BluetoothDevice> {
 
-  protected BluetoothDeviceSubject(FailureStrategy failureStrategy, BluetoothDevice subject) {
-    super(failureStrategy, subject);
+  protected BluetoothDeviceSubject(FailureMetadata failureMetadata, BluetoothDevice subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<BluetoothDeviceSubject, BluetoothDevice> type() {
-    return new SubjectFactory<BluetoothDeviceSubject, BluetoothDevice>() {
+  public static Subject.Factory<BluetoothDeviceSubject, BluetoothDevice> type() {
+    return new Subject.Factory<BluetoothDeviceSubject, BluetoothDevice>() {
       @Override
-      public BluetoothDeviceSubject getSubject(FailureStrategy fs, BluetoothDevice that) {
-        return new BluetoothDeviceSubject(fs, that);
+      public BluetoothDeviceSubject createSubject(FailureMetadata fm, BluetoothDevice that) {
+        return new BluetoothDeviceSubject(fm, that);
       }
     };
   }
@@ -83,7 +82,7 @@ public class BluetoothDeviceSubject extends Subject<BluetoothDeviceSubject, Blue
     int actualState = actual().getBondState();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected bond state <%s> but was <%s>.",
+        .withMessage("Expected bond state <%s> but was <%s>.",
             bondStateToString(state),
             bondStateToString(actualState))
         .that(actualState)
@@ -103,7 +102,7 @@ public class BluetoothDeviceSubject extends Subject<BluetoothDeviceSubject, Blue
     int actualType = actual().getType();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected type <%s> but was <%s>.",
+        .withMessage("Expected type <%s> but was <%s>.",
             typeToString(type),
             typeToString(actualType))
         .that(actualType)

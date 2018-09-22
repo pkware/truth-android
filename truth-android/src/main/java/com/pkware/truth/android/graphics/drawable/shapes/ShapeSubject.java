@@ -18,9 +18,8 @@ package com.pkware.truth.android.graphics.drawable.shapes;
 
 import android.graphics.drawable.shapes.Shape;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Shape} subjects.
  */
 public class ShapeSubject extends Subject<ShapeSubject, Shape> {
-  protected ShapeSubject(FailureStrategy failureStrategy, Shape subject) {
-    super(failureStrategy, subject);
+  protected ShapeSubject(FailureMetadata failureMetadata, Shape subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ShapeSubject, Shape> type() {
-    return new SubjectFactory<ShapeSubject, Shape>() {
+  public static Subject.Factory<ShapeSubject, Shape> type() {
+    return new Subject.Factory<ShapeSubject, Shape>() {
       @Override
-      public ShapeSubject getSubject(FailureStrategy fs, Shape that) {
-        return new ShapeSubject(fs, that);
+      public ShapeSubject createSubject(FailureMetadata fm, Shape that) {
+        return new ShapeSubject(fm, that);
       }
     };
   }

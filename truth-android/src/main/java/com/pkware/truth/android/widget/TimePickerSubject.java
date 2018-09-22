@@ -20,8 +20,8 @@ import android.annotation.TargetApi;
 import android.support.annotation.IntRange;
 import android.widget.TimePicker;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.M;
 import static com.google.common.truth.Truth.assertThat;
@@ -30,15 +30,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link TimePicker} subjects.
  */
 public class TimePickerSubject extends AbstractFrameLayoutSubject<TimePickerSubject, TimePicker> {
-  protected TimePickerSubject(FailureStrategy failureStrategy, TimePicker subject) {
-    super(failureStrategy, subject);
+  protected TimePickerSubject(FailureMetadata failureMetadata, TimePicker subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<TimePickerSubject, TimePicker> type() {
-    return new SubjectFactory<TimePickerSubject, TimePicker>() {
+  public static Subject.Factory<TimePickerSubject, TimePicker> type() {
+    return new Subject.Factory<TimePickerSubject, TimePicker>() {
       @Override
-      public TimePickerSubject getSubject(FailureStrategy fs, TimePicker that) {
-        return new TimePickerSubject(fs, that);
+      public TimePickerSubject createSubject(FailureMetadata fm, TimePicker that) {
+        return new TimePickerSubject(fm, that);
       }
     };
   }

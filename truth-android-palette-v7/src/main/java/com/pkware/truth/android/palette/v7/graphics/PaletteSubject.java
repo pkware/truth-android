@@ -18,9 +18,8 @@ package com.pkware.truth.android.palette.v7.graphics;
 
 import android.support.v7.graphics.Palette;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Palette} subjects.
  */
 public class PaletteSubject extends Subject<PaletteSubject, Palette> {
-  protected PaletteSubject(FailureStrategy failureStrategy, Palette subject) {
-    super(failureStrategy, subject);
+  protected PaletteSubject(FailureMetadata failureMetadata, Palette subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<PaletteSubject, Palette> type() {
-    return new SubjectFactory<PaletteSubject, Palette>() {
+  public static Subject.Factory<PaletteSubject, Palette> type() {
+    return new Subject.Factory<PaletteSubject, Palette>() {
       @Override
-      public PaletteSubject getSubject(FailureStrategy fs, Palette that) {
-        return new PaletteSubject(fs, that);
+      public PaletteSubject createSubject(FailureMetadata fm, Palette that) {
+        return new PaletteSubject(fm, that);
       }
     };
   }

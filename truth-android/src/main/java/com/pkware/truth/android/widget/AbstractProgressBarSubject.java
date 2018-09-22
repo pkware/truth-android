@@ -20,15 +20,15 @@ import android.graphics.drawable.Drawable;
 import android.view.animation.Interpolator;
 import android.widget.ProgressBar;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.view.AbstractViewSubject;
 
 import static com.google.common.truth.Truth.assertThat;
 
 public abstract class AbstractProgressBarSubject<S extends AbstractProgressBarSubject<S, T>, T extends ProgressBar>
     extends AbstractViewSubject<S, T> {
-  protected AbstractProgressBarSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractProgressBarSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S hasIndeterminateDrawable(Drawable drawable) {

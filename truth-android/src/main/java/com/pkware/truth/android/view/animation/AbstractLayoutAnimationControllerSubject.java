@@ -20,15 +20,15 @@ import android.view.animation.Animation;
 import android.view.animation.Interpolator;
 import android.view.animation.LayoutAnimationController;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
 public abstract class AbstractLayoutAnimationControllerSubject<S extends AbstractLayoutAnimationControllerSubject<S, T>, T extends LayoutAnimationController>
     extends Subject<S, T> {
-  protected AbstractLayoutAnimationControllerSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractLayoutAnimationControllerSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S hasAnimation(Animation animation) {

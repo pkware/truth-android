@@ -18,8 +18,8 @@ package com.pkware.truth.android.widget;
 
 import android.widget.ProgressBar;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link ProgressBar} subjects.
@@ -27,15 +27,15 @@ import com.google.common.truth.SubjectFactory;
  * This class is final. To extend use {@link AbstractProgressBarSubject}.
  */
 public final class ProgressBarSubject extends AbstractProgressBarSubject<ProgressBarSubject, ProgressBar> {
-  private ProgressBarSubject(FailureStrategy failureStrategy, ProgressBar subject) {
-    super(failureStrategy, subject);
+  private ProgressBarSubject(FailureMetadata failureMetadata, ProgressBar subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ProgressBarSubject, ProgressBar> type() {
-    return new SubjectFactory<ProgressBarSubject, ProgressBar>() {
+  public static Subject.Factory<ProgressBarSubject, ProgressBar> type() {
+    return new Subject.Factory<ProgressBarSubject, ProgressBar>() {
       @Override
-      public ProgressBarSubject getSubject(FailureStrategy fs, ProgressBar that) {
-        return new ProgressBarSubject(fs, that);
+      public ProgressBarSubject createSubject(FailureMetadata fm, ProgressBar that) {
+        return new ProgressBarSubject(fm, that);
       }
     };
   }

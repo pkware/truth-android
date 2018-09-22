@@ -20,9 +20,8 @@ import android.annotation.TargetApi;
 import android.app.TaskStackBuilder;
 import android.content.Intent;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 import static com.google.common.truth.Truth.assertThat;
@@ -32,15 +31,15 @@ import static com.google.common.truth.Truth.assertThat;
  */
 @TargetApi(JELLY_BEAN)
 public class TaskStackBuilderSubject extends Subject<TaskStackBuilderSubject, TaskStackBuilder> {
-  protected TaskStackBuilderSubject(FailureStrategy failureStrategy, TaskStackBuilder subject) {
-    super(failureStrategy, subject);
+  protected TaskStackBuilderSubject(FailureMetadata failureMetadata, TaskStackBuilder subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<TaskStackBuilderSubject, TaskStackBuilder> type() {
-    return new SubjectFactory<TaskStackBuilderSubject, TaskStackBuilder>() {
+  public static Subject.Factory<TaskStackBuilderSubject, TaskStackBuilder> type() {
+    return new Subject.Factory<TaskStackBuilderSubject, TaskStackBuilder>() {
       @Override
-      public TaskStackBuilderSubject getSubject(FailureStrategy fs, TaskStackBuilder that) {
-        return new TaskStackBuilderSubject(fs, that);
+      public TaskStackBuilderSubject createSubject(FailureMetadata fm, TaskStackBuilder that) {
+        return new TaskStackBuilderSubject(fm, that);
       }
     };
   }

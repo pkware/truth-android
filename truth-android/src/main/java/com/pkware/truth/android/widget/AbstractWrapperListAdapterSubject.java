@@ -19,14 +19,14 @@ package com.pkware.truth.android.widget;
 import android.widget.ListAdapter;
 import android.widget.WrapperListAdapter;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 
 import static com.google.common.truth.Truth.assertThat;
 
 public abstract class AbstractWrapperListAdapterSubject<S extends AbstractWrapperListAdapterSubject<S, T>, T extends WrapperListAdapter>
     extends AbstractListAdapterSubject<S, T> {
-  protected AbstractWrapperListAdapterSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractWrapperListAdapterSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S hasWrappedAdapter(ListAdapter adapter) {

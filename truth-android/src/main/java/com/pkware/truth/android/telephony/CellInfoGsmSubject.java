@@ -21,8 +21,8 @@ import android.telephony.CellIdentityGsm;
 import android.telephony.CellInfoGsm;
 import android.telephony.CellSignalStrengthGsm;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
 import static com.google.common.truth.Truth.assertThat;
@@ -32,15 +32,15 @@ import static com.google.common.truth.Truth.assertThat;
  */
 @TargetApi(JELLY_BEAN_MR1)
 public final class CellInfoGsmSubject extends AbstractCellInfoSubject<CellInfoGsmSubject, CellInfoGsm> {
-  private CellInfoGsmSubject(FailureStrategy failureStrategy, CellInfoGsm subject) {
-    super(failureStrategy, subject);
+  private CellInfoGsmSubject(FailureMetadata failureMetadata, CellInfoGsm subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<CellInfoGsmSubject, CellInfoGsm> type() {
-    return new SubjectFactory<CellInfoGsmSubject, CellInfoGsm>() {
+  public static Subject.Factory<CellInfoGsmSubject, CellInfoGsm> type() {
+    return new Subject.Factory<CellInfoGsmSubject, CellInfoGsm>() {
       @Override
-      public CellInfoGsmSubject getSubject(FailureStrategy fs, CellInfoGsm that) {
-        return new CellInfoGsmSubject(fs, that);
+      public CellInfoGsmSubject createSubject(FailureMetadata fm, CellInfoGsm that) {
+        return new CellInfoGsmSubject(fm, that);
       }
     };
   }

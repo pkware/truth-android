@@ -19,8 +19,8 @@ package com.pkware.truth.android.widget;
 import android.view.View;
 import android.widget.TabHost;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +28,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link TabHost} subjects.
  */
 public class TabHostSubject extends AbstractFrameLayoutSubject<TabHostSubject, TabHost> {
-  protected TabHostSubject(FailureStrategy failureStrategy, TabHost subject) {
-    super(failureStrategy, subject);
+  protected TabHostSubject(FailureMetadata failureMetadata, TabHost subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<TabHostSubject, TabHost> type() {
-    return new SubjectFactory<TabHostSubject, TabHost>() {
+  public static Subject.Factory<TabHostSubject, TabHost> type() {
+    return new Subject.Factory<TabHostSubject, TabHost>() {
       @Override
-      public TabHostSubject getSubject(FailureStrategy fs, TabHost that) {
-        return new TabHostSubject(fs, that);
+      public TabHostSubject createSubject(FailureMetadata fm, TabHost that) {
+        return new TabHostSubject(fm, that);
       }
     };
   }

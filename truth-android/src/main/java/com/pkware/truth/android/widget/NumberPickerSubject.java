@@ -18,8 +18,8 @@ package com.pkware.truth.android.widget;
 
 import android.widget.NumberPicker;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link NumberPicker} subjects.
  */
 public class NumberPickerSubject extends AbstractLinearLayoutSubject<NumberPickerSubject, NumberPicker> {
-  protected NumberPickerSubject(FailureStrategy failureStrategy, NumberPicker subject) {
-    super(failureStrategy, subject);
+  protected NumberPickerSubject(FailureMetadata failureMetadata, NumberPicker subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<NumberPickerSubject, NumberPicker> type() {
-    return new SubjectFactory<NumberPickerSubject, NumberPicker>() {
+  public static Subject.Factory<NumberPickerSubject, NumberPicker> type() {
+    return new Subject.Factory<NumberPickerSubject, NumberPicker>() {
       @Override
-      public NumberPickerSubject getSubject(FailureStrategy fs, NumberPicker that) {
-        return new NumberPickerSubject(fs, that);
+      public NumberPickerSubject createSubject(FailureMetadata fm, NumberPicker that) {
+        return new NumberPickerSubject(fm, that);
       }
     };
   }

@@ -21,8 +21,8 @@ import android.telephony.CellIdentityLte;
 import android.telephony.CellInfoLte;
 import android.telephony.CellSignalStrengthLte;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
 import static com.google.common.truth.Truth.assertThat;
@@ -32,15 +32,15 @@ import static com.google.common.truth.Truth.assertThat;
  */
 @TargetApi(JELLY_BEAN_MR1)
 public final class CellInfoLteSubject extends AbstractCellInfoSubject<CellInfoLteSubject, CellInfoLte> {
-  private CellInfoLteSubject(FailureStrategy failureStrategy, CellInfoLte subject) {
-    super(failureStrategy, subject);
+  private CellInfoLteSubject(FailureMetadata failureMetadata, CellInfoLte subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<CellInfoLteSubject, CellInfoLte> type() {
-    return new SubjectFactory<CellInfoLteSubject, CellInfoLte>() {
+  public static Subject.Factory<CellInfoLteSubject, CellInfoLte> type() {
+    return new Subject.Factory<CellInfoLteSubject, CellInfoLte>() {
       @Override
-      public CellInfoLteSubject getSubject(FailureStrategy fs, CellInfoLte that) {
-        return new CellInfoLteSubject(fs, that);
+      public CellInfoLteSubject createSubject(FailureMetadata fm, CellInfoLte that) {
+        return new CellInfoLteSubject(fm, that);
       }
     };
   }

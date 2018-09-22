@@ -18,8 +18,8 @@ package com.pkware.truth.android.design.widget;
 
 import android.support.design.widget.TabLayout;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 import com.pkware.truth.android.widget.AbstractHorizontalScrollViewSubject;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -31,15 +31,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  */
 public class TabLayoutSubject extends
     AbstractHorizontalScrollViewSubject<TabLayoutSubject, TabLayout> {
-  protected TabLayoutSubject(FailureStrategy failureStrategy, TabLayout subject) {
-    super(failureStrategy, subject);
+  protected TabLayoutSubject(FailureMetadata failureMetadata, TabLayout subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<TabLayoutSubject, TabLayout> type() {
-    return new SubjectFactory<TabLayoutSubject, TabLayout>() {
+  public static Subject.Factory<TabLayoutSubject, TabLayout> type() {
+    return new Subject.Factory<TabLayoutSubject, TabLayout>() {
       @Override
-      public TabLayoutSubject getSubject(FailureStrategy fs, TabLayout that) {
-        return new TabLayoutSubject(fs, that);
+      public TabLayoutSubject createSubject(FailureMetadata fm, TabLayout that) {
+        return new TabLayoutSubject(fm, that);
       }
     };
   }
@@ -69,7 +69,7 @@ public class TabLayoutSubject extends
     int actualGravity = actual().getTabGravity();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected tab gravity of <%s> but was <%s>.",
+        .withMessage("Expected tab gravity of <%s> but was <%s>.",
             gravityToString(gravity), gravityToString(actualGravity))
         .that(actualGravity)
         .isEqualTo(gravity);
@@ -80,7 +80,7 @@ public class TabLayoutSubject extends
     int actualMode = actual().getTabMode();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected tab mode of <%s> but was <%s>.", modeToString(mode),
+        .withMessage("Expected tab mode of <%s> but was <%s>.", modeToString(mode),
             modeToString(actualMode))
         .that(actualMode)
         .isEqualTo(mode);

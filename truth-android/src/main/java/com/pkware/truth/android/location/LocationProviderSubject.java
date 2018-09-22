@@ -18,9 +18,8 @@ package com.pkware.truth.android.location;
 
 import android.location.LocationProvider;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assert_;
@@ -31,15 +30,15 @@ import static com.pkware.truth.android.location.CriteriaSubject.powerRequirement
  * Propositions for {@link LocationProvider} subjects.
  */
 public class LocationProviderSubject extends Subject<LocationProviderSubject, LocationProvider> {
-  protected LocationProviderSubject(FailureStrategy failureStrategy, LocationProvider subject) {
-    super(failureStrategy, subject);
+  protected LocationProviderSubject(FailureMetadata failureMetadata, LocationProvider subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<LocationProviderSubject, LocationProvider> type() {
-    return new SubjectFactory<LocationProviderSubject, LocationProvider>() {
+  public static Subject.Factory<LocationProviderSubject, LocationProvider> type() {
+    return new Subject.Factory<LocationProviderSubject, LocationProvider>() {
       @Override
-      public LocationProviderSubject getSubject(FailureStrategy fs, LocationProvider that) {
-        return new LocationProviderSubject(fs, that);
+      public LocationProviderSubject createSubject(FailureMetadata fm, LocationProvider that) {
+        return new LocationProviderSubject(fm, that);
       }
     };
   }
@@ -47,7 +46,7 @@ public class LocationProviderSubject extends Subject<LocationProviderSubject, Lo
   public LocationProviderSubject hasAccuracy(int accuracy) {
     int actualAccuracy = actual().getAccuracy();
     assert_()
-        .withFailureMessage("Expected accuracy <%s> but was <%s>.", accuracyRequirementToString(accuracy), accuracyRequirementToString(actualAccuracy))
+        .withMessage("Expected accuracy <%s> but was <%s>.", accuracyRequirementToString(accuracy), accuracyRequirementToString(actualAccuracy))
         .that(actualAccuracy)
         .isEqualTo(accuracy);
     return this;
@@ -63,7 +62,7 @@ public class LocationProviderSubject extends Subject<LocationProviderSubject, Lo
   public LocationProviderSubject hasPowerRequirement(int requirement) {
     int actualRequirement = actual().getPowerRequirement();
     assert_()
-        .withFailureMessage("Expected power requirement <%s> but was <%s>.", powerRequirementToString(requirement), powerRequirementToString(actualRequirement))
+        .withMessage("Expected power requirement <%s> but was <%s>.", powerRequirementToString(requirement), powerRequirementToString(actualRequirement))
         .that(actualRequirement)
         .isEqualTo(requirement);
     return this;

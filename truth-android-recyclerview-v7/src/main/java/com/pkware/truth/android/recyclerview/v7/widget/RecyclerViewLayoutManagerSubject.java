@@ -18,9 +18,8 @@ package com.pkware.truth.android.recyclerview.v7.widget;
 
 import android.support.v7.widget.RecyclerView;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assert_;
@@ -32,15 +31,15 @@ import static com.pkware.truth.android.view.AbstractViewSubject.layoutDirectionT
 public class RecyclerViewLayoutManagerSubject
     extends Subject<RecyclerViewLayoutManagerSubject, RecyclerView.LayoutManager> {
 
-  protected RecyclerViewLayoutManagerSubject(FailureStrategy failureStrategy, RecyclerView.LayoutManager subject) {
-    super(failureStrategy, subject);
+  protected RecyclerViewLayoutManagerSubject(FailureMetadata failureMetadata, RecyclerView.LayoutManager subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<RecyclerViewLayoutManagerSubject, RecyclerView.LayoutManager> type() {
-    return new SubjectFactory<RecyclerViewLayoutManagerSubject, RecyclerView.LayoutManager>() {
+  public static Subject.Factory<RecyclerViewLayoutManagerSubject, RecyclerView.LayoutManager> type() {
+    return new Subject.Factory<RecyclerViewLayoutManagerSubject, RecyclerView.LayoutManager>() {
       @Override
-      public RecyclerViewLayoutManagerSubject getSubject(FailureStrategy fs, RecyclerView.LayoutManager that) {
-        return new RecyclerViewLayoutManagerSubject(fs, that);
+      public RecyclerViewLayoutManagerSubject createSubject(FailureMetadata fm, RecyclerView.LayoutManager that) {
+        return new RecyclerViewLayoutManagerSubject(fm, that);
       }
     };
   }
@@ -105,7 +104,7 @@ public class RecyclerViewLayoutManagerSubject
     int actualDirection = actual().getLayoutDirection();
     //noinspection WrongConstant
     assert_()
-        .withFailureMessage("Expected layout direction <%s> but was <%s>.",
+        .withMessage("Expected layout direction <%s> but was <%s>.",
             layoutDirectionToString(direction), layoutDirectionToString(actualDirection))
         .that(actualDirection)
         .isEqualTo(direction);

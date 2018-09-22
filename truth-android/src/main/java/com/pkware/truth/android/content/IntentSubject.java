@@ -22,9 +22,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 import com.pkware.truth.android.net.UriSubject;
 import com.pkware.truth.android.os.BundleSubject;
 
@@ -63,15 +62,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildBitMaskString;
  * Propositions for {@link Intent} subjects.
  */
 public class IntentSubject extends Subject<IntentSubject, Intent> {
-  protected IntentSubject(FailureStrategy failureStrategy, Intent subject) {
-    super(failureStrategy, subject);
+  protected IntentSubject(FailureMetadata failureMetadata, Intent subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<IntentSubject, Intent> type() {
-    return new SubjectFactory<IntentSubject, Intent>() {
+  public static Subject.Factory<IntentSubject, Intent> type() {
+    return new Subject.Factory<IntentSubject, Intent>() {
       @Override
-      public IntentSubject getSubject(FailureStrategy fs, Intent that) {
-        return new IntentSubject(fs, that);
+      public IntentSubject createSubject(FailureMetadata fm, Intent that) {
+        return new IntentSubject(fm, that);
       }
     };
   }
@@ -139,7 +138,7 @@ public class IntentSubject extends Subject<IntentSubject, Intent> {
     int actualFlags = actual().getFlags();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected <%s> but was <%s>.", flagsToString(flags), flagsToString(actualFlags))
+        .withMessage("Expected <%s> but was <%s>.", flagsToString(flags), flagsToString(actualFlags))
         .that(actualFlags)
         .isEqualTo(flags);
     return this;
@@ -168,7 +167,7 @@ public class IntentSubject extends Subject<IntentSubject, Intent> {
   public IntentSubject hasComponent(ComponentName expected) {
     ComponentName componentName = actual().getComponent();
     assert_()
-        .withFailureMessage("Expected component name <%s> but was <%s>.", expected.flattenToString(), componentName.flattenToString())
+        .withMessage("Expected component name <%s> but was <%s>.", expected.flattenToString(), componentName.flattenToString())
         .that(componentName)
         .isEqualTo(expected);
     return this;

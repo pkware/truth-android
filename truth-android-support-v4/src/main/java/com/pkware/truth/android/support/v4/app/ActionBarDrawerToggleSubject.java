@@ -18,9 +18,8 @@ package com.pkware.truth.android.support.v4.app;
 
 import android.support.v4.app.ActionBarDrawerToggle;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ActionBarDrawerToggle} subjects.
  */
 public class ActionBarDrawerToggleSubject extends Subject<ActionBarDrawerToggleSubject, ActionBarDrawerToggle> {
-  protected ActionBarDrawerToggleSubject(FailureStrategy failureStrategy, ActionBarDrawerToggle subject) {
-    super(failureStrategy, subject);
+  protected ActionBarDrawerToggleSubject(FailureMetadata failureMetadata, ActionBarDrawerToggle subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ActionBarDrawerToggleSubject, ActionBarDrawerToggle> type() {
-    return new SubjectFactory<ActionBarDrawerToggleSubject, ActionBarDrawerToggle>() {
+  public static Subject.Factory<ActionBarDrawerToggleSubject, ActionBarDrawerToggle> type() {
+    return new Subject.Factory<ActionBarDrawerToggleSubject, ActionBarDrawerToggle>() {
       @Override
-      public ActionBarDrawerToggleSubject getSubject(FailureStrategy fs, ActionBarDrawerToggle that) {
-        return new ActionBarDrawerToggleSubject(fs, that);
+      public ActionBarDrawerToggleSubject createSubject(FailureMetadata fm, ActionBarDrawerToggle that) {
+        return new ActionBarDrawerToggleSubject(fm, that);
       }
     };
   }

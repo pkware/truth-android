@@ -18,8 +18,8 @@ package com.pkware.truth.android.content;
 
 import android.content.SharedPreferences;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link SharedPreferences} subjects.
@@ -27,15 +27,15 @@ import com.google.common.truth.SubjectFactory;
  * This class is final. To extend use {@link AbstractSharedPreferencesSubject}.
  */
 public final class SharedPreferencesSubject extends AbstractSharedPreferencesSubject<SharedPreferencesSubject, SharedPreferences> {
-  private SharedPreferencesSubject(FailureStrategy failureStrategy, SharedPreferences subject) {
-    super(failureStrategy, subject);
+  private SharedPreferencesSubject(FailureMetadata failureMetadata, SharedPreferences subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<SharedPreferencesSubject, SharedPreferences> type() {
-    return new SubjectFactory<SharedPreferencesSubject, SharedPreferences>() {
+  public static Subject.Factory<SharedPreferencesSubject, SharedPreferences> type() {
+    return new Subject.Factory<SharedPreferencesSubject, SharedPreferences>() {
       @Override
-      public SharedPreferencesSubject getSubject(FailureStrategy fs, SharedPreferences that) {
-        return new SharedPreferencesSubject(fs, that);
+      public SharedPreferencesSubject createSubject(FailureMetadata fm, SharedPreferences that) {
+        return new SharedPreferencesSubject(fm, that);
       }
     };
   }

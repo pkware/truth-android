@@ -21,8 +21,8 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.StringRes;
 import android.widget.Switch;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.ICE_CREAM_SANDWICH;
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
@@ -33,15 +33,15 @@ import static com.google.common.truth.Truth.assertThat;
  */
 @TargetApi(ICE_CREAM_SANDWICH)
 public class SwitchSubject extends AbstractCompoundButtonSubject<SwitchSubject, Switch> {
-  protected SwitchSubject(FailureStrategy failureStrategy, Switch subject) {
-    super(failureStrategy, subject);
+  protected SwitchSubject(FailureMetadata failureMetadata, Switch subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<SwitchSubject, Switch> type() {
-    return new SubjectFactory<SwitchSubject, Switch>() {
+  public static Subject.Factory<SwitchSubject, Switch> type() {
+    return new Subject.Factory<SwitchSubject, Switch>() {
       @Override
-      public SwitchSubject getSubject(FailureStrategy fs, Switch that) {
-        return new SwitchSubject(fs, that);
+      public SwitchSubject createSubject(FailureMetadata fm, Switch that) {
+        return new SwitchSubject(fm, that);
       }
     };
   }

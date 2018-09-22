@@ -19,9 +19,8 @@ package com.pkware.truth.android.mediarouter.v7.media;
 import android.content.ComponentName;
 import android.support.v7.media.MediaRouteProvider;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -31,15 +30,15 @@ import static com.google.common.truth.Truth.assertThat;
 public class MediaRouteProviderProviderMetadataSubject extends
     Subject<MediaRouteProviderProviderMetadataSubject, MediaRouteProvider.ProviderMetadata> {
 
-  protected MediaRouteProviderProviderMetadataSubject(FailureStrategy failureStrategy, MediaRouteProvider.ProviderMetadata subject) {
-    super(failureStrategy, subject);
+  protected MediaRouteProviderProviderMetadataSubject(FailureMetadata failureMetadata, MediaRouteProvider.ProviderMetadata subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<MediaRouteProviderProviderMetadataSubject, MediaRouteProvider.ProviderMetadata> type() {
-    return new SubjectFactory<MediaRouteProviderProviderMetadataSubject, MediaRouteProvider.ProviderMetadata>() {
+  public static Subject.Factory<MediaRouteProviderProviderMetadataSubject, MediaRouteProvider.ProviderMetadata> type() {
+    return new Subject.Factory<MediaRouteProviderProviderMetadataSubject, MediaRouteProvider.ProviderMetadata>() {
       @Override
-      public MediaRouteProviderProviderMetadataSubject getSubject(FailureStrategy fs, MediaRouteProvider.ProviderMetadata that) {
-        return new MediaRouteProviderProviderMetadataSubject(fs, that);
+      public MediaRouteProviderProviderMetadataSubject createSubject(FailureMetadata fm, MediaRouteProvider.ProviderMetadata that) {
+        return new MediaRouteProviderProviderMetadataSubject(fm, that);
       }
     };
   }

@@ -18,8 +18,8 @@ package com.pkware.truth.android.support.v4.app;
 
 import android.support.v4.app.ListFragment;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ListFragment} subjects.
  */
 public class ListFragmentSubject extends AbstractFragmentSubject<ListFragmentSubject, ListFragment> {
-  protected ListFragmentSubject(FailureStrategy failureStrategy, ListFragment subject) {
-    super(failureStrategy, subject);
+  protected ListFragmentSubject(FailureMetadata failureMetadata, ListFragment subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ListFragmentSubject, ListFragment> type() {
-    return new SubjectFactory<ListFragmentSubject, ListFragment>() {
+  public static Subject.Factory<ListFragmentSubject, ListFragment> type() {
+    return new Subject.Factory<ListFragmentSubject, ListFragment>() {
       @Override
-      public ListFragmentSubject getSubject(FailureStrategy fs, ListFragment that) {
-        return new ListFragmentSubject(fs, that);
+      public ListFragmentSubject createSubject(FailureMetadata fm, ListFragment that) {
+        return new ListFragmentSubject(fm, that);
       }
     };
   }

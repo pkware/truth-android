@@ -19,9 +19,8 @@ package com.pkware.truth.android.graphics;
 import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
 import static android.os.Build.VERSION_CODES.KITKAT;
@@ -31,15 +30,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Bitmap} subjects.
  */
 public class BitmapSubject extends Subject<BitmapSubject, Bitmap> {
-  protected BitmapSubject(FailureStrategy failureStrategy, Bitmap subject) {
-    super(failureStrategy, subject);
+  protected BitmapSubject(FailureMetadata failureMetadata, Bitmap subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<BitmapSubject, Bitmap> type() {
-    return new SubjectFactory<BitmapSubject, Bitmap>() {
+  public static Subject.Factory<BitmapSubject, Bitmap> type() {
+    return new Subject.Factory<BitmapSubject, Bitmap>() {
       @Override
-      public BitmapSubject getSubject(FailureStrategy fs, Bitmap that) {
-        return new BitmapSubject(fs, that);
+      public BitmapSubject createSubject(FailureMetadata fm, Bitmap that) {
+        return new BitmapSubject(fm, that);
       }
     };
   }

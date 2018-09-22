@@ -20,8 +20,8 @@ import android.app.Dialog;
 import android.preference.PreferenceScreen;
 import android.widget.ListAdapter;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -29,15 +29,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link PreferenceScreen} subjects.
  */
 public class PreferenceScreenSubject extends AbstractPreferenceGroupSubject<PreferenceScreenSubject, PreferenceScreen> {
-  protected PreferenceScreenSubject(FailureStrategy failureStrategy, PreferenceScreen subject) {
-    super(failureStrategy, subject);
+  protected PreferenceScreenSubject(FailureMetadata failureMetadata, PreferenceScreen subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<PreferenceScreenSubject, PreferenceScreen> type() {
-    return new SubjectFactory<PreferenceScreenSubject, PreferenceScreen>() {
+  public static Subject.Factory<PreferenceScreenSubject, PreferenceScreen> type() {
+    return new Subject.Factory<PreferenceScreenSubject, PreferenceScreen>() {
       @Override
-      public PreferenceScreenSubject getSubject(FailureStrategy fs, PreferenceScreen that) {
-        return new PreferenceScreenSubject(fs, that);
+      public PreferenceScreenSubject createSubject(FailureMetadata fm, PreferenceScreen that) {
+        return new PreferenceScreenSubject(fm, that);
       }
     };
   }

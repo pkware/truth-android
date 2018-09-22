@@ -18,9 +18,8 @@ package com.pkware.truth.android.app;
 
 import android.app.FragmentTransaction;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link FragmentTransaction} subjects.
  */
 public class FragmentTransactionSubject extends Subject<FragmentTransactionSubject, FragmentTransaction> {
-  protected FragmentTransactionSubject(FailureStrategy failureStrategy, FragmentTransaction subject) {
-    super(failureStrategy, subject);
+  protected FragmentTransactionSubject(FailureMetadata failureMetadata, FragmentTransaction subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<FragmentTransactionSubject, FragmentTransaction> type() {
-    return new SubjectFactory<FragmentTransactionSubject, FragmentTransaction>() {
+  public static Subject.Factory<FragmentTransactionSubject, FragmentTransaction> type() {
+    return new Subject.Factory<FragmentTransactionSubject, FragmentTransaction>() {
       @Override
-      public FragmentTransactionSubject getSubject(FailureStrategy fs, FragmentTransaction that) {
-        return new FragmentTransactionSubject(fs, that);
+      public FragmentTransactionSubject createSubject(FailureMetadata fm, FragmentTransaction that) {
+        return new FragmentTransactionSubject(fm, that);
       }
     };
   }

@@ -19,9 +19,8 @@ package com.pkware.truth.android.hardware;
 import android.annotation.TargetApi;
 import android.hardware.Sensor;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.hardware.Sensor.TYPE_ACCELEROMETER;
 import static android.hardware.Sensor.TYPE_ALL;
@@ -54,15 +53,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link Sensor} subjects.
  */
 public class SensorSubject extends Subject<SensorSubject, Sensor> {
-  protected SensorSubject(FailureStrategy failureStrategy, Sensor subject) {
-    super(failureStrategy, subject);
+  protected SensorSubject(FailureMetadata failureMetadata, Sensor subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<SensorSubject, Sensor> type() {
-    return new SubjectFactory<SensorSubject, Sensor>() {
+  public static Subject.Factory<SensorSubject, Sensor> type() {
+    return new Subject.Factory<SensorSubject, Sensor>() {
       @Override
-      public SensorSubject getSubject(FailureStrategy fs, Sensor that) {
-        return new SensorSubject(fs, that);
+      public SensorSubject createSubject(FailureMetadata fm, Sensor that) {
+        return new SensorSubject(fm, that);
       }
     };
   }
@@ -136,7 +135,7 @@ public class SensorSubject extends Subject<SensorSubject, Sensor> {
     int actualType = actual().getType();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected type <%s> but was <%s>.", typeToString(type), typeToString(actualType))
+        .withMessage("Expected type <%s> but was <%s>.", typeToString(type), typeToString(actualType))
         .that(actualType)
         .isEqualTo(type);
     return this;

@@ -18,8 +18,8 @@ package com.pkware.truth.android.appcompat.v7.widget;
 
 import android.support.v7.widget.LinearLayoutCompat;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link LinearLayoutCompat} subjects.
@@ -28,15 +28,15 @@ import com.google.common.truth.SubjectFactory;
  */
 public final class LinearLayoutCompatSubject extends
     AbstractLinearLayoutCompatSubject<LinearLayoutCompatSubject, LinearLayoutCompat> {
-  protected LinearLayoutCompatSubject(FailureStrategy failureStrategy, LinearLayoutCompat subject) {
-    super(failureStrategy, subject);
+  protected LinearLayoutCompatSubject(FailureMetadata failureMetadata, LinearLayoutCompat subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<LinearLayoutCompatSubject, LinearLayoutCompat> type() {
-    return new SubjectFactory<LinearLayoutCompatSubject, LinearLayoutCompat>() {
+  public static Subject.Factory<LinearLayoutCompatSubject, LinearLayoutCompat> type() {
+    return new Subject.Factory<LinearLayoutCompatSubject, LinearLayoutCompat>() {
       @Override
-      public LinearLayoutCompatSubject getSubject(FailureStrategy fs, LinearLayoutCompat that) {
-        return new LinearLayoutCompatSubject(fs, that);
+      public LinearLayoutCompatSubject createSubject(FailureMetadata fm, LinearLayoutCompat that) {
+        return new LinearLayoutCompatSubject(fm, that);
       }
     };
   }

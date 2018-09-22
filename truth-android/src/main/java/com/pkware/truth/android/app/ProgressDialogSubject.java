@@ -18,8 +18,8 @@ package com.pkware.truth.android.app;
 
 import android.app.ProgressDialog;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ProgressDialog} subjects.
  */
 public class ProgressDialogSubject extends AbstractDialogSubject<ProgressDialogSubject, ProgressDialog> {
-  protected ProgressDialogSubject(FailureStrategy failureStrategy, ProgressDialog subject) {
-    super(failureStrategy, subject);
+  protected ProgressDialogSubject(FailureMetadata failureMetadata, ProgressDialog subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ProgressDialogSubject, ProgressDialog> type() {
-    return new SubjectFactory<ProgressDialogSubject, ProgressDialog>() {
+  public static Subject.Factory<ProgressDialogSubject, ProgressDialog> type() {
+    return new Subject.Factory<ProgressDialogSubject, ProgressDialog>() {
       @Override
-      public ProgressDialogSubject getSubject(FailureStrategy fs, ProgressDialog that) {
-        return new ProgressDialogSubject(fs, that);
+      public ProgressDialogSubject createSubject(FailureMetadata fm, ProgressDialog that) {
+        return new ProgressDialogSubject(fm, that);
       }
     };
   }

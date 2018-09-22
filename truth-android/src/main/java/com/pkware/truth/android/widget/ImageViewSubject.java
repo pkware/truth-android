@@ -20,8 +20,8 @@ import android.annotation.TargetApi;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 import com.pkware.truth.android.view.AbstractViewSubject;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
@@ -31,15 +31,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ImageView} subjects.
  */
 public class ImageViewSubject extends AbstractViewSubject<ImageViewSubject, ImageView> {
-  protected ImageViewSubject(FailureStrategy failureStrategy, ImageView subject) {
-    super(failureStrategy, subject);
+  protected ImageViewSubject(FailureMetadata failureMetadata, ImageView subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ImageViewSubject, ImageView> type() {
-    return new SubjectFactory<ImageViewSubject, ImageView>() {
+  public static Subject.Factory<ImageViewSubject, ImageView> type() {
+    return new Subject.Factory<ImageViewSubject, ImageView>() {
       @Override
-      public ImageViewSubject getSubject(FailureStrategy fs, ImageView that) {
-        return new ImageViewSubject(fs, that);
+      public ImageViewSubject createSubject(FailureMetadata fm, ImageView that) {
+        return new ImageViewSubject(fm, that);
       }
     };
   }

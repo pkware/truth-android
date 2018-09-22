@@ -19,8 +19,8 @@ package com.pkware.truth.android.graphics.drawable;
 import android.annotation.TargetApi;
 import android.graphics.drawable.GradientDrawable;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 import static com.google.common.truth.Truth.assertThat;
@@ -29,15 +29,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link GradientDrawable} subjects.
  */
 public class GradientDrawableSubject extends AbstractDrawableSubject<GradientDrawableSubject, GradientDrawable> {
-  protected GradientDrawableSubject(FailureStrategy failureStrategy, GradientDrawable subject) {
-    super(failureStrategy, subject);
+  protected GradientDrawableSubject(FailureMetadata failureMetadata, GradientDrawable subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<GradientDrawableSubject, GradientDrawable> type() {
-    return new SubjectFactory<GradientDrawableSubject, GradientDrawable>() {
+  public static Subject.Factory<GradientDrawableSubject, GradientDrawable> type() {
+    return new Subject.Factory<GradientDrawableSubject, GradientDrawable>() {
       @Override
-      public GradientDrawableSubject getSubject(FailureStrategy fs, GradientDrawable that) {
-        return new GradientDrawableSubject(fs, that);
+      public GradientDrawableSubject createSubject(FailureMetadata fm, GradientDrawable that) {
+        return new GradientDrawableSubject(fm, that);
       }
     };
   }

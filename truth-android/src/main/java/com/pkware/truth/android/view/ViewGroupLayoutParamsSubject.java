@@ -18,8 +18,8 @@ package com.pkware.truth.android.view;
 
 import android.view.ViewGroup;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link android.view.ViewGroup.LayoutParams} subjects.
@@ -28,15 +28,15 @@ import com.google.common.truth.SubjectFactory;
  */
 public final class ViewGroupLayoutParamsSubject
     extends AbstractViewGroupLayoutParamsSubject<ViewGroupLayoutParamsSubject, ViewGroup.LayoutParams> {
-  private ViewGroupLayoutParamsSubject(FailureStrategy failureStrategy, ViewGroup.LayoutParams subject) {
-    super(failureStrategy, subject);
+  private ViewGroupLayoutParamsSubject(FailureMetadata failureMetadata, ViewGroup.LayoutParams subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ViewGroupLayoutParamsSubject, ViewGroup.LayoutParams> type() {
-    return new SubjectFactory<ViewGroupLayoutParamsSubject, ViewGroup.LayoutParams>() {
+  public static Subject.Factory<ViewGroupLayoutParamsSubject, ViewGroup.LayoutParams> type() {
+    return new Subject.Factory<ViewGroupLayoutParamsSubject, ViewGroup.LayoutParams>() {
       @Override
-      public ViewGroupLayoutParamsSubject getSubject(FailureStrategy fs, ViewGroup.LayoutParams that) {
-        return new ViewGroupLayoutParamsSubject(fs, that);
+      public ViewGroupLayoutParamsSubject createSubject(FailureMetadata fm, ViewGroup.LayoutParams that) {
+        return new ViewGroupLayoutParamsSubject(fm, that);
       }
     };
   }

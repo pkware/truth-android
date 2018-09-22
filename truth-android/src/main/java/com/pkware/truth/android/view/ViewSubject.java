@@ -19,8 +19,8 @@ package com.pkware.truth.android.view;
 
 import android.view.View;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link View} subjects.
@@ -28,15 +28,15 @@ import com.google.common.truth.SubjectFactory;
  * This class is final. To extend use {@link AbstractViewSubject}.
  */
 public final class ViewSubject extends AbstractViewSubject<ViewSubject, View> {
-  private ViewSubject(FailureStrategy failureStrategy, View subject) {
-    super(failureStrategy, subject);
+  private ViewSubject(FailureMetadata failureMetadata, View subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ViewSubject, View> type() {
-    return new SubjectFactory<ViewSubject, View>() {
+  public static Subject.Factory<ViewSubject, View> type() {
+    return new Subject.Factory<ViewSubject, View>() {
       @Override
-      public ViewSubject getSubject(FailureStrategy fs, View that) {
-        return new ViewSubject(fs, that);
+      public ViewSubject createSubject(FailureMetadata fm, View that) {
+        return new ViewSubject(fm, that);
       }
     };
   }

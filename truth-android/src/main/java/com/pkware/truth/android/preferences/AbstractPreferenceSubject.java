@@ -25,15 +25,15 @@ import android.preference.PreferenceManager;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.StringRes;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
 public abstract class AbstractPreferenceSubject<S extends AbstractPreferenceSubject<S, T>, T extends Preference>
     extends Subject<S, T> {
-  protected AbstractPreferenceSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractPreferenceSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S hasContext(Context context) {

@@ -18,9 +18,8 @@ package com.pkware.truth.android.util;
 
 import android.util.LruCache;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link LruCache} subjects.
  */
 public class LruCacheSubject<K, V> extends Subject<LruCacheSubject<K, V>, LruCache<K, V>> {
-  protected LruCacheSubject(FailureStrategy failureStrategy, LruCache<K, V> subject) {
-    super(failureStrategy, subject);
+  protected LruCacheSubject(FailureMetadata failureMetadata, LruCache<K, V> subject) {
+    super(failureMetadata, subject);
   }
 
-  public static <K, V> SubjectFactory<LruCacheSubject<K, V>, LruCache<K, V>> type() {
-    return new SubjectFactory<LruCacheSubject<K, V>, LruCache<K, V>>() {
+  public static <K, V> Subject.Factory<LruCacheSubject<K, V>, LruCache<K, V>> type() {
+    return new Subject.Factory<LruCacheSubject<K, V>, LruCache<K, V>>() {
       @Override
-      public LruCacheSubject<K, V> getSubject(FailureStrategy fs, LruCache<K, V> that) {
-        return new LruCacheSubject<K, V>(fs, that);
+      public LruCacheSubject<K, V> createSubject(FailureMetadata fm, LruCache<K, V> that) {
+        return new LruCacheSubject<K, V>(fm, that);
       }
     };
   }

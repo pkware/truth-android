@@ -18,8 +18,8 @@ package com.pkware.truth.android.view;
 
 import android.view.ViewGroup;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link android.view.ViewGroup.MarginLayoutParams} subjects.
@@ -27,15 +27,15 @@ import com.google.common.truth.SubjectFactory;
  * This class is final. To extend use {@link AbstractViewGroupMarginLayoutParamsSubject}.
  */
 public final class ViewGroupMarginLayoutParamsSubject extends AbstractViewGroupMarginLayoutParamsSubject<ViewGroupMarginLayoutParamsSubject, ViewGroup.MarginLayoutParams> {
-  private ViewGroupMarginLayoutParamsSubject(FailureStrategy failureStrategy, ViewGroup.MarginLayoutParams subject) {
-    super(failureStrategy, subject);
+  private ViewGroupMarginLayoutParamsSubject(FailureMetadata failureMetadata, ViewGroup.MarginLayoutParams subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ViewGroupMarginLayoutParamsSubject, ViewGroup.MarginLayoutParams> type() {
-    return new SubjectFactory<ViewGroupMarginLayoutParamsSubject, ViewGroup.MarginLayoutParams>() {
+  public static Subject.Factory<ViewGroupMarginLayoutParamsSubject, ViewGroup.MarginLayoutParams> type() {
+    return new Subject.Factory<ViewGroupMarginLayoutParamsSubject, ViewGroup.MarginLayoutParams>() {
       @Override
-      public ViewGroupMarginLayoutParamsSubject getSubject(FailureStrategy fs, ViewGroup.MarginLayoutParams that) {
-        return new ViewGroupMarginLayoutParamsSubject(fs, that);
+      public ViewGroupMarginLayoutParamsSubject createSubject(FailureMetadata fm, ViewGroup.MarginLayoutParams that) {
+        return new ViewGroupMarginLayoutParamsSubject(fm, that);
       }
     };
   }

@@ -20,7 +20,7 @@ import android.annotation.TargetApi;
 import android.graphics.drawable.Drawable;
 import android.widget.FrameLayout;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
@@ -28,8 +28,8 @@ import static com.google.common.truth.Truth.assertThat;
 
 public abstract class AbstractFrameLayoutSubject<S extends AbstractFrameLayoutSubject<S, T>, T extends FrameLayout>
     extends AbstractViewGroupSubject<S, T> {
-  protected AbstractFrameLayoutSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractFrameLayoutSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S hasForeground(Drawable drawable) {

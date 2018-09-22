@@ -19,9 +19,8 @@ package com.pkware.truth.android.content.res;
 import android.annotation.TargetApi;
 import android.content.res.Configuration;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 import com.pkware.truth.android.view.ViewLayoutDirection;
 
 import static android.content.res.Configuration.UI_MODE_TYPE_APPLIANCE;
@@ -42,15 +41,15 @@ import static com.pkware.truth.android.view.AbstractViewSubject.layoutDirectionT
  * Propositions for {@link Configuration} subjects.
  */
 public class ConfigurationSubject extends Subject<ConfigurationSubject, Configuration> {
-  protected ConfigurationSubject(FailureStrategy failureStrategy, Configuration subject) {
-    super(failureStrategy, subject);
+  protected ConfigurationSubject(FailureMetadata failureMetadata, Configuration subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ConfigurationSubject, Configuration> type() {
-    return new SubjectFactory<ConfigurationSubject, Configuration>() {
+  public static Subject.Factory<ConfigurationSubject, Configuration> type() {
+    return new Subject.Factory<ConfigurationSubject, Configuration>() {
       @Override
-      public ConfigurationSubject getSubject(FailureStrategy fs, Configuration that) {
-        return new ConfigurationSubject(fs, that);
+      public ConfigurationSubject createSubject(FailureMetadata fm, Configuration that) {
+        return new ConfigurationSubject(fm, that);
       }
     };
   }
@@ -72,7 +71,7 @@ public class ConfigurationSubject extends Subject<ConfigurationSubject, Configur
     int actualLayoutDirection = actual().getLayoutDirection();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected layout direction to be <%s> but was <%s>.", layoutDirectionToString(layoutDirection), layoutDirectionToString(actualLayoutDirection))
+        .withMessage("Expected layout direction to be <%s> but was <%s>.", layoutDirectionToString(layoutDirection), layoutDirectionToString(actualLayoutDirection))
         .that(actualLayoutDirection)
         .isEqualTo(layoutDirection);
     return this;

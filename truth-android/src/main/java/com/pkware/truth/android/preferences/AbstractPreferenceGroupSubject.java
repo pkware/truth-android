@@ -18,14 +18,14 @@ package com.pkware.truth.android.preferences;
 
 import android.preference.PreferenceGroup;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 
 import static com.google.common.truth.Truth.assertThat;
 
 public abstract class AbstractPreferenceGroupSubject<S extends AbstractPreferenceGroupSubject<S, T>, T extends PreferenceGroup>
     extends AbstractPreferenceSubject<S, T> {
-  protected AbstractPreferenceGroupSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractPreferenceGroupSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S hasPreferenceCount(int count) {

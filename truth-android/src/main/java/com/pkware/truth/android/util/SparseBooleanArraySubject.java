@@ -19,9 +19,8 @@ package com.pkware.truth.android.util;
 import android.annotation.TargetApi;
 import android.util.SparseBooleanArray;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import java.util.Locale;
 
@@ -34,15 +33,15 @@ import static com.google.common.truth.Truth.assert_;
  */
 @TargetApi(JELLY_BEAN_MR2)
 public class SparseBooleanArraySubject extends Subject<SparseBooleanArraySubject, SparseBooleanArray> {
-  protected SparseBooleanArraySubject(FailureStrategy failureStrategy, SparseBooleanArray subject) {
-    super(failureStrategy, subject);
+  protected SparseBooleanArraySubject(FailureMetadata failureMetadata, SparseBooleanArray subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<SparseBooleanArraySubject, SparseBooleanArray> type() {
-    return new SubjectFactory<SparseBooleanArraySubject, SparseBooleanArray>() {
+  public static Subject.Factory<SparseBooleanArraySubject, SparseBooleanArray> type() {
+    return new Subject.Factory<SparseBooleanArraySubject, SparseBooleanArray>() {
       @Override
-      public SparseBooleanArraySubject getSubject(FailureStrategy fs, SparseBooleanArray that) {
-        return new SparseBooleanArraySubject(fs, that);
+      public SparseBooleanArraySubject createSubject(FailureMetadata fm, SparseBooleanArray that) {
+        return new SparseBooleanArraySubject(fm, that);
       }
     };
   }
@@ -63,7 +62,7 @@ public class SparseBooleanArraySubject extends Subject<SparseBooleanArraySubject
 
   public SparseBooleanArraySubject hasKey(int key) {
     assert_()
-        .withFailureMessage("Expected key <%s> to be present but was not.", key)
+        .withMessage("Expected key <%s> to be present but was not.", key)
         .that(actual().indexOfKey(key))
         .isGreaterThan(-1);
     return this;
@@ -71,7 +70,7 @@ public class SparseBooleanArraySubject extends Subject<SparseBooleanArraySubject
 
   public SparseBooleanArraySubject doesNotHaveKey(int key) {
     assert_()
-        .withFailureMessage("Expected key <%s> to not be present but was.")
+        .withMessage("Expected key <%s> to not be present but was.")
         .that(actual().indexOfKey(key))
         .isLessThan(0);
     return this;

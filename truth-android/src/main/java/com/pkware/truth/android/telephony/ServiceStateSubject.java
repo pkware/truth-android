@@ -18,9 +18,8 @@ package com.pkware.truth.android.telephony;
 
 import android.telephony.ServiceState;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.telephony.ServiceState.STATE_EMERGENCY_ONLY;
 import static android.telephony.ServiceState.STATE_IN_SERVICE;
@@ -34,15 +33,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link ServiceState} subjects.
  */
 public class ServiceStateSubject extends Subject<ServiceStateSubject, ServiceState> {
-  protected ServiceStateSubject(FailureStrategy failureStrategy, ServiceState subject) {
-    super(failureStrategy, subject);
+  protected ServiceStateSubject(FailureMetadata failureMetadata, ServiceState subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ServiceStateSubject, ServiceState> type() {
-    return new SubjectFactory<ServiceStateSubject, ServiceState>() {
+  public static Subject.Factory<ServiceStateSubject, ServiceState> type() {
+    return new Subject.Factory<ServiceStateSubject, ServiceState>() {
       @Override
-      public ServiceStateSubject getSubject(FailureStrategy fs, ServiceState that) {
-        return new ServiceStateSubject(fs, that);
+      public ServiceStateSubject createSubject(FailureMetadata fm, ServiceState that) {
+        return new ServiceStateSubject(fm, that);
       }
     };
   }
@@ -109,7 +108,7 @@ public class ServiceStateSubject extends Subject<ServiceStateSubject, ServiceSta
     int actualState = actual().getState();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected state <%s> but was <%s>.", serviceStateToString(state),
+        .withMessage("Expected state <%s> but was <%s>.", serviceStateToString(state),
             serviceStateToString(actualState))
         .that(actualState)
         .isEqualTo(state);

@@ -19,8 +19,8 @@ package com.pkware.truth.android.view.accessbility;
 import android.annotation.TargetApi;
 import android.view.accessibility.AccessibilityEvent;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 import static com.google.common.truth.Truth.assertThat;
@@ -30,15 +30,15 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class AccessibilityEventSubject
     extends AbstractAccessibilityRecordSubject<AccessibilityEventSubject, AccessibilityEvent> {
-  protected AccessibilityEventSubject(FailureStrategy failureStrategy, AccessibilityEvent subject) {
-    super(failureStrategy, subject);
+  protected AccessibilityEventSubject(FailureMetadata failureMetadata, AccessibilityEvent subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<AccessibilityEventSubject, AccessibilityEvent> type() {
-    return new SubjectFactory<AccessibilityEventSubject, AccessibilityEvent>() {
+  public static Subject.Factory<AccessibilityEventSubject, AccessibilityEvent> type() {
+    return new Subject.Factory<AccessibilityEventSubject, AccessibilityEvent>() {
       @Override
-      public AccessibilityEventSubject getSubject(FailureStrategy fs, AccessibilityEvent that) {
-        return new AccessibilityEventSubject(fs, that);
+      public AccessibilityEventSubject createSubject(FailureMetadata fm, AccessibilityEvent that) {
+        return new AccessibilityEventSubject(fm, that);
       }
     };
   }

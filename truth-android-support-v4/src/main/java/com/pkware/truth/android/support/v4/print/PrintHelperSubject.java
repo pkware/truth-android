@@ -18,9 +18,8 @@ package com.pkware.truth.android.support.v4.print;
 
 import android.support.v4.print.PrintHelper;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.support.v4.print.PrintHelper.COLOR_MODE_COLOR;
 import static android.support.v4.print.PrintHelper.COLOR_MODE_MONOCHROME;
@@ -35,15 +34,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link PrintHelper} subjects.
  */
 public class PrintHelperSubject extends Subject<PrintHelperSubject, PrintHelper> {
-  protected PrintHelperSubject(FailureStrategy failureStrategy, PrintHelper subject) {
-    super(failureStrategy, subject);
+  protected PrintHelperSubject(FailureMetadata failureMetadata, PrintHelper subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<PrintHelperSubject, PrintHelper> type() {
-    return new SubjectFactory<PrintHelperSubject, PrintHelper>() {
+  public static Subject.Factory<PrintHelperSubject, PrintHelper> type() {
+    return new Subject.Factory<PrintHelperSubject, PrintHelper>() {
       @Override
-      public PrintHelperSubject getSubject(FailureStrategy fs, PrintHelper that) {
-        return new PrintHelperSubject(fs, that);
+      public PrintHelperSubject createSubject(FailureMetadata fm, PrintHelper that) {
+        return new PrintHelperSubject(fm, that);
       }
     };
   }
@@ -73,7 +72,7 @@ public class PrintHelperSubject extends Subject<PrintHelperSubject, PrintHelper>
     int actualColorMode = actual().getColorMode();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected color mode <%s> but was <%s>.",
+        .withMessage("Expected color mode <%s> but was <%s>.",
             colorModeToString(colorMode), colorModeToString(actualColorMode))
         .that(actualColorMode)
         .isEqualTo(colorMode);
@@ -84,7 +83,7 @@ public class PrintHelperSubject extends Subject<PrintHelperSubject, PrintHelper>
     int actualOrientation = actual().getOrientation();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected orientation <%s> but was <%s>.",
+        .withMessage("Expected orientation <%s> but was <%s>.",
             orientationToString(orientation), orientationToString(actualOrientation))
         .that(actualOrientation)
         .isEqualTo(orientation);
@@ -95,7 +94,7 @@ public class PrintHelperSubject extends Subject<PrintHelperSubject, PrintHelper>
     int actualScaleMode = actual().getScaleMode();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected scale mode <%s> but was <%s>.",
+        .withMessage("Expected scale mode <%s> but was <%s>.",
             scaleModeToString(scaleMode), scaleModeToString(actualScaleMode))
         .that(actualScaleMode)
         .isEqualTo(scaleMode);

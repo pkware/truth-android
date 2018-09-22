@@ -19,8 +19,8 @@ package com.pkware.truth.android.widget;
 import android.annotation.TargetApi;
 import android.widget.GridView;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 import static android.widget.GridView.NO_STRETCH;
@@ -35,15 +35,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link GridView} subjects.
  */
 public class GridViewSubject extends AbstractAbsListViewSubject<GridViewSubject, GridView> {
-  protected GridViewSubject(FailureStrategy failureStrategy, GridView subject) {
-    super(failureStrategy, subject);
+  protected GridViewSubject(FailureMetadata failureMetadata, GridView subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<GridViewSubject, GridView> type() {
-    return new SubjectFactory<GridViewSubject, GridView>() {
+  public static Subject.Factory<GridViewSubject, GridView> type() {
+    return new Subject.Factory<GridViewSubject, GridView>() {
       @Override
-      public GridViewSubject getSubject(FailureStrategy fs, GridView that) {
-        return new GridViewSubject(fs, that);
+      public GridViewSubject createSubject(FailureMetadata fm, GridView that) {
+        return new GridViewSubject(fm, that);
       }
     };
   }
@@ -108,7 +108,7 @@ public class GridViewSubject extends AbstractAbsListViewSubject<GridViewSubject,
     int actualMode = actual().getStretchMode();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected stretch mode <%s> but was <%s>.",
+        .withMessage("Expected stretch mode <%s> but was <%s>.",
             stretchModeToString(mode), stretchModeToString(actualMode))
         .that(actualMode)
         .isEqualTo(mode);

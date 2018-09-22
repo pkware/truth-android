@@ -18,8 +18,8 @@ package com.pkware.truth.android.widget;
 
 import android.widget.RadioGroup;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link RadioGroup} subjects.
  */
 public class RadioGroupSubject extends AbstractLinearLayoutSubject<RadioGroupSubject, RadioGroup> {
-  protected RadioGroupSubject(FailureStrategy failureStrategy, RadioGroup subject) {
-    super(failureStrategy, subject);
+  protected RadioGroupSubject(FailureMetadata failureMetadata, RadioGroup subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<RadioGroupSubject, RadioGroup> type() {
-    return new SubjectFactory<RadioGroupSubject, RadioGroup>() {
+  public static Subject.Factory<RadioGroupSubject, RadioGroup> type() {
+    return new Subject.Factory<RadioGroupSubject, RadioGroup>() {
       @Override
-      public RadioGroupSubject getSubject(FailureStrategy fs, RadioGroup that) {
-        return new RadioGroupSubject(fs, that);
+      public RadioGroupSubject createSubject(FailureMetadata fm, RadioGroup that) {
+        return new RadioGroupSubject(fm, that);
       }
     };
   }

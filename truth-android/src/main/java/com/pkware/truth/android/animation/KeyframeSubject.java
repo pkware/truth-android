@@ -18,9 +18,8 @@ package com.pkware.truth.android.animation;
 
 import android.animation.Keyframe;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Keyframe} subjects.
  */
 public class KeyframeSubject extends Subject<KeyframeSubject, Keyframe> {
-  private KeyframeSubject(FailureStrategy failureStrategy, Keyframe subject) {
-    super(failureStrategy, subject);
+  private KeyframeSubject(FailureMetadata failureMetadata, Keyframe subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<KeyframeSubject, Keyframe> type() {
-    return new SubjectFactory<KeyframeSubject, Keyframe>() {
+  public static Subject.Factory<KeyframeSubject, Keyframe> type() {
+    return new Subject.Factory<KeyframeSubject, Keyframe>() {
       @Override
-      public KeyframeSubject getSubject(FailureStrategy fs, Keyframe that) {
-        return new KeyframeSubject(fs, that);
+      public KeyframeSubject createSubject(FailureMetadata fm, Keyframe that) {
+        return new KeyframeSubject(fm, that);
       }
     };
   }

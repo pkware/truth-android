@@ -18,8 +18,8 @@ package com.pkware.truth.android.support.v4.app;
 
 import android.support.v4.app.DialogFragment;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +28,15 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class DialogFragmentSubject
     extends AbstractFragmentSubject<DialogFragmentSubject, DialogFragment> {
-  protected DialogFragmentSubject(FailureStrategy failureStrategy, DialogFragment subject) {
-    super(failureStrategy, subject);
+  protected DialogFragmentSubject(FailureMetadata failureMetadata, DialogFragment subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<DialogFragmentSubject, DialogFragment> type() {
-    return new SubjectFactory<DialogFragmentSubject, DialogFragment>() {
+  public static Subject.Factory<DialogFragmentSubject, DialogFragment> type() {
+    return new Subject.Factory<DialogFragmentSubject, DialogFragment>() {
       @Override
-      public DialogFragmentSubject getSubject(FailureStrategy fs, DialogFragment that) {
-        return new DialogFragmentSubject(fs, that);
+      public DialogFragmentSubject createSubject(FailureMetadata fm, DialogFragment that) {
+        return new DialogFragmentSubject(fm, that);
       }
     };
   }

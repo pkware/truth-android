@@ -19,9 +19,8 @@ package com.pkware.truth.android.view.animation;
 import android.graphics.Matrix;
 import android.view.animation.Transformation;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.view.animation.Transformation.TYPE_ALPHA;
 import static android.view.animation.Transformation.TYPE_BOTH;
@@ -35,15 +34,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link Transformation} subjects.
  */
 public class TransformationSubject extends Subject<TransformationSubject, Transformation> {
-  protected TransformationSubject(FailureStrategy failureStrategy, Transformation subject) {
-    super(failureStrategy, subject);
+  protected TransformationSubject(FailureMetadata failureMetadata, Transformation subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<TransformationSubject, Transformation> type() {
-    return new SubjectFactory<TransformationSubject, Transformation>() {
+  public static Subject.Factory<TransformationSubject, Transformation> type() {
+    return new Subject.Factory<TransformationSubject, Transformation>() {
       @Override
-      public TransformationSubject getSubject(FailureStrategy fs, Transformation that) {
-        return new TransformationSubject(fs, that);
+      public TransformationSubject createSubject(FailureMetadata fm, Transformation that) {
+        return new TransformationSubject(fm, that);
       }
     };
   }
@@ -76,7 +75,7 @@ public class TransformationSubject extends Subject<TransformationSubject, Transf
     int actualType = actual().getTransformationType();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected transformation type <%s> but was <%s>.",
+        .withMessage("Expected transformation type <%s> but was <%s>.",
             transformationTypeToString(type), transformationTypeToString(actualType))
         .that(actualType)
         .isEqualTo(type);

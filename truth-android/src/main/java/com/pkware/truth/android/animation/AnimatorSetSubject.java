@@ -18,8 +18,8 @@ package com.pkware.truth.android.animation;
 
 import android.animation.AnimatorSet;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link AnimatorSet} subjects.
  */
 public class AnimatorSetSubject extends AbstractAnimatorSubject<AnimatorSetSubject, AnimatorSet> {
-  private AnimatorSetSubject(FailureStrategy failureStrategy, AnimatorSet subject) {
-    super(failureStrategy, subject);
+  private AnimatorSetSubject(FailureMetadata failureMetadata, AnimatorSet subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<AnimatorSetSubject, AnimatorSet> type() {
-    return new SubjectFactory<AnimatorSetSubject, AnimatorSet>() {
+  public static Subject.Factory<AnimatorSetSubject, AnimatorSet> type() {
+    return new Subject.Factory<AnimatorSetSubject, AnimatorSet>() {
       @Override
-      public AnimatorSetSubject getSubject(FailureStrategy fs, AnimatorSet that) {
-        return new AnimatorSetSubject(fs, that);
+      public AnimatorSetSubject createSubject(FailureMetadata fm, AnimatorSet that) {
+        return new AnimatorSetSubject(fm, that);
       }
     };
   }

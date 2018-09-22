@@ -18,8 +18,8 @@ package com.pkware.truth.android.widget;
 
 import android.widget.GridLayout;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 
 import static android.widget.GridLayout.ALIGN_BOUNDS;
@@ -34,15 +34,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link GridLayout} subjects.
  */
 public class GridLayoutSubject extends AbstractViewGroupSubject<GridLayoutSubject, GridLayout> {
-  protected GridLayoutSubject(FailureStrategy failureStrategy, GridLayout subject) {
-    super(failureStrategy, subject);
+  protected GridLayoutSubject(FailureMetadata failureMetadata, GridLayout subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<GridLayoutSubject, GridLayout> type() {
-    return new SubjectFactory<GridLayoutSubject, GridLayout>() {
+  public static Subject.Factory<GridLayoutSubject, GridLayout> type() {
+    return new Subject.Factory<GridLayoutSubject, GridLayout>() {
       @Override
-      public GridLayoutSubject getSubject(FailureStrategy fs, GridLayout that) {
-        return new GridLayoutSubject(fs, that);
+      public GridLayoutSubject createSubject(FailureMetadata fm, GridLayout that) {
+        return new GridLayoutSubject(fm, that);
       }
     };
   }
@@ -65,7 +65,7 @@ public class GridLayoutSubject extends AbstractViewGroupSubject<GridLayoutSubjec
     int actualMode = actual().getAlignmentMode();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected alignment mode <%s> but was <%s>.",
+        .withMessage("Expected alignment mode <%s> but was <%s>.",
             alignmentModeToString(mode), alignmentModeToString(actualMode))
         .that(actualMode)
         .isEqualTo(mode);
@@ -83,7 +83,7 @@ public class GridLayoutSubject extends AbstractViewGroupSubject<GridLayoutSubjec
     int actualOrientation = actual().getOrientation();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected orientation <%s> but was <%s>.",
+        .withMessage("Expected orientation <%s> but was <%s>.",
             orientationToString(orientation), orientationToString(actualOrientation))
         .that(actualOrientation)
         .isEqualTo(orientation);

@@ -18,8 +18,8 @@ package com.pkware.truth.android.widget;
 
 import android.widget.FrameLayout;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link FrameLayout} subjects.
@@ -27,15 +27,15 @@ import com.google.common.truth.SubjectFactory;
  * This class is final. To extend use {@link AbstractFrameLayoutSubject}.
  */
 public final class FrameLayoutSubject extends AbstractFrameLayoutSubject<FrameLayoutSubject, FrameLayout> {
-  private FrameLayoutSubject(FailureStrategy failureStrategy, FrameLayout subject) {
-    super(failureStrategy, subject);
+  private FrameLayoutSubject(FailureMetadata failureMetadata, FrameLayout subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<FrameLayoutSubject, FrameLayout> type() {
-    return new SubjectFactory<FrameLayoutSubject, FrameLayout>() {
+  public static Subject.Factory<FrameLayoutSubject, FrameLayout> type() {
+    return new Subject.Factory<FrameLayoutSubject, FrameLayout>() {
       @Override
-      public FrameLayoutSubject getSubject(FailureStrategy fs, FrameLayout that) {
-        return new FrameLayoutSubject(fs, that);
+      public FrameLayoutSubject createSubject(FailureMetadata fm, FrameLayout that) {
+        return new FrameLayoutSubject(fm, that);
       }
     };
   }

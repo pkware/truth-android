@@ -18,8 +18,8 @@ package com.pkware.truth.android.view.animation;
 
 import android.view.animation.Animation;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link Animation} subjects.
@@ -27,15 +27,15 @@ import com.google.common.truth.SubjectFactory;
  * This class is final. To extend use {@link AbstractAnimationSubject}.
  */
 public final class AnimationSubject extends AbstractAnimationSubject<AnimationSubject, Animation> {
-  private AnimationSubject(FailureStrategy failureStrategy, Animation subject) {
-    super(failureStrategy, subject);
+  private AnimationSubject(FailureMetadata failureMetadata, Animation subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<AnimationSubject, Animation> type() {
-    return new SubjectFactory<AnimationSubject, Animation>() {
+  public static Subject.Factory<AnimationSubject, Animation> type() {
+    return new Subject.Factory<AnimationSubject, Animation>() {
       @Override
-      public AnimationSubject getSubject(FailureStrategy fs, Animation that) {
-        return new AnimationSubject(fs, that);
+      public AnimationSubject createSubject(FailureMetadata fm, Animation that) {
+        return new AnimationSubject(fm, that);
       }
     };
   }

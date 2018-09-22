@@ -21,8 +21,8 @@ import android.graphics.Paint;
 import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -30,15 +30,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link BitmapDrawable} subjects.
  */
 public class BitmapDrawableSubject extends AbstractDrawableSubject<BitmapDrawableSubject, BitmapDrawable> {
-  protected BitmapDrawableSubject(FailureStrategy failureStrategy, BitmapDrawable subject) {
-    super(failureStrategy, subject);
+  protected BitmapDrawableSubject(FailureMetadata failureMetadata, BitmapDrawable subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<BitmapDrawableSubject, BitmapDrawable> type() {
-    return new SubjectFactory<BitmapDrawableSubject, BitmapDrawable>() {
+  public static Subject.Factory<BitmapDrawableSubject, BitmapDrawable> type() {
+    return new Subject.Factory<BitmapDrawableSubject, BitmapDrawable>() {
       @Override
-      public BitmapDrawableSubject getSubject(FailureStrategy fs, BitmapDrawable that) {
-        return new BitmapDrawableSubject(fs, that);
+      public BitmapDrawableSubject createSubject(FailureMetadata fm, BitmapDrawable that) {
+        return new BitmapDrawableSubject(fm, that);
       }
     };
   }

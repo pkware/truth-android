@@ -18,15 +18,15 @@ package com.pkware.truth.android.view;
 
 import android.view.ViewGroup;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
 public abstract class AbstractViewGroupLayoutParamsSubject<S extends AbstractViewGroupLayoutParamsSubject<S, T>, T extends ViewGroup.LayoutParams>
     extends Subject<S, T> {
-  protected AbstractViewGroupLayoutParamsSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractViewGroupLayoutParamsSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S hasHeight(int height) {

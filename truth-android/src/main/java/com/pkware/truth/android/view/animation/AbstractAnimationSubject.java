@@ -19,7 +19,7 @@ package com.pkware.truth.android.view.animation;
 import android.view.animation.Animation;
 import android.view.animation.Interpolator;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
 import static android.view.animation.Animation.INFINITE;
@@ -31,8 +31,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
 
 public abstract class AbstractAnimationSubject<S extends AbstractAnimationSubject<S, T>, T extends Animation>
     extends Subject<S, T> {
-  protected AbstractAnimationSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractAnimationSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public static String repeatCountToString(int count) {
@@ -51,7 +51,7 @@ public abstract class AbstractAnimationSubject<S extends AbstractAnimationSubjec
   public S hasBackgroundColor(int color) {
     int actualColor = actual().getBackgroundColor();
     assert_()
-        .withFailureMessage("Expected background color <%s> but was <%s>.",
+        .withMessage("Expected background color <%s> but was <%s>.",
             Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
@@ -111,7 +111,7 @@ public abstract class AbstractAnimationSubject<S extends AbstractAnimationSubjec
   public S hasRepeatCount(int count) {
     int actualCount = actual().getRepeatCount();
     assert_()
-        .withFailureMessage("Expected repeat count <%s> but was <%s>.",
+        .withMessage("Expected repeat count <%s> but was <%s>.",
             repeatCountToString(count), repeatCountToString(actualCount))
         .that(actualCount)
         .isEqualTo(count);
@@ -123,7 +123,7 @@ public abstract class AbstractAnimationSubject<S extends AbstractAnimationSubjec
     int actualMode = actual().getRepeatMode();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected repeat mode <%s> but was <%s>.", repeatModeToString(mode),
+        .withMessage("Expected repeat mode <%s> but was <%s>.", repeatModeToString(mode),
             repeatModeToString(actualMode))
         .that(actualMode)
         .isEqualTo(mode);

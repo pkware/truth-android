@@ -19,9 +19,8 @@ package com.pkware.truth.android.graphics;
 import android.annotation.TargetApi;
 import android.graphics.Camera;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 import static com.google.common.truth.Truth.assertThat;
@@ -30,15 +29,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Camera} subjects.
  */
 public class CameraSubject extends Subject<CameraSubject, Camera> {
-  protected CameraSubject(FailureStrategy failureStrategy, Camera subject) {
-    super(failureStrategy, subject);
+  protected CameraSubject(FailureMetadata failureMetadata, Camera subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<CameraSubject, Camera> type() {
-    return new SubjectFactory<CameraSubject, Camera>() {
+  public static Subject.Factory<CameraSubject, Camera> type() {
+    return new Subject.Factory<CameraSubject, Camera>() {
       @Override
-      public CameraSubject getSubject(FailureStrategy fs, Camera that) {
-        return new CameraSubject(fs, that);
+      public CameraSubject createSubject(FailureMetadata fm, Camera that) {
+        return new CameraSubject(fm, that);
       }
     };
   }

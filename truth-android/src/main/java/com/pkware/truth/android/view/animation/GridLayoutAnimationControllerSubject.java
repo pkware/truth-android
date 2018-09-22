@@ -19,8 +19,8 @@ package com.pkware.truth.android.view.animation;
 import android.view.animation.GridLayoutAnimationController;
 
 import com.google.common.collect.Iterables;
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,15 +41,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  */
 public class GridLayoutAnimationControllerSubject extends
     AbstractLayoutAnimationControllerSubject<GridLayoutAnimationControllerSubject, GridLayoutAnimationController> {
-  protected GridLayoutAnimationControllerSubject(FailureStrategy failureStrategy, GridLayoutAnimationController subject) {
-    super(failureStrategy, subject);
+  protected GridLayoutAnimationControllerSubject(FailureMetadata failureMetadata, GridLayoutAnimationController subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<GridLayoutAnimationControllerSubject, GridLayoutAnimationController> type() {
-    return new SubjectFactory<GridLayoutAnimationControllerSubject, GridLayoutAnimationController>() {
+  public static Subject.Factory<GridLayoutAnimationControllerSubject, GridLayoutAnimationController> type() {
+    return new Subject.Factory<GridLayoutAnimationControllerSubject, GridLayoutAnimationController>() {
       @Override
-      public GridLayoutAnimationControllerSubject getSubject(FailureStrategy fs, GridLayoutAnimationController that) {
-        return new GridLayoutAnimationControllerSubject(fs, that);
+      public GridLayoutAnimationControllerSubject createSubject(FailureMetadata fm, GridLayoutAnimationController that) {
+        return new GridLayoutAnimationControllerSubject(fm, that);
       }
     };
   }
@@ -91,7 +91,7 @@ public class GridLayoutAnimationControllerSubject extends
     int actualDirection = actual().getDirection();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected direction <%s> but was <%s>.",
+        .withMessage("Expected direction <%s> but was <%s>.",
             directionToString(direction), directionToString(actualDirection))
         .that(actualDirection)
         .isEqualTo(direction);
@@ -102,7 +102,7 @@ public class GridLayoutAnimationControllerSubject extends
     int actualPriority = actual().getDirectionPriority();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected direction priority <%s> but was <%s>.",
+        .withMessage("Expected direction priority <%s> but was <%s>.",
             directionPriorityToString(priority), directionPriorityToString(actualPriority))
         .that(actualPriority)
         .isEqualTo(priority);

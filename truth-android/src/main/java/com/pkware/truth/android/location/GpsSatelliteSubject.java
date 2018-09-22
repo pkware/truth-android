@@ -18,9 +18,8 @@ package com.pkware.truth.android.location;
 
 import android.location.GpsSatellite;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link GpsSatellite} subjects.
  */
 public class GpsSatelliteSubject extends Subject<GpsSatelliteSubject, GpsSatellite> {
-  protected GpsSatelliteSubject(FailureStrategy failureStrategy, GpsSatellite subject) {
-    super(failureStrategy, subject);
+  protected GpsSatelliteSubject(FailureMetadata failureMetadata, GpsSatellite subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<GpsSatelliteSubject, GpsSatellite> type() {
-    return new SubjectFactory<GpsSatelliteSubject, GpsSatellite>() {
+  public static Subject.Factory<GpsSatelliteSubject, GpsSatellite> type() {
+    return new Subject.Factory<GpsSatelliteSubject, GpsSatellite>() {
       @Override
-      public GpsSatelliteSubject getSubject(FailureStrategy fs, GpsSatellite that) {
-        return new GpsSatelliteSubject(fs, that);
+      public GpsSatelliteSubject createSubject(FailureMetadata fm, GpsSatellite that) {
+        return new GpsSatelliteSubject(fm, that);
       }
     };
   }

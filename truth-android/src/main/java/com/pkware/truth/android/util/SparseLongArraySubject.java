@@ -19,9 +19,8 @@ package com.pkware.truth.android.util;
 import android.annotation.TargetApi;
 import android.util.SparseLongArray;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
 import static com.google.common.truth.Truth.assertThat;
@@ -32,22 +31,22 @@ import static com.google.common.truth.Truth.assert_;
  */
 @TargetApi(JELLY_BEAN_MR2)
 public class SparseLongArraySubject extends Subject<SparseLongArraySubject, SparseLongArray> {
-  protected SparseLongArraySubject(FailureStrategy failureStrategy, SparseLongArray subject) {
-    super(failureStrategy, subject);
+  protected SparseLongArraySubject(FailureMetadata failureMetadata, SparseLongArray subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<SparseLongArraySubject, SparseLongArray> type() {
-    return new SubjectFactory<SparseLongArraySubject, SparseLongArray>() {
+  public static Subject.Factory<SparseLongArraySubject, SparseLongArray> type() {
+    return new Subject.Factory<SparseLongArraySubject, SparseLongArray>() {
       @Override
-      public SparseLongArraySubject getSubject(FailureStrategy fs, SparseLongArray that) {
-        return new SparseLongArraySubject(fs, that);
+      public SparseLongArraySubject createSubject(FailureMetadata fm, SparseLongArray that) {
+        return new SparseLongArraySubject(fm, that);
       }
     };
   }
 
   public SparseLongArraySubject hasKey(int key) {
     assert_()
-        .withFailureMessage("Expected key <%s> to be present but was not.", key)
+        .withMessage("Expected key <%s> to be present but was not.", key)
         .that(actual().indexOfKey(key))
         .isGreaterThan(-1);
     return this;
@@ -55,7 +54,7 @@ public class SparseLongArraySubject extends Subject<SparseLongArraySubject, Spar
 
   public SparseLongArraySubject doesNotHaveKey(int key) {
     assert_()
-        .withFailureMessage("Expected key <%s> to not be present but was.")
+        .withMessage("Expected key <%s> to not be present but was.")
         .that(actual().indexOfKey(key))
         .isLessThan(0);
     return this;

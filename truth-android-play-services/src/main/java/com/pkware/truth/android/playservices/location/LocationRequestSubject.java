@@ -17,9 +17,8 @@
 package com.pkware.truth.android.playservices.location;
 
 import com.google.android.gms.location.LocationRequest;
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,15 +26,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link LocationRequest} subjects.
  */
 public class LocationRequestSubject extends Subject<LocationRequestSubject, LocationRequest> {
-  protected LocationRequestSubject(FailureStrategy failureStrategy, LocationRequest subject) {
-    super(failureStrategy, subject);
+  protected LocationRequestSubject(FailureMetadata failureMetadata, LocationRequest subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<LocationRequestSubject, LocationRequest> type() {
-    return new SubjectFactory<LocationRequestSubject, LocationRequest>() {
+  public static Subject.Factory<LocationRequestSubject, LocationRequest> type() {
+    return new Subject.Factory<LocationRequestSubject, LocationRequest>() {
       @Override
-      public LocationRequestSubject getSubject(FailureStrategy fs, LocationRequest that) {
-        return new LocationRequestSubject(fs, that);
+      public LocationRequestSubject createSubject(FailureMetadata fm, LocationRequest that) {
+        return new LocationRequestSubject(fm, that);
       }
     };
   }

@@ -18,9 +18,8 @@ package com.pkware.truth.android.view;
 
 import android.view.KeyEvent;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link KeyEvent} subjects.
  */
 public class KeyEventSubject extends Subject<KeyEventSubject, KeyEvent> {
-  protected KeyEventSubject(FailureStrategy failureStrategy, KeyEvent subject) {
-    super(failureStrategy, subject);
+  protected KeyEventSubject(FailureMetadata failureMetadata, KeyEvent subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<KeyEventSubject, KeyEvent> type() {
-    return new SubjectFactory<KeyEventSubject, KeyEvent>() {
+  public static Subject.Factory<KeyEventSubject, KeyEvent> type() {
+    return new Subject.Factory<KeyEventSubject, KeyEvent>() {
       @Override
-      public KeyEventSubject getSubject(FailureStrategy fs, KeyEvent that) {
-        return new KeyEventSubject(fs, that);
+      public KeyEventSubject createSubject(FailureMetadata fm, KeyEvent that) {
+        return new KeyEventSubject(fm, that);
       }
     };
   }

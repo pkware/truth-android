@@ -18,9 +18,8 @@ package com.pkware.truth.android.view;
 
 import android.view.ViewConfiguration;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ViewConfiguration} subjects.
  */
 public class ViewConfigurationSubject extends Subject<ViewConfigurationSubject, ViewConfiguration> {
-  protected ViewConfigurationSubject(FailureStrategy failureStrategy, ViewConfiguration subject) {
-    super(failureStrategy, subject);
+  protected ViewConfigurationSubject(FailureMetadata failureMetadata, ViewConfiguration subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ViewConfigurationSubject, ViewConfiguration> type() {
-    return new SubjectFactory<ViewConfigurationSubject, ViewConfiguration>() {
+  public static Subject.Factory<ViewConfigurationSubject, ViewConfiguration> type() {
+    return new Subject.Factory<ViewConfigurationSubject, ViewConfiguration>() {
       @Override
-      public ViewConfigurationSubject getSubject(FailureStrategy fs, ViewConfiguration that) {
-        return new ViewConfigurationSubject(fs, that);
+      public ViewConfigurationSubject createSubject(FailureMetadata fm, ViewConfiguration that) {
+        return new ViewConfigurationSubject(fm, that);
       }
     };
   }

@@ -18,9 +18,8 @@ package com.pkware.truth.android.playservices.maps;
 
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link CameraPosition} subjects.
  */
 public class CameraPositionSubject extends Subject<CameraPositionSubject, CameraPosition> {
-  protected CameraPositionSubject(FailureStrategy failureStrategy, CameraPosition subject) {
-    super(failureStrategy, subject);
+  protected CameraPositionSubject(FailureMetadata failureMetadata, CameraPosition subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<CameraPositionSubject, CameraPosition> type() {
-    return new SubjectFactory<CameraPositionSubject, CameraPosition>() {
+  public static Subject.Factory<CameraPositionSubject, CameraPosition> type() {
+    return new Subject.Factory<CameraPositionSubject, CameraPosition>() {
       @Override
-      public CameraPositionSubject getSubject(FailureStrategy fs, CameraPosition that) {
-        return new CameraPositionSubject(fs, that);
+      public CameraPositionSubject createSubject(FailureMetadata fm, CameraPosition that) {
+        return new CameraPositionSubject(fm, that);
       }
     };
   }

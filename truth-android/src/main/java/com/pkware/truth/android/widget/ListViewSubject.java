@@ -18,8 +18,8 @@ package com.pkware.truth.android.widget;
 
 import android.widget.ListView;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link ListView} subjects.
@@ -27,15 +27,15 @@ import com.google.common.truth.SubjectFactory;
  * This class is final. To extend use {@link AbstractListViewSubject}.
  */
 public final class ListViewSubject extends AbstractListViewSubject<ListViewSubject, ListView> {
-  private ListViewSubject(FailureStrategy failureStrategy, ListView subject) {
-    super(failureStrategy, subject);
+  private ListViewSubject(FailureMetadata failureMetadata, ListView subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ListViewSubject, ListView> type() {
-    return new SubjectFactory<ListViewSubject, ListView>() {
+  public static Subject.Factory<ListViewSubject, ListView> type() {
+    return new Subject.Factory<ListViewSubject, ListView>() {
       @Override
-      public ListViewSubject getSubject(FailureStrategy fs, ListView that) {
-        return new ListViewSubject(fs, that);
+      public ListViewSubject createSubject(FailureMetadata fm, ListView that) {
+        return new ListViewSubject(fm, that);
       }
     };
   }

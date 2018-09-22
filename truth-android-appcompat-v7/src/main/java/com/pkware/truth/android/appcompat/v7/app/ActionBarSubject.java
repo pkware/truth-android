@@ -19,9 +19,8 @@ package com.pkware.truth.android.appcompat.v7.app;
 import android.support.annotation.StringRes;
 import android.support.v7.app.ActionBar;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.support.v7.app.ActionBar.DISPLAY_HOME_AS_UP;
 import static android.support.v7.app.ActionBar.DISPLAY_SHOW_CUSTOM;
@@ -40,15 +39,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link ActionBar} subjects.
  */
 public class ActionBarSubject extends Subject<ActionBarSubject, ActionBar> {
-  protected ActionBarSubject(FailureStrategy failureStrategy, ActionBar subject) {
-    super(failureStrategy, subject);
+  protected ActionBarSubject(FailureMetadata failureMetadata, ActionBar subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ActionBarSubject, ActionBar> type() {
-    return new SubjectFactory<ActionBarSubject, ActionBar>() {
+  public static Subject.Factory<ActionBarSubject, ActionBar> type() {
+    return new Subject.Factory<ActionBarSubject, ActionBar>() {
       @Override
-      public ActionBarSubject getSubject(FailureStrategy fs, ActionBar that) {
-        return new ActionBarSubject(fs, that);
+      public ActionBarSubject createSubject(FailureMetadata fm, ActionBar that) {
+        return new ActionBarSubject(fm, that);
       }
     };
   }
@@ -82,7 +81,7 @@ public class ActionBarSubject extends Subject<ActionBarSubject, ActionBar> {
     final int actualOptions = actual().getDisplayOptions();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected display options <%s> but was <%s>.",
+        .withMessage("Expected display options <%s> but was <%s>.",
             displayOptionsToString(options), displayOptionsToString(actualOptions))
         .that(actualOptions)
         .isEqualTo(options);
@@ -107,7 +106,7 @@ public class ActionBarSubject extends Subject<ActionBarSubject, ActionBar> {
     int actualMode = actual().getNavigationMode();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected mode <%s> but was <%s>.", navigationModeToString(mode),
+        .withMessage("Expected mode <%s> but was <%s>.", navigationModeToString(mode),
             navigationModeToString(actualMode))
         .that(actualMode)
         .isEqualTo(mode);

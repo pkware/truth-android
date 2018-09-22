@@ -21,8 +21,8 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.StringRes;
 import android.widget.Spinner;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 import static com.google.common.truth.Truth.assertThat;
@@ -31,15 +31,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Spinner} subjects.
  */
 public class SpinnerSubject extends AbstractAbsSpinnerSubject<SpinnerSubject, Spinner> {
-  protected SpinnerSubject(FailureStrategy failureStrategy, Spinner subject) {
-    super(failureStrategy, subject);
+  protected SpinnerSubject(FailureMetadata failureMetadata, Spinner subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<SpinnerSubject, Spinner> type() {
-    return new SubjectFactory<SpinnerSubject, Spinner>() {
+  public static Subject.Factory<SpinnerSubject, Spinner> type() {
+    return new Subject.Factory<SpinnerSubject, Spinner>() {
       @Override
-      public SpinnerSubject getSubject(FailureStrategy fs, Spinner that) {
-        return new SpinnerSubject(fs, that);
+      public SpinnerSubject createSubject(FailureMetadata fm, Spinner that) {
+        return new SpinnerSubject(fm, that);
       }
     };
   }

@@ -21,7 +21,7 @@ import android.app.Activity;
 import android.support.annotation.ColorRes;
 import android.support.annotation.StringRes;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
 import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_BEHIND;
@@ -47,8 +47,8 @@ import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
 public abstract class AbstractActivitySubject<S extends AbstractActivitySubject<S, T>, T extends Activity> extends Subject<S, T> {
-  protected AbstractActivitySubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractActivitySubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public static String screenOrientationToString(@ActivityScreenOrientation int orientation) {
@@ -75,7 +75,7 @@ public abstract class AbstractActivitySubject<S extends AbstractActivitySubject<
   public S hasRequestedOrientation(@ActivityScreenOrientation int orientation) {
     int actualOrientation = actual().getRequestedOrientation();
     assert_()
-        .withFailureMessage("Expected orientation <%s> but was <%s>.", screenOrientationToString(orientation), screenOrientationToString(actualOrientation))
+        .withMessage("Expected orientation <%s> but was <%s>.", screenOrientationToString(orientation), screenOrientationToString(actualOrientation))
         .that(actualOrientation)
         .isEqualTo(orientation);
     //noinspection unchecked
@@ -97,7 +97,7 @@ public abstract class AbstractActivitySubject<S extends AbstractActivitySubject<
   public S hasTitleColor(@ColorRes int color) {
     int actualColor = actual().getTitleColor();
     assert_()
-        .withFailureMessage("Expected title color <%s> but was <%s>.", Integer.toHexString(color), Integer.toHexString(actualColor))
+        .withMessage("Expected title color <%s> but was <%s>.", Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
     //noinspection unchecked

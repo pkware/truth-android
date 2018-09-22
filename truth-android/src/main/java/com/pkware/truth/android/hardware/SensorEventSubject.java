@@ -18,9 +18,8 @@ package com.pkware.truth.android.hardware;
 
 import android.hardware.SensorEvent;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link SensorEvent} subjects.
  */
 public class SensorEventSubject extends Subject<SensorEventSubject, SensorEvent> {
-  protected SensorEventSubject(FailureStrategy failureStrategy, SensorEvent subject) {
-    super(failureStrategy, subject);
+  protected SensorEventSubject(FailureMetadata failureMetadata, SensorEvent subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<SensorEventSubject, SensorEvent> type() {
-    return new SubjectFactory<SensorEventSubject, SensorEvent>() {
+  public static Subject.Factory<SensorEventSubject, SensorEvent> type() {
+    return new Subject.Factory<SensorEventSubject, SensorEvent>() {
       @Override
-      public SensorEventSubject getSubject(FailureStrategy fs, SensorEvent that) {
-        return new SensorEventSubject(fs, that);
+      public SensorEventSubject createSubject(FailureMetadata fm, SensorEvent that) {
+        return new SensorEventSubject(fm, that);
       }
     };
   }

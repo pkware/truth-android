@@ -18,14 +18,14 @@ package com.pkware.truth.android.widget;
 
 import android.widget.HorizontalScrollView;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 
 import static com.google.common.truth.Truth.assertThat;
 
 public abstract class AbstractHorizontalScrollViewSubject<S extends AbstractHorizontalScrollViewSubject<S, T>, T extends HorizontalScrollView>
     extends AbstractFrameLayoutSubject<S, T> {
-  protected AbstractHorizontalScrollViewSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractHorizontalScrollViewSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S hasMaximumScrollAmount(int amount) {

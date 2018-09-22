@@ -19,9 +19,8 @@ package com.pkware.truth.android.appcompat.v7.view;
 import android.support.v7.view.ActionMode;
 import android.view.View;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -29,15 +28,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ActionMode} subjects.
  */
 public class ActionModeSubject extends Subject<ActionModeSubject, ActionMode> {
-  protected ActionModeSubject(FailureStrategy failureStrategy, ActionMode subject) {
-    super(failureStrategy, subject);
+  protected ActionModeSubject(FailureMetadata failureMetadata, ActionMode subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<ActionModeSubject, ActionMode> type() {
-    return new SubjectFactory<ActionModeSubject, ActionMode>() {
+  public static Subject.Factory<ActionModeSubject, ActionMode> type() {
+    return new Subject.Factory<ActionModeSubject, ActionMode>() {
       @Override
-      public ActionModeSubject getSubject(FailureStrategy fs, ActionMode that) {
-        return new ActionModeSubject(fs, that);
+      public ActionModeSubject createSubject(FailureMetadata fm, ActionMode that) {
+        return new ActionModeSubject(fm, that);
       }
     };
   }

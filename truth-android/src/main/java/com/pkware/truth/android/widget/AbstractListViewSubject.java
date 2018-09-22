@@ -20,15 +20,15 @@ import android.annotation.TargetApi;
 import android.graphics.drawable.Drawable;
 import android.widget.ListView;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 
 import static android.os.Build.VERSION_CODES.KITKAT;
 import static com.google.common.truth.Truth.assertThat;
 
 public abstract class AbstractListViewSubject<S extends AbstractListViewSubject<S, T>, T extends ListView>
     extends AbstractAbsListViewSubject<S, T> {
-  protected AbstractListViewSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractListViewSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public S hasDivider(Drawable divider) {

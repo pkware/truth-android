@@ -19,9 +19,8 @@ package com.pkware.truth.android.mediarouter.v7.media;
 import android.content.ComponentName;
 import android.support.v7.media.MediaRouter;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -31,15 +30,15 @@ import static com.google.common.truth.Truth.assertThat;
 public class MediaRouterProviderInfoSubject
     extends Subject<MediaRouterProviderInfoSubject, MediaRouter.ProviderInfo> {
 
-  protected MediaRouterProviderInfoSubject(FailureStrategy failureStrategy, MediaRouter.ProviderInfo subject) {
-    super(failureStrategy, subject);
+  protected MediaRouterProviderInfoSubject(FailureMetadata failureMetadata, MediaRouter.ProviderInfo subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<MediaRouterProviderInfoSubject, MediaRouter.ProviderInfo> type() {
-    return new SubjectFactory<MediaRouterProviderInfoSubject, MediaRouter.ProviderInfo>() {
+  public static Subject.Factory<MediaRouterProviderInfoSubject, MediaRouter.ProviderInfo> type() {
+    return new Subject.Factory<MediaRouterProviderInfoSubject, MediaRouter.ProviderInfo>() {
       @Override
-      public MediaRouterProviderInfoSubject getSubject(FailureStrategy fs, MediaRouter.ProviderInfo that) {
-        return new MediaRouterProviderInfoSubject(fs, that);
+      public MediaRouterProviderInfoSubject createSubject(FailureMetadata fm, MediaRouter.ProviderInfo that) {
+        return new MediaRouterProviderInfoSubject(fm, that);
       }
     };
   }

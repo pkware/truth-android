@@ -18,8 +18,8 @@ package com.pkware.truth.android.widget;
 
 import android.widget.TabWidget;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,15 +27,15 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link TabWidget} subjects.
  */
 public class TabWidgetSubject extends AbstractLinearLayoutSubject<TabWidgetSubject, TabWidget> {
-  protected TabWidgetSubject(FailureStrategy failureStrategy, TabWidget subject) {
-    super(failureStrategy, subject);
+  protected TabWidgetSubject(FailureMetadata failureMetadata, TabWidget subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<TabWidgetSubject, TabWidget> type() {
-    return new SubjectFactory<TabWidgetSubject, TabWidget>() {
+  public static Subject.Factory<TabWidgetSubject, TabWidget> type() {
+    return new Subject.Factory<TabWidgetSubject, TabWidget>() {
       @Override
-      public TabWidgetSubject getSubject(FailureStrategy fs, TabWidget that) {
-        return new TabWidgetSubject(fs, that);
+      public TabWidgetSubject createSubject(FailureMetadata fm, TabWidget that) {
+        return new TabWidgetSubject(fm, that);
       }
     };
   }

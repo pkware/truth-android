@@ -18,8 +18,8 @@ package com.pkware.truth.android.widget;
 
 import android.widget.CursorAdapter;
 
-import com.google.common.truth.FailureStrategy;
-import com.google.common.truth.SubjectFactory;
+import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link CursorAdapter} subjects.
@@ -27,15 +27,15 @@ import com.google.common.truth.SubjectFactory;
  * This class is final. To extend use {@link AbstractCursorAdapterSubject}.
  */
 public final class CursorAdapterSubject extends AbstractCursorAdapterSubject<CursorAdapterSubject, CursorAdapter> {
-  private CursorAdapterSubject(FailureStrategy failureStrategy, CursorAdapter subject) {
-    super(failureStrategy, subject);
+  private CursorAdapterSubject(FailureMetadata failureMetadata, CursorAdapter subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<CursorAdapterSubject, CursorAdapter> type() {
-    return new SubjectFactory<CursorAdapterSubject, CursorAdapter>() {
+  public static Subject.Factory<CursorAdapterSubject, CursorAdapter> type() {
+    return new Subject.Factory<CursorAdapterSubject, CursorAdapter>() {
       @Override
-      public CursorAdapterSubject getSubject(FailureStrategy fs, CursorAdapter that) {
-        return new CursorAdapterSubject(fs, that);
+      public CursorAdapterSubject createSubject(FailureMetadata fm, CursorAdapter that) {
+        return new CursorAdapterSubject(fm, that);
       }
     };
   }

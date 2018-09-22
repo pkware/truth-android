@@ -20,9 +20,8 @@ import android.accessibilityservice.AccessibilityServiceInfo;
 import android.annotation.TargetApi;
 import android.content.pm.PackageManager;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.google.common.truth.SubjectFactory;
 
 import static android.accessibilityservice.AccessibilityServiceInfo.CAPABILITY_CAN_REQUEST_ENHANCED_WEB_ACCESSIBILITY;
 import static android.accessibilityservice.AccessibilityServiceInfo.CAPABILITY_CAN_REQUEST_FILTER_KEY_EVENTS;
@@ -38,15 +37,15 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildBitMaskString;
  * Propositions for {@link AccessibilityServiceInfo} subjects.
  */
 public class AccessibilityServiceInfoSubject extends Subject<AccessibilityServiceInfoSubject, AccessibilityServiceInfo> {
-  private AccessibilityServiceInfoSubject(FailureStrategy failureStrategy, AccessibilityServiceInfo subject) {
-    super(failureStrategy, subject);
+  private AccessibilityServiceInfoSubject(FailureMetadata failureMetadata, AccessibilityServiceInfo subject) {
+    super(failureMetadata, subject);
   }
 
-  public static SubjectFactory<AccessibilityServiceInfoSubject, AccessibilityServiceInfo> type() {
-    return new SubjectFactory<AccessibilityServiceInfoSubject, AccessibilityServiceInfo>() {
+  public static Subject.Factory<AccessibilityServiceInfoSubject, AccessibilityServiceInfo> type() {
+    return new Subject.Factory<AccessibilityServiceInfoSubject, AccessibilityServiceInfo>() {
       @Override
-      public AccessibilityServiceInfoSubject getSubject(FailureStrategy fs, AccessibilityServiceInfo that) {
-        return new AccessibilityServiceInfoSubject(fs, that);
+      public AccessibilityServiceInfoSubject createSubject(FailureMetadata fm, AccessibilityServiceInfo that) {
+        return new AccessibilityServiceInfoSubject(fm, that);
       }
     };
   }
@@ -65,7 +64,7 @@ public class AccessibilityServiceInfoSubject extends Subject<AccessibilityServic
     int actualCapabilities = actual().getCapabilities();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected capabilities <%s> but was <%s>.", capabilitiesToString(capabilities), capabilitiesToString(actualCapabilities))
+        .withMessage("Expected capabilities <%s> but was <%s>.", capabilitiesToString(capabilities), capabilitiesToString(actualCapabilities))
         .that(actualCapabilities)
         .isEqualTo(capabilities);
     return this;

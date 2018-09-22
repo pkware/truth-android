@@ -20,7 +20,7 @@ import android.annotation.TargetApi;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
 import static android.view.ViewGroup.FOCUS_AFTER_DESCENDANTS;
@@ -38,8 +38,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
 
 public abstract class AbstractViewGroupSubject<S extends AbstractViewGroupSubject<S, T>, T extends ViewGroup>
     extends AbstractViewSubject<S, T> {
-  protected AbstractViewGroupSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractViewGroupSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public static String descendantFocusabilityToString(@ViewGroupDescendantFocusability int focusability) {
@@ -94,7 +94,7 @@ public abstract class AbstractViewGroupSubject<S extends AbstractViewGroupSubjec
     int actualFocusability = actual().getDescendantFocusability();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected descendant focusability <%s> but was <%s>",
+        .withMessage("Expected descendant focusability <%s> but was <%s>",
             descendantFocusabilityToString(focusability),
             descendantFocusabilityToString(actualFocusability))
         .that(actualFocusability)
@@ -116,7 +116,7 @@ public abstract class AbstractViewGroupSubject<S extends AbstractViewGroupSubjec
     int actualLayoutMode = actual().getLayoutMode();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected layout mode <%s> but was <%s>.",
+        .withMessage("Expected layout mode <%s> but was <%s>.",
             layoutModeToString(layoutMode), layoutModeToString(actualLayoutMode))
         .that(actualLayoutMode)
         .isEqualTo(layoutMode);
@@ -128,7 +128,7 @@ public abstract class AbstractViewGroupSubject<S extends AbstractViewGroupSubjec
     int actualCache = actual().getPersistentDrawingCache();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected persistent drawing cache <%s> but was <%s>",
+        .withMessage("Expected persistent drawing cache <%s> but was <%s>",
             persistentDrawingCacheToString(cache), persistentDrawingCacheToString(actualCache))
         .that(actualCache)
         .isEqualTo(cache);

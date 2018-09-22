@@ -18,7 +18,7 @@ package com.pkware.truth.android.widget;
 
 import android.widget.LinearLayout;
 
-import com.google.common.truth.FailureStrategy;
+import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 
 import static android.widget.LinearLayout.HORIZONTAL;
@@ -33,8 +33,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
 
 public abstract class AbstractLinearLayoutSubject<S extends AbstractLinearLayoutSubject<S, T>, T extends LinearLayout>
     extends AbstractViewGroupSubject<S, T> {
-  protected AbstractLinearLayoutSubject(FailureStrategy failureStrategy, T subject) {
-    super(failureStrategy, subject);
+  protected AbstractLinearLayoutSubject(FailureMetadata failureMetadata, T subject) {
+    super(failureMetadata, subject);
   }
 
   public static String showDividerToString(@LinearLayoutShowDividers int dividers) {
@@ -64,7 +64,7 @@ public abstract class AbstractLinearLayoutSubject<S extends AbstractLinearLayout
     int actualOrientation = actual().getOrientation();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected orientation <%s> but was <%s>.",
+        .withMessage("Expected orientation <%s> but was <%s>.",
             orientationToString(orientation), orientationToString(actualOrientation))
         .that(actualOrientation)
         .isEqualTo(orientation);
@@ -84,7 +84,7 @@ public abstract class AbstractLinearLayoutSubject<S extends AbstractLinearLayout
     int actualDividers = actual().getShowDividers();
     //noinspection ResourceType
     assert_()
-        .withFailureMessage("Expected showing dividers <%s> but was <%s>.",
+        .withMessage("Expected showing dividers <%s> but was <%s>.",
             showDividerToString(dividers), showDividerToString(actualDividers))
         .that(actualDividers)
         .isEqualTo(dividers);

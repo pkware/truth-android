@@ -1,8 +1,8 @@
 apply plugin: 'com.android.library'
 
 dependencies {
-    compile project(':truth-android')
-    compile rootProject.ext.supportDesign
+    api project(':truth-android')
+    api rootProject.ext.supportDesign
 }
 
 android {

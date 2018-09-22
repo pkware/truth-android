@@ -1,8 +1,8 @@
 apply plugin: 'com.android.library'
 
 dependencies {
-    compile rootProject.ext.truth
-    compile rootProject.ext.supportAnnotations
+    api rootProject.ext.truth
+    api rootProject.ext.supportAnnotations
 }
 
 android {

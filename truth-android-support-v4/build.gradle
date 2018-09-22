@@ -19,8 +19,7 @@ android {
     }
 
     lintOptions {
-        abortOnError false
-        disable 'InlinedApi', 'AllowBackup'
+        abortOnError true
     }
 }
 

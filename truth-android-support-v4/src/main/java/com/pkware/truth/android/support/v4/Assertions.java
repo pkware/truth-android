@@ -64,18 +64,6 @@ public final class Assertions {
     return assertAbout(type).that(target);
   }
 
-  public static com.pkware.truth.android.support.v4.media.TransportControllerSubject assertThat(
-      android.support.v4.media.TransportController target) {
-    SubjectFactory<com.pkware.truth.android.support.v4.media.TransportControllerSubject, android.support.v4.media.TransportController> type = com.pkware.truth.android.support.v4.media.TransportControllerSubject.type();
-    return assertAbout(type).that(target);
-  }
-
-  public static com.pkware.truth.android.support.v4.media.TransportMediatorSubject assertThat(
-      android.support.v4.media.TransportMediator target) {
-    SubjectFactory<com.pkware.truth.android.support.v4.media.TransportMediatorSubject, android.support.v4.media.TransportMediator> type = com.pkware.truth.android.support.v4.media.TransportMediatorSubject.type();
-    return assertAbout(type).that(target);
-  }
-
   public static com.pkware.truth.android.support.v4.print.PrintHelperSubject assertThat(
       android.support.v4.print.PrintHelper target) {
     SubjectFactory<com.pkware.truth.android.support.v4.print.PrintHelperSubject, android.support.v4.print.PrintHelper> type = com.pkware.truth.android.support.v4.print.PrintHelperSubject.type();

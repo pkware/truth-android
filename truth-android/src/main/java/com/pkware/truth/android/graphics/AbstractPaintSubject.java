@@ -20,7 +20,6 @@ import android.annotation.TargetApi;
 import android.graphics.MaskFilter;
 import android.graphics.Paint;
 import android.graphics.PathEffect;
-import android.graphics.Rasterizer;
 import android.graphics.Shader;
 import android.graphics.Typeface;
 
@@ -140,14 +139,6 @@ public abstract class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>,
     assertThat(actual().getPathEffect())
         .named("path effect")
         .isSameAs(effect);
-    //noinspection unchecked
-    return (S) this;
-  }
-
-  public S hasRasterizer(Rasterizer rasterizer) {
-    assertThat(actual().getRasterizer())
-        .named("rasterizer")
-        .isSameAs(rasterizer);
     //noinspection unchecked
     return (S) this;
   }

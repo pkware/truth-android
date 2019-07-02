@@ -22,18 +22,17 @@ ext {
     minSdkVersion = 15
     compileSdkVersion = 28
     buildToolsVersion = '28.0.2'
-    supportLibVersion = '28.0.0'
 
     truth = 'com.google.truth:truth:0.42'
-    supportAnnotations = "com.android.support:support-annotations:${supportLibVersion}"
-    supportV4 = "com.android.support:support-v4:${supportLibVersion}"
-    supportAppCompat = "com.android.support:appcompat-v7:${supportLibVersion}"
-    supportCardView = "com.android.support:cardview-v7:${supportLibVersion}"
-    supportDesign = "com.android.support:design:${supportLibVersion}"
-    supportGridLayout = "com.android.support:gridlayout-v7:${supportLibVersion}"
-    supportMediaRouter = "com.android.support:mediarouter-v7:${supportLibVersion}"
-    supportPalette = "com.android.support:palette-v7:${supportLibVersion}"
-    supportRecyclerView = "com.android.support:recyclerview-v7:${supportLibVersion}"
+    supportAnnotations = "androidx.annotation:annotation:1.0.0"
+    supportV4 = "androidx.legacy:legacy-support-v4:1.0.0"
+    supportAppCompat = "androidx.appcompat:appcompat:1.0.0"
+    supportCardView = "androidx.cardview:cardview:1.0.0"
+    supportDesign = "com.google.android.material:material:1.0.0"
+    supportGridLayout = "androidx.gridlayout:gridlayout:1.0.0"
+    supportMediaRouter = "androidx.mediarouter:mediarouter:1.0.0"
+    supportPalette = "androidx.palette:palette:1.0.0"
+    supportRecyclerView = "androidx.recyclerview:recyclerview:1.0.0"
 
     playServices = 'com.google.android.gms:play-services:7.5.0'
 }

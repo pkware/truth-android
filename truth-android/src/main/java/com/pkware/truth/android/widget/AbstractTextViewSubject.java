@@ -18,9 +18,9 @@ package com.pkware.truth.android.widget;
 
 import android.annotation.TargetApi;
 import android.graphics.Typeface;
-import android.support.annotation.StringRes;
 import android.text.TextUtils;
 import android.widget.TextView;
+import androidx.annotation.StringRes;
 
 import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.view.AbstractViewSubject;

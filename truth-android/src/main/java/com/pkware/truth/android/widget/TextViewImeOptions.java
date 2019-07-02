@@ -16,8 +16,8 @@
 package com.pkware.truth.android.widget;
 
 import android.annotation.SuppressLint;
-import android.support.annotation.IntDef;
 import android.view.inputmethod.EditorInfo;
+import androidx.annotation.IntDef;
 
 import java.lang.annotation.Retention;
 

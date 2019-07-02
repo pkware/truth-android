@@ -16,16 +16,16 @@
  */
 package com.pkware.truth.android.gridlayout.v7.widget;
 
-import android.support.v7.widget.GridLayout;
+import androidx.gridlayout.widget.GridLayout;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 
-import static android.support.v7.widget.GridLayout.ALIGN_BOUNDS;
-import static android.support.v7.widget.GridLayout.ALIGN_MARGINS;
-import static android.support.v7.widget.GridLayout.HORIZONTAL;
-import static android.support.v7.widget.GridLayout.VERTICAL;
+import static androidx.gridlayout.widget.GridLayout.ALIGN_BOUNDS;
+import static androidx.gridlayout.widget.GridLayout.ALIGN_MARGINS;
+import static androidx.gridlayout.widget.GridLayout.HORIZONTAL;
+import static androidx.gridlayout.widget.GridLayout.VERTICAL;
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;

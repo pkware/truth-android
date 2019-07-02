@@ -16,7 +16,7 @@
  */
 package com.pkware.truth.android.mediarouter.v7.media;
 
-import android.support.v7.media.MediaRouteDiscoveryRequest;
+import androidx.mediarouter.media.MediaRouteDiscoveryRequest;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;

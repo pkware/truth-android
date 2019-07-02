@@ -16,8 +16,7 @@
  */
 package com.pkware.truth.android.design.widget;
 
-import android.support.design.widget.TabLayout;
-
+import com.google.android.material.tabs.TabLayout;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 import com.pkware.truth.android.widget.AbstractHorizontalScrollViewSubject;

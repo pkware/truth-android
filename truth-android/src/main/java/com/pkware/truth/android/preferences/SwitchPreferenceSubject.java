@@ -17,7 +17,7 @@
 package com.pkware.truth.android.preferences;
 
 import android.preference.SwitchPreference;
-import android.support.annotation.StringRes;
+import androidx.annotation.StringRes;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;

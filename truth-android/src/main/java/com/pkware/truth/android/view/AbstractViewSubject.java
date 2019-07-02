@@ -18,11 +18,11 @@ package com.pkware.truth.android.view;
 
 import android.annotation.TargetApi;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.IdRes;
-import android.support.annotation.StringRes;
 import android.view.View;
 import android.view.ViewParent;
 import android.view.animation.Animation;
+import androidx.annotation.IdRes;
+import androidx.annotation.StringRes;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;

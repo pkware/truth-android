@@ -16,9 +16,9 @@
  */
 package com.pkware.truth.android.appcompat.v7.widget;
 
-import android.support.annotation.StringRes;
-import android.support.v4.widget.CursorAdapter;
-import android.support.v7.widget.SearchView;
+import androidx.annotation.StringRes;
+import androidx.appcompat.widget.SearchView;
+import androidx.cursoradapter.widget.CursorAdapter;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;

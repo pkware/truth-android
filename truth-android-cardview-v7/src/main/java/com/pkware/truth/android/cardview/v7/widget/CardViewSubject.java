@@ -16,7 +16,7 @@
  */
 package com.pkware.truth.android.cardview.v7.widget;
 
-import android.support.v7.widget.CardView;
+import androidx.cardview.widget.CardView;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;

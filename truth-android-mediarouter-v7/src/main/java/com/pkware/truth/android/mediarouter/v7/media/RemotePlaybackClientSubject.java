@@ -16,7 +16,7 @@
  */
 package com.pkware.truth.android.mediarouter.v7.media;
 
-import android.support.v7.media.RemotePlaybackClient;
+import androidx.mediarouter.media.RemotePlaybackClient;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;

@@ -16,7 +16,7 @@
 package com.pkware.truth.android.animation;
 
 import android.animation.ValueAnimator;
-import android.support.annotation.IntDef;
+import androidx.annotation.IntDef;
 
 import java.lang.annotation.Retention;
 

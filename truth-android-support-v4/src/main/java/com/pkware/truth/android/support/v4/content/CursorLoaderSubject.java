@@ -17,7 +17,7 @@
 package com.pkware.truth.android.support.v4.content;
 
 import android.net.Uri;
-import android.support.v4.content.CursorLoader;
+import androidx.loader.content.CursorLoader;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;

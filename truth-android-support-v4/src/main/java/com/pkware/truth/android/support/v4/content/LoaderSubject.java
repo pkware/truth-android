@@ -16,7 +16,7 @@
  */
 package com.pkware.truth.android.support.v4.content;
 
-import android.support.v4.content.Loader;
+import androidx.loader.content.Loader;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;

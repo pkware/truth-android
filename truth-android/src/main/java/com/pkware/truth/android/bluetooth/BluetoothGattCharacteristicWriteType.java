@@ -16,7 +16,7 @@
 package com.pkware.truth.android.bluetooth;
 
 import android.bluetooth.BluetoothGattCharacteristic;
-import android.support.annotation.IntDef;
+import androidx.annotation.IntDef;
 
 import java.lang.annotation.Retention;
 

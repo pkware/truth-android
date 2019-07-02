@@ -11,26 +11,26 @@ import static com.google.common.truth.Truth.assertAbout;
 @SuppressWarnings("deprecation")
 public final class Assertions {
   public static com.pkware.truth.android.appcompat.v7.app.ActionBarSubject assertThat(
-      android.support.v7.app.ActionBar target) {
-    Subject.Factory<com.pkware.truth.android.appcompat.v7.app.ActionBarSubject, android.support.v7.app.ActionBar> type = com.pkware.truth.android.appcompat.v7.app.ActionBarSubject.type();
+      androidx.appcompat.app.ActionBar target) {
+    Subject.Factory<com.pkware.truth.android.appcompat.v7.app.ActionBarSubject, androidx.appcompat.app.ActionBar> type = com.pkware.truth.android.appcompat.v7.app.ActionBarSubject.type();
     return assertAbout(type).that(target);
   }
 
   public static com.pkware.truth.android.appcompat.v7.view.ActionModeSubject assertThat(
-      android.support.v7.view.ActionMode target) {
-    Subject.Factory<com.pkware.truth.android.appcompat.v7.view.ActionModeSubject, android.support.v7.view.ActionMode> type = com.pkware.truth.android.appcompat.v7.view.ActionModeSubject.type();
+      androidx.appcompat.view.ActionMode target) {
+    Subject.Factory<com.pkware.truth.android.appcompat.v7.view.ActionModeSubject, androidx.appcompat.view.ActionMode> type = com.pkware.truth.android.appcompat.v7.view.ActionModeSubject.type();
     return assertAbout(type).that(target);
   }
 
   public static com.pkware.truth.android.appcompat.v7.widget.LinearLayoutCompatSubject assertThat(
-      android.support.v7.widget.LinearLayoutCompat target) {
-    Subject.Factory<com.pkware.truth.android.appcompat.v7.widget.LinearLayoutCompatSubject, android.support.v7.widget.LinearLayoutCompat> type = com.pkware.truth.android.appcompat.v7.widget.LinearLayoutCompatSubject.type();
+      androidx.appcompat.widget.LinearLayoutCompat target) {
+    Subject.Factory<com.pkware.truth.android.appcompat.v7.widget.LinearLayoutCompatSubject, androidx.appcompat.widget.LinearLayoutCompat> type = com.pkware.truth.android.appcompat.v7.widget.LinearLayoutCompatSubject.type();
     return assertAbout(type).that(target);
   }
 
   public static com.pkware.truth.android.appcompat.v7.widget.SearchViewSubject assertThat(
-      android.support.v7.widget.SearchView target) {
-    Subject.Factory<com.pkware.truth.android.appcompat.v7.widget.SearchViewSubject, android.support.v7.widget.SearchView> type = com.pkware.truth.android.appcompat.v7.widget.SearchViewSubject.type();
+      androidx.appcompat.widget.SearchView target) {
+    Subject.Factory<com.pkware.truth.android.appcompat.v7.widget.SearchViewSubject, androidx.appcompat.widget.SearchView> type = com.pkware.truth.android.appcompat.v7.widget.SearchViewSubject.type();
     return assertAbout(type).that(target);
   }
 

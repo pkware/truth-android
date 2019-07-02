@@ -11,14 +11,14 @@ import static com.google.common.truth.Truth.assertAbout;
 @SuppressWarnings("deprecation")
 public final class Assertions {
   public static com.pkware.truth.android.palette.v7.graphics.PaletteSubject assertThat(
-      android.support.v7.graphics.Palette target) {
-    Subject.Factory<com.pkware.truth.android.palette.v7.graphics.PaletteSubject, android.support.v7.graphics.Palette> type = com.pkware.truth.android.palette.v7.graphics.PaletteSubject.type();
+      androidx.palette.graphics.Palette target) {
+    Subject.Factory<com.pkware.truth.android.palette.v7.graphics.PaletteSubject, androidx.palette.graphics.Palette> type = com.pkware.truth.android.palette.v7.graphics.PaletteSubject.type();
     return assertAbout(type).that(target);
   }
 
   public static com.pkware.truth.android.palette.v7.graphics.PaletteSwatchSubject assertThat(
-      android.support.v7.graphics.Palette.Swatch target) {
-    Subject.Factory<com.pkware.truth.android.palette.v7.graphics.PaletteSwatchSubject, android.support.v7.graphics.Palette.Swatch> type = com.pkware.truth.android.palette.v7.graphics.PaletteSwatchSubject.type();
+      androidx.palette.graphics.Palette.Swatch target) {
+    Subject.Factory<com.pkware.truth.android.palette.v7.graphics.PaletteSwatchSubject, androidx.palette.graphics.Palette.Swatch> type = com.pkware.truth.android.palette.v7.graphics.PaletteSwatchSubject.type();
     return assertAbout(type).that(target);
   }
 

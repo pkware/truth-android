@@ -16,7 +16,7 @@
 package com.pkware.truth.android.preferences;
 
 import android.media.RingtoneManager;
-import android.support.annotation.IntDef;
+import androidx.annotation.IntDef;
 
 import java.lang.annotation.Retention;
 

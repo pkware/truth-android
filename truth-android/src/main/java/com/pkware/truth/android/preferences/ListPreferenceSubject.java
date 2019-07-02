@@ -17,7 +17,7 @@
 package com.pkware.truth.android.preferences;
 
 import android.preference.ListPreference;
-import android.support.annotation.StringRes;
+import androidx.annotation.StringRes;
 
 import com.google.common.base.Function;
 import com.google.common.collect.FluentIterable;

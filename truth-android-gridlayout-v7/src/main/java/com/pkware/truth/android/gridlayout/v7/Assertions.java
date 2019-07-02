@@ -11,8 +11,8 @@ import static com.google.common.truth.Truth.assertAbout;
 @SuppressWarnings("deprecation")
 public final class Assertions {
   public static com.pkware.truth.android.gridlayout.v7.widget.GridLayoutSubject assertThat(
-      android.support.v7.widget.GridLayout target) {
-    Subject.Factory<com.pkware.truth.android.gridlayout.v7.widget.GridLayoutSubject, android.support.v7.widget.GridLayout> type = com.pkware.truth.android.gridlayout.v7.widget.GridLayoutSubject.type();
+      androidx.gridlayout.widget.GridLayout target) {
+    Subject.Factory<com.pkware.truth.android.gridlayout.v7.widget.GridLayoutSubject, androidx.gridlayout.widget.GridLayout> type = com.pkware.truth.android.gridlayout.v7.widget.GridLayoutSubject.type();
     return assertAbout(type).that(target);
   }
 

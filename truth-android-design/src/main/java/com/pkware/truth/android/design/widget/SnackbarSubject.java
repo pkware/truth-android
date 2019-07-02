@@ -16,9 +16,9 @@
  */
 package com.pkware.truth.android.design.widget;
 
-import android.support.design.widget.Snackbar;
 import android.view.View;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 

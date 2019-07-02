@@ -16,20 +16,20 @@
  */
 package com.pkware.truth.android.appcompat.v7.app;
 
-import android.support.annotation.StringRes;
-import android.support.v7.app.ActionBar;
+import androidx.annotation.StringRes;
+import androidx.appcompat.app.ActionBar;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static android.support.v7.app.ActionBar.DISPLAY_HOME_AS_UP;
-import static android.support.v7.app.ActionBar.DISPLAY_SHOW_CUSTOM;
-import static android.support.v7.app.ActionBar.DISPLAY_SHOW_HOME;
-import static android.support.v7.app.ActionBar.DISPLAY_SHOW_TITLE;
-import static android.support.v7.app.ActionBar.DISPLAY_USE_LOGO;
-import static android.support.v7.app.ActionBar.NAVIGATION_MODE_LIST;
-import static android.support.v7.app.ActionBar.NAVIGATION_MODE_STANDARD;
-import static android.support.v7.app.ActionBar.NAVIGATION_MODE_TABS;
+import static androidx.appcompat.app.ActionBar.DISPLAY_HOME_AS_UP;
+import static androidx.appcompat.app.ActionBar.DISPLAY_SHOW_CUSTOM;
+import static androidx.appcompat.app.ActionBar.DISPLAY_SHOW_HOME;
+import static androidx.appcompat.app.ActionBar.DISPLAY_SHOW_TITLE;
+import static androidx.appcompat.app.ActionBar.DISPLAY_USE_LOGO;
+import static androidx.appcompat.app.ActionBar.NAVIGATION_MODE_LIST;
+import static androidx.appcompat.app.ActionBar.NAVIGATION_MODE_STANDARD;
+import static androidx.appcompat.app.ActionBar.NAVIGATION_MODE_TABS;
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildBitMaskString;

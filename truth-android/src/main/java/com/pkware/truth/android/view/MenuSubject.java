@@ -16,8 +16,8 @@
  */
 package com.pkware.truth.android.view;
 
-import android.support.annotation.IdRes;
 import android.view.Menu;
+import androidx.annotation.IdRes;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;

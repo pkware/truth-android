@@ -16,8 +16,8 @@
  */
 package com.pkware.truth.android.recyclerview.v7.widget;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.animation.Interpolator;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;

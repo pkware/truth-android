@@ -16,7 +16,7 @@
  */
 package com.pkware.truth.android.appcompat.v7.widget;
 
-import android.support.v7.widget.LinearLayoutCompat;
+import androidx.appcompat.widget.LinearLayoutCompat;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;

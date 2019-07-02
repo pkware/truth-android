@@ -16,12 +16,12 @@
  */
 package com.pkware.truth.android.recyclerview.v7.widget;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static android.support.v7.widget.RecyclerView.ViewHolder;
+import static androidx.recyclerview.widget.RecyclerView.ViewHolder;
 import static com.google.common.truth.Truth.assertThat;
 
 /**

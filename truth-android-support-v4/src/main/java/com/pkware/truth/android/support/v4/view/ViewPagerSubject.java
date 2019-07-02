@@ -16,8 +16,8 @@
  */
 package com.pkware.truth.android.support.v4.view;
 
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;

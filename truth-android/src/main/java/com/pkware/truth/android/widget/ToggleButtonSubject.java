@@ -16,8 +16,8 @@
  */
 package com.pkware.truth.android.widget;
 
-import android.support.annotation.StringRes;
 import android.widget.ToggleButton;
+import androidx.annotation.StringRes;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;

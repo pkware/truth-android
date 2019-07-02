@@ -11,50 +11,50 @@ import static com.google.common.truth.Truth.assertAbout;
 @SuppressWarnings("deprecation")
 public final class Assertions {
   public static com.pkware.truth.android.mediarouter.v7.media.MediaItemStatusSubject assertThat(
-      android.support.v7.media.MediaItemStatus target) {
-    Subject.Factory<com.pkware.truth.android.mediarouter.v7.media.MediaItemStatusSubject, android.support.v7.media.MediaItemStatus> type = com.pkware.truth.android.mediarouter.v7.media.MediaItemStatusSubject.type();
+      androidx.mediarouter.media.MediaItemStatus target) {
+    Subject.Factory<com.pkware.truth.android.mediarouter.v7.media.MediaItemStatusSubject, androidx.mediarouter.media.MediaItemStatus> type = com.pkware.truth.android.mediarouter.v7.media.MediaItemStatusSubject.type();
     return assertAbout(type).that(target);
   }
 
   public static com.pkware.truth.android.mediarouter.v7.media.MediaRouteDescriptorSubject assertThat(
-      android.support.v7.media.MediaRouteDescriptor target) {
-    Subject.Factory<com.pkware.truth.android.mediarouter.v7.media.MediaRouteDescriptorSubject, android.support.v7.media.MediaRouteDescriptor> type = com.pkware.truth.android.mediarouter.v7.media.MediaRouteDescriptorSubject.type();
+      androidx.mediarouter.media.MediaRouteDescriptor target) {
+    Subject.Factory<com.pkware.truth.android.mediarouter.v7.media.MediaRouteDescriptorSubject, androidx.mediarouter.media.MediaRouteDescriptor> type = com.pkware.truth.android.mediarouter.v7.media.MediaRouteDescriptorSubject.type();
     return assertAbout(type).that(target);
   }
 
   public static com.pkware.truth.android.mediarouter.v7.media.MediaRouteDiscoveryRequestSubject assertThat(
-      android.support.v7.media.MediaRouteDiscoveryRequest target) {
-    Subject.Factory<com.pkware.truth.android.mediarouter.v7.media.MediaRouteDiscoveryRequestSubject, android.support.v7.media.MediaRouteDiscoveryRequest> type = com.pkware.truth.android.mediarouter.v7.media.MediaRouteDiscoveryRequestSubject.type();
+      androidx.mediarouter.media.MediaRouteDiscoveryRequest target) {
+    Subject.Factory<com.pkware.truth.android.mediarouter.v7.media.MediaRouteDiscoveryRequestSubject, androidx.mediarouter.media.MediaRouteDiscoveryRequest> type = com.pkware.truth.android.mediarouter.v7.media.MediaRouteDiscoveryRequestSubject.type();
     return assertAbout(type).that(target);
   }
 
   public static com.pkware.truth.android.mediarouter.v7.media.MediaRouteProviderProviderMetadataSubject assertThat(
-      android.support.v7.media.MediaRouteProvider.ProviderMetadata target) {
-    Subject.Factory<com.pkware.truth.android.mediarouter.v7.media.MediaRouteProviderProviderMetadataSubject, android.support.v7.media.MediaRouteProvider.ProviderMetadata> type = com.pkware.truth.android.mediarouter.v7.media.MediaRouteProviderProviderMetadataSubject.type();
+      androidx.mediarouter.media.MediaRouteProvider.ProviderMetadata target) {
+    Subject.Factory<com.pkware.truth.android.mediarouter.v7.media.MediaRouteProviderProviderMetadataSubject, androidx.mediarouter.media.MediaRouteProvider.ProviderMetadata> type = com.pkware.truth.android.mediarouter.v7.media.MediaRouteProviderProviderMetadataSubject.type();
     return assertAbout(type).that(target);
   }
 
   public static com.pkware.truth.android.mediarouter.v7.media.MediaRouterProviderInfoSubject assertThat(
-      android.support.v7.media.MediaRouter.ProviderInfo target) {
-    Subject.Factory<com.pkware.truth.android.mediarouter.v7.media.MediaRouterProviderInfoSubject, android.support.v7.media.MediaRouter.ProviderInfo> type = com.pkware.truth.android.mediarouter.v7.media.MediaRouterProviderInfoSubject.type();
+      androidx.mediarouter.media.MediaRouter.ProviderInfo target) {
+    Subject.Factory<com.pkware.truth.android.mediarouter.v7.media.MediaRouterProviderInfoSubject, androidx.mediarouter.media.MediaRouter.ProviderInfo> type = com.pkware.truth.android.mediarouter.v7.media.MediaRouterProviderInfoSubject.type();
     return assertAbout(type).that(target);
   }
 
   public static com.pkware.truth.android.mediarouter.v7.media.MediaRouterRouteInfoSubject assertThat(
-      android.support.v7.media.MediaRouter.RouteInfo target) {
-    Subject.Factory<com.pkware.truth.android.mediarouter.v7.media.MediaRouterRouteInfoSubject, android.support.v7.media.MediaRouter.RouteInfo> type = com.pkware.truth.android.mediarouter.v7.media.MediaRouterRouteInfoSubject.type();
+      androidx.mediarouter.media.MediaRouter.RouteInfo target) {
+    Subject.Factory<com.pkware.truth.android.mediarouter.v7.media.MediaRouterRouteInfoSubject, androidx.mediarouter.media.MediaRouter.RouteInfo> type = com.pkware.truth.android.mediarouter.v7.media.MediaRouterRouteInfoSubject.type();
     return assertAbout(type).that(target);
   }
 
   public static com.pkware.truth.android.mediarouter.v7.media.MediaSessionStatusSubject assertThat(
-      android.support.v7.media.MediaSessionStatus target) {
-    Subject.Factory<com.pkware.truth.android.mediarouter.v7.media.MediaSessionStatusSubject, android.support.v7.media.MediaSessionStatus> type = com.pkware.truth.android.mediarouter.v7.media.MediaSessionStatusSubject.type();
+      androidx.mediarouter.media.MediaSessionStatus target) {
+    Subject.Factory<com.pkware.truth.android.mediarouter.v7.media.MediaSessionStatusSubject, androidx.mediarouter.media.MediaSessionStatus> type = com.pkware.truth.android.mediarouter.v7.media.MediaSessionStatusSubject.type();
     return assertAbout(type).that(target);
   }
 
   public static com.pkware.truth.android.mediarouter.v7.media.RemotePlaybackClientSubject assertThat(
-      android.support.v7.media.RemotePlaybackClient target) {
-    Subject.Factory<com.pkware.truth.android.mediarouter.v7.media.RemotePlaybackClientSubject, android.support.v7.media.RemotePlaybackClient> type = com.pkware.truth.android.mediarouter.v7.media.RemotePlaybackClientSubject.type();
+      androidx.mediarouter.media.RemotePlaybackClient target) {
+    Subject.Factory<com.pkware.truth.android.mediarouter.v7.media.RemotePlaybackClientSubject, androidx.mediarouter.media.RemotePlaybackClient> type = com.pkware.truth.android.mediarouter.v7.media.RemotePlaybackClientSubject.type();
     return assertAbout(type).that(target);
   }
 

@@ -15,8 +15,8 @@
  */
 package com.pkware.truth.android.gridlayout.v7.widget;
 
-import android.support.annotation.IntDef;
-import android.support.v7.widget.GridLayout;
+import androidx.annotation.IntDef;
+import androidx.gridlayout.widget.GridLayout;
 
 import java.lang.annotation.Retention;
 

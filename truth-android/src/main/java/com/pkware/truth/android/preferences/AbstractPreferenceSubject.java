@@ -22,8 +22,8 @@ import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.StringRes;
+import androidx.annotation.LayoutRes;
+import androidx.annotation.StringRes;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;

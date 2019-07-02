@@ -16,8 +16,8 @@
  */
 package com.pkware.truth.android.mediarouter.v7.media;
 
-import android.support.annotation.IntDef;
-import android.support.v7.media.MediaRouter;
+import androidx.annotation.IntDef;
+import androidx.mediarouter.media.MediaRouter;
 
 import java.lang.annotation.Retention;
 

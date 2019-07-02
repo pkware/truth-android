@@ -16,19 +16,19 @@
  */
 package com.pkware.truth.android.mediarouter.v7.media;
 
-import android.support.v7.media.MediaItemStatus;
+import androidx.mediarouter.media.MediaItemStatus;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static android.support.v7.media.MediaItemStatus.PLAYBACK_STATE_BUFFERING;
-import static android.support.v7.media.MediaItemStatus.PLAYBACK_STATE_CANCELED;
-import static android.support.v7.media.MediaItemStatus.PLAYBACK_STATE_ERROR;
-import static android.support.v7.media.MediaItemStatus.PLAYBACK_STATE_FINISHED;
-import static android.support.v7.media.MediaItemStatus.PLAYBACK_STATE_INVALIDATED;
-import static android.support.v7.media.MediaItemStatus.PLAYBACK_STATE_PAUSED;
-import static android.support.v7.media.MediaItemStatus.PLAYBACK_STATE_PENDING;
-import static android.support.v7.media.MediaItemStatus.PLAYBACK_STATE_PLAYING;
+import static androidx.mediarouter.media.MediaItemStatus.PLAYBACK_STATE_BUFFERING;
+import static androidx.mediarouter.media.MediaItemStatus.PLAYBACK_STATE_CANCELED;
+import static androidx.mediarouter.media.MediaItemStatus.PLAYBACK_STATE_ERROR;
+import static androidx.mediarouter.media.MediaItemStatus.PLAYBACK_STATE_FINISHED;
+import static androidx.mediarouter.media.MediaItemStatus.PLAYBACK_STATE_INVALIDATED;
+import static androidx.mediarouter.media.MediaItemStatus.PLAYBACK_STATE_PAUSED;
+import static androidx.mediarouter.media.MediaItemStatus.PLAYBACK_STATE_PENDING;
+import static androidx.mediarouter.media.MediaItemStatus.PLAYBACK_STATE_PLAYING;
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;

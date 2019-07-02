@@ -16,7 +16,7 @@
 package com.pkware.truth.android.gesture;
 
 import android.gesture.GestureOverlayView;
-import android.support.annotation.IntDef;
+import androidx.annotation.IntDef;
 
 import java.lang.annotation.Retention;
 

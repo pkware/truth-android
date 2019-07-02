@@ -16,7 +16,7 @@
 package com.pkware.truth.android.content.res;
 
 import android.content.res.Configuration;
-import android.support.annotation.IntDef;
+import androidx.annotation.IntDef;
 
 import java.lang.annotation.Retention;
 

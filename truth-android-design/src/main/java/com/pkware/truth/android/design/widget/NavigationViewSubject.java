@@ -17,8 +17,8 @@
 package com.pkware.truth.android.design.widget;
 
 import android.graphics.drawable.Drawable;
-import android.support.design.widget.NavigationView;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 import com.pkware.truth.android.widget.AbstractFrameLayoutSubject;

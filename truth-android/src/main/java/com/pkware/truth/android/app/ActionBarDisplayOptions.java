@@ -16,7 +16,7 @@
 package com.pkware.truth.android.app;
 
 import android.app.ActionBar;
-import android.support.annotation.IntDef;
+import androidx.annotation.IntDef;
 
 import java.lang.annotation.Retention;
 

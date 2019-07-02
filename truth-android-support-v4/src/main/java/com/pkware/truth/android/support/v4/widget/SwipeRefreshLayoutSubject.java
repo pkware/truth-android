@@ -16,7 +16,7 @@
  */
 package com.pkware.truth.android.support.v4.widget;
 
-import android.support.v4.widget.SwipeRefreshLayout;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;

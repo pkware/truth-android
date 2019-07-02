@@ -17,8 +17,8 @@
 package com.pkware.truth.android.widget;
 
 import android.annotation.TargetApi;
-import android.support.annotation.IntRange;
 import android.widget.TimePicker;
+import androidx.annotation.IntRange;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;

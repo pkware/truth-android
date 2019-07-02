@@ -16,7 +16,7 @@
  */
 package com.pkware.truth.android.support.v4.app;
 
-import android.support.v4.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;

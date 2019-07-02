@@ -15,7 +15,7 @@
  */
 package com.pkware.truth.android.playservices.location;
 
-import android.support.annotation.IntDef;
+import androidx.annotation.IntDef;
 
 import com.google.android.gms.location.DetectedActivity;
 

@@ -16,8 +16,8 @@
  */
 package com.pkware.truth.android.appcompat.v7.view;
 
-import android.support.v7.view.ActionMode;
 import android.view.View;
+import androidx.appcompat.view.ActionMode;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;

@@ -15,8 +15,8 @@
  */
 package com.pkware.truth.android.view;
 
-import android.support.annotation.IntDef;
 import android.view.Display;
+import androidx.annotation.IntDef;
 
 import java.lang.annotation.Retention;
 

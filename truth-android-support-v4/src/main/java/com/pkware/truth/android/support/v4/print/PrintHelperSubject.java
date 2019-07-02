@@ -16,17 +16,17 @@
  */
 package com.pkware.truth.android.support.v4.print;
 
-import android.support.v4.print.PrintHelper;
+import androidx.print.PrintHelper;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static android.support.v4.print.PrintHelper.COLOR_MODE_COLOR;
-import static android.support.v4.print.PrintHelper.COLOR_MODE_MONOCHROME;
-import static android.support.v4.print.PrintHelper.ORIENTATION_LANDSCAPE;
-import static android.support.v4.print.PrintHelper.ORIENTATION_PORTRAIT;
-import static android.support.v4.print.PrintHelper.SCALE_MODE_FILL;
-import static android.support.v4.print.PrintHelper.SCALE_MODE_FIT;
+import static androidx.print.PrintHelper.COLOR_MODE_COLOR;
+import static androidx.print.PrintHelper.COLOR_MODE_MONOCHROME;
+import static androidx.print.PrintHelper.ORIENTATION_LANDSCAPE;
+import static androidx.print.PrintHelper.ORIENTATION_PORTRAIT;
+import static androidx.print.PrintHelper.SCALE_MODE_FILL;
+import static androidx.print.PrintHelper.SCALE_MODE_FIT;
 import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 

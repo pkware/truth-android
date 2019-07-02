@@ -16,8 +16,8 @@
 package com.pkware.truth.android.view.animation;
 
 import android.annotation.SuppressLint;
-import android.support.annotation.IntDef;
 import android.view.animation.GridLayoutAnimationController;
+import androidx.annotation.IntDef;
 
 import java.lang.annotation.Retention;
 

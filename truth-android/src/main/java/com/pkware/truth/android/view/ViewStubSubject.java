@@ -16,8 +16,8 @@
  */
 package com.pkware.truth.android.view;
 
-import android.support.annotation.LayoutRes;
 import android.view.ViewStub;
+import androidx.annotation.LayoutRes;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;

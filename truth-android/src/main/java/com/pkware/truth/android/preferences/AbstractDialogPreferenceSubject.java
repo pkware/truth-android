@@ -19,8 +19,8 @@ package com.pkware.truth.android.preferences;
 import android.app.Dialog;
 import android.graphics.drawable.Drawable;
 import android.preference.DialogPreference;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.StringRes;
+import androidx.annotation.LayoutRes;
+import androidx.annotation.StringRes;
 
 import com.google.common.truth.FailureMetadata;
 

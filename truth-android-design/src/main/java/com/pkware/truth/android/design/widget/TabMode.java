@@ -15,8 +15,9 @@
  */
 package com.pkware.truth.android.design.widget;
 
-import android.support.annotation.IntDef;
-import android.support.design.widget.TabLayout;
+import androidx.annotation.IntDef;
+
+import com.google.android.material.tabs.TabLayout;
 
 import java.lang.annotation.Retention;
 

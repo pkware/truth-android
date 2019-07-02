@@ -20,7 +20,7 @@ import android.annotation.TargetApi;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.graphics.Bitmap;
-import android.support.annotation.DrawableRes;
+import androidx.annotation.DrawableRes;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;

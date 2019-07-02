@@ -15,8 +15,8 @@
  */
 package com.pkware.truth.android.recyclerview.v7.widget;
 
-import android.support.annotation.IntDef;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.IntDef;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.lang.annotation.Retention;
 

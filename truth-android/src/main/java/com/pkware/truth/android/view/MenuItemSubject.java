@@ -18,9 +18,9 @@ package com.pkware.truth.android.view;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.IdRes;
 import android.view.MenuItem;
 import android.view.View;
+import androidx.annotation.IdRes;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;

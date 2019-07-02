@@ -17,7 +17,7 @@
 package com.pkware.truth.android.app;
 
 import android.app.ActionBar;
-import android.support.annotation.StringRes;
+import androidx.annotation.StringRes;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;

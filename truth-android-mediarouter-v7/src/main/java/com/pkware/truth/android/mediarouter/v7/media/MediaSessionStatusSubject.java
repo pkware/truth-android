@@ -16,14 +16,14 @@
  */
 package com.pkware.truth.android.mediarouter.v7.media;
 
-import android.support.v7.media.MediaSessionStatus;
+import androidx.mediarouter.media.MediaSessionStatus;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static android.support.v7.media.MediaSessionStatus.SESSION_STATE_ACTIVE;
-import static android.support.v7.media.MediaSessionStatus.SESSION_STATE_ENDED;
-import static android.support.v7.media.MediaSessionStatus.SESSION_STATE_INVALIDATED;
+import static androidx.mediarouter.media.MediaSessionStatus.SESSION_STATE_ACTIVE;
+import static androidx.mediarouter.media.MediaSessionStatus.SESSION_STATE_ENDED;
+import static androidx.mediarouter.media.MediaSessionStatus.SESSION_STATE_INVALIDATED;
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;

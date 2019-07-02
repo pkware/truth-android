@@ -15,8 +15,8 @@
  */
 package com.pkware.truth.android.appcompat.v7.app;
 
-import android.support.annotation.IntDef;
-import android.support.v7.app.ActionBar;
+import androidx.annotation.IntDef;
+import androidx.appcompat.app.ActionBar;
 
 import java.lang.annotation.Retention;
 

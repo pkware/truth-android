@@ -16,7 +16,7 @@
  */
 package com.pkware.truth.android.palette.v7.graphics;
 
-import android.support.v7.graphics.Palette;
+import androidx.palette.graphics.Palette;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;

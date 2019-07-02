@@ -16,20 +16,20 @@
  */
 package com.pkware.truth.android.recyclerview.v7.widget;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 
-import static android.support.v7.widget.RecyclerView.Adapter;
-import static android.support.v7.widget.RecyclerView.ItemAnimator;
-import static android.support.v7.widget.RecyclerView.LayoutManager;
-import static android.support.v7.widget.RecyclerView.RecycledViewPool;
-import static android.support.v7.widget.RecyclerView.SCROLL_STATE_DRAGGING;
-import static android.support.v7.widget.RecyclerView.SCROLL_STATE_IDLE;
-import static android.support.v7.widget.RecyclerView.SCROLL_STATE_SETTLING;
-import static android.support.v7.widget.RecyclerView.ViewHolder;
+import static androidx.recyclerview.widget.RecyclerView.Adapter;
+import static androidx.recyclerview.widget.RecyclerView.ItemAnimator;
+import static androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import static androidx.recyclerview.widget.RecyclerView.RecycledViewPool;
+import static androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_DRAGGING;
+import static androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_IDLE;
+import static androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_SETTLING;
+import static androidx.recyclerview.widget.RecyclerView.ViewHolder;
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;

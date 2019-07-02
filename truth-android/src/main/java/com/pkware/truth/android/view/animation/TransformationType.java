@@ -15,8 +15,8 @@
  */
 package com.pkware.truth.android.view.animation;
 
-import android.support.annotation.IntDef;
 import android.view.animation.Transformation;
+import androidx.annotation.IntDef;
 
 import java.lang.annotation.Retention;
 

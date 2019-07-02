@@ -17,8 +17,8 @@
 package com.pkware.truth.android.support.v4.widget;
 
 import android.database.Cursor;
-import android.support.v4.widget.CursorAdapter;
 import android.widget.Filter;
+import androidx.cursoradapter.widget.CursorAdapter;
 
 import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.widget.AbstractListAdapterSubject;

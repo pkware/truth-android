@@ -11,32 +11,32 @@ import static com.google.common.truth.Truth.assertAbout;
 @SuppressWarnings("deprecation")
 public final class Assertions {
   public static com.pkware.truth.android.design.widget.NavigationViewSubject assertThat(
-      android.support.design.widget.NavigationView target) {
-    Subject.Factory<com.pkware.truth.android.design.widget.NavigationViewSubject, android.support.design.widget.NavigationView> type = com.pkware.truth.android.design.widget.NavigationViewSubject.type();
+      com.google.android.material.navigation.NavigationView target) {
+    Subject.Factory<com.pkware.truth.android.design.widget.NavigationViewSubject, com.google.android.material.navigation.NavigationView> type = com.pkware.truth.android.design.widget.NavigationViewSubject.type();
     return assertAbout(type).that(target);
   }
 
   public static com.pkware.truth.android.design.widget.SnackbarSubject assertThat(
-      android.support.design.widget.Snackbar target) {
-    Subject.Factory<com.pkware.truth.android.design.widget.SnackbarSubject, android.support.design.widget.Snackbar> type = com.pkware.truth.android.design.widget.SnackbarSubject.type();
+      com.google.android.material.snackbar.Snackbar target) {
+    Subject.Factory<com.pkware.truth.android.design.widget.SnackbarSubject, com.google.android.material.snackbar.Snackbar> type = com.pkware.truth.android.design.widget.SnackbarSubject.type();
     return assertAbout(type).that(target);
   }
 
   public static com.pkware.truth.android.design.widget.TabLayoutSubject assertThat(
-      android.support.design.widget.TabLayout target) {
-    Subject.Factory<com.pkware.truth.android.design.widget.TabLayoutSubject, android.support.design.widget.TabLayout> type = com.pkware.truth.android.design.widget.TabLayoutSubject.type();
+      com.google.android.material.tabs.TabLayout target) {
+    Subject.Factory<com.pkware.truth.android.design.widget.TabLayoutSubject, com.google.android.material.tabs.TabLayout> type = com.pkware.truth.android.design.widget.TabLayoutSubject.type();
     return assertAbout(type).that(target);
   }
 
   public static com.pkware.truth.android.design.widget.TabLayoutTabSubject assertThat(
-      android.support.design.widget.TabLayout.Tab target) {
-    Subject.Factory<com.pkware.truth.android.design.widget.TabLayoutTabSubject, android.support.design.widget.TabLayout.Tab> type = com.pkware.truth.android.design.widget.TabLayoutTabSubject.type();
+      com.google.android.material.tabs.TabLayout.Tab target) {
+    Subject.Factory<com.pkware.truth.android.design.widget.TabLayoutTabSubject, com.google.android.material.tabs.TabLayout.Tab> type = com.pkware.truth.android.design.widget.TabLayoutTabSubject.type();
     return assertAbout(type).that(target);
   }
 
   public static com.pkware.truth.android.design.widget.TextInputLayoutSubject assertThat(
-      android.support.design.widget.TextInputLayout target) {
-    Subject.Factory<com.pkware.truth.android.design.widget.TextInputLayoutSubject, android.support.design.widget.TextInputLayout> type = com.pkware.truth.android.design.widget.TextInputLayoutSubject.type();
+      com.google.android.material.textfield.TextInputLayout target) {
+    Subject.Factory<com.pkware.truth.android.design.widget.TextInputLayoutSubject, com.google.android.material.textfield.TextInputLayout> type = com.pkware.truth.android.design.widget.TextInputLayoutSubject.type();
     return assertAbout(type).that(target);
   }
 

@@ -16,8 +16,7 @@
  */
 package com.pkware.truth.android.design.widget;
 
-import android.support.design.widget.TextInputLayout;
-
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 import com.pkware.truth.android.widget.AbstractLinearLayoutSubject;

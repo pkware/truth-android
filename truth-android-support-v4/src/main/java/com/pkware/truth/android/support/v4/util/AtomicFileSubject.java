@@ -16,7 +16,7 @@
  */
 package com.pkware.truth.android.support.v4.util;
 
-import android.support.v4.util.AtomicFile;
+import androidx.core.util.AtomicFile;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;

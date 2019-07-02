@@ -17,7 +17,7 @@
 package com.pkware.truth.android.content;
 
 import android.content.ContentValues;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;

@@ -16,12 +16,12 @@
  */
 package com.pkware.truth.android.support.v4.widget;
 
-import android.support.v4.widget.SimpleCursorAdapter;
+import androidx.cursoradapter.widget.SimpleCursorAdapter;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static android.support.v4.widget.SimpleCursorAdapter.CursorToStringConverter;
+import static androidx.cursoradapter.widget.SimpleCursorAdapter.CursorToStringConverter;
 import static com.google.common.truth.Truth.assertThat;
 
 /**

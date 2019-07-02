@@ -18,8 +18,8 @@ package com.pkware.truth.android.widget;
 
 import android.annotation.TargetApi;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.StringRes;
 import android.widget.Spinner;
+import androidx.annotation.StringRes;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;

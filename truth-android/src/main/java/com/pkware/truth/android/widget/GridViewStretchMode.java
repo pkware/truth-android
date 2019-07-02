@@ -15,8 +15,8 @@
  */
 package com.pkware.truth.android.widget;
 
-import android.support.annotation.IntDef;
 import android.widget.GridView;
+import androidx.annotation.IntDef;
 
 import java.lang.annotation.Retention;
 

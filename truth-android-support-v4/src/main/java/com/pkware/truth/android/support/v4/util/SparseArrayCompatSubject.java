@@ -16,7 +16,7 @@
  */
 package com.pkware.truth.android.support.v4.util;
 
-import android.support.v4.util.SparseArrayCompat;
+import androidx.collection.SparseArrayCompat;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;

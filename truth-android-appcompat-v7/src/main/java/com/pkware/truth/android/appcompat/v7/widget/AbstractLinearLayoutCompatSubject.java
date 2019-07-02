@@ -17,7 +17,7 @@
 package com.pkware.truth.android.appcompat.v7.widget;
 
 import android.annotation.TargetApi;
-import android.support.v7.widget.LinearLayoutCompat;
+import androidx.appcompat.widget.LinearLayoutCompat;
 
 import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;

@@ -15,8 +15,8 @@
  */
 package com.pkware.truth.android.telephony;
 
-import android.support.annotation.IntDef;
 import android.telephony.ServiceState;
+import androidx.annotation.IntDef;
 
 import java.lang.annotation.Retention;
 

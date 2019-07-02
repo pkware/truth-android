@@ -18,8 +18,8 @@ package com.pkware.truth.android.app;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.support.annotation.ColorRes;
-import android.support.annotation.StringRes;
+import androidx.annotation.ColorRes;
+import androidx.annotation.StringRes;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;

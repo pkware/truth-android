@@ -11,8 +11,8 @@ import static com.google.common.truth.Truth.assertAbout;
 @SuppressWarnings("deprecation")
 public final class Assertions {
   public static com.pkware.truth.android.cardview.v7.widget.CardViewSubject assertThat(
-      android.support.v7.widget.CardView target) {
-    Subject.Factory<com.pkware.truth.android.cardview.v7.widget.CardViewSubject, android.support.v7.widget.CardView> type = com.pkware.truth.android.cardview.v7.widget.CardViewSubject.type();
+      androidx.cardview.widget.CardView target) {
+    Subject.Factory<com.pkware.truth.android.cardview.v7.widget.CardViewSubject, androidx.cardview.widget.CardView> type = com.pkware.truth.android.cardview.v7.widget.CardViewSubject.type();
     return assertAbout(type).that(target);
   }
 

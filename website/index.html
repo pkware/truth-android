@@ -93,15 +93,15 @@ assertThat(layout.getShowDividers()).isEqualTo(SHOW_DIVIDERS_MIDDLE);</pre>
         <h5 id="add-ons">Add-On Modules</h5>
         <p>Modules are also provided for the add-on Android libraries. Add the dependency (listed below) and use the following imports:</p>
         <ul>
-          <li><p>support-v4</p><pre class="prettyprint">import static com.pkware.truth.android.support.v4.Assertions.assertThat;</pre></li>
+          <li><p>legacy-support-v4</p><pre class="prettyprint">import static com.pkware.truth.androidx.legacy.v4.Assertions.assertThat;</pre></li>
           <li><p>Google Play Services</p><pre class="prettyprint">import static com.pkware.truth.android.playservices.Assertions.assertThat;</pre></li>
-          <li><p>appcompat-v7</p><pre class="prettyprint">import static com.pkware.truth.android.appcompat.v7.Assertions.assertThat;</pre></li>
-          <li><p>design</p><pre class="prettyprint">import static com.pkware.truth.android.design.Assertions.assertThat;</pre></li>
-          <li><p>mediarouter-v7</p><pre class="prettyprint">import static com.pkware.truth.android.mediarouter.v7.Assertions.assertThat;</pre></li>
-          <li><p>gridlayout-v7</p><pre class="prettyprint">import static com.pkware.truth.android.gridlayout.v7.Assertions.assertThat;</pre></li>
-          <li><p>cardview-v7</p><pre class="prettyprint">import static com.pkware.truth.android.cardview.v7.Assertions.assertThat;</pre></li>
-          <li><p>recyclerview-v7</p><pre class="prettyprint">import static com.pkware.truth.android.recyclerview.v7.Assertions.assertThat;</pre></li>
-          <li><p>pallete-v7</p><pre class="prettyprint">import static com.pkware.truth.android.pallete.v7.Assertions.assertThat;</pre></li>
+          <li><p>appcompat</p><pre class="prettyprint">import static com.pkware.truth.androidx.appcompat.Assertions.assertThat;</pre></li>
+          <li><p>Material Components</p><pre class="prettyprint">import static com.pkware.truth.android.material.Assertions.assertThat;</pre></li>
+          <li><p>mediarouter</p><pre class="prettyprint">import static com.pkware.truth.android.mediarouter.v7.Assertions.assertThat;</pre></li>
+          <li><p>gridlayout</p><pre class="prettyprint">import static com.pkware.truth.androidx.gridlayout.Assertions.assertThat;</pre></li>
+          <li><p>cardview</p><pre class="prettyprint">import static com.pkware.truth.androidx.cardview.Assertions.assertThat;</pre></li>
+          <li><p>recyclerview</p><pre class="prettyprint">import static com.pkware.truth.android.recyclerview.v7.Assertions.assertThat;</pre></li>
+          <li><p>pallete</p><pre class="prettyprint">import static com.pkware.truth.android.pallete.v7.Assertions.assertThat;</pre></li>
         </dl>
       </div>
     </div>
@@ -148,15 +148,15 @@ assertThat(layout.getShowDividers()).isEqualTo(SHOW_DIVIDERS_MIDDLE);</pre>
         <h5 id="download">Download</h5>
         <ul>
           <li><p>Android module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android:<span class="maven-version">1.1.0</span>'</pre></li>
-          <li><p>support-v4 module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-support-v4:<span class="maven-version">1.1.0</span>'</pre></li>
+          <li><p>legacy support-v4 module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-support-v4:<span class="maven-version">1.1.0</span>'</pre></li>
           <li><p>Google Play Services module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-play-services:<span class="maven-version">1.1.0</span>'</pre></li>
-          <li><p>Design library module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-pallete-v7:<span class="maven-version">1.1.0</span>'</pre></li>
-          <li><p>appcompat-v7 module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-appcompat-v7:<span class="maven-version">1.1.0</span>'</pre></li>
-          <li><p>mediarouter-v7 module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-mediarouter-v7:<span class="maven-version">1.1.0</span>'</pre></li>
-          <li><p>gridlayout-v7 module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-gridlayout-v7:<span class="maven-version">1.1.0</span>'</pre></li>
-          <li><p>cardview-v7 module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-cardview-v7:<span class="maven-version">1.1.0</span>'</pre></li>
-          <li><p>recyclerview-v7 module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-recyclerview-v7:<span class="maven-version">1.1.0</span>'</pre></li>
-          <li><p>pallete-v7 module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-pallete-v7:<span class="maven-version">1.1.0</span>'</pre></li>
+          <li><p>Material Components library module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-material:<span class="maven-version">1.1.0</span>'</pre></li>
+          <li><p>appcompat module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-appcompat:<span class="maven-version">1.1.0</span>'</pre></li>
+          <li><p>mediarouter module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-mediarouter:<span class="maven-version">1.1.0</span>'</pre></li>
+          <li><p>gridlayout module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-gridlayout:<span class="maven-version">1.1.0</span>'</pre></li>
+          <li><p>cardview module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-cardview:<span class="maven-version">1.1.0</span>'</pre></li>
+          <li><p>recyclerview module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-recyclerview:<span class="maven-version">1.1.0</span>'</pre></li>
+          <li><p>pallete module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-pallete:<span class="maven-version">1.1.0</span>'</pre></li>
         </ul>
       </div>
     </div>

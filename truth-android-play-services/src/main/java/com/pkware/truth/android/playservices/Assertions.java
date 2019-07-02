@@ -1,4 +1,4 @@
-// Copyright 2018 PKWARE, Inc.
+// Copyright 2019 PKWARE, Inc.
 //
 // This class is generated. Do not modify directly!
 package com.pkware.truth.android.playservices;

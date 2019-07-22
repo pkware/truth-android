@@ -104,7 +104,7 @@ public class BundleSubject extends Subject<BundleSubject, Bundle> {
 
   public BundleSubject hasValue(String key, Parcelable value) {
     hasKey(key);
-    assertThat(actual().getParcelable(key))
+    assertThat((Parcelable) actual().getParcelable(key))
         .named(String.format(Locale.ENGLISH, "value for key <%s>", key))
         .isEqualTo(value);
     return this;

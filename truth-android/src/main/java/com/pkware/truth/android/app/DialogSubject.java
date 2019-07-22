@@ -32,11 +32,6 @@ public final class DialogSubject extends AbstractDialogSubject<DialogSubject, Di
   }
 
   public static Subject.Factory<DialogSubject, Dialog> type() {
-    return new Subject.Factory<DialogSubject, Dialog>() {
-      @Override
-      public DialogSubject createSubject(FailureMetadata fm, Dialog that) {
-        return new DialogSubject(fm, that);
-      }
-    };
+    return DialogSubject::new;
   }
 }

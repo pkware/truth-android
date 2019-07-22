@@ -32,11 +32,6 @@ public final class FrameLayoutSubject extends AbstractFrameLayoutSubject<FrameLa
   }
 
   public static Subject.Factory<FrameLayoutSubject, FrameLayout> type() {
-    return new Subject.Factory<FrameLayoutSubject, FrameLayout>() {
-      @Override
-      public FrameLayoutSubject createSubject(FailureMetadata fm, FrameLayout that) {
-        return new FrameLayoutSubject(fm, that);
-      }
-    };
+    return FrameLayoutSubject::new;
   }
 }

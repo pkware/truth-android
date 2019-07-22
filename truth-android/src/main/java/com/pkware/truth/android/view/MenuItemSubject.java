@@ -36,12 +36,7 @@ public class MenuItemSubject extends Subject<MenuItemSubject, MenuItem> {
   }
 
   public static Subject.Factory<MenuItemSubject, MenuItem> type() {
-    return new Subject.Factory<MenuItemSubject, MenuItem>() {
-      @Override
-      public MenuItemSubject createSubject(FailureMetadata fm, MenuItem that) {
-        return new MenuItemSubject(fm, that);
-      }
-    };
+    return MenuItemSubject::new;
   }
 
   public MenuItemSubject hasActionView(View view) {

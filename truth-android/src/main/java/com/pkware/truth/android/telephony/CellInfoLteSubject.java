@@ -37,12 +37,7 @@ public final class CellInfoLteSubject extends AbstractCellInfoSubject<CellInfoLt
   }
 
   public static Subject.Factory<CellInfoLteSubject, CellInfoLte> type() {
-    return new Subject.Factory<CellInfoLteSubject, CellInfoLte>() {
-      @Override
-      public CellInfoLteSubject createSubject(FailureMetadata fm, CellInfoLte that) {
-        return new CellInfoLteSubject(fm, that);
-      }
-    };
+    return CellInfoLteSubject::new;
   }
 
   public CellInfoLteSubject hasCellIdentity(CellIdentityLte cellIdentity) {

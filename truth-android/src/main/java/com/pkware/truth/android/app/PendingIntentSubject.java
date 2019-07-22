@@ -35,12 +35,7 @@ public class PendingIntentSubject extends Subject<PendingIntentSubject, PendingI
   }
 
   public static Subject.Factory<PendingIntentSubject, PendingIntent> type() {
-    return new Subject.Factory<PendingIntentSubject, PendingIntent>() {
-      @Override
-      public PendingIntentSubject createSubject(FailureMetadata fm, PendingIntent that) {
-        return new PendingIntentSubject(fm, that);
-      }
-    };
+    return PendingIntentSubject::new;
   }
 
   @TargetApi(JELLY_BEAN_MR1)

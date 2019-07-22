@@ -32,11 +32,6 @@ public class ListAdapterSubject extends AbstractListAdapterSubject<ListAdapterSu
   }
 
   public static Subject.Factory<ListAdapterSubject, ListAdapter> type() {
-    return new Subject.Factory<ListAdapterSubject, ListAdapter>() {
-      @Override
-      public ListAdapterSubject createSubject(FailureMetadata fm, ListAdapter that) {
-        return new ListAdapterSubject(fm, that);
-      }
-    };
+    return ListAdapterSubject::new;
   }
 }

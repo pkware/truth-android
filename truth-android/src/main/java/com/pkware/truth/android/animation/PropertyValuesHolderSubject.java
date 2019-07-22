@@ -32,12 +32,7 @@ public class PropertyValuesHolderSubject extends Subject<PropertyValuesHolderSub
   }
 
   public static Subject.Factory<PropertyValuesHolderSubject, PropertyValuesHolder> type() {
-    return new Subject.Factory<PropertyValuesHolderSubject, PropertyValuesHolder>() {
-      @Override
-      public PropertyValuesHolderSubject createSubject(FailureMetadata fm, PropertyValuesHolder that) {
-        return new PropertyValuesHolderSubject(fm, that);
-      }
-    };
+    return PropertyValuesHolderSubject::new;
   }
 
   public PropertyValuesHolderSubject hasPropertyName(String name) {

@@ -32,12 +32,7 @@ public class AccountSubject extends Subject<AccountSubject, Account> {
   }
 
   public static Subject.Factory<AccountSubject, Account> type() {
-    return new Subject.Factory<AccountSubject, Account>() {
-      @Override
-      public AccountSubject createSubject(FailureMetadata fm, Account that) {
-        return new AccountSubject(fm, that);
-      }
-    };
+    return AccountSubject::new;
   }
 
   public AccountSubject hasName(String name) {

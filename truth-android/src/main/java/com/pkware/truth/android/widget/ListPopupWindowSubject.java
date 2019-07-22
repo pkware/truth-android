@@ -40,12 +40,7 @@ public class ListPopupWindowSubject extends Subject<ListPopupWindowSubject, List
   }
 
   public static Subject.Factory<ListPopupWindowSubject, ListPopupWindow> type() {
-    return new Subject.Factory<ListPopupWindowSubject, ListPopupWindow>() {
-      @Override
-      public ListPopupWindowSubject createSubject(FailureMetadata fm, ListPopupWindow that) {
-        return new ListPopupWindowSubject(fm, that);
-      }
-    };
+    return ListPopupWindowSubject::new;
   }
 
   public static String inputMethodModeToString(@ListPopupWindowInputMethodMode int mode) {

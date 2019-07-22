@@ -32,12 +32,7 @@ public class AnimationSetSubject extends AbstractAnimationSubject<AnimationSetSu
   }
 
   public static Subject.Factory<AnimationSetSubject, AnimationSet> type() {
-    return new Subject.Factory<AnimationSetSubject, AnimationSet>() {
-      @Override
-      public AnimationSetSubject createSubject(FailureMetadata fm, AnimationSet that) {
-        return new AnimationSetSubject(fm, that);
-      }
-    };
+    return AnimationSetSubject::new;
   }
 
   public AnimationSetSubject hasDurationHint(long duration) {

@@ -33,12 +33,7 @@ public class RemotePlaybackClientSubject
   }
 
   public static Subject.Factory<RemotePlaybackClientSubject, RemotePlaybackClient> type() {
-    return new Subject.Factory<RemotePlaybackClientSubject, RemotePlaybackClient>() {
-      @Override
-      public RemotePlaybackClientSubject createSubject(FailureMetadata fm, RemotePlaybackClient that) {
-        return new RemotePlaybackClientSubject(fm, that);
-      }
-    };
+    return RemotePlaybackClientSubject::new;
   }
 
   public RemotePlaybackClientSubject hasSessionId(String sessionId) {

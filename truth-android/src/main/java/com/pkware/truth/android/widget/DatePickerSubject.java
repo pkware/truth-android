@@ -32,12 +32,7 @@ public class DatePickerSubject extends AbstractFrameLayoutSubject<DatePickerSubj
   }
 
   public static Subject.Factory<DatePickerSubject, DatePicker> type() {
-    return new Subject.Factory<DatePickerSubject, DatePicker>() {
-      @Override
-      public DatePickerSubject createSubject(FailureMetadata fm, DatePicker that) {
-        return new DatePickerSubject(fm, that);
-      }
-    };
+    return DatePickerSubject::new;
   }
 
   public DatePickerSubject isShowingCalendarView() {

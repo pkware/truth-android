@@ -32,11 +32,6 @@ public final class RelativeLayoutSubject extends AbstractRelativeLayoutSubject<R
   }
 
   public static Subject.Factory<RelativeLayoutSubject, RelativeLayout> type() {
-    return new Subject.Factory<RelativeLayoutSubject, RelativeLayout>() {
-      @Override
-      public RelativeLayoutSubject createSubject(FailureMetadata fm, RelativeLayout that) {
-        return new RelativeLayoutSubject(fm, that);
-      }
-    };
+    return RelativeLayoutSubject::new;
   }
 }

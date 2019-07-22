@@ -42,12 +42,7 @@ public class MediaItemStatusSubject extends Subject<MediaItemStatusSubject, Medi
   }
 
   public static Subject.Factory<MediaItemStatusSubject, MediaItemStatus> type() {
-    return new Subject.Factory<MediaItemStatusSubject, MediaItemStatus>() {
-      @Override
-      public MediaItemStatusSubject createSubject(FailureMetadata fm, MediaItemStatus that) {
-        return new MediaItemStatusSubject(fm, that);
-      }
-    };
+    return MediaItemStatusSubject::new;
   }
 
   public static String playbackStateToString(@MediaItemStatusPlaybackState int playbackState) {

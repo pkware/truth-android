@@ -42,12 +42,7 @@ public class AccessibilityServiceInfoSubject extends Subject<AccessibilityServic
   }
 
   public static Subject.Factory<AccessibilityServiceInfoSubject, AccessibilityServiceInfo> type() {
-    return new Subject.Factory<AccessibilityServiceInfoSubject, AccessibilityServiceInfo>() {
-      @Override
-      public AccessibilityServiceInfoSubject createSubject(FailureMetadata fm, AccessibilityServiceInfo that) {
-        return new AccessibilityServiceInfoSubject(fm, that);
-      }
-    };
+    return AccessibilityServiceInfoSubject::new;
   }
 
   public static String capabilitiesToString(@AccessibilityServiceInfoCapabilities int capabilities) {

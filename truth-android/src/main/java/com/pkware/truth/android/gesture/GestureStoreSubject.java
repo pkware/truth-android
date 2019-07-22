@@ -32,12 +32,7 @@ public class GestureStoreSubject extends Subject<GestureStoreSubject, GestureSto
   }
 
   public static Subject.Factory<GestureStoreSubject, GestureStore> type() {
-    return new Subject.Factory<GestureStoreSubject, GestureStore>() {
-      @Override
-      public GestureStoreSubject createSubject(FailureMetadata fm, GestureStore that) {
-        return new GestureStoreSubject(fm, that);
-      }
-    };
+    return GestureStoreSubject::new;
   }
 
   public GestureStoreSubject hasOrientationStyle(int style) {

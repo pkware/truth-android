@@ -34,12 +34,7 @@ public class SlidingPaneLayoutSubject
   }
 
   public static Subject.Factory<SlidingPaneLayoutSubject, SlidingPaneLayout> type() {
-    return new Subject.Factory<SlidingPaneLayoutSubject, SlidingPaneLayout>() {
-      @Override
-      public SlidingPaneLayoutSubject createSubject(FailureMetadata fm, SlidingPaneLayout that) {
-        return new SlidingPaneLayoutSubject(fm, that);
-      }
-    };
+    return SlidingPaneLayoutSubject::new;
   }
 
   public SlidingPaneLayoutSubject hasCoveredFadeColor(int color) {

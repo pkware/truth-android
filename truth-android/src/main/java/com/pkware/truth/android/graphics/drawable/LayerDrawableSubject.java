@@ -32,12 +32,7 @@ public class LayerDrawableSubject extends AbstractDrawableSubject<LayerDrawableS
   }
 
   public static Subject.Factory<LayerDrawableSubject, LayerDrawable> type() {
-    return new Subject.Factory<LayerDrawableSubject, LayerDrawable>() {
-      @Override
-      public LayerDrawableSubject createSubject(FailureMetadata fm, LayerDrawable that) {
-        return new LayerDrawableSubject(fm, that);
-      }
-    };
+    return LayerDrawableSubject::new;
   }
 
   public LayerDrawableSubject hasLayerCount(int count) {

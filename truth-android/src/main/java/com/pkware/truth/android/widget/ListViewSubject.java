@@ -32,11 +32,6 @@ public final class ListViewSubject extends AbstractListViewSubject<ListViewSubje
   }
 
   public static Subject.Factory<ListViewSubject, ListView> type() {
-    return new Subject.Factory<ListViewSubject, ListView>() {
-      @Override
-      public ListViewSubject createSubject(FailureMetadata fm, ListView that) {
-        return new ListViewSubject(fm, that);
-      }
-    };
+    return ListViewSubject::new;
   }
 }

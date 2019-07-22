@@ -34,12 +34,7 @@ public class PowerManagerSubject extends Subject<PowerManagerSubject, PowerManag
   }
 
   public static Subject.Factory<PowerManagerSubject, PowerManager> type() {
-    return new Subject.Factory<PowerManagerSubject, PowerManager>() {
-      @Override
-      public PowerManagerSubject createSubject(FailureMetadata fm, PowerManager that) {
-        return new PowerManagerSubject(fm, that);
-      }
-    };
+    return PowerManagerSubject::new;
   }
 
   public PowerManagerSubject isScreenOn() {

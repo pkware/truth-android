@@ -33,12 +33,7 @@ public class UsbRequestSubject extends Subject<UsbRequestSubject, UsbRequest> {
   }
 
   public static Subject.Factory<UsbRequestSubject, UsbRequest> type() {
-    return new Subject.Factory<UsbRequestSubject, UsbRequest>() {
-      @Override
-      public UsbRequestSubject createSubject(FailureMetadata fm, UsbRequest that) {
-        return new UsbRequestSubject(fm, that);
-      }
-    };
+    return UsbRequestSubject::new;
   }
 
   public UsbRequestSubject hasClientData(Object data) {

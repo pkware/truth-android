@@ -32,12 +32,7 @@ public class PropertySubject<T, V> extends Subject<PropertySubject<T, V>, Proper
   }
 
   public static <T, V> Subject.Factory<PropertySubject<T, V>, Property<T, V>> type() {
-    return new Subject.Factory<PropertySubject<T, V>, Property<T, V>>() {
-      @Override
-      public PropertySubject<T, V> createSubject(FailureMetadata fm, Property<T, V> that) {
-        return new PropertySubject<T, V>(fm, that);
-      }
-    };
+    return PropertySubject::new;
   }
 
   public PropertySubject<T, V> hasName(String name) {

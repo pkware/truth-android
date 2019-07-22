@@ -32,12 +32,7 @@ public class PaletteSubject extends Subject<PaletteSubject, Palette> {
   }
 
   public static Subject.Factory<PaletteSubject, Palette> type() {
-    return new Subject.Factory<PaletteSubject, Palette>() {
-      @Override
-      public PaletteSubject createSubject(FailureMetadata fm, Palette that) {
-        return new PaletteSubject(fm, that);
-      }
-    };
+    return PaletteSubject::new;
   }
 
   private static int getAnotherColor(int color) {

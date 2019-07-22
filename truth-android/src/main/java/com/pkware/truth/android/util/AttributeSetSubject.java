@@ -32,12 +32,7 @@ public class AttributeSetSubject extends Subject<AttributeSetSubject, AttributeS
   }
 
   public static Subject.Factory<AttributeSetSubject, AttributeSet> type() {
-    return new Subject.Factory<AttributeSetSubject, AttributeSet>() {
-      @Override
-      public AttributeSetSubject createSubject(FailureMetadata fm, AttributeSet that) {
-        return new AttributeSetSubject(fm, that);
-      }
-    };
+    return AttributeSetSubject::new;
   }
 
   public AttributeSetSubject hasAttributeCount(int count) {

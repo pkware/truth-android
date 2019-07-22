@@ -33,12 +33,7 @@ public class WebViewSubject extends Subject<WebViewSubject, WebView> {
   }
 
   public static Subject.Factory<WebViewSubject, WebView> type() {
-    return new Subject.Factory<WebViewSubject, WebView>() {
-      @Override
-      public WebViewSubject createSubject(FailureMetadata fm, WebView that) {
-        return new WebViewSubject(fm, that);
-      }
-    };
+    return WebViewSubject::new;
   }
 
   public WebViewSubject canGoBack() {

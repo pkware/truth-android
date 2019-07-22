@@ -32,12 +32,7 @@ public class TableRowSubject extends AbstractLinearLayoutSubject<TableRowSubject
   }
 
   public static Subject.Factory<TableRowSubject, TableRow> type() {
-    return new Subject.Factory<TableRowSubject, TableRow>() {
-      @Override
-      public TableRowSubject createSubject(FailureMetadata fm, TableRow that) {
-        return new TableRowSubject(fm, that);
-      }
-    };
+    return TableRowSubject::new;
   }
 
   public TableRowSubject hasVirtualChildCount(int count) {

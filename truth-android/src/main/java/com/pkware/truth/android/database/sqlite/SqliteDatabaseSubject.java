@@ -34,12 +34,7 @@ public class SqliteDatabaseSubject extends Subject<SqliteDatabaseSubject, SQLite
   }
 
   public static Subject.Factory<SqliteDatabaseSubject, SQLiteDatabase> type() {
-    return new Subject.Factory<SqliteDatabaseSubject, SQLiteDatabase>() {
-      @Override
-      public SqliteDatabaseSubject createSubject(FailureMetadata fm, SQLiteDatabase that) {
-        return new SqliteDatabaseSubject(fm, that);
-      }
-    };
+    return SqliteDatabaseSubject::new;
   }
 
   public SqliteDatabaseSubject hasMaximumSize(long size) {

@@ -32,11 +32,6 @@ public final class AdapterSubject extends AbstractAdapterSubject<AdapterSubject,
   }
 
   public static Subject.Factory<AdapterSubject, Adapter> type() {
-    return new Subject.Factory<AdapterSubject, Adapter>() {
-      @Override
-      public AdapterSubject createSubject(FailureMetadata fm, Adapter that) {
-        return new AdapterSubject(fm, that);
-      }
-    };
+    return AdapterSubject::new;
   }
 }

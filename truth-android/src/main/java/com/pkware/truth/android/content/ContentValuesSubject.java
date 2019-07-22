@@ -40,12 +40,7 @@ public class ContentValuesSubject extends Subject<ContentValuesSubject, ContentV
   }
 
   public static Subject.Factory<ContentValuesSubject, ContentValues> type() {
-    return new Subject.Factory<ContentValuesSubject, ContentValues>() {
-      @Override
-      public ContentValuesSubject createSubject(FailureMetadata fm, ContentValues that) {
-        return new ContentValuesSubject(fm, that);
-      }
-    };
+    return ContentValuesSubject::new;
   }
 
   public ContentValuesSubject isEmpty() {

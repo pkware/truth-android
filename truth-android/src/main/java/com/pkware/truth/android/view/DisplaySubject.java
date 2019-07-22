@@ -70,12 +70,7 @@ public class DisplaySubject extends Subject<DisplaySubject, Display> {
   }
 
   public static Subject.Factory<DisplaySubject, Display> type() {
-    return new Subject.Factory<DisplaySubject, Display>() {
-      @Override
-      public DisplaySubject createSubject(FailureMetadata fm, Display that) {
-        return new DisplaySubject(fm, that);
-      }
-    };
+    return DisplaySubject::new;
   }
 
   public static String orientationToString(@SurfaceRotation int orientation) {

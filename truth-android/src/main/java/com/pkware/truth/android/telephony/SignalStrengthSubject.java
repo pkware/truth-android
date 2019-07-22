@@ -32,12 +32,7 @@ public class SignalStrengthSubject extends Subject<SignalStrengthSubject, Signal
   }
 
   public static Subject.Factory<SignalStrengthSubject, SignalStrength> type() {
-    return new Subject.Factory<SignalStrengthSubject, SignalStrength>() {
-      @Override
-      public SignalStrengthSubject createSubject(FailureMetadata fm, SignalStrength that) {
-        return new SignalStrengthSubject(fm, that);
-      }
-    };
+    return SignalStrengthSubject::new;
   }
 
   public SignalStrengthSubject hasCdmaDbm(int dbm) {

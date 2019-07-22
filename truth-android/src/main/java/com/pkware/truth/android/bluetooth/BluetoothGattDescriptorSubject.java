@@ -47,12 +47,7 @@ public class BluetoothGattDescriptorSubject extends Subject<BluetoothGattDescrip
   }
 
   public static Subject.Factory<BluetoothGattDescriptorSubject, BluetoothGattDescriptor> type() {
-    return new Subject.Factory<BluetoothGattDescriptorSubject, BluetoothGattDescriptor>() {
-      @Override
-      public BluetoothGattDescriptorSubject createSubject(FailureMetadata fm, BluetoothGattDescriptor that) {
-        return new BluetoothGattDescriptorSubject(fm, that);
-      }
-    };
+    return BluetoothGattDescriptorSubject::new;
   }
 
   public static String permissionsToString(@BluetoothGattDescriptorPermissions int permissions) {

@@ -32,11 +32,6 @@ public final class ServiceSubject extends AbstractServiceSubject<ServiceSubject,
   }
 
   public static Subject.Factory<ServiceSubject, Service> type() {
-    return new Subject.Factory<ServiceSubject, Service>() {
-      @Override
-      public ServiceSubject createSubject(FailureMetadata fm, Service that) {
-        return new ServiceSubject(fm, that);
-      }
-    };
+    return ServiceSubject::new;
   }
 }

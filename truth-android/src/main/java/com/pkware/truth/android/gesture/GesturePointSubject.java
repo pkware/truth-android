@@ -32,12 +32,7 @@ public class GesturePointSubject extends Subject<GesturePointSubject, GesturePoi
   }
 
   public static Subject.Factory<GesturePointSubject, GesturePoint> type() {
-    return new Subject.Factory<GesturePointSubject, GesturePoint>() {
-      @Override
-      public GesturePointSubject createSubject(FailureMetadata fm, GesturePoint that) {
-        return new GesturePointSubject(fm, that);
-      }
-    };
+    return GesturePointSubject::new;
   }
 
   public GesturePointSubject hasTimestamp(long timestamp) {

@@ -33,12 +33,7 @@ public class TabHostSubject extends AbstractFrameLayoutSubject<TabHostSubject, T
   }
 
   public static Subject.Factory<TabHostSubject, TabHost> type() {
-    return new Subject.Factory<TabHostSubject, TabHost>() {
-      @Override
-      public TabHostSubject createSubject(FailureMetadata fm, TabHost that) {
-        return new TabHostSubject(fm, that);
-      }
-    };
+    return TabHostSubject::new;
   }
 
   public TabHostSubject hasCurrentTab(int tab) {

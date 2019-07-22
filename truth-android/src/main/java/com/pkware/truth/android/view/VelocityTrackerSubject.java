@@ -32,12 +32,7 @@ public class VelocityTrackerSubject extends Subject<VelocityTrackerSubject, Velo
   }
 
   public static Subject.Factory<VelocityTrackerSubject, VelocityTracker> type() {
-    return new Subject.Factory<VelocityTrackerSubject, VelocityTracker>() {
-      @Override
-      public VelocityTrackerSubject createSubject(FailureMetadata fm, VelocityTracker that) {
-        return new VelocityTrackerSubject(fm, that);
-      }
-    };
+    return VelocityTrackerSubject::new;
   }
 
   public VelocityTrackerSubject hasXVelocity(float velocity, float tolerance) {

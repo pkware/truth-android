@@ -32,12 +32,7 @@ public class ColorDrawableSubject extends AbstractDrawableSubject<ColorDrawableS
   }
 
   public static Subject.Factory<ColorDrawableSubject, ColorDrawable> type() {
-    return new Subject.Factory<ColorDrawableSubject, ColorDrawable>() {
-      @Override
-      public ColorDrawableSubject createSubject(FailureMetadata fm, ColorDrawable that) {
-        return new ColorDrawableSubject(fm, that);
-      }
-    };
+    return ColorDrawableSubject::new;
   }
 
   public ColorDrawableSubject hasColor(int color) {

@@ -32,12 +32,7 @@ public class ViewConfigurationSubject extends Subject<ViewConfigurationSubject, 
   }
 
   public static Subject.Factory<ViewConfigurationSubject, ViewConfiguration> type() {
-    return new Subject.Factory<ViewConfigurationSubject, ViewConfiguration>() {
-      @Override
-      public ViewConfigurationSubject createSubject(FailureMetadata fm, ViewConfiguration that) {
-        return new ViewConfigurationSubject(fm, that);
-      }
-    };
+    return ViewConfigurationSubject::new;
   }
 
   public ViewConfigurationSubject hasScaledDoubleTapSlop(int slop) {

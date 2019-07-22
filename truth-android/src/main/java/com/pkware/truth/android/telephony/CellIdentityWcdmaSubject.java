@@ -35,12 +35,7 @@ public final class CellIdentityWcdmaSubject extends Subject<CellIdentityWcdmaSub
   }
 
   public static Subject.Factory<CellIdentityWcdmaSubject, CellIdentityWcdma> type() {
-    return new Subject.Factory<CellIdentityWcdmaSubject, CellIdentityWcdma>() {
-      @Override
-      public CellIdentityWcdmaSubject createSubject(FailureMetadata fm, CellIdentityWcdma that) {
-        return new CellIdentityWcdmaSubject(fm, that);
-      }
-    };
+    return CellIdentityWcdmaSubject::new;
   }
 
   public CellIdentityWcdmaSubject hasCid(int cid) {

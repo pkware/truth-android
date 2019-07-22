@@ -33,11 +33,6 @@ public final class AccessibilityRecordSubject
   }
 
   public static Subject.Factory<AccessibilityRecordSubject, AccessibilityRecord> type() {
-    return new Subject.Factory<AccessibilityRecordSubject, AccessibilityRecord>() {
-      @Override
-      public AccessibilityRecordSubject createSubject(FailureMetadata fm, AccessibilityRecord that) {
-        return new AccessibilityRecordSubject(fm, that);
-      }
-    };
+    return AccessibilityRecordSubject::new;
   }
 }

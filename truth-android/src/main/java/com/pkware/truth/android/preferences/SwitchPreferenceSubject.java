@@ -33,12 +33,7 @@ public class SwitchPreferenceSubject extends AbstractTwoStatePreferenceSubject<S
   }
 
   public static Subject.Factory<SwitchPreferenceSubject, SwitchPreference> type() {
-    return new Subject.Factory<SwitchPreferenceSubject, SwitchPreference>() {
-      @Override
-      public SwitchPreferenceSubject createSubject(FailureMetadata fm, SwitchPreference that) {
-        return new SwitchPreferenceSubject(fm, that);
-      }
-    };
+    return SwitchPreferenceSubject::new;
   }
 
   public SwitchPreferenceSubject hasSwitchTextOff(CharSequence text) {

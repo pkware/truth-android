@@ -32,12 +32,7 @@ public class TextureViewSubject extends AbstractViewSubject<TextureViewSubject, 
   }
 
   public static Subject.Factory<TextureViewSubject, TextureView> type() {
-    return new Subject.Factory<TextureViewSubject, TextureView>() {
-      @Override
-      public TextureViewSubject createSubject(FailureMetadata fm, TextureView that) {
-        return new TextureViewSubject(fm, that);
-      }
-    };
+    return TextureViewSubject::new;
   }
 
   public TextureViewSubject isAvailable() {

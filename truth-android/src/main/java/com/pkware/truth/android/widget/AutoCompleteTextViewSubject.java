@@ -37,12 +37,7 @@ public class AutoCompleteTextViewSubject extends AbstractTextViewSubject<AutoCom
   }
 
   public static Subject.Factory<AutoCompleteTextViewSubject, AutoCompleteTextView> type() {
-    return new Subject.Factory<AutoCompleteTextViewSubject, AutoCompleteTextView>() {
-      @Override
-      public AutoCompleteTextViewSubject createSubject(FailureMetadata fm, AutoCompleteTextView that) {
-        return new AutoCompleteTextViewSubject(fm, that);
-      }
-    };
+    return AutoCompleteTextViewSubject::new;
   }
 
   public AutoCompleteTextViewSubject hasEnoughToFilter() {

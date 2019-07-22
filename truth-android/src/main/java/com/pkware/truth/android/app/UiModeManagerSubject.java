@@ -35,12 +35,7 @@ public class UiModeManagerSubject extends Subject<UiModeManagerSubject, UiModeMa
   }
 
   public static Subject.Factory<UiModeManagerSubject, UiModeManager> type() {
-    return new Subject.Factory<UiModeManagerSubject, UiModeManager>() {
-      @Override
-      public UiModeManagerSubject createSubject(FailureMetadata fm, UiModeManager that) {
-        return new UiModeManagerSubject(fm, that);
-      }
-    };
+    return UiModeManagerSubject::new;
   }
 
   public UiModeManagerSubject isNightMode() {

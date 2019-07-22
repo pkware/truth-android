@@ -35,12 +35,7 @@ public class BitmapDrawableSubject extends AbstractDrawableSubject<BitmapDrawabl
   }
 
   public static Subject.Factory<BitmapDrawableSubject, BitmapDrawable> type() {
-    return new Subject.Factory<BitmapDrawableSubject, BitmapDrawable>() {
-      @Override
-      public BitmapDrawableSubject createSubject(FailureMetadata fm, BitmapDrawable that) {
-        return new BitmapDrawableSubject(fm, that);
-      }
-    };
+    return BitmapDrawableSubject::new;
   }
 
   public BitmapDrawableSubject hasBitmap(Bitmap bitmap) {

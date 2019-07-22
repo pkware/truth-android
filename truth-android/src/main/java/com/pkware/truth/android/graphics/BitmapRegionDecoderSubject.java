@@ -32,12 +32,7 @@ public class BitmapRegionDecoderSubject extends Subject<BitmapRegionDecoderSubje
   }
 
   public static Subject.Factory<BitmapRegionDecoderSubject, BitmapRegionDecoder> type() {
-    return new Subject.Factory<BitmapRegionDecoderSubject, BitmapRegionDecoder>() {
-      @Override
-      public BitmapRegionDecoderSubject createSubject(FailureMetadata fm, BitmapRegionDecoder that) {
-        return new BitmapRegionDecoderSubject(fm, that);
-      }
-    };
+    return BitmapRegionDecoderSubject::new;
   }
 
   public BitmapRegionDecoderSubject hasHeight(int height) {

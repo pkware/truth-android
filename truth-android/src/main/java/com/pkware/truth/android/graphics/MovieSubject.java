@@ -32,12 +32,7 @@ public class MovieSubject extends Subject<MovieSubject, Movie> {
   }
 
   public static Subject.Factory<MovieSubject, Movie> type() {
-    return new Subject.Factory<MovieSubject, Movie>() {
-      @Override
-      public MovieSubject createSubject(FailureMetadata fm, Movie that) {
-        return new MovieSubject(fm, that);
-      }
-    };
+    return MovieSubject::new;
   }
 
   public MovieSubject hasDuration(int duration) {

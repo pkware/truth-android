@@ -32,12 +32,7 @@ public class GpsSatelliteSubject extends Subject<GpsSatelliteSubject, GpsSatelli
   }
 
   public static Subject.Factory<GpsSatelliteSubject, GpsSatellite> type() {
-    return new Subject.Factory<GpsSatelliteSubject, GpsSatellite>() {
-      @Override
-      public GpsSatelliteSubject createSubject(FailureMetadata fm, GpsSatellite that) {
-        return new GpsSatelliteSubject(fm, that);
-      }
-    };
+    return GpsSatelliteSubject::new;
   }
 
   public GpsSatelliteSubject hasAzimuth(float azimuth, float tolerance) {

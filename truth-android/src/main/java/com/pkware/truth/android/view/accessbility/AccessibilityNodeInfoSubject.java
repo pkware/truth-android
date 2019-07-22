@@ -35,12 +35,7 @@ public class AccessibilityNodeInfoSubject extends Subject<AccessibilityNodeInfoS
   }
 
   public static Subject.Factory<AccessibilityNodeInfoSubject, AccessibilityNodeInfo> type() {
-    return new Subject.Factory<AccessibilityNodeInfoSubject, AccessibilityNodeInfo>() {
-      @Override
-      public AccessibilityNodeInfoSubject createSubject(FailureMetadata fm, AccessibilityNodeInfo that) {
-        return new AccessibilityNodeInfoSubject(fm, that);
-      }
-    };
+    return AccessibilityNodeInfoSubject::new;
   }
 
   public AccessibilityNodeInfoSubject hasActions(int actions) {

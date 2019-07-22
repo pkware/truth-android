@@ -34,12 +34,7 @@ public class RegionSubject extends Subject<RegionSubject, Region> {
   }
 
   public static Subject.Factory<RegionSubject, Region> type() {
-    return new Subject.Factory<RegionSubject, Region>() {
-      @Override
-      public RegionSubject createSubject(FailureMetadata fm, Region that) {
-        return new RegionSubject(fm, that);
-      }
-    };
+    return RegionSubject::new;
   }
 
   public RegionSubject hasBoundaryPath(Path path) {

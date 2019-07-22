@@ -32,12 +32,7 @@ public class PagerAdapterSubject extends Subject<PagerAdapterSubject, PagerAdapt
   }
 
   public static Subject.Factory<PagerAdapterSubject, PagerAdapter> type() {
-    return new Subject.Factory<PagerAdapterSubject, PagerAdapter>() {
-      @Override
-      public PagerAdapterSubject createSubject(FailureMetadata fm, PagerAdapter that) {
-        return new PagerAdapterSubject(fm, that);
-      }
-    };
+    return PagerAdapterSubject::new;
   }
 
   public PagerAdapterSubject hasCount(int count) {

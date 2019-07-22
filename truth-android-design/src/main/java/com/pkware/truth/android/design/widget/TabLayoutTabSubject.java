@@ -33,12 +33,7 @@ public class TabLayoutTabSubject extends Subject<TabLayoutTabSubject, TabLayout.
   }
 
   public static Subject.Factory<TabLayoutTabSubject, TabLayout.Tab> type() {
-    return new Subject.Factory<TabLayoutTabSubject, TabLayout.Tab>() {
-      @Override
-      public TabLayoutTabSubject createSubject(FailureMetadata fm, TabLayout.Tab that) {
-        return new TabLayoutTabSubject(fm, that);
-      }
-    };
+    return TabLayoutTabSubject::new;
   }
 
   public TabLayoutTabSubject hasContentDescription(String contentDescription) {

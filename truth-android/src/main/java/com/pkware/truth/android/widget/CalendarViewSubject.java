@@ -38,12 +38,7 @@ public class CalendarViewSubject extends AbstractFrameLayoutSubject<CalendarView
   }
 
   public static Subject.Factory<CalendarViewSubject, CalendarView> type() {
-    return new Subject.Factory<CalendarViewSubject, CalendarView>() {
-      @Override
-      public CalendarViewSubject createSubject(FailureMetadata fm, CalendarView that) {
-        return new CalendarViewSubject(fm, that);
-      }
-    };
+    return CalendarViewSubject::new;
   }
 
   private static String dayOfWeekToString(@DayOfTheWeek int day) {

@@ -39,12 +39,7 @@ public class KeyCharacterMapSubject extends Subject<KeyCharacterMapSubject, KeyC
   }
 
   public static Subject.Factory<KeyCharacterMapSubject, KeyCharacterMap> type() {
-    return new Subject.Factory<KeyCharacterMapSubject, KeyCharacterMap>() {
-      @Override
-      public KeyCharacterMapSubject createSubject(FailureMetadata fm, KeyCharacterMap that) {
-        return new KeyCharacterMapSubject(fm, that);
-      }
-    };
+    return KeyCharacterMapSubject::new;
   }
 
   public static String keyboardTypeToString(@KeyCharacterMapKeyboardType int type) {

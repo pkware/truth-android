@@ -32,12 +32,7 @@ public class CursorWindowSubject extends Subject<CursorWindowSubject, CursorWind
   }
 
   public static Subject.Factory<CursorWindowSubject, CursorWindow> type() {
-    return new Subject.Factory<CursorWindowSubject, CursorWindow>() {
-      @Override
-      public CursorWindowSubject createSubject(FailureMetadata fm, CursorWindow that) {
-        return new CursorWindowSubject(fm, that);
-      }
-    };
+    return CursorWindowSubject::new;
   }
 
   public CursorWindowSubject hasRowCount(int count) {

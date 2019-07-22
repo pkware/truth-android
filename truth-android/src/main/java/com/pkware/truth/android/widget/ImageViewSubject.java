@@ -36,12 +36,7 @@ public class ImageViewSubject extends AbstractViewSubject<ImageViewSubject, Imag
   }
 
   public static Subject.Factory<ImageViewSubject, ImageView> type() {
-    return new Subject.Factory<ImageViewSubject, ImageView>() {
-      @Override
-      public ImageViewSubject createSubject(FailureMetadata fm, ImageView that) {
-        return new ImageViewSubject(fm, that);
-      }
-    };
+    return ImageViewSubject::new;
   }
 
   public ImageViewSubject isAligningBaselineToBottom() {

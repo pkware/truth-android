@@ -32,11 +32,6 @@ public final class AbstractCursor_Subject extends AbstractAbstractCursorSubject<
   }
 
   public static Subject.Factory<AbstractCursor_Subject, AbstractCursor> type() {
-    return new Subject.Factory<AbstractCursor_Subject, AbstractCursor>() {
-      @Override
-      public AbstractCursor_Subject createSubject(FailureMetadata fm, AbstractCursor that) {
-        return new AbstractCursor_Subject(fm, that);
-      }
-    };
+    return AbstractCursor_Subject::new;
   }
 }

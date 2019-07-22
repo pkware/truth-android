@@ -34,12 +34,7 @@ public class LocalActivityManagerSubject extends Subject<LocalActivityManagerSub
   }
 
   public static Subject.Factory<LocalActivityManagerSubject, LocalActivityManager> type() {
-    return new Subject.Factory<LocalActivityManagerSubject, LocalActivityManager>() {
-      @Override
-      public LocalActivityManagerSubject createSubject(FailureMetadata fm, LocalActivityManager that) {
-        return new LocalActivityManagerSubject(fm, that);
-      }
-    };
+    return LocalActivityManagerSubject::new;
   }
 
   public LocalActivityManagerSubject hasActivity(String id) {

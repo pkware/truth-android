@@ -34,12 +34,7 @@ public class ArrayAdapterSubject extends AbstractListAdapterSubject<ArrayAdapter
   }
 
   public static Subject.Factory<ArrayAdapterSubject, ArrayAdapter> type() {
-    return new Subject.Factory<ArrayAdapterSubject, ArrayAdapter>() {
-      @Override
-      public ArrayAdapterSubject createSubject(FailureMetadata fm, ArrayAdapter that) {
-        return new ArrayAdapterSubject(fm, that);
-      }
-    };
+    return ArrayAdapterSubject::new;
   }
 
   public ArrayAdapterSubject hasContext(Context context) {

@@ -34,12 +34,7 @@ public class PreferenceActivitySubject
   }
 
   public static Subject.Factory<PreferenceActivitySubject, PreferenceActivity> type() {
-    return new Subject.Factory<PreferenceActivitySubject, PreferenceActivity>() {
-      @Override
-      public PreferenceActivitySubject createSubject(FailureMetadata fm, PreferenceActivity that) {
-        return new PreferenceActivitySubject(fm, that);
-      }
-    };
+    return PreferenceActivitySubject::new;
   }
 
   public PreferenceActivitySubject hasHeaders() {

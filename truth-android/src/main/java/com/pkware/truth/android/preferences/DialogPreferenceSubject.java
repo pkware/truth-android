@@ -30,11 +30,6 @@ public class DialogPreferenceSubject extends AbstractDialogPreferenceSubject<Dia
   }
 
   public static Subject.Factory<DialogPreferenceSubject, DialogPreference> type() {
-    return new Subject.Factory<DialogPreferenceSubject, DialogPreference>() {
-      @Override
-      public DialogPreferenceSubject createSubject(FailureMetadata fm, DialogPreference that) {
-        return new DialogPreferenceSubject(fm, that);
-      }
-    };
+    return DialogPreferenceSubject::new;
   }
 }

@@ -35,12 +35,7 @@ public class AsyncTaskLoaderSubject extends AbstractLoaderSubject<AsyncTaskLoade
   }
 
   public static Subject.Factory<AsyncTaskLoaderSubject, AsyncTaskLoader> type() {
-    return new Subject.Factory<AsyncTaskLoaderSubject, AsyncTaskLoader>() {
-      @Override
-      public AsyncTaskLoaderSubject createSubject(FailureMetadata fm, AsyncTaskLoader that) {
-        return new AsyncTaskLoaderSubject(fm, that);
-      }
-    };
+    return AsyncTaskLoaderSubject::new;
   }
 
   @TargetApi(JELLY_BEAN)

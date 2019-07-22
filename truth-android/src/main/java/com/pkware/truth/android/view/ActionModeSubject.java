@@ -35,12 +35,7 @@ public class ActionModeSubject extends Subject<ActionModeSubject, ActionMode> {
   }
 
   public static Subject.Factory<ActionModeSubject, ActionMode> type() {
-    return new Subject.Factory<ActionModeSubject, ActionMode>() {
-      @Override
-      public ActionModeSubject createSubject(FailureMetadata fm, ActionMode that) {
-        return new ActionModeSubject(fm, that);
-      }
-    };
+    return ActionModeSubject::new;
   }
 
   public ActionModeSubject hasCustomView() {

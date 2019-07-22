@@ -35,12 +35,7 @@ public abstract class AbstractAccessibilityRecordSubject<S extends AbstractAcces
   }
 
   private static Function<CharSequence, String> mapToString() {
-    return new Function<CharSequence, String>() {
-      @Override
-      public String apply(CharSequence input) {
-        return input.toString();
-      }
-    };
+    return CharSequence::toString;
   }
 
   public AbstractAccessibilityRecordSubject hasAddedCount(int count) {

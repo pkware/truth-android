@@ -36,12 +36,7 @@ public class MediaRouteDescriptorSubject
   }
 
   public static Subject.Factory<MediaRouteDescriptorSubject, MediaRouteDescriptor> type() {
-    return new Subject.Factory<MediaRouteDescriptorSubject, MediaRouteDescriptor>() {
-      @Override
-      public MediaRouteDescriptorSubject createSubject(FailureMetadata fm, MediaRouteDescriptor that) {
-        return new MediaRouteDescriptorSubject(fm, that);
-      }
-    };
+    return MediaRouteDescriptorSubject::new;
   }
 
   public static String volumeHandling(@MediaRouteVolumeHandling int handling) {

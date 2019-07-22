@@ -33,12 +33,7 @@ public class CanvasSubject extends Subject<CanvasSubject, Canvas> {
   }
 
   public static Subject.Factory<CanvasSubject, Canvas> type() {
-    return new Subject.Factory<CanvasSubject, Canvas>() {
-      @Override
-      public CanvasSubject createSubject(FailureMetadata fm, Canvas that) {
-        return new CanvasSubject(fm, that);
-      }
-    };
+    return CanvasSubject::new;
   }
 
   public CanvasSubject hasClipBounds(Rect bounds) {

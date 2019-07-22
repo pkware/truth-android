@@ -32,12 +32,7 @@ public class DisplayMetricsSubject extends Subject<DisplayMetricsSubject, Displa
   }
 
   public static Subject.Factory<DisplayMetricsSubject, DisplayMetrics> type() {
-    return new Subject.Factory<DisplayMetricsSubject, DisplayMetrics>() {
-      @Override
-      public DisplayMetricsSubject createSubject(FailureMetadata fm, DisplayMetrics that) {
-        return new DisplayMetricsSubject(fm, that);
-      }
-    };
+    return DisplayMetricsSubject::new;
   }
 
   public DisplayMetricsSubject hasDensity(float density, float tolerance) {

@@ -32,12 +32,7 @@ public class PictureSubject extends Subject<PictureSubject, Picture> {
   }
 
   public static Subject.Factory<PictureSubject, Picture> type() {
-    return new Subject.Factory<PictureSubject, Picture>() {
-      @Override
-      public PictureSubject createSubject(FailureMetadata fm, Picture that) {
-        return new PictureSubject(fm, that);
-      }
-    };
+    return PictureSubject::new;
   }
 
   public PictureSubject hasHeight(int height) {

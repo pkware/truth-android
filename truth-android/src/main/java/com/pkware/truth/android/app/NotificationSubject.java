@@ -54,12 +54,7 @@ public class NotificationSubject extends Subject<NotificationSubject, Notificati
   }
 
   public static Subject.Factory<NotificationSubject, Notification> type() {
-    return new Subject.Factory<NotificationSubject, Notification>() {
-      @Override
-      public NotificationSubject createSubject(FailureMetadata fm, Notification that) {
-        return new NotificationSubject(fm, that);
-      }
-    };
+    return NotificationSubject::new;
   }
 
   public static String flagsToString(@NotificationFlags int flags) {

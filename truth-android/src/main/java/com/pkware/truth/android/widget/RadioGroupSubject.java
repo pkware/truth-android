@@ -32,12 +32,7 @@ public class RadioGroupSubject extends AbstractLinearLayoutSubject<RadioGroupSub
   }
 
   public static Subject.Factory<RadioGroupSubject, RadioGroup> type() {
-    return new Subject.Factory<RadioGroupSubject, RadioGroup>() {
-      @Override
-      public RadioGroupSubject createSubject(FailureMetadata fm, RadioGroup that) {
-        return new RadioGroupSubject(fm, that);
-      }
-    };
+    return RadioGroupSubject::new;
   }
 
   public RadioGroupSubject hasCheckedRadioButtonId(int id) {

@@ -38,12 +38,7 @@ public class MediaSessionStatusSubject
   }
 
   public static Subject.Factory<MediaSessionStatusSubject, MediaSessionStatus> type() {
-    return new Subject.Factory<MediaSessionStatusSubject, MediaSessionStatus>() {
-      @Override
-      public MediaSessionStatusSubject createSubject(FailureMetadata fm, MediaSessionStatus that) {
-        return new MediaSessionStatusSubject(fm, that);
-      }
-    };
+    return MediaSessionStatusSubject::new;
   }
 
   public static String sessionStateToString(@MediaSessionStatusState int state) {

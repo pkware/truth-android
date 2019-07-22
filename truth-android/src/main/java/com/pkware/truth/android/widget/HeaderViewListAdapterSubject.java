@@ -33,12 +33,7 @@ public class HeaderViewListAdapterSubject extends AbstractWrapperListAdapterSubj
   }
 
   public static Subject.Factory<HeaderViewListAdapterSubject, HeaderViewListAdapter> type() {
-    return new Subject.Factory<HeaderViewListAdapterSubject, HeaderViewListAdapter>() {
-      @Override
-      public HeaderViewListAdapterSubject createSubject(FailureMetadata fm, HeaderViewListAdapter that) {
-        return new HeaderViewListAdapterSubject(fm, that);
-      }
-    };
+    return HeaderViewListAdapterSubject::new;
   }
 
   public HeaderViewListAdapterSubject hasFootersCount(int count) {

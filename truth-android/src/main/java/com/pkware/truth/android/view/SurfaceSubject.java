@@ -32,12 +32,7 @@ public class SurfaceSubject extends Subject<SurfaceSubject, Surface> {
   }
 
   public static Subject.Factory<SurfaceSubject, Surface> type() {
-    return new Subject.Factory<SurfaceSubject, Surface>() {
-      @Override
-      public SurfaceSubject createSubject(FailureMetadata fm, Surface that) {
-        return new SurfaceSubject(fm, that);
-      }
-    };
+    return SurfaceSubject::new;
   }
 
   public SurfaceSubject isValid() {

@@ -34,12 +34,7 @@ public class ToggleButtonSubject
   }
 
   public static Subject.Factory<ToggleButtonSubject, ToggleButton> type() {
-    return new Subject.Factory<ToggleButtonSubject, ToggleButton>() {
-      @Override
-      public ToggleButtonSubject createSubject(FailureMetadata fm, ToggleButton that) {
-        return new ToggleButtonSubject(fm, that);
-      }
-    };
+    return ToggleButtonSubject::new;
   }
 
   public ToggleButtonSubject hasOnText(String text) {

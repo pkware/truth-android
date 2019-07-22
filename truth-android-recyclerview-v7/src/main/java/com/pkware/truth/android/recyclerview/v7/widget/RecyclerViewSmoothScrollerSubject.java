@@ -34,12 +34,7 @@ public class RecyclerViewSmoothScrollerSubject
   }
 
   public static Subject.Factory<RecyclerViewSmoothScrollerSubject, RecyclerView.SmoothScroller> type() {
-    return new Subject.Factory<RecyclerViewSmoothScrollerSubject, RecyclerView.SmoothScroller>() {
-      @Override
-      public RecyclerViewSmoothScrollerSubject createSubject(FailureMetadata fm, RecyclerView.SmoothScroller that) {
-        return new RecyclerViewSmoothScrollerSubject(fm, that);
-      }
-    };
+    return RecyclerViewSmoothScrollerSubject::new;
   }
 
   public RecyclerViewSmoothScrollerSubject isPendingInitialRun() {

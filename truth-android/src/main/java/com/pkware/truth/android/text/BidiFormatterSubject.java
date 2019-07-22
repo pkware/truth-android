@@ -32,12 +32,7 @@ public class BidiFormatterSubject extends Subject<BidiFormatterSubject, BidiForm
   }
 
   public static Subject.Factory<BidiFormatterSubject, BidiFormatter> type() {
-    return new Subject.Factory<BidiFormatterSubject, BidiFormatter>() {
-      @Override
-      public BidiFormatterSubject createSubject(FailureMetadata fm, BidiFormatter that) {
-        return new BidiFormatterSubject(fm, that);
-      }
-    };
+    return BidiFormatterSubject::new;
   }
 
   public BidiFormatterSubject hasRtlContext() {

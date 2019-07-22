@@ -32,12 +32,7 @@ public class ChronometerSubject extends AbstractTextViewSubject<ChronometerSubje
   }
 
   public static Subject.Factory<ChronometerSubject, Chronometer> type() {
-    return new Subject.Factory<ChronometerSubject, Chronometer>() {
-      @Override
-      public ChronometerSubject createSubject(FailureMetadata fm, Chronometer that) {
-        return new ChronometerSubject(fm, that);
-      }
-    };
+    return ChronometerSubject::new;
   }
 
   public ChronometerSubject hasBase(long base) {

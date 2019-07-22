@@ -32,12 +32,7 @@ public class OrientationEventListenerSubject extends Subject<OrientationEventLis
   }
 
   public static Subject.Factory<OrientationEventListenerSubject, OrientationEventListener> type() {
-    return new Subject.Factory<OrientationEventListenerSubject, OrientationEventListener>() {
-      @Override
-      public OrientationEventListenerSubject createSubject(FailureMetadata fm, OrientationEventListener that) {
-        return new OrientationEventListenerSubject(fm, that);
-      }
-    };
+    return OrientationEventListenerSubject::new;
   }
 
   public OrientationEventListenerSubject isDetectingOrientation() {

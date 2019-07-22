@@ -32,12 +32,7 @@ public class RectFSubject extends Subject<RectFSubject, RectF> {
   }
 
   public static Subject.Factory<RectFSubject, RectF> type() {
-    return new Subject.Factory<RectFSubject, RectF>() {
-      @Override
-      public RectFSubject createSubject(FailureMetadata fm, RectF that) {
-        return new RectFSubject(fm, that);
-      }
-    };
+    return RectFSubject::new;
   }
 
   public RectFSubject hasBottom(float bottom, float tolerance) {

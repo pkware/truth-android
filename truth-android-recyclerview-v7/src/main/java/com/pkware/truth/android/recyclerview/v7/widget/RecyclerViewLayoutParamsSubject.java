@@ -34,12 +34,7 @@ public class RecyclerViewLayoutParamsSubject
   }
 
   public static Subject.Factory<RecyclerViewLayoutParamsSubject, RecyclerView.LayoutParams> type() {
-    return new Subject.Factory<RecyclerViewLayoutParamsSubject, RecyclerView.LayoutParams>() {
-      @Override
-      public RecyclerViewLayoutParamsSubject createSubject(FailureMetadata fm, RecyclerView.LayoutParams that) {
-        return new RecyclerViewLayoutParamsSubject(fm, that);
-      }
-    };
+    return RecyclerViewLayoutParamsSubject::new;
   }
 
   public RecyclerViewLayoutParamsSubject viewNeedsUpdate() {

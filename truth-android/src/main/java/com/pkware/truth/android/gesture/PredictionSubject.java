@@ -32,12 +32,7 @@ public class PredictionSubject extends Subject<PredictionSubject, Prediction> {
   }
 
   public static Subject.Factory<PredictionSubject, Prediction> type() {
-    return new Subject.Factory<PredictionSubject, Prediction>() {
-      @Override
-      public PredictionSubject createSubject(FailureMetadata fm, Prediction that) {
-        return new PredictionSubject(fm, that);
-      }
-    };
+    return PredictionSubject::new;
   }
 
   public PredictionSubject hasName(String name) {

@@ -32,12 +32,7 @@ public class GestureSubject extends Subject<GestureSubject, Gesture> {
   }
 
   public static Subject.Factory<GestureSubject, Gesture> type() {
-    return new Subject.Factory<GestureSubject, Gesture>() {
-      @Override
-      public GestureSubject createSubject(FailureMetadata fm, Gesture that) {
-        return new GestureSubject(fm, that);
-      }
-    };
+    return GestureSubject::new;
   }
 
   public GestureSubject hasId(long id) {

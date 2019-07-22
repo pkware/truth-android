@@ -36,12 +36,7 @@ public class MediaRouterRouteInfoSubject
   }
 
   public static Subject.Factory<MediaRouterRouteInfoSubject, MediaRouter.RouteInfo> type() {
-    return new Subject.Factory<MediaRouterRouteInfoSubject, MediaRouter.RouteInfo>() {
-      @Override
-      public MediaRouterRouteInfoSubject createSubject(FailureMetadata fm, MediaRouter.RouteInfo that) {
-        return new MediaRouterRouteInfoSubject(fm, that);
-      }
-    };
+    return MediaRouterRouteInfoSubject::new;
   }
 
   public MediaRouterRouteInfoSubject hasDescription(String description) {

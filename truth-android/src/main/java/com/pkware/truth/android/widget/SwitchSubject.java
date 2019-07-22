@@ -38,12 +38,7 @@ public class SwitchSubject extends AbstractCompoundButtonSubject<SwitchSubject, 
   }
 
   public static Subject.Factory<SwitchSubject, Switch> type() {
-    return new Subject.Factory<SwitchSubject, Switch>() {
-      @Override
-      public SwitchSubject createSubject(FailureMetadata fm, Switch that) {
-        return new SwitchSubject(fm, that);
-      }
-    };
+    return SwitchSubject::new;
   }
 
   @TargetApi(JELLY_BEAN)

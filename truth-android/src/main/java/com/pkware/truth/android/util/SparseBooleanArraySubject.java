@@ -38,12 +38,7 @@ public class SparseBooleanArraySubject extends Subject<SparseBooleanArraySubject
   }
 
   public static Subject.Factory<SparseBooleanArraySubject, SparseBooleanArray> type() {
-    return new Subject.Factory<SparseBooleanArraySubject, SparseBooleanArray>() {
-      @Override
-      public SparseBooleanArraySubject createSubject(FailureMetadata fm, SparseBooleanArray that) {
-        return new SparseBooleanArraySubject(fm, that);
-      }
-    };
+    return SparseBooleanArraySubject::new;
   }
 
   public SparseBooleanArraySubject keyIsTrue(int key) {

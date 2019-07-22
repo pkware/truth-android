@@ -32,11 +32,6 @@ public final class SharedPreferencesSubject extends AbstractSharedPreferencesSub
   }
 
   public static Subject.Factory<SharedPreferencesSubject, SharedPreferences> type() {
-    return new Subject.Factory<SharedPreferencesSubject, SharedPreferences>() {
-      @Override
-      public SharedPreferencesSubject createSubject(FailureMetadata fm, SharedPreferences that) {
-        return new SharedPreferencesSubject(fm, that);
-      }
-    };
+    return SharedPreferencesSubject::new;
   }
 }

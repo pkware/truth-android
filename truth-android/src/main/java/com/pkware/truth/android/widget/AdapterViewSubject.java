@@ -32,11 +32,6 @@ public final class AdapterViewSubject extends AbstractAdapterViewSubject<Adapter
   }
 
   public static Subject.Factory<AdapterViewSubject, AdapterView> type() {
-    return new Subject.Factory<AdapterViewSubject, AdapterView>() {
-      @Override
-      public AdapterViewSubject createSubject(FailureMetadata fm, AdapterView that) {
-        return new AdapterViewSubject(fm, that);
-      }
-    };
+    return AdapterViewSubject::new;
   }
 }

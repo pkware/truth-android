@@ -32,11 +32,6 @@ public final class CompoundButtonSubject extends AbstractCompoundButtonSubject<C
   }
 
   public static Subject.Factory<CompoundButtonSubject, CompoundButton> type() {
-    return new Subject.Factory<CompoundButtonSubject, CompoundButton>() {
-      @Override
-      public CompoundButtonSubject createSubject(FailureMetadata fm, CompoundButton that) {
-        return new CompoundButtonSubject(fm, that);
-      }
-    };
+    return CompoundButtonSubject::new;
   }
 }

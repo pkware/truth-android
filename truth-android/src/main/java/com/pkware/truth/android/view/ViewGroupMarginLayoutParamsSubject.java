@@ -32,11 +32,6 @@ public final class ViewGroupMarginLayoutParamsSubject extends AbstractViewGroupM
   }
 
   public static Subject.Factory<ViewGroupMarginLayoutParamsSubject, ViewGroup.MarginLayoutParams> type() {
-    return new Subject.Factory<ViewGroupMarginLayoutParamsSubject, ViewGroup.MarginLayoutParams>() {
-      @Override
-      public ViewGroupMarginLayoutParamsSubject createSubject(FailureMetadata fm, ViewGroup.MarginLayoutParams that) {
-        return new ViewGroupMarginLayoutParamsSubject(fm, that);
-      }
-    };
+    return ViewGroupMarginLayoutParamsSubject::new;
   }
 }

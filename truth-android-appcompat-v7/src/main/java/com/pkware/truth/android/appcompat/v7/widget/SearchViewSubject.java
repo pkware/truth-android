@@ -34,12 +34,7 @@ public class SearchViewSubject extends AbstractLinearLayoutCompatSubject<SearchV
   }
 
   public static Subject.Factory<SearchViewSubject, SearchView> type() {
-    return new Subject.Factory<SearchViewSubject, SearchView>() {
-      @Override
-      public SearchViewSubject createSubject(FailureMetadata fm, SearchView that) {
-        return new SearchViewSubject(fm, that);
-      }
-    };
+    return SearchViewSubject::new;
   }
 
   public SearchViewSubject hasImeOptions(int options) {

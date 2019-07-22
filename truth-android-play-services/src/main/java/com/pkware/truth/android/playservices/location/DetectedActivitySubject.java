@@ -42,12 +42,7 @@ public class DetectedActivitySubject
   }
 
   public static Subject.Factory<DetectedActivitySubject, DetectedActivity> type() {
-    return new Subject.Factory<DetectedActivitySubject, DetectedActivity>() {
-      @Override
-      public DetectedActivitySubject createSubject(FailureMetadata fm, DetectedActivity that) {
-        return new DetectedActivitySubject(fm, that);
-      }
-    };
+    return DetectedActivitySubject::new;
   }
 
   public static String typeToString(@DetectedActivityType int type) {

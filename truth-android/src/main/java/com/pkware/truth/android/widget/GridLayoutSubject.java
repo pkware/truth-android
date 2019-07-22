@@ -39,12 +39,7 @@ public class GridLayoutSubject extends AbstractViewGroupSubject<GridLayoutSubjec
   }
 
   public static Subject.Factory<GridLayoutSubject, GridLayout> type() {
-    return new Subject.Factory<GridLayoutSubject, GridLayout>() {
-      @Override
-      public GridLayoutSubject createSubject(FailureMetadata fm, GridLayout that) {
-        return new GridLayoutSubject(fm, that);
-      }
-    };
+    return GridLayoutSubject::new;
   }
 
   public static String alignmentModeToString(@GridLayoutAlignmentMode int mode) {

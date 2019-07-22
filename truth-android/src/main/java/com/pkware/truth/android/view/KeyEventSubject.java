@@ -32,12 +32,7 @@ public class KeyEventSubject extends Subject<KeyEventSubject, KeyEvent> {
   }
 
   public static Subject.Factory<KeyEventSubject, KeyEvent> type() {
-    return new Subject.Factory<KeyEventSubject, KeyEvent>() {
-      @Override
-      public KeyEventSubject createSubject(FailureMetadata fm, KeyEvent that) {
-        return new KeyEventSubject(fm, that);
-      }
-    };
+    return KeyEventSubject::new;
   }
 
   public KeyEventSubject hasAction(int action) {

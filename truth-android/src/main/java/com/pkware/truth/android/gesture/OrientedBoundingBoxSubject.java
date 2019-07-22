@@ -32,12 +32,7 @@ public class OrientedBoundingBoxSubject extends Subject<OrientedBoundingBoxSubje
   }
 
   public static Subject.Factory<OrientedBoundingBoxSubject, OrientedBoundingBox> type() {
-    return new Subject.Factory<OrientedBoundingBoxSubject, OrientedBoundingBox>() {
-      @Override
-      public OrientedBoundingBoxSubject createSubject(FailureMetadata fm, OrientedBoundingBox that) {
-        return new OrientedBoundingBoxSubject(fm, that);
-      }
-    };
+    return OrientedBoundingBoxSubject::new;
   }
 
   public OrientedBoundingBoxSubject hasCenterX(float centerX, float tolerance) {

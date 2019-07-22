@@ -33,12 +33,7 @@ public class InstrumentationActivityResultSubject extends Subject<Instrumentatio
   }
 
   public static Subject.Factory<InstrumentationActivityResultSubject, Instrumentation.ActivityResult> type() {
-    return new Subject.Factory<InstrumentationActivityResultSubject, Instrumentation.ActivityResult>() {
-      @Override
-      public InstrumentationActivityResultSubject createSubject(FailureMetadata fm, Instrumentation.ActivityResult that) {
-        return new InstrumentationActivityResultSubject(fm, that);
-      }
-    };
+    return InstrumentationActivityResultSubject::new;
   }
 
   public InstrumentationActivityResultSubject hasResultCode(int code) {

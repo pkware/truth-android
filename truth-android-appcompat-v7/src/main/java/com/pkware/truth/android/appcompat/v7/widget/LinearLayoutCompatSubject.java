@@ -33,11 +33,6 @@ public final class LinearLayoutCompatSubject extends
   }
 
   public static Subject.Factory<LinearLayoutCompatSubject, LinearLayoutCompat> type() {
-    return new Subject.Factory<LinearLayoutCompatSubject, LinearLayoutCompat>() {
-      @Override
-      public LinearLayoutCompatSubject createSubject(FailureMetadata fm, LinearLayoutCompat that) {
-        return new LinearLayoutCompatSubject(fm, that);
-      }
-    };
+    return LinearLayoutCompatSubject::new;
   }
 }

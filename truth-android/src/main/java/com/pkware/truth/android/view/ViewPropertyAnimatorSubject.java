@@ -35,12 +35,7 @@ public class ViewPropertyAnimatorSubject extends Subject<ViewPropertyAnimatorSub
   }
 
   public static Subject.Factory<ViewPropertyAnimatorSubject, ViewPropertyAnimator> type() {
-    return new Subject.Factory<ViewPropertyAnimatorSubject, ViewPropertyAnimator>() {
-      @Override
-      public ViewPropertyAnimatorSubject createSubject(FailureMetadata fm, ViewPropertyAnimator that) {
-        return new ViewPropertyAnimatorSubject(fm, that);
-      }
-    };
+    return ViewPropertyAnimatorSubject::new;
   }
 
   public ViewPropertyAnimatorSubject hasDuration(long duration) {

@@ -32,12 +32,7 @@ public class AnimatorSetSubject extends AbstractAnimatorSubject<AnimatorSetSubje
   }
 
   public static Subject.Factory<AnimatorSetSubject, AnimatorSet> type() {
-    return new Subject.Factory<AnimatorSetSubject, AnimatorSet>() {
-      @Override
-      public AnimatorSetSubject createSubject(FailureMetadata fm, AnimatorSet that) {
-        return new AnimatorSetSubject(fm, that);
-      }
-    };
+    return AnimatorSetSubject::new;
   }
 
   public AnimatorSetSubject hasAnimatorCount(int count) {

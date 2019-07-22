@@ -36,12 +36,7 @@ public class BluetoothClassSubject extends Subject<BluetoothClassSubject, Blueto
   }
 
   public static Subject.Factory<BluetoothClassSubject, BluetoothClass> type() {
-    return new Subject.Factory<BluetoothClassSubject, BluetoothClass>() {
-      @Override
-      public BluetoothClassSubject createSubject(FailureMetadata fm, BluetoothClass that) {
-        return new BluetoothClassSubject(fm, that);
-      }
-    };
+    return BluetoothClassSubject::new;
   }
 
   public static String deviceClassToString(int deviceClass) {

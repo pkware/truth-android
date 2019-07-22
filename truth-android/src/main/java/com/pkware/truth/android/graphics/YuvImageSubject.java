@@ -32,12 +32,7 @@ public class YuvImageSubject extends Subject<YuvImageSubject, YuvImage> {
   }
 
   public static Subject.Factory<YuvImageSubject, YuvImage> type() {
-    return new Subject.Factory<YuvImageSubject, YuvImage>() {
-      @Override
-      public YuvImageSubject createSubject(FailureMetadata fm, YuvImage that) {
-        return new YuvImageSubject(fm, that);
-      }
-    };
+    return YuvImageSubject::new;
   }
 
   public YuvImageSubject hasHeight(int height) {

@@ -32,11 +32,6 @@ public final class ListActivitySubject extends AbstractListActivitySubject<ListA
   }
 
   public static Subject.Factory<ListActivitySubject, ListActivity> type() {
-    return new Subject.Factory<ListActivitySubject, ListActivity>() {
-      @Override
-      public ListActivitySubject createSubject(FailureMetadata fm, ListActivity that) {
-        return new ListActivitySubject(fm, that);
-      }
-    };
+    return ListActivitySubject::new;
   }
 }

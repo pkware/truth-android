@@ -33,11 +33,6 @@ public final class WrapperListAdapterSubject
   }
 
   public static Subject.Factory<WrapperListAdapterSubject, WrapperListAdapter> type() {
-    return new Subject.Factory<WrapperListAdapterSubject, WrapperListAdapter>() {
-      @Override
-      public WrapperListAdapterSubject createSubject(FailureMetadata fm, WrapperListAdapter that) {
-        return new WrapperListAdapterSubject(fm, that);
-      }
-    };
+    return WrapperListAdapterSubject::new;
   }
 }

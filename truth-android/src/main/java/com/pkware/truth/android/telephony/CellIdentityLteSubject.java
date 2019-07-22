@@ -35,12 +35,7 @@ public final class CellIdentityLteSubject extends Subject<CellIdentityLteSubject
   }
 
   public static Subject.Factory<CellIdentityLteSubject, CellIdentityLte> type() {
-    return new Subject.Factory<CellIdentityLteSubject, CellIdentityLte>() {
-      @Override
-      public CellIdentityLteSubject createSubject(FailureMetadata fm, CellIdentityLte that) {
-        return new CellIdentityLteSubject(fm, that);
-      }
-    };
+    return CellIdentityLteSubject::new;
   }
 
   public CellIdentityLteSubject hasCi(int ci) {

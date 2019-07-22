@@ -33,12 +33,7 @@ public class CardViewSubject extends AbstractViewGroupSubject<CardViewSubject, C
   }
 
   public static Subject.Factory<CardViewSubject, CardView> type() {
-    return new Subject.Factory<CardViewSubject, CardView>() {
-      @Override
-      public CardViewSubject createSubject(FailureMetadata fm, CardView that) {
-        return new CardViewSubject(fm, that);
-      }
-    };
+    return CardViewSubject::new;
   }
 
   public CardViewSubject hasRadius(int radius) {

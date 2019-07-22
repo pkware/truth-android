@@ -32,12 +32,7 @@ public class ObjectAnimatorSubject extends AbstractValueAnimatorSubject<ObjectAn
   }
 
   public static Subject.Factory<ObjectAnimatorSubject, ObjectAnimator> type() {
-    return new Subject.Factory<ObjectAnimatorSubject, ObjectAnimator>() {
-      @Override
-      public ObjectAnimatorSubject createSubject(FailureMetadata fm, ObjectAnimator that) {
-        return new ObjectAnimatorSubject(fm, that);
-      }
-    };
+    return ObjectAnimatorSubject::new;
   }
 
   public ObjectAnimatorSubject hasPropertyName(String name) {

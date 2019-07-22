@@ -32,12 +32,7 @@ public class MatrixSubject extends Subject<MatrixSubject, Matrix> {
   }
 
   public static Subject.Factory<MatrixSubject, Matrix> type() {
-    return new Subject.Factory<MatrixSubject, Matrix>() {
-      @Override
-      public MatrixSubject createSubject(FailureMetadata fm, Matrix that) {
-        return new MatrixSubject(fm, that);
-      }
-    };
+    return MatrixSubject::new;
   }
 
   public MatrixSubject isIdentity() {

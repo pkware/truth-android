@@ -36,12 +36,7 @@ public class SparseIntArraySubject extends Subject<SparseIntArraySubject, Sparse
   }
 
   public static Subject.Factory<SparseIntArraySubject, SparseIntArray> type() {
-    return new Subject.Factory<SparseIntArraySubject, SparseIntArray>() {
-      @Override
-      public SparseIntArraySubject createSubject(FailureMetadata fm, SparseIntArray that) {
-        return new SparseIntArraySubject(fm, that);
-      }
-    };
+    return SparseIntArraySubject::new;
   }
 
   public SparseIntArraySubject hasKey(int key) {

@@ -46,12 +46,7 @@ public class GridLayoutAnimationControllerSubject extends
   }
 
   public static Subject.Factory<GridLayoutAnimationControllerSubject, GridLayoutAnimationController> type() {
-    return new Subject.Factory<GridLayoutAnimationControllerSubject, GridLayoutAnimationController>() {
-      @Override
-      public GridLayoutAnimationControllerSubject createSubject(FailureMetadata fm, GridLayoutAnimationController that) {
-        return new GridLayoutAnimationControllerSubject(fm, that);
-      }
-    };
+    return GridLayoutAnimationControllerSubject::new;
   }
 
   private static String directionToString(@GridLayoutAnimationControllerDirection int direction) {

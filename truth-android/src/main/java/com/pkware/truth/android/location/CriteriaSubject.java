@@ -43,12 +43,7 @@ public class CriteriaSubject extends Subject<CriteriaSubject, Criteria> {
   }
 
   public static Subject.Factory<CriteriaSubject, Criteria> type() {
-    return new Subject.Factory<CriteriaSubject, Criteria>() {
-      @Override
-      public CriteriaSubject createSubject(FailureMetadata fm, Criteria that) {
-        return new CriteriaSubject(fm, that);
-      }
-    };
+    return CriteriaSubject::new;
   }
 
   public static String accuracyRequirementToString(@CriteriaAccuracyRequirement int accuracy) {

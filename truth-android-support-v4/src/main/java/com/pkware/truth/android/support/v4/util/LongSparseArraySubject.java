@@ -33,12 +33,7 @@ public class LongSparseArraySubject extends Subject<LongSparseArraySubject, Long
   }
 
   public static Subject.Factory<LongSparseArraySubject, LongSparseArray> type() {
-    return new Subject.Factory<LongSparseArraySubject, LongSparseArray>() {
-      @Override
-      public LongSparseArraySubject createSubject(FailureMetadata fm, LongSparseArray that) {
-        return new LongSparseArraySubject(fm, that);
-      }
-    };
+    return LongSparseArraySubject::new;
   }
 
   public LongSparseArraySubject hasKey(int key) {

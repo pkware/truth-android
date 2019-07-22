@@ -34,12 +34,7 @@ public class NeighboringCellInfoSubject extends Subject<NeighboringCellInfoSubje
   }
 
   public static Subject.Factory<NeighboringCellInfoSubject, NeighboringCellInfo> type() {
-    return new Subject.Factory<NeighboringCellInfoSubject, NeighboringCellInfo>() {
-      @Override
-      public NeighboringCellInfoSubject createSubject(FailureMetadata fm, NeighboringCellInfo that) {
-        return new NeighboringCellInfoSubject(fm, that);
-      }
-    };
+    return NeighboringCellInfoSubject::new;
   }
 
   public NeighboringCellInfoSubject hasCid(int cid) {

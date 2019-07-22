@@ -35,12 +35,7 @@ public class SlidingDrawerSubject
   }
 
   public static Subject.Factory<SlidingDrawerSubject, SlidingDrawer> type() {
-    return new Subject.Factory<SlidingDrawerSubject, SlidingDrawer>() {
-      @Override
-      public SlidingDrawerSubject createSubject(FailureMetadata fm, SlidingDrawer that) {
-        return new SlidingDrawerSubject(fm, that);
-      }
-    };
+    return SlidingDrawerSubject::new;
   }
 
   public SlidingDrawerSubject hasContent(View view) {

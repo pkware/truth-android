@@ -35,12 +35,7 @@ public class ListPreferenceSubject extends AbstractDialogPreferenceSubject<ListP
   }
 
   public static Subject.Factory<ListPreferenceSubject, ListPreference> type() {
-    return new Subject.Factory<ListPreferenceSubject, ListPreference>() {
-      @Override
-      public ListPreferenceSubject createSubject(FailureMetadata fm, ListPreference that) {
-        return new ListPreferenceSubject(fm, that);
-      }
-    };
+    return ListPreferenceSubject::new;
   }
 
   public ListPreferenceSubject hasEntries(String... entries) {
@@ -88,11 +83,6 @@ public class ListPreferenceSubject extends AbstractDialogPreferenceSubject<ListP
   }
 
   private Function<CharSequence, String> mapToString() {
-    return new Function<CharSequence, String>() {
-      @Override
-      public String apply(CharSequence input) {
-        return input.toString();
-      }
-    };
+    return CharSequence::toString;
   }
 }

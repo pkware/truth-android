@@ -32,12 +32,7 @@ public class ActionBarDrawerToggleSubject extends Subject<ActionBarDrawerToggleS
   }
 
   public static Subject.Factory<ActionBarDrawerToggleSubject, ActionBarDrawerToggle> type() {
-    return new Subject.Factory<ActionBarDrawerToggleSubject, ActionBarDrawerToggle>() {
-      @Override
-      public ActionBarDrawerToggleSubject createSubject(FailureMetadata fm, ActionBarDrawerToggle that) {
-        return new ActionBarDrawerToggleSubject(fm, that);
-      }
-    };
+    return ActionBarDrawerToggleSubject::new;
   }
 
   public ActionBarDrawerToggleSubject hasDrawerIndicatorEnabled() {

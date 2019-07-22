@@ -45,12 +45,7 @@ public class BluetoothDeviceSubject extends Subject<BluetoothDeviceSubject, Blue
   }
 
   public static Subject.Factory<BluetoothDeviceSubject, BluetoothDevice> type() {
-    return new Subject.Factory<BluetoothDeviceSubject, BluetoothDevice>() {
-      @Override
-      public BluetoothDeviceSubject createSubject(FailureMetadata fm, BluetoothDevice that) {
-        return new BluetoothDeviceSubject(fm, that);
-      }
-    };
+    return BluetoothDeviceSubject::new;
   }
 
   public static String bondStateToString(@BluetoothDeviceBondState int state) {

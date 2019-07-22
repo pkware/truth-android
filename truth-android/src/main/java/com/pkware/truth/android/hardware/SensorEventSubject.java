@@ -32,12 +32,7 @@ public class SensorEventSubject extends Subject<SensorEventSubject, SensorEvent>
   }
 
   public static Subject.Factory<SensorEventSubject, SensorEvent> type() {
-    return new Subject.Factory<SensorEventSubject, SensorEvent>() {
-      @Override
-      public SensorEventSubject createSubject(FailureMetadata fm, SensorEvent that) {
-        return new SensorEventSubject(fm, that);
-      }
-    };
+    return SensorEventSubject::new;
   }
 
   public SensorEventSubject hasAccuracy(int accuracy) {

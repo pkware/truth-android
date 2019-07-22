@@ -32,12 +32,7 @@ public class SmsMessageSubject extends Subject<SmsMessageSubject, SmsMessage> {
   }
 
   public static Subject.Factory<SmsMessageSubject, SmsMessage> type() {
-    return new Subject.Factory<SmsMessageSubject, SmsMessage>() {
-      @Override
-      public SmsMessageSubject createSubject(FailureMetadata fm, SmsMessage that) {
-        return new SmsMessageSubject(fm, that);
-      }
-    };
+    return SmsMessageSubject::new;
   }
 
   public SmsMessageSubject hasDisplayMessageBody(String displayMessageBody) {

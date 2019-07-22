@@ -31,12 +31,7 @@ public class GoogleMapSubject extends Subject<GoogleMapSubject, GoogleMap> {
   }
 
   public static Subject.Factory<GoogleMapSubject, GoogleMap> type() {
-    return new Subject.Factory<GoogleMapSubject, GoogleMap>() {
-      @Override
-      public GoogleMapSubject createSubject(FailureMetadata fm, GoogleMap that) {
-        return new GoogleMapSubject(fm, that);
-      }
-    };
+    return GoogleMapSubject::new;
   }
 
   public GoogleMapSubject hasMapType(int mapType) {

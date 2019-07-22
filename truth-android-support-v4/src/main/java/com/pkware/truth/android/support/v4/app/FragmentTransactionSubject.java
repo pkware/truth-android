@@ -33,12 +33,7 @@ public class FragmentTransactionSubject
   }
 
   public static Subject.Factory<FragmentTransactionSubject, FragmentTransaction> type() {
-    return new Subject.Factory<FragmentTransactionSubject, FragmentTransaction>() {
-      @Override
-      public FragmentTransactionSubject createSubject(FailureMetadata fm, FragmentTransaction that) {
-        return new FragmentTransactionSubject(fm, that);
-      }
-    };
+    return FragmentTransactionSubject::new;
   }
 
   public FragmentTransactionSubject isAddToBackStackAllowed() {

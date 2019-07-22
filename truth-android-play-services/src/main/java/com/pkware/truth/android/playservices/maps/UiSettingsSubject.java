@@ -31,12 +31,7 @@ public class UiSettingsSubject extends Subject<UiSettingsSubject, UiSettings> {
   }
 
   public static Subject.Factory<UiSettingsSubject, UiSettings> type() {
-    return new Subject.Factory<UiSettingsSubject, UiSettings>() {
-      @Override
-      public UiSettingsSubject createSubject(FailureMetadata fm, UiSettings that) {
-        return new UiSettingsSubject(fm, that);
-      }
-    };
+    return UiSettingsSubject::new;
   }
 
   public UiSettingsSubject hasCompassEnabled() {

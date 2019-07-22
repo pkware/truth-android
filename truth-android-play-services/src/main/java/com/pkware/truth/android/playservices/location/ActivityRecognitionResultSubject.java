@@ -32,12 +32,7 @@ public class ActivityRecognitionResultSubject
   }
 
   public static Subject.Factory<ActivityRecognitionResultSubject, ActivityRecognitionResult> type() {
-    return new Subject.Factory<ActivityRecognitionResultSubject, ActivityRecognitionResult>() {
-      @Override
-      public ActivityRecognitionResultSubject createSubject(FailureMetadata fm, ActivityRecognitionResult that) {
-        return new ActivityRecognitionResultSubject(fm, that);
-      }
-    };
+    return ActivityRecognitionResultSubject::new;
   }
 
   public ActivityRecognitionResultSubject hasElapsedRealtimeMillis(long millis) {

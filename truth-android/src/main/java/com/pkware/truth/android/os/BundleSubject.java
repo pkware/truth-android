@@ -38,12 +38,7 @@ public class BundleSubject extends Subject<BundleSubject, Bundle> {
   }
 
   public static Subject.Factory<BundleSubject, Bundle> type() {
-    return new Subject.Factory<BundleSubject, Bundle>() {
-      @Override
-      public BundleSubject createSubject(FailureMetadata fm, Bundle that) {
-        return new BundleSubject(fm, that);
-      }
-    };
+    return BundleSubject::new;
   }
 
   public BundleSubject hasKey(String key) {

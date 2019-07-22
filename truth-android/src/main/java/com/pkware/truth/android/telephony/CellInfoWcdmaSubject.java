@@ -37,12 +37,7 @@ public final class CellInfoWcdmaSubject extends AbstractCellInfoSubject<CellInfo
   }
 
   public static Subject.Factory<CellInfoWcdmaSubject, CellInfoWcdma> type() {
-    return new Subject.Factory<CellInfoWcdmaSubject, CellInfoWcdma>() {
-      @Override
-      public CellInfoWcdmaSubject createSubject(FailureMetadata fm, CellInfoWcdma that) {
-        return new CellInfoWcdmaSubject(fm, that);
-      }
-    };
+    return CellInfoWcdmaSubject::new;
   }
 
   public CellInfoWcdmaSubject hasCellIdentity(CellIdentityWcdma cellIdentity) {

@@ -33,12 +33,7 @@ public class InstrumentationActivityMonitorSubject extends Subject<Instrumentati
   }
 
   public static Subject.Factory<InstrumentationActivityMonitorSubject, Instrumentation.ActivityMonitor> type() {
-    return new Subject.Factory<InstrumentationActivityMonitorSubject, Instrumentation.ActivityMonitor>() {
-      @Override
-      public InstrumentationActivityMonitorSubject createSubject(FailureMetadata fm, Instrumentation.ActivityMonitor that) {
-        return new InstrumentationActivityMonitorSubject(fm, that);
-      }
-    };
+    return InstrumentationActivityMonitorSubject::new;
   }
 
   public InstrumentationActivityMonitorSubject hasHits(int hits) {

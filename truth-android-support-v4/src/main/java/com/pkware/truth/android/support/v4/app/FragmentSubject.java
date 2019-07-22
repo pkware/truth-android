@@ -32,11 +32,6 @@ public final class FragmentSubject extends AbstractFragmentSubject<FragmentSubje
   }
 
   public static Subject.Factory<FragmentSubject, Fragment> type() {
-    return new Subject.Factory<FragmentSubject, Fragment>() {
-      @Override
-      public FragmentSubject createSubject(FailureMetadata fm, Fragment that) {
-        return new FragmentSubject(fm, that);
-      }
-    };
+    return FragmentSubject::new;
   }
 }

@@ -32,11 +32,6 @@ public final class LoaderSubject extends AbstractLoaderSubject<LoaderSubject, Lo
   }
 
   public static Subject.Factory<LoaderSubject, Loader> type() {
-    return new Subject.Factory<LoaderSubject, Loader>() {
-      @Override
-      public LoaderSubject createSubject(FailureMetadata fm, Loader that) {
-        return new LoaderSubject(fm, that);
-      }
-    };
+    return LoaderSubject::new;
   }
 }

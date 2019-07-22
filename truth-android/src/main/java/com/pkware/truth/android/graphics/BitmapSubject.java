@@ -35,12 +35,7 @@ public class BitmapSubject extends Subject<BitmapSubject, Bitmap> {
   }
 
   public static Subject.Factory<BitmapSubject, Bitmap> type() {
-    return new Subject.Factory<BitmapSubject, Bitmap>() {
-      @Override
-      public BitmapSubject createSubject(FailureMetadata fm, Bitmap that) {
-        return new BitmapSubject(fm, that);
-      }
-    };
+    return BitmapSubject::new;
   }
 
   public BitmapSubject isRecycled() {

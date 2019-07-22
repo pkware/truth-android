@@ -35,12 +35,7 @@ public class LocationProviderSubject extends Subject<LocationProviderSubject, Lo
   }
 
   public static Subject.Factory<LocationProviderSubject, LocationProvider> type() {
-    return new Subject.Factory<LocationProviderSubject, LocationProvider>() {
-      @Override
-      public LocationProviderSubject createSubject(FailureMetadata fm, LocationProvider that) {
-        return new LocationProviderSubject(fm, that);
-      }
-    };
+    return LocationProviderSubject::new;
   }
 
   public LocationProviderSubject hasAccuracy(int accuracy) {

@@ -36,12 +36,7 @@ public class RecyclerViewLayoutManagerSubject
   }
 
   public static Subject.Factory<RecyclerViewLayoutManagerSubject, RecyclerView.LayoutManager> type() {
-    return new Subject.Factory<RecyclerViewLayoutManagerSubject, RecyclerView.LayoutManager>() {
-      @Override
-      public RecyclerViewLayoutManagerSubject createSubject(FailureMetadata fm, RecyclerView.LayoutManager that) {
-        return new RecyclerViewLayoutManagerSubject(fm, that);
-      }
-    };
+    return RecyclerViewLayoutManagerSubject::new;
   }
 
   public RecyclerViewLayoutManagerSubject supportsPredictiveItemAnimations() {

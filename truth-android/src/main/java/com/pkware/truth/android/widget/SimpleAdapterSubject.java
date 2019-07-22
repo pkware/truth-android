@@ -34,12 +34,7 @@ public class SimpleAdapterSubject
   }
 
   public static Subject.Factory<SimpleAdapterSubject, SimpleAdapter> type() {
-    return new Subject.Factory<SimpleAdapterSubject, SimpleAdapter>() {
-      @Override
-      public SimpleAdapterSubject createSubject(FailureMetadata fm, SimpleAdapter that) {
-        return new SimpleAdapterSubject(fm, that);
-      }
-    };
+    return SimpleAdapterSubject::new;
   }
 
   public SimpleAdapterSubject hasFilter(Filter filter) {

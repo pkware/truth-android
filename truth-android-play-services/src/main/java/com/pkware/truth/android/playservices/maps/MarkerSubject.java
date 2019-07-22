@@ -32,12 +32,7 @@ public class MarkerSubject extends Subject<MarkerSubject, Marker> {
   }
 
   public static Subject.Factory<MarkerSubject, Marker> type() {
-    return new Subject.Factory<MarkerSubject, Marker>() {
-      @Override
-      public MarkerSubject createSubject(FailureMetadata fm, Marker that) {
-        return new MarkerSubject(fm, that);
-      }
-    };
+    return MarkerSubject::new;
   }
 
   public MarkerSubject hasAlpha(float alpha, float tolerance) {

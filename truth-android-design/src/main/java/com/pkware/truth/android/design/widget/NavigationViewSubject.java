@@ -35,12 +35,7 @@ public class NavigationViewSubject
   }
 
   public static Subject.Factory<NavigationViewSubject, NavigationView> type() {
-    return new Subject.Factory<NavigationViewSubject, NavigationView>() {
-      @Override
-      public NavigationViewSubject createSubject(FailureMetadata fm, NavigationView that) {
-        return new NavigationViewSubject(fm, that);
-      }
-    };
+    return NavigationViewSubject::new;
   }
 
   public NavigationViewSubject hasItemBackground(Drawable itemBackground) {

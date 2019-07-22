@@ -76,12 +76,7 @@ public class TelephonyManagerSubject extends Subject<TelephonyManagerSubject, Te
   }
 
   public static Subject.Factory<TelephonyManagerSubject, TelephonyManager> type() {
-    return new Subject.Factory<TelephonyManagerSubject, TelephonyManager>() {
-      @Override
-      public TelephonyManagerSubject createSubject(FailureMetadata fm, TelephonyManager that) {
-        return new TelephonyManagerSubject(fm, that);
-      }
-    };
+    return TelephonyManagerSubject::new;
   }
 
   public static String callStateToString(@TelephonyManagerCallState int callState) {

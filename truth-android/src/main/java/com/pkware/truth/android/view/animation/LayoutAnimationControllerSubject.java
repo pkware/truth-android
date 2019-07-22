@@ -33,11 +33,6 @@ public final class LayoutAnimationControllerSubject extends
   }
 
   public static Subject.Factory<LayoutAnimationControllerSubject, LayoutAnimationController> type() {
-    return new Subject.Factory<LayoutAnimationControllerSubject, LayoutAnimationController>() {
-      @Override
-      public LayoutAnimationControllerSubject createSubject(FailureMetadata fm, LayoutAnimationController that) {
-        return new LayoutAnimationControllerSubject(fm, that);
-      }
-    };
+    return LayoutAnimationControllerSubject::new;
   }
 }

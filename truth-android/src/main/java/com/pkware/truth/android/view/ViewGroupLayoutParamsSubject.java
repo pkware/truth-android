@@ -33,11 +33,6 @@ public final class ViewGroupLayoutParamsSubject
   }
 
   public static Subject.Factory<ViewGroupLayoutParamsSubject, ViewGroup.LayoutParams> type() {
-    return new Subject.Factory<ViewGroupLayoutParamsSubject, ViewGroup.LayoutParams>() {
-      @Override
-      public ViewGroupLayoutParamsSubject createSubject(FailureMetadata fm, ViewGroup.LayoutParams that) {
-        return new ViewGroupLayoutParamsSubject(fm, that);
-      }
-    };
+    return ViewGroupLayoutParamsSubject::new;
   }
 }

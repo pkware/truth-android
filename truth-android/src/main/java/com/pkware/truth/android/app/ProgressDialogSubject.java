@@ -32,12 +32,7 @@ public class ProgressDialogSubject extends AbstractDialogSubject<ProgressDialogS
   }
 
   public static Subject.Factory<ProgressDialogSubject, ProgressDialog> type() {
-    return new Subject.Factory<ProgressDialogSubject, ProgressDialog>() {
-      @Override
-      public ProgressDialogSubject createSubject(FailureMetadata fm, ProgressDialog that) {
-        return new ProgressDialogSubject(fm, that);
-      }
-    };
+    return ProgressDialogSubject::new;
   }
 
   public ProgressDialogSubject hasMax(int max) {

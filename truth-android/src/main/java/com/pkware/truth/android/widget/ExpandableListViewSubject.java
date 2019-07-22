@@ -33,12 +33,7 @@ public class ExpandableListViewSubject extends AbstractListViewSubject<Expandabl
   }
 
   public static Subject.Factory<ExpandableListViewSubject, ExpandableListView> type() {
-    return new Subject.Factory<ExpandableListViewSubject, ExpandableListView>() {
-      @Override
-      public ExpandableListViewSubject createSubject(FailureMetadata fm, ExpandableListView that) {
-        return new ExpandableListViewSubject(fm, that);
-      }
-    };
+    return ExpandableListViewSubject::new;
   }
 
   public ExpandableListViewSubject hasExpandableListAdapter(ExpandableListAdapter adapter) {

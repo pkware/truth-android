@@ -37,12 +37,7 @@ public class CursorLoaderSubject extends AbstractLoaderSubject<CursorLoaderSubje
   }
 
   public static Subject.Factory<CursorLoaderSubject, CursorLoader> type() {
-    return new Subject.Factory<CursorLoaderSubject, CursorLoader>() {
-      @Override
-      public CursorLoaderSubject createSubject(FailureMetadata fm, CursorLoader that) {
-        return new CursorLoaderSubject(fm, that);
-      }
-    };
+    return CursorLoaderSubject::new;
   }
 
   public CursorLoaderSubject hasProjection(String... projection) {

@@ -34,12 +34,7 @@ public class ActionProviderSubject extends Subject<ActionProviderSubject, Action
   }
 
   public static Subject.Factory<ActionProviderSubject, ActionProvider> type() {
-    return new Subject.Factory<ActionProviderSubject, ActionProvider>() {
-      @Override
-      public ActionProviderSubject createSubject(FailureMetadata fm, ActionProvider that) {
-        return new ActionProviderSubject(fm, that);
-      }
-    };
+    return ActionProviderSubject::new;
   }
 
   public ActionProviderSubject hasSubMenu() {

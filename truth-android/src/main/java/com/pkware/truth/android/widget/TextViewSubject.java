@@ -32,11 +32,6 @@ public final class TextViewSubject extends AbstractTextViewSubject<TextViewSubje
   }
 
   public static Subject.Factory<TextViewSubject, TextView> type() {
-    return new Subject.Factory<TextViewSubject, TextView>() {
-      @Override
-      public TextViewSubject createSubject(FailureMetadata fm, TextView that) {
-        return new TextViewSubject(fm, that);
-      }
-    };
+    return TextViewSubject::new;
   }
 }

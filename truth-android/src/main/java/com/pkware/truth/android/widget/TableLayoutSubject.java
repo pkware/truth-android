@@ -32,12 +32,7 @@ public class TableLayoutSubject extends AbstractLinearLayoutSubject<TableLayoutS
   }
 
   public static Subject.Factory<TableLayoutSubject, TableLayout> type() {
-    return new Subject.Factory<TableLayoutSubject, TableLayout>() {
-      @Override
-      public TableLayoutSubject createSubject(FailureMetadata fm, TableLayout that) {
-        return new TableLayoutSubject(fm, that);
-      }
-    };
+    return TableLayoutSubject::new;
   }
 
   public TableLayoutSubject isCollapsedColumn(int index) {

@@ -34,12 +34,7 @@ public class RecyclerViewViewHolderSubject
   }
 
   public static Subject.Factory<RecyclerViewViewHolderSubject, RecyclerView.ViewHolder> type() {
-    return new Subject.Factory<RecyclerViewViewHolderSubject, RecyclerView.ViewHolder>() {
-      @Override
-      public RecyclerViewViewHolderSubject createSubject(FailureMetadata fm, RecyclerView.ViewHolder that) {
-        return new RecyclerViewViewHolderSubject(fm, that);
-      }
-    };
+    return RecyclerViewViewHolderSubject::new;
   }
 
   public RecyclerViewViewHolderSubject hasPosition(int position) {

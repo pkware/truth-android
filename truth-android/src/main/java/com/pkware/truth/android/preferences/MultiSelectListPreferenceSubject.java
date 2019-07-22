@@ -37,12 +37,7 @@ public class MultiSelectListPreferenceSubject extends
   }
 
   public static Subject.Factory<MultiSelectListPreferenceSubject, MultiSelectListPreference> type() {
-    return new Subject.Factory<MultiSelectListPreferenceSubject, MultiSelectListPreference>() {
-      @Override
-      public MultiSelectListPreferenceSubject createSubject(FailureMetadata fm, MultiSelectListPreference that) {
-        return new MultiSelectListPreferenceSubject(fm, that);
-      }
-    };
+    return MultiSelectListPreferenceSubject::new;
   }
 
   public MultiSelectListPreferenceSubject hasEntries(String... entries) {
@@ -79,11 +74,6 @@ public class MultiSelectListPreferenceSubject extends
   }
 
   private Function<CharSequence, String> mapToString() {
-    return new Function<CharSequence, String>() {
-      @Override
-      public String apply(CharSequence input) {
-        return input.toString();
-      }
-    };
+    return CharSequence::toString;
   }
 }

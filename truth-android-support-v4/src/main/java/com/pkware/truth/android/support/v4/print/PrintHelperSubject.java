@@ -39,12 +39,7 @@ public class PrintHelperSubject extends Subject<PrintHelperSubject, PrintHelper>
   }
 
   public static Subject.Factory<PrintHelperSubject, PrintHelper> type() {
-    return new Subject.Factory<PrintHelperSubject, PrintHelper>() {
-      @Override
-      public PrintHelperSubject createSubject(FailureMetadata fm, PrintHelper that) {
-        return new PrintHelperSubject(fm, that);
-      }
-    };
+    return PrintHelperSubject::new;
   }
 
   public static String colorModeToString(@PrintHelperColorMode int colorMode) {

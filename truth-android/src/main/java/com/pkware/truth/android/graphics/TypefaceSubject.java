@@ -32,12 +32,7 @@ public class TypefaceSubject extends Subject<TypefaceSubject, Typeface> {
   }
 
   public static Subject.Factory<TypefaceSubject, Typeface> type() {
-    return new Subject.Factory<TypefaceSubject, Typeface>() {
-      @Override
-      public TypefaceSubject createSubject(FailureMetadata fm, Typeface that) {
-        return new TypefaceSubject(fm, that);
-      }
-    };
+    return TypefaceSubject::new;
   }
 
   public TypefaceSubject hasStyle(int style) {

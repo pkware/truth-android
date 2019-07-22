@@ -32,12 +32,7 @@ public class ListFragmentSubject extends AbstractFragmentSubject<ListFragmentSub
   }
 
   public static Subject.Factory<ListFragmentSubject, ListFragment> type() {
-    return new Subject.Factory<ListFragmentSubject, ListFragment>() {
-      @Override
-      public ListFragmentSubject createSubject(FailureMetadata fm, ListFragment that) {
-        return new ListFragmentSubject(fm, that);
-      }
-    };
+    return ListFragmentSubject::new;
   }
 
   public ListFragmentSubject hasSelectedItemId(long id) {

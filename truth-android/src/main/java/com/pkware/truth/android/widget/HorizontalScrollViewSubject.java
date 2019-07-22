@@ -33,11 +33,6 @@ public final class HorizontalScrollViewSubject
   }
 
   public static Subject.Factory<HorizontalScrollViewSubject, HorizontalScrollView> type() {
-    return new Subject.Factory<HorizontalScrollViewSubject, HorizontalScrollView>() {
-      @Override
-      public HorizontalScrollViewSubject createSubject(FailureMetadata fm, HorizontalScrollView that) {
-        return new HorizontalScrollViewSubject(fm, that);
-      }
-    };
+    return HorizontalScrollViewSubject::new;
   }
 }

@@ -38,12 +38,7 @@ public class ServiceStateSubject extends Subject<ServiceStateSubject, ServiceSta
   }
 
   public static Subject.Factory<ServiceStateSubject, ServiceState> type() {
-    return new Subject.Factory<ServiceStateSubject, ServiceState>() {
-      @Override
-      public ServiceStateSubject createSubject(FailureMetadata fm, ServiceState that) {
-        return new ServiceStateSubject(fm, that);
-      }
-    };
+    return ServiceStateSubject::new;
   }
 
   public static String serviceStateToString(@ServiceStateState int serviceState) {

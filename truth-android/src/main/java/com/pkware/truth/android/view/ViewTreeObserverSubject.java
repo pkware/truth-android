@@ -33,12 +33,7 @@ public class ViewTreeObserverSubject extends Subject<ViewTreeObserverSubject, Vi
   }
 
   public static Subject.Factory<ViewTreeObserverSubject, ViewTreeObserver> type() {
-    return new Subject.Factory<ViewTreeObserverSubject, ViewTreeObserver>() {
-      @Override
-      public ViewTreeObserverSubject createSubject(FailureMetadata fm, ViewTreeObserver that) {
-        return new ViewTreeObserverSubject(fm, that);
-      }
-    };
+    return ViewTreeObserverSubject::new;
   }
 
   public ViewTreeObserverSubject isAlive() {

@@ -30,11 +30,6 @@ public class CheckBoxPreferenceSubject extends AbstractTwoStatePreferenceSubject
   }
 
   public static Subject.Factory<CheckBoxPreferenceSubject, CheckBoxPreference> type() {
-    return new Subject.Factory<CheckBoxPreferenceSubject, CheckBoxPreference>() {
-      @Override
-      public CheckBoxPreferenceSubject createSubject(FailureMetadata fm, CheckBoxPreference that) {
-        return new CheckBoxPreferenceSubject(fm, that);
-      }
-    };
+    return CheckBoxPreferenceSubject::new;
   }
 }

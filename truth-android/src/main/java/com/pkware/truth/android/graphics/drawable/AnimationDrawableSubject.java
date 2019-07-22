@@ -32,12 +32,7 @@ public class AnimationDrawableSubject extends AbstractDrawableSubject<AnimationD
   }
 
   public static Subject.Factory<AnimationDrawableSubject, AnimationDrawable> type() {
-    return new Subject.Factory<AnimationDrawableSubject, AnimationDrawable>() {
-      @Override
-      public AnimationDrawableSubject createSubject(FailureMetadata fm, AnimationDrawable that) {
-        return new AnimationDrawableSubject(fm, that);
-      }
-    };
+    return AnimationDrawableSubject::new;
   }
 
   public AnimationDrawableSubject hasFrameCount(int count) {

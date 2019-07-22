@@ -32,12 +32,7 @@ public class FragmentManagerSubject extends Subject<FragmentManagerSubject, Frag
   }
 
   public static Subject.Factory<FragmentManagerSubject, FragmentManager> type() {
-    return new Subject.Factory<FragmentManagerSubject, FragmentManager>() {
-      @Override
-      public FragmentManagerSubject createSubject(FailureMetadata fm, FragmentManager that) {
-        return new FragmentManagerSubject(fm, that);
-      }
-    };
+    return FragmentManagerSubject::new;
   }
 
   public FragmentManagerSubject hasFragmentWithId(int id) {

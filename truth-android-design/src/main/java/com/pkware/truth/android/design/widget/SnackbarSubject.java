@@ -33,12 +33,7 @@ public class SnackbarSubject extends Subject<SnackbarSubject, Snackbar> {
   }
 
   public static Subject.Factory<SnackbarSubject, Snackbar> type() {
-    return new Subject.Factory<SnackbarSubject, Snackbar>() {
-      @Override
-      public SnackbarSubject createSubject(FailureMetadata fm, Snackbar that) {
-        return new SnackbarSubject(fm, that);
-      }
-    };
+    return SnackbarSubject::new;
   }
 
   public SnackbarSubject hasDuration(int duration) {

@@ -35,12 +35,7 @@ public class CheckedTextViewSubject extends AbstractTextViewSubject<CheckedTextV
   }
 
   public static Subject.Factory<CheckedTextViewSubject, CheckedTextView> type() {
-    return new Subject.Factory<CheckedTextViewSubject, CheckedTextView>() {
-      @Override
-      public CheckedTextViewSubject createSubject(FailureMetadata fm, CheckedTextView that) {
-        return new CheckedTextViewSubject(fm, that);
-      }
-    };
+    return CheckedTextViewSubject::new;
   }
 
   @TargetApi(JELLY_BEAN)

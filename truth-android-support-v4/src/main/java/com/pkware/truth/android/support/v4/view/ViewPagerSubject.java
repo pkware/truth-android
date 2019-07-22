@@ -34,12 +34,7 @@ public class ViewPagerSubject extends AbstractViewGroupSubject<ViewPagerSubject,
   }
 
   public static Subject.Factory<ViewPagerSubject, ViewPager> type() {
-    return new Subject.Factory<ViewPagerSubject, ViewPager>() {
-      @Override
-      public ViewPagerSubject createSubject(FailureMetadata fm, ViewPager that) {
-        return new ViewPagerSubject(fm, that);
-      }
-    };
+    return ViewPagerSubject::new;
   }
 
   public ViewPagerSubject hasAdapter(PagerAdapter adapter) {

@@ -35,12 +35,7 @@ public class TimePickerSubject extends AbstractFrameLayoutSubject<TimePickerSubj
   }
 
   public static Subject.Factory<TimePickerSubject, TimePicker> type() {
-    return new Subject.Factory<TimePickerSubject, TimePicker>() {
-      @Override
-      public TimePickerSubject createSubject(FailureMetadata fm, TimePicker that) {
-        return new TimePickerSubject(fm, that);
-      }
-    };
+    return TimePickerSubject::new;
   }
 
   public TimePickerSubject hasCurrentHour(Integer hour) {

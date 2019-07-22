@@ -32,12 +32,7 @@ public class LruCacheSubject<K, V> extends Subject<LruCacheSubject<K, V>, LruCac
   }
 
   public static <K, V> Subject.Factory<LruCacheSubject<K, V>, LruCache<K, V>> type() {
-    return new Subject.Factory<LruCacheSubject<K, V>, LruCache<K, V>>() {
-      @Override
-      public LruCacheSubject<K, V> createSubject(FailureMetadata fm, LruCache<K, V> that) {
-        return new LruCacheSubject<K, V>(fm, that);
-      }
-    };
+    return LruCacheSubject::new;
   }
 
   public LruCacheSubject<K, V> hasEntry(K key) {

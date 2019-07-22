@@ -37,12 +37,7 @@ public class RingtonePreferenceSubject extends AbstractPreferenceSubject<Rington
   }
 
   public static Subject.Factory<RingtonePreferenceSubject, RingtonePreference> type() {
-    return new Subject.Factory<RingtonePreferenceSubject, RingtonePreference>() {
-      @Override
-      public RingtonePreferenceSubject createSubject(FailureMetadata fm, RingtonePreference that) {
-        return new RingtonePreferenceSubject(fm, that);
-      }
-    };
+    return RingtonePreferenceSubject::new;
   }
 
   private static String ringtoneTypeToString(@RingtoneType int type) {

@@ -32,12 +32,7 @@ public class AccessibilityManagerSubject extends Subject<AccessibilityManagerSub
   }
 
   public static Subject.Factory<AccessibilityManagerSubject, AccessibilityManager> type() {
-    return new Subject.Factory<AccessibilityManagerSubject, AccessibilityManager>() {
-      @Override
-      public AccessibilityManagerSubject createSubject(FailureMetadata fm, AccessibilityManager that) {
-        return new AccessibilityManagerSubject(fm, that);
-      }
-    };
+    return AccessibilityManagerSubject::new;
   }
 
   public AccessibilityManagerSubject isEnabled() {

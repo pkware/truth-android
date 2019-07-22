@@ -35,12 +35,7 @@ public class NinePatchSubject extends Subject<NinePatchSubject, NinePatch> {
   }
 
   public static Subject.Factory<NinePatchSubject, NinePatch> type() {
-    return new Subject.Factory<NinePatchSubject, NinePatch>() {
-      @Override
-      public NinePatchSubject createSubject(FailureMetadata fm, NinePatch that) {
-        return new NinePatchSubject(fm, that);
-      }
-    };
+    return NinePatchSubject::new;
   }
 
   public NinePatchSubject hasDensity(int density) {

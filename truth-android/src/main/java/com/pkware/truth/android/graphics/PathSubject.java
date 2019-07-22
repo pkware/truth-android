@@ -32,12 +32,7 @@ public class PathSubject extends Subject<PathSubject, Path> {
   }
 
   public static Subject.Factory<PathSubject, Path> type() {
-    return new Subject.Factory<PathSubject, Path>() {
-      @Override
-      public PathSubject createSubject(FailureMetadata fm, Path that) {
-        return new PathSubject(fm, that);
-      }
-    };
+    return PathSubject::new;
   }
 
   public PathSubject hasFillType(Path.FillType type) {

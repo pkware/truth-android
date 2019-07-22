@@ -35,12 +35,7 @@ public class AccessibilityEventSubject
   }
 
   public static Subject.Factory<AccessibilityEventSubject, AccessibilityEvent> type() {
-    return new Subject.Factory<AccessibilityEventSubject, AccessibilityEvent>() {
-      @Override
-      public AccessibilityEventSubject createSubject(FailureMetadata fm, AccessibilityEvent that) {
-        return new AccessibilityEventSubject(fm, that);
-      }
-    };
+    return AccessibilityEventSubject::new;
   }
 
   @TargetApi(JELLY_BEAN)

@@ -32,11 +32,6 @@ public final class DrawableSubject extends AbstractDrawableSubject<DrawableSubje
   }
 
   public static Subject.Factory<DrawableSubject, Drawable> type() {
-    return new Subject.Factory<DrawableSubject, Drawable>() {
-      @Override
-      public DrawableSubject createSubject(FailureMetadata fm, Drawable that) {
-        return new DrawableSubject(fm, that);
-      }
-    };
+    return DrawableSubject::new;
   }
 }

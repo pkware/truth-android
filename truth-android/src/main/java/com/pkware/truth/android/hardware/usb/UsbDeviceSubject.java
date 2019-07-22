@@ -32,12 +32,7 @@ public class UsbDeviceSubject extends Subject<UsbDeviceSubject, UsbDevice> {
   }
 
   public static Subject.Factory<UsbDeviceSubject, UsbDevice> type() {
-    return new Subject.Factory<UsbDeviceSubject, UsbDevice>() {
-      @Override
-      public UsbDeviceSubject createSubject(FailureMetadata fm, UsbDevice that) {
-        return new UsbDeviceSubject(fm, that);
-      }
-    };
+    return UsbDeviceSubject::new;
   }
 
   public UsbDeviceSubject hasDeviceClass(int value) {

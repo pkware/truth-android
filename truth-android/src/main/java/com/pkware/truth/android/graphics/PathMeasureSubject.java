@@ -32,12 +32,7 @@ public class PathMeasureSubject extends Subject<PathMeasureSubject, PathMeasure>
   }
 
   public static Subject.Factory<PathMeasureSubject, PathMeasure> type() {
-    return new Subject.Factory<PathMeasureSubject, PathMeasure>() {
-      @Override
-      public PathMeasureSubject createSubject(FailureMetadata fm, PathMeasure that) {
-        return new PathMeasureSubject(fm, that);
-      }
-    };
+    return PathMeasureSubject::new;
   }
 
   public PathMeasureSubject hasLength(float length, float tolerance) {

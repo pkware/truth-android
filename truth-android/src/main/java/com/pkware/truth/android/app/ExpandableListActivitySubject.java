@@ -32,12 +32,7 @@ public class ExpandableListActivitySubject extends AbstractActivitySubject<Expan
   }
 
   public static Subject.Factory<ExpandableListActivitySubject, ExpandableListActivity> type() {
-    return new Subject.Factory<ExpandableListActivitySubject, ExpandableListActivity>() {
-      @Override
-      public ExpandableListActivitySubject createSubject(FailureMetadata fm, ExpandableListActivity that) {
-        return new ExpandableListActivitySubject(fm, that);
-      }
-    };
+    return ExpandableListActivitySubject::new;
   }
 
   public ExpandableListActivitySubject hasSelectedId(long id) {

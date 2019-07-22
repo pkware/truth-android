@@ -40,12 +40,7 @@ public class DragEventSubject extends Subject<DragEventSubject, DragEvent> {
   }
 
   public static Subject.Factory<DragEventSubject, DragEvent> type() {
-    return new Subject.Factory<DragEventSubject, DragEvent>() {
-      @Override
-      public DragEventSubject createSubject(FailureMetadata fm, DragEvent that) {
-        return new DragEventSubject(fm, that);
-      }
-    };
+    return DragEventSubject::new;
   }
 
   public static String dragEventActionToString(@DragEventAction int action) {

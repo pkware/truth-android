@@ -38,12 +38,7 @@ public class GestureOverlayViewSubject extends Subject<GestureOverlayViewSubject
   }
 
   public static Subject.Factory<GestureOverlayViewSubject, GestureOverlayView> type() {
-    return new Subject.Factory<GestureOverlayViewSubject, GestureOverlayView>() {
-      @Override
-      public GestureOverlayViewSubject createSubject(FailureMetadata fm, GestureOverlayView that) {
-        return new GestureOverlayViewSubject(fm, that);
-      }
-    };
+    return GestureOverlayViewSubject::new;
   }
 
   public static String gestureStrokeTypeToString(@GestureOverlayViewGestureStrokeType int type) {

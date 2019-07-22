@@ -33,11 +33,6 @@ public final class TwoStatePreferenceSubject
   }
 
   public static Subject.Factory<TwoStatePreferenceSubject, TwoStatePreference> type() {
-    return new Subject.Factory<TwoStatePreferenceSubject, TwoStatePreference>() {
-      @Override
-      public TwoStatePreferenceSubject createSubject(FailureMetadata fm, TwoStatePreference that) {
-        return new TwoStatePreferenceSubject(fm, that);
-      }
-    };
+    return TwoStatePreferenceSubject::new;
   }
 }

@@ -33,12 +33,7 @@ public class CircularArraySubject<E>
   }
 
   public static <E> Subject.Factory<CircularArraySubject<E>, CircularArray<E>> type() {
-    return new Subject.Factory<CircularArraySubject<E>, CircularArray<E>>() {
-      @Override
-      public CircularArraySubject<E> createSubject(FailureMetadata fm, CircularArray<E> that) {
-        return new CircularArraySubject<E>(fm, that);
-      }
-    };
+    return CircularArraySubject::new;
   }
 
   public CircularArraySubject<E> hasFirst(E first) {

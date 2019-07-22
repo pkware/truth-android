@@ -32,12 +32,7 @@ public class TransitionDrawableSubject extends AbstractDrawableSubject<Transitio
   }
 
   public static Subject.Factory<TransitionDrawableSubject, TransitionDrawable> type() {
-    return new Subject.Factory<TransitionDrawableSubject, TransitionDrawable>() {
-      @Override
-      public TransitionDrawableSubject createSubject(FailureMetadata fm, TransitionDrawable that) {
-        return new TransitionDrawableSubject(fm, that);
-      }
-    };
+    return TransitionDrawableSubject::new;
   }
 
   public TransitionDrawableSubject isCrossFadeEnabled() {

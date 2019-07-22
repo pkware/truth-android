@@ -32,11 +32,6 @@ public final class ValueAnimatorSubject extends AbstractValueAnimatorSubject<Val
   }
 
   public static Subject.Factory<ValueAnimatorSubject, ValueAnimator> type() {
-    return new Subject.Factory<ValueAnimatorSubject, ValueAnimator>() {
-      @Override
-      public ValueAnimatorSubject createSubject(FailureMetadata fm, ValueAnimator that) {
-        return new ValueAnimatorSubject(fm, that);
-      }
-    };
+    return ValueAnimatorSubject::new;
   }
 }

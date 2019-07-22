@@ -44,12 +44,7 @@ public class ActionBarSubject extends Subject<ActionBarSubject, ActionBar> {
   }
 
   public static Subject.Factory<ActionBarSubject, ActionBar> type() {
-    return new Subject.Factory<ActionBarSubject, ActionBar>() {
-      @Override
-      public ActionBarSubject createSubject(FailureMetadata fm, ActionBar that) {
-        return new ActionBarSubject(fm, that);
-      }
-    };
+    return ActionBarSubject::new;
   }
 
   public static String navigationModeToString(@ActionBarNavigationMode int mode) {

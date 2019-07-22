@@ -36,12 +36,7 @@ public class TaskStackBuilderSubject extends Subject<TaskStackBuilderSubject, Ta
   }
 
   public static Subject.Factory<TaskStackBuilderSubject, TaskStackBuilder> type() {
-    return new Subject.Factory<TaskStackBuilderSubject, TaskStackBuilder>() {
-      @Override
-      public TaskStackBuilderSubject createSubject(FailureMetadata fm, TaskStackBuilder that) {
-        return new TaskStackBuilderSubject(fm, that);
-      }
-    };
+    return TaskStackBuilderSubject::new;
   }
 
   public TaskStackBuilderSubject hasIntentCount(int count) {

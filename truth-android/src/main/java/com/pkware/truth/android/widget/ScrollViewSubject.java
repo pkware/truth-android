@@ -32,12 +32,7 @@ public class ScrollViewSubject extends AbstractFrameLayoutSubject<ScrollViewSubj
   }
 
   public static Subject.Factory<ScrollViewSubject, ScrollView> type() {
-    return new Subject.Factory<ScrollViewSubject, ScrollView>() {
-      @Override
-      public ScrollViewSubject createSubject(FailureMetadata fm, ScrollView that) {
-        return new ScrollViewSubject(fm, that);
-      }
-    };
+    return ScrollViewSubject::new;
   }
 
   public ScrollViewSubject hasMaxScrollAmount(int amount) {

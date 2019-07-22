@@ -32,12 +32,7 @@ public class CdmaCellLocationSubject extends Subject<CdmaCellLocationSubject, Cd
   }
 
   public static Subject.Factory<CdmaCellLocationSubject, CdmaCellLocation> type() {
-    return new Subject.Factory<CdmaCellLocationSubject, CdmaCellLocation>() {
-      @Override
-      public CdmaCellLocationSubject createSubject(FailureMetadata fm, CdmaCellLocation that) {
-        return new CdmaCellLocationSubject(fm, that);
-      }
-    };
+    return CdmaCellLocationSubject::new;
   }
 
   public CdmaCellLocationSubject hasBaseStationId(int id) {

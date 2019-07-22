@@ -35,12 +35,7 @@ public class SimpleCursorAdapterSubject
   }
 
   public static Subject.Factory<SimpleCursorAdapterSubject, SimpleCursorAdapter> type() {
-    return new Subject.Factory<SimpleCursorAdapterSubject, SimpleCursorAdapter>() {
-      @Override
-      public SimpleCursorAdapterSubject createSubject(FailureMetadata fm, SimpleCursorAdapter that) {
-        return new SimpleCursorAdapterSubject(fm, that);
-      }
-    };
+    return SimpleCursorAdapterSubject::new;
   }
 
   public SimpleCursorAdapterSubject hasCursorToStringConverter(CursorToStringConverter converter) {

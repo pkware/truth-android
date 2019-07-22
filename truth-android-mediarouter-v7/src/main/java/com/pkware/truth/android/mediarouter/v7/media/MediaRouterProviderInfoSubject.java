@@ -35,12 +35,7 @@ public class MediaRouterProviderInfoSubject
   }
 
   public static Subject.Factory<MediaRouterProviderInfoSubject, MediaRouter.ProviderInfo> type() {
-    return new Subject.Factory<MediaRouterProviderInfoSubject, MediaRouter.ProviderInfo>() {
-      @Override
-      public MediaRouterProviderInfoSubject createSubject(FailureMetadata fm, MediaRouter.ProviderInfo that) {
-        return new MediaRouterProviderInfoSubject(fm, that);
-      }
-    };
+    return MediaRouterProviderInfoSubject::new;
   }
 
   public MediaRouterProviderInfoSubject hasComponentName(ComponentName componentName) {

@@ -32,11 +32,6 @@ public final class LinearLayoutSubject extends AbstractLinearLayoutSubject<Linea
   }
 
   public static Subject.Factory<LinearLayoutSubject, LinearLayout> type() {
-    return new Subject.Factory<LinearLayoutSubject, LinearLayout>() {
-      @Override
-      public LinearLayoutSubject createSubject(FailureMetadata fm, LinearLayout that) {
-        return new LinearLayoutSubject(fm, that);
-      }
-    };
+    return LinearLayoutSubject::new;
   }
 }

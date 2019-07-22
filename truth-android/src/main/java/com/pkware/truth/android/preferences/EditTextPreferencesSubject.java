@@ -32,12 +32,7 @@ public class EditTextPreferencesSubject extends AbstractDialogPreferenceSubject<
   }
 
   public static Subject.Factory<EditTextPreferencesSubject, EditTextPreference> type() {
-    return new Subject.Factory<EditTextPreferencesSubject, EditTextPreference>() {
-      @Override
-      public EditTextPreferencesSubject createSubject(FailureMetadata fm, EditTextPreference that) {
-        return new EditTextPreferencesSubject(fm, that);
-      }
-    };
+    return EditTextPreferencesSubject::new;
   }
 
   public EditTextPreferencesSubject hasText(String text) {

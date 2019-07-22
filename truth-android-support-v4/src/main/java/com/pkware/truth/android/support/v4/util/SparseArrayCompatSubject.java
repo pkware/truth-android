@@ -34,12 +34,7 @@ public class SparseArrayCompatSubject<E>
   }
 
   public static <E> Subject.Factory<SparseArrayCompatSubject<E>, SparseArrayCompat<E>> type() {
-    return new Subject.Factory<SparseArrayCompatSubject<E>, SparseArrayCompat<E>>() {
-      @Override
-      public SparseArrayCompatSubject<E> createSubject(FailureMetadata fm, SparseArrayCompat<E> that) {
-        return new SparseArrayCompatSubject<E>(fm, that);
-      }
-    };
+    return SparseArrayCompatSubject::new;
   }
 
   public SparseArrayCompatSubject<E> hasKey(int key) {

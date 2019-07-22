@@ -33,12 +33,7 @@ public class UriSubject extends Subject<UriSubject, Uri> {
   }
 
   public static Subject.Factory<UriSubject, Uri> type() {
-    return new Subject.Factory<UriSubject, Uri>() {
-      @Override
-      public UriSubject createSubject(FailureMetadata fm, Uri that) {
-        return new UriSubject(fm, that);
-      }
-    };
+    return UriSubject::new;
   }
 
   public UriSubject hasPath(String path) {

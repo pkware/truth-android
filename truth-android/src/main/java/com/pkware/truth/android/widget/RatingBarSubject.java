@@ -32,12 +32,7 @@ public class RatingBarSubject extends AbstractAbsSeekBarSubject<RatingBarSubject
   }
 
   public static Subject.Factory<RatingBarSubject, RatingBar> type() {
-    return new Subject.Factory<RatingBarSubject, RatingBar>() {
-      @Override
-      public RatingBarSubject createSubject(FailureMetadata fm, RatingBar that) {
-        return new RatingBarSubject(fm, that);
-      }
-    };
+    return RatingBarSubject::new;
   }
 
   public RatingBarSubject hasStarCount(int count) {

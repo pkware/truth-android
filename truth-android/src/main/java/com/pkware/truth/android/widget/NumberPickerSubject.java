@@ -32,12 +32,7 @@ public class NumberPickerSubject extends AbstractLinearLayoutSubject<NumberPicke
   }
 
   public static Subject.Factory<NumberPickerSubject, NumberPicker> type() {
-    return new Subject.Factory<NumberPickerSubject, NumberPicker>() {
-      @Override
-      public NumberPickerSubject createSubject(FailureMetadata fm, NumberPicker that) {
-        return new NumberPickerSubject(fm, that);
-      }
-    };
+    return NumberPickerSubject::new;
   }
 
   public NumberPickerSubject hasDisplayedValues(String[] values) {

@@ -32,12 +32,7 @@ public class GestureLibrarySubject extends Subject<GestureLibrarySubject, Gestur
   }
 
   public static Subject.Factory<GestureLibrarySubject, GestureLibrary> type() {
-    return new Subject.Factory<GestureLibrarySubject, GestureLibrary>() {
-      @Override
-      public GestureLibrarySubject createSubject(FailureMetadata fm, GestureLibrary that) {
-        return new GestureLibrarySubject(fm, that);
-      }
-    };
+    return GestureLibrarySubject::new;
   }
 
   public GestureLibrarySubject hasOrientationStyle(int style) {

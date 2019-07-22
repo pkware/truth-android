@@ -59,12 +59,7 @@ public class BluetoothGattCharacteristicSubject extends Subject<BluetoothGattCha
   }
 
   public static Subject.Factory<BluetoothGattCharacteristicSubject, BluetoothGattCharacteristic> type() {
-    return new Subject.Factory<BluetoothGattCharacteristicSubject, BluetoothGattCharacteristic>() {
-      @Override
-      public BluetoothGattCharacteristicSubject createSubject(FailureMetadata fm, BluetoothGattCharacteristic that) {
-        return new BluetoothGattCharacteristicSubject(fm, that);
-      }
-    };
+    return BluetoothGattCharacteristicSubject::new;
   }
 
   public static String writeTypeToString(@BluetoothGattCharacteristicWriteType int writeType) {

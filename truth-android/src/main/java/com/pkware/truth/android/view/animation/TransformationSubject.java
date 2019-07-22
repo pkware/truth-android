@@ -39,12 +39,7 @@ public class TransformationSubject extends Subject<TransformationSubject, Transf
   }
 
   public static Subject.Factory<TransformationSubject, Transformation> type() {
-    return new Subject.Factory<TransformationSubject, Transformation>() {
-      @Override
-      public TransformationSubject createSubject(FailureMetadata fm, Transformation that) {
-        return new TransformationSubject(fm, that);
-      }
-    };
+    return TransformationSubject::new;
   }
 
   public static String transformationTypeToString(@TransformationType int type) {

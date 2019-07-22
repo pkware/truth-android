@@ -34,12 +34,7 @@ public class PreferenceScreenSubject extends AbstractPreferenceGroupSubject<Pref
   }
 
   public static Subject.Factory<PreferenceScreenSubject, PreferenceScreen> type() {
-    return new Subject.Factory<PreferenceScreenSubject, PreferenceScreen>() {
-      @Override
-      public PreferenceScreenSubject createSubject(FailureMetadata fm, PreferenceScreen that) {
-        return new PreferenceScreenSubject(fm, that);
-      }
-    };
+    return PreferenceScreenSubject::new;
   }
 
   public PreferenceScreenSubject hasDialog(Dialog dialog) {

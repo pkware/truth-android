@@ -34,12 +34,7 @@ public class KeyguardManagerSubject extends Subject<KeyguardManagerSubject, Keyg
   }
 
   public static Subject.Factory<KeyguardManagerSubject, KeyguardManager> type() {
-    return new Subject.Factory<KeyguardManagerSubject, KeyguardManager>() {
-      @Override
-      public KeyguardManagerSubject createSubject(FailureMetadata fm, KeyguardManager that) {
-        return new KeyguardManagerSubject(fm, that);
-      }
-    };
+    return KeyguardManagerSubject::new;
   }
 
   public KeyguardManagerSubject hasRestrictedInputMode() {

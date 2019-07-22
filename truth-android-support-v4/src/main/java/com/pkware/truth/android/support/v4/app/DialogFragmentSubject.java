@@ -33,12 +33,7 @@ public class DialogFragmentSubject
   }
 
   public static Subject.Factory<DialogFragmentSubject, DialogFragment> type() {
-    return new Subject.Factory<DialogFragmentSubject, DialogFragment>() {
-      @Override
-      public DialogFragmentSubject createSubject(FailureMetadata fm, DialogFragment that) {
-        return new DialogFragmentSubject(fm, that);
-      }
-    };
+    return DialogFragmentSubject::new;
   }
 
   public DialogFragmentSubject isCancelable() {

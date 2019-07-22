@@ -34,12 +34,7 @@ public class GradientDrawableSubject extends AbstractDrawableSubject<GradientDra
   }
 
   public static Subject.Factory<GradientDrawableSubject, GradientDrawable> type() {
-    return new Subject.Factory<GradientDrawableSubject, GradientDrawable>() {
-      @Override
-      public GradientDrawableSubject createSubject(FailureMetadata fm, GradientDrawable that) {
-        return new GradientDrawableSubject(fm, that);
-      }
-    };
+    return GradientDrawableSubject::new;
   }
 
   @TargetApi(JELLY_BEAN)

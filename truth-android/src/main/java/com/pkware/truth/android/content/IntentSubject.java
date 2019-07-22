@@ -67,12 +67,7 @@ public class IntentSubject extends Subject<IntentSubject, Intent> {
   }
 
   public static Subject.Factory<IntentSubject, Intent> type() {
-    return new Subject.Factory<IntentSubject, Intent>() {
-      @Override
-      public IntentSubject createSubject(FailureMetadata fm, Intent that) {
-        return new IntentSubject(fm, that);
-      }
-    };
+    return IntentSubject::new;
   }
 
   public static String flagsToString(@IntentFlags int flags) {

@@ -33,12 +33,7 @@ public class PaletteSwatchSubject extends Subject<PaletteSwatchSubject, Palette.
   }
 
   public static Subject.Factory<PaletteSwatchSubject, Palette.Swatch> type() {
-    return new Subject.Factory<PaletteSwatchSubject, Palette.Swatch>() {
-      @Override
-      public PaletteSwatchSubject createSubject(FailureMetadata fm, Palette.Swatch that) {
-        return new PaletteSwatchSubject(fm, that);
-      }
-    };
+    return PaletteSwatchSubject::new;
   }
 
   public PaletteSwatchSubject hasRgb(int rgb) {

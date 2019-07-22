@@ -36,12 +36,7 @@ public class SpinnerSubject extends AbstractAbsSpinnerSubject<SpinnerSubject, Sp
   }
 
   public static Subject.Factory<SpinnerSubject, Spinner> type() {
-    return new Subject.Factory<SpinnerSubject, Spinner>() {
-      @Override
-      public SpinnerSubject createSubject(FailureMetadata fm, Spinner that) {
-        return new SpinnerSubject(fm, that);
-      }
-    };
+    return SpinnerSubject::new;
   }
 
   @TargetApi(JELLY_BEAN)

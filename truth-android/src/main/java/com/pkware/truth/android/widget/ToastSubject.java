@@ -33,12 +33,7 @@ public class ToastSubject extends Subject<ToastSubject, Toast> {
   }
 
   public static Subject.Factory<ToastSubject, Toast> type() {
-    return new Subject.Factory<ToastSubject, Toast>() {
-      @Override
-      public ToastSubject createSubject(FailureMetadata fm, Toast that) {
-        return new ToastSubject(fm, that);
-      }
-    };
+    return ToastSubject::new;
   }
 
   public ToastSubject hasDuration(int duration) {

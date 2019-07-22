@@ -37,12 +37,7 @@ public class AtomicFileSubject extends Subject<AtomicFileSubject, AtomicFile> {
   }
 
   public static Subject.Factory<AtomicFileSubject, AtomicFile> type() {
-    return new Subject.Factory<AtomicFileSubject, AtomicFile>() {
-      @Override
-      public AtomicFileSubject createSubject(FailureMetadata fm, AtomicFile that) {
-        return new AtomicFileSubject(fm, that);
-      }
-    };
+    return AtomicFileSubject::new;
   }
 
   public AtomicFileSubject hasBaseFile(File file) {

@@ -32,12 +32,7 @@ public class AsyncTaskSubject extends Subject<AsyncTaskSubject, AsyncTask> {
   }
 
   public static Subject.Factory<AsyncTaskSubject, AsyncTask> type() {
-    return new Subject.Factory<AsyncTaskSubject, AsyncTask>() {
-      @Override
-      public AsyncTaskSubject createSubject(FailureMetadata fm, AsyncTask that) {
-        return new AsyncTaskSubject(fm, that);
-      }
-    };
+    return AsyncTaskSubject::new;
   }
 
   public AsyncTaskSubject hasStatus(AsyncTask.Status status) {

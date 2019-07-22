@@ -32,12 +32,7 @@ public class MediaControllerSubject extends AbstractFrameLayoutSubject<MediaCont
   }
 
   public static Subject.Factory<MediaControllerSubject, MediaController> type() {
-    return new Subject.Factory<MediaControllerSubject, MediaController>() {
-      @Override
-      public MediaControllerSubject createSubject(FailureMetadata fm, MediaController that) {
-        return new MediaControllerSubject(fm, that);
-      }
-    };
+    return MediaControllerSubject::new;
   }
 
   public MediaControllerSubject isShowing() {

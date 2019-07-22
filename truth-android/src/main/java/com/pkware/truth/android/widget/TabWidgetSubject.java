@@ -32,12 +32,7 @@ public class TabWidgetSubject extends AbstractLinearLayoutSubject<TabWidgetSubje
   }
 
   public static Subject.Factory<TabWidgetSubject, TabWidget> type() {
-    return new Subject.Factory<TabWidgetSubject, TabWidget>() {
-      @Override
-      public TabWidgetSubject createSubject(FailureMetadata fm, TabWidget that) {
-        return new TabWidgetSubject(fm, that);
-      }
-    };
+    return TabWidgetSubject::new;
   }
 
   public TabWidgetSubject hasTabCount(int count) {

@@ -32,12 +32,7 @@ public class ViewFlipperSubject extends AbstractViewAnimatorSubject<ViewFlipperS
   }
 
   public static Subject.Factory<ViewFlipperSubject, ViewFlipper> type() {
-    return new Subject.Factory<ViewFlipperSubject, ViewFlipper>() {
-      @Override
-      public ViewFlipperSubject createSubject(FailureMetadata fm, ViewFlipper that) {
-        return new ViewFlipperSubject(fm, that);
-      }
-    };
+    return ViewFlipperSubject::new;
   }
 
   public ViewFlipperSubject isAutoStarting() {

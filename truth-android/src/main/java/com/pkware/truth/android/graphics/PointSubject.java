@@ -32,12 +32,7 @@ public class PointSubject extends Subject<PointSubject, Point> {
   }
 
   public static Subject.Factory<PointSubject, Point> type() {
-    return new Subject.Factory<PointSubject, Point>() {
-      @Override
-      public PointSubject createSubject(FailureMetadata fm, Point that) {
-        return new PointSubject(fm, that);
-      }
-    };
+    return PointSubject::new;
   }
 
   public PointSubject hasX(int x) {

@@ -32,11 +32,6 @@ public final class PaintSubject extends AbstractPaintSubject<PaintSubject, Paint
   }
 
   public static Subject.Factory<PaintSubject, Paint> type() {
-    return new Subject.Factory<PaintSubject, Paint>() {
-      @Override
-      public PaintSubject createSubject(FailureMetadata fm, Paint that) {
-        return new PaintSubject(fm, that);
-      }
-    };
+    return PaintSubject::new;
   }
 }

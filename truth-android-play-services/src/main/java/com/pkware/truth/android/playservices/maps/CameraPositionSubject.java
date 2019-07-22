@@ -32,12 +32,7 @@ public class CameraPositionSubject extends Subject<CameraPositionSubject, Camera
   }
 
   public static Subject.Factory<CameraPositionSubject, CameraPosition> type() {
-    return new Subject.Factory<CameraPositionSubject, CameraPosition>() {
-      @Override
-      public CameraPositionSubject createSubject(FailureMetadata fm, CameraPosition that) {
-        return new CameraPositionSubject(fm, that);
-      }
-    };
+    return CameraPositionSubject::new;
   }
 
   public CameraPositionSubject hasBearing(float bearing, float tolerance) {

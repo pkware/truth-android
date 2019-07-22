@@ -32,12 +32,7 @@ public class ExtractEditTextSubject extends Subject<ExtractEditTextSubject, Extr
   }
 
   public static Subject.Factory<ExtractEditTextSubject, ExtractEditText> type() {
-    return new Subject.Factory<ExtractEditTextSubject, ExtractEditText>() {
-      @Override
-      public ExtractEditTextSubject createSubject(FailureMetadata fm, ExtractEditText that) {
-        return new ExtractEditTextSubject(fm, that);
-      }
-    };
+    return ExtractEditTextSubject::new;
   }
 
   public ExtractEditTextSubject isInputMethodTarget() {

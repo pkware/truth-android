@@ -32,11 +32,6 @@ public final class PreferenceGroupSubject extends AbstractPreferenceGroupSubject
   }
 
   public static Subject.Factory<PreferenceGroupSubject, PreferenceGroup> type() {
-    return new Subject.Factory<PreferenceGroupSubject, PreferenceGroup>() {
-      @Override
-      public PreferenceGroupSubject createSubject(FailureMetadata fm, PreferenceGroup that) {
-        return new PreferenceGroupSubject(fm, that);
-      }
-    };
+    return PreferenceGroupSubject::new;
   }
 }

@@ -32,12 +32,7 @@ public class KeyframeSubject extends Subject<KeyframeSubject, Keyframe> {
   }
 
   public static Subject.Factory<KeyframeSubject, Keyframe> type() {
-    return new Subject.Factory<KeyframeSubject, Keyframe>() {
-      @Override
-      public KeyframeSubject createSubject(FailureMetadata fm, Keyframe that) {
-        return new KeyframeSubject(fm, that);
-      }
-    };
+    return KeyframeSubject::new;
   }
 
   public KeyframeSubject hasType(Class type) {

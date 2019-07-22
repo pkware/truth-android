@@ -41,12 +41,7 @@ public class BluetoothGattServiceSubject extends Subject<BluetoothGattServiceSub
   }
 
   public static Subject.Factory<BluetoothGattServiceSubject, BluetoothGattService> type() {
-    return new Subject.Factory<BluetoothGattServiceSubject, BluetoothGattService>() {
-      @Override
-      public BluetoothGattServiceSubject createSubject(FailureMetadata fm, BluetoothGattService that) {
-        return new BluetoothGattServiceSubject(fm, that);
-      }
-    };
+    return BluetoothGattServiceSubject::new;
   }
 
   public static String typeToString(@BluetoothGattServiceType int type) {

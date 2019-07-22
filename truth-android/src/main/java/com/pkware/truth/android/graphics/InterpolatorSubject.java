@@ -32,12 +32,7 @@ public class InterpolatorSubject extends Subject<InterpolatorSubject, Interpolat
   }
 
   public static Subject.Factory<InterpolatorSubject, Interpolator> type() {
-    return new Subject.Factory<InterpolatorSubject, Interpolator>() {
-      @Override
-      public InterpolatorSubject createSubject(FailureMetadata fm, Interpolator that) {
-        return new InterpolatorSubject(fm, that);
-      }
-    };
+    return InterpolatorSubject::new;
   }
 
   public InterpolatorSubject hasKeyFrameCount(int count) {

@@ -32,12 +32,7 @@ public class GsmCellLocationSubject extends Subject<GsmCellLocationSubject, GsmC
   }
 
   public static Subject.Factory<GsmCellLocationSubject, GsmCellLocation> type() {
-    return new Subject.Factory<GsmCellLocationSubject, GsmCellLocation>() {
-      @Override
-      public GsmCellLocationSubject createSubject(FailureMetadata fm, GsmCellLocation that) {
-        return new GsmCellLocationSubject(fm, that);
-      }
-    };
+    return GsmCellLocationSubject::new;
   }
 
   public GsmCellLocationSubject hasCid(int cid) {

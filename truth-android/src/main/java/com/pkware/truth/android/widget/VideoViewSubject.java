@@ -35,12 +35,7 @@ public class VideoViewSubject extends AbstractViewSubject<VideoViewSubject, Vide
   }
 
   public static Subject.Factory<VideoViewSubject, VideoView> type() {
-    return new Subject.Factory<VideoViewSubject, VideoView>() {
-      @Override
-      public VideoViewSubject createSubject(FailureMetadata fm, VideoView that) {
-        return new VideoViewSubject(fm, that);
-      }
-    };
+    return VideoViewSubject::new;
   }
 
   public VideoViewSubject isPausable() {

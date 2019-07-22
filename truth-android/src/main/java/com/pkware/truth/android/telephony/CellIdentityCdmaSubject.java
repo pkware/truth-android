@@ -35,12 +35,7 @@ public final class CellIdentityCdmaSubject extends Subject<CellIdentityCdmaSubje
   }
 
   public static Subject.Factory<CellIdentityCdmaSubject, CellIdentityCdma> type() {
-    return new Subject.Factory<CellIdentityCdmaSubject, CellIdentityCdma>() {
-      @Override
-      public CellIdentityCdmaSubject createSubject(FailureMetadata fm, CellIdentityCdma that) {
-        return new CellIdentityCdmaSubject(fm, that);
-      }
-    };
+    return CellIdentityCdmaSubject::new;
   }
 
   public CellIdentityCdmaSubject hasBaseStationId(int id) {

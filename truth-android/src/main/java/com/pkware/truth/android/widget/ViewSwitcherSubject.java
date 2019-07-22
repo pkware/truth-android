@@ -34,12 +34,7 @@ public class ViewSwitcherSubject
   }
 
   public static Subject.Factory<ViewSwitcherSubject, ViewSwitcher> type() {
-    return new Subject.Factory<ViewSwitcherSubject, ViewSwitcher>() {
-      @Override
-      public ViewSwitcherSubject createSubject(FailureMetadata fm, ViewSwitcher that) {
-        return new ViewSwitcherSubject(fm, that);
-      }
-    };
+    return ViewSwitcherSubject::new;
   }
 
   public ViewSwitcherSubject hasNextView(View view) {

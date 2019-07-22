@@ -37,11 +37,6 @@ public final class CellSignalStrengthWcdmaSubject
   }
 
   public static Subject.Factory<CellSignalStrengthWcdmaSubject, CellSignalStrengthWcdma> type() {
-    return new Subject.Factory<CellSignalStrengthWcdmaSubject, CellSignalStrengthWcdma>() {
-      @Override
-      public CellSignalStrengthWcdmaSubject createSubject(FailureMetadata fm, CellSignalStrengthWcdma that) {
-        return new CellSignalStrengthWcdmaSubject(fm, that);
-      }
-    };
+    return CellSignalStrengthWcdmaSubject::new;
   }
 }

@@ -33,12 +33,7 @@ public class ViewStubSubject extends AbstractViewSubject<ViewStubSubject, ViewSt
   }
 
   public static Subject.Factory<ViewStubSubject, ViewStub> type() {
-    return new Subject.Factory<ViewStubSubject, ViewStub>() {
-      @Override
-      public ViewStubSubject createSubject(FailureMetadata fm, ViewStub that) {
-        return new ViewStubSubject(fm, that);
-      }
-    };
+    return ViewStubSubject::new;
   }
 
   public ViewStubSubject hasInflatedId(int id) {

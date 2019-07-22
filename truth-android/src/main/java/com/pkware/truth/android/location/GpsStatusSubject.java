@@ -33,12 +33,7 @@ public class GpsStatusSubject extends Subject<GpsStatusSubject, GpsStatus> {
   }
 
   public static Subject.Factory<GpsStatusSubject, GpsStatus> type() {
-    return new Subject.Factory<GpsStatusSubject, GpsStatus>() {
-      @Override
-      public GpsStatusSubject createSubject(FailureMetadata fm, GpsStatus that) {
-        return new GpsStatusSubject(fm, that);
-      }
-    };
+    return GpsStatusSubject::new;
   }
 
   public GpsStatusSubject hasMaximumSatellites(int count) {

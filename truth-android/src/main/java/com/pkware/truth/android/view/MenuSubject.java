@@ -33,12 +33,7 @@ public class MenuSubject extends Subject<MenuSubject, Menu> {
   }
 
   public static Subject.Factory<MenuSubject, Menu> type() {
-    return new Subject.Factory<MenuSubject, Menu>() {
-      @Override
-      public MenuSubject createSubject(FailureMetadata fm, Menu that) {
-        return new MenuSubject(fm, that);
-      }
-    };
+    return MenuSubject::new;
   }
 
   public MenuSubject hasItem(@IdRes int id) {

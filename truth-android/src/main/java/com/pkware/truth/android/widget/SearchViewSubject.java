@@ -38,12 +38,7 @@ public class SearchViewSubject extends AbstractLinearLayoutSubject<SearchViewSub
   }
 
   public static Subject.Factory<SearchViewSubject, SearchView> type() {
-    return new Subject.Factory<SearchViewSubject, SearchView>() {
-      @Override
-      public SearchViewSubject createSubject(FailureMetadata fm, SearchView that) {
-        return new SearchViewSubject(fm, that);
-      }
-    };
+    return SearchViewSubject::new;
   }
 
   @TargetApi(JELLY_BEAN)

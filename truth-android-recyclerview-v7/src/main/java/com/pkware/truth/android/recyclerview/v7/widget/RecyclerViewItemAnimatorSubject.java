@@ -34,12 +34,7 @@ public class RecyclerViewItemAnimatorSubject
   }
 
   public static Subject.Factory<RecyclerViewItemAnimatorSubject, RecyclerView.ItemAnimator> type() {
-    return new Subject.Factory<RecyclerViewItemAnimatorSubject, RecyclerView.ItemAnimator>() {
-      @Override
-      public RecyclerViewItemAnimatorSubject createSubject(FailureMetadata fm, RecyclerView.ItemAnimator that) {
-        return new RecyclerViewItemAnimatorSubject(fm, that);
-      }
-    };
+    return RecyclerViewItemAnimatorSubject::new;
   }
 
   public RecyclerViewItemAnimatorSubject hasMoveDuration(long duration) {

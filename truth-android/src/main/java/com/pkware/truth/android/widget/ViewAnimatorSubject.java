@@ -32,11 +32,6 @@ public final class ViewAnimatorSubject extends AbstractViewAnimatorSubject<ViewA
   }
 
   public static Subject.Factory<ViewAnimatorSubject, ViewAnimator> type() {
-    return new Subject.Factory<ViewAnimatorSubject, ViewAnimator>() {
-      @Override
-      public ViewAnimatorSubject createSubject(FailureMetadata fm, ViewAnimator that) {
-        return new ViewAnimatorSubject(fm, that);
-      }
-    };
+    return ViewAnimatorSubject::new;
   }
 }

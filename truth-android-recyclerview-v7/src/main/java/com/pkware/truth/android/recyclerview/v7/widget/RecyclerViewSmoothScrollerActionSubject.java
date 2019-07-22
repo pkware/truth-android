@@ -35,12 +35,7 @@ public class RecyclerViewSmoothScrollerActionSubject extends
   }
 
   public static Subject.Factory<RecyclerViewSmoothScrollerActionSubject, RecyclerView.SmoothScroller.Action> type() {
-    return new Subject.Factory<RecyclerViewSmoothScrollerActionSubject, RecyclerView.SmoothScroller.Action>() {
-      @Override
-      public RecyclerViewSmoothScrollerActionSubject createSubject(FailureMetadata fm, RecyclerView.SmoothScroller.Action that) {
-        return new RecyclerViewSmoothScrollerActionSubject(fm, that);
-      }
-    };
+    return RecyclerViewSmoothScrollerActionSubject::new;
   }
 
   public RecyclerViewSmoothScrollerActionSubject hasDx(int dx) {

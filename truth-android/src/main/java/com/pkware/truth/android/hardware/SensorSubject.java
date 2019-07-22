@@ -58,12 +58,7 @@ public class SensorSubject extends Subject<SensorSubject, Sensor> {
   }
 
   public static Subject.Factory<SensorSubject, Sensor> type() {
-    return new Subject.Factory<SensorSubject, Sensor>() {
-      @Override
-      public SensorSubject createSubject(FailureMetadata fm, Sensor that) {
-        return new SensorSubject(fm, that);
-      }
-    };
+    return SensorSubject::new;
   }
 
   public static String typeToString(@SensorType int type) {

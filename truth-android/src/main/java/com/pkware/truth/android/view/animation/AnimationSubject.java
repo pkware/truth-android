@@ -32,11 +32,6 @@ public final class AnimationSubject extends AbstractAnimationSubject<AnimationSu
   }
 
   public static Subject.Factory<AnimationSubject, Animation> type() {
-    return new Subject.Factory<AnimationSubject, Animation>() {
-      @Override
-      public AnimationSubject createSubject(FailureMetadata fm, Animation that) {
-        return new AnimationSubject(fm, that);
-      }
-    };
+    return AnimationSubject::new;
   }
 }

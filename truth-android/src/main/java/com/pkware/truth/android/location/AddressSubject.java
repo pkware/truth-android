@@ -31,12 +31,7 @@ public class AddressSubject extends Subject<AddressSubject, Address> {
   }
 
   public static Subject.Factory<AddressSubject, Address> type() {
-    return new Subject.Factory<AddressSubject, Address>() {
-      @Override
-      public AddressSubject createSubject(FailureMetadata fm, Address that) {
-        return new AddressSubject(fm, that);
-      }
-    };
+    return AddressSubject::new;
   }
 
   public AddressSubject hasAddressLine(int index, String line) {

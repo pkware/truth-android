@@ -32,12 +32,7 @@ public class UsbDeviceConnectionSubject extends Subject<UsbDeviceConnectionSubje
   }
 
   public static Subject.Factory<UsbDeviceConnectionSubject, UsbDeviceConnection> type() {
-    return new Subject.Factory<UsbDeviceConnectionSubject, UsbDeviceConnection>() {
-      @Override
-      public UsbDeviceConnectionSubject createSubject(FailureMetadata fm, UsbDeviceConnection that) {
-        return new UsbDeviceConnectionSubject(fm, that);
-      }
-    };
+    return UsbDeviceConnectionSubject::new;
   }
 
   public UsbDeviceConnectionSubject hasFileDescriptor(int descriptor) {

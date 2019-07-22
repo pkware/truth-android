@@ -38,12 +38,7 @@ public final class CellSignalStrengthLteSubject
   }
 
   public static Subject.Factory<CellSignalStrengthLteSubject, CellSignalStrengthLte> type() {
-    return new Subject.Factory<CellSignalStrengthLteSubject, CellSignalStrengthLte>() {
-      @Override
-      public CellSignalStrengthLteSubject createSubject(FailureMetadata fm, CellSignalStrengthLte that) {
-        return new CellSignalStrengthLteSubject(fm, that);
-      }
-    };
+    return CellSignalStrengthLteSubject::new;
   }
 
   public CellSignalStrengthLteSubject hasTimingAdvance(int timingAdvance) {

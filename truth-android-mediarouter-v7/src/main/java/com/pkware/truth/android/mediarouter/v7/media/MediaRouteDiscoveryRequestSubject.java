@@ -33,12 +33,7 @@ public class MediaRouteDiscoveryRequestSubject
   }
 
   public static Subject.Factory<MediaRouteDiscoveryRequestSubject, MediaRouteDiscoveryRequest> type() {
-    return new Subject.Factory<MediaRouteDiscoveryRequestSubject, MediaRouteDiscoveryRequest>() {
-      @Override
-      public MediaRouteDiscoveryRequestSubject createSubject(FailureMetadata fm, MediaRouteDiscoveryRequest that) {
-        return new MediaRouteDiscoveryRequestSubject(fm, that);
-      }
-    };
+    return MediaRouteDiscoveryRequestSubject::new;
   }
 
   public MediaRouteDiscoveryRequestSubject isActiveScan() {

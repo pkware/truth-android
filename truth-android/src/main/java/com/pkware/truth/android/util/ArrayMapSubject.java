@@ -36,12 +36,7 @@ public class ArrayMapSubject<K, V> extends Subject<ArrayMapSubject<K, V>, ArrayM
   }
 
   public static <K, V> Subject.Factory<ArrayMapSubject<K, V>, ArrayMap<K, V>> type() {
-    return new Subject.Factory<ArrayMapSubject<K, V>, ArrayMap<K, V>>() {
-      @Override
-      public ArrayMapSubject<K, V> createSubject(FailureMetadata fm, ArrayMap<K, V> that) {
-        return new ArrayMapSubject<K, V>(fm, that);
-      }
-    };
+    return ArrayMapSubject::new;
   }
 
   public ArrayMapSubject<K, V> hasKeyAt(int index, K key) {

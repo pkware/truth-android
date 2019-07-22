@@ -32,12 +32,7 @@ public class ShapeSubject extends Subject<ShapeSubject, Shape> {
   }
 
   public static Subject.Factory<ShapeSubject, Shape> type() {
-    return new Subject.Factory<ShapeSubject, Shape>() {
-      @Override
-      public ShapeSubject createSubject(FailureMetadata fm, Shape that) {
-        return new ShapeSubject(fm, that);
-      }
-    };
+    return ShapeSubject::new;
   }
 
   public ShapeSubject hasHeight(float height, float tolerance) {

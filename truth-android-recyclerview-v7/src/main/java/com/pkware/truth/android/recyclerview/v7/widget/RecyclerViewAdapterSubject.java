@@ -35,12 +35,7 @@ public class RecyclerViewAdapterSubject<VH extends ViewHolder>
   }
 
   public static <VH extends ViewHolder> Subject.Factory<RecyclerViewAdapterSubject<VH>, RecyclerView.Adapter<VH>> type() {
-    return new Subject.Factory<RecyclerViewAdapterSubject<VH>, RecyclerView.Adapter<VH>>() {
-      @Override
-      public RecyclerViewAdapterSubject<VH> createSubject(FailureMetadata fm, RecyclerView.Adapter<VH> that) {
-        return new RecyclerViewAdapterSubject<VH>(fm, that);
-      }
-    };
+    return RecyclerViewAdapterSubject::new;
   }
 
   public RecyclerViewAdapterSubject<VH> hasItemCount(int count) {

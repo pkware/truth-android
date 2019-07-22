@@ -32,11 +32,6 @@ public final class ViewGroupSubject extends AbstractViewGroupSubject<ViewGroupSu
   }
 
   public static Subject.Factory<ViewGroupSubject, ViewGroup> type() {
-    return new Subject.Factory<ViewGroupSubject, ViewGroup>() {
-      @Override
-      public ViewGroupSubject createSubject(FailureMetadata fm, ViewGroup that) {
-        return new ViewGroupSubject(fm, that);
-      }
-    };
+    return ViewGroupSubject::new;
   }
 }

@@ -37,12 +37,7 @@ public final class CellInfoGsmSubject extends AbstractCellInfoSubject<CellInfoGs
   }
 
   public static Subject.Factory<CellInfoGsmSubject, CellInfoGsm> type() {
-    return new Subject.Factory<CellInfoGsmSubject, CellInfoGsm>() {
-      @Override
-      public CellInfoGsmSubject createSubject(FailureMetadata fm, CellInfoGsm that) {
-        return new CellInfoGsmSubject(fm, that);
-      }
-    };
+    return CellInfoGsmSubject::new;
   }
 
   public CellInfoGsmSubject hasCellIdentity(CellIdentityGsm cellIdentity) {

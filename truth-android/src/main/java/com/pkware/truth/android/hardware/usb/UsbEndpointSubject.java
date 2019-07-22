@@ -32,12 +32,7 @@ public class UsbEndpointSubject extends Subject<UsbEndpointSubject, UsbEndpoint>
   }
 
   public static Subject.Factory<UsbEndpointSubject, UsbEndpoint> type() {
-    return new Subject.Factory<UsbEndpointSubject, UsbEndpoint>() {
-      @Override
-      public UsbEndpointSubject createSubject(FailureMetadata fm, UsbEndpoint that) {
-        return new UsbEndpointSubject(fm, that);
-      }
-    };
+    return UsbEndpointSubject::new;
   }
 
   public UsbEndpointSubject hasAddress(int address) {

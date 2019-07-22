@@ -40,12 +40,7 @@ public class GridViewSubject extends AbstractAbsListViewSubject<GridViewSubject,
   }
 
   public static Subject.Factory<GridViewSubject, GridView> type() {
-    return new Subject.Factory<GridViewSubject, GridView>() {
-      @Override
-      public GridViewSubject createSubject(FailureMetadata fm, GridView that) {
-        return new GridViewSubject(fm, that);
-      }
-    };
+    return GridViewSubject::new;
   }
 
   public static String stretchModeToString(@GridViewStretchMode int mode) {

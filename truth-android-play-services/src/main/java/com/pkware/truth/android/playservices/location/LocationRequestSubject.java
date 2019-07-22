@@ -31,12 +31,7 @@ public class LocationRequestSubject extends Subject<LocationRequestSubject, Loca
   }
 
   public static Subject.Factory<LocationRequestSubject, LocationRequest> type() {
-    return new Subject.Factory<LocationRequestSubject, LocationRequest>() {
-      @Override
-      public LocationRequestSubject createSubject(FailureMetadata fm, LocationRequest that) {
-        return new LocationRequestSubject(fm, that);
-      }
-    };
+    return LocationRequestSubject::new;
   }
 
   public LocationRequestSubject hasExpirationTime(long time) {

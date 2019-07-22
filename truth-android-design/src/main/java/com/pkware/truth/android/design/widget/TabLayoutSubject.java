@@ -36,12 +36,7 @@ public class TabLayoutSubject extends
   }
 
   public static Subject.Factory<TabLayoutSubject, TabLayout> type() {
-    return new Subject.Factory<TabLayoutSubject, TabLayout>() {
-      @Override
-      public TabLayoutSubject createSubject(FailureMetadata fm, TabLayout that) {
-        return new TabLayoutSubject(fm, that);
-      }
-    };
+    return TabLayoutSubject::new;
   }
 
   public static String gravityToString(@TabGravity int gravity) {

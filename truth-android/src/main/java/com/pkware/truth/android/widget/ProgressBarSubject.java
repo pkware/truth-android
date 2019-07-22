@@ -32,11 +32,6 @@ public final class ProgressBarSubject extends AbstractProgressBarSubject<Progres
   }
 
   public static Subject.Factory<ProgressBarSubject, ProgressBar> type() {
-    return new Subject.Factory<ProgressBarSubject, ProgressBar>() {
-      @Override
-      public ProgressBarSubject createSubject(FailureMetadata fm, ProgressBar that) {
-        return new ProgressBarSubject(fm, that);
-      }
-    };
+    return ProgressBarSubject::new;
   }
 }

@@ -43,12 +43,7 @@ public class RecyclerViewSubject extends AbstractViewGroupSubject<RecyclerViewSu
   }
 
   public static Subject.Factory<RecyclerViewSubject, RecyclerView> type() {
-    return new Subject.Factory<RecyclerViewSubject, RecyclerView>() {
-      @Override
-      public RecyclerViewSubject createSubject(FailureMetadata fm, RecyclerView that) {
-        return new RecyclerViewSubject(fm, that);
-      }
-    };
+    return RecyclerViewSubject::new;
   }
 
   public static String scrollStateToString(@RecyclerViewScrollState int scrollState) {

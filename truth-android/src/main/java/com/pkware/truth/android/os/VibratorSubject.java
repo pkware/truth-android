@@ -32,12 +32,7 @@ public class VibratorSubject extends Subject<VibratorSubject, Vibrator> {
   }
 
   public static Subject.Factory<VibratorSubject, Vibrator> type() {
-    return new Subject.Factory<VibratorSubject, Vibrator>() {
-      @Override
-      public VibratorSubject createSubject(FailureMetadata fm, Vibrator that) {
-        return new VibratorSubject(fm, that);
-      }
-    };
+    return VibratorSubject::new;
   }
 
   public VibratorSubject hasVibrator() {

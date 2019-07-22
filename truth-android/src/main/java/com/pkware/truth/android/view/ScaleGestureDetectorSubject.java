@@ -34,12 +34,7 @@ public class ScaleGestureDetectorSubject extends Subject<ScaleGestureDetectorSub
   }
 
   public static Subject.Factory<ScaleGestureDetectorSubject, ScaleGestureDetector> type() {
-    return new Subject.Factory<ScaleGestureDetectorSubject, ScaleGestureDetector>() {
-      @Override
-      public ScaleGestureDetectorSubject createSubject(FailureMetadata fm, ScaleGestureDetector that) {
-        return new ScaleGestureDetectorSubject(fm, that);
-      }
-    };
+    return ScaleGestureDetectorSubject::new;
   }
 
   public ScaleGestureDetectorSubject hasCurrentSpan(float span, float tolerance) {

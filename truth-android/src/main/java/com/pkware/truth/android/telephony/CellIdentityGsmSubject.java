@@ -35,12 +35,7 @@ public final class CellIdentityGsmSubject extends Subject<CellIdentityGsmSubject
   }
 
   public static Subject.Factory<CellIdentityGsmSubject, CellIdentityGsm> type() {
-    return new Subject.Factory<CellIdentityGsmSubject, CellIdentityGsm>() {
-      @Override
-      public CellIdentityGsmSubject createSubject(FailureMetadata fm, CellIdentityGsm that) {
-        return new CellIdentityGsmSubject(fm, that);
-      }
-    };
+    return CellIdentityGsmSubject::new;
   }
 
   public CellIdentityGsmSubject hasCid(int cid) {

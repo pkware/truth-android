@@ -32,12 +32,7 @@ public class PairSubject<F, S> extends Subject<PairSubject<F, S>, Pair<F, S>> {
   }
 
   public static <F, S> Subject.Factory<PairSubject<F, S>, Pair<F, S>> type() {
-    return new Subject.Factory<PairSubject<F, S>, Pair<F, S>>() {
-      @Override
-      public PairSubject<F, S> createSubject(FailureMetadata fm, Pair<F, S> that) {
-        return new PairSubject<F, S>(fm, that);
-      }
-    };
+    return PairSubject::new;
   }
 
   public PairSubject<F, S> hasFirst(F first) {

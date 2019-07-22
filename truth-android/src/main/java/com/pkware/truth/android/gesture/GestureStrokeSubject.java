@@ -33,12 +33,7 @@ public class GestureStrokeSubject extends Subject<GestureStrokeSubject, GestureS
   }
 
   public static Subject.Factory<GestureStrokeSubject, GestureStroke> type() {
-    return new Subject.Factory<GestureStrokeSubject, GestureStroke>() {
-      @Override
-      public GestureStrokeSubject createSubject(FailureMetadata fm, GestureStroke that) {
-        return new GestureStrokeSubject(fm, that);
-      }
-    };
+    return GestureStrokeSubject::new;
   }
 
   public GestureStrokeSubject hasBoundingBox(RectF rect) {

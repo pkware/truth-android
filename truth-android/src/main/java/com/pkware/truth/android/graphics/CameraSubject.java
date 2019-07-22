@@ -34,12 +34,7 @@ public class CameraSubject extends Subject<CameraSubject, Camera> {
   }
 
   public static Subject.Factory<CameraSubject, Camera> type() {
-    return new Subject.Factory<CameraSubject, Camera>() {
-      @Override
-      public CameraSubject createSubject(FailureMetadata fm, Camera that) {
-        return new CameraSubject(fm, that);
-      }
-    };
+    return CameraSubject::new;
   }
 
   @TargetApi(JELLY_BEAN)

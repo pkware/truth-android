@@ -47,12 +47,7 @@ public class WindowSubject extends Subject<WindowSubject, Window> {
   }
 
   public static Subject.Factory<WindowSubject, Window> type() {
-    return new Subject.Factory<WindowSubject, Window>() {
-      @Override
-      public WindowSubject createSubject(FailureMetadata fm, Window that) {
-        return new WindowSubject(fm, that);
-      }
-    };
+    return WindowSubject::new;
   }
 
   public static String featureToString(@WindowFeature int feature) {

@@ -46,12 +46,7 @@ public class ConfigurationSubject extends Subject<ConfigurationSubject, Configur
   }
 
   public static Subject.Factory<ConfigurationSubject, Configuration> type() {
-    return new Subject.Factory<ConfigurationSubject, Configuration>() {
-      @Override
-      public ConfigurationSubject createSubject(FailureMetadata fm, Configuration that) {
-        return new ConfigurationSubject(fm, that);
-      }
-    };
+    return ConfigurationSubject::new;
   }
 
   public static String uiModeTypeToString(@ConfigurationUiModeType int mode) {

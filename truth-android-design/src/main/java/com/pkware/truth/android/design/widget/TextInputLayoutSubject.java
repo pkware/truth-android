@@ -33,12 +33,7 @@ public class TextInputLayoutSubject extends AbstractLinearLayoutSubject<TextInpu
   }
 
   public static Subject.Factory<TextInputLayoutSubject, TextInputLayout> type() {
-    return new Subject.Factory<TextInputLayoutSubject, TextInputLayout>() {
-      @Override
-      public TextInputLayoutSubject createSubject(FailureMetadata fm, TextInputLayout that) {
-        return new TextInputLayoutSubject(fm, that);
-      }
-    };
+    return TextInputLayoutSubject::new;
   }
 
   public TextInputLayoutSubject hasError(String error) {

@@ -33,11 +33,6 @@ public final class ViewSubject extends AbstractViewSubject<ViewSubject, View> {
   }
 
   public static Subject.Factory<ViewSubject, View> type() {
-    return new Subject.Factory<ViewSubject, View>() {
-      @Override
-      public ViewSubject createSubject(FailureMetadata fm, View that) {
-        return new ViewSubject(fm, that);
-      }
-    };
+    return ViewSubject::new;
   }
 }

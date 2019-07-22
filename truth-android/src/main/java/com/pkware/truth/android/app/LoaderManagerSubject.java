@@ -34,12 +34,7 @@ public class LoaderManagerSubject extends Subject<LoaderManagerSubject, LoaderMa
   }
 
   public static Subject.Factory<LoaderManagerSubject, LoaderManager> type() {
-    return new Subject.Factory<LoaderManagerSubject, LoaderManager>() {
-      @Override
-      public LoaderManagerSubject createSubject(FailureMetadata fm, LoaderManager that) {
-        return new LoaderManagerSubject(fm, that);
-      }
-    };
+    return LoaderManagerSubject::new;
   }
 
   public LoaderManagerSubject hasLoader(int id) {

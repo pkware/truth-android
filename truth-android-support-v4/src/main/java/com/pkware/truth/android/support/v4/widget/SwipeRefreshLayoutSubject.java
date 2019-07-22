@@ -34,12 +34,7 @@ public class SwipeRefreshLayoutSubject
   }
 
   public static Subject.Factory<SwipeRefreshLayoutSubject, SwipeRefreshLayout> type() {
-    return new Subject.Factory<SwipeRefreshLayoutSubject, SwipeRefreshLayout>() {
-      @Override
-      public SwipeRefreshLayoutSubject createSubject(FailureMetadata fm, SwipeRefreshLayout that) {
-        return new SwipeRefreshLayoutSubject(fm, that);
-      }
-    };
+    return SwipeRefreshLayoutSubject::new;
   }
 
   public SwipeRefreshLayoutSubject isRefreshing() {

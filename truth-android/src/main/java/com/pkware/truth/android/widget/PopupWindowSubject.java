@@ -23,18 +23,25 @@ import android.widget.PopupWindow;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
 /**
  * Propositions for {@link PopupWindow} subjects.
  */
-public class PopupWindowSubject extends Subject<PopupWindowSubject, PopupWindow> {
-  public PopupWindowSubject(FailureMetadata failureMetadata, PopupWindow subject) {
-    super(failureMetadata, subject);
+public class PopupWindowSubject extends Subject {
+
+  @Nullable
+  private final PopupWindow actual;
+
+  public PopupWindowSubject(@Nonnull FailureMetadata failureMetadata, @Nullable PopupWindow actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   public static String inputMethodModeToString(@PopupWindowInputMethodMode int mode) {
     return buildNamedValueString(mode)
         .value(PopupWindow.INPUT_METHOD_FROM_FOCUSABLE, "fromFocusable")
@@ -44,37 +51,29 @@ public class PopupWindowSubject extends Subject<PopupWindowSubject, PopupWindow>
   }
 
   public PopupWindowSubject hasAnimationStyle(int style) {
-    assertThat(actual().getAnimationStyle())
-        .named("animation style")
-        .isEqualTo(style);
+    check("getAnimationStyle()").that(actual.getAnimationStyle()).isEqualTo(style);
     return this;
   }
 
-  public PopupWindowSubject hasBackground(Drawable background) {
-    assertThat(actual().getBackground())
-        .named("background")
-        .isSameAs(background);
+  public PopupWindowSubject hasBackground(@Nullable Drawable background) {
+    check("getBackground()").that(actual.getBackground()).isSameInstanceAs(background);
     return this;
   }
 
-  public PopupWindowSubject hasContentView(View view) {
-    assertThat(actual().getContentView())
-        .named("content view")
-        .isSameAs(view);
+  public PopupWindowSubject hasContentView(@Nullable View view) {
+    check("getContentView()").that(actual.getContentView()).isSameInstanceAs(view);
     return this;
   }
 
   public PopupWindowSubject hasHeight(int height) {
-    assertThat(actual().getHeight())
-        .named("height")
-        .isEqualTo(height);
+    check("getHeight()").that(actual.getHeight()).isEqualTo(height);
     return this;
   }
 
   public PopupWindowSubject hasInputMethodMode(@PopupWindowInputMethodMode int mode) {
-    int actualMode = actual().getInputMethodMode();
+    int actualMode = actual.getInputMethodMode();
     //noinspection ResourceType
-    assert_()
+    check("getInputMethodMode()")
         .withMessage("Expected input method mode <%s> but was <%s>.",
             inputMethodModeToString(mode), inputMethodModeToString(actualMode))
         .that(actualMode)
@@ -83,115 +82,84 @@ public class PopupWindowSubject extends Subject<PopupWindowSubject, PopupWindow>
   }
 
   public PopupWindowSubject hasSoftInputMode(int mode) {
-    assertThat(actual().getSoftInputMode())
-        .named("soft input mode")
-        .isEqualTo(mode);
+    check("getSoftInputMode()").that(actual.getSoftInputMode()).isEqualTo(mode);
     return this;
   }
 
   public PopupWindowSubject hasWidth(int width) {
-    assertThat(actual().getWidth())
-        .named("width")
-        .isEqualTo(width);
+    check("getWidth()").that(actual.getWidth()).isEqualTo(width);
     return this;
   }
 
   public PopupWindowSubject isAboveAnchor() {
-    assertThat(actual().isAboveAnchor())
-        .named("is above anchor")
-        .named("is above anchor")
-        .isTrue();
+    check("isAboveAnchor()").that(actual.isAboveAnchor()).isTrue();
     return this;
   }
 
   public PopupWindowSubject isNotAboveAnchor() {
-    assertThat(actual().isAboveAnchor())
-        .named("is above anchor")
-        .isFalse();
+    check("isAboveAnchor()").that(actual.isAboveAnchor()).isFalse();
     return this;
   }
 
   public PopupWindowSubject isClippingEnabled() {
-    assertThat(actual().isClippingEnabled())
-        .named("is clipping enabled")
-        .isTrue();
+    check("isClippingEnabled()").that(actual.isClippingEnabled()).isTrue();
     return this;
   }
 
   public PopupWindowSubject isClippingDisabled() {
-    assertThat(!actual().isClippingEnabled())
-        .named("is clipping disabled")
-        .isTrue();
+    check("isClippingEnabled()").that(actual.isClippingEnabled()).isFalse();
     return this;
   }
 
   public PopupWindowSubject isFocusable() {
-    assertThat(actual().isFocusable())
-        .named("is focusable")
-        .isTrue();
+    check("isFocusable()").that(actual.isFocusable()).isTrue();
     return this;
   }
 
   public PopupWindowSubject isNotFocusable() {
-    assertThat(actual().isFocusable())
-        .named("is focusable")
-        .isFalse();
+    check("isFocusable()").that(actual.isFocusable()).isFalse();
     return this;
   }
 
   public PopupWindowSubject isTouchableOutside() {
-    assertThat(actual().isOutsideTouchable())
-        .named("is touchable outside")
-        .isTrue();
+    check("isOutsideTouchable()").that(actual.isOutsideTouchable()).isTrue();
     return this;
   }
 
   public PopupWindowSubject isNotTouchableOutside() {
-    assertThat(actual().isOutsideTouchable())
-        .named("is touchable outside")
-        .isTrue();
+    check("isOutsideTouchable()").that(actual.isOutsideTouchable()).isFalse();
     return this;
   }
 
   public PopupWindowSubject isShowing() {
-    assertThat(actual().isShowing())
-        .named("is showing")
-        .isTrue();
+    check("isShowing()").that(actual.isShowing()).isTrue();
     return this;
   }
 
   public PopupWindowSubject isNotShowing() {
-    assertThat(actual().isShowing())
-        .named("is showing")
-        .isFalse();
+    check("isShowing()").that(actual.isShowing()).isFalse();
     return this;
   }
 
   public PopupWindowSubject isSplitTouchEnabled() {
-    assertThat(actual().isSplitTouchEnabled())
-        .named("is split touch enabled")
-        .isTrue();
+    check("isSplitTouchEnabled()").that(actual.isSplitTouchEnabled()).isTrue();
     return this;
   }
 
   public PopupWindowSubject isSplitTouchDisabled() {
-    assertThat(!actual().isSplitTouchEnabled())
-        .named("is split touch disabled")
-        .isTrue();
+    check("isSplitTouchEnabled()")
+        .withMessage("is split touch disabled")
+        .that(actual.isSplitTouchEnabled()).isFalse();
     return this;
   }
 
   public PopupWindowSubject isTouchable() {
-    assertThat(actual().isTouchable())
-        .named("is touchable")
-        .isTrue();
+    check("isTouchable()").that(actual.isTouchable()).isTrue();
     return this;
   }
 
   public PopupWindowSubject isNotTouchable() {
-    assertThat(actual().isTouchable())
-        .named("is touchable")
-        .isFalse();
+    check("isTouchable()").that(actual.isTouchable()).isFalse();
     return this;
   }
 }

@@ -21,69 +21,59 @@ import android.hardware.usb.UsbDevice;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link UsbDevice} subjects.
  */
-public class UsbDeviceSubject extends Subject<UsbDeviceSubject, UsbDevice> {
-  public UsbDeviceSubject(FailureMetadata failureMetadata, UsbDevice subject) {
-    super(failureMetadata, subject);
+public class UsbDeviceSubject extends Subject {
+
+  @Nullable
+  private final UsbDevice actual;
+
+  public UsbDeviceSubject(@Nonnull FailureMetadata failureMetadata, @Nullable UsbDevice actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public UsbDeviceSubject hasDeviceClass(int value) {
-    assertThat(actual().getDeviceClass())
-        .named("device class")
-        .isEqualTo(value);
+    check("getDeviceClass()").that(actual.getDeviceClass()).isEqualTo(value);
     return this;
   }
 
   public UsbDeviceSubject hasDeviceId(int id) {
-    assertThat(actual().getDeviceId())
-        .named("device id")
-        .isEqualTo(id);
+    check("getDeviceId()").that(actual.getDeviceId()).isEqualTo(id);
     return this;
   }
 
-  public UsbDeviceSubject hasDeviceName(String name) {
-    assertThat(actual().getDeviceName())
-        .named("device name")
-        .isEqualTo(name);
+  public UsbDeviceSubject hasDeviceName(@Nullable String name) {
+    check("getDeviceName()").that(actual.getDeviceName()).isEqualTo(name);
     return this;
   }
 
   public UsbDeviceSubject hasDeviceProtocol(int protocol) {
-    assertThat(actual().getDeviceProtocol())
-        .named("device protocol")
-        .isEqualTo(protocol);
+    check("getDeviceProtocol()").that(actual.getDeviceProtocol()).isEqualTo(protocol);
     return this;
   }
 
   public UsbDeviceSubject hasDeviceSubclass(int subclass) {
-    assertThat(actual().getDeviceSubclass())
-        .named("device subclass")
-        .isEqualTo(subclass);
+    check("getDeviceSubclass()").that(actual.getDeviceSubclass()).isEqualTo(subclass);
     return this;
   }
 
   public UsbDeviceSubject hasInterfaceCount(int count) {
-    assertThat(actual().getInterfaceCount())
-        .named("interface count")
-        .isEqualTo(count);
+    check("getInterfaceCount()").that(actual.getInterfaceCount()).isEqualTo(count);
     return this;
   }
 
   public UsbDeviceSubject hasProductId(int id) {
-    assertThat(actual().getProductId())
-        .named("product id")
-        .isEqualTo(id);
+    check("getProductId()").that(actual.getProductId()).isEqualTo(id);
     return this;
   }
 
   public UsbDeviceSubject hasVendorId(int id) {
-    assertThat(actual().getVendorId())
-        .named("vendor id")
-        .isEqualTo(id);
+    check("getVendorId()").that(actual.getVendorId()).isEqualTo(id);
     return this;
   }
 }

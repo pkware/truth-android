@@ -17,15 +17,19 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.ProgressBar;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link ProgressBar} subjects.
  * <p/>
  * This class is final. To extend use {@link AbstractProgressBarSubject}.
  */
-public final class ProgressBarSubject extends AbstractProgressBarSubject<ProgressBarSubject, ProgressBar> {
-  public ProgressBarSubject(FailureMetadata failureMetadata, ProgressBar subject) {
-    super(failureMetadata, subject);
+public final class ProgressBarSubject extends AbstractProgressBarSubject<ProgressBar> {
+  public ProgressBarSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ProgressBar actual) {
+    super(failureMetadata, actual);
   }
 }

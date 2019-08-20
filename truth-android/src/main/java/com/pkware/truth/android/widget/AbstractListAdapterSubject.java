@@ -20,27 +20,25 @@ import android.widget.ListAdapter;
 
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public abstract class AbstractListAdapterSubject<S extends AbstractListAdapterSubject<S, T>, T extends ListAdapter>
-    extends AbstractAdapterSubject<S, T> {
-  protected AbstractListAdapterSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractListAdapterSubject<T extends ListAdapter>
+    extends AbstractAdapterSubject<T> {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractListAdapterSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S hasAllItemsEnabled() {
-    assertThat(actual().areAllItemsEnabled())
-        .named("all items are enabled")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void hasAllItemsEnabled() {
+    check("areAllItemsEnabled()").that(actual.areAllItemsEnabled()).isTrue();
   }
 
-  public S hasAllItemsNotEnabled() {
-    assertThat(actual().areAllItemsEnabled())
-        .named("all items are enabled")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void hasAllItemsNotEnabled() {
+    check("areAllItemsEnabled()").that(actual.areAllItemsEnabled()).isFalse();
   }
 }

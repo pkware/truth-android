@@ -22,50 +22,47 @@ import android.telephony.CellIdentityWcdma;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link CellIdentityWcdma} subjects.
  */
 @TargetApi(JELLY_BEAN_MR2)
-public final class CellIdentityWcdmaSubject extends Subject<CellIdentityWcdmaSubject, CellIdentityWcdma> {
-  public CellIdentityWcdmaSubject(FailureMetadata failureMetadata, CellIdentityWcdma subject) {
-    super(failureMetadata, subject);
+public final class CellIdentityWcdmaSubject extends Subject {
+
+  @Nullable
+  private final CellIdentityWcdma actual;
+
+  public CellIdentityWcdmaSubject(@Nonnull FailureMetadata failureMetadata, @Nullable CellIdentityWcdma actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public CellIdentityWcdmaSubject hasCid(int cid) {
-    assertThat(actual().getCid())
-        .named("CID")
-        .isEqualTo(cid);
+    check("getCid()").that(actual.getCid()).isEqualTo(cid);
     return this;
   }
 
   public CellIdentityWcdmaSubject hasLac(int lac) {
-    assertThat(actual().getLac())
-        .named("LAC")
-        .isEqualTo(lac);
+    check("getLac()").that(actual.getLac()).isEqualTo(lac);
     return this;
   }
 
   public CellIdentityWcdmaSubject hasMcc(int mcc) {
-    assertThat(actual().getMcc())
-        .named("MCC")
-        .isEqualTo(mcc);
+    check("getMcc()").that(actual.getMcc()).isEqualTo(mcc);
     return this;
   }
 
   public CellIdentityWcdmaSubject hasMnc(int mnc) {
-    assertThat(actual().getMnc())
-        .named("MNC")
-        .isEqualTo(mnc);
+    check("getMnc()").that(actual.getMnc()).isEqualTo(mnc);
     return this;
   }
 
   public CellIdentityWcdmaSubject hasPsc(int psc) {
-    assertThat(actual().getPsc())
-        .named("PSC")
-        .isEqualTo(psc);
+    check("getPsc()").that(actual.getPsc()).isEqualTo(psc);
     return this;
   }
 }

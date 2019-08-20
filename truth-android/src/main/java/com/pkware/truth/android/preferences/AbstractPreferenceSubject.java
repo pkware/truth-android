@@ -22,209 +22,123 @@ import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
+
 import androidx.annotation.LayoutRes;
 import androidx.annotation.StringRes;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public abstract class AbstractPreferenceSubject<S extends AbstractPreferenceSubject<S, T>, T extends Preference>
-    extends Subject<S, T> {
-  protected AbstractPreferenceSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractPreferenceSubject<T extends Preference> extends Subject {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractPreferenceSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S hasContext(Context context) {
-    assertThat(actual().getContext())
-        .named("context")
-        .isSameAs(context);
-    //noinspection unchecked
-    return (S) this;
+  public void hasContext(@Nullable Context context) {
+    check("getContext()").that(actual.getContext()).isSameInstanceAs(context);
   }
 
-  public S hasDependency(String dependency) {
-    assertThat(actual().getDependency())
-        .named("dependency")
-        .isEqualTo(dependency);
-    //noinspection unchecked
-    return (S) this;
+  public void hasDependency(@Nullable String dependency) {
+    check("getDependency()").that(actual.getDependency()).isEqualTo(dependency);
   }
 
-  public S hasFragment(String fragment) {
-    assertThat(actual().getFragment())
-        .named("fragment")
-        .isEqualTo(fragment);
-    //noinspection unchecked
-    return (S) this;
+  public void hasFragment(@Nullable String fragment) {
+    check("getFragment()").that(actual.getFragment()).isEqualTo(fragment);
   }
 
-  public S hasIcon(Drawable icon) {
-    assertThat(actual().getIcon())
-        .named("icon")
-        .isSameAs(icon);
-    //noinspection unchecked
-    return (S) this;
+  public void hasIcon(@Nullable Drawable icon) {
+    check("getIcon()").that(actual.getIcon()).isSameInstanceAs(icon);
   }
 
-  public S hasIntent(Intent intent) {
-    assertThat(actual().getIntent())
-        .named("intent")
-        .isEqualTo(intent);
-    //noinspection unchecked
-    return (S) this;
+  public void hasIntent(@Nullable Intent intent) {
+    check("getIntent()").that(actual.getIntent()).isEqualTo(intent);
   }
 
-  public S hasKey(String key) {
-    assertThat(actual().getKey())
-        .named("key")
-        .isEqualTo(key);
-    //noinspection unchecked
-    return (S) this;
+  public void hasKey(@Nullable String key) {
+    check("getKey()").that(actual.getKey()).isEqualTo(key);
   }
 
-  public S hasLayoutResource(@LayoutRes int resource) {
-    assertThat(actual().getLayoutResource())
-        .named("layout resource id")
-        .isEqualTo(resource);
-    //noinspection unchecked
-    return (S) this;
+  public void hasLayoutResource(@LayoutRes int resource) {
+    check("getLayoutResource()").that(actual.getLayoutResource()).isEqualTo(resource);
   }
 
-  public S hasPreferenceChangeListener(Preference.OnPreferenceChangeListener listener) {
-    assertThat(actual().getOnPreferenceChangeListener())
-        .named("preference change listener")
-        .isSameAs(listener);
-    //noinspection unchecked
-    return (S) this;
+  public void hasPreferenceChangeListener(@Nullable Preference.OnPreferenceChangeListener listener) {
+    check("getOnPreferenceChangeListener()").that(actual.getOnPreferenceChangeListener()).isSameInstanceAs(listener);
   }
 
-  public S hasPreferenceClickListener(Preference.OnPreferenceClickListener listener) {
-    assertThat(actual().getOnPreferenceClickListener())
-        .named("preference click listener")
-        .isSameAs(listener);
-    //noinspection unchecked
-    return (S) this;
+  public void hasPreferenceClickListener(@Nullable Preference.OnPreferenceClickListener listener) {
+    check("getOnPreferenceClickListener()").that(actual.getOnPreferenceClickListener()).isSameInstanceAs(listener);
   }
 
-  public S hasOrder(int order) {
-    assertThat(actual().getOrder())
-        .named("order")
-        .isEqualTo(order);
-    //noinspection unchecked
-    return (S) this;
+  public void hasOrder(int order) {
+    check("getOrder()").that(actual.getOrder()).isEqualTo(order);
   }
 
-  public S hasPreferenceManager(PreferenceManager manager) {
-    assertThat(actual().getPreferenceManager())
-        .named("preference manager")
-        .isSameAs(manager);
-    //noinspection unchecked
-    return (S) this;
+  public void hasPreferenceManager(@Nullable PreferenceManager manager) {
+    check("getPreferenceManager()").that(actual.getPreferenceManager()).isSameInstanceAs(manager);
   }
 
-  public S hasSharedPreferences(SharedPreferences preferences) {
-    assertThat(actual().getSharedPreferences())
-        .named("shared preferences")
-        .isSameAs(preferences);
-    //noinspection unchecked
-    return (S) this;
+  public void hasSharedPreferences(@Nullable SharedPreferences preferences) {
+    check("getSharedPreferences()").that(actual.getSharedPreferences()).isSameInstanceAs(preferences);
   }
 
-  public S hasSummary(CharSequence summary) {
-    assertThat(actual().getSummary())
-        .named("summary")
-        .isEqualTo(summary);
-    //noinspection unchecked
-    return (S) this;
+  public void hasSummary(@Nullable CharSequence summary) {
+    check("getSummary()").that(actual.getSummary()).isEqualTo(summary);
   }
 
-  public S hasSummary(@StringRes int resId) {
-    return hasSummary(actual().getContext().getString(resId));
+  public void hasSummary(@StringRes int resId) {
+    hasSummary(actual.getContext().getString(resId));
   }
 
-  public S hasTitle(CharSequence title) {
-    assertThat(actual().getTitle())
-        .named("title")
-        .isEqualTo(title);
-    //noinspection unchecked
-    return (S) this;
+  public void hasTitle(@Nullable CharSequence title) {
+    check("getTitle()").that(actual.getTitle()).isEqualTo(title);
   }
 
-  public S hasTitle(@StringRes int resId) {
-    return hasTitle(actual().getContext().getString(resId));
+  public void hasTitle(@StringRes int resId) {
+    hasTitle(actual.getContext().getString(resId));
   }
 
-  public S hasTitleResource(@StringRes int resource) {
-    assertThat(actual().getTitleRes())
-        .named("title resource")
-        .isEqualTo(resource);
-    //noinspection unchecked
-    return (S) this;
+  public void hasTitleResource(@StringRes int resource) {
+    check("getTitleRes()").that(actual.getTitleRes()).isEqualTo(resource);
   }
 
-  public S hasWidgetLayoutResource(@LayoutRes int resource) {
-    assertThat(actual().getWidgetLayoutResource())
-        .named("widget layout resource")
-        .isEqualTo(resource);
-    //noinspection unchecked
-    return (S) this;
+  public void hasWidgetLayoutResource(@LayoutRes int resource) {
+    check("getWidgetLayoutResource()").that(actual.getWidgetLayoutResource()).isEqualTo(resource);
   }
 
-  public S hasKey() {
-    assertThat(actual().hasKey())
-        .named("has key")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void hasKey() {
+    check("hasKey()").that(actual.hasKey()).isTrue();
   }
 
-  public S isEnabled() {
-    assertThat(actual().isEnabled())
-        .named("is enabled")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isEnabled() {
+    check("isEnabled()").that(actual.isEnabled()).isTrue();
   }
 
-  public S isDisabled() {
-    assertThat(!actual().isEnabled())
-        .named("is disabled")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isDisabled() {
+    check("isEnabled()").that(actual.isEnabled()).isFalse();
   }
 
-  public S isPersistent() {
-    assertThat(actual().isPersistent())
-        .named("is persistent")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isPersistent() {
+    check("isPersistent()").that(actual.isPersistent()).isTrue();
   }
 
-  public S isNotPersistent() {
-    assertThat(actual().isPersistent())
-        .named("is persistent")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotPersistent() {
+    check("isPersistent()").that(actual.isPersistent()).isFalse();
   }
 
-  public S isSelectable() {
-    assertThat(actual().isSelectable())
-        .named("is selectable")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isSelectable() {
+    check("isSelectable()").that(actual.isSelectable()).isTrue();
   }
 
-  public S isNotSelectable() {
-    assertThat(actual().isSelectable())
-        .named("is selectable")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotSelectable() {
+    check("isSelectable()").that(actual.isSelectable()).isFalse();
   }
 }

@@ -17,21 +17,28 @@
 package com.pkware.truth.android.graphics.drawable;
 
 import android.graphics.drawable.ColorDrawable;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assert_;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link ColorDrawable} subjects.
  */
-public class ColorDrawableSubject extends AbstractDrawableSubject<ColorDrawableSubject, ColorDrawable> {
-  public ColorDrawableSubject(FailureMetadata failureMetadata, ColorDrawable subject) {
-    super(failureMetadata, subject);
+public class ColorDrawableSubject extends AbstractDrawableSubject<ColorDrawable> {
+
+  @Nullable
+  private ColorDrawable actual;
+
+  public ColorDrawableSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ColorDrawable actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public ColorDrawableSubject hasColor(int color) {
-    int actualColor = actual().getColor();
-    assert_()
+    int actualColor = actual.getColor();
+    check("getColor()")
         .withMessage("Expected color <%s> but was <%s>.", Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);

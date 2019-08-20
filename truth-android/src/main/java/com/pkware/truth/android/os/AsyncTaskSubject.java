@@ -21,34 +21,34 @@ import android.os.AsyncTask;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link AsyncTask} subjects.
  */
-public class AsyncTaskSubject extends Subject<AsyncTaskSubject, AsyncTask> {
-  public AsyncTaskSubject(FailureMetadata failureMetadata, AsyncTask subject) {
-    super(failureMetadata, subject);
+public class AsyncTaskSubject extends Subject {
+
+  @Nullable
+  private final AsyncTask actual;
+
+  public AsyncTaskSubject(@Nonnull FailureMetadata failureMetadata, @Nullable AsyncTask actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public AsyncTaskSubject hasStatus(AsyncTask.Status status) {
-    assertThat(actual().getStatus())
-        .named("status")
-        .isEqualTo(status);
+  public AsyncTaskSubject hasStatus(@Nullable AsyncTask.Status status) {
+    check("getStatus()").that(actual.getStatus()).isEqualTo(status);
     return this;
   }
 
   public AsyncTaskSubject isCancelled() {
-    assertThat(actual().isCancelled())
-        .named("is cancelled")
-        .isTrue();
+    check("isCancelled()").that(actual.isCancelled()).isTrue();
     return this;
   }
 
   public AsyncTaskSubject isNotCancelled() {
-    assertThat(actual().isCancelled())
-        .named("is not cancelled")
-        .isFalse();
+    check("isCancelled()").that(actual.isCancelled()).isFalse();
     return this;
   }
 }

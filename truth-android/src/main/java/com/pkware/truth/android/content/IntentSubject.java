@@ -21,10 +21,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import java.util.Locale;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import static android.content.Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT;
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK;
@@ -51,19 +53,23 @@ import static android.content.Intent.FLAG_GRANT_WRITE_URI_PERMISSION;
 import static android.content.Intent.FLAG_INCLUDE_STOPPED_PACKAGES;
 import static android.content.Intent.FLAG_RECEIVER_NO_ABORT;
 import static android.content.Intent.FLAG_RECEIVER_REGISTERED_ONLY;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.Assertions.assertThat;
 import static com.pkware.truth.android.internal.IntegerUtils.buildBitMaskString;
 
 /**
  * Propositions for {@link Intent} subjects.
  */
-public class IntentSubject extends Subject<IntentSubject, Intent> {
-  public IntentSubject(FailureMetadata failureMetadata, Intent subject) {
-    super(failureMetadata, subject);
+public class IntentSubject extends Subject {
+
+  @Nullable
+  private final Intent actual;
+
+  public IntentSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Intent actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   public static String flagsToString(@IntentFlags int flags) {
     return buildBitMaskString(flags)
         .flag(FLAG_GRANT_PERSISTABLE_URI_PERMISSION, "grant_persistable_uri_permission")
@@ -94,77 +100,70 @@ public class IntentSubject extends Subject<IntentSubject, Intent> {
         .get();
   }
 
-  public IntentSubject hasAction(String action) {
-    assertThat(actual().getAction())
-        .named("action")
-        .isEqualTo(action);
+  public IntentSubject hasAction(@Nullable String action) {
+    check("getAction()").that(actual.getAction()).isEqualTo(action);
     return this;
   }
 
-  public IntentSubject hasType(String type) {
-    assertThat(actual().getType())
-        .named("type")
-        .isEqualTo(type);
+  public IntentSubject hasType(@Nullable String type) {
+    check("getType()").that(actual.getType()).isEqualTo(type);
     return this;
   }
 
-  public IntentSubject hasExtra(String name) {
-    assertThat(actual().hasExtra(name))
-        .named(String.format(Locale.ENGLISH, "has extra <%s>", name))
+  public IntentSubject hasExtra(@Nonnull String name) {
+    check("hasExtra(name)")
+        .withMessage("has extra <%s>", name)
+        .that(actual.hasExtra(name))
         .isTrue();
     return this;
   }
 
-  public IntentSubject hasExtra(String name, Object expectedValue) {
+  public IntentSubject hasExtra(@Nonnull String name, @Nullable Object expectedValue) {
     hasExtra(name);
-    Bundle extras = actual().getExtras();
+    Bundle extras = actual.getExtras();
     assertThat(extras).hasValue(name, expectedValue);
     return this;
   }
 
   public IntentSubject hasFlags(@IntentFlags int flags) {
-    int actualFlags = actual().getFlags();
+    int actualFlags = actual.getFlags();
     //noinspection ResourceType
-    assert_()
+    check("getFlags()")
         .withMessage("Expected <%s> but was <%s>.", flagsToString(flags), flagsToString(actualFlags))
         .that(actualFlags)
         .isEqualTo(flags);
     return this;
   }
 
-  public IntentSubject hasPackage(String packageName) {
-    String actualPackage = actual().getPackage();
-    assertThat(actualPackage)
-        .named("package name")
-        .isEqualTo(packageName);
+  public IntentSubject hasPackage(@Nullable String packageName) {
+    String actualPackage = actual.getPackage();
+    check("getPackage()").that(actualPackage).isEqualTo(packageName);
     return this;
   }
 
-  public IntentSubject hasData(String uri) {
+  public IntentSubject hasData(@Nonnull String uri) {
     return hasData(Uri.parse(uri));
   }
 
-  public IntentSubject hasData(Uri uri) {
-    assertThat(actual().getData())
-        .named("data")
-        .isEqualTo(uri);
+  public IntentSubject hasData(@Nullable Uri uri) {
+    check("getData()").that(actual.getData()).isEqualTo(uri);
     return this;
   }
 
-  public IntentSubject hasComponent(ComponentName expected) {
-    ComponentName componentName = actual().getComponent();
-    assert_()
+  public IntentSubject hasComponent(@Nonnull ComponentName expected) {
+    ComponentName componentName = actual.getComponent();
+    check("getComponent()")
         .withMessage("Expected component name <%s> but was <%s>.", expected.flattenToString(), componentName.flattenToString())
         .that(componentName)
         .isEqualTo(expected);
     return this;
   }
 
-  public IntentSubject hasComponent(Context context, Class<?> cls) {
+  public IntentSubject hasComponent(@Nonnull Context context, @Nonnull Class<?> cls) {
     return hasComponent(new ComponentName(context, cls.getName()));
   }
 
-  public IntentSubject hasComponent(String appPkg, Class<?> cls) {
+  public IntentSubject hasComponent(@Nonnull String appPkg, @Nonnull Class<?> cls) {
     return hasComponent(new ComponentName(appPkg, cls.getName()));
   }
 }

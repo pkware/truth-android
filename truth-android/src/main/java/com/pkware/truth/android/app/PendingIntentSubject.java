@@ -22,38 +22,39 @@ import android.app.PendingIntent;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
-import static com.google.common.truth.Truth.assertThat;
 
 
 /**
  * Propositions for {@link PendingIntent} subjects.
  */
-public class PendingIntentSubject extends Subject<PendingIntentSubject, PendingIntent> {
-  public PendingIntentSubject(FailureMetadata failureMetadata, PendingIntent subject) {
-    super(failureMetadata, subject);
+public class PendingIntentSubject extends Subject {
+
+  @Nullable
+  private final PendingIntent actual;
+
+  public PendingIntentSubject(@Nonnull FailureMetadata failureMetadata, @Nullable PendingIntent actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   @TargetApi(JELLY_BEAN_MR1)
-  public PendingIntentSubject hasCreatorPackage(String packageName) {
-    assertThat(actual().getCreatorPackage())
-        .named("creator package")
-        .isEqualTo(packageName);
+  public PendingIntentSubject hasCreatorPackage(@Nullable String packageName) {
+    check("getCreatorPackage()").that(actual.getCreatorPackage()).isEqualTo(packageName);
     return this;
   }
 
   @TargetApi(JELLY_BEAN_MR1)
   public PendingIntentSubject hasCreatorUid(int uid) {
-    assertThat(actual().getCreatorUid())
-        .named("creator UID")
-        .isEqualTo(uid);
+    check("getCreatorUid()").that(actual.getCreatorUid()).isEqualTo(uid);
     return this;
   }
 
-  public PendingIntentSubject hasTargetPackage(String targetPackage) {
-    assertThat(actual().getTargetPackage())
-        .named("target package")
-        .isEqualTo(targetPackage);
+  public PendingIntentSubject hasTargetPackage(@Nullable String targetPackage) {
+    check("getTargetPackage()").that(actual.getTargetPackage()).isEqualTo(targetPackage);
     return this;
   }
 }

@@ -22,27 +22,29 @@ import android.content.Intent;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Instrumentation.ActivityResult} subjects.
  */
-public class InstrumentationActivityResultSubject extends Subject<InstrumentationActivityResultSubject, Instrumentation.ActivityResult> {
-  public InstrumentationActivityResultSubject(FailureMetadata failureMetadata, Instrumentation.ActivityResult subject) {
-    super(failureMetadata, subject);
+public class InstrumentationActivityResultSubject extends Subject {
+
+  @Nullable
+  private final Instrumentation.ActivityResult actual;
+
+  public InstrumentationActivityResultSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Instrumentation.ActivityResult actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public InstrumentationActivityResultSubject hasResultCode(int code) {
-    assertThat(actual().getResultCode())
-        .named("result code")
-        .isEqualTo(code);
+    check("getResultCode()").that(actual.getResultCode()).isEqualTo(code);
     return this;
   }
 
-  public InstrumentationActivityResultSubject hasResultData(Intent intent) {
-    assertThat(actual().getResultData())
-        .named("result data")
-        .isEqualTo(intent);
+  public InstrumentationActivityResultSubject hasResultData(@Nullable Intent intent) {
+    check("getResultData()").that(actual.getResultData()).isEqualTo(intent);
     return this;
   }
 }

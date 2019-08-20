@@ -21,6 +21,9 @@ import androidx.mediarouter.media.MediaItemStatus;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static androidx.mediarouter.media.MediaItemStatus.PLAYBACK_STATE_BUFFERING;
 import static androidx.mediarouter.media.MediaItemStatus.PLAYBACK_STATE_CANCELED;
 import static androidx.mediarouter.media.MediaItemStatus.PLAYBACK_STATE_ERROR;
@@ -29,18 +32,22 @@ import static androidx.mediarouter.media.MediaItemStatus.PLAYBACK_STATE_INVALIDA
 import static androidx.mediarouter.media.MediaItemStatus.PLAYBACK_STATE_PAUSED;
 import static androidx.mediarouter.media.MediaItemStatus.PLAYBACK_STATE_PENDING;
 import static androidx.mediarouter.media.MediaItemStatus.PLAYBACK_STATE_PLAYING;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
 /**
  * Propositions for {@link MediaItemStatus} subjects.
  */
-public class MediaItemStatusSubject extends Subject<MediaItemStatusSubject, MediaItemStatus> {
-  public MediaItemStatusSubject(FailureMetadata failureMetadata, MediaItemStatus subject) {
-    super(failureMetadata, subject);
+public class MediaItemStatusSubject extends Subject {
+
+  @Nullable
+  private final MediaItemStatus actual;
+
+  public MediaItemStatusSubject(@Nonnull FailureMetadata failureMetadata, @Nullable MediaItemStatus actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   public static String playbackStateToString(@MediaItemStatusPlaybackState int playbackState) {
     return buildNamedValueString(playbackState)
         .value(PLAYBACK_STATE_BUFFERING, "buffering")
@@ -55,23 +62,19 @@ public class MediaItemStatusSubject extends Subject<MediaItemStatusSubject, Medi
   }
 
   public MediaItemStatusSubject hasContentDuration(long duration) {
-    assertThat(actual().getContentDuration())
-        .named("content duration")
-        .isEqualTo(duration);
+    check("getContentDuration()").that(actual.getContentDuration()).isEqualTo(duration);
     return this;
   }
 
   public MediaItemStatusSubject hasContentPosition(long position) {
-    assertThat(actual().getContentPosition())
-        .named("content positions")
-        .isEqualTo(position);
+    check("getContentPosition()").that(actual.getContentPosition()).isEqualTo(position);
     return this;
   }
 
   public MediaItemStatusSubject hasPlaybackState(@MediaItemStatusPlaybackState int state) {
-    int actualState = actual().getPlaybackState();
+    int actualState = actual.getPlaybackState();
     //noinspection ResourceType
-    assert_()
+    check("getPlaybackState()")
         .withMessage("Expected playback state <%s> but was <%s>.",
             playbackStateToString(state), playbackStateToString(actualState))
         .that(actualState)
@@ -80,9 +83,7 @@ public class MediaItemStatusSubject extends Subject<MediaItemStatusSubject, Medi
   }
 
   public MediaItemStatusSubject hasTimestamp(long timestamp) {
-    assertThat(actual().getTimestamp())
-        .named("timestamp")
-        .isEqualTo(timestamp);
+    check("getTimestamp()").that(actual.getTimestamp()).isEqualTo(timestamp);
     return this;
   }
 }

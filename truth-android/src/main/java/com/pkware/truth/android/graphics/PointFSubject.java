@@ -21,37 +21,34 @@ import android.graphics.PointF;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link PointF} subjects.
  */
-public class PointFSubject extends Subject<PointFSubject, PointF> {
-  public PointFSubject(FailureMetadata failureMetadata, PointF subject) {
-    super(failureMetadata, subject);
+public class PointFSubject extends Subject {
+
+  @Nullable
+  private final PointF actual;
+
+  public PointFSubject(@Nonnull FailureMetadata failureMetadata, @Nullable PointF actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public PointFSubject hasX(float x, float tolerance) {
-    assertThat(actual().x)
-        .named("X")
-        .isWithin(tolerance)
-        .of(x);
+    check("x").that(actual.x).isWithin(tolerance).of(x);
     return this;
   }
 
   public PointFSubject hasY(float y, float tolerance) {
-    assertThat(actual().y)
-        .named("Y")
-        .isWithin(tolerance)
-        .of(y);
+    check("y").that(actual.y).isWithin(tolerance).of(y);
     return this;
   }
 
   public PointFSubject hasLength(float length, float tolerance) {
-    assertThat(actual().length())
-        .named("length")
-        .isWithin(tolerance)
-        .of(length);
+    check("length()").that(actual.length()).isWithin(tolerance).of(length);
     return this;
   }
 }

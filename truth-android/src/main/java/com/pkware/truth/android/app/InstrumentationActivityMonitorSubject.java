@@ -22,27 +22,29 @@ import android.app.Instrumentation;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Instrumentation.ActivityMonitor} subjects.
  */
-public class InstrumentationActivityMonitorSubject extends Subject<InstrumentationActivityMonitorSubject, Instrumentation.ActivityMonitor> {
-  public InstrumentationActivityMonitorSubject(FailureMetadata failureMetadata, Instrumentation.ActivityMonitor subject) {
-    super(failureMetadata, subject);
+public class InstrumentationActivityMonitorSubject extends Subject {
+
+  @Nullable
+  private final Instrumentation.ActivityMonitor actual;
+
+  public InstrumentationActivityMonitorSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Instrumentation.ActivityMonitor actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public InstrumentationActivityMonitorSubject hasHits(int hits) {
-    assertThat(actual().getHits())
-        .named("hits")
-        .isEqualTo(hits);
+    check("getHits()").that(actual.getHits()).isEqualTo(hits);
     return this;
   }
 
-  public InstrumentationActivityMonitorSubject hasLastActivity(Activity activity) {
-    assertThat(actual().getLastActivity())
-        .named("last activity")
-        .isSameAs(activity);
+  public InstrumentationActivityMonitorSubject hasLastActivity(@Nullable Activity activity) {
+    check("getLastActivity()").that(actual.getLastActivity()).isSameInstanceAs(activity);
     return this;
   }
 }

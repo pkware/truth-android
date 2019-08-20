@@ -18,115 +18,101 @@ package com.pkware.truth.android.content;
 
 import android.content.CursorLoader;
 import android.net.Uri;
+
 import com.google.common.truth.FailureMetadata;
 
-import java.util.Arrays;
-
-import static com.google.common.truth.Truth.assertThat;
-import static com.pkware.truth.android.Assertions.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link CursorLoader} subjects.
  */
-public class CursorLoaderSubject extends AbstractLoaderSubject<CursorLoaderSubject, CursorLoader> {
-  public CursorLoaderSubject(FailureMetadata failureMetadata, CursorLoader subject) {
-    super(failureMetadata, subject);
+public class CursorLoaderSubject extends AbstractLoaderSubject<CursorLoader> {
+
+  @Nullable
+  private CursorLoader actual;
+
+  public CursorLoaderSubject(@Nonnull FailureMetadata failureMetadata, @Nullable CursorLoader actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public CursorLoaderSubject hasProjection(String... projection) {
-    assertThat(actual().getProjection())
+  public CursorLoaderSubject hasProjection(@Nonnull String... projection) {
+    check("getProjection()")
+        .that(actual.getProjection())
         .asList()
-        .named("projection")
-        .containsExactlyElementsIn(Arrays.asList(projection));
+        .containsExactlyElementsIn(projection)
+        .inOrder();
     return this;
   }
 
   public CursorLoaderSubject doesNotHaveProjection() {
-    String[] projection = actual().getProjection();
+    String[] projection = actual.getProjection();
     if (projection == null) {
       projection = new String[0];
     }
-    assertThat(projection)
-        .named("projection")
-        .isEmpty();
+    check("getProjection()").that(projection).isEmpty();
     return this;
   }
 
-  public CursorLoaderSubject projectionContains(String... projection) {
-    assertThat(actual().getProjection())
-        .asList()
-        .named("projection")
-        .contains(projection);
+  public CursorLoaderSubject projectionContains(@Nonnull String... projection) {
+    check("getProjection()").that(actual.getProjection()).asList().contains(projection);
     return this;
   }
 
-  public CursorLoaderSubject hasSelection(String selection) {
-    assertThat(actual().getSelection())
-        .named("selection")
-        .isEqualTo(selection);
+  public CursorLoaderSubject hasSelection(@Nullable String selection) {
+    check("getSelection()").that(actual.getSelection()).isEqualTo(selection);
     return this;
   }
 
   public CursorLoaderSubject doesNotHaveSelection() {
-    String selection = actual().getSelection();
+    String selection = actual.getSelection();
     if (selection == null) {
       selection = "";
     }
-    assertThat(selection)
-        .named("selection")
-        .isEmpty();
+    check("getSelection()").that(selection).isEmpty();
     return this;
   }
 
-  public CursorLoaderSubject hasSelectionArgs(String... selectionArgs) {
-    assertThat(actual().getSelectionArgs())
+  public CursorLoaderSubject hasSelectionArgs(@Nonnull String... selectionArgs) {
+    check("getSelectionArgs()")
+        .that(actual.getSelectionArgs())
         .asList()
-        .named("selection args")
-        .containsExactlyElementsIn(Arrays.asList(selectionArgs));
+        .containsExactlyElementsIn(selectionArgs)
+        .inOrder();
     return this;
   }
 
   public CursorLoaderSubject doesNotHaveSelectionArgs() {
-    String[] selectionArgs = actual().getSelectionArgs();
+    String[] selectionArgs = actual.getSelectionArgs();
     if (selectionArgs == null) {
       selectionArgs = new String[0];
     }
-    assertThat(selectionArgs)
-        .named("selection args")
-        .isEmpty();
+    check("getSelectionArgs()").that(actual.getSelectionArgs()).isEmpty();
     return this;
   }
 
-  public CursorLoaderSubject containsSelectionArgs(String... selectionArgs) {
-    assertThat(actual().getSelectionArgs())
-        .asList()
-        .named("selection args")
-        .contains(selectionArgs);
+  public CursorLoaderSubject containsSelectionArgs(@Nonnull String... selectionArgs) {
+    check("getSelectionArgs()").that(actual.getSelectionArgs()).asList().containsAtLeastElementsIn(selectionArgs);
     return this;
   }
 
-  public CursorLoaderSubject hasSortOrder(String sortOrder) {
-    assertThat(actual().getSortOrder())
-        .named("sort order")
-        .isEqualTo(sortOrder);
+  public CursorLoaderSubject hasSortOrder(@Nullable String sortOrder) {
+    check("getSortOrder()").that(actual.getSortOrder()).isEqualTo(sortOrder);
     return this;
   }
 
   public CursorLoaderSubject doesNotHaveSortOrder() {
-    String sortOrder = actual().getSortOrder();
+    String sortOrder = actual.getSortOrder();
     if (sortOrder == null) {
       sortOrder = "";
     }
-    assertThat(sortOrder)
-        .named("sort order")
-        .isEmpty();
+    check("getSortOrder()").that(sortOrder).isEmpty();
     return this;
   }
 
-  public CursorLoaderSubject hasUri(Uri uri) {
-    assertThat(actual().getUri())
-        .named("uri")
-        .isEqualTo(uri);
+  public CursorLoaderSubject hasUri(@Nullable Uri uri) {
+    check("getUri()").that(actual.getUri()).isEqualTo(uri);
     return this;
   }
 }

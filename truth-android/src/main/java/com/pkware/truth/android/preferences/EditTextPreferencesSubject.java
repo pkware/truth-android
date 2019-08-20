@@ -17,22 +17,27 @@
 package com.pkware.truth.android.preferences;
 
 import android.preference.EditTextPreference;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link EditTextPreference} subjects.
  */
-public class EditTextPreferencesSubject extends AbstractDialogPreferenceSubject<EditTextPreferencesSubject, EditTextPreference> {
-  public EditTextPreferencesSubject(FailureMetadata failureMetadata, EditTextPreference subject) {
-    super(failureMetadata, subject);
+public class EditTextPreferencesSubject extends AbstractDialogPreferenceSubject<EditTextPreference> {
+
+  @Nullable
+  private EditTextPreference actual;
+
+  public EditTextPreferencesSubject(@Nonnull FailureMetadata failureMetadata, @Nullable EditTextPreference actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public EditTextPreferencesSubject hasText(String text) {
-    assertThat(actual().getText())
-        .named("text")
-        .isEqualTo(text);
+  public EditTextPreferencesSubject hasText(@Nullable String text) {
+    check("getText()").that(actual.getText()).isEqualTo(text);
     return this;
   }
 }

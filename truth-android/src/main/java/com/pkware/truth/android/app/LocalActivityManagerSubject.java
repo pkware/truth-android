@@ -21,21 +21,26 @@ import android.app.LocalActivityManager;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import java.util.Locale;
-
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link LocalActivityManager} subjects.
  */
-public class LocalActivityManagerSubject extends Subject<LocalActivityManagerSubject, LocalActivityManager> {
-  public LocalActivityManagerSubject(FailureMetadata failureMetadata, LocalActivityManager subject) {
-    super(failureMetadata, subject);
+public class LocalActivityManagerSubject extends Subject {
+
+  @Nullable
+  private final LocalActivityManager actual;
+
+  public LocalActivityManagerSubject(@Nonnull FailureMetadata failureMetadata, @Nullable LocalActivityManager actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public LocalActivityManagerSubject hasActivity(String id) {
-    assertThat(actual().getActivity(id))
-        .named(String.format(Locale.ENGLISH, "has activity with id <%s>", id))
+  public LocalActivityManagerSubject hasActivity(@Nonnull String id) {
+    check("getActivity(id)")
+        .withMessage("Has activity with id <%s>", id)
+        .that(actual.getActivity(id))
         .isNotNull();
     return this;
   }

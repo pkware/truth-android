@@ -17,15 +17,19 @@
 package com.pkware.truth.android.app;
 
 import android.app.Service;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Service} subjects.
  * <p/>
  * This class is final. To extend use {@link AbstractServiceSubject}.
  */
-public final class ServiceSubject extends AbstractServiceSubject<ServiceSubject, Service> {
-  public ServiceSubject(FailureMetadata failureMetadata, Service subject) {
-    super(failureMetadata, subject);
+public final class ServiceSubject extends AbstractServiceSubject<Service> {
+  public ServiceSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Service actual) {
+    super(failureMetadata, actual);
   }
 }

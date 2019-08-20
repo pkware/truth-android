@@ -22,96 +22,63 @@ import android.widget.ListView;
 
 import com.google.common.truth.FailureMetadata;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.KITKAT;
-import static com.google.common.truth.Truth.assertThat;
 
-public abstract class AbstractListViewSubject<S extends AbstractListViewSubject<S, T>, T extends ListView>
-    extends AbstractAbsListViewSubject<S, T> {
-  protected AbstractListViewSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractListViewSubject<T extends ListView>
+    extends AbstractAbsListViewSubject<T> {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractListViewSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S hasDivider(Drawable divider) {
-    assertThat(actual().getDivider())
-        .named("divider")
-        .isSameAs(divider);
-    //noinspection unchecked
-    return (S) this;
+  public void hasDivider(@Nullable Drawable divider) {
+    check("getDivider()").that(actual.getDivider()).isSameInstanceAs(divider);
   }
 
-  public S hasDividerHeight(int height) {
-    assertThat(actual().getDividerHeight())
-        .named("divider height")
-        .isEqualTo(height);
-    //noinspection unchecked
-    return (S) this;
+  public void hasDividerHeight(int height) {
+    check("getDividerHeight()").that(actual.getDividerHeight()).isEqualTo(height);
   }
 
-  public S hasFooterViewsCount(int count) {
-    assertThat(actual().getFooterViewsCount())
-        .named("footer views count")
-        .isEqualTo(count);
-    //noinspection unchecked
-    return (S) this;
+  public void hasFooterViewsCount(int count) {
+    check("getFooterViewsCount()").that(actual.getFooterViewsCount()).isEqualTo(count);
   }
 
-  public S hasHeaderViewsCount(int count) {
-    assertThat(actual().getHeaderViewsCount())
-        .named("header views count")
-        .isEqualTo(count);
-    //noinspection unchecked
-    return (S) this;
+  public void hasHeaderViewsCount(int count) {
+    check("getHeaderViewsCount()").that(actual.getHeaderViewsCount()).isEqualTo(count);
   }
 
-  public S hasOverscrollFooter(Drawable footer) {
-    assertThat(actual().getOverscrollFooter())
-        .named("overscroll footer")
-        .isSameAs(footer);
-    //noinspection unchecked
-    return (S) this;
+  public void hasOverscrollFooter(@Nullable Drawable footer) {
+    check("getOverscrollFooter()").that(actual.getOverscrollFooter()).isSameInstanceAs(footer);
   }
 
-  public S hasOverscrollHeader(Drawable header) {
-    assertThat(actual().getOverscrollHeader())
-        .named("overscroll header")
-        .isSameAs(header);
-    //noinspection unchecked
-    return (S) this;
+  public void hasOverscrollHeader(@Nullable Drawable header) {
+    check("getOverscrollHeader()").that(actual.getOverscrollHeader()).isSameInstanceAs(header);
   }
 
   @TargetApi(KITKAT)
-  public S hasFooterDividersEnabled() {
-    assertThat(actual().areFooterDividersEnabled())
-        .named("footer dividers are enabled")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void hasFooterDividersEnabled() {
+    check("areFooterDividersEnabled()").that(actual.areFooterDividersEnabled()).isTrue();
   }
 
   @TargetApi(KITKAT)
-  public S hasFooterDividersDisabled() {
-    assertThat(actual().areFooterDividersEnabled())
-        .named("footer dividers are enabled")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void hasFooterDividersDisabled() {
+    check("areFooterDividersEnabled()").that(actual.areFooterDividersEnabled()).isFalse();
   }
 
   @TargetApi(KITKAT)
-  public S hasHeaderDividersEnabled() {
-    assertThat(actual().areHeaderDividersEnabled())
-        .named("header dividers are enabled")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void hasHeaderDividersEnabled() {
+    check("areHeaderDividersEnabled()").that(actual.areHeaderDividersEnabled()).isTrue();
   }
 
   @TargetApi(KITKAT)
-  public S hasHeaderDividersDisabled() {
-    assertThat(actual().areHeaderDividersEnabled())
-        .named("header dividers are enabled")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void hasHeaderDividersDisabled() {
+    check("areHeaderDividersEnabled()").that(actual.areHeaderDividersEnabled()).isFalse();
   }
 }

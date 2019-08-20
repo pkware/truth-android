@@ -17,36 +17,37 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.TabWidget;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link TabWidget} subjects.
  */
-public class TabWidgetSubject extends AbstractLinearLayoutSubject<TabWidgetSubject, TabWidget> {
-  public TabWidgetSubject(FailureMetadata failureMetadata, TabWidget subject) {
-    super(failureMetadata, subject);
+public class TabWidgetSubject extends AbstractLinearLayoutSubject<TabWidget> {
+
+  @Nullable
+  private final TabWidget actual;
+
+  public TabWidgetSubject(@Nonnull FailureMetadata failureMetadata, @Nullable TabWidget actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public TabWidgetSubject hasTabCount(int count) {
-    assertThat(actual().getTabCount())
-        .named("tab count")
-        .isEqualTo(count);
+    check("getTabCount()").that(actual.getTabCount()).isEqualTo(count);
     return this;
   }
 
   public TabWidgetSubject isStripEnabled() {
-    assertThat(actual().isStripEnabled())
-        .named("is strip enabled")
-        .isTrue();
+    check("isStripEnabled()").that(actual.isStripEnabled()).isTrue();
     return this;
   }
 
   public TabWidgetSubject isStripDisabled() {
-    assertThat(!actual().isStripEnabled())
-        .named("is strip disabled")
-        .isTrue();
+    check("isStripEnabled()").that(actual.isStripEnabled()).isFalse();
     return this;
   }
 }

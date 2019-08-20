@@ -17,52 +17,47 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.RatingBar;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link RatingBar} subjects.
  */
-public class RatingBarSubject extends AbstractAbsSeekBarSubject<RatingBarSubject, RatingBar> {
-  public RatingBarSubject(FailureMetadata failureMetadata, RatingBar subject) {
-    super(failureMetadata, subject);
+public class RatingBarSubject extends AbstractAbsSeekBarSubject<RatingBar> {
+
+  @Nullable
+  private final RatingBar actual;
+
+  public RatingBarSubject(@Nonnull FailureMetadata failureMetadata, @Nullable RatingBar actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public RatingBarSubject hasStarCount(int count) {
-    assertThat(actual().getNumStars())
-        .named("star count")
-        .isEqualTo(count);
+    check("getNumStars()").that(actual.getNumStars()).isEqualTo(count);
     return this;
   }
 
   public RatingBarSubject hasRating(float rating, float tolerance) {
-    assertThat(actual().getRating())
-        .named("rating")
-        .isWithin(tolerance)
-        .of(rating);
+    check("getRating()").that(actual.getRating()).isWithin(tolerance).of(rating);
     return this;
   }
 
   public RatingBarSubject hasStepSize(float size, float tolerance) {
-    assertThat(actual().getStepSize())
-        .named("step size")
-        .isWithin(tolerance)
-        .of(size);
+    check("getStepSize()").that(actual.getStepSize()).isWithin(tolerance).of(size);
     return this;
   }
 
   public RatingBarSubject isIndicator() {
-    assertThat(actual().isIndicator())
-        .named("is indicator")
-        .isTrue();
+    check("isIndicator()").that(actual.isIndicator()).isTrue();
     return this;
   }
 
   public RatingBarSubject isNotIndicator() {
-    assertThat(actual().isIndicator())
-        .named("is indicator")
-        .isFalse();
+    check("isIndicator()").that(actual.isIndicator()).isFalse();
     return this;
   }
 }

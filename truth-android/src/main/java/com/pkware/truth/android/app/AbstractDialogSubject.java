@@ -21,26 +21,24 @@ import android.app.Dialog;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public abstract class AbstractDialogSubject<S extends AbstractDialogSubject<S, T>, T extends Dialog> extends Subject<S, T> {
-  protected AbstractDialogSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractDialogSubject<T extends Dialog> extends Subject {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractDialogSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S isShowing() {
-    assertThat(actual().isShowing())
-        .named("is showing")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isShowing() {
+    check("isShowing()").that(actual.isShowing()).isTrue();
   }
 
-  public S isNotShowing() {
-    assertThat(actual().isShowing())
-        .named("is showing")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotShowing() {
+    check("isShowing()").that(actual.isShowing()).isFalse();
   }
 }

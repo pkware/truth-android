@@ -17,15 +17,19 @@
 package com.pkware.truth.android.app;
 
 import android.app.Dialog;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Dialog} subjects.
  * <p/>
  * This class is final. To extend use {@link AbstractDialogSubject}.
  */
-public final class DialogSubject extends AbstractDialogSubject<DialogSubject, Dialog> {
-  public DialogSubject(FailureMetadata failureMetadata, Dialog subject) {
-    super(failureMetadata, subject);
+public final class DialogSubject extends AbstractDialogSubject<Dialog> {
+  public DialogSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Dialog actual) {
+    super(failureMetadata, actual);
   }
 }

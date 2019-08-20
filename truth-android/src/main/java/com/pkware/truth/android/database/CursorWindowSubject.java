@@ -21,27 +21,29 @@ import android.database.CursorWindow;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link CursorWindow} subjects.
  */
-public class CursorWindowSubject extends Subject<CursorWindowSubject, CursorWindow> {
-  public CursorWindowSubject(FailureMetadata failureMetadata, CursorWindow subject) {
-    super(failureMetadata, subject);
+public class CursorWindowSubject extends Subject {
+
+  @Nullable
+  private final CursorWindow actual;
+
+  public CursorWindowSubject(@Nonnull FailureMetadata failureMetadata, @Nullable CursorWindow actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public CursorWindowSubject hasRowCount(int count) {
-    assertThat(actual().getNumRows())
-        .named("number of rows")
-        .isEqualTo(count);
+    check("getNumRows()").that(actual.getNumRows()).isEqualTo(count);
     return this;
   }
 
   public CursorWindowSubject hasStartPosition(int position) {
-    assertThat(actual().getStartPosition())
-        .named("start position")
-        .isEqualTo(position);
+    check("getStartPosition()").that(actual.getStartPosition()).isEqualTo(position);
     return this;
   }
 }

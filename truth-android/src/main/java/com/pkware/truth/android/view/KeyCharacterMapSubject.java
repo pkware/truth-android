@@ -21,23 +21,30 @@ import android.view.KeyCharacterMap;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.view.KeyCharacterMap.ALPHA;
 import static android.view.KeyCharacterMap.FULL;
 import static android.view.KeyCharacterMap.NUMERIC;
 import static android.view.KeyCharacterMap.PREDICTIVE;
 import static android.view.KeyCharacterMap.SPECIAL_FUNCTION;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
 /**
  * Propositions for {@link KeyCharacterMap} subjects.
  */
-public class KeyCharacterMapSubject extends Subject<KeyCharacterMapSubject, KeyCharacterMap> {
-  public KeyCharacterMapSubject(FailureMetadata failureMetadata, KeyCharacterMap subject) {
-    super(failureMetadata, subject);
+public class KeyCharacterMapSubject extends Subject {
+
+  @Nullable
+  private final KeyCharacterMap actual;
+
+  public KeyCharacterMapSubject(@Nonnull FailureMetadata failureMetadata, @Nullable KeyCharacterMap actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   public static String keyboardTypeToString(@KeyCharacterMapKeyboardType int type) {
     return buildNamedValueString(type)
         .value(NUMERIC, "numeric")
@@ -49,9 +56,9 @@ public class KeyCharacterMapSubject extends Subject<KeyCharacterMapSubject, KeyC
   }
 
   public KeyCharacterMapSubject hasKeyboardType(@KeyCharacterMapKeyboardType int type) {
-    int actualType = actual().getKeyboardType();
+    int actualType = actual.getKeyboardType();
     //noinspection ResourceType
-    assert_()
+    check("getKeyboardType()")
         .withMessage("Expected keyboard type <%s> but was <%s>.",
             keyboardTypeToString(type), keyboardTypeToString(actualType))
         .that(actualType)
@@ -60,9 +67,7 @@ public class KeyCharacterMapSubject extends Subject<KeyCharacterMapSubject, KeyC
   }
 
   public KeyCharacterMapSubject hasModifierBehavior(int value) {
-    assertThat(actual().getModifierBehavior())
-        .named("modifier behavior")
-        .isEqualTo(value);
+    check("getModifierBehavior()").that(actual.getModifierBehavior()).isEqualTo(value);
     return this;
   }
 }

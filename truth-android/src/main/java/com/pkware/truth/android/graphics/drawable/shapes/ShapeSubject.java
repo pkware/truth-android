@@ -21,43 +21,41 @@ import android.graphics.drawable.shapes.Shape;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Shape} subjects.
  */
-public class ShapeSubject extends Subject<ShapeSubject, Shape> {
-  public ShapeSubject(FailureMetadata failureMetadata, Shape subject) {
-    super(failureMetadata, subject);
+public class ShapeSubject extends Subject {
+
+  @Nullable
+  private final Shape actual;
+
+  public ShapeSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Shape actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public ShapeSubject hasHeight(float height, float tolerance) {
-    assertThat(actual().getHeight())
-        .named("height")
-        .isWithin(tolerance)
+    check("getHeight()").that(actual.getHeight()).isWithin(tolerance)
         .of(height);
     return this;
   }
 
   public ShapeSubject hasWidth(float width, float tolerance) {
-    assertThat(actual().getWidth())
-        .named("width")
-        .isWithin(tolerance)
+    check("getWidth()").that(actual.getWidth()).isWithin(tolerance)
         .of(width);
     return this;
   }
 
   public ShapeSubject hasAlpha() {
-    assertThat(actual().hasAlpha())
-        .named("has alpha")
-        .isTrue();
+    check("hasAlpha()").that(actual.hasAlpha()).isTrue();
     return this;
   }
 
   public ShapeSubject hasNoAlpha() {
-    assertThat(actual().hasAlpha())
-        .named("has alpha")
-        .isFalse();
+    check("hasAlpha()").that(actual.hasAlpha()).isFalse();
     return this;
   }
 }

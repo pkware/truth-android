@@ -18,33 +18,36 @@ package com.pkware.truth.android.content;
 
 import android.annotation.TargetApi;
 import android.content.AsyncTaskLoader;
+
 import com.google.common.truth.FailureMetadata;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link AsyncTaskLoader} subjects.
  */
-public class AsyncTaskLoaderSubject extends AbstractLoaderSubject<AsyncTaskLoaderSubject, AsyncTaskLoader> {
+public class AsyncTaskLoaderSubject extends AbstractLoaderSubject<AsyncTaskLoader> {
 
-  public AsyncTaskLoaderSubject(FailureMetadata failureMetadata, AsyncTaskLoader subject) {
-    super(failureMetadata, subject);
+  @Nullable
+  private AsyncTaskLoader actual;
+
+  public AsyncTaskLoaderSubject(@Nonnull FailureMetadata failureMetadata, @Nullable AsyncTaskLoader actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   @TargetApi(JELLY_BEAN)
   public AsyncTaskLoaderSubject hasLoadInBackgroundCancelled() {
-    assertThat(actual().isLoadInBackgroundCanceled())
-        .named("has load in background cancelled")
-        .isTrue();
+    check("isLoadInBackgroundCanceled()").that(actual.isLoadInBackgroundCanceled()).isTrue();
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public AsyncTaskLoaderSubject hasLoadInBackgroundNotCancelled() {
-    assertThat(actual().isLoadInBackgroundCanceled())
-        .named("has load in background not cancelled")
-        .isFalse();
+    check("isLoadInBackgroundCanceled()").that(actual.isLoadInBackgroundCanceled()).isFalse();
     return this;
   }
 }

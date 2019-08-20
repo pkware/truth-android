@@ -21,34 +21,34 @@ import android.telephony.gsm.GsmCellLocation;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link GsmCellLocation} subjects.
  */
-public class GsmCellLocationSubject extends Subject<GsmCellLocationSubject, GsmCellLocation> {
-  public GsmCellLocationSubject(FailureMetadata failureMetadata, GsmCellLocation subject) {
-    super(failureMetadata, subject);
+public class GsmCellLocationSubject extends Subject {
+
+  @Nullable
+  private final GsmCellLocation actual;
+
+  public GsmCellLocationSubject(@Nonnull FailureMetadata failureMetadata, @Nullable GsmCellLocation actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public GsmCellLocationSubject hasCid(int cid) {
-    assertThat(actual().getCid())
-        .named("CID")
-        .isEqualTo(cid);
+    check("getCid()").that(actual.getCid()).isEqualTo(cid);
     return this;
   }
 
   public GsmCellLocationSubject hasLac(int lac) {
-    assertThat(actual().getLac())
-        .named("LAC")
-        .isEqualTo(lac);
+    check("getLac()").that(actual.getLac()).isEqualTo(lac);
     return this;
   }
 
   public GsmCellLocationSubject hasPsc(int psc) {
-    assertThat(actual().getPsc())
-        .named("PSC")
-        .isEqualTo(psc);
+    check("getPsc()").that(actual.getPsc()).isEqualTo(psc);
     return this;
   }
 }

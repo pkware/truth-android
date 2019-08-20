@@ -17,15 +17,19 @@
 package com.pkware.truth.android.app;
 
 import android.app.Fragment;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Fragment} subjects.
  * <p/>
  * This class is final. To extend use {@link AbstractFragmentSubject}.
  */
-public final class FragmentSubject extends AbstractFragmentSubject<FragmentSubject, Fragment> {
-  public FragmentSubject(FailureMetadata failureMetadata, Fragment subject) {
-    super(failureMetadata, subject);
+public final class FragmentSubject extends AbstractFragmentSubject<Fragment> {
+  public FragmentSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Fragment actual) {
+    super(failureMetadata, actual);
   }
 }

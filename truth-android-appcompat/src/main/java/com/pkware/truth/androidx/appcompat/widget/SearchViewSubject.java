@@ -19,124 +19,103 @@ package com.pkware.truth.androidx.appcompat.widget;
 import androidx.annotation.StringRes;
 import androidx.appcompat.widget.SearchView;
 import androidx.cursoradapter.widget.CursorAdapter;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link SearchView} subjects.
  */
-public class SearchViewSubject extends AbstractLinearLayoutCompatSubject<SearchViewSubject, SearchView> {
-  public SearchViewSubject(FailureMetadata failureMetadata, SearchView subject) {
-    super(failureMetadata, subject);
+public class SearchViewSubject extends AbstractLinearLayoutCompatSubject<SearchView> {
+
+  @Nullable
+  private final SearchView actual;
+
+  public SearchViewSubject(@Nonnull FailureMetadata failureMetadata, @Nullable SearchView actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public SearchViewSubject hasImeOptions(int options) {
-    assertThat(actual().getImeOptions())
-        .named("IME options")
-        .isEqualTo(options);
+    check("getImeOptions()").that(actual.getImeOptions()).isEqualTo(options);
     return this;
   }
 
   public SearchViewSubject hasInputType(int type) {
-    assertThat(actual().getInputType())
-        .named("input type")
-        .isEqualTo(type);
+    check("getInputType()").that(actual.getInputType()).isEqualTo(type);
     return this;
   }
 
   public SearchViewSubject hasMaximumWidth(int width) {
-    assertThat(actual().getMaxWidth())
-        .named("maximum width")
-        .isEqualTo(width);
+    check("getMaxWidth()").that(actual.getMaxWidth()).isEqualTo(width);
     return this;
   }
 
-  public SearchViewSubject hasQuery(String query) {
-    assertThat(actual().getQuery().toString())
-        .named("query")
-        .isEqualTo(query);
+  public SearchViewSubject hasQuery(@Nullable String query) {
+    check("getQuery()").that(actual.getQuery().toString()).isEqualTo(query);
     return this;
   }
 
-  public SearchViewSubject hasQueryHint(String hint) {
-    CharSequence actualHint = actual().getQueryHint();
+  public SearchViewSubject hasQueryHint(@Nullable String hint) {
+    CharSequence actualHint = actual.getQueryHint();
     String actualHintString;
     if (actualHint == null) {
       actualHintString = null;
     } else {
       actualHintString = actualHint.toString();
     }
-    assertThat(actualHintString)
-        .named("query hint")
-        .isEqualTo(hint);
+    check("getQueryHint()").that(actualHintString).isEqualTo(hint);
     return this;
   }
 
   public SearchViewSubject hasQueryHint(@StringRes int resId) {
-    return hasQueryHint(actual().getContext().getString(resId));
+    return hasQueryHint(actual.getContext().getString(resId));
   }
 
-  public SearchViewSubject hasSuggestionsAdapter(CursorAdapter adapter) {
-    assertThat(actual().getSuggestionsAdapter())
-        .named("suggestions adapter")
-        .isSameAs(adapter);
+  public SearchViewSubject hasSuggestionsAdapter(@Nullable CursorAdapter adapter) {
+    check("getSuggestionsAdapter()").that(actual.getSuggestionsAdapter()).isSameInstanceAs(adapter);
     return this;
   }
 
   public SearchViewSubject isIconifiedByDefault() {
-    assertThat(actual().isIconfiedByDefault())
-        .named("is iconified by default")
-        .isTrue();
+    check("isIconfiedByDefault()").that(actual.isIconfiedByDefault()).isTrue();
     return this;
   }
 
   public SearchViewSubject isNotIconifiedByDefault() {
-    assertThat(actual().isIconfiedByDefault())
-        .named("is iconified by default")
-        .isFalse();
+    check("isIconfiedByDefault()").that(actual.isIconfiedByDefault()).isFalse();
     return this;
   }
 
   public SearchViewSubject isIconified() {
-    assertThat(actual().isIconified())
-        .named("is iconified")
-        .isTrue();
+    check("isIconified()").that(actual.isIconified()).isTrue();
     return this;
   }
 
   public SearchViewSubject isNotIconified() {
-    assertThat(actual().isIconified())
-        .named("is iconified")
-        .isFalse();
+    check("isIconified()").that(actual.isIconified()).isFalse();
     return this;
   }
 
   public SearchViewSubject isQueryRefinementEnabled() {
-    assertThat(actual().isQueryRefinementEnabled())
-        .named("query refinement is enabled")
-        .isTrue();
+    check("isQueryRefinementEnabled()").that(actual.isQueryRefinementEnabled()).isTrue();
     return this;
   }
 
   public SearchViewSubject isQueryRefinementDisabled() {
-    assertThat(!actual().isQueryRefinementEnabled())
-        .named("query refinement is disabled")
-        .isTrue();
+    check("isQueryRefinementEnabled()").that(actual.isQueryRefinementEnabled()).isFalse();
     return this;
   }
 
   public SearchViewSubject isSubmitButtonEnabled() {
-    assertThat(actual().isSubmitButtonEnabled())
-        .named("submit button is enabled")
-        .isTrue();
+    check("isSubmitButtonEnabled()").that(actual.isSubmitButtonEnabled()).isTrue();
     return this;
   }
 
   public SearchViewSubject isSubmitButtonDisabled() {
-    assertThat(!actual().isSubmitButtonEnabled())
-        .named("submit button is disabled")
-        .isTrue();
+    check("isSubmitButtonEnabled()").that(actual.isSubmitButtonEnabled()).isFalse();
     return this;
   }
 }

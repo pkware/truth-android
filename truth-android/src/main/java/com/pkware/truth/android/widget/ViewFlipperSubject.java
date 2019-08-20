@@ -17,43 +17,42 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.ViewFlipper;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link ViewFlipper} subjects.
  */
-public class ViewFlipperSubject extends AbstractViewAnimatorSubject<ViewFlipperSubject, ViewFlipper> {
-  public ViewFlipperSubject(FailureMetadata failureMetadata, ViewFlipper subject) {
-    super(failureMetadata, subject);
+public class ViewFlipperSubject extends AbstractViewAnimatorSubject<ViewFlipper> {
+
+  @Nullable
+  private final ViewFlipper actual;
+
+  public ViewFlipperSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ViewFlipper actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public ViewFlipperSubject isAutoStarting() {
-    assertThat(actual().isAutoStart())
-        .named("is auto-starting")
-        .isTrue();
+    check("isAutoStart()").that(actual.isAutoStart()).isTrue();
     return this;
   }
 
   public ViewFlipperSubject isNotAutoStarting() {
-    assertThat(actual().isAutoStart())
-        .named("is auto-starting")
-        .isTrue();
+    check("isAutoStart()").that(actual.isAutoStart()).isFalse();
     return this;
   }
 
   public ViewFlipperSubject isFlipping() {
-    assertThat(actual().isFlipping())
-        .named("is flipping")
-        .isTrue();
+    check("isFlipping()").that(actual.isFlipping()).isTrue();
     return this;
   }
 
   public ViewFlipperSubject isNotFlipping() {
-    assertThat(actual().isFlipping())
-        .named("is flipping")
-        .isFalse();
+    check("isFlipping()").that(actual.isFlipping()).isFalse();
     return this;
   }
 }

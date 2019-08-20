@@ -21,48 +21,44 @@ import android.graphics.Movie;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Movie} subjects.
  */
-public class MovieSubject extends Subject<MovieSubject, Movie> {
-  public MovieSubject(FailureMetadata failureMetadata, Movie subject) {
-    super(failureMetadata, subject);
+public class MovieSubject extends Subject {
+
+  @Nullable
+  private final Movie actual;
+
+  public MovieSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Movie actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public MovieSubject hasDuration(int duration) {
-    assertThat(actual().duration())
-        .named("duration")
-        .isEqualTo(duration);
+    check("duration()").that(actual.duration()).isEqualTo(duration);
     return this;
   }
 
   public MovieSubject hasHeight(int height) {
-    assertThat(actual().height())
-        .named("height")
-        .isEqualTo(height);
+    check("height()").that(actual.height()).isEqualTo(height);
     return this;
   }
 
   public MovieSubject isOpaque() {
-    assertThat(actual().isOpaque())
-        .named("is opaque")
-        .isTrue();
+    check("isOpaque()").that(actual.isOpaque()).isTrue();
     return this;
   }
 
   public MovieSubject isNotOpaque() {
-    assertThat(actual().isOpaque())
-        .named("is opaque")
-        .isFalse();
+    check("isOpaque()").that(actual.isOpaque()).isFalse();
     return this;
   }
 
   public MovieSubject hasWidth(int width) {
-    assertThat(actual().width())
-        .named("width")
-        .isEqualTo(width);
+    check("width()").that(actual.width()).isEqualTo(width);
     return this;
   }
 }

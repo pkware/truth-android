@@ -24,6 +24,9 @@ import com.google.common.truth.Subject;
 
 import java.util.UUID;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.bluetooth.BluetoothGattCharacteristic.PERMISSION_READ;
 import static android.bluetooth.BluetoothGattCharacteristic.PERMISSION_READ_ENCRYPTED;
 import static android.bluetooth.BluetoothGattCharacteristic.PERMISSION_READ_ENCRYPTED_MITM;
@@ -44,8 +47,6 @@ import static android.bluetooth.BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT;
 import static android.bluetooth.BluetoothGattCharacteristic.WRITE_TYPE_NO_RESPONSE;
 import static android.bluetooth.BluetoothGattCharacteristic.WRITE_TYPE_SIGNED;
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildBitMaskString;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
@@ -53,11 +54,17 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link BluetoothGattCharacteristic} subjects.
  */
 @TargetApi(JELLY_BEAN_MR2)
-public class BluetoothGattCharacteristicSubject extends Subject<BluetoothGattCharacteristicSubject, BluetoothGattCharacteristic> {
-  public BluetoothGattCharacteristicSubject(FailureMetadata failureMetadata, BluetoothGattCharacteristic subject) {
-    super(failureMetadata, subject);
+public class BluetoothGattCharacteristicSubject extends Subject {
+
+  @Nullable
+  private final BluetoothGattCharacteristic actual;
+
+  public BluetoothGattCharacteristicSubject(@Nonnull FailureMetadata failureMetadata, @Nullable BluetoothGattCharacteristic actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   public static String writeTypeToString(@BluetoothGattCharacteristicWriteType int writeType) {
     return buildNamedValueString(writeType)
         .value(WRITE_TYPE_DEFAULT, "default")
@@ -66,6 +73,7 @@ public class BluetoothGattCharacteristicSubject extends Subject<BluetoothGattCha
         .get();
   }
 
+  @Nonnull
   public static String permissionsToString(@BluetoothGattCharacteristicPermissions int permissions) {
     return buildBitMaskString(permissions)
         .flag(PERMISSION_READ, "read")
@@ -79,6 +87,7 @@ public class BluetoothGattCharacteristicSubject extends Subject<BluetoothGattCha
         .get();
   }
 
+  @Nonnull
   public static String propertiesToString(@BluetoothGattCharacteristicProperties int properties) {
     return buildBitMaskString(properties)
         .flag(PROPERTY_BROADCAST, "broadcast")
@@ -93,16 +102,14 @@ public class BluetoothGattCharacteristicSubject extends Subject<BluetoothGattCha
   }
 
   public BluetoothGattCharacteristicSubject hasInstanceId(int id) {
-    assertThat(actual().getInstanceId())
-        .named("instance id")
-        .isEqualTo(id);
+    check("getInstanceId()").that(actual.getInstanceId()).isEqualTo(id);
     return this;
   }
 
   public BluetoothGattCharacteristicSubject hasPermissions(@BluetoothGattCharacteristicPermissions int permissions) {
-    int actualPermissions = actual().getPermissions();
+    int actualPermissions = actual.getPermissions();
     //noinspection ResourceType
-    assert_()
+    check("getPermissions()")
         .withMessage("Expected permissions <%s> but was <%s>.",
             permissionsToString(permissions),
             permissionsToString(actualPermissions))
@@ -112,9 +119,9 @@ public class BluetoothGattCharacteristicSubject extends Subject<BluetoothGattCha
   }
 
   public BluetoothGattCharacteristicSubject hasProperties(@BluetoothGattCharacteristicProperties int properties) {
-    int actualProperties = actual().getProperties();
+    int actualProperties = actual.getProperties();
     //noinspection ResourceType
-    assert_()
+    check("getProperties()")
         .withMessage("Expected properties <%s> but was <%s>.",
             propertiesToString(properties),
             propertiesToString(actualProperties))
@@ -123,25 +130,21 @@ public class BluetoothGattCharacteristicSubject extends Subject<BluetoothGattCha
     return this;
   }
 
-  public BluetoothGattCharacteristicSubject hasUuid(UUID uuid) {
-    assertThat(actual().getUuid())
-        .named("UUID")
-        .isEqualTo(uuid);
+  public BluetoothGattCharacteristicSubject hasUuid(@Nullable UUID uuid) {
+    check("getUuid()").that(actual.getUuid()).isEqualTo(uuid);
     return this;
   }
 
-  public BluetoothGattCharacteristicSubject hasValue(byte[] value) {
-    byte[] actualValue = actual().getValue();
-    assertThat(actualValue)
-        .named("value")
-        .isEqualTo(value);
+  public BluetoothGattCharacteristicSubject hasValue(@Nonnull byte[] value) {
+    byte[] actualValue = actual.getValue();
+    check("getValue()").that(actualValue).isEqualTo(value);
     return this;
   }
 
   public BluetoothGattCharacteristicSubject hasWriteType(@BluetoothGattCharacteristicWriteType int writeType) {
-    int actualWriteType = actual().getWriteType();
+    int actualWriteType = actual.getWriteType();
     //noinspection ResourceType
-    assert_()
+    check("getWriteType()")
         .withMessage("Expected write type <%s> but was <%s>.",
             writeTypeToString(writeType),
             writeTypeToString(actualWriteType))

@@ -21,28 +21,29 @@ import android.view.ViewTreeObserver;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link ViewTreeObserver} subjects.
  */
-public class ViewTreeObserverSubject extends Subject<ViewTreeObserverSubject, ViewTreeObserver> {
+public class ViewTreeObserverSubject extends Subject {
 
-  public ViewTreeObserverSubject(FailureMetadata failureMetadata, ViewTreeObserver subject) {
-    super(failureMetadata, subject);
+  @Nullable
+  private final ViewTreeObserver actual;
+
+  public ViewTreeObserverSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ViewTreeObserver actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public ViewTreeObserverSubject isAlive() {
-    assertThat(actual().isAlive())
-        .named("is alive")
-        .isTrue();
+    check("isAlive()").that(actual.isAlive()).isTrue();
     return this;
   }
 
   public ViewTreeObserverSubject isNotAlive() {
-    assertThat(actual().isAlive())
-        .named("is alive")
-        .isFalse();
+    check("isAlive()").that(actual.isAlive()).isFalse();
     return this;
   }
 }

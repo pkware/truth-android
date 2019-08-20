@@ -22,6 +22,9 @@ import android.hardware.Sensor;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.hardware.Sensor.TYPE_ACCELEROMETER;
 import static android.hardware.Sensor.TYPE_ALL;
 import static android.hardware.Sensor.TYPE_AMBIENT_TEMPERATURE;
@@ -45,18 +48,22 @@ import static android.hardware.Sensor.TYPE_STEP_COUNTER;
 import static android.hardware.Sensor.TYPE_STEP_DETECTOR;
 import static android.hardware.Sensor.TYPE_TEMPERATURE;
 import static android.os.Build.VERSION_CODES.KITKAT;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
 /**
  * Propositions for {@link Sensor} subjects.
  */
-public class SensorSubject extends Subject<SensorSubject, Sensor> {
-  public SensorSubject(FailureMetadata failureMetadata, Sensor subject) {
-    super(failureMetadata, subject);
+public class SensorSubject extends Subject {
+
+  @Nullable
+  private final Sensor actual;
+
+  public SensorSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Sensor actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   public static String typeToString(@SensorType int type) {
     return buildNamedValueString(type)
         .value(TYPE_ACCELEROMETER, "accelerometer")
@@ -85,80 +92,59 @@ public class SensorSubject extends Subject<SensorSubject, Sensor> {
   }
 
   public SensorSubject hasMaximumRange(float range, float tolerance) {
-    assertThat(actual().getMaximumRange())
-        .named("maximum range")
-        .isWithin(tolerance)
-        .of(range);
+    check("getMaximumRange()").that(actual.getMaximumRange()).isWithin(tolerance).of(range);
     return this;
   }
 
   public SensorSubject hasMinDelay(int delay) {
-    assertThat(actual().getMinDelay())
-        .named("minimum delay")
-        .isEqualTo(delay);
+    check("getMinDelay()").that(actual.getMinDelay()).isEqualTo(delay);
     return this;
   }
 
-  public SensorSubject hasName(String name) {
-    assertThat(actual().getName())
-        .named("name")
-        .isEqualTo(name);
+  public SensorSubject hasName(@Nullable String name) {
+    check("getName()").that(actual.getName()).isEqualTo(name);
     return this;
   }
 
   public SensorSubject hasPower(float power, float tolerance) {
-    assertThat(actual().getPower())
-        .named("power")
-        .isWithin(tolerance)
-        .of(power);
+    check("getPower()").that(actual.getPower()).isWithin(tolerance).of(power);
     return this;
   }
 
   public SensorSubject hasResolution(float resolution, float tolerance) {
-    assertThat(actual().getResolution())
-        .named("resolution")
-        .isWithin(tolerance)
-        .of(resolution);
+    check("getResolution()").that(actual.getResolution()).isWithin(tolerance).of(resolution);
     return this;
   }
 
   public SensorSubject hasType(@SensorType int type) {
-    int actualType = actual().getType();
+    int actualType = actual.getType();
     //noinspection ResourceType
-    assert_()
+    check("getType()")
         .withMessage("Expected type <%s> but was <%s>.", typeToString(type), typeToString(actualType))
         .that(actualType)
         .isEqualTo(type);
     return this;
   }
 
-  public SensorSubject hasVendor(String vendor) {
-    assertThat(actual().getVendor())
-        .named("vendor")
-        .isEqualTo(vendor);
+  public SensorSubject hasVendor(@Nullable String vendor) {
+    check("getVendor()").that(actual.getVendor()).isEqualTo(vendor);
     return this;
   }
 
   public SensorSubject hasVersion(int version) {
-    assertThat(actual().getVersion())
-        .named("version")
-        .isEqualTo(version);
+    check("getVersion()").that(actual.getVersion()).isEqualTo(version);
     return this;
   }
 
   @TargetApi(KITKAT)
   public SensorSubject hasFifoMaxEventCount(int count) {
-    assertThat(actual().getFifoMaxEventCount())
-        .named("max event count")
-        .isEqualTo(count);
+    check("getFifoMaxEventCount()").that(actual.getFifoMaxEventCount()).isEqualTo(count);
     return this;
   }
 
   @TargetApi(KITKAT)
   public SensorSubject hasFifoReservedEventCount(int count) {
-    assertThat(actual().getFifoReservedEventCount())
-        .named("reserved event count")
-        .isEqualTo(count);
+    check("getFifoReservedEventCount()").that(actual.getFifoReservedEventCount()).isEqualTo(count);
     return this;
   }
 }

@@ -17,15 +17,19 @@
 package com.pkware.truth.android.view.animation;
 
 import android.view.animation.Animation;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Animation} subjects.
  * <p/>
  * This class is final. To extend use {@link AbstractAnimationSubject}.
  */
-public final class AnimationSubject extends AbstractAnimationSubject<AnimationSubject, Animation> {
-  public AnimationSubject(FailureMetadata failureMetadata, Animation subject) {
-    super(failureMetadata, subject);
+public final class AnimationSubject extends AbstractAnimationSubject<Animation> {
+  public AnimationSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Animation actual) {
+    super(failureMetadata, actual);
   }
 }

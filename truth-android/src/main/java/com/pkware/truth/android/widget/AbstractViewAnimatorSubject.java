@@ -18,42 +18,42 @@ package com.pkware.truth.android.widget;
 
 import android.view.View;
 import android.widget.ViewAnimator;
+
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Truth;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static com.pkware.truth.android.Assertions.assertThat;
 
-public abstract class AbstractViewAnimatorSubject<S extends AbstractViewAnimatorSubject<S, T>, T extends ViewAnimator>
-    extends AbstractViewGroupSubject<S, T> {
-  protected AbstractViewAnimatorSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractViewAnimatorSubject<T extends ViewAnimator>
+    extends AbstractViewGroupSubject<T> {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractViewAnimatorSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S hasDisplayedChild(View view) {
-    Truth.assertThat(getDisplayedView())
-        .named("displayed child")
-        .isSameAs(view);
-    //noinspection unchecked
-    return (S) this;
+  public void hasDisplayedChild(@Nullable View view) {
+    check("getChildAt(actual.getDisplayedChild()")
+        .withMessage("displayed child")
+        .that(getDisplayedView())
+        .isSameInstanceAs(view);
   }
 
-  public S hasDisplayedChildId(int id) {
+  public void hasDisplayedChildId(int id) {
     assertThat(getDisplayedView()).hasId(id);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S hasDisplayedChild(int index) {
-    assertThat(actual().getDisplayedChild())
-        .named("displayed child index")
-        .isEqualTo(index);
-    //noinspection unchecked
-    return (S) this;
+  public void hasDisplayedChild(int index) {
+    check("getDisplayedChild()").that(actual.getDisplayedChild()).isEqualTo(index);
   }
 
   private View getDisplayedView() {
-    return actual().getChildAt(actual().getDisplayedChild());
+    return actual.getChildAt(actual.getDisplayedChild());
   }
 }

@@ -22,28 +22,27 @@ import android.telephony.CellInfo;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
-import static com.google.common.truth.Truth.assertThat;
 
 @TargetApi(JELLY_BEAN_MR1)
-public abstract class AbstractCellInfoSubject<S extends AbstractCellInfoSubject<S, T>, T extends CellInfo>
-    extends Subject<S, T> {
+public abstract class AbstractCellInfoSubject<T extends CellInfo> extends Subject {
 
-  protected AbstractCellInfoSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+  @Nullable
+  private final T actual;
+
+  protected AbstractCellInfoSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S hasTimeStamp(long timeStamp) {
-    assertThat(actual().getTimeStamp())
-        .named("time stamp")
-        .isEqualTo(timeStamp);
-    return (S) this;
+  public void hasTimeStamp(long timeStamp) {
+    check("getTimeStamp()").that(actual.getTimeStamp()).isEqualTo(timeStamp);
   }
 
-  public S isRegistered() {
-    assertThat(actual().isRegistered())
-        .named("is registered")
-        .isTrue();
-    return (S) this;
+  public void isRegistered() {
+    check("isRegistered()").that(actual.isRegistered()).isTrue();
   }
 }

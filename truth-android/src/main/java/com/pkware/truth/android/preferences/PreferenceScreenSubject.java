@@ -19,29 +19,32 @@ package com.pkware.truth.android.preferences;
 import android.app.Dialog;
 import android.preference.PreferenceScreen;
 import android.widget.ListAdapter;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link PreferenceScreen} subjects.
  */
-public class PreferenceScreenSubject extends AbstractPreferenceGroupSubject<PreferenceScreenSubject, PreferenceScreen> {
-  public PreferenceScreenSubject(FailureMetadata failureMetadata, PreferenceScreen subject) {
-    super(failureMetadata, subject);
+public class PreferenceScreenSubject extends AbstractPreferenceGroupSubject<PreferenceScreen> {
+
+  @Nullable
+  private PreferenceScreen actual;
+
+  public PreferenceScreenSubject(@Nonnull FailureMetadata failureMetadata, @Nullable PreferenceScreen actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public PreferenceScreenSubject hasDialog(Dialog dialog) {
-    assertThat(actual().getDialog())
-        .named("dialog")
-        .isSameAs(dialog);
+  public PreferenceScreenSubject hasDialog(@Nullable Dialog dialog) {
+    check("getDialog()").that(actual.getDialog()).isSameInstanceAs(dialog);
     return this;
   }
 
-  public PreferenceScreenSubject hasRootAdapter(ListAdapter adapter) {
-    assertThat(actual().getRootAdapter())
-        .named("root adapter")
-        .isSameAs(adapter);
+  public PreferenceScreenSubject hasRootAdapter(@Nullable ListAdapter adapter) {
+    check("getRootAdapter()").that(actual.getRootAdapter()).isSameInstanceAs(adapter);
     return this;
   }
 }

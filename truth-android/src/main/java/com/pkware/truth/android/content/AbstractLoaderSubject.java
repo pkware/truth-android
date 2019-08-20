@@ -21,66 +21,44 @@ import android.content.Loader;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public abstract class AbstractLoaderSubject<S extends AbstractLoaderSubject<S, T>, T extends Loader> extends Subject<S, T> {
-  protected AbstractLoaderSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractLoaderSubject<T extends Loader> extends Subject {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractLoaderSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S hasId(int id) {
-    assertThat(actual().getId())
-        .named("id")
-        .isEqualTo(id);
-    //noinspection unchecked
-    return (S) this;
+  public void hasId(int id) {
+    check("getId()").that(actual.getId()).isEqualTo(id);
   }
 
-  public S isAbandoned() {
-    assertThat(actual().isAbandoned())
-        .named("is abandoned")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isAbandoned() {
+    check("isAbandoned()").that(actual.isAbandoned()).isTrue();
   }
 
-  public S isNotAbandoned() {
-    assertThat(actual().isAbandoned())
-        .named("is abandoned")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotAbandoned() {
+    check("isAbandoned()").that(actual.isAbandoned()).isFalse();
   }
 
-  public S isReset() {
-    assertThat(actual().isReset())
-        .named("is reset")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isReset() {
+    check("isReset()").that(actual.isReset()).isTrue();
   }
 
-  public S isNotReset() {
-    assertThat(actual().isReset())
-        .named("is reset")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotReset() {
+    check("isReset()").that(actual.isReset()).isFalse();
   }
 
-  public S isStarted() {
-    assertThat(actual().isStarted())
-        .named("is started")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isStarted() {
+    check("isStarted()").that(actual.isStarted()).isTrue();
   }
 
-  public S isNotStarted() {
-    assertThat(actual().isStarted())
-        .named("is started")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotStarted() {
+    check("isStarted()").that(actual.isStarted()).isFalse();
   }
 }

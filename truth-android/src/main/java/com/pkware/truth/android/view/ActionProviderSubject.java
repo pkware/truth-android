@@ -22,44 +22,43 @@ import android.view.ActionProvider;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link ActionProvider} subjects.
  */
-public class ActionProviderSubject extends Subject<ActionProviderSubject, ActionProvider> {
-  public ActionProviderSubject(FailureMetadata failureMetadata, ActionProvider subject) {
-    super(failureMetadata, subject);
+public class ActionProviderSubject extends Subject {
+
+  @Nullable
+  private final ActionProvider actual;
+
+  public ActionProviderSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ActionProvider actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public ActionProviderSubject hasSubMenu() {
-    assertThat(actual().hasSubMenu())
-        .named("has sub-menu")
-        .isTrue();
+    check("hasSubMenu()").that(actual.hasSubMenu()).isTrue();
     return this;
   }
 
   public ActionProviderSubject hasNoSubMenu() {
-    assertThat(actual().hasSubMenu())
-        .named("has sub-menu")
-        .isFalse();
+    check("hasSubMenu()").that(actual.hasSubMenu()).isFalse();
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public ActionProviderSubject isVisible() {
-    assertThat(actual().isVisible())
-        .named("is visible")
-        .isTrue();
+    check("isVisible()").that(actual.isVisible()).isTrue();
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public ActionProviderSubject isNotVisible() {
-    assertThat(actual().isVisible())
-        .named("is visible")
-        .isFalse();
+    check("isVisible()").that(actual.isVisible()).isFalse();
     return this;
   }
 }

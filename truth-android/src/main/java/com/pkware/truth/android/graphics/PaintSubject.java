@@ -17,15 +17,19 @@
 package com.pkware.truth.android.graphics;
 
 import android.graphics.Paint;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Paint} instances.
  * <p/>
  * This class is final. To extend use {@link AbstractPaintSubject}.
  */
-public final class PaintSubject extends AbstractPaintSubject<PaintSubject, Paint> {
-  public PaintSubject(FailureMetadata failureMetadata, Paint subject) {
-    super(failureMetadata, subject);
+public final class PaintSubject extends AbstractPaintSubject<Paint> {
+  public PaintSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Paint actual) {
+    super(failureMetadata, actual);
   }
 }

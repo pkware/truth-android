@@ -22,6 +22,9 @@ import android.view.ViewGroup;
 
 import com.google.common.truth.FailureMetadata;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
 import static android.view.ViewGroup.FOCUS_AFTER_DESCENDANTS;
 import static android.view.ViewGroup.FOCUS_BEFORE_DESCENDANTS;
@@ -32,16 +35,20 @@ import static android.view.ViewGroup.PERSISTENT_ALL_CACHES;
 import static android.view.ViewGroup.PERSISTENT_ANIMATION_CACHE;
 import static android.view.ViewGroup.PERSISTENT_NO_CACHE;
 import static android.view.ViewGroup.PERSISTENT_SCROLLING_CACHE;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
-public abstract class AbstractViewGroupSubject<S extends AbstractViewGroupSubject<S, T>, T extends ViewGroup>
-    extends AbstractViewSubject<S, T> {
-  protected AbstractViewGroupSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractViewGroupSubject<T extends ViewGroup>
+    extends AbstractViewSubject<T> {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractViewGroupSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   public static String descendantFocusabilityToString(@ViewGroupDescendantFocusability int focusability) {
     return buildNamedValueString(focusability)
         .value(FOCUS_AFTER_DESCENDANTS, "afterDescendants")
@@ -50,6 +57,7 @@ public abstract class AbstractViewGroupSubject<S extends AbstractViewGroupSubjec
         .get();
   }
 
+  @Nonnull
   public static String persistentDrawingCacheToString(@ViewGroupPersistentDrawingCache int cache) {
     return buildNamedValueString(cache)
         .value(PERSISTENT_ALL_CACHES, "all")
@@ -59,6 +67,7 @@ public abstract class AbstractViewGroupSubject<S extends AbstractViewGroupSubjec
         .get();
   }
 
+  @Nonnull
   public static String layoutModeToString(@ViewGroupLayoutMode int layoutMode) {
     return buildNamedValueString(layoutMode)
         .value(LAYOUT_MODE_CLIP_BOUNDS, "clip_bounds")
@@ -66,139 +75,85 @@ public abstract class AbstractViewGroupSubject<S extends AbstractViewGroupSubjec
         .get();
   }
 
-  public S isAddingStatesFromChildren() {
-    assertThat(actual().addStatesFromChildren())
-        .named("is adding states from children")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isAddingStatesFromChildren() {
+    check("addStatesFromChildren()").that(actual.addStatesFromChildren()).isTrue();
   }
 
-  public S isNotAddingStatesFromChildren() {
-    assertThat(actual().addStatesFromChildren())
-        .named("is adding states from children")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotAddingStatesFromChildren() {
+    check("addStatesFromChildren()").that(actual.addStatesFromChildren()).isFalse();
   }
 
-  public S hasChildCount(int count) {
-    assertThat(actual().getChildCount())
-        .named("child count")
-        .isEqualTo(count);
-    //noinspection unchecked
-    return (S) this;
+  public void hasChildCount(int count) {
+    check("getChildCount()").that(actual.getChildCount()).isEqualTo(count);
   }
 
-  public S hasDescendantFocusability(@ViewGroupDescendantFocusability int focusability) {
-    int actualFocusability = actual().getDescendantFocusability();
+  public void hasDescendantFocusability(@ViewGroupDescendantFocusability int focusability) {
+    int actualFocusability = actual.getDescendantFocusability();
     //noinspection ResourceType
-    assert_()
+    check("getDescendantFocusability()")
         .withMessage("Expected descendant focusability <%s> but was <%s>",
             descendantFocusabilityToString(focusability),
             descendantFocusabilityToString(actualFocusability))
         .that(actualFocusability)
         .isEqualTo(focusability);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S hasFocusedChild(View view) {
-    assertThat(actual().getFocusedChild())
-        .named("focused child")
-        .isSameAs(view);
-    //noinspection unchecked
-    return (S) this;
+  public void hasFocusedChild(@Nullable View view) {
+    check("getFocusedChild()").that(actual.getFocusedChild()).isSameInstanceAs(view);
   }
 
   @TargetApi(JELLY_BEAN_MR2)
-  public S hasLayoutMode(@ViewGroupLayoutMode int layoutMode) {
-    int actualLayoutMode = actual().getLayoutMode();
+  public void hasLayoutMode(@ViewGroupLayoutMode int layoutMode) {
+    int actualLayoutMode = actual.getLayoutMode();
     //noinspection ResourceType
-    assert_()
+    check("getLayoutMode()")
         .withMessage("Expected layout mode <%s> but was <%s>.",
             layoutModeToString(layoutMode), layoutModeToString(actualLayoutMode))
         .that(actualLayoutMode)
         .isEqualTo(layoutMode);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S hasPersistentDrawingCache(@ViewGroupPersistentDrawingCache int cache) {
-    int actualCache = actual().getPersistentDrawingCache();
+  public void hasPersistentDrawingCache(@ViewGroupPersistentDrawingCache int cache) {
+    int actualCache = actual.getPersistentDrawingCache();
     //noinspection ResourceType
-    assert_()
+    check("getPersistentDrawingCache()")
         .withMessage("Expected persistent drawing cache <%s> but was <%s>",
             persistentDrawingCacheToString(cache), persistentDrawingCacheToString(actualCache))
         .that(actualCache)
         .isEqualTo(cache);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S isAlwaysDrawnWithCache() {
-    assertThat(actual().isAlwaysDrawnWithCacheEnabled())
-        .named("is always drawn with cache enabled")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isAlwaysDrawnWithCache() {
+    check("isAlwaysDrawnWithCacheEnabled()").that(actual.isAlwaysDrawnWithCacheEnabled()).isTrue();
   }
 
-  public S isNotAlwaysDrawnWithCache() {
-    assertThat(actual().isAlwaysDrawnWithCacheEnabled())
-        .named("is always drawn with cache enabled")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotAlwaysDrawnWithCache() {
+    check("isAlwaysDrawnWithCacheEnabled()").that(actual.isAlwaysDrawnWithCacheEnabled()).isFalse();
   }
 
   @TargetApi(JELLY_BEAN_MR2)
-  public S isClippingChildren() {
-    assertThat(actual().getClipChildren())
-        .named("is clipping children")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isClippingChildren() {
+    check("getClipChildren()").that(actual.getClipChildren()).isTrue();
   }
 
   @TargetApi(JELLY_BEAN_MR2)
-  public S isNotClippingChildren() {
-    assertThat(actual().getClipChildren())
-        .named("is clipping children")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotClippingChildren() {
+    check("getClipChildren()").that(actual.getClipChildren()).isFalse();
   }
 
-  public S hasAnimationCacheEnabled() {
-    assertThat(actual().isAnimationCacheEnabled())
-        .named("is animation cache enabled")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void hasAnimationCacheEnabled() {
+    check("isAnimationCacheEnabled()").that(actual.isAnimationCacheEnabled()).isTrue();
   }
 
-  public S hasAnimationCacheDisabled() {
-    assertThat(actual().isAnimationCacheEnabled())
-        .named("is animation cache enabled")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void hasAnimationCacheDisabled() {
+    check("isAnimationCacheEnabled()").that(actual.isAnimationCacheEnabled()).isFalse();
   }
 
-  public S hasMotionEventSplittingEnabled() {
-    assertThat(actual().isMotionEventSplittingEnabled())
-        .named("is motion event splitting enabled")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void hasMotionEventSplittingEnabled() {
+    check("isMotionEventSplittingEnabled()").that(actual.isMotionEventSplittingEnabled()).isTrue();
   }
 
-  public S hasMotionEventSplittingDisabled() {
-    assertThat(actual().isMotionEventSplittingEnabled())
-        .named("is motion event splitting enabled")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void hasMotionEventSplittingDisabled() {
+    check("isMotionEventSplittingEnabled()").that(actual.isMotionEventSplittingEnabled()).isFalse();
   }
 }

@@ -18,10 +18,13 @@ package com.pkware.truth.android.telephony;
 
 import android.annotation.TargetApi;
 import android.telephony.CellSignalStrengthCdma;
+
 import com.google.common.truth.FailureMetadata;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link CellSignalStrengthCdma} subjects.
@@ -30,57 +33,48 @@ import static com.google.common.truth.Truth.assertThat;
  */
 @TargetApi(JELLY_BEAN_MR1)
 public final class CellSignalStrengthCdmaSubject
-    extends AbstractCellSignalStrengthSubject<CellSignalStrengthCdmaSubject, CellSignalStrengthCdma> {
-  public CellSignalStrengthCdmaSubject(FailureMetadata failureMetadata, CellSignalStrengthCdma subject) {
-    super(failureMetadata, subject);
+    extends AbstractCellSignalStrengthSubject<CellSignalStrengthCdma> {
+
+  @Nullable
+  private CellSignalStrengthCdma actual;
+
+  public CellSignalStrengthCdmaSubject(@Nonnull FailureMetadata failureMetadata, @Nullable CellSignalStrengthCdma actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public CellSignalStrengthCdmaSubject hasCdmaDbm(int dbm) {
-    assertThat(actual().getCdmaDbm())
-        .named("CDMA dBm")
-        .isEqualTo(dbm);
+    check("getCdmaDbm()").that(actual.getCdmaDbm()).isEqualTo(dbm);
     return this;
   }
 
   public CellSignalStrengthCdmaSubject hasCdmaEcio(int ecio) {
-    assertThat(actual().getCdmaEcio())
-        .named("CDMA Ec/Io")
-        .isEqualTo(ecio);
+    check("getCdmaEcio()").that(actual.getCdmaEcio()).isEqualTo(ecio);
     return this;
   }
 
   public CellSignalStrengthCdmaSubject hasCdmaLevel(int level) {
-    assertThat(actual().getCdmaLevel())
-        .named("CDMA level")
-        .isEqualTo(level);
+    check("getCdmaLevel()").that(actual.getCdmaLevel()).isEqualTo(level);
     return this;
   }
 
   public CellSignalStrengthCdmaSubject hasEvdoDbm(int dbm) {
-    assertThat(actual().getEvdoDbm())
-        .named("EVDO dBm")
-        .isEqualTo(dbm);
+    check("getEvdoDbm()").that(actual.getEvdoDbm()).isEqualTo(dbm);
     return this;
   }
 
   public CellSignalStrengthCdmaSubject hasEvdoEcio(int ecio) {
-    assertThat(actual().getEvdoEcio())
-        .named("EVDO Ec/Io")
-        .isEqualTo(ecio);
+    check("getEvdoEcio()").that(actual.getEvdoEcio()).isEqualTo(ecio);
     return this;
   }
 
   public CellSignalStrengthCdmaSubject hasEvdoLevel(int level) {
-    assertThat(actual().getEvdoLevel())
-        .named("EVDO level")
-        .isEqualTo(level);
+    check("getEvdoLevel()").that(actual.getEvdoLevel()).isEqualTo(level);
     return this;
   }
 
   public CellSignalStrengthCdmaSubject hasEvdoSnr(int snr) {
-    assertThat(actual().getEvdoSnr())
-        .named("EVDO signal to noise ratio")
-        .isEqualTo(snr);
+    check("getEvdoSnr()").that(actual.getEvdoSnr()).isEqualTo(snr);
     return this;
   }
 }

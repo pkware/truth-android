@@ -17,11 +17,15 @@
 package com.pkware.truth.android.view.animation;
 
 import android.view.animation.GridLayoutAnimationController;
+
 import com.google.common.collect.Iterables;
 import com.google.common.truth.FailureMetadata;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import static android.view.animation.GridLayoutAnimationController.DIRECTION_BOTTOM_TO_TOP;
 import static android.view.animation.GridLayoutAnimationController.DIRECTION_HORIZONTAL_MASK;
@@ -30,19 +34,23 @@ import static android.view.animation.GridLayoutAnimationController.DIRECTION_VER
 import static android.view.animation.GridLayoutAnimationController.PRIORITY_COLUMN;
 import static android.view.animation.GridLayoutAnimationController.PRIORITY_NONE;
 import static android.view.animation.GridLayoutAnimationController.PRIORITY_ROW;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
 /**
  * Propositions for {@link GridLayoutAnimationController} subjects.
  */
 public class GridLayoutAnimationControllerSubject extends
-    AbstractLayoutAnimationControllerSubject<GridLayoutAnimationControllerSubject, GridLayoutAnimationController> {
-  public GridLayoutAnimationControllerSubject(FailureMetadata failureMetadata, GridLayoutAnimationController subject) {
-    super(failureMetadata, subject);
+    AbstractLayoutAnimationControllerSubject<GridLayoutAnimationController> {
+
+  @Nullable
+  private final GridLayoutAnimationController actual;
+
+  public GridLayoutAnimationControllerSubject(@Nonnull FailureMetadata failureMetadata, @Nullable GridLayoutAnimationController actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   private static String directionToString(@GridLayoutAnimationControllerDirection int direction) {
     List<String> parts = new ArrayList<>();
     int horizontal = direction & DIRECTION_HORIZONTAL_MASK;
@@ -60,6 +68,7 @@ public class GridLayoutAnimationControllerSubject extends
     return Iterables.toString(parts);
   }
 
+  @Nonnull
   public static String directionPriorityToString(@GridLayoutAnimationControllerDirectionPriority int priority) {
     return buildNamedValueString(priority)
         .value(PRIORITY_NONE, "none")
@@ -69,17 +78,14 @@ public class GridLayoutAnimationControllerSubject extends
   }
 
   public GridLayoutAnimationControllerSubject hasColumnDelay(float delay, float tolerance) {
-    assertThat(actual().getColumnDelay())
-        .named("column delay")
-        .isWithin(tolerance)
-        .of(delay);
+    check("getColumnDelay()").that(actual.getColumnDelay()).isWithin(tolerance).of(delay);
     return this;
   }
 
   public GridLayoutAnimationControllerSubject hasDirection(@GridLayoutAnimationControllerDirection int direction) {
-    int actualDirection = actual().getDirection();
+    int actualDirection = actual.getDirection();
     //noinspection ResourceType
-    assert_()
+    check("getDirection()")
         .withMessage("Expected direction <%s> but was <%s>.",
             directionToString(direction), directionToString(actualDirection))
         .that(actualDirection)
@@ -88,9 +94,9 @@ public class GridLayoutAnimationControllerSubject extends
   }
 
   public GridLayoutAnimationControllerSubject hasDirectionPriority(@GridLayoutAnimationControllerDirectionPriority int priority) {
-    int actualPriority = actual().getDirectionPriority();
+    int actualPriority = actual.getDirectionPriority();
     //noinspection ResourceType
-    assert_()
+    check("getDirectionPriority()")
         .withMessage("Expected direction priority <%s> but was <%s>.",
             directionPriorityToString(priority), directionPriorityToString(actualPriority))
         .that(actualPriority)
@@ -99,10 +105,7 @@ public class GridLayoutAnimationControllerSubject extends
   }
 
   public GridLayoutAnimationControllerSubject hasRowDelay(float delay, float tolerance) {
-    assertThat(actual().getRowDelay())
-        .named("row delay")
-        .isWithin(tolerance)
-        .of(delay);
+    check("getRowDelay()").that(actual.getRowDelay()).isWithin(tolerance).of(delay);
     return this;
   }
 }

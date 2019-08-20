@@ -21,21 +21,26 @@ import android.app.LoaderManager;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import java.util.Locale;
-
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link LoaderManager} subjects.
  */
-public class LoaderManagerSubject extends Subject<LoaderManagerSubject, LoaderManager> {
-  public LoaderManagerSubject(FailureMetadata failureMetadata, LoaderManager subject) {
-    super(failureMetadata, subject);
+public class LoaderManagerSubject extends Subject {
+
+  @Nullable
+  private final LoaderManager actual;
+
+  public LoaderManagerSubject(@Nonnull FailureMetadata failureMetadata, @Nullable LoaderManager actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public LoaderManagerSubject hasLoader(int id) {
-    assertThat(actual().getLoader(id))
-        .named(String.format(Locale.ENGLISH, "loader with id <%d>", id))
+    check("getLoader(id)")
+        .withMessage("Has loader with id <%s>", id)
+        .that(actual.getLoader(id))
         .isNotNull();
     return this;
   }

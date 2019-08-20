@@ -21,47 +21,55 @@ import androidx.fragment.app.FragmentManager;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link FragmentManager} subjects.
  */
-public class FragmentManagerSubject extends Subject<FragmentManagerSubject, FragmentManager> {
-  public FragmentManagerSubject(FailureMetadata failureMetadata, FragmentManager subject) {
-    super(failureMetadata, subject);
+public class FragmentManagerSubject extends Subject {
+
+  @Nullable
+  private final FragmentManager actual;
+
+  public FragmentManagerSubject(@Nonnull FailureMetadata failureMetadata, @Nullable FragmentManager actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public FragmentManagerSubject hasFragmentWithId(int id) {
-    assertThat(actual().findFragmentById(id))
-        .named("fragment with ID " + id)
+    check("findFragmentById(id)")
+        .withMessage("fragment with ID %s", id)
+        .that(actual.findFragmentById(id))
         .isNotNull();
     return this;
   }
 
-  public FragmentManagerSubject hasFragmentWithTag(String tag) {
-    assertThat(actual().findFragmentByTag(tag))
-        .named("fragment with tag " + tag)
+  public FragmentManagerSubject hasFragmentWithTag(@Nullable String tag) {
+    check("findFragmentByTag(tag)")
+        .withMessage("fragment with tag %s", tag)
+        .that(actual.findFragmentByTag(tag))
         .isNotNull();
     return this;
   }
 
   public FragmentManagerSubject hasBackStackEntryCount(int count) {
-    assertThat(actual().getBackStackEntryCount())
-        .named("back stack entry count")
-        .isEqualTo(count);
+    check("getBackStackEntryCount()").that(actual.getBackStackEntryCount()).isEqualTo(count);
     return this;
   }
 
   public FragmentManagerSubject doesNotHaveFragmentWithId(int id) {
-    assertThat(actual().findFragmentById(id))
-        .named("fragment with ID " + id)
+    check("findFragmentById(id)")
+        .withMessage("fragment with ID %s", id)
+        .that(actual.findFragmentById(id))
         .isNull();
     return this;
   }
 
-  public FragmentManagerSubject doesNotHaveFragmentWithTag(String tag) {
-    assertThat(actual().findFragmentByTag(tag))
-        .named("fragment with tag " + tag)
+  public FragmentManagerSubject doesNotHaveFragmentWithTag(@Nullable String tag) {
+    check("findFragmentByTag(tag)")
+        .withMessage("fragment with tag %s", tag)
+        .that(actual.findFragmentByTag(tag))
         .isNull();
     return this;
   }

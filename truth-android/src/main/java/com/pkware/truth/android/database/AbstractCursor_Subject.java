@@ -17,15 +17,19 @@
 package com.pkware.truth.android.database;
 
 import android.database.AbstractCursor;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link AbstractCursor} subjects.
  * <p/>
  * This class is final. To extend use {@link AbstractAbstractCursorSubject}.
  */
-public final class AbstractCursor_Subject extends AbstractAbstractCursorSubject<AbstractCursor_Subject, AbstractCursor> {
-  public AbstractCursor_Subject(FailureMetadata failureMetadata, AbstractCursor subject) {
-    super(failureMetadata, subject);
+public final class AbstractCursor_Subject extends AbstractAbstractCursorSubject<AbstractCursor> {
+  public AbstractCursor_Subject(@Nonnull FailureMetadata failureMetadata, @Nullable AbstractCursor actual) {
+    super(failureMetadata, actual);
   }
 }

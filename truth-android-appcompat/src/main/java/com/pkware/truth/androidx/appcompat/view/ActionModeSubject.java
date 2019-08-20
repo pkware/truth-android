@@ -17,82 +17,71 @@
 package com.pkware.truth.androidx.appcompat.view;
 
 import android.view.View;
+
 import androidx.appcompat.view.ActionMode;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link ActionMode} subjects.
  */
-public class ActionModeSubject extends Subject<ActionModeSubject, ActionMode> {
-  public ActionModeSubject(FailureMetadata failureMetadata, ActionMode subject) {
-    super(failureMetadata, subject);
+public class ActionModeSubject extends Subject {
+
+  @Nullable
+  private final ActionMode actual;
+
+  public ActionModeSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ActionMode actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public ActionModeSubject hasCustomView() {
-    assertThat(actual().getCustomView())
-        .named("custom view")
-        .isNotNull();
+    check("getCustomView()").that(actual.getCustomView()).isNotNull();
     return this;
   }
 
-  public ActionModeSubject hasCustomView(View view) {
-    View actualView = actual().getCustomView();
-    assertThat(actual().getCustomView())
-        .named("custom view")
-        .isEqualTo(view);
+  public ActionModeSubject hasCustomView(@Nullable View view) {
+    View actualView = actual.getCustomView();
+    check("getCustomView()").that(actual.getCustomView()).isEqualTo(view);
     return this;
   }
 
-  public ActionModeSubject hasSubtitle(String subtitle) {
-    assertThat(actual().getSubtitle().toString())
-        .named("subtitle")
-        .isEqualTo(subtitle);
+  public ActionModeSubject hasSubtitle(@Nullable String subtitle) {
+    check("getSubtitle()").that(actual.getSubtitle().toString()).isEqualTo(subtitle);
     return this;
   }
 
-  public ActionModeSubject hasTag(Object tag) {
-    assertThat(actual().getTag())
-        .named("tag")
-        .isEqualTo(tag);
+  public ActionModeSubject hasTag(@Nullable Object tag) {
+    check("getTag()").that(actual.getTag()).isEqualTo(tag);
     return this;
   }
 
-  public ActionModeSubject hasTitle(String title) {
-    assertThat(actual().getTitle().toString())
-        .named("title")
-        .isEqualTo(title);
+  public ActionModeSubject hasTitle(@Nullable String title) {
+    check("getTitle()").that(actual.getTitle().toString()).isEqualTo(title);
     return this;
   }
 
   public ActionModeSubject hasOptionalTitleHint() {
-    assertThat(actual().getTitleOptionalHint())
-        .named("has optional title hint")
-        .isTrue();
+    check("getTitleOptionalHint()").that(actual.getTitleOptionalHint()).isTrue();
     return this;
   }
 
   public ActionModeSubject hasNonOptionalTitleHint() {
-    assertThat(actual().getTitleOptionalHint())
-        .named("has optional title hint")
-        .isFalse();
+    check("getTitleOptionalHint()").that(actual.getTitleOptionalHint()).isFalse();
     return this;
   }
 
   public ActionModeSubject hasOptionalTitle() {
-    assertThat(actual().isTitleOptional())
-        .named("has optional title")
-        .isTrue();
+    check("isTitleOptional()").that(actual.isTitleOptional()).isTrue();
     return this;
   }
 
   public ActionModeSubject hasNonOptionalTitle() {
-    assertThat(actual().isTitleOptional())
-        .named("has optional title")
-        .isFalse();
+    check("isTitleOptional()").that(actual.isTitleOptional()).isFalse();
     return this;
   }
 }

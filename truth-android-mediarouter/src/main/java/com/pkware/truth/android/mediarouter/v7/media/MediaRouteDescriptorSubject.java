@@ -22,19 +22,25 @@ import androidx.mediarouter.media.MediaRouter;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
 /**
  * Propositions for {@link MediaRouteDescriptor} subjects.
  */
-public class MediaRouteDescriptorSubject
-    extends Subject<MediaRouteDescriptorSubject, MediaRouteDescriptor> {
-  public MediaRouteDescriptorSubject(FailureMetadata failureMetadata, MediaRouteDescriptor subject) {
-    super(failureMetadata, subject);
+public class MediaRouteDescriptorSubject extends Subject {
+
+  @Nullable
+  private final MediaRouteDescriptor actual;
+
+  public MediaRouteDescriptorSubject(@Nonnull FailureMetadata failureMetadata, @Nullable MediaRouteDescriptor actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   public static String volumeHandling(@MediaRouteVolumeHandling int handling) {
     return buildNamedValueString(handling)
         .value(MediaRouter.RouteInfo.PLAYBACK_VOLUME_FIXED, "fixed")
@@ -43,58 +49,44 @@ public class MediaRouteDescriptorSubject
   }
 
   public MediaRouteDescriptorSubject hasDescription(String description) {
-    assertThat(actual().getDescription())
-        .named("description")
-        .isEqualTo(description);
+    check("getDescription()").that(actual.getDescription()).isEqualTo(description);
     return this;
   }
 
-  public MediaRouteDescriptorSubject hasId(String id) {
-    assertThat(actual().getId())
-        .named("ID")
-        .isEqualTo(id);
+  public MediaRouteDescriptorSubject hasId(@Nullable String id) {
+    check("getId()").that(actual.getId()).isEqualTo(id);
     return this;
   }
 
-  public MediaRouteDescriptorSubject hasName(String name) {
-    assertThat(actual().getName())
-        .named("name")
-        .isEqualTo(name);
+  public MediaRouteDescriptorSubject hasName(@Nullable String name) {
+    check("getName()").that(actual.getName()).isEqualTo(name);
     return this;
   }
 
   public MediaRouteDescriptorSubject hasPlaybackStream(int playbackStream) {
-    assertThat(actual().getPlaybackStream())
-        .named("playback stream")
-        .isEqualTo(playbackStream);
+    check("getPlaybackStream()").that(actual.getPlaybackStream()).isEqualTo(playbackStream);
     return this;
   }
 
   public MediaRouteDescriptorSubject hasPlaybackType(int playbackType) {
-    assertThat(actual().getPlaybackType())
-        .named("playback type")
-        .isEqualTo(playbackType);
+    check("getPlaybackType()").that(actual.getPlaybackType()).isEqualTo(playbackType);
     return this;
   }
 
   public MediaRouteDescriptorSubject hasPresentationDisplayId(int displayId) {
-    assertThat(actual().getPresentationDisplayId())
-        .named("presentation display ID")
-        .isEqualTo(displayId);
+    check("getPresentationDisplayId()").that(actual.getPresentationDisplayId()).isEqualTo(displayId);
     return this;
   }
 
   public MediaRouteDescriptorSubject hasVolume(int volume) {
-    assertThat(actual().getVolume())
-        .named("volume")
-        .isEqualTo(volume);
+    check("getVolume()").that(actual.getVolume()).isEqualTo(volume);
     return this;
   }
 
   public MediaRouteDescriptorSubject hasVolumeHandling(@MediaSessionStatusState int volumeHandling) {
-    int actualHandling = actual().getVolumeHandling();
+    int actualHandling = actual.getVolumeHandling();
     //noinspection WrongConstant
-    assert_()
+    check("getVolumeHandling()")
         .withMessage("Expected volume handling <%s> but was <%s>.",
             volumeHandling(volumeHandling), volumeHandling(actualHandling))
         .that(actualHandling)
@@ -103,53 +95,39 @@ public class MediaRouteDescriptorSubject
   }
 
   public MediaRouteDescriptorSubject hasVolumeMax(int volumeMax) {
-    assertThat(actual().getVolumeMax())
-        .named("maximum volume")
-        .isEqualTo(volumeMax);
+    check("getVolumeMax()").that(actual.getVolumeMax()).isEqualTo(volumeMax);
     return this;
   }
 
   @SuppressWarnings("deprecation")
   public MediaRouteDescriptorSubject isConnecting() {
-    assertThat(actual().isConnecting())
-        .named("is connecting")
-        .isTrue();
+    check("isConnecting()").that(actual.isConnecting()).isTrue();
     return this;
   }
 
   @SuppressWarnings("deprecation")
   public MediaRouteDescriptorSubject isNotConnecting() {
-    assertThat(actual().isConnecting())
-        .named("is connecting")
-        .isFalse();
+    check("isConnecting()").that(actual.isConnecting()).isFalse();
     return this;
   }
 
   public MediaRouteDescriptorSubject isEnabled() {
-    assertThat(actual().isEnabled())
-        .named("is enabled")
-        .isTrue();
+    check("isEnabled()").that(actual.isEnabled()).isTrue();
     return this;
   }
 
   public MediaRouteDescriptorSubject isDisabled() {
-    assertThat(!actual().isEnabled())
-        .named("is disabled")
-        .isTrue();
+    check("isEnabled()").that(actual.isEnabled()).isFalse();
     return this;
   }
 
   public MediaRouteDescriptorSubject isValid() {
-    assertThat(actual().isValid())
-        .named("is valid")
-        .isTrue();
+    check("isValid()").that(actual.isValid()).isTrue();
     return this;
   }
 
   public MediaRouteDescriptorSubject isNotValid() {
-    assertThat(actual().isValid())
-        .named("is valid")
-        .isFalse();
+    check("isValid()").that(actual.isValid()).isFalse();
     return this;
   }
 }

@@ -23,69 +23,59 @@ import android.graphics.Region;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Region} subjects.
  */
-public class RegionSubject extends Subject<RegionSubject, Region> {
-  public RegionSubject(FailureMetadata failureMetadata, Region subject) {
-    super(failureMetadata, subject);
+public class RegionSubject extends Subject {
+
+  @Nullable
+  private final Region actual;
+
+  public RegionSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Region actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public RegionSubject hasBoundaryPath(Path path) {
-    assertThat(actual().getBoundaryPath())
-        .named("boundary path")
-        .isEqualTo(path);
+  public RegionSubject hasBoundaryPath(@Nullable Path path) {
+    check("getBoundaryPath()").that(actual.getBoundaryPath()).isEqualTo(path);
     return this;
   }
 
-  public RegionSubject hasBounds(Rect bounds) {
-    assertThat(actual().getBounds())
-        .named("bounds")
-        .isEqualTo(bounds);
+  public RegionSubject hasBounds(@Nullable Rect bounds) {
+    check("getBounds()").that(actual.getBounds()).isEqualTo(bounds);
     return this;
   }
 
   public RegionSubject isComplex() {
-    assertThat(actual().isComplex())
-        .named("is complex")
-        .isTrue();
+    check("isComplex()").that(actual.isComplex()).isTrue();
     return this;
   }
 
   public RegionSubject isNotComplex() {
-    assertThat(actual().isComplex())
-        .named("is complex")
-        .isFalse();
+    check("isComplex()").that(actual.isComplex()).isFalse();
     return this;
   }
 
   public RegionSubject isEmpty() {
-    assertThat(actual().isEmpty())
-        .named("is empty")
-        .isTrue();
+    check("isEmpty()").that(actual.isEmpty()).isTrue();
     return this;
   }
 
   public RegionSubject isNotEmpty() {
-    assertThat(actual().isEmpty())
-        .named("is empty")
-        .isFalse();
+    check("isEmpty()").that(actual.isEmpty()).isFalse();
     return this;
   }
 
   public RegionSubject isRect() {
-    assertThat(actual().isRect())
-        .named("is rectangle")
-        .isTrue();
+    check("isRect()").that(actual.isRect()).isTrue();
     return this;
   }
 
   public RegionSubject isNotRect() {
-    assertThat(actual().isRect())
-        .named("is rectangle")
-        .isTrue();
+    check("isRect()").that(actual.isRect()).isFalse();
     return this;
   }
 }

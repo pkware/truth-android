@@ -17,15 +17,19 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.TextView;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link TextView} subjects.
  * <p/>
  * This class is final. To extend use {@link AbstractTextViewSubject}.
  */
-public final class TextViewSubject extends AbstractTextViewSubject<TextViewSubject, TextView> {
-  public TextViewSubject(FailureMetadata failureMetadata, TextView subject) {
-    super(failureMetadata, subject);
+public final class TextViewSubject extends AbstractTextViewSubject<TextView> {
+  public TextViewSubject(@Nonnull FailureMetadata failureMetadata, @Nullable TextView actual) {
+    super(failureMetadata, actual);
   }
 }

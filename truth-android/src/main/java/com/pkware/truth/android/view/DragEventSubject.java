@@ -21,24 +21,31 @@ import android.view.DragEvent;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.view.DragEvent.ACTION_DRAG_ENDED;
 import static android.view.DragEvent.ACTION_DRAG_ENTERED;
 import static android.view.DragEvent.ACTION_DRAG_EXITED;
 import static android.view.DragEvent.ACTION_DRAG_LOCATION;
 import static android.view.DragEvent.ACTION_DRAG_STARTED;
 import static android.view.DragEvent.ACTION_DROP;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
 /**
  * Propositions for {@link DragEvent} subjects.
  */
-public class DragEventSubject extends Subject<DragEventSubject, DragEvent> {
-  public DragEventSubject(FailureMetadata failureMetadata, DragEvent subject) {
-    super(failureMetadata, subject);
+public class DragEventSubject extends Subject {
+
+  @Nullable
+  private final DragEvent actual;
+
+  public DragEventSubject(@Nonnull FailureMetadata failureMetadata, @Nullable DragEvent actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   public static String dragEventActionToString(@DragEventAction int action) {
     return buildNamedValueString(action)
         .value(ACTION_DRAG_ENDED, "drag ended")
@@ -51,9 +58,9 @@ public class DragEventSubject extends Subject<DragEventSubject, DragEvent> {
   }
 
   public DragEventSubject hasAction(@DragEventAction int action) {
-    int actualAction = actual().getAction();
+    int actualAction = actual.getAction();
     //noinspection ResourceType
-    assert_()
+    check("getAction()")
         .withMessage("Expected action <%s> but was <%s>",
             dragEventActionToString(action), dragEventActionToString(actualAction))
         .that(actualAction)
@@ -61,40 +68,28 @@ public class DragEventSubject extends Subject<DragEventSubject, DragEvent> {
     return this;
   }
 
-  public DragEventSubject hasLocalState(Object localState) {
-    assertThat(actual().getLocalState())
-        .named("local state")
-        .isEqualTo(localState);
+  public DragEventSubject hasLocalState(@Nullable Object localState) {
+    check("getLocalState()").that(actual.getLocalState()).isEqualTo(localState);
     return this;
   }
 
   public DragEventSubject hasSuccessfulResult() {
-    assertThat(actual().getResult())
-        .named("has successful result")
-        .isTrue();
+    check("getResult()").that(actual.getResult()).isTrue();
     return this;
   }
 
   public DragEventSubject hasUnsuccessfulResult() {
-    assertThat(actual().getResult())
-        .named("has successful result")
-        .isFalse();
+    check("getResult()").that(actual.getResult()).isFalse();
     return this;
   }
 
   public DragEventSubject hasX(float x, float tolerance) {
-    assertThat(actual().getX())
-        .named("X")
-        .isWithin(tolerance)
-        .of(x);
+    check("getX()").that(actual.getX()).isWithin(tolerance).of(x);
     return this;
   }
 
   public DragEventSubject hasY(float y, float tolerance) {
-    assertThat(actual().getY())
-        .named("Y")
-        .isWithin(tolerance)
-        .of(y);
+    check("getY()").that(actual.getY()).isWithin(tolerance).of(y);
     return this;
   }
 }

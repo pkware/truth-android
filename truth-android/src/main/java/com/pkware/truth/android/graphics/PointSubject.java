@@ -21,27 +21,29 @@ import android.graphics.Point;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Point} subjects.
  */
-public class PointSubject extends Subject<PointSubject, Point> {
-  public PointSubject(FailureMetadata failureMetadata, Point subject) {
-    super(failureMetadata, subject);
+public class PointSubject extends Subject {
+
+  @Nullable
+  private final Point actual;
+
+  public PointSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Point actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public PointSubject hasX(int x) {
-    assertThat(actual().x)
-        .named("X")
-        .isEqualTo(x);
+    check("x").that(actual.x).isEqualTo(x);
     return this;
   }
 
   public PointSubject hasY(int y) {
-    assertThat(actual().y)
-        .named("Y")
-        .isEqualTo(y);
+    check("y").that(actual.y).isEqualTo(y);
     return this;
   }
 }

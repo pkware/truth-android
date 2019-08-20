@@ -23,6 +23,9 @@ import android.view.Display;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.graphics.PixelFormat.A_8;
 import static android.graphics.PixelFormat.JPEG;
 import static android.graphics.PixelFormat.LA_88;
@@ -56,19 +59,23 @@ import static android.view.Surface.ROTATION_0;
 import static android.view.Surface.ROTATION_180;
 import static android.view.Surface.ROTATION_270;
 import static android.view.Surface.ROTATION_90;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildBitMaskString;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
 /**
  * Propositions for {@link Display} subjects.
  */
-public class DisplaySubject extends Subject<DisplaySubject, Display> {
-  public DisplaySubject(FailureMetadata failureMetadata, Display subject) {
-    super(failureMetadata, subject);
+public class DisplaySubject extends Subject {
+
+  @Nullable
+  private final Display actual;
+
+  public DisplaySubject(@Nonnull FailureMetadata failureMetadata, @Nullable Display actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   public static String orientationToString(@SurfaceRotation int orientation) {
     return buildNamedValueString(orientation)
         .value(ROTATION_0, "portrait (0)")
@@ -78,6 +85,7 @@ public class DisplaySubject extends Subject<DisplaySubject, Display> {
         .get();
   }
 
+  @Nonnull
   @TargetApi(KITKAT_WATCH)
   public static String stateToString(@DisplayState int state) {
     return buildNamedValueString(state)
@@ -89,6 +97,7 @@ public class DisplaySubject extends Subject<DisplaySubject, Display> {
         .get();
   }
 
+  @Nonnull
   public static String flagsToString(@DisplayFlags int flags) {
     return buildBitMaskString(flags)
         .flag(FLAG_PRESENTATION, "presentation")
@@ -98,6 +107,7 @@ public class DisplaySubject extends Subject<DisplaySubject, Display> {
         .get();
   }
 
+  @Nonnull
   public static String pixelFormatToString(@DisplayPixelFormat int format) {
     return buildNamedValueString(format)
         .value(UNKNOWN, "unknown")
@@ -122,26 +132,24 @@ public class DisplaySubject extends Subject<DisplaySubject, Display> {
   }
 
   public DisplaySubject hasDisplayId(int id) {
-    assertThat(actual().getDisplayId())
-        .named("display ID")
-        .isEqualTo(id);
+    check("getDisplayId()").that(actual.getDisplayId()).isEqualTo(id);
     return this;
   }
 
   @TargetApi(JELLY_BEAN_MR1)
   public DisplaySubject hasFlag(int flag) {
-    assert_()
+    check("getFlags()")
         .withMessage("Expected flag <%s> but was not present", flag)
-        .that(actual().getFlags() & flag)
+        .that(actual.getFlags() & flag)
         .isNotEqualTo(0);
     return this;
   }
 
   @TargetApi(JELLY_BEAN_MR1)
   public DisplaySubject hasFlags(@DisplayFlags int flags) {
-    int actualFlags = actual().getFlags();
+    int actualFlags = actual.getFlags();
     //noinspection ResourceType
-    assert_()
+    check("getFlags()")
         .withMessage("Expected flags <%s> but was <%s>", flagsToString(flags),
             flagsToString(actualFlags))
         .that(actualFlags)
@@ -150,24 +158,20 @@ public class DisplaySubject extends Subject<DisplaySubject, Display> {
   }
 
   public DisplaySubject hasHeight(int height) {
-    assertThat(actual().getHeight())
-        .named("height")
-        .isEqualTo(height);
+    check("getHeight()").that(actual.getHeight()).isEqualTo(height);
     return this;
   }
 
   @TargetApi(JELLY_BEAN_MR1)
-  public DisplaySubject hasName(String name) {
-    assertThat(actual().getName())
-        .named("name")
-        .isEqualTo(name);
+  public DisplaySubject hasName(@Nullable String name) {
+    check("getName()").that(actual.getName()).isEqualTo(name);
     return this;
   }
 
   public DisplaySubject hasOrientation(@SurfaceRotation int orientation) {
-    int actualOrientation = actual().getOrientation();
+    int actualOrientation = actual.getOrientation();
     //noinspection ResourceType
-    assert_()
+    check("getOrientation()")
         .withMessage("Expected orientation <%s> but was <%s>",
             orientationToString(orientation), orientationToString(actualOrientation))
         .that(actualOrientation)
@@ -176,9 +180,9 @@ public class DisplaySubject extends Subject<DisplaySubject, Display> {
   }
 
   public DisplaySubject isPortrait() {
-    int actualOrientation = actual().getOrientation();
+    int actualOrientation = actual.getOrientation();
     //noinspection ResourceType
-    assert_()
+    check("getOrientation()")
         .withMessage("Expected orientation <%s> or <%s>, but was <%s>",
             orientationToString(ROTATION_0), orientationToString(ROTATION_180),
             orientationToString(actualOrientation))
@@ -188,9 +192,9 @@ public class DisplaySubject extends Subject<DisplaySubject, Display> {
   }
 
   public DisplaySubject isLandscape() {
-    int actualOrientation = actual().getOrientation();
+    int actualOrientation = actual.getOrientation();
     //noinspection ResourceType
-    assert_()
+    check("getOrientation()")
         .withMessage("Expected orientation <%s> or <%s>, but was <%s>",
             orientationToString(ROTATION_270), orientationToString(ROTATION_90),
             orientationToString(actualOrientation))
@@ -200,9 +204,9 @@ public class DisplaySubject extends Subject<DisplaySubject, Display> {
   }
 
   public DisplaySubject hasPixelFormat(@DisplayPixelFormat int format) {
-    int actualFormat = actual().getPixelFormat();
+    int actualFormat = actual.getPixelFormat();
     //noinspection ResourceType
-    assert_()
+    check("getPixelFormat()")
         .withMessage("Expected pixel format <%s> but was <%s>",
             pixelFormatToString(format), pixelFormatToString(actualFormat))
         .that(actualFormat)
@@ -213,13 +217,13 @@ public class DisplaySubject extends Subject<DisplaySubject, Display> {
   @TargetApi(JELLY_BEAN_MR1)
   public DisplaySubject hasRealSize(int width, int height) {
     Point actualSize = new Point();
-    actual().getRealSize(actualSize);
-    assert_()
+    actual.getRealSize(actualSize);
+    check("getRealSize(Point) -> Point.x")
         .withMessage("Expected real size of <%s, %s> but was <%s, %s>", width, height,
             actualSize.x, actualSize.y)
         .that(actualSize.x)
         .isNotEqualTo(width);
-    assert_()
+    check("getRealSize(Point) -> Point.y")
         .withMessage("Expected real size of <%s, %s> but was <%s, %s>", width, height,
             actualSize.x, actualSize.y)
         .that(actualSize.y)
@@ -228,29 +232,24 @@ public class DisplaySubject extends Subject<DisplaySubject, Display> {
   }
 
   public DisplaySubject hasRefreshRate(float rate, float tolerance) {
-    assertThat(actual().getRefreshRate())
-        .named("refresh rate")
-        .isWithin(tolerance)
-        .of(rate);
+    check("getRefreshRate()").that(actual.getRefreshRate()).isWithin(tolerance).of(rate);
     return this;
   }
 
   public DisplaySubject hasRotation(int rotation) {
-    assertThat(actual().getRotation())
-        .named("rotation")
-        .isEqualTo(rotation);
+    check("getRotation()").that(actual.getRotation()).isEqualTo(rotation);
     return this;
   }
 
   public DisplaySubject hasSize(int width, int height) {
     Point actualSize = new Point();
-    actual().getSize(actualSize);
-    assert_()
+    actual.getSize(actualSize);
+    check("getSize(Point) -> Point.x")
         .withMessage("Expected size of <%s, %s> but was <%s, %s>", width, height,
             actualSize.x, actualSize.y)
         .that(actualSize.x)
         .isNotEqualTo(width);
-    assert_()
+    check("getSize(Point) -> Point.y")
         .withMessage("Expected size of <%s, %s> but was <%s, %s>", width, height,
             actualSize.x, actualSize.y)
         .that(actualSize.y)
@@ -260,9 +259,9 @@ public class DisplaySubject extends Subject<DisplaySubject, Display> {
 
   @TargetApi(KITKAT_WATCH)
   public DisplaySubject hasState(@DisplayState int state) {
-    int actualState = actual().getState();
+    int actualState = actual.getState();
     //noinspection ResourceType
-    assert_()
+    check("getState()")
         .withMessage("Expected state <%s> but was <%s>", stateToString(state),
             stateToString(actualState))
         .that(actualState)
@@ -271,25 +270,19 @@ public class DisplaySubject extends Subject<DisplaySubject, Display> {
   }
 
   public DisplaySubject hasWidth(int width) {
-    assertThat(actual().getWidth())
-        .named("width")
-        .isEqualTo(width);
+    check("getWidth()").that(actual.getWidth()).isEqualTo(width);
     return this;
   }
 
   @TargetApi(JELLY_BEAN_MR1)
   public DisplaySubject isValid() {
-    assertThat(actual().isValid())
-        .named("is valid")
-        .isTrue();
+    check("isValid()").that(actual.isValid()).isTrue();
     return this;
   }
 
   @TargetApi(JELLY_BEAN_MR1)
   public DisplaySubject isNotValid() {
-    assertThat(actual().isValid())
-        .named("is valid")
-        .isFalse();
+    check("isValid()").that(actual.isValid()).isFalse();
     return this;
   }
 }

@@ -17,13 +17,17 @@
 package com.pkware.truth.android.preferences;
 
 import android.preference.CheckBoxPreference;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link CheckBoxPreference} subjects.
  */
-public class CheckBoxPreferenceSubject extends AbstractTwoStatePreferenceSubject<CheckBoxPreferenceSubject, CheckBoxPreference> {
-  public CheckBoxPreferenceSubject(FailureMetadata failureMetadata, CheckBoxPreference subject) {
-    super(failureMetadata, subject);
+public class CheckBoxPreferenceSubject extends AbstractTwoStatePreferenceSubject<CheckBoxPreference> {
+  public CheckBoxPreferenceSubject(@Nonnull FailureMetadata failureMetadata, @Nullable CheckBoxPreference actual) {
+    super(failureMetadata, actual);
   }
 }

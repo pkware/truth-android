@@ -21,22 +21,29 @@ import android.widget.LinearLayout;
 import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.widget.LinearLayout.HORIZONTAL;
 import static android.widget.LinearLayout.SHOW_DIVIDER_BEGINNING;
 import static android.widget.LinearLayout.SHOW_DIVIDER_END;
 import static android.widget.LinearLayout.SHOW_DIVIDER_MIDDLE;
 import static android.widget.LinearLayout.VERTICAL;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildBitMaskString;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
-public abstract class AbstractLinearLayoutSubject<S extends AbstractLinearLayoutSubject<S, T>, T extends LinearLayout>
-    extends AbstractViewGroupSubject<S, T> {
-  protected AbstractLinearLayoutSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractLinearLayoutSubject<T extends LinearLayout>
+    extends AbstractViewGroupSubject<T> {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractLinearLayoutSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   public static String showDividerToString(@LinearLayoutShowDividers int dividers) {
     return buildBitMaskString(dividers)
         .flag(SHOW_DIVIDER_BEGINNING, "beginning")
@@ -45,6 +52,7 @@ public abstract class AbstractLinearLayoutSubject<S extends AbstractLinearLayout
         .get();
   }
 
+  @Nonnull
   public static String orientationToString(@LinearLayoutOrientation int orientation) {
     return buildNamedValueString(orientation)
         .value(HORIZONTAL, "horizontal")
@@ -52,84 +60,55 @@ public abstract class AbstractLinearLayoutSubject<S extends AbstractLinearLayout
         .get();
   }
 
-  public S hasDividerPadding(int padding) {
-    assertThat(actual().getDividerPadding())
-        .named("divider padding")
-        .isEqualTo(padding);
-    //noinspection unchecked
-    return (S) this;
+  public void hasDividerPadding(int padding) {
+    check("getDividerPadding()").that(actual.getDividerPadding()).isEqualTo(padding);
   }
 
-  public S hasOrientation(@LinearLayoutOrientation int orientation) {
-    int actualOrientation = actual().getOrientation();
+  public void hasOrientation(@LinearLayoutOrientation int orientation) {
+    int actualOrientation = actual.getOrientation();
     //noinspection ResourceType
-    assert_()
+    check("getOrientation()")
         .withMessage("Expected orientation <%s> but was <%s>.",
             orientationToString(orientation), orientationToString(actualOrientation))
         .that(actualOrientation)
         .isEqualTo(orientation);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S isVertical() {
-    return hasOrientation(VERTICAL);
+  public void isVertical() {
+    hasOrientation(VERTICAL);
   }
 
-  public S isHorizontal() {
-    return hasOrientation(HORIZONTAL);
+  public void isHorizontal() {
+    hasOrientation(HORIZONTAL);
   }
 
-  public S hasShowDividers(@LinearLayoutShowDividers int dividers) {
-    int actualDividers = actual().getShowDividers();
+  public void hasShowDividers(@LinearLayoutShowDividers int dividers) {
+    int actualDividers = actual.getShowDividers();
     //noinspection ResourceType
-    assert_()
+    check("getShowDividers()")
         .withMessage("Expected showing dividers <%s> but was <%s>.",
             showDividerToString(dividers), showDividerToString(actualDividers))
         .that(actualDividers)
         .isEqualTo(dividers);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S hasWeightSum(float sum, float tolerance) {
-    assertThat(actual().getWeightSum())
-        .named("weight sum")
-        .isWithin(tolerance)
-        .of(sum);
-    //noinspection unchecked
-    return (S) this;
+  public void hasWeightSum(float sum, float tolerance) {
+    check("getWeightSum()").that(actual.getWeightSum()).isWithin(tolerance).of(sum);
   }
 
-  public S isBaselineAligned() {
-    assertThat(actual().isBaselineAligned())
-        .named("is baseline aligned")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isBaselineAligned() {
+    check("isBaselineAligned()").that(actual.isBaselineAligned()).isTrue();
   }
 
-  public S isNotBaselineAligned() {
-    assertThat(actual().isBaselineAligned())
-        .named("is baseline aligned")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotBaselineAligned() {
+    check("isBaselineAligned()").that(actual.isBaselineAligned()).isFalse();
   }
 
-  public S isMeasuringWithLargestChild() {
-    assertThat(actual().isMeasureWithLargestChildEnabled())
-        .named("is measuring with largest child")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isMeasuringWithLargestChild() {
+    check("isMeasureWithLargestChildEnabled()").that(actual.isMeasureWithLargestChildEnabled()).isTrue();
   }
 
-  public S isNotMeasuringWithLargestChild() {
-    assertThat(actual().isMeasureWithLargestChildEnabled())
-        .named("is measuring with largest child")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotMeasuringWithLargestChild() {
+    check("isMeasureWithLargestChildEnabled()").that(actual.isMeasureWithLargestChildEnabled()).isFalse();
   }
 }

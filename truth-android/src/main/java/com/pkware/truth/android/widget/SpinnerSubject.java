@@ -19,69 +19,65 @@ package com.pkware.truth.android.widget;
 import android.annotation.TargetApi;
 import android.graphics.drawable.Drawable;
 import android.widget.Spinner;
+
 import androidx.annotation.StringRes;
 
 import com.google.common.truth.FailureMetadata;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link Spinner} subjects.
  */
-public class SpinnerSubject extends AbstractAbsSpinnerSubject<SpinnerSubject, Spinner> {
-  public SpinnerSubject(FailureMetadata failureMetadata, Spinner subject) {
-    super(failureMetadata, subject);
+public class SpinnerSubject extends AbstractAbsSpinnerSubject<Spinner> {
+
+  @Nullable
+  private final Spinner actual;
+
+  public SpinnerSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Spinner actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   @TargetApi(JELLY_BEAN)
   public SpinnerSubject hasDropDownHorizontalOffset(int offset) {
-    assertThat(actual().getDropDownHorizontalOffset())
-        .named("rop-down horizontal offset")
-        .isEqualTo(offset);
+    check("getDropDownHorizontalOffset()").that(actual.getDropDownHorizontalOffset()).isEqualTo(offset);
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public SpinnerSubject hasDropDownVerticalOffset(int offset) {
-    assertThat(actual().getDropDownVerticalOffset())
-        .named("drop-down vertical offset")
-        .isEqualTo(offset);
+    check("getDropDownVerticalOffset()").that(actual.getDropDownVerticalOffset()).isEqualTo(offset);
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public SpinnerSubject hasDropDownWidth(int width) {
-    assertThat(actual().getDropDownWidth())
-        .named("drop-down width")
-        .isEqualTo(width);
+    check("getDropDownWidth()").that(actual.getDropDownWidth()).isEqualTo(width);
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public SpinnerSubject hasGravity(int gravity) {
-    assertThat(actual().getGravity())
-        .named("gravity")
-        .isEqualTo(gravity);
+    check("getGravity()").that(actual.getGravity()).isEqualTo(gravity);
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public SpinnerSubject hasPopupBackground(Drawable background) {
-    assertThat(actual().getPopupBackground())
-        .named("popup background")
-        .isSameAs(background);
+  public SpinnerSubject hasPopupBackground(@Nullable Drawable background) {
+    check("getPopupBackground()").that(actual.getPopupBackground()).isSameInstanceAs(background);
     return this;
   }
 
-  public SpinnerSubject hasPrompt(String text) {
-    assertThat(actual().getPrompt().toString())
-        .named("prompt")
-        .isEqualTo(text);
+  public SpinnerSubject hasPrompt(@Nullable String text) {
+    check("getPrompt()").that(actual.getPrompt().toString()).isEqualTo(text);
     return this;
   }
 
   public SpinnerSubject hasPrompt(@StringRes int resId) {
-    return hasPrompt(actual().getContext().getString(resId));
+    return hasPrompt(actual.getContext().getString(resId));
   }
 }

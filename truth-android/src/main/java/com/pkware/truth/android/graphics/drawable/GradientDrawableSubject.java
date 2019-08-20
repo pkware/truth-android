@@ -18,24 +18,30 @@ package com.pkware.truth.android.graphics.drawable;
 
 import android.annotation.TargetApi;
 import android.graphics.drawable.GradientDrawable;
+
 import com.google.common.truth.FailureMetadata;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link GradientDrawable} subjects.
  */
-public class GradientDrawableSubject extends AbstractDrawableSubject<GradientDrawableSubject, GradientDrawable> {
-  public GradientDrawableSubject(FailureMetadata failureMetadata, GradientDrawable subject) {
-    super(failureMetadata, subject);
+public class GradientDrawableSubject extends AbstractDrawableSubject<GradientDrawable> {
+
+  @Nullable
+  private GradientDrawable actual;
+
+  public GradientDrawableSubject(@Nonnull FailureMetadata failureMetadata, @Nullable GradientDrawable actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   @TargetApi(JELLY_BEAN)
-  public GradientDrawableSubject hasOrientation(GradientDrawable.Orientation orientation) {
-    assertThat(actual().getOrientation())
-        .named("orientation")
-        .isEqualTo(orientation);
+  public GradientDrawableSubject hasOrientation(@Nullable GradientDrawable.Orientation orientation) {
+    check("getOrientation()").that(actual.getOrientation()).isEqualTo(orientation);
     return this;
   }
 }

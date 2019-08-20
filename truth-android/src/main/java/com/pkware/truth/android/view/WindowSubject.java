@@ -22,6 +22,9 @@ import android.view.Window;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.view.Window.FEATURE_ACTION_BAR;
 import static android.view.Window.FEATURE_ACTION_BAR_OVERLAY;
 import static android.view.Window.FEATURE_ACTION_MODE_OVERLAY;
@@ -34,18 +37,22 @@ import static android.view.Window.FEATURE_OPTIONS_PANEL;
 import static android.view.Window.FEATURE_PROGRESS;
 import static android.view.Window.FEATURE_RIGHT_ICON;
 import static android.view.Window.FEATURE_SWIPE_TO_DISMISS;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
 /**
  * Propositions for {@link Window} subjects.
  */
-public class WindowSubject extends Subject<WindowSubject, Window> {
-  public WindowSubject(FailureMetadata failureMetadata, Window subject) {
-    super(failureMetadata, subject);
+public class WindowSubject extends Subject {
+
+  @Nullable
+  private final Window actual;
+
+  public WindowSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Window actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   public static String featureToString(@WindowFeature int feature) {
     return buildNamedValueString(feature)
         .value(FEATURE_ACTION_BAR, "actionBar")
@@ -63,62 +70,48 @@ public class WindowSubject extends Subject<WindowSubject, Window> {
         .get();
   }
 
-  public WindowSubject hasCurrentFocus(View view) {
-    assertThat(actual().getCurrentFocus())
-        .named("current focused view")
-        .isSameAs(view);
+  public WindowSubject hasCurrentFocus(@Nullable View view) {
+    check("getCurrentFocus()").that(actual.getCurrentFocus()).isSameInstanceAs(view);
     return this;
   }
 
   public WindowSubject hasChildren() {
-    assertThat(actual().hasChildren())
-        .named("has children")
-        .isTrue();
+    check("hasChildren()").that(actual.hasChildren()).isTrue();
     return this;
   }
 
   public WindowSubject hasNoChildren() {
-    assertThat(actual().hasChildren())
-        .named("has children")
-        .isFalse();
+    check("hasChildren()").that(actual.hasChildren()).isFalse();
     return this;
   }
 
   public WindowSubject hasFeature(@WindowFeature int feature) {
     //noinspection ResourceType
-    assert_()
+    check("hasFeature(feature)")
         .withMessage("Expected feature <%s> but was not present.",
             featureToString(feature))
-        .that(actual().hasFeature(feature))
+        .that(actual.hasFeature(feature))
         .isTrue();
     return this;
   }
 
   public WindowSubject isActive() {
-    assertThat(actual().isActive())
-        .named("is active")
-        .isTrue();
+    check("isActive()").that(actual.isActive()).isTrue();
     return this;
   }
 
   public WindowSubject isNotActive() {
-    assertThat(actual().isActive())
-        .named("is active")
-        .isFalse();
+    check("isActive()").that(actual.isActive()).isFalse();
     return this;
   }
 
   public WindowSubject isFloating() {
-    assertThat(actual().isFloating())
-        .named("is floating")
-        .isTrue();
+    check("isFloating()").that(actual.isFloating()).isTrue();
     return this;
   }
 
   public WindowSubject isNotFloating() {
-    assertThat(actual().isFloating())
-        .named("is floating")
-        .isFalse();
+    check("isFloating()").that(actual.isFloating()).isFalse();
     return this;
   }
 }

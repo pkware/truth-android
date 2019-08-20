@@ -21,27 +21,29 @@ import android.graphics.Picture;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Picture} subjects.
  */
-public class PictureSubject extends Subject<PictureSubject, Picture> {
-  public PictureSubject(FailureMetadata failureMetadata, Picture subject) {
-    super(failureMetadata, subject);
+public class PictureSubject extends Subject {
+
+  @Nullable
+  private final Picture actual;
+
+  public PictureSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Picture actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public PictureSubject hasHeight(int height) {
-    assertThat(actual().getHeight())
-        .named("height")
-        .isEqualTo(height);
+    check("getHeight()").that(actual.getHeight()).isEqualTo(height);
     return this;
   }
 
   public PictureSubject hasWidth(int width) {
-    assertThat(actual().getWidth())
-        .named("width")
-        .isEqualTo(width);
+    check("getWidth()").that(actual.getWidth()).isEqualTo(width);
     return this;
   }
 }

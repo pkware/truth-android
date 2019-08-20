@@ -22,26 +22,29 @@ import android.text.BidiFormatter;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
-import static com.google.common.truth.Truth.assertThat;
 
 @TargetApi(JELLY_BEAN_MR2)
-public class BidiFormatterSubject extends Subject<BidiFormatterSubject, BidiFormatter> {
-  public BidiFormatterSubject(FailureMetadata failureMetadata, BidiFormatter subject) {
-    super(failureMetadata, subject);
+public class BidiFormatterSubject extends Subject {
+
+  @Nullable
+  private final BidiFormatter actual;
+
+  public BidiFormatterSubject(@Nonnull FailureMetadata failureMetadata, @Nullable BidiFormatter actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public BidiFormatterSubject hasRtlContext() {
-    assertThat(actual().isRtlContext())
-        .named("is RTL context")
-        .isTrue();
+    check("isRtlContext()").that(actual.isRtlContext()).isTrue();
     return this;
   }
 
   public BidiFormatterSubject doesNotHaveRtlContext() {
-    assertThat(actual().isRtlContext())
-        .named("is RTL context")
-        .isFalse();
+    check("isRtlContext()").that(actual.isRtlContext()).isFalse();
     return this;
   }
 }

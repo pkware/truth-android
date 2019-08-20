@@ -21,27 +21,29 @@ import android.util.Pair;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Pair} subjects.
  */
-public class PairSubject<F, S> extends Subject<PairSubject<F, S>, Pair<F, S>> {
-  public PairSubject(FailureMetadata failureMetadata, Pair<F, S> subject) {
-    super(failureMetadata, subject);
+public class PairSubject<F, S> extends Subject {
+
+  @Nullable
+  private final Pair<F, S> actual;
+
+  public PairSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Pair<F, S> actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public PairSubject<F, S> hasFirst(F first) {
-    assertThat(actual().first)
-        .named("first value")
-        .isEqualTo(first);
+  public PairSubject<F, S> hasFirst(@Nullable F first) {
+    check("first").that(actual.first).isEqualTo(first);
     return this;
   }
 
-  public PairSubject<F, S> hasSecond(S second) {
-    assertThat(actual().second)
-        .named("second value")
-        .isEqualTo(second);
+  public PairSubject<F, S> hasSecond(@Nullable S second) {
+    check("second").that(actual.second).isEqualTo(second);
     return this;
   }
 }

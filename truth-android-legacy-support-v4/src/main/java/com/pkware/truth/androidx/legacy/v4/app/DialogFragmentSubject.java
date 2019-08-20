@@ -17,29 +17,33 @@
 package com.pkware.truth.androidx.legacy.v4.app;
 
 import androidx.fragment.app.DialogFragment;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link DialogFragment} subjects.
  */
 public class DialogFragmentSubject
-    extends AbstractFragmentSubject<DialogFragmentSubject, DialogFragment> {
-  public DialogFragmentSubject(FailureMetadata failureMetadata, DialogFragment subject) {
-    super(failureMetadata, subject);
+    extends AbstractFragmentSubject<DialogFragment> {
+
+  @Nullable
+  private final DialogFragment actual;
+
+  public DialogFragmentSubject(@Nonnull FailureMetadata failureMetadata, @Nullable DialogFragment actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public DialogFragmentSubject isCancelable() {
-    assertThat(actual().isCancelable())
-        .named("is cancelable")
-        .isTrue();
+    check("isCancelable()").that(actual.isCancelable()).isTrue();
     return this;
   }
 
   public DialogFragmentSubject isNotCancelable() {
-    assertThat(actual().isCancelable())
-        .isFalse();
+    check("isCancelable()").that(actual.isCancelable()).isFalse();
     return this;
   }
 }

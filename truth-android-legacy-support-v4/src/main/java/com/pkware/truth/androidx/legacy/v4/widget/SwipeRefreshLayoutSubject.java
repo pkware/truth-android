@@ -17,31 +17,33 @@
 package com.pkware.truth.androidx.legacy.v4.widget;
 
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link SwipeRefreshLayout} subjects.
  */
-public class SwipeRefreshLayoutSubject
-    extends AbstractViewGroupSubject<SwipeRefreshLayoutSubject, SwipeRefreshLayout> {
-  public SwipeRefreshLayoutSubject(FailureMetadata failureMetadata, SwipeRefreshLayout subject) {
-    super(failureMetadata, subject);
+public class SwipeRefreshLayoutSubject extends AbstractViewGroupSubject<SwipeRefreshLayout> {
+
+  @Nullable
+  private final SwipeRefreshLayout actual;
+
+  public SwipeRefreshLayoutSubject(@Nonnull FailureMetadata failureMetadata, @Nullable SwipeRefreshLayout actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public SwipeRefreshLayoutSubject isRefreshing() {
-    assertThat(actual().isRefreshing())
-        .named("is refreshing")
-        .isTrue();
+    check("isRefreshing()").that(actual.isRefreshing()).isTrue();
     return this;
   }
 
   public SwipeRefreshLayoutSubject isNotRefreshing() {
-    assertThat(actual().isRefreshing())
-        .named("is refreshing")
-        .isFalse();
+    check("isRefreshing()").that(actual.isRefreshing()).isFalse();
     return this;
   }
 }

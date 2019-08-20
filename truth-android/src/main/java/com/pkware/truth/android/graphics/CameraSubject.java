@@ -22,41 +22,39 @@ import android.graphics.Camera;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link Camera} subjects.
  */
-public class CameraSubject extends Subject<CameraSubject, Camera> {
-  public CameraSubject(FailureMetadata failureMetadata, Camera subject) {
-    super(failureMetadata, subject);
+public class CameraSubject extends Subject {
+
+  @Nullable
+  private final Camera actual;
+
+  public CameraSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Camera actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   @TargetApi(JELLY_BEAN)
   public CameraSubject hasLocationX(float location, float tolerance) {
-    assertThat(actual().getLocationX())
-        .named("X location")
-        .isWithin(tolerance)
-        .of(location);
+    check("getLocationX()").that(actual.getLocationX()).isWithin(tolerance).of(location);
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public CameraSubject hasLocationY(float location, float tolerance) {
-    assertThat(actual().getLocationY())
-        .named("Y location")
-        .isWithin(tolerance)
-        .of(location);
+    check("getLocationY()").that(actual.getLocationY()).isWithin(tolerance).of(location);
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public CameraSubject hasLocationZ(float location, float tolerance) {
-    assertThat(actual().getLocationZ())
-        .named("Z location")
-        .isWithin(tolerance)
-        .of(location);
+    check("getLocationZ()").that(actual.getLocationZ()).isWithin(tolerance).of(location);
     return this;
   }
 }

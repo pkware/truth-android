@@ -17,15 +17,19 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.FrameLayout;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link FrameLayout} subjects.
  * <p/>
  * This class is final. To extend use {@link AbstractFrameLayoutSubject}.
  */
-public final class FrameLayoutSubject extends AbstractFrameLayoutSubject<FrameLayoutSubject, FrameLayout> {
-  public FrameLayoutSubject(FailureMetadata failureMetadata, FrameLayout subject) {
-    super(failureMetadata, subject);
+public final class FrameLayoutSubject extends AbstractFrameLayoutSubject<FrameLayout> {
+  public FrameLayoutSubject(@Nonnull FailureMetadata failureMetadata, @Nullable FrameLayout actual) {
+    super(failureMetadata, actual);
   }
 }

@@ -20,128 +20,106 @@ import android.annotation.TargetApi;
 import android.graphics.drawable.Drawable;
 import android.widget.AutoCompleteTextView;
 import android.widget.ListAdapter;
+
 import androidx.annotation.StringRes;
 
 import com.google.common.truth.FailureMetadata;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link AutoCompleteTextView} subjects.
  */
-public class AutoCompleteTextViewSubject extends AbstractTextViewSubject<AutoCompleteTextViewSubject, AutoCompleteTextView> {
-  public AutoCompleteTextViewSubject(FailureMetadata failureMetadata, AutoCompleteTextView subject) {
-    super(failureMetadata, subject);
+public class AutoCompleteTextViewSubject extends AbstractTextViewSubject<AutoCompleteTextView> {
+
+  @Nullable
+  private final AutoCompleteTextView actual;
+
+  public AutoCompleteTextViewSubject(@Nonnull FailureMetadata failureMetadata, @Nullable AutoCompleteTextView actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public AutoCompleteTextViewSubject hasEnoughToFilter() {
-    assertThat(actual().enoughToFilter())
-        .named("has enough to filter")
-        .isTrue();
+    check("enoughToFilter()").that(actual.enoughToFilter()).isTrue();
     return this;
   }
 
-  public AutoCompleteTextViewSubject hasAdapter(ListAdapter adapter) {
-    assertThat(actual().getAdapter())
-        .named("adapter")
-        .isSameAs(adapter);
+  public AutoCompleteTextViewSubject hasAdapter(@Nullable ListAdapter adapter) {
+    check("getAdapter()").that(actual.getAdapter()).isSameInstanceAs(adapter);
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public AutoCompleteTextViewSubject hasCompletionHint(String hint) {
-    assertThat(actual().getCompletionHint().toString())
-        .named("completion hint")
-        .isEqualTo(hint);
+  public AutoCompleteTextViewSubject hasCompletionHint(@Nullable String hint) {
+    check("getCompletionHint()").that(actual.getCompletionHint().toString()).isEqualTo(hint);
     return this;
   }
 
   public AutoCompleteTextViewSubject hasCompletionHint(@StringRes int resId) {
-    return hasCompletionHint(actual().getContext().getString(resId));
+    return hasCompletionHint(actual.getContext().getString(resId));
   }
 
   public AutoCompleteTextViewSubject hasDropDownAnchor(int id) {
-    assertThat(actual().getDropDownAnchor())
-        .named("drop-down anchor ID")
-        .isEqualTo(id);
+    check("getDropDownAnchor()").that(actual.getDropDownAnchor()).isEqualTo(id);
     return this;
   }
 
-  public AutoCompleteTextViewSubject hasDropDownBackground(Drawable background) {
-    assertThat(actual().getDropDownBackground())
-        .named("drop-down background")
-        .isSameAs(background);
+  public AutoCompleteTextViewSubject hasDropDownBackground(@Nullable Drawable background) {
+    check("getDropDownBackground()").that(actual.getDropDownBackground()).isSameInstanceAs(background);
     return this;
   }
 
   public AutoCompleteTextViewSubject hasDropDownHeight(int height) {
-    assertThat(actual().getDropDownHeight())
-        .named("drop-down height")
-        .isEqualTo(height);
+    check("getDropDownHeight()").that(actual.getDropDownHeight()).isEqualTo(height);
     return this;
   }
 
   public AutoCompleteTextViewSubject hasDropDownHorizontalOffset(int offset) {
-    assertThat(actual().getDropDownHorizontalOffset())
-        .named("drop-down horizontal offset")
-        .isEqualTo(offset);
+    check("getDropDownHorizontalOffset()").that(actual.getDropDownHorizontalOffset()).isEqualTo(offset);
     return this;
   }
 
   public AutoCompleteTextViewSubject hasDropDownVerticalOffset(int offset) {
-    assertThat(actual().getDropDownVerticalOffset())
-        .named("drop-down vertical offset")
-        .isEqualTo(offset);
+    check("getDropDownVerticalOffset()").that(actual.getDropDownVerticalOffset()).isEqualTo(offset);
     return this;
   }
 
   public AutoCompleteTextViewSubject hasDropDownWidth(int width) {
-    assertThat(actual().getDropDownWidth())
-        .named("drop-down width")
-        .isEqualTo(width);
+    check("getDropDownWidth()").that(actual.getDropDownWidth()).isEqualTo(width);
     return this;
   }
 
   public AutoCompleteTextViewSubject hasListSelection(int position) {
-    assertThat(actual().getListSelection())
-        .named("list selection position")
-        .isEqualTo(position);
+    check("getListSelection()").that(actual.getListSelection()).isEqualTo(position);
     return this;
   }
 
   public AutoCompleteTextViewSubject hasThreshold(int threshold) {
-    assertThat(actual().getThreshold())
-        .named("threshold")
-        .isEqualTo(threshold);
+    check("getThreshold()").that(actual.getThreshold()).isEqualTo(threshold);
     return this;
   }
 
   public AutoCompleteTextViewSubject isPerformingCompletion() {
-    assertThat(actual().isPerformingCompletion())
-        .named("is performing completion")
-        .isTrue();
+    check("isPerformingCompletion()").that(actual.isPerformingCompletion()).isTrue();
     return this;
   }
 
   public AutoCompleteTextViewSubject isNotPerformingCompletion() {
-    assertThat(actual().isPerformingCompletion())
-        .named("is performing completion")
-        .isFalse();
+    check("isPerformingCompletion()").that(actual.isPerformingCompletion()).isFalse();
     return this;
   }
 
   public AutoCompleteTextViewSubject isShowingPopup() {
-    assertThat(actual().isPopupShowing())
-        .named("is showing popup")
-        .isTrue();
+    check("isPopupShowing()").that(actual.isPopupShowing()).isTrue();
     return this;
   }
 
   public AutoCompleteTextViewSubject isNotShowingPopup() {
-    assertThat(actual().isPopupShowing())
-        .named("is showing popup")
-        .isFalse();
+    check("isPopupShowing()").that(actual.isPopupShowing()).isFalse();
     return this;
   }
 }

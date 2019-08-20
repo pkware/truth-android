@@ -21,42 +21,39 @@ import androidx.mediarouter.media.MediaRouteDiscoveryRequest;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link MediaRouteDiscoveryRequest} subjects.
  */
-public class MediaRouteDiscoveryRequestSubject
-    extends Subject<MediaRouteDiscoveryRequestSubject, MediaRouteDiscoveryRequest> {
-  public MediaRouteDiscoveryRequestSubject(FailureMetadata failureMetadata, MediaRouteDiscoveryRequest subject) {
-    super(failureMetadata, subject);
+public class MediaRouteDiscoveryRequestSubject extends Subject {
+
+  @Nullable
+  private final MediaRouteDiscoveryRequest actual;
+
+  public MediaRouteDiscoveryRequestSubject(@Nonnull FailureMetadata failureMetadata, @Nullable MediaRouteDiscoveryRequest actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public MediaRouteDiscoveryRequestSubject isActiveScan() {
-    assertThat(actual().isActiveScan())
-        .named("is performing active scanning")
-        .isTrue();
+    check("isActiveScan()").that(actual.isActiveScan()).isTrue();
     return this;
   }
 
   public MediaRouteDiscoveryRequestSubject isNotActiveScan() {
-    assertThat(actual().isActiveScan())
-        .named("is not performing active scanning")
-        .isFalse();
+    check("isActiveScan()").that(actual.isActiveScan()).isFalse();
     return this;
   }
 
   public MediaRouteDiscoveryRequestSubject isValid() {
-    assertThat(actual().isValid())
-        .named("is valid")
-        .isTrue();
+    check("isValid()").that(actual.isValid()).isTrue();
     return this;
   }
 
   public MediaRouteDiscoveryRequestSubject isNotValid() {
-    assertThat(actual().isValid())
-        .named("is valid")
-        .isFalse();
+    check("isValid()").that(actual.isValid()).isFalse();
     return this;
   }
 }

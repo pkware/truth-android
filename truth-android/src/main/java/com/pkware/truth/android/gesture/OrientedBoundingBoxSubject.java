@@ -21,61 +21,49 @@ import android.gesture.OrientedBoundingBox;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link OrientedBoundingBox} subjects.
  */
-public class OrientedBoundingBoxSubject extends Subject<OrientedBoundingBoxSubject, OrientedBoundingBox> {
-  public OrientedBoundingBoxSubject(FailureMetadata failureMetadata, OrientedBoundingBox subject) {
-    super(failureMetadata, subject);
+public class OrientedBoundingBoxSubject extends Subject {
+
+  @Nullable
+  private final OrientedBoundingBox actual;
+
+  public OrientedBoundingBoxSubject(@Nonnull FailureMetadata failureMetadata, @Nullable OrientedBoundingBox actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public OrientedBoundingBoxSubject hasCenterX(float centerX, float tolerance) {
-    assertThat(actual().centerX)
-        .named("X center")
-        .isWithin(tolerance)
-        .of(centerX);
+    check("centerX").that(actual.centerX).isWithin(tolerance).of(centerX);
     return this;
   }
 
   public OrientedBoundingBoxSubject hasCenterY(float centerY, float tolerance) {
-    assertThat(actual().centerY)
-        .named("Y center")
-        .isWithin(tolerance)
-        .of(centerY);
+    check("centerY").that(actual.centerY).isWithin(tolerance).of(centerY);
     return this;
   }
 
   public OrientedBoundingBoxSubject hasHeight(float height, float tolerance) {
-    assertThat(actual().height)
-        .named("height")
-        .isWithin(tolerance)
-        .of(height);
+    check("height").that(actual.height).isWithin(tolerance).of(height);
     return this;
   }
 
   public OrientedBoundingBoxSubject hasOrientation(float orientation, float tolerance) {
-    assertThat(actual().orientation)
-        .named("orientation")
-        .isWithin(tolerance)
-        .of(orientation);
+    check("orientation").that(actual.orientation).isWithin(tolerance).of(orientation);
     return this;
   }
 
   public OrientedBoundingBoxSubject hasSquareness(float squareness, float tolerance) {
-    assertThat(actual().squareness)
-        .named("squareness")
-        .isWithin(tolerance)
-        .of(squareness);
+    check("squareness").that(actual.squareness).isWithin(tolerance).of(squareness);
     return this;
   }
 
   public OrientedBoundingBoxSubject hasWidth(float width, float tolerance) {
-    assertThat(actual().width)
-        .named("width")
-        .isWithin(tolerance)
-        .of(width);
+    check("width").that(actual.width).isWithin(tolerance).of(width);
     return this;
   }
 }

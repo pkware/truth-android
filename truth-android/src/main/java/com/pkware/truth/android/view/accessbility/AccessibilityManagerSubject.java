@@ -21,41 +21,39 @@ import android.view.accessibility.AccessibilityManager;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link AccessibilityManager} subjects.
  */
-public class AccessibilityManagerSubject extends Subject<AccessibilityManagerSubject, AccessibilityManager> {
-  public AccessibilityManagerSubject(FailureMetadata failureMetadata, AccessibilityManager subject) {
-    super(failureMetadata, subject);
+public class AccessibilityManagerSubject extends Subject {
+
+  @Nullable
+  private final AccessibilityManager actual;
+
+  public AccessibilityManagerSubject(@Nonnull FailureMetadata failureMetadata, @Nullable AccessibilityManager actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public AccessibilityManagerSubject isEnabled() {
-    assertThat(actual().isEnabled())
-        .named("is enabled")
-        .isTrue();
+    check("isEnabled()").that(actual.isEnabled()).isTrue();
     return this;
   }
 
   public AccessibilityManagerSubject isDisabled() {
-    assertThat(!actual().isEnabled())
-        .named("is disabled")
-        .isTrue();
+    check("isEnabled()").that(actual.isEnabled()).isFalse();
     return this;
   }
 
   public AccessibilityManagerSubject isTouchExplorationEnabled() {
-    assertThat(actual().isTouchExplorationEnabled())
-        .named("is touch exploration enabled")
-        .isTrue();
+    check("isTouchExplorationEnabled()").that(actual.isTouchExplorationEnabled()).isTrue();
     return this;
   }
 
   public AccessibilityManagerSubject isTouchExplorationDisabled() {
-    assertThat(actual().isTouchExplorationEnabled())
-        .named("is touch exploration enabled")
-        .isFalse();
+    check("isTouchExplorationEnabled()").that(actual.isTouchExplorationEnabled()).isFalse();
     return this;
   }
 }

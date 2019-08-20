@@ -23,118 +23,124 @@ import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
 import java.io.Serializable;
-import java.util.Locale;
 
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Bundle} subjects.
  */
-//TODO consider adding hasValue for array types
-public class BundleSubject extends Subject<BundleSubject, Bundle> {
-  public BundleSubject(FailureMetadata failureMetadata, Bundle subject) {
-    super(failureMetadata, subject);
+public class BundleSubject extends Subject {
+
+  @Nullable
+  private final Bundle actual;
+
+  public BundleSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Bundle actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public BundleSubject hasKey(String key) {
-    assert_()
+  public BundleSubject hasKey(@Nonnull String key) {
+    check("containsKey(key)")
         .withMessage("Expected to contain key <%s> but did not.", key)
-        .that(actual().containsKey(key))
+        .that(actual.containsKey(key))
         .isTrue();
     return this;
   }
 
-  public BundleSubject hasValue(String key, boolean value) {
+  public BundleSubject hasValue(@Nonnull String key, boolean value) {
     hasKey(key);
-    assertThat(actual().getBoolean(key))
-        .named(String.format(Locale.ENGLISH, "value for key <%s>", key))
+    check("getBoolean(key)")
+        .withMessage("value for key <%s>", key)
+        .that(actual.getBoolean(key))
         .isEqualTo(value);
     return this;
   }
 
-  public BundleSubject hasValue(String key, short value) {
+  public BundleSubject hasValue(@Nonnull String key, short value) {
     hasKey(key);
-    assertThat(actual().getShort(key))
-        .named(String.format(Locale.ENGLISH, "value for key <%s>", key))
+    check("getShort(key)")
+        .withMessage("value for key <%s>", key)
+        .that(actual.getShort(key))
         .isEqualTo(value);
     return this;
   }
 
-  public BundleSubject hasValue(String key, int value) {
+  public BundleSubject hasValue(@Nonnull String key, int value) {
     hasKey(key);
-    assertThat(actual().getInt(key))
-        .named(String.format(Locale.ENGLISH, "value for key <%s>", key))
+    check("getInt(key)")
+        .withMessage("value for key <%s>", key)
+        .that(actual.getInt(key))
         .isEqualTo(value);
     return this;
   }
 
-  public BundleSubject hasValue(String key, long value) {
+  public BundleSubject hasValue(@Nonnull String key, long value) {
     hasKey(key);
-    assertThat(actual().getLong(key))
-        .named(String.format(Locale.ENGLISH, "value for key <%s>", key))
+    check("getLong(key)")
+        .withMessage("value for key <%s>", key)
+        .that(actual.getLong(key))
         .isEqualTo(value);
     return this;
   }
 
-  public BundleSubject hasValue(String key, char value) {
+  public BundleSubject hasValue(@Nonnull String key, char value) {
     hasKey(key);
-    assertThat(actual().getChar(key))
-        .named(String.format(Locale.ENGLISH, "value for key <%s>", key))
+    check("getChar(key)")
+        .withMessage("value for key <%s>", key)
+        .that(actual.getChar(key))
         .isEqualTo(value);
     return this;
   }
 
-  public BundleSubject hasValue(String key, byte value) {
+  public BundleSubject hasValue(@Nonnull String key, byte value) {
     hasKey(key);
-    assertThat(actual().getByte(key))
-        .named(String.format(Locale.ENGLISH, "value for key <%s>", key))
+    check("getByte(key)")
+        .withMessage("value for key <%s>", key)
+        .that(actual.getByte(key))
         .isEqualTo(value);
     return this;
   }
 
-  public BundleSubject hasValue(String key, Parcelable value) {
+  public BundleSubject hasValue(@Nonnull String key, @Nullable Parcelable value) {
     hasKey(key);
-    assertThat((Parcelable) actual().getParcelable(key))
-        .named(String.format(Locale.ENGLISH, "value for key <%s>", key))
+    check("getParcelable(key)")
+        .withMessage("value for key <%s>", key)
+        .that((Parcelable) actual.getParcelable(key))
         .isEqualTo(value);
     return this;
   }
 
-  public BundleSubject hasValue(String key, Serializable value) {
+  public BundleSubject hasValue(@Nonnull String key, @Nullable Serializable value) {
     hasKey(key);
-    assertThat(actual().getSerializable(key))
-        .named(String.format(Locale.ENGLISH, "value for key <%s>", key))
+    check("getSerializable(key)")
+        .withMessage("value for key <%s>", key)
+        .that(actual.getSerializable(key))
         .isEqualTo(value);
     return this;
   }
 
-  public BundleSubject hasValue(String key, Object value) {
+  public BundleSubject hasValue(@Nonnull String key, @Nullable Object value) {
     hasKey(key);
-    assertThat(actual().get(key))
-        .named(String.format(Locale.ENGLISH, "value for key <%s>", key))
+    check("get(key)")
+        .withMessage("value for key <%s>", key)
+        .that(actual.get(key))
         .isEqualTo(value);
     return this;
   }
 
   public BundleSubject isEmpty() {
-    assertThat(actual().isEmpty())
-        .named("is empty")
-        .isTrue();
+    check("isEmpty()").that(actual.isEmpty()).isTrue();
     return this;
   }
 
   public BundleSubject isNotEmpty() {
-    assertThat(actual().isEmpty())
-        .named("is empty")
-        .isFalse();
+    check("isEmpty()").that(actual.isEmpty()).isFalse();
     return this;
   }
 
   public BundleSubject hasSize(int size) {
-    assertThat(actual().size())
-        .named("size")
-        .isEqualTo(size);
+    check("size()").that(actual.size()).isEqualTo(size);
     return this;
   }
 }

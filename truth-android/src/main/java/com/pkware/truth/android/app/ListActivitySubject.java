@@ -17,15 +17,19 @@
 package com.pkware.truth.android.app;
 
 import android.app.ListActivity;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link ListActivity} subjects.
  * <p/>
  * This class is final. To extend use {@link AbstractListActivitySubject}.
  */
-public final class ListActivitySubject extends AbstractListActivitySubject<ListActivitySubject, ListActivity> {
-  public ListActivitySubject(FailureMetadata failureMetadata, ListActivity subject) {
-    super(failureMetadata, subject);
+public final class ListActivitySubject extends AbstractListActivitySubject<ListActivity> {
+  public ListActivitySubject(@Nonnull FailureMetadata failureMetadata, @Nullable ListActivity actual) {
+    super(failureMetadata, actual);
   }
 }

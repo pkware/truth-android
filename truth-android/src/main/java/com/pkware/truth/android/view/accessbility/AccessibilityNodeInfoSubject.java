@@ -22,284 +22,225 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link AccessibilityNodeInfo} subjects.
  */
-public class AccessibilityNodeInfoSubject extends Subject<AccessibilityNodeInfoSubject, AccessibilityNodeInfo> {
-  public AccessibilityNodeInfoSubject(FailureMetadata failureMetadata, AccessibilityNodeInfo subject) {
-    super(failureMetadata, subject);
+public class AccessibilityNodeInfoSubject extends Subject {
+
+  @Nullable
+  private final AccessibilityNodeInfo actual;
+
+  public AccessibilityNodeInfoSubject(@Nonnull FailureMetadata failureMetadata, @Nullable AccessibilityNodeInfo actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public AccessibilityNodeInfoSubject hasActions(int actions) {
-    assertThat(actual().getActions())
-        .named("actions")
-        .isEqualTo(actions);
+    check("getActions()").that(actual.getActions()).isEqualTo(actions);
     return this;
   }
 
   public AccessibilityNodeInfoSubject hasChildCount(int count) {
-    assertThat(actual().getChildCount())
-        .named("child count")
-        .isEqualTo(count);
+    check("getChildCount()").that(actual.getChildCount()).isEqualTo(count);
     return this;
   }
 
-  public AccessibilityNodeInfoSubject hasClassName(String name) {
-    assertThat(actual().getClassName().toString())
-        .named("class name")
+  public AccessibilityNodeInfoSubject hasClassName(@Nullable String name) {
+    check("getClassName()")
+        .that(actual.getClassName().toString())
         .isEqualTo(name);
     return this;
   }
 
-  public AccessibilityNodeInfoSubject hasContentDescription(String description) {
-    assertThat(actual().getContentDescription().toString())
-        .named("content description")
+  public AccessibilityNodeInfoSubject hasContentDescription(@Nullable String description) {
+    check("getContentDescription()")
+        .that(actual.getContentDescription().toString())
         .isEqualTo(description);
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public AccessibilityNodeInfoSubject hasMovementGranularities(int granularities) {
-    assertThat(actual().getMovementGranularities())
-        .named("movement granularities")
-        .isEqualTo(granularities);
+    check("getMovementGranularities()").that(actual.getMovementGranularities()).isEqualTo(granularities);
     return this;
   }
 
-  public AccessibilityNodeInfoSubject hasPackageName(String name) {
-    assertThat(actual().getPackageName().toString())
-        .named("package name")
+  public AccessibilityNodeInfoSubject hasPackageName(@Nullable String name) {
+    check("getPackageName()")
+        .that(actual.getPackageName().toString())
         .isEqualTo(name);
     return this;
   }
 
-  public AccessibilityNodeInfoSubject hasText(String text) {
-    assertThat(actual().getText().toString())
-        .named("text")
+  public AccessibilityNodeInfoSubject hasText(@Nullable String text) {
+    check("getText()")
+        .that(actual.getText().toString())
         .isEqualTo(text);
     return this;
   }
 
   @TargetApi(JELLY_BEAN_MR2)
   public AccessibilityNodeInfoSubject hasTextSelectionStart(int position) {
-    assertThat(actual().getTextSelectionStart())
-        .named("text selection start")
-        .isEqualTo(position);
+    check("getTextSelectionStart()").that(actual.getTextSelectionStart()).isEqualTo(position);
     return this;
   }
 
   @TargetApi(JELLY_BEAN_MR2)
   public AccessibilityNodeInfoSubject hasTextSelectionEnd(int position) {
-    assertThat(actual().getTextSelectionEnd())
-        .named("text selection end")
-        .isEqualTo(position);
+    check("getTextSelectionEnd()").that(actual.getTextSelectionEnd()).isEqualTo(position);
     return this;
   }
 
   @TargetApi(JELLY_BEAN_MR2)
-  public AccessibilityNodeInfoSubject hasViewIdResourceName(String name) {
-    assertThat(actual().getViewIdResourceName())
-        .named("view ID resource name")
-        .isEqualTo(name);
+  public AccessibilityNodeInfoSubject hasViewIdResourceName(@Nullable String name) {
+    check("getViewIdResourceName()").that(actual.getViewIdResourceName()).isEqualTo(name);
     return this;
   }
 
   public AccessibilityNodeInfoSubject hasWindowId(int id) {
-    assertThat(actual().getWindowId())
-        .named("window ID")
-        .isEqualTo(id);
+    check("getWindowId()").that(actual.getWindowId()).isEqualTo(id);
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public AccessibilityNodeInfoSubject isAccessibilityFocused() {
-    assertThat(actual().isAccessibilityFocused())
-        .named("is accessibility focused")
-        .isTrue();
+    check("isAccessibilityFocused()").that(actual.isAccessibilityFocused()).isTrue();
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public AccessibilityNodeInfoSubject isNotAccessibilityFocused() {
-    assertThat(actual().isAccessibilityFocused())
-        .named("is accessibility focused")
-        .isFalse();
+    check("isAccessibilityFocused()").that(actual.isAccessibilityFocused()).isFalse();
     return this;
   }
 
   public AccessibilityNodeInfoSubject isCheckable() {
-    assertThat(actual().isCheckable())
-        .named("is checkable")
-        .isTrue();
+    check("isCheckable()").that(actual.isCheckable()).isTrue();
     return this;
   }
 
   public AccessibilityNodeInfoSubject isNotCheckable() {
-    assertThat(actual().isCheckable())
-        .named("is checkable")
-        .isFalse();
+    check("isCheckable()").that(actual.isCheckable()).isFalse();
     return this;
   }
 
   public AccessibilityNodeInfoSubject isChecked() {
-    assertThat(actual().isChecked())
-        .named("is checked")
-        .isTrue();
+    check("isChecked()").that(actual.isChecked()).isTrue();
     return this;
   }
 
   public AccessibilityNodeInfoSubject isNotChecked() {
-    assertThat(actual().isChecked())
-        .named("is checked")
-        .isFalse();
+    check("isChecked()").that(actual.isChecked()).isFalse();
     return this;
   }
 
   public AccessibilityNodeInfoSubject isClickable() {
-    assertThat(actual().isClickable())
-        .named("is clickable")
-        .isTrue();
+    check("isClickable()").that(actual.isClickable()).isTrue();
     return this;
   }
 
   public AccessibilityNodeInfoSubject isNotClickable() {
-    assertThat(actual().isClickable())
-        .named("is clickable")
-        .isFalse();
+    check("isClickable()").that(actual.isClickable()).isFalse();
     return this;
   }
 
   @TargetApi(JELLY_BEAN_MR2)
   public AccessibilityNodeInfoSubject isEditable() {
-    assertThat(actual().isEditable())
-        .named("is editable")
-        .isTrue();
+    check("isEditable()").that(actual.isEditable()).isTrue();
     return this;
   }
 
   @TargetApi(JELLY_BEAN_MR2)
   public AccessibilityNodeInfoSubject isNotEditable() {
-    assertThat(actual().isEditable())
-        .named("is editable")
-        .isFalse();
+    check("isEditable()").that(actual.isEditable()).isFalse();
     return this;
   }
 
   public AccessibilityNodeInfoSubject isEnabled() {
-    assertThat(actual().isEnabled())
-        .named("is enabled")
-        .isTrue();
+    check("isEnabled()").that(actual.isEnabled()).isTrue();
     return this;
   }
 
   public AccessibilityNodeInfoSubject isNotEnabled() {
-    assertThat(actual().isEnabled())
-        .named("is enabled")
-        .isFalse();
+    check("isEnabled()").that(actual.isEnabled()).isFalse();
     return this;
   }
 
   public AccessibilityNodeInfoSubject isFocusable() {
-    assertThat(actual().isFocusable())
-        .named("is focusable")
-        .isTrue();
+    check("isFocusable()").that(actual.isFocusable()).isTrue();
     return this;
   }
 
   public AccessibilityNodeInfoSubject isNotFocusable() {
-    assertThat(actual().isFocusable())
-        .named("is focusable")
-        .isFalse();
+    check("isFocusable()").that(actual.isFocusable()).isFalse();
     return this;
   }
 
   public AccessibilityNodeInfoSubject isFocused() {
-    assertThat(actual().isFocused())
-        .named("is focused")
-        .isTrue();
+    check("isFocused()").that(actual.isFocused()).isTrue();
     return this;
   }
 
   public AccessibilityNodeInfoSubject isNotFocused() {
-    assertThat(actual().isFocused())
-        .named("is focused")
-        .isFalse();
+    check("isFocused()").that(actual.isFocused()).isFalse();
     return this;
   }
 
   public AccessibilityNodeInfoSubject isLongClickable() {
-    assertThat(actual().isLongClickable())
-        .named("is long clickable")
-        .isTrue();
+    check("isLongClickable()").that(actual.isLongClickable()).isTrue();
     return this;
   }
 
   public AccessibilityNodeInfoSubject isNotLongClickable() {
-    assertThat(actual().isLongClickable())
-        .named("is long clickable")
-        .isFalse();
+    check("isLongClickable()").that(actual.isLongClickable()).isFalse();
     return this;
   }
 
   public AccessibilityNodeInfoSubject isPassword() {
-    assertThat(actual().isPassword())
-        .named("is password")
-        .isTrue();
+    check("isPassword()").that(actual.isPassword()).isTrue();
     return this;
   }
 
   public AccessibilityNodeInfoSubject isNotPassword() {
-    assertThat(actual().isPassword())
-        .named("is password")
-        .isFalse();
+    check("isPassword()").that(actual.isPassword()).isFalse();
     return this;
   }
 
   public AccessibilityNodeInfoSubject isScrollable() {
-    assertThat(actual().isScrollable())
-        .named("is scrollable")
-        .isTrue();
+    check("isScrollable()").that(actual.isScrollable()).isTrue();
     return this;
   }
 
   public AccessibilityNodeInfoSubject isNotScrollable() {
-    assertThat(actual().isScrollable())
-        .named("is scrollable")
-        .isFalse();
+    check("isScrollable()").that(actual.isScrollable()).isFalse();
     return this;
   }
 
   public AccessibilityNodeInfoSubject isSelected() {
-    assertThat(actual().isSelected())
-        .named("is selected")
-        .isTrue();
+    check("isSelected()").that(actual.isSelected()).isTrue();
     return this;
   }
 
   public AccessibilityNodeInfoSubject isNotSelected() {
-    assertThat(actual().isSelected())
-        .named("is selected")
-        .isFalse();
+    check("isSelected()").that(actual.isSelected()).isFalse();
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public AccessibilityNodeInfoSubject isVisibleToUser() {
-    assertThat(actual().isVisibleToUser())
-        .named("is visible to user")
-        .isTrue();
+    check("isVisibleToUser()").that(actual.isVisibleToUser()).isTrue();
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public AccessibilityNodeInfoSubject isNotVisibleToUser() {
-    assertThat(actual().isVisibleToUser())
-        .named("is visible to user")
-        .isFalse();
+    check("isVisibleToUser()").that(actual.isVisibleToUser()).isFalse();
     return this;
   }
 }

@@ -19,69 +19,63 @@ package com.pkware.truth.android.widget;
 import android.annotation.TargetApi;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
+
 import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.view.AbstractViewSubject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link ImageView} subjects.
  */
-public class ImageViewSubject extends AbstractViewSubject<ImageViewSubject, ImageView> {
-  public ImageViewSubject(FailureMetadata failureMetadata, ImageView subject) {
-    super(failureMetadata, subject);
+public class ImageViewSubject extends AbstractViewSubject<ImageView> {
+
+  @Nullable
+  private final ImageView actual;
+
+  public ImageViewSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ImageView actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public ImageViewSubject isAligningBaselineToBottom() {
-    assertThat(actual().getBaselineAlignBottom())
-        .named("is aligning baseline to bottom")
-        .isTrue();
+    check("getBaselineAlignBottom()").that(actual.getBaselineAlignBottom()).isTrue();
     return this;
   }
 
   public ImageViewSubject isNotAligningBaselineToBottom() {
-    assertThat(actual().getBaselineAlignBottom())
-        .named("is aligning baseline to bottom")
-        .isFalse();
+    check("getBaselineAlignBottom()").that(actual.getBaselineAlignBottom()).isFalse();
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public ImageViewSubject isCroppingToPadding() {
-    assertThat(actual().getCropToPadding())
-        .named("is cropping to padding")
-        .isTrue();
+    check("getCropToPadding()").that(actual.getCropToPadding()).isTrue();
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public ImageViewSubject isNotCroppingToPadding() {
-    assertThat(actual().getCropToPadding())
-        .named("is cropping to padding")
-        .isFalse();
+    check("getCropToPadding()").that(actual.getCropToPadding()).isFalse();
     return this;
   }
 
-  public ImageViewSubject hasDrawable(Drawable drawable) {
-    assertThat(actual().getDrawable())
-        .named("drawable")
-        .isSameAs(drawable);
+  public ImageViewSubject hasDrawable(@Nullable Drawable drawable) {
+    check("getDrawable()").that(actual.getDrawable()).isSameInstanceAs(drawable);
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public ImageViewSubject hasImageAlpha(int alpha) {
-    assertThat(actual().getImageAlpha())
-        .named("image alpha")
-        .isEqualTo(alpha);
+    check("getImageAlpha()").that(actual.getImageAlpha()).isEqualTo(alpha);
     return this;
   }
 
-  public ImageViewSubject hasScaleType(ImageView.ScaleType type) {
-    assertThat(actual().getScaleType())
-        .named("scale type")
-        .isEqualTo(type);
+  public ImageViewSubject hasScaleType(@Nullable ImageView.ScaleType type) {
+    check("getScaleType()").that(actual.getScaleType()).isEqualTo(type);
     return this;
   }
 }

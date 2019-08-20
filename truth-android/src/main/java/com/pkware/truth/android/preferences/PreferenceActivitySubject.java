@@ -17,45 +17,44 @@
 package com.pkware.truth.android.preferences;
 
 import android.preference.PreferenceActivity;
+
 import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.app.AbstractListActivitySubject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link PreferenceActivity} subjects.
  */
 public class PreferenceActivitySubject
-    extends AbstractListActivitySubject<PreferenceActivitySubject, PreferenceActivity> {
-  public PreferenceActivitySubject(FailureMetadata failureMetadata, PreferenceActivity subject) {
-    super(failureMetadata, subject);
+    extends AbstractListActivitySubject<PreferenceActivity> {
+
+  @Nullable
+  private PreferenceActivity actual;
+
+  public PreferenceActivitySubject(@Nonnull FailureMetadata failureMetadata, @Nullable PreferenceActivity actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public PreferenceActivitySubject hasHeaders() {
-    assertThat(actual().hasHeaders())
-        .named("has headers")
-        .isTrue();
+    check("hasHeaders()").that(actual.hasHeaders()).isTrue();
     return this;
   }
 
   public PreferenceActivitySubject hasNoHeaders() {
-    assertThat(actual().hasHeaders())
-        .named("has headers")
-        .isFalse();
+    check("hasHeaders()").that(actual.hasHeaders()).isFalse();
     return this;
   }
 
   public PreferenceActivitySubject isMultiPane() {
-    assertThat(actual().isMultiPane())
-        .named("is multi-pane")
-        .isTrue();
+    check("isMultiPane()").that(actual.isMultiPane()).isTrue();
     return this;
   }
 
   public PreferenceActivitySubject isNotMultiPane() {
-    assertThat(actual().isMultiPane())
-        .named("is multi-pane")
-        .isFalse();
+    check("isMultiPane()").that(actual.isMultiPane()).isFalse();
     return this;
   }
 }

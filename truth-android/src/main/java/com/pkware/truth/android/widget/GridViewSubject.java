@@ -18,25 +18,33 @@ package com.pkware.truth.android.widget;
 
 import android.annotation.TargetApi;
 import android.widget.GridView;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 import static android.widget.GridView.NO_STRETCH;
 import static android.widget.GridView.STRETCH_COLUMN_WIDTH;
 import static android.widget.GridView.STRETCH_SPACING;
 import static android.widget.GridView.STRETCH_SPACING_UNIFORM;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
 /**
  * Propositions for {@link GridView} subjects.
  */
-public class GridViewSubject extends AbstractAbsListViewSubject<GridViewSubject, GridView> {
-  public GridViewSubject(FailureMetadata failureMetadata, GridView subject) {
-    super(failureMetadata, subject);
+public class GridViewSubject extends AbstractAbsListViewSubject<GridView> {
+
+  @Nullable
+  private final GridView actual;
+
+  public GridViewSubject(@Nonnull FailureMetadata failureMetadata, @Nullable GridView actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   public static String stretchModeToString(@GridViewStretchMode int mode) {
     return buildNamedValueString(mode)
         .value(NO_STRETCH, "noStretch")
@@ -48,55 +56,43 @@ public class GridViewSubject extends AbstractAbsListViewSubject<GridViewSubject,
 
   @TargetApi(JELLY_BEAN)
   public GridViewSubject hasColumnWidth(int width) {
-    assertThat(actual().getColumnWidth())
-        .named("column width")
-        .isEqualTo(width);
+    check("getColumnWidth()").that(actual.getColumnWidth()).isEqualTo(width);
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public GridViewSubject hasGravity(int gravity) {
-    assertThat(actual().getGravity())
-        .named("gravity")
-        .isEqualTo(gravity);
+    check("getGravity()").that(actual.getGravity()).isEqualTo(gravity);
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public GridViewSubject hasHorizontalSpacing(int spacing) {
-    assertThat(actual().getHorizontalSpacing())
-        .named("horizontal spacing")
-        .isEqualTo(spacing);
+    check("getHorizontalSpacing()").that(actual.getHorizontalSpacing()).isEqualTo(spacing);
     return this;
   }
 
   public GridViewSubject hasColumnCount(int count) {
-    assertThat(actual().getNumColumns())
-        .named("column count")
-        .isEqualTo(count);
+    check("getNumColumns()").that(actual.getNumColumns()).isEqualTo(count);
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public GridViewSubject hasRequestedColumnWidth(int width) {
-    assertThat(actual().getRequestedColumnWidth())
-        .named("requested column width")
-        .isEqualTo(width);
+    check("getRequestedColumnWidth()").that(actual.getRequestedColumnWidth()).isEqualTo(width);
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public GridViewSubject hasRequestedHorizontalSpacing(int spacing) {
-    assertThat(actual().getRequestedHorizontalSpacing())
-        .named("requested horizontal spacing")
-        .isEqualTo(spacing);
+    check("getRequestedHorizontalSpacing()").that(actual.getRequestedHorizontalSpacing()).isEqualTo(spacing);
     return this;
   }
 
   public GridViewSubject hasStretchMode(@GridViewStretchMode int mode) {
-    int actualMode = actual().getStretchMode();
+    int actualMode = actual.getStretchMode();
     //noinspection ResourceType
-    assert_()
+    check("getStretchMode()")
         .withMessage("Expected stretch mode <%s> but was <%s>.",
             stretchModeToString(mode), stretchModeToString(actualMode))
         .that(actualMode)
@@ -106,9 +102,7 @@ public class GridViewSubject extends AbstractAbsListViewSubject<GridViewSubject,
 
   @TargetApi(JELLY_BEAN)
   public GridViewSubject hasVerticalSpacing(int spacing) {
-    assertThat(actual().getVerticalSpacing())
-        .named("vertical spacing")
-        .isEqualTo(spacing);
+    check("getVerticalSpacing()").that(actual.getVerticalSpacing()).isEqualTo(spacing);
     return this;
   }
 }

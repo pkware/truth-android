@@ -21,99 +21,81 @@ import android.graphics.Rect;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Rect} subjects.
  */
-public class RectSubject extends Subject<RectSubject, Rect> {
-  public RectSubject(FailureMetadata failureMetadata, Rect subject) {
-    super(failureMetadata, subject);
+public class RectSubject extends Subject {
+
+  @Nullable
+  private final Rect actual;
+
+  public RectSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Rect actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public RectSubject hasBottom(int bottom) {
-    assertThat(actual().bottom)
-        .named("bottom")
-        .isEqualTo(bottom);
+    check("bottom").that(actual.bottom).isEqualTo(bottom);
     return this;
   }
 
   public RectSubject hasLeft(int left) {
-    assertThat(actual().left)
-        .named("left")
-        .isEqualTo(left);
+    check("left").that(actual.left).isEqualTo(left);
     return this;
   }
 
   public RectSubject hasRight(int right) {
-    assertThat(actual().right)
-        .named("right")
-        .isEqualTo(right);
+    check("right").that(actual.right).isEqualTo(right);
     return this;
   }
 
   public RectSubject hasTop(int top) {
-    assertThat(actual().top)
-        .named("top")
-        .isEqualTo(top);
+    check("top").that(actual.top).isEqualTo(top);
     return this;
   }
 
   public RectSubject hasCenterX(int center) {
-    assertThat(actual().centerX())
-        .named("X center")
-        .isEqualTo(center);
+    check("centerX()").that(actual.centerX()).isEqualTo(center);
     return this;
   }
 
   public RectSubject hasCenterY(int center) {
-    assertThat(actual().centerY())
-        .named("Y center")
-        .isEqualTo(center);
+    check("centerY()").that(actual.centerY()).isEqualTo(center);
     return this;
   }
 
   public RectSubject hasExactCenterX(float center, float tolerance) {
-    assertThat(actual().exactCenterX())
-        .named("exact X center")
-        .isWithin(tolerance)
+    check("exactCenterX()").that(actual.exactCenterX()).isWithin(tolerance)
         .of(center);
     return this;
   }
 
   public RectSubject hasExactCenterY(float center, float tolerance) {
-    assertThat(actual().exactCenterY())
-        .named("exact Y center")
-        .isWithin(tolerance)
+    check("exactCenterY()").that(actual.exactCenterY()).isWithin(tolerance)
         .of(center);
     return this;
   }
 
   public RectSubject hasHeight(int height) {
-    assertThat(actual().height())
-        .named("height")
-        .isEqualTo(height);
+    check("height()").that(actual.height()).isEqualTo(height);
     return this;
   }
 
   public RectSubject isEmpty() {
-    assertThat(actual().isEmpty())
-        .named("is empty")
-        .isTrue();
+    check("isEmpty()").that(actual.isEmpty()).isTrue();
     return this;
   }
 
   public RectSubject isNotEmpty() {
-    assertThat(actual().isEmpty())
-        .named("is empty")
-        .isFalse();
+    check("isEmpty()").that(actual.isEmpty()).isFalse();
     return this;
   }
 
   public RectSubject hasWidth(int width) {
-    assertThat(actual().width())
-        .named("width")
-        .isEqualTo(width);
+    check("width()").that(actual.width()).isEqualTo(width);
     return this;
   }
 }

@@ -21,55 +21,49 @@ import android.hardware.usb.UsbAccessory;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link UsbAccessory} subjects.
  */
-public class UsbAccessorySubject extends Subject<UsbAccessorySubject, UsbAccessory> {
-  public UsbAccessorySubject(FailureMetadata failureMetadata, UsbAccessory subject) {
-    super(failureMetadata, subject);
+public class UsbAccessorySubject extends Subject {
+
+  @Nullable
+  private final UsbAccessory actual;
+
+  public UsbAccessorySubject(@Nonnull FailureMetadata failureMetadata, @Nullable UsbAccessory actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public UsbAccessorySubject hasDescription(String description) {
-    assertThat(actual().getDescription())
-        .named("description")
-        .isEqualTo(description);
+  public UsbAccessorySubject hasDescription(@Nullable String description) {
+    check("getDescription()").that(actual.getDescription()).isEqualTo(description);
     return this;
   }
 
-  public UsbAccessorySubject hasManufacturer(String manufacturer) {
-    assertThat(actual().getManufacturer())
-        .named("manufacturer")
-        .isEqualTo(manufacturer);
+  public UsbAccessorySubject hasManufacturer(@Nullable String manufacturer) {
+    check("getManufacturer()").that(actual.getManufacturer()).isEqualTo(manufacturer);
     return this;
   }
 
-  public UsbAccessorySubject hasModel(String model) {
-    assertThat(actual().getModel())
-        .named("model")
-        .isEqualTo(model);
+  public UsbAccessorySubject hasModel(@Nullable String model) {
+    check("getModel()").that(actual.getModel()).isEqualTo(model);
     return this;
   }
 
-  public UsbAccessorySubject hasSerial(String serial) {
-    assertThat(actual().getSerial())
-        .named("serial")
-        .isEqualTo(serial);
+  public UsbAccessorySubject hasSerial(@Nullable String serial) {
+    check("getSerial()").that(actual.getSerial()).isEqualTo(serial);
     return this;
   }
 
-  public UsbAccessorySubject hasUri(String uri) {
-    assertThat(actual().getUri())
-        .named("uri")
-        .isEqualTo(uri);
+  public UsbAccessorySubject hasUri(@Nullable String uri) {
+    check("getUri()").that(actual.getUri()).isEqualTo(uri);
     return this;
   }
 
-  public UsbAccessorySubject hasVersion(String version) {
-    assertThat(actual().getVersion())
-        .named("version")
-        .isEqualTo(version);
+  public UsbAccessorySubject hasVersion(@Nullable String version) {
+    check("getVersion()").that(actual.getVersion()).isEqualTo(version);
     return this;
   }
 }

@@ -21,41 +21,39 @@ import android.gesture.GestureStore;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link GestureStore} subjects.
  */
-public class GestureStoreSubject extends Subject<GestureStoreSubject, GestureStore> {
-  public GestureStoreSubject(FailureMetadata failureMetadata, GestureStore subject) {
-    super(failureMetadata, subject);
+public class GestureStoreSubject extends Subject {
+
+  @Nullable
+  private final GestureStore actual;
+
+  public GestureStoreSubject(@Nonnull FailureMetadata failureMetadata, @Nullable GestureStore actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public GestureStoreSubject hasOrientationStyle(int style) {
-    assertThat(actual().getOrientationStyle())
-        .named("orientation style")
-        .isEqualTo(style);
+    check("getOrientationStyle()").that(actual.getOrientationStyle()).isEqualTo(style);
     return this;
   }
 
   public GestureStoreSubject hasSequenceType(int type) {
-    assertThat(actual().getSequenceType())
-        .named("sequence type")
-        .isEqualTo(type);
+    check("getSequenceType()").that(actual.getSequenceType()).isEqualTo(type);
     return this;
   }
 
   public GestureStoreSubject hasChanged() {
-    assertThat(actual().hasChanged())
-        .named("has changed")
-        .isTrue();
+    check("hasChanged()").that(actual.hasChanged()).isTrue();
     return this;
   }
 
   public GestureStoreSubject hasNotChanged() {
-    assertThat(actual().hasChanged())
-        .named("has changed")
-        .isFalse();
+    check("hasChanged()").that(actual.hasChanged()).isFalse();
     return this;
   }
 }

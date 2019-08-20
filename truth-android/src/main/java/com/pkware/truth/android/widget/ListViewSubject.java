@@ -17,15 +17,19 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.ListView;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link ListView} subjects.
  * <p/>
  * This class is final. To extend use {@link AbstractListViewSubject}.
  */
-public final class ListViewSubject extends AbstractListViewSubject<ListViewSubject, ListView> {
-  public ListViewSubject(FailureMetadata failureMetadata, ListView subject) {
-    super(failureMetadata, subject);
+public final class ListViewSubject extends AbstractListViewSubject<ListView> {
+  public ListViewSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ListView actual) {
+    super(failureMetadata, actual);
   }
 }

@@ -22,85 +22,56 @@ import android.annotation.TargetApi;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.KITKAT;
-import static com.google.common.truth.Truth.assertThat;
 
-public abstract class AbstractAnimatorSubject<S extends AbstractAnimatorSubject<S, T>, T extends Animator> extends Subject<S, T> {
-  protected AbstractAnimatorSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractAnimatorSubject<T extends Animator> extends Subject {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractAnimatorSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S hasDuration(long duration) {
-    assertThat(actual().getDuration())
-        .named("duration")
-        .isEqualTo(duration);
-    //noinspection unchecked
-    return (S) this;
+  public void hasDuration(long duration) {
+    check("getDuration()").that(actual.getDuration()).isEqualTo(duration);
   }
 
-  public S hasListener(Animator.AnimatorListener listener) {
-    assertThat(actual().getListeners())
-        .named("listeners")
-        .contains(listener);
-    //noinspection unchecked
-    return (S) this;
+  public void hasListener(@Nonnull Animator.AnimatorListener listener) {
+    check("getListeners()").that(actual.getListeners()).contains(listener);
   }
 
-  public S hasStartDelay(long delay) {
-    assertThat(actual().getStartDelay())
-        .named("start delay")
-        .isEqualTo(delay);
-    //noinspection unchecked
-    return (S) this;
+  public void hasStartDelay(long delay) {
+    check("getStartDelay()").that(actual.getStartDelay()).isEqualTo(delay);
   }
 
   @TargetApi(KITKAT)
-  public S isPaused() {
-    assertThat(actual().isPaused())
-        .named("is paused")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isPaused() {
+    check("isPaused()").that(actual.isPaused()).isTrue();
   }
 
   @TargetApi(KITKAT)
-  public S isNotPaused() {
-    assertThat(actual().isPaused())
-        .named("is paused")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotPaused() {
+    check("isPaused()").that(actual.isPaused()).isFalse();
   }
 
-  public S isRunning() {
-    assertThat(actual().isRunning())
-        .named("is running")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isRunning() {
+    check("isRunning()").that(actual.isRunning()).isTrue();
   }
 
-  public S isNotRunning() {
-    assertThat(actual().isRunning())
-        .named("is running")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotRunning() {
+    check("isRunning()").that(actual.isRunning()).isFalse();
   }
 
-  public S isStarted() {
-    assertThat(actual().isStarted())
-        .named("is started")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isStarted() {
+    check("isStarted()").that(actual.isStarted()).isTrue();
   }
 
-  public S isNotStarted() {
-    assertThat(actual().isStarted())
-        .named("is started")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotStarted() {
+    check("isStarted()").that(actual.isStarted()).isFalse();
   }
 }

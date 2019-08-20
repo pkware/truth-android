@@ -17,7 +17,11 @@
 package com.pkware.truth.androidx.appcompat.widget;
 
 import androidx.appcompat.widget.LinearLayoutCompat;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link LinearLayoutCompat} subjects.
@@ -25,8 +29,8 @@ import com.google.common.truth.FailureMetadata;
  * This class is final. To extend use {@link AbstractLinearLayoutCompatSubject}.
  */
 public final class LinearLayoutCompatSubject extends
-    AbstractLinearLayoutCompatSubject<LinearLayoutCompatSubject, LinearLayoutCompat> {
-  public LinearLayoutCompatSubject(FailureMetadata failureMetadata, LinearLayoutCompat subject) {
-    super(failureMetadata, subject);
+    AbstractLinearLayoutCompatSubject<LinearLayoutCompat> {
+  public LinearLayoutCompatSubject(@Nonnull FailureMetadata failureMetadata, @Nullable LinearLayoutCompat actual) {
+    super(failureMetadata, actual);
   }
 }

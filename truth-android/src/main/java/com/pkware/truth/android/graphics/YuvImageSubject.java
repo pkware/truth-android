@@ -21,34 +21,34 @@ import android.graphics.YuvImage;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link YuvImage} subjects.
  */
-public class YuvImageSubject extends Subject<YuvImageSubject, YuvImage> {
-  public YuvImageSubject(FailureMetadata failureMetadata, YuvImage subject) {
-    super(failureMetadata, subject);
+public class YuvImageSubject extends Subject {
+
+  @Nullable
+  private final YuvImage actual;
+
+  public YuvImageSubject(@Nonnull FailureMetadata failureMetadata, @Nullable YuvImage actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public YuvImageSubject hasHeight(int height) {
-    assertThat(actual().getHeight())
-        .named("height")
-        .isEqualTo(height);
+    check("getHeight()").that(actual.getHeight()).isEqualTo(height);
     return this;
   }
 
   public YuvImageSubject hasWidth(int width) {
-    assertThat(actual().getWidth())
-        .named("width")
-        .isEqualTo(width);
+    check("getWidth()").that(actual.getWidth()).isEqualTo(width);
     return this;
   }
 
   public YuvImageSubject hasYuvFormat(int format) {
-    assertThat(actual().getYuvFormat())
-        .named("YUV format")
-        .isEqualTo(format);
+    check("getYuvFormat()").that(actual.getYuvFormat()).isEqualTo(format);
     return this;
   }
 }

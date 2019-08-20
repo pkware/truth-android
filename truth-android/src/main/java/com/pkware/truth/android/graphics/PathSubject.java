@@ -21,34 +21,34 @@ import android.graphics.Path;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Path} subjects.
  */
-public class PathSubject extends Subject<PathSubject, Path> {
-  public PathSubject(FailureMetadata failureMetadata, Path subject) {
-    super(failureMetadata, subject);
+public class PathSubject extends Subject {
+
+  @Nullable
+  private final Path actual;
+
+  public PathSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Path actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public PathSubject hasFillType(Path.FillType type) {
-    assertThat(actual().getFillType())
-        .named("fill type")
-        .isEqualTo(type);
+  public PathSubject hasFillType(@Nullable Path.FillType type) {
+    check("getFillType()").that(actual.getFillType()).isEqualTo(type);
     return this;
   }
 
   public PathSubject isEmpty() {
-    assertThat(actual().isEmpty())
-        .named("is empty")
-        .isTrue();
+    check("isEmpty()").that(actual.isEmpty()).isTrue();
     return this;
   }
 
   public PathSubject isNotEmpty() {
-    assertThat(actual().isEmpty())
-        .named("is empty")
-        .isFalse();
+    check("isEmpty()").that(actual.isEmpty()).isFalse();
     return this;
   }
 }

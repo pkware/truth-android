@@ -21,8 +21,12 @@ import android.app.Service;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-public abstract class AbstractServiceSubject<S extends AbstractServiceSubject<S, T>, T extends Service> extends Subject<S, T> {
-  protected AbstractServiceSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+public abstract class AbstractServiceSubject<T extends Service> extends Subject {
+
+  protected AbstractServiceSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
   }
 }

@@ -17,34 +17,35 @@
 package com.pkware.truth.android.mediarouter.v7.media;
 
 import android.content.ComponentName;
+
 import androidx.mediarouter.media.MediaRouter;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link MediaRouter.ProviderInfo} subjects.
  */
-public class MediaRouterProviderInfoSubject
-    extends Subject<MediaRouterProviderInfoSubject, MediaRouter.ProviderInfo> {
+public class MediaRouterProviderInfoSubject extends Subject {
 
-  public MediaRouterProviderInfoSubject(FailureMetadata failureMetadata, MediaRouter.ProviderInfo subject) {
-    super(failureMetadata, subject);
+  @Nullable
+  private final MediaRouter.ProviderInfo actual;
+
+  public MediaRouterProviderInfoSubject(@Nonnull FailureMetadata failureMetadata, @Nullable MediaRouter.ProviderInfo actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public MediaRouterProviderInfoSubject hasComponentName(ComponentName componentName) {
-    assertThat(actual().getComponentName())
-        .named("component name")
-        .isEqualTo(componentName);
+  public MediaRouterProviderInfoSubject hasComponentName(@Nullable ComponentName componentName) {
+    check("getComponentName()").that(actual.getComponentName()).isEqualTo(componentName);
     return this;
   }
 
-  public MediaRouterProviderInfoSubject hasPackageName(String packageName) {
-    assertThat(actual().getPackageName())
-        .named("package name")
-        .isEqualTo(packageName);
+  public MediaRouterProviderInfoSubject hasPackageName(@Nullable String packageName) {
+    check("getPackageName()").that(actual.getPackageName()).isEqualTo(packageName);
     return this;
   }
 }

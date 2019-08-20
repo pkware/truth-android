@@ -17,7 +17,11 @@
 package com.pkware.truth.android.view;
 
 import android.view.ViewGroup;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link android.view.ViewGroup.LayoutParams} subjects.
@@ -25,8 +29,8 @@ import com.google.common.truth.FailureMetadata;
  * This class is final. To extend use {@link AbstractViewGroupLayoutParamsSubject}.
  */
 public final class ViewGroupLayoutParamsSubject
-    extends AbstractViewGroupLayoutParamsSubject<ViewGroupLayoutParamsSubject, ViewGroup.LayoutParams> {
-  public ViewGroupLayoutParamsSubject(FailureMetadata failureMetadata, ViewGroup.LayoutParams subject) {
-    super(failureMetadata, subject);
+    extends AbstractViewGroupLayoutParamsSubject<ViewGroup.LayoutParams> {
+  public ViewGroupLayoutParamsSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ViewGroup.LayoutParams actual) {
+    super(failureMetadata, actual);
   }
 }

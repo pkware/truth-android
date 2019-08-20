@@ -17,23 +17,31 @@
 package com.pkware.truth.android.preferences;
 
 import android.preference.RingtonePreference;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import static android.media.RingtoneManager.TYPE_ALARM;
 import static android.media.RingtoneManager.TYPE_NOTIFICATION;
 import static android.media.RingtoneManager.TYPE_RINGTONE;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildBitMaskString;
 
 /**
  * Propositions for {@link RingtonePreference} subjects.
  */
-public class RingtonePreferenceSubject extends AbstractPreferenceSubject<RingtonePreferenceSubject, RingtonePreference> {
-  public RingtonePreferenceSubject(FailureMetadata failureMetadata, RingtonePreference subject) {
-    super(failureMetadata, subject);
+public class RingtonePreferenceSubject extends AbstractPreferenceSubject<RingtonePreference> {
+
+  @Nullable
+  private RingtonePreference actual;
+
+  public RingtonePreferenceSubject(@Nonnull FailureMetadata failureMetadata, @Nullable RingtonePreference actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   private static String ringtoneTypeToString(@RingtoneType int type) {
     return buildBitMaskString(type)
         .flag(TYPE_ALARM, "alarm")
@@ -43,9 +51,9 @@ public class RingtonePreferenceSubject extends AbstractPreferenceSubject<Rington
   }
 
   public RingtonePreferenceSubject hasRingtoneType(@RingtoneType int type) {
-    int actualType = actual().getRingtoneType();
+    int actualType = actual.getRingtoneType();
     //noinspection ResourceType
-    assert_()
+    check("getRingtoneType()")
         .withMessage("Expected ringtone type <%s> but was <%s>.",
             ringtoneTypeToString(type), ringtoneTypeToString(actualType))
         .that(actualType)
@@ -54,30 +62,22 @@ public class RingtonePreferenceSubject extends AbstractPreferenceSubject<Rington
   }
 
   public RingtonePreferenceSubject isShowingDefault() {
-    assertThat(actual().getShowDefault())
-        .named("is showing default")
-        .isTrue();
+    check("getShowDefault()").that(actual.getShowDefault()).isTrue();
     return this;
   }
 
   public RingtonePreferenceSubject isNotShowingDefault() {
-    assertThat(actual().getShowDefault())
-        .named("is showing default")
-        .isFalse();
+    check("getShowDefault()").that(actual.getShowDefault()).isFalse();
     return this;
   }
 
   public RingtonePreferenceSubject isShowingSilent() {
-    assertThat(actual().getShowSilent())
-        .named("is showing silent")
-        .isTrue();
+    check("getShowSilent()").that(actual.getShowSilent()).isTrue();
     return this;
   }
 
   public RingtonePreferenceSubject isNotShowingSilent() {
-    assertThat(actual().getShowSilent())
-        .named("is showing silent")
-        .isFalse();
+    check("getShowSilent()").that(actual.getShowSilent()).isFalse();
     return this;
   }
 }

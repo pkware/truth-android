@@ -21,22 +21,28 @@ import androidx.mediarouter.media.MediaSessionStatus;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static androidx.mediarouter.media.MediaSessionStatus.SESSION_STATE_ACTIVE;
 import static androidx.mediarouter.media.MediaSessionStatus.SESSION_STATE_ENDED;
 import static androidx.mediarouter.media.MediaSessionStatus.SESSION_STATE_INVALIDATED;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
 /**
  * Propositions for {@link MediaSessionStatus} subjects.
  */
-public class MediaSessionStatusSubject
-    extends Subject<MediaSessionStatusSubject, MediaSessionStatus> {
-  public MediaSessionStatusSubject(FailureMetadata failureMetadata, MediaSessionStatus subject) {
-    super(failureMetadata, subject);
+public class MediaSessionStatusSubject extends Subject {
+
+  @Nullable
+  private final MediaSessionStatus actual;
+
+  public MediaSessionStatusSubject(@Nonnull FailureMetadata failureMetadata, @Nullable MediaSessionStatus actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   public static String sessionStateToString(@MediaSessionStatusState int state) {
     return buildNamedValueString(state)
         .value(SESSION_STATE_ACTIVE, "active")
@@ -46,9 +52,9 @@ public class MediaSessionStatusSubject
   }
 
   public MediaSessionStatusSubject hasSessionState(@MediaSessionStatusState int state) {
-    int actualState = actual().getSessionState();
+    int actualState = actual.getSessionState();
     //noinspection ResourceType
-    assert_()
+    check("getSessionState()")
         .withMessage("Expected session state <%s> but was <%s>.",
             sessionStateToString(state), sessionStateToString(actualState))
         .that(actualState)
@@ -57,23 +63,17 @@ public class MediaSessionStatusSubject
   }
 
   public MediaSessionStatusSubject hasTimestamp(long timestamp) {
-    assertThat(actual().getTimestamp())
-        .named("timestamp")
-        .isEqualTo(timestamp);
+    check("getTimestamp()").that(actual.getTimestamp()).isEqualTo(timestamp);
     return this;
   }
 
   public MediaSessionStatusSubject hasQueuePaused() {
-    assertThat(actual().isQueuePaused())
-        .named("is queue paused")
-        .isTrue();
+    check("isQueuePaused()").that(actual.isQueuePaused()).isTrue();
     return this;
   }
 
   public MediaSessionStatusSubject doesNotHaveQueuePaused() {
-    assertThat(actual().isQueuePaused())
-        .named("is queue paused")
-        .isFalse();
+    check("isQueuePaused()").that(actual.isQueuePaused()).isFalse();
     return this;
   }
 }

@@ -20,27 +20,25 @@ import android.widget.CompoundButton;
 
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public abstract class AbstractCompoundButtonSubject<S extends AbstractCompoundButtonSubject<S, T>, T extends CompoundButton>
-    extends AbstractTextViewSubject<S, T> {
-  protected AbstractCompoundButtonSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractCompoundButtonSubject<T extends CompoundButton>
+    extends AbstractTextViewSubject<T> {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractCompoundButtonSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S isChecked() {
-    assertThat(actual().isChecked())
-        .named("is checked")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isChecked() {
+    check("isChecked()").that(actual.isChecked()).isTrue();
   }
 
-  public S isNotChecked() {
-    assertThat(actual().isChecked())
-        .named("is checked")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotChecked() {
+    check("isChecked()").that(actual.isChecked()).isFalse();
   }
 }

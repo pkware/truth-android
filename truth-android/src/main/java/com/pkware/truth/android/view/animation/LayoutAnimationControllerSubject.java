@@ -17,7 +17,11 @@
 package com.pkware.truth.android.view.animation;
 
 import android.view.animation.LayoutAnimationController;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link LayoutAnimationController} subjects.
@@ -25,8 +29,8 @@ import com.google.common.truth.FailureMetadata;
  * This class is final. To extend use {@link LayoutAnimationController}.
  */
 public final class LayoutAnimationControllerSubject extends
-    AbstractLayoutAnimationControllerSubject<LayoutAnimationControllerSubject, LayoutAnimationController> {
-  public LayoutAnimationControllerSubject(FailureMetadata failureMetadata, LayoutAnimationController subject) {
-    super(failureMetadata, subject);
+    AbstractLayoutAnimationControllerSubject<LayoutAnimationController> {
+  public LayoutAnimationControllerSubject(@Nonnull FailureMetadata failureMetadata, @Nullable LayoutAnimationController actual) {
+    super(failureMetadata, actual);
   }
 }

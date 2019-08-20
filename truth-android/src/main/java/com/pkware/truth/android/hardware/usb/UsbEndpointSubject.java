@@ -21,62 +21,54 @@ import android.hardware.usb.UsbEndpoint;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link UsbEndpoint} subjects.
  */
-public class UsbEndpointSubject extends Subject<UsbEndpointSubject, UsbEndpoint> {
-  public UsbEndpointSubject(FailureMetadata failureMetadata, UsbEndpoint subject) {
-    super(failureMetadata, subject);
+public class UsbEndpointSubject extends Subject {
+
+  @Nullable
+  private final UsbEndpoint actual;
+
+  public UsbEndpointSubject(@Nonnull FailureMetadata failureMetadata, @Nullable UsbEndpoint actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public UsbEndpointSubject hasAddress(int address) {
-    assertThat(actual().getAddress())
-        .named("address")
-        .isEqualTo(address);
+    check("getAddress()").that(actual.getAddress()).isEqualTo(address);
     return this;
   }
 
   public UsbEndpointSubject hasAttributes(int attributes) {
-    assertThat(actual().getAttributes())
-        .named("attributes")
-        .isEqualTo(attributes);
+    check("getAttributes()").that(actual.getAttributes()).isEqualTo(attributes);
     return this;
   }
 
   public UsbEndpointSubject hasDirection(int direction) {
-    assertThat(actual().getDirection())
-        .named("direction")
-        .isEqualTo(direction);
+    check("getDirection()").that(actual.getDirection()).isEqualTo(direction);
     return this;
   }
 
   public UsbEndpointSubject hasEndpointNumber(int number) {
-    assertThat(actual().getEndpointNumber())
-        .named("endpoint number")
-        .isEqualTo(number);
+    check("getEndpointNumber()").that(actual.getEndpointNumber()).isEqualTo(number);
     return this;
   }
 
   public UsbEndpointSubject hasInterval(int interval) {
-    assertThat(actual().getInterval())
-        .named("interval")
-        .isEqualTo(interval);
+    check("getInterval()").that(actual.getInterval()).isEqualTo(interval);
     return this;
   }
 
   public UsbEndpointSubject hasMaximumPacketSize(int size) {
-    assertThat(actual().getMaxPacketSize())
-        .named("maximum packet size")
-        .isEqualTo(size);
+    check("getMaxPacketSize()").that(actual.getMaxPacketSize()).isEqualTo(size);
     return this;
   }
 
   public UsbEndpointSubject hasType(int type) {
-    assertThat(actual().getType())
-        .named("type")
-        .isEqualTo(type);
+    check("getType()").that(actual.getType()).isEqualTo(type);
     return this;
   }
 }

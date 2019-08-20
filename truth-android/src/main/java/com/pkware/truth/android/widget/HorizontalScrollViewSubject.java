@@ -17,7 +17,11 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.HorizontalScrollView;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link HorizontalScrollView} subjects.
@@ -25,8 +29,8 @@ import com.google.common.truth.FailureMetadata;
  * This class is final. To extend use {@link AbstractHorizontalScrollViewSubject}.
  */
 public final class HorizontalScrollViewSubject
-    extends AbstractHorizontalScrollViewSubject<HorizontalScrollViewSubject, HorizontalScrollView> {
-  public HorizontalScrollViewSubject(FailureMetadata failureMetadata, HorizontalScrollView subject) {
-    super(failureMetadata, subject);
+    extends AbstractHorizontalScrollViewSubject<HorizontalScrollView> {
+  public HorizontalScrollViewSubject(@Nonnull FailureMetadata failureMetadata, @Nullable HorizontalScrollView actual) {
+    super(failureMetadata, actual);
   }
 }

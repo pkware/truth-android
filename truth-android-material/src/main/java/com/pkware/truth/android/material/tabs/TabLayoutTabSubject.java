@@ -22,57 +22,54 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link TabLayout.Tab} subjects.
  */
-public class TabLayoutTabSubject extends Subject<TabLayoutTabSubject, TabLayout.Tab> {
-  public TabLayoutTabSubject(FailureMetadata failureMetadata, TabLayout.Tab subject) {
-    super(failureMetadata, subject);
+public class TabLayoutTabSubject extends Subject {
+
+  @Nullable
+  private final TabLayout.Tab actual;
+
+  public TabLayoutTabSubject(@Nonnull FailureMetadata failureMetadata, @Nullable TabLayout.Tab actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public TabLayoutTabSubject hasContentDescription(String contentDescription) {
-    CharSequence actualContentDescription = actual().getContentDescription();
+    CharSequence actualContentDescription = actual.getContentDescription();
     String contentDescriptionString;
     if (actualContentDescription == null) {
       contentDescriptionString = null;
     } else {
       contentDescriptionString = actualContentDescription.toString();
     }
-    assertThat(contentDescriptionString)
-        .named("content description")
-        .isEqualTo(contentDescription);
+    check("getContentDescription()").that(contentDescriptionString).isEqualTo(contentDescription);
     return this;
   }
 
-  public TabLayoutTabSubject hasIcon(Drawable icon) {
-    assertThat(actual().getIcon())
-        .named("icon")
-        .isSameAs(icon);
+  public TabLayoutTabSubject hasIcon(@Nullable Drawable icon) {
+    check("getIcon()").that(actual.getIcon()).isSameInstanceAs(icon);
     return this;
   }
 
   public TabLayoutTabSubject hasPosition(int position) {
-    assertThat(actual().getPosition())
-        .named("position")
-        .isEqualTo(position);
+    check("getPosition()").that(actual.getPosition()).isEqualTo(position);
     //noinspection unchecked
     return this;
   }
 
-  public TabLayoutTabSubject hasText(String text) {
-    CharSequence actualText = actual().getText();
+  public TabLayoutTabSubject hasText(@Nullable String text) {
+    CharSequence actualText = actual.getText();
     String actualTextString;
     if (actualText == null) {
       actualTextString = null;
     } else {
       actualTextString = actualText.toString();
     }
-    assertThat(actualTextString)
-        .named("text")
-        .isEqualTo(text);
-    //noinspection unchecked
+    check("getText()").that(actualTextString).isEqualTo(text);
     return this;
   }
 }

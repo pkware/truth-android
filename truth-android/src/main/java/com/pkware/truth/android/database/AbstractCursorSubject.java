@@ -21,134 +21,76 @@ import android.database.Cursor;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import java.util.Arrays;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-import static com.google.common.truth.Truth.assertThat;
+public abstract class AbstractCursorSubject<T extends Cursor> extends Subject {
 
-public abstract class AbstractCursorSubject<S extends AbstractCursorSubject<S, T>, T extends Cursor> extends Subject<S, T> {
-  protected AbstractCursorSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+  @Nullable
+  private final T actual;
+
+  protected AbstractCursorSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S hasColumnCount(int count) {
-    assertThat(actual().getColumnCount())
-        .named("column count")
-        .isEqualTo(count);
-    //noinspection unchecked
-    return (S) this;
+  public void hasColumnCount(int count) {
+    check("getColumnCount()").that(actual.getColumnCount()).isEqualTo(count);
   }
 
-  public S hasColumn(String name) {
-    assertThat(actual().getColumnNames())
-        .asList()
-        .named("columns")
-        .contains(name);
-    //noinspection unchecked
-    return (S) this;
+  public void hasColumn(@Nonnull String name) {
+    check("getColumnNames()").that(actual.getColumnNames()).asList().contains(name);
   }
 
-  public S hasColumns(String... names) {
-    assertThat(actual().getColumnNames())
-        .asList()
-        .named("columns")
-        .containsAllIn(Arrays.asList(names));
-    //noinspection unchecked
-    return (S) this;
+  public void hasColumns(@Nonnull String... names) {
+    check("getColumnNames()").that(actual.getColumnNames()).asList().containsAtLeastElementsIn(names);
   }
 
-  public S hasCount(int count) {
-    assertThat(actual().getCount())
-        .named("count")
-        .isEqualTo(count);
-    //noinspection unchecked
-    return (S) this;
+  public void hasCount(int count) {
+    check("getCount()").that(actual.getCount()).isEqualTo(count);
   }
 
-  public S hasPosition(int position) {
-    assertThat(actual().getPosition())
-        .named("position")
-        .isEqualTo(position);
-    //noinspection unchecked
-    return (S) this;
+  public void hasPosition(int position) {
+    check("getPosition()").that(actual.getPosition()).isEqualTo(position);
   }
 
-  public S isAfterLast() {
-    assertThat(actual().isAfterLast())
-        .named("is after last")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isAfterLast() {
+    check("isAfterLast()").that(actual.isAfterLast()).isTrue();
   }
 
-  public S isNotAfterLast() {
-    assertThat(actual().isAfterLast())
-        .named("is after last")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotAfterLast() {
+    check("isAfterLast()").that(actual.isAfterLast()).isFalse();
   }
 
-  public S isBeforeFirst() {
-    assertThat(actual().isBeforeFirst())
-        .named("is before first")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isBeforeFirst() {
+    check("isBeforeFirst()").that(actual.isBeforeFirst()).isTrue();
   }
 
-  public S isNotBeforeFirst() {
-    assertThat(actual().isBeforeFirst())
-        .named("is before first")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotBeforeFirst() {
+    check("isBeforeFirst()").that(actual.isBeforeFirst()).isFalse();
   }
 
-  public S isClosed() {
-    assertThat(actual().isClosed())
-        .named("is closed")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isClosed() {
+    check("isClosed()").that(actual.isClosed()).isTrue();
   }
 
-  public S isNotClosed() {
-    assertThat(actual().isClosed())
-        .named("is closed")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotClosed() {
+    check("isClosed()").that(actual.isClosed()).isFalse();
   }
 
-  public S isFirst() {
-    assertThat(actual().isFirst())
-        .named("is first")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isFirst() {
+    check("isFirst()").that(actual.isFirst()).isTrue();
   }
 
-  public S isNotFirst() {
-    assertThat(actual().isFirst())
-        .named("is first")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotFirst() {
+    check("isFirst()").that(actual.isFirst()).isFalse();
   }
 
-  public S isLast() {
-    assertThat(actual().isLast())
-        .named("is last")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isLast() {
+    check("isLast()").that(actual.isLast()).isTrue();
   }
 
-  public S isNotLast() {
-    assertThat(actual().isLast())
-        .named("is last")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotLast() {
+    check("isLast()").that(actual.isLast()).isFalse();
   }
 }

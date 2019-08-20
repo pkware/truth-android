@@ -17,15 +17,19 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.CompoundButton;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link CompoundButton} subjects.
  * <p/>
  * This class is final. To extend use {@link AbstractCompoundButtonSubject}.
  */
-public final class CompoundButtonSubject extends AbstractCompoundButtonSubject<CompoundButtonSubject, CompoundButton> {
-  public CompoundButtonSubject(FailureMetadata failureMetadata, CompoundButton subject) {
-    super(failureMetadata, subject);
+public final class CompoundButtonSubject extends AbstractCompoundButtonSubject<CompoundButton> {
+  public CompoundButtonSubject(@Nonnull FailureMetadata failureMetadata, @Nullable CompoundButton actual) {
+    super(failureMetadata, actual);
   }
 }

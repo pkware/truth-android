@@ -21,50 +21,44 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link RecyclerView.ItemAnimator} subjects.
  */
-public class RecyclerViewItemAnimatorSubject
-    extends Subject<RecyclerViewItemAnimatorSubject, RecyclerView.ItemAnimator> {
+public class RecyclerViewItemAnimatorSubject extends Subject {
 
-  public RecyclerViewItemAnimatorSubject(FailureMetadata failureMetadata, RecyclerView.ItemAnimator subject) {
-    super(failureMetadata, subject);
+  @Nullable
+  private final RecyclerView.ItemAnimator actual;
+
+  public RecyclerViewItemAnimatorSubject(@Nonnull FailureMetadata failureMetadata, @Nullable RecyclerView.ItemAnimator actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public RecyclerViewItemAnimatorSubject hasMoveDuration(long duration) {
-    assertThat(actual().getMoveDuration())
-        .named("move duration")
-        .isEqualTo(duration);
+    check("getMoveDuration()").that(actual.getMoveDuration()).isEqualTo(duration);
     return this;
   }
 
   public RecyclerViewItemAnimatorSubject hasAddDuration(long duration) {
-    assertThat(actual().getAddDuration())
-        .named("add duration")
-        .isEqualTo(duration);
+    check("getAddDuration()").that(actual.getAddDuration()).isEqualTo(duration);
     return this;
   }
 
   public RecyclerViewItemAnimatorSubject hasRemoveDuration(long duration) {
-    assertThat(actual().getRemoveDuration())
-        .named("remove duration")
-        .isEqualTo(duration);
+    check("getRemoveDuration()").that(actual.getRemoveDuration()).isEqualTo(duration);
     return this;
   }
 
   public RecyclerViewItemAnimatorSubject isRunning() {
-    assertThat(actual().isRunning())
-        .named("is running")
-        .isTrue();
+    check("isRunning()").that(actual.isRunning()).isTrue();
     return this;
   }
 
   public RecyclerViewItemAnimatorSubject isNotRunning() {
-    assertThat(actual().isRunning())
-        .named("is running")
-        .isFalse();
+    check("isRunning()").that(actual.isRunning()).isFalse();
     return this;
   }
 }

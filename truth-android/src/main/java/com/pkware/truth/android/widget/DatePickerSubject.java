@@ -17,78 +17,67 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.DatePicker;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link DatePicker} subjects.
  */
-public class DatePickerSubject extends AbstractFrameLayoutSubject<DatePickerSubject, DatePicker> {
-  public DatePickerSubject(FailureMetadata failureMetadata, DatePicker subject) {
-    super(failureMetadata, subject);
+public class DatePickerSubject extends AbstractFrameLayoutSubject<DatePicker> {
+
+  @Nullable
+  private final DatePicker actual;
+
+  public DatePickerSubject(@Nonnull FailureMetadata failureMetadata, @Nullable DatePicker actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public DatePickerSubject isShowingCalendarView() {
-    assertThat(actual().getCalendarViewShown())
-        .named("is showing calendar view")
-        .isTrue();
+    check("getCalendarViewShown()").that(actual.getCalendarViewShown()).isTrue();
     return this;
   }
 
   public DatePickerSubject isNotShowingCalendarView() {
-    assertThat(actual().getCalendarViewShown())
-        .named("is showing calendar view")
-        .isFalse();
+    check("getCalendarViewShown()").that(actual.getCalendarViewShown()).isFalse();
     return this;
   }
 
   public DatePickerSubject hasDayOfMonth(int day) {
-    assertThat(actual().getDayOfMonth())
-        .named("day of the month")
-        .isEqualTo(day);
+    check("getDayOfMonth()").that(actual.getDayOfMonth()).isEqualTo(day);
     return this;
   }
 
   public DatePickerSubject hasMaxDate(long date) {
-    assertThat(actual().getMaxDate())
-        .named("maximum date")
-        .isEqualTo(date);
+    check("getMaxDate()").that(actual.getMaxDate()).isEqualTo(date);
     return this;
   }
 
   public DatePickerSubject hasMinDate(long date) {
-    assertThat(actual().getMinDate())
-        .named("minimum date")
-        .isEqualTo(date);
+    check("getMinDate()").that(actual.getMinDate()).isEqualTo(date);
     return this;
   }
 
   public DatePickerSubject hasMonth(int month) {
-    assertThat(actual().getMonth())
-        .named("month")
-        .isEqualTo(month);
+    check("getMonth()").that(actual.getMonth()).isEqualTo(month);
     return this;
   }
 
   public DatePickerSubject isShowingSpinners() {
-    assertThat(actual().getSpinnersShown())
-        .named("is showing spinners")
-        .isTrue();
+    check("getSpinnersShown()").that(actual.getSpinnersShown()).isTrue();
     return this;
   }
 
   public DatePickerSubject isNotShowingSpinners() {
-    assertThat(actual().getSpinnersShown())
-        .named("is showing spinners")
-        .isFalse();
+    check("getSpinnersShown()").that(actual.getSpinnersShown()).isFalse();
     return this;
   }
 
   public DatePickerSubject hasYear(int year) {
-    assertThat(actual().getYear())
-        .named("year")
-        .isEqualTo(year);
+    check("getYear()").that(actual.getYear()).isEqualTo(year);
     return this;
   }
 }

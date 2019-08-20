@@ -22,27 +22,29 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Snackbar} subjects.
  */
-public class SnackbarSubject extends Subject<SnackbarSubject, Snackbar> {
-  public SnackbarSubject(FailureMetadata failureMetadata, Snackbar subject) {
-    super(failureMetadata, subject);
+public class SnackbarSubject extends Subject {
+
+  @Nullable
+  private final Snackbar actual;
+
+  public SnackbarSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Snackbar actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public SnackbarSubject hasDuration(int duration) {
-    assertThat(actual().getDuration())
-        .named("duration")
-        .isEqualTo(duration);
+    check("getDuration()").that(actual.getDuration()).isEqualTo(duration);
     return this;
   }
 
-  public SnackbarSubject hasView(View view) {
-    assertThat(actual().getView())
-        .named("view")
-        .isSameAs(view);
+  public SnackbarSubject hasView(@Nullable View view) {
+    check("getView()").that(actual.getView()).isSameInstanceAs(view);
     return this;
   }
 }

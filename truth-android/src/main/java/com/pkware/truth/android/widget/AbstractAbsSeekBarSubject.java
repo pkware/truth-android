@@ -22,37 +22,32 @@ import android.widget.AbsSeekBar;
 
 import com.google.common.truth.FailureMetadata;
 
-import static android.os.Build.VERSION_CODES.JELLY_BEAN;
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public abstract class AbstractAbsSeekBarSubject<S extends AbstractAbsSeekBarSubject<S, T>, T extends AbsSeekBar>
-    extends AbstractProgressBarSubject<S, T> {
-  protected AbstractAbsSeekBarSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+import static android.os.Build.VERSION_CODES.JELLY_BEAN;
+
+public abstract class AbstractAbsSeekBarSubject<T extends AbsSeekBar>
+    extends AbstractProgressBarSubject<T> {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractAbsSeekBarSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S hasKeyProgressIncrement(int increment) {
-    assertThat(actual().getKeyProgressIncrement())
-        .named("key progress increment")
-        .isEqualTo(increment);
-    //noinspection unchecked
-    return (S) this;
+  public void hasKeyProgressIncrement(int increment) {
+    check("getKeyProgressIncrement()").that(actual.getKeyProgressIncrement()).isEqualTo(increment);
   }
 
   @TargetApi(JELLY_BEAN)
-  public S hasThumb(Drawable drawable) {
-    assertThat(actual().getThumb())
-        .named("thumb")
-        .isSameAs(drawable);
-    //noinspection unchecked
-    return (S) this;
+  public void hasThumb(@Nullable Drawable drawable) {
+    check("getThumb()").that(actual.getThumb()).isSameInstanceAs(drawable);
   }
 
-  public S hasThumbOffset(int offset) {
-    assertThat(actual().getThumbOffset())
-        .named("thumb offset")
-        .isEqualTo(offset);
-    //noinspection unchecked
-    return (S) this;
+  public void hasThumbOffset(int offset) {
+    check("getThumbOffset()").that(actual.getThumbOffset()).isEqualTo(offset);
   }
 }

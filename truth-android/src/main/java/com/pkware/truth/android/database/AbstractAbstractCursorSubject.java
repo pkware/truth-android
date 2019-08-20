@@ -18,21 +18,24 @@ package com.pkware.truth.android.database;
 
 import android.database.AbstractCursor;
 import android.net.Uri;
+
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.pkware.truth.android.Assertions.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public abstract class AbstractAbstractCursorSubject<S extends AbstractAbstractCursorSubject<S, T>, T extends AbstractCursor> extends Subject<S, T> {
-  protected AbstractAbstractCursorSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractAbstractCursorSubject<T extends AbstractCursor> extends Subject {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractAbstractCursorSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S hasNotificationUri(Uri uri) {
-    assertThat(uri)
-        .named("notification uri")
-        .isEqualTo(uri);
-    //noinspection unchecked
-    return (S) this;
+  public void hasNotificationUri(@Nullable Uri uri) {
+    check("getNotificationUri()").that(actual.getNotificationUri()).isEqualTo(uri);
   }
 }

@@ -19,13 +19,16 @@ package com.pkware.truth.android.animation;
 import android.animation.ValueAnimator;
 import com.google.common.truth.FailureMetadata;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 /**
  * Propositions for {@link ValueAnimator} subjects.
  * <p/>
  * This class is final. To extend use {@link AbstractValueAnimatorSubject}.
  */
-public final class ValueAnimatorSubject extends AbstractValueAnimatorSubject<ValueAnimatorSubject, ValueAnimator> {
-  public ValueAnimatorSubject(FailureMetadata failureMetadata, ValueAnimator subject) {
-    super(failureMetadata, subject);
+public final class ValueAnimatorSubject extends AbstractValueAnimatorSubject<ValueAnimator> {
+  public ValueAnimatorSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ValueAnimator actual) {
+    super(failureMetadata, actual);
   }
 }

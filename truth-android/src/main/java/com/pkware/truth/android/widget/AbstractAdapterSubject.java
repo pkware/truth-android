@@ -21,93 +21,68 @@ import android.widget.Adapter;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public abstract class AbstractAdapterSubject<S extends AbstractAdapterSubject<S, T>, T extends Adapter>
-    extends Subject<S, T> {
+public abstract class AbstractAdapterSubject<T extends Adapter> extends Subject {
 
-  protected AbstractAdapterSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+  @Nullable
+  private final T actual;
+
+  protected AbstractAdapterSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S hasCount(int count) {
-    assertThat(actual().getCount())
-        .named("count")
-        .isEqualTo(count);
-    //noinspection unchecked
-    return (S) this;
+  public void hasCount(int count) {
+    check("getCount()").that(actual.getCount()).isEqualTo(count);
   }
 
-  public S hasViewTypeCount(int count) {
-    assertThat(actual().getViewTypeCount())
-        .named("view type count")
-        .isEqualTo(count);
-    //noinspection unchecked
-    return (S) this;
+  public void hasViewTypeCount(int count) {
+    check("getViewTypeCount()").that(actual.getViewTypeCount()).isEqualTo(count);
   }
 
-  public S hasStableIds() {
-    assertThat(actual().hasStableIds())
-        .named("has stable IDs")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void hasStableIds() {
+    check("hasStableIds()").that(actual.hasStableIds()).isTrue();
   }
 
-  public S hasUnstableIds() {
-    assertThat(actual().hasStableIds())
-        .named("has stable IDs")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void hasUnstableIds() {
+    check("hasStableIds()").that(actual.hasStableIds()).isFalse();
   }
 
-  public S isEmpty() {
-    assertThat(actual().isEmpty())
-        .named("is empty")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isEmpty() {
+    check("isEmpty()").that(actual.isEmpty()).isTrue();
   }
 
-  public S isNotEmpty() {
-    assertThat(actual().isEmpty())
-        .named("is empty")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotEmpty() {
+    check("isEmpty()").that(actual.isEmpty()).isFalse();
   }
 
-  public S hasItem(Object expected, int index) {
-    int count = actual().getCount();
-    assert_()
+  public void hasItem(@Nullable Object expected, int index) {
+    int count = actual.getCount();
+    check("getCount()")
         .withMessage("Index %s is out of bounds. The adapter holds %s items.", index, count)
         .that(count)
         .isGreaterThan(index);
 
-    Object actualItem = actual().getItem(index);
-    assertThat(actualItem)
-        .named("item at index " + index)
+    Object actualItem = actual.getItem(index);
+    check("getItem(index)")
+        .withMessage("item at index %s", index)
+        .that(actualItem)
         .isEqualTo(expected);
-
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S doesNotHaveItem(Object notExpected, int index) {
-    int count = actual().getCount();
-    assert_()
+  public void doesNotHaveItem(Object notExpected, int index) {
+    int count = actual.getCount();
+    check("getCount()")
         .withMessage("Index %s is out of bounds. The adapter holds %s items.", index, count)
         .that(count)
         .isGreaterThan(index);
 
-    Object actualItem = actual().getItem(index);
-    assertThat(actualItem)
-        .named("item at index " + index)
+    Object actualItem = actual.getItem(index);
+    check("getItem(index)")
+        .withMessage("item at index %s", index)
+        .that(actualItem)
         .isNotEqualTo(notExpected);
-
-    //noinspection unchecked
-    return (S) this;
   }
 }

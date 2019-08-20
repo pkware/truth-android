@@ -20,36 +20,40 @@ import android.annotation.TargetApi;
 import android.util.ArrayMap;
 
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.MapSubject;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.KITKAT;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link ArrayMap} subjects.
  */
 @TargetApi(KITKAT)
-public class ArrayMapSubject<K, V> extends Subject<ArrayMapSubject<K, V>, ArrayMap<K, V>> {
-  public ArrayMapSubject(FailureMetadata failureMetadata, ArrayMap<K, V> subject) {
-    super(failureMetadata, subject);
+public class ArrayMapSubject<K, V> extends Subject {
+
+  @Nullable
+  private final ArrayMap<K, V> actual;
+
+  public ArrayMapSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ArrayMap<K, V> actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public ArrayMapSubject<K, V> hasKeyAt(int index, K key) {
-    assertThat(actual().keyAt(index))
-        .named("key at index " + index)
+    check("keyAt(index)")
+        .withMessage("key at index %s", index)
+        .that(actual.keyAt(index))
         .isEqualTo(key);
     return this;
   }
 
   public ArrayMapSubject<K, V> hasValueAt(int index, V value) {
-    assertThat(actual().valueAt(index))
-        .named("value at index " + index)
+    check("valueAt(index)")
+        .withMessage("value at index %s", index)
+        .that(actual.valueAt(index))
         .isEqualTo(value);
     return this;
-  }
-
-  public MapSubject asMap() {
-    return assertThat(actual());
   }
 }

@@ -21,27 +21,25 @@ import android.widget.AbsoluteLayout;
 import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public abstract class AbstractAbsoluteLayoutSubject<S extends AbstractAbsoluteLayoutSubject<S, T>, T extends AbsoluteLayout>
-    extends AbstractViewGroupSubject<S, T> {
-  protected AbstractAbsoluteLayoutSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractAbsoluteLayoutSubject<T extends AbsoluteLayout>
+    extends AbstractViewGroupSubject<T> {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractAbsoluteLayoutSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S isDelayingChildPressedState() {
-    assertThat(actual().shouldDelayChildPressedState())
-        .named("is delaying child pressed state")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isDelayingChildPressedState() {
+    check("shouldDelayChildPressedState()").that(actual.shouldDelayChildPressedState()).isTrue();
   }
 
-  public S isNotDelayingChildPressedState() {
-    assertThat(actual().shouldDelayChildPressedState())
-        .named("is delaying child pressed state")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotDelayingChildPressedState() {
+    check("shouldDelayChildPressedState()").that(actual.shouldDelayChildPressedState()).isFalse();
   }
 }

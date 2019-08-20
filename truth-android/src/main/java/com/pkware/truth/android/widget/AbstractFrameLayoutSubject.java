@@ -23,61 +23,44 @@ import android.widget.FrameLayout;
 import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 
-import static android.os.Build.VERSION_CODES.JELLY_BEAN;
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public abstract class AbstractFrameLayoutSubject<S extends AbstractFrameLayoutSubject<S, T>, T extends FrameLayout>
-    extends AbstractViewGroupSubject<S, T> {
-  protected AbstractFrameLayoutSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+import static android.os.Build.VERSION_CODES.JELLY_BEAN;
+
+public abstract class AbstractFrameLayoutSubject<T extends FrameLayout>
+    extends AbstractViewGroupSubject<T> {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractFrameLayoutSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S hasForeground(Drawable drawable) {
-    assertThat(actual().getForeground())
-        .named("foreground drawable")
-        .isSameAs(drawable);
-    //noinspection unchecked
-    return (S) this;
+  public void hasForeground(@Nullable Drawable drawable) {
+    check("getForeground()").that(actual.getForeground()).isSameInstanceAs(drawable);
   }
 
   @TargetApi(JELLY_BEAN)
-  public S hasForegroundGravity(int gravity) {
-    assertThat(actual().getForegroundGravity())
-        .named("foreground gravity")
-        .isEqualTo(gravity);
-    //noinspection unchecked
-    return (S) this;
+  public void hasForegroundGravity(int gravity) {
+    check("getForegroundGravity()").that(actual.getForegroundGravity()).isEqualTo(gravity);
   }
 
-  public S isMeasuringAllChildren() {
-    assertThat(actual().getMeasureAllChildren())
-        .named("is measuring all children")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isMeasuringAllChildren() {
+    check("getMeasureAllChildren()").that(actual.getMeasureAllChildren()).isTrue();
   }
 
-  public S isNotMeasuringAllChildren() {
-    assertThat(actual().getMeasureAllChildren())
-        .named("is measuring all children")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotMeasuringAllChildren() {
+    check("getMeasureAllChildren()").that(actual.getMeasureAllChildren()).isFalse();
   }
 
-  public S isDelayingChildPressedState() {
-    assertThat(actual().shouldDelayChildPressedState())
-        .named("is delaying child pressed state")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isDelayingChildPressedState() {
+    check("shouldDelayChildPressedState()").that(actual.shouldDelayChildPressedState()).isTrue();
   }
 
-  public S isNotDelayingChildPressedState() {
-    assertThat(actual().shouldDelayChildPressedState())
-        .named("is delaying child pressed state")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotDelayingChildPressedState() {
+    check("shouldDelayChildPressedState()").that(actual.shouldDelayChildPressedState()).isFalse();
   }
 }

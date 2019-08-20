@@ -21,35 +21,34 @@ import android.hardware.SensorEvent;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link SensorEvent} subjects.
  */
-public class SensorEventSubject extends Subject<SensorEventSubject, SensorEvent> {
-  public SensorEventSubject(FailureMetadata failureMetadata, SensorEvent subject) {
-    super(failureMetadata, subject);
+public class SensorEventSubject extends Subject {
+
+  @Nullable
+  private final SensorEvent actual;
+
+  public SensorEventSubject(@Nonnull FailureMetadata failureMetadata, @Nullable SensorEvent actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public SensorEventSubject hasAccuracy(int accuracy) {
-    assertThat(actual().accuracy)
-        .named("accuracy")
-        .isEqualTo(accuracy);
+    check("accuracy").that(actual.accuracy).isEqualTo(accuracy);
     return this;
   }
 
   public SensorEventSubject hasTimestamp(long timestamp) {
-    assertThat(actual().timestamp)
-        .named("timestamp")
-        .isEqualTo(timestamp);
+    check("timestamp").that(actual.timestamp).isEqualTo(timestamp);
     return this;
   }
 
   public SensorEventSubject hasValues(float[] values, float tolerance) {
-    assertThat(actual().values)
-        .named("values")
-        .hasValuesWithin(tolerance)
-        .of(values);
+    check("values").that(actual.values).usingTolerance(tolerance).containsAnyOf(values);
     return this;
   }
 }

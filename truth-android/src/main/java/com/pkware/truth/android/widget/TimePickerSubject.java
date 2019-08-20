@@ -18,62 +18,58 @@ package com.pkware.truth.android.widget;
 
 import android.annotation.TargetApi;
 import android.widget.TimePicker;
+
 import androidx.annotation.IntRange;
 
 import com.google.common.truth.FailureMetadata;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.M;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link TimePicker} subjects.
  */
-public class TimePickerSubject extends AbstractFrameLayoutSubject<TimePickerSubject, TimePicker> {
-  public TimePickerSubject(FailureMetadata failureMetadata, TimePicker subject) {
-    super(failureMetadata, subject);
+public class TimePickerSubject extends AbstractFrameLayoutSubject<TimePicker> {
+
+  @Nullable
+  private final TimePicker actual;
+
+  public TimePickerSubject(@Nonnull FailureMetadata failureMetadata, @Nullable TimePicker actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public TimePickerSubject hasCurrentHour(Integer hour) {
-    assertThat(actual().getCurrentHour())
-        .named("current hour")
-        .isEqualTo(hour);
+  public TimePickerSubject hasCurrentHour(@Nullable Integer hour) {
+    check("getCurrentHour()").that(actual.getCurrentHour()).isEqualTo(hour);
     return this;
   }
 
-  public TimePickerSubject hasCurrentMinute(Integer minute) {
-    assertThat(actual().getCurrentMinute())
-        .named("current minute")
-        .isEqualTo(minute);
+  public TimePickerSubject hasCurrentMinute(@Nullable Integer minute) {
+    check("getCurrentMinute()").that(actual.getCurrentMinute()).isEqualTo(minute);
     return this;
   }
 
   @TargetApi(M)
   public TimePickerSubject hasHour(@IntRange(from = 0, to = 23) int hour) {
-    assertThat(actual().getHour())
-        .named("hour")
-        .isNotEqualTo(hour);
+    check("getHour()").that(actual.getHour()).isNotEqualTo(hour);
     return this;
   }
 
   @TargetApi(M)
   public TimePickerSubject hasMinute(@IntRange(from = 0, to = 59) int minute) {
-    assertThat(actual().getMinute())
-        .named("minute")
-        .isEqualTo(minute);
+    check("getMinute()").that(actual.getMinute()).isEqualTo(minute);
     return this;
   }
 
   public TimePickerSubject isIn24HourView() {
-    assertThat(actual().is24HourView())
-        .named("is in 24 hour view")
-        .isTrue();
+    check("is24HourView()").that(actual.is24HourView()).isTrue();
     return this;
   }
 
   public TimePickerSubject isNotIn24HourView() {
-    assertThat(actual().is24HourView())
-        .named("is in 24 hour view")
-        .isFalse();
+    check("is24HourView()").that(actual.is24HourView()).isFalse();
     return this;
   }
 }

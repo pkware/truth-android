@@ -17,39 +17,39 @@
 package com.pkware.truth.androidx.legacy.v4.widget;
 
 import androidx.cursoradapter.widget.SimpleCursorAdapter;
+
 import com.google.common.truth.FailureMetadata;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static androidx.cursoradapter.widget.SimpleCursorAdapter.CursorToStringConverter;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link SimpleCursorAdapter} subjects.
  */
-public class SimpleCursorAdapterSubject
-    extends AbstractCursorAdapterSubject<SimpleCursorAdapterSubject, SimpleCursorAdapter> {
-  public SimpleCursorAdapterSubject(FailureMetadata failureMetadata, SimpleCursorAdapter subject) {
-    super(failureMetadata, subject);
+public class SimpleCursorAdapterSubject extends AbstractCursorAdapterSubject<SimpleCursorAdapter> {
+
+  @Nullable
+  private final SimpleCursorAdapter actual;
+
+  public SimpleCursorAdapterSubject(@Nonnull FailureMetadata failureMetadata, @Nullable SimpleCursorAdapter actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public SimpleCursorAdapterSubject hasCursorToStringConverter(CursorToStringConverter converter) {
-    assertThat(actual().getCursorToStringConverter())
-        .named("cursor 'toString' converter")
-        .isSameAs(converter);
+  public SimpleCursorAdapterSubject hasCursorToStringConverter(@Nullable CursorToStringConverter converter) {
+    check("getCursorToStringConverter()").that(actual.getCursorToStringConverter()).isSameInstanceAs(converter);
     return this;
   }
 
   public SimpleCursorAdapterSubject hasStringConversionColumn(int column) {
-    int actualColumn = actual().getStringConversionColumn();
-    assertThat(actual().getStringConversionColumn())
-        .named("string conversion column")
-        .isEqualTo(column);
+    check("getStringConversionColumn()").that(actual.getStringConversionColumn()).isEqualTo(column);
     return this;
   }
 
-  public SimpleCursorAdapterSubject hasViewBinder(SimpleCursorAdapter.ViewBinder binder) {
-    assertThat(actual().getViewBinder())
-        .named("view binder")
-        .isSameAs(binder);
+  public SimpleCursorAdapterSubject hasViewBinder(@Nullable SimpleCursorAdapter.ViewBinder binder) {
+    check("getViewBinder()").that(actual.getViewBinder()).isSameInstanceAs(binder);
     return this;
   }
 }

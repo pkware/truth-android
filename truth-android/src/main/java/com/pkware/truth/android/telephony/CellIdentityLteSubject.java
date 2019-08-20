@@ -22,50 +22,47 @@ import android.telephony.CellIdentityLte;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link CellIdentityLte} subjects.
  */
 @TargetApi(JELLY_BEAN_MR1)
-public final class CellIdentityLteSubject extends Subject<CellIdentityLteSubject, CellIdentityLte> {
-  public CellIdentityLteSubject(FailureMetadata failureMetadata, CellIdentityLte subject) {
-    super(failureMetadata, subject);
+public final class CellIdentityLteSubject extends Subject {
+
+  @Nullable
+  private final CellIdentityLte actual;
+
+  public CellIdentityLteSubject(@Nonnull FailureMetadata failureMetadata, @Nullable CellIdentityLte actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public CellIdentityLteSubject hasCi(int ci) {
-    assertThat(actual().getCi())
-        .named("CI")
-        .isEqualTo(ci);
+    check("getCi()").that(actual.getCi()).isEqualTo(ci);
     return this;
   }
 
   public CellIdentityLteSubject hasMcc(int mcc) {
-    assertThat(actual().getMcc())
-        .named("MCC")
-        .isEqualTo(mcc);
+    check("getMcc()").that(actual.getMcc()).isEqualTo(mcc);
     return this;
   }
 
   public CellIdentityLteSubject hasMnc(int mnc) {
-    assertThat(actual().getMnc())
-        .named("MNC")
-        .isEqualTo(mnc);
+    check("getMnc()").that(actual.getMnc()).isEqualTo(mnc);
     return this;
   }
 
   public CellIdentityLteSubject hasPci(int pci) {
-    assertThat(actual().getPci())
-        .named("PCI")
-        .isEqualTo(pci);
+    check("getPci()").that(actual.getPci()).isEqualTo(pci);
     return this;
   }
 
   public CellIdentityLteSubject hasTac(int tac) {
-    assertThat(actual().getTac())
-        .named("TAC")
-        .isEqualTo(tac);
+    check("getTac()").that(actual.getTac()).isEqualTo(tac);
     return this;
   }
 }

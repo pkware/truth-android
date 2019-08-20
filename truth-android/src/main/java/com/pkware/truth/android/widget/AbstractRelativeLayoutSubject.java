@@ -22,21 +22,24 @@ import android.widget.RelativeLayout;
 import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 
-import static android.os.Build.VERSION_CODES.JELLY_BEAN;
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public abstract class AbstractRelativeLayoutSubject<S extends AbstractRelativeLayoutSubject<S, T>, T extends RelativeLayout>
-    extends AbstractViewGroupSubject<S, T> {
-  protected AbstractRelativeLayoutSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+import static android.os.Build.VERSION_CODES.JELLY_BEAN;
+
+public abstract class AbstractRelativeLayoutSubject<T extends RelativeLayout>
+    extends AbstractViewGroupSubject<T> {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractRelativeLayoutSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   @TargetApi(JELLY_BEAN)
-  public S hasGravity(int gravity) {
-    assertThat(actual().getGravity())
-        .named("gravity")
-        .isEqualTo(gravity);
-    //noinspection unchecked
-    return (S) this;
+  public void hasGravity(int gravity) {
+    check("getGravity()").that(actual.getGravity()).isEqualTo(gravity);
   }
 }

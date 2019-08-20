@@ -21,19 +21,21 @@ import android.widget.SpinnerAdapter;
 
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public abstract class AbstractAbsSpinnerSubject<S extends AbstractAbsSpinnerSubject<S, T>, T extends AbsSpinner>
-    extends AbstractAdapterViewSubject<S, T> {
-  protected AbstractAbsSpinnerSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractAbsSpinnerSubject<T extends AbsSpinner>
+    extends AbstractAdapterViewSubject<T> {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractAbsSpinnerSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S hasAdapter(SpinnerAdapter adapter) {
-    assertThat(actual().getAdapter())
-        .named("adapter")
-        .isSameAs(adapter);
-    //noinspection unchecked
-    return (S) this;
+  public void hasAdapter(@Nullable SpinnerAdapter adapter) {
+    check("getAdapter()").that(actual.getAdapter()).isSameInstanceAs(adapter);
   }
 }

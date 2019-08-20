@@ -17,57 +17,52 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.NumberPicker;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link NumberPicker} subjects.
  */
-public class NumberPickerSubject extends AbstractLinearLayoutSubject<NumberPickerSubject, NumberPicker> {
-  public NumberPickerSubject(FailureMetadata failureMetadata, NumberPicker subject) {
-    super(failureMetadata, subject);
+public class NumberPickerSubject extends AbstractLinearLayoutSubject<NumberPicker> {
+
+  @Nullable
+  private final NumberPicker actual;
+
+  public NumberPickerSubject(@Nonnull FailureMetadata failureMetadata, @Nullable NumberPicker actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public NumberPickerSubject hasDisplayedValues(String[] values) {
-    assertThat(actual().getDisplayedValues())
-        .named("displayed values")
-        .isEqualTo(values);
+  public NumberPickerSubject hasDisplayedValues(@Nonnull String[] values) {
+    check("getDisplayedValues()").that(actual.getDisplayedValues()).asList().containsExactlyElementsIn(values).inOrder();
     return this;
   }
 
   public NumberPickerSubject hasMaxValue(int value) {
-    assertThat(actual().getMaxValue())
-        .named("maximum value")
-        .isEqualTo(value);
+    check("getMaxValue()").that(actual.getMaxValue()).isEqualTo(value);
     return this;
   }
 
   public NumberPickerSubject hasMinValue(int value) {
-    assertThat(actual().getMinValue())
-        .named("minimum value")
-        .isEqualTo(value);
+    check("getMinValue()").that(actual.getMinValue()).isEqualTo(value);
     return this;
   }
 
   public NumberPickerSubject hasValue(int value) {
-    assertThat(actual().getValue())
-        .named("value")
-        .isEqualTo(value);
+    check("getValue()").that(actual.getValue()).isEqualTo(value);
     return this;
   }
 
   public NumberPickerSubject isWrappingSelectorWheel() {
-    assertThat(actual().getWrapSelectorWheel())
-        .named("is wrapping selector wheel")
-        .isTrue();
+    check("getWrapSelectorWheel()").that(actual.getWrapSelectorWheel()).isTrue();
     return this;
   }
 
   public NumberPickerSubject isNotWrappingSelectorWheel() {
-    assertThat(actual().getWrapSelectorWheel())
-        .named("is wrapping selector wheel")
-        .isFalse();
+    check("getWrapSelectorWheel()").that(actual.getWrapSelectorWheel()).isFalse();
     return this;
   }
 }

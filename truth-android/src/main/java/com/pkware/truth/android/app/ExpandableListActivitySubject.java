@@ -17,29 +17,32 @@
 package com.pkware.truth.android.app;
 
 import android.app.ExpandableListActivity;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link ExpandableListActivity} subjects.
  */
-public class ExpandableListActivitySubject extends AbstractActivitySubject<ExpandableListActivitySubject, ExpandableListActivity> {
-  public ExpandableListActivitySubject(FailureMetadata failureMetadata, ExpandableListActivity subject) {
-    super(failureMetadata, subject);
+public class ExpandableListActivitySubject extends AbstractActivitySubject<ExpandableListActivity> {
+
+  @Nullable
+  private ExpandableListActivity actual;
+
+  public ExpandableListActivitySubject(@Nonnull FailureMetadata failureMetadata, @Nullable ExpandableListActivity actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public ExpandableListActivitySubject hasSelectedId(long id) {
-    assertThat(actual().getSelectedId())
-        .named("selected id")
-        .isEqualTo(id);
+    check("getSelectedId()").that(actual.getSelectedId()).isEqualTo(id);
     return this;
   }
 
   public ExpandableListActivitySubject hasSelectedPosition(long position) {
-    assertThat(actual().getSelectedPosition())
-        .named("selected position")
-        .isEqualTo(position);
+    check("getSelectedPosition()").that(actual.getSelectedPosition()).isEqualTo(position);
     return this;
   }
 }

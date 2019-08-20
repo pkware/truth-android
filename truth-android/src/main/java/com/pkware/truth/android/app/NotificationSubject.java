@@ -20,10 +20,18 @@ import android.annotation.TargetApi;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.graphics.Bitmap;
+
 import androidx.annotation.DrawableRes;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import static android.app.Notification.FLAG_AUTO_CANCEL;
 import static android.app.Notification.FLAG_FOREGROUND_SERVICE;
@@ -40,17 +48,20 @@ import static android.app.Notification.PRIORITY_MAX;
 import static android.app.Notification.PRIORITY_MIN;
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 import static android.os.Build.VERSION_CODES.KITKAT_WATCH;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildBitMaskString;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
 /**
  * Propositions for {@link Notification} subjects.
  */
-public class NotificationSubject extends Subject<NotificationSubject, Notification> {
-  public NotificationSubject(FailureMetadata failureMetadata, Notification subject) {
-    super(failureMetadata, subject);
+public class NotificationSubject extends Subject {
+
+  @Nullable
+  private final Notification actual;
+
+  public NotificationSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Notification actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public static String flagsToString(@NotificationFlags int flags) {
@@ -76,31 +87,25 @@ public class NotificationSubject extends Subject<NotificationSubject, Notificati
         .get();
   }
 
-  public NotificationSubject hasContentIntent(PendingIntent intent) {
-    assertThat(actual().contentIntent)
-        .named("content intent")
-        .isEqualTo(intent);
+  public NotificationSubject hasContentIntent(@Nullable PendingIntent intent) {
+    check("contentIntent").that(actual.contentIntent).isEqualTo(intent);
     return this;
   }
 
   public NotificationSubject hasDefaults(int defaults) {
-    assertThat(actual().defaults)
-        .named("defaults")
-        .isEqualTo(defaults);
+    check("defaults").that(actual.defaults).isEqualTo(defaults);
     return this;
   }
 
-  public NotificationSubject hasDeleteIntent(PendingIntent intent) {
-    assertThat(actual().deleteIntent)
-        .named("delete intent")
-        .isEqualTo(intent);
+  public NotificationSubject hasDeleteIntent(@Nullable PendingIntent intent) {
+    check("deleteIntent").that(actual.deleteIntent).isEqualTo(intent);
     return this;
   }
 
   public NotificationSubject hasFlags(@NotificationFlags int flags) {
-    int actualFlags = actual().flags;
+    int actualFlags = actual.flags;
     //noinspection ResourceType
-    assert_()
+    check("flags")
         .withMessage("Expected flags <%s> but was <%s>.", flagsToString(flags), flagsToString(actualFlags & flags))
         .that(actualFlags & flags)
         .isEqualTo(flags);
@@ -108,54 +113,44 @@ public class NotificationSubject extends Subject<NotificationSubject, Notificati
   }
 
   public NotificationSubject hasOnlyFlags(@NotificationFlags int flags) {
-    int actualFlags = actual().flags;
+    int actualFlags = actual.flags;
     //noinspection ResourceType
-    assert_()
+    check("flags")
         .withMessage("Expected flags <%s> but was <%s>.", flagsToString(flags), flagsToString(actualFlags))
         .that(actualFlags)
         .isEqualTo(flags);
     return this;
   }
 
-  public NotificationSubject hasFullScreenIntent(PendingIntent intent) {
-    assertThat(actual().fullScreenIntent)
-        .named("full screen intent")
-        .isEqualTo(intent);
+  public NotificationSubject hasFullScreenIntent(@Nullable PendingIntent intent) {
+    check("fullScreenIntent").that(actual.fullScreenIntent).isEqualTo(intent);
     return this;
   }
 
   @TargetApi(KITKAT_WATCH)
-  public NotificationSubject hasGroup(String group) {
-    assertThat(actual().getGroup())
-        .named("group")
-        .isEqualTo(group);
+  public NotificationSubject hasGroup(@Nullable String group) {
+    check("getGroup()").that(actual.getGroup()).isEqualTo(group);
     return this;
   }
 
   public NotificationSubject hasIcon(@DrawableRes int resId) {
-    assertThat(actual().icon)
-        .named("icon")
-        .isEqualTo(resId);
+    check("icon").that(actual.icon).isEqualTo(resId);
     return this;
   }
 
   public NotificationSubject hasIconLevel(int level) {
-    assertThat(actual().iconLevel)
-        .named("icon level")
-        .isEqualTo(level);
+    check("iconLevel").that(actual.iconLevel).isEqualTo(level);
     return this;
   }
 
-  public NotificationSubject hasLargeIcon(Bitmap bitmap) {
-    assertThat(actual().largeIcon)
-        .named("large icon")
-        .isEqualTo(bitmap);
+  public NotificationSubject hasLargeIcon(@Nullable Bitmap bitmap) {
+    check("largeIcon").that(actual.largeIcon).isEqualTo(bitmap);
     return this;
   }
 
   public NotificationSubject hasLedColor(int color) {
-    int actualColor = actual().ledARGB;
-    assert_()
+    int actualColor = actual.ledARGB;
+    check("ledARGB")
         .withMessage("Expected LED color <%s> but was <%s>.", Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
@@ -163,31 +158,25 @@ public class NotificationSubject extends Subject<NotificationSubject, Notificati
   }
 
   public NotificationSubject hasLedOffMs(int length) {
-    assertThat(actual().ledOffMS)
-        .named("LED off time (ms)")
-        .isEqualTo(length);
+    check("ledOffMS").withMessage("LED off time (ms)").that(actual.ledOffMS).isEqualTo(length);
     return this;
   }
 
   public NotificationSubject hasLedOnMs(int length) {
-    assertThat(actual().ledOnMS)
-        .named("LED on time (ms)")
-        .isEqualTo(length);
+    check("ledOnMS").withMessage("LED on time (ms)").that(actual.ledOnMS).isEqualTo(length);
     return this;
   }
 
   public NotificationSubject hasNumber(int number) {
-    assertThat(actual().number)
-        .named("number")
-        .isEqualTo(number);
+    check("number").that(actual.number).isEqualTo(number);
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public NotificationSubject hasPriority(@NotificationPriority int priority) {
-    int actualPriority = actual().priority;
+    int actualPriority = actual.priority;
     //noinspection ResourceType
-    assert_()
+    check("priority")
         .withMessage("Expected priority <%s> but was <%s>.", priorityToString(priority), priorityToString(actualPriority))
         .that(actualPriority)
         .isEqualTo(priority);
@@ -195,32 +184,25 @@ public class NotificationSubject extends Subject<NotificationSubject, Notificati
   }
 
   @TargetApi(KITKAT_WATCH)
-  public NotificationSubject hasSortKey(String sortKey) {
-    assertThat(actual().getSortKey())
-        .named("sort key")
-        .isEqualTo(sortKey);
+  public NotificationSubject hasSortKey(@Nullable String sortKey) {
+    check("getSortKey()").that(actual.getSortKey()).isEqualTo(sortKey);
     return this;
   }
 
-  public NotificationSubject hasTickerText(CharSequence text) {
-    assertThat(actual().tickerText)
-        .named("ticker text")
-        .isEqualTo(text);
+  public NotificationSubject hasTickerText(@Nullable CharSequence text) {
+    check("tickerText").that(actual.tickerText).isEqualTo(text);
     return this;
   }
 
   public NotificationSubject hasVibration(long[] vibration) {
-    assertThat(actual().vibrate)
-        .named("vibration")
-        .asList()
-        .containsExactly(vibration);
+    List<Object> vibrations = new ArrayList<>(vibration.length);
+    Collections.addAll(vibrations, vibration);
+    check("vibrate").that(actual.vibrate).asList().containsExactlyElementsIn(vibrations).inOrder();
     return this;
   }
 
   public NotificationSubject hasWhen(long when) {
-    assertThat(actual().when)
-        .named("when")
-        .isEqualTo(when);
+    check("when").that(actual.when).isEqualTo(when);
     return this;
   }
 }

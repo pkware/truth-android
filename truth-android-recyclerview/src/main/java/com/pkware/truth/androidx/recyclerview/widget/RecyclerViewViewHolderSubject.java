@@ -21,51 +21,45 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link RecyclerView.ViewHolder} subjects.
  */
-public class RecyclerViewViewHolderSubject
-    extends Subject<RecyclerViewViewHolderSubject, RecyclerView.ViewHolder> {
+public class RecyclerViewViewHolderSubject extends Subject {
 
-  public RecyclerViewViewHolderSubject(FailureMetadata failureMetadata, RecyclerView.ViewHolder subject) {
-    super(failureMetadata, subject);
+  @Nullable
+  private final RecyclerView.ViewHolder actual;
+
+  public RecyclerViewViewHolderSubject(@Nonnull FailureMetadata failureMetadata, @Nullable RecyclerView.ViewHolder actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   @SuppressWarnings("deprecation")
   public RecyclerViewViewHolderSubject hasPosition(int position) {
-    assertThat(actual().getPosition())
-        .named("position")
-        .isEqualTo(position);
+    check("getPosition()").that(actual.getPosition()).isEqualTo(position);
     return this;
   }
 
   public RecyclerViewViewHolderSubject hasItemId(long itemId) {
-    assertThat(actual().getItemId())
-        .named("item ID")
-        .isEqualTo(itemId);
+    check("getItemId()").that(actual.getItemId()).isEqualTo(itemId);
     return this;
   }
 
   public RecyclerViewViewHolderSubject hasItemViewType(int itemViewType) {
-    assertThat(actual().getItemViewType())
-        .named("item view type")
-        .isEqualTo(itemViewType);
+    check("getItemViewType()").that(actual.getItemViewType()).isEqualTo(itemViewType);
     return this;
   }
 
   public RecyclerViewViewHolderSubject isRecyclable() {
-    assertThat(actual().isRecyclable())
-        .named("is recyclable")
-        .isTrue();
+    check("isRecyclable()").that(actual.isRecyclable()).isTrue();
     return this;
   }
 
   public RecyclerViewViewHolderSubject isNotRecyclable() {
-    assertThat(actual().isRecyclable())
-        .named("is recyclable")
-        .isFalse();
+    check("isRecyclable()").that(actual.isRecyclable()).isFalse();
     return this;
   }
 }

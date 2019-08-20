@@ -21,71 +21,59 @@ import android.view.KeyEvent;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link KeyEvent} subjects.
  */
-public class KeyEventSubject extends Subject<KeyEventSubject, KeyEvent> {
-  public KeyEventSubject(FailureMetadata failureMetadata, KeyEvent subject) {
-    super(failureMetadata, subject);
+public class KeyEventSubject extends Subject {
+
+  @Nullable
+  private final KeyEvent actual;
+
+  public KeyEventSubject(@Nonnull FailureMetadata failureMetadata, @Nullable KeyEvent actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public KeyEventSubject hasAction(int action) {
-    assertThat(actual().getAction())
-        .named("action")
-        .isEqualTo(action);
+    check("getAction()").that(actual.getAction()).isEqualTo(action);
     return this;
   }
 
   public KeyEventSubject hasDisplayLabel(char label) {
-    assertThat(actual().getDisplayLabel())
-        .named("label")
-        .isEqualTo(label);
+    check("getDisplayLabel()").that(actual.getDisplayLabel()).isEqualTo(label);
     return this;
   }
 
   public KeyEventSubject hasDownTime(long time) {
-    assertThat(actual().getDownTime())
-        .named("time")
-        .isEqualTo(time);
+    check("getDownTime()").that(actual.getDownTime()).isEqualTo(time);
     return this;
   }
 
   public KeyEventSubject hasKeyCode(int keyCode) {
-    assertThat(actual().getKeyCode())
-        .named("key code")
-        .isEqualTo(keyCode);
+    check("getKeyCode()").that(actual.getKeyCode()).isEqualTo(keyCode);
     return this;
   }
 
   public KeyEventSubject hasRepeatCount(int count) {
-    assertThat(actual().getRepeatCount())
-        .named("repeat count")
-        .isEqualTo(count);
+    check("getRepeatCount()").that(actual.getRepeatCount()).isEqualTo(count);
     return this;
   }
 
   public KeyEventSubject hasSource(int source) {
-    assertThat(actual().getSource())
-        .named("source")
-        .isEqualTo(source);
+    check("getSource()").that(actual.getSource()).isEqualTo(source);
     return this;
   }
 
   public KeyEventSubject hasModifiers(int modifiers) {
-    assertThat(actual().hasModifiers(modifiers))
-        .named("modifiers")
-        .isTrue();
+    check("hasModifiers(modifiers)").that(actual.hasModifiers(modifiers)).isTrue();
     return this;
   }
 
   public KeyEventSubject hasNoModifiers() {
-    assertThat(actual().hasNoModifiers())
-        .named("has no modifiers")
-        .isTrue();
+    check("hasNoModifiers()").that(actual.hasNoModifiers()).isTrue();
     return this;
   }
-
-  // TODO all the 'is' methods
 }

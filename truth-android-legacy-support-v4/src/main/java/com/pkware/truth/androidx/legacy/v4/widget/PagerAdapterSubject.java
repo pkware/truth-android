@@ -21,20 +21,24 @@ import androidx.viewpager.widget.PagerAdapter;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link PagerAdapter} subjects.
  */
-public class PagerAdapterSubject extends Subject<PagerAdapterSubject, PagerAdapter> {
-  public PagerAdapterSubject(FailureMetadata failureMetadata, PagerAdapter subject) {
-    super(failureMetadata, subject);
+public class PagerAdapterSubject extends Subject {
+
+  @Nullable
+  private final PagerAdapter actual;
+
+  public PagerAdapterSubject(@Nonnull FailureMetadata failureMetadata, @Nullable PagerAdapter actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public PagerAdapterSubject hasCount(int count) {
-    assertThat(actual().getCount())
-        .named("count")
-        .isEqualTo(count);
+    check("getCount()").that(actual.getCount()).isEqualTo(count);
     return this;
   }
 }

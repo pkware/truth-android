@@ -20,31 +20,35 @@ import android.annotation.TargetApi;
 import android.telephony.CellIdentityGsm;
 import android.telephony.CellInfoGsm;
 import android.telephony.CellSignalStrengthGsm;
+
 import com.google.common.truth.FailureMetadata;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link CellInfoGsm} subjects.
  */
 @TargetApi(JELLY_BEAN_MR1)
-public final class CellInfoGsmSubject extends AbstractCellInfoSubject<CellInfoGsmSubject, CellInfoGsm> {
-  public CellInfoGsmSubject(FailureMetadata failureMetadata, CellInfoGsm subject) {
-    super(failureMetadata, subject);
+public final class CellInfoGsmSubject extends AbstractCellInfoSubject<CellInfoGsm> {
+
+  @Nullable
+  private CellInfoGsm actual;
+
+  public CellInfoGsmSubject(@Nonnull FailureMetadata failureMetadata, @Nullable CellInfoGsm actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public CellInfoGsmSubject hasCellIdentity(CellIdentityGsm cellIdentity) {
-    assertThat(actual().getCellIdentity())
-        .named("cell identity")
-        .isEqualTo(cellIdentity);
+  public CellInfoGsmSubject hasCellIdentity(@Nullable CellIdentityGsm cellIdentity) {
+    check("getCellIdentity()").that(actual.getCellIdentity()).isEqualTo(cellIdentity);
     return this;
   }
 
-  public CellInfoGsmSubject hasCellSignalStrength(CellSignalStrengthGsm cellSignalStrength) {
-    assertThat(actual().getCellSignalStrength())
-        .named("cell signal strength")
-        .isEqualTo(cellSignalStrength);
+  public CellInfoGsmSubject hasCellSignalStrength(@Nullable CellSignalStrengthGsm cellSignalStrength) {
+    check("getCellSignalStrength()").that(actual.getCellSignalStrength()).isEqualTo(cellSignalStrength);
     return this;
   }
 }

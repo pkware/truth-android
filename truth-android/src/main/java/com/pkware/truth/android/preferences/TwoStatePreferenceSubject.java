@@ -17,16 +17,19 @@
 package com.pkware.truth.android.preferences;
 
 import android.preference.TwoStatePreference;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link android.preference.TwoStatePreference} subjects.
  * <p/>
  * This class is final. To extend use {@link AbstractTwoStatePreferenceSubject}.
  */
-public final class TwoStatePreferenceSubject
-    extends AbstractTwoStatePreferenceSubject<TwoStatePreferenceSubject, TwoStatePreference> {
-  public TwoStatePreferenceSubject(FailureMetadata failureMetadata, TwoStatePreference subject) {
-    super(failureMetadata, subject);
+public final class TwoStatePreferenceSubject extends AbstractTwoStatePreferenceSubject<TwoStatePreference> {
+  public TwoStatePreferenceSubject(@Nonnull FailureMetadata failureMetadata, @Nullable TwoStatePreference actual) {
+    super(failureMetadata, actual);
   }
 }

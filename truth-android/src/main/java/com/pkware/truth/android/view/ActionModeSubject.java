@@ -23,81 +23,70 @@ import android.view.View;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link ActionMode} subjects.
  */
-public class ActionModeSubject extends Subject<ActionModeSubject, ActionMode> {
-  public ActionModeSubject(FailureMetadata failureMetadata, ActionMode subject) {
-    super(failureMetadata, subject);
+public class ActionModeSubject extends Subject {
+
+  @Nullable
+  private final ActionMode actual;
+
+  public ActionModeSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ActionMode actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public ActionModeSubject hasCustomView() {
-    assertThat(actual().getCustomView())
-        .named("has custom view")
-        .isNotNull();
+    check("getCustomView()").that(actual.getCustomView()).isNotNull();
     return this;
   }
 
-  public ActionModeSubject hasCustomView(View view) {
-    assertThat(actual().getCustomView())
-        .named("custom view")
-        .isEqualTo(view);
+  public ActionModeSubject hasCustomView(@Nullable View view) {
+    check("getCustomView()").that(actual.getCustomView()).isEqualTo(view);
     return this;
   }
 
-  public ActionModeSubject hasSubtitle(CharSequence subtitle) {
-    assertThat(actual().getSubtitle())
-        .named("subtitle")
-        .isEqualTo(subtitle);
+  public ActionModeSubject hasSubtitle(@Nullable CharSequence subtitle) {
+    check("getSubtitle()").that(actual.getSubtitle()).isEqualTo(subtitle);
     return this;
   }
 
-  public ActionModeSubject hasTag(Object tag) {
-    assertThat(actual().getTag())
-        .named("tag")
-        .isEqualTo(tag);
+  public ActionModeSubject hasTag(@Nullable Object tag) {
+    check("getTag()").that(actual.getTag()).isEqualTo(tag);
     return this;
   }
 
-  public ActionModeSubject hasTitle(CharSequence title) {
-    assertThat(actual().getTitle())
-        .named("title")
-        .isEqualTo(title);
+  public ActionModeSubject hasTitle(@Nullable CharSequence title) {
+    check("getTitle()").that(actual.getTitle()).isEqualTo(title);
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public ActionModeSubject hasOptionalTitleHint() {
-    assertThat(actual().getTitleOptionalHint())
-        .named("is title hint optional")
-        .isTrue();
+    check("getTitleOptionalHint()").that(actual.getTitleOptionalHint()).isTrue();
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public ActionModeSubject hasNonOptionalTitleHint() {
-    assertThat(actual().getTitleOptionalHint())
-        .named("is title hint optional")
-        .isFalse();
+    check("getTitleOptionalHint()").that(actual.getTitleOptionalHint()).isFalse();
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public ActionModeSubject hasOptionalTitle() {
-    assertThat(actual().isTitleOptional())
-        .named("is title optional")
-        .isTrue();
+    check("isTitleOptional()").that(actual.isTitleOptional()).isTrue();
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public ActionModeSubject hasNonOptionalTitle() {
-    assertThat(actual().isTitleOptional())
-        .named("is title optional")
-        .isFalse();
+    check("isTitleOptional()").that(actual.isTitleOptional()).isFalse();
     return this;
   }
 }

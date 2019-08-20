@@ -17,15 +17,19 @@
 package com.pkware.truth.android.content;
 
 import android.content.SharedPreferences;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link SharedPreferences} subjects.
  * <p/>
  * This class is final. To extend use {@link AbstractSharedPreferencesSubject}.
  */
-public final class SharedPreferencesSubject extends AbstractSharedPreferencesSubject<SharedPreferencesSubject, SharedPreferences> {
-  public SharedPreferencesSubject(FailureMetadata failureMetadata, SharedPreferences subject) {
-    super(failureMetadata, subject);
+public final class SharedPreferencesSubject extends AbstractSharedPreferencesSubject<SharedPreferences> {
+  public SharedPreferencesSubject(@Nonnull FailureMetadata failureMetadata, @Nullable SharedPreferences actual) {
+    super(failureMetadata, actual);
   }
 }

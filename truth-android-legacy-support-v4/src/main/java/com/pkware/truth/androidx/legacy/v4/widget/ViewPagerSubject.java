@@ -18,58 +18,53 @@ package com.pkware.truth.androidx.legacy.v4.widget;
 
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+
 import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link ViewPager} subjects.
  */
-public class ViewPagerSubject extends AbstractViewGroupSubject<ViewPagerSubject, ViewPager> {
-  public ViewPagerSubject(FailureMetadata failureMetadata, ViewPager subject) {
-    super(failureMetadata, subject);
+public class ViewPagerSubject extends AbstractViewGroupSubject<ViewPager> {
+
+  @Nullable
+  private final ViewPager actual;
+
+  public ViewPagerSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ViewPager actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public ViewPagerSubject hasAdapter(PagerAdapter adapter) {
-    assertThat(actual().getAdapter())
-        .named("adapter")
-        .isSameAs(adapter);
+  public ViewPagerSubject hasAdapter(@Nullable PagerAdapter adapter) {
+    check("getAdapter()").that(actual.getAdapter()).isSameInstanceAs(adapter);
     return this;
   }
 
   public ViewPagerSubject hasCurrentItem(int index) {
-    assertThat(actual().getCurrentItem())
-        .named("current item")
-        .isEqualTo(index);
+    check("getCurrentItem()").that(actual.getCurrentItem()).isEqualTo(index);
     return this;
   }
 
   public ViewPagerSubject hasOffscreenPageLimit(int limit) {
-    assertThat(actual().getOffscreenPageLimit())
-        .named("offscreen page limit")
-        .isEqualTo(limit);
+    check("getOffscreenPageLimit()").that(actual.getOffscreenPageLimit()).isEqualTo(limit);
     return this;
   }
 
   public ViewPagerSubject hasPageMargin(int margin) {
-    assertThat(actual().getPageMargin())
-        .named("page margin")
-        .isEqualTo(margin);
+    check("getPageMargin()").that(actual.getPageMargin()).isEqualTo(margin);
     return this;
   }
 
   public ViewPagerSubject isFakeDragging() {
-    assertThat(actual().isFakeDragging())
-        .named("is fake dragging")
-        .isTrue();
+    check("isFakeDragging()").that(actual.isFakeDragging()).isTrue();
     return this;
   }
 
   public ViewPagerSubject isNotFakeDragging() {
-    assertThat(actual().isFakeDragging())
-        .named("is fake dragging")
-        .isFalse();
+    check("isFakeDragging()").that(actual.isFakeDragging()).isFalse();
     return this;
   }
 }

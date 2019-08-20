@@ -17,15 +17,19 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.ViewAnimator;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link ViewAnimator} subjects.
  * <p/>
  * This class is final. To extend use {@link AbstractViewAnimatorSubject}.
  */
-public final class ViewAnimatorSubject extends AbstractViewAnimatorSubject<ViewAnimatorSubject, ViewAnimator> {
-  public ViewAnimatorSubject(FailureMetadata failureMetadata, ViewAnimator subject) {
-    super(failureMetadata, subject);
+public final class ViewAnimatorSubject extends AbstractViewAnimatorSubject<ViewAnimator> {
+  public ViewAnimatorSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ViewAnimator actual) {
+    super(failureMetadata, actual);
   }
 }

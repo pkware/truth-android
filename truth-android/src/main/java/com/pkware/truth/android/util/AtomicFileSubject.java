@@ -24,22 +24,27 @@ import com.google.common.truth.Subject;
 
 import java.io.File;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link AtomicFile} subjects.
  */
 @TargetApi(JELLY_BEAN_MR1)
-public class AtomicFileSubject extends Subject<AtomicFileSubject, AtomicFile> {
-  public AtomicFileSubject(FailureMetadata failureMetadata, AtomicFile subject) {
-    super(failureMetadata, subject);
+public class AtomicFileSubject extends Subject {
+
+  @Nullable
+  private final AtomicFile actual;
+
+  public AtomicFileSubject(@Nonnull FailureMetadata failureMetadata, @Nullable AtomicFile actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public AtomicFileSubject hasBaseFile(File file) {
-    assertThat(actual().getBaseFile())
-        .named("base file")
-        .isEqualTo(file);
+  public AtomicFileSubject hasBaseFile(@Nullable File file) {
+    check("getBaseFile()").that(actual.getBaseFile()).isEqualTo(file);
     return this;
   }
 }

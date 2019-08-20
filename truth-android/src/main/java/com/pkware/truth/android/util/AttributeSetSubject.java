@@ -21,48 +21,44 @@ import android.util.AttributeSet;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link AttributeSet} subjects.
  */
-public class AttributeSetSubject extends Subject<AttributeSetSubject, AttributeSet> {
-  public AttributeSetSubject(FailureMetadata failureMetadata, AttributeSet subject) {
-    super(failureMetadata, subject);
+public class AttributeSetSubject extends Subject {
+
+  @Nullable
+  private final AttributeSet actual;
+
+  public AttributeSetSubject(@Nonnull FailureMetadata failureMetadata, @Nullable AttributeSet actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public AttributeSetSubject hasAttributeCount(int count) {
-    assertThat(actual().getAttributeCount())
-        .named("attribute count")
-        .isEqualTo(count);
+    check("getAttributeCount()").that(actual.getAttributeCount()).isEqualTo(count);
     return this;
   }
 
-  public AttributeSetSubject hasClassAttribute(String value) {
-    assertThat(actual().getClassAttribute())
-        .named("class attribute")
-        .isEqualTo(value);
+  public AttributeSetSubject hasClassAttribute(@Nullable String value) {
+    check("getClassAttribute()").that(actual.getClassAttribute()).isEqualTo(value);
     return this;
   }
 
-  public AttributeSetSubject hasIdAttribute(String value) {
-    assertThat(actual().getIdAttribute())
-        .named("ID attribute")
-        .isEqualTo(value);
+  public AttributeSetSubject hasIdAttribute(@Nullable String value) {
+    check("getIdAttribute()").that(actual.getIdAttribute()).isEqualTo(value);
     return this;
   }
 
-  public AttributeSetSubject hasPositionDescription(String position) {
-    assertThat(actual().getPositionDescription())
-        .named("position description")
-        .isEqualTo(position);
+  public AttributeSetSubject hasPositionDescription(@Nullable String position) {
+    check("getPositionDescription()").that(actual.getPositionDescription()).isEqualTo(position);
     return this;
   }
 
   public AttributeSetSubject hasStyleAttribute(int value) {
-    assertThat(actual().getStyleAttribute())
-        .named("style attribute")
-        .isEqualTo(value);
+    check("getStyleAttribute()").that(actual.getStyleAttribute()).isEqualTo(value);
     return this;
   }
 }

@@ -17,22 +17,27 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.RadioGroup;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link RadioGroup} subjects.
  */
-public class RadioGroupSubject extends AbstractLinearLayoutSubject<RadioGroupSubject, RadioGroup> {
-  public RadioGroupSubject(FailureMetadata failureMetadata, RadioGroup subject) {
-    super(failureMetadata, subject);
+public class RadioGroupSubject extends AbstractLinearLayoutSubject<RadioGroup> {
+
+  @Nullable
+  private final RadioGroup actual;
+
+  public RadioGroupSubject(@Nonnull FailureMetadata failureMetadata, @Nullable RadioGroup actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public RadioGroupSubject hasCheckedRadioButtonId(int id) {
-    assertThat(actual().getCheckedRadioButtonId())
-        .named("checked radio button ID")
-        .isEqualTo(id);
+    check("getCheckedRadioButtonId()").that(actual.getCheckedRadioButtonId()).isEqualTo(id);
     return this;
   }
 }

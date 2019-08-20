@@ -18,54 +18,52 @@ package com.pkware.truth.android.view.accessbility;
 
 import android.annotation.TargetApi;
 import android.view.accessibility.AccessibilityEvent;
+
 import com.google.common.truth.FailureMetadata;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link AccessibilityEvent} subjects.
  */
 public class AccessibilityEventSubject
-    extends AbstractAccessibilityRecordSubject<AccessibilityEventSubject, AccessibilityEvent> {
-  public AccessibilityEventSubject(FailureMetadata failureMetadata, AccessibilityEvent subject) {
-    super(failureMetadata, subject);
+    extends AbstractAccessibilityRecordSubject<AccessibilityEvent> {
+
+  @Nullable
+  private AccessibilityEvent actual;
+
+  public AccessibilityEventSubject(@Nonnull FailureMetadata failureMetadata, @Nullable AccessibilityEvent actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   @TargetApi(JELLY_BEAN)
   public AccessibilityEventSubject hasAction(int action) {
-    assertThat(actual().getAction())
-        .named("action")
-        .isEqualTo(action);
+    check("getAction()").that(actual.getAction()).isEqualTo(action);
     return this;
   }
 
   public AccessibilityEventSubject hasEventTime(long time) {
-    assertThat(actual().getEventTime())
-        .named("event time")
-        .isEqualTo(time);
+    check("getEventTime()").that(actual.getEventTime()).isEqualTo(time);
     return this;
   }
 
   public AccessibilityEventSubject hasEventType(int type) {
-    assertThat(actual().getEventType())
-        .named("event type")
-        .isEqualTo(type);
+    check("getEventType()").that(actual.getEventType()).isEqualTo(type);
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public AccessibilityEventSubject hasMovementGranularity(int granularity) {
-    assertThat(actual().getMovementGranularity())
-        .named("movement granularity")
-        .isEqualTo(granularity);
+    check("getMovementGranularity()").that(actual.getMovementGranularity()).isEqualTo(granularity);
     return this;
   }
 
-  public AccessibilityEventSubject hasPackageName(CharSequence name) {
-    assertThat(actual().getPackageName())
-        .named("package name")
-        .isEqualTo(name);
+  public AccessibilityEventSubject hasPackageName(@Nullable CharSequence name) {
+    check("getPackageName()").that(actual.getPackageName()).isEqualTo(name);
     return this;
   }
 }

@@ -17,29 +17,32 @@
 package com.pkware.truth.android.animation;
 
 import android.animation.ObjectAnimator;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link ObjectAnimator} subjects.
  */
-public final class ObjectAnimatorSubject extends AbstractValueAnimatorSubject<ObjectAnimatorSubject, ObjectAnimator> {
-  public ObjectAnimatorSubject(FailureMetadata failureMetadata, ObjectAnimator subject) {
-    super(failureMetadata, subject);
+public final class ObjectAnimatorSubject extends AbstractValueAnimatorSubject<ObjectAnimator> {
+
+  @Nullable
+  private ObjectAnimator actual;
+
+  public ObjectAnimatorSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ObjectAnimator actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public ObjectAnimatorSubject hasPropertyName(String name) {
-    assertThat(actual().getPropertyName())
-        .named("property name")
-        .isEqualTo(name);
+  public ObjectAnimatorSubject hasPropertyName(@Nullable String name) {
+    check("getPropertyName()").that(actual.getPropertyName()).isEqualTo(name);
     return this;
   }
 
-  public ObjectAnimatorSubject hasTarget(Object target) {
-    assertThat(actual().getTarget())
-        .named("target")
-        .isSameAs(target);
+  public ObjectAnimatorSubject hasTarget(@Nullable Object target) {
+    check("getTarget()").that(actual.getTarget()).isSameInstanceAs(target);
     return this;
   }
 }

@@ -21,36 +21,38 @@ import android.telephony.NeighboringCellInfo;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static com.pkware.truth.android.telephony.TelephonyManagerSubject.networkTypeToString;
 
 /**
  * Propositions for {@link NeighboringCellInfo} subjects.
  */
-public class NeighboringCellInfoSubject extends Subject<NeighboringCellInfoSubject, NeighboringCellInfo> {
-  public NeighboringCellInfoSubject(FailureMetadata failureMetadata, NeighboringCellInfo subject) {
-    super(failureMetadata, subject);
+public class NeighboringCellInfoSubject extends Subject {
+
+  @Nullable
+  private final NeighboringCellInfo actual;
+
+  public NeighboringCellInfoSubject(@Nonnull FailureMetadata failureMetadata, @Nullable NeighboringCellInfo actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public NeighboringCellInfoSubject hasCid(int cid) {
-    assertThat(actual().getCid())
-        .named("CID")
-        .isEqualTo(cid);
+    check("getCid()").that(actual.getCid()).isEqualTo(cid);
     return this;
   }
 
   public NeighboringCellInfoSubject hasLac(int lac) {
-    assertThat(actual().getLac())
-        .named("LAC")
-        .isEqualTo(lac);
+    check("getLac()").that(actual.getLac()).isEqualTo(lac);
     return this;
   }
 
   public NeighboringCellInfoSubject hasNetworkType(@TelephonyManagerNetworkType int networkType) {
-    int actualNetworkType = actual().getNetworkType();
+    int actualNetworkType = actual.getNetworkType();
     //noinspection ResourceType
-    assert_()
+    check("getNetworkType()")
         .withMessage("Expected network type <%s> but was <%s>.",
             networkTypeToString(networkType), networkTypeToString(actualNetworkType))
         .that(actualNetworkType)
@@ -59,16 +61,12 @@ public class NeighboringCellInfoSubject extends Subject<NeighboringCellInfoSubje
   }
 
   public NeighboringCellInfoSubject hasPsc(int psc) {
-    assertThat(actual().getPsc())
-        .named("PSC")
-        .isEqualTo(psc);
+    check("getPsc()").that(actual.getPsc()).isEqualTo(psc);
     return this;
   }
 
   public NeighboringCellInfoSubject hasRssi(int rssi) {
-    assertThat(actual().getRssi())
-        .named("RSSI")
-        .isEqualTo(rssi);
+    check("getRssi()").that(actual.getRssi()).isEqualTo(rssi);
     return this;
   }
 }

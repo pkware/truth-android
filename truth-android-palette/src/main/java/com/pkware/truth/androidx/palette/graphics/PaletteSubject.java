@@ -21,14 +21,20 @@ import androidx.palette.graphics.Palette;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Palette} subjects.
  */
-public class PaletteSubject extends Subject<PaletteSubject, Palette> {
-  public PaletteSubject(FailureMetadata failureMetadata, Palette subject) {
-    super(failureMetadata, subject);
+public class PaletteSubject extends Subject {
+
+  @Nullable
+  private final Palette actual;
+
+  public PaletteSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Palette actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   private static int getAnotherColor(int color) {
@@ -36,44 +42,32 @@ public class PaletteSubject extends Subject<PaletteSubject, Palette> {
   }
 
   public PaletteSubject hasVibrantColor(int color) {
-    assertThat(actual().getVibrantColor(getAnotherColor(color)))
-        .named("vibrant color")
-        .isEqualTo(color);
+    check("vibrant color").that(actual.getVibrantColor(getAnotherColor(color))).isEqualTo(color);
     return this;
   }
 
   public PaletteSubject hasDarkVibrantColor(int color) {
-    assertThat(actual().getDarkVibrantColor(getAnotherColor(color)))
-        .named("dark vibrant color")
-        .isEqualTo(color);
+    check("dark vibrant color").that(actual.getDarkVibrantColor(getAnotherColor(color))).isEqualTo(color);
     return this;
   }
 
   public PaletteSubject hasLightVibrantColor(int color) {
-    assertThat(actual().getLightVibrantColor(getAnotherColor(color)))
-        .named("light vibrant color")
-        .isEqualTo(color);
+    check("light vibrant color").that(actual.getLightVibrantColor(getAnotherColor(color))).isEqualTo(color);
     return this;
   }
 
   public PaletteSubject hasMutedColor(int color) {
-    assertThat(actual().getMutedColor(getAnotherColor(color)))
-        .named("muted color")
-        .isEqualTo(color);
+    check("muted color").that(actual.getMutedColor(getAnotherColor(color))).isEqualTo(color);
     return this;
   }
 
   public PaletteSubject hasDarkMutedColor(int color) {
-    assertThat(actual().getDarkMutedColor(getAnotherColor(color)))
-        .named("dark muted color")
-        .isEqualTo(color);
+    check("dark muted color").that(actual.getDarkMutedColor(getAnotherColor(color))).isEqualTo(color);
     return this;
   }
 
   public PaletteSubject hasLightMutedColor(int color) {
-    assertThat(actual().getLightMutedColor(color))
-        .named("light muted color")
-        .isEqualTo(color);
+    check("light muted color").that(actual.getLightMutedColor(color)).isEqualTo(color);
     return this;
   }
 }

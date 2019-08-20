@@ -21,27 +21,24 @@ import android.view.ViewGroup;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public abstract class AbstractViewGroupLayoutParamsSubject<S extends AbstractViewGroupLayoutParamsSubject<S, T>, T extends ViewGroup.LayoutParams>
-    extends Subject<S, T> {
-  protected AbstractViewGroupLayoutParamsSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractViewGroupLayoutParamsSubject<T extends ViewGroup.LayoutParams> extends Subject {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractViewGroupLayoutParamsSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S hasHeight(int height) {
-    assertThat(actual().height)
-        .named("height")
-        .isEqualTo(height);
-    //noinspection unchecked
-    return (S) this;
+  public void hasHeight(int height) {
+    check("height").that(actual.height).isEqualTo(height);
   }
 
-  public S hasWidth(int width) {
-    assertThat(actual().width)
-        .named("width")
-        .isEqualTo(width);
-    //noinspection unchecked
-    return (S) this;
+  public void hasWidth(int width) {
+    check("width").that(actual.width).isEqualTo(width);
   }
 }

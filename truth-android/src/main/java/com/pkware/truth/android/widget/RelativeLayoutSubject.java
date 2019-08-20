@@ -17,15 +17,19 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.RelativeLayout;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link RelativeLayout} subjects.
  * <p/>
  * This class is final. To extend use {@link AbstractRelativeLayoutSubject}.
  */
-public final class RelativeLayoutSubject extends AbstractRelativeLayoutSubject<RelativeLayoutSubject, RelativeLayout> {
-  public RelativeLayoutSubject(FailureMetadata failureMetadata, RelativeLayout subject) {
-    super(failureMetadata, subject);
+public final class RelativeLayoutSubject extends AbstractRelativeLayoutSubject<RelativeLayout> {
+  public RelativeLayoutSubject(@Nonnull FailureMetadata failureMetadata, @Nullable RelativeLayout actual) {
+    super(failureMetadata, actual);
   }
 }

@@ -20,6 +20,9 @@ import com.google.android.gms.location.DetectedActivity;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static com.google.android.gms.location.DetectedActivity.IN_VEHICLE;
 import static com.google.android.gms.location.DetectedActivity.ON_BICYCLE;
 import static com.google.android.gms.location.DetectedActivity.ON_FOOT;
@@ -28,19 +31,22 @@ import static com.google.android.gms.location.DetectedActivity.STILL;
 import static com.google.android.gms.location.DetectedActivity.TILTING;
 import static com.google.android.gms.location.DetectedActivity.UNKNOWN;
 import static com.google.android.gms.location.DetectedActivity.WALKING;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
 /**
  * Propositions for {@link DetectedActivity} subjects.
  */
-public class DetectedActivitySubject
-    extends Subject<DetectedActivitySubject, DetectedActivity> {
-  public DetectedActivitySubject(FailureMetadata failureMetadata, DetectedActivity subject) {
-    super(failureMetadata, subject);
+public class DetectedActivitySubject extends Subject {
+
+  @Nullable
+  private final DetectedActivity actual;
+
+  public DetectedActivitySubject(@Nonnull FailureMetadata failureMetadata, @Nullable DetectedActivity actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   public static String typeToString(@DetectedActivityType int type) {
     return buildNamedValueString(type)
         .value(IN_VEHICLE, "in vehicle")
@@ -55,17 +61,14 @@ public class DetectedActivitySubject
   }
 
   public DetectedActivitySubject hasConfidence(int confidence) {
-    int actualConfidence = actual().getConfidence();
-    assertThat(actual().getConfidence())
-        .named("confidence")
-        .isEqualTo(confidence);
+    check("getConfidence()").that(actual.getConfidence()).isEqualTo(confidence);
     return this;
   }
 
   public DetectedActivitySubject hasType(@DetectedActivityType int type) {
-    int actualType = actual().getType();
+    int actualType = actual.getType();
     //noinspection ResourceType
-    assert_()
+    check("getType()")
         .withMessage("Expected type <%s> but was <%s>.", typeToString(type),
             typeToString(actualType))
         .that(actualType)

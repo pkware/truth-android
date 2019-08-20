@@ -22,6 +22,9 @@ import android.bluetooth.BluetoothDevice;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.bluetooth.BluetoothDevice.BOND_BONDED;
 import static android.bluetooth.BluetoothDevice.BOND_BONDING;
 import static android.bluetooth.BluetoothDevice.BOND_NONE;
@@ -30,20 +33,23 @@ import static android.bluetooth.BluetoothDevice.DEVICE_TYPE_DUAL;
 import static android.bluetooth.BluetoothDevice.DEVICE_TYPE_LE;
 import static android.bluetooth.BluetoothDevice.DEVICE_TYPE_UNKNOWN;
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
 /**
  * Propositions for {@link BluetoothDevice} subjects.
  */
 @SuppressWarnings("MissingPermission")
-public class BluetoothDeviceSubject extends Subject<BluetoothDeviceSubject, BluetoothDevice> {
+public class BluetoothDeviceSubject extends Subject {
 
-  public BluetoothDeviceSubject(FailureMetadata failureMetadata, BluetoothDevice subject) {
-    super(failureMetadata, subject);
+  @Nullable
+  private final BluetoothDevice actual;
+
+  public BluetoothDeviceSubject(@Nonnull FailureMetadata failureMetadata, @Nullable BluetoothDevice actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   public static String bondStateToString(@BluetoothDeviceBondState int state) {
     return buildNamedValueString(state)
         .value(BOND_NONE, "none")
@@ -52,6 +58,7 @@ public class BluetoothDeviceSubject extends Subject<BluetoothDeviceSubject, Blue
         .get();
   }
 
+  @Nonnull
   @TargetApi(JELLY_BEAN_MR2)
   public static String typeToString(@BluetoothDeviceType int type) {
     return buildNamedValueString(type)
@@ -62,17 +69,15 @@ public class BluetoothDeviceSubject extends Subject<BluetoothDeviceSubject, Blue
         .get();
   }
 
-  public BluetoothDeviceSubject hasAddress(String address) {
-    assertThat(actual().getAddress())
-        .named("address")
-        .isEqualTo(address);
+  public BluetoothDeviceSubject hasAddress(@Nullable String address) {
+    check("getAddress()").that(actual.getAddress()).isEqualTo(address);
     return this;
   }
 
   public BluetoothDeviceSubject hasBondState(@BluetoothDeviceBondState int state) {
-    int actualState = actual().getBondState();
+    int actualState = actual.getBondState();
     //noinspection ResourceType
-    assert_()
+    check("getBondState()")
         .withMessage("Expected bond state <%s> but was <%s>.",
             bondStateToString(state),
             bondStateToString(actualState))
@@ -81,18 +86,16 @@ public class BluetoothDeviceSubject extends Subject<BluetoothDeviceSubject, Blue
     return this;
   }
 
-  public BluetoothDeviceSubject hasName(String name) {
-    assertThat(actual().getName())
-        .named("name")
-        .isEqualTo(name);
+  public BluetoothDeviceSubject hasName(@Nullable String name) {
+    check("getName()").that(actual.getName()).isEqualTo(name);
     return this;
   }
 
   @TargetApi(JELLY_BEAN_MR2)
   public BluetoothDeviceSubject hasType(@BluetoothDeviceType int type) {
-    int actualType = actual().getType();
+    int actualType = actual.getType();
     //noinspection ResourceType
-    assert_()
+    check("getType()")
         .withMessage("Expected type <%s> but was <%s>.",
             typeToString(type),
             typeToString(actualType))

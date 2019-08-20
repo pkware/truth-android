@@ -17,15 +17,19 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.LinearLayout;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link LinearLayout} subjects.
  * <p/>
  * This class is final. To extend use {@link AbstractLinearLayoutSubject}.
  */
-public final class LinearLayoutSubject extends AbstractLinearLayoutSubject<LinearLayoutSubject, LinearLayout> {
-  public LinearLayoutSubject(FailureMetadata failureMetadata, LinearLayout subject) {
-    super(failureMetadata, subject);
+public final class LinearLayoutSubject extends AbstractLinearLayoutSubject<LinearLayout> {
+  public LinearLayoutSubject(@Nonnull FailureMetadata failureMetadata, @Nullable LinearLayout actual) {
+    super(failureMetadata, actual);
   }
 }

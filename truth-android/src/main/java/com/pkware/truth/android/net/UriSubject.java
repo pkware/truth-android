@@ -21,97 +21,74 @@ import android.net.Uri;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Uri} subjects.
  */
-public class UriSubject extends Subject<UriSubject, Uri> {
+public class UriSubject extends Subject {
 
-  public UriSubject(FailureMetadata failureMetadata, Uri subject) {
-    super(failureMetadata, subject);
+  @Nullable
+  private final Uri actual;
+
+  public UriSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Uri actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public UriSubject hasPath(String path) {
-    assertThat(actual().getPath())
-        .named("path")
-        .isEqualTo(path);
+  public UriSubject hasPath(@Nullable String path) {
+    check("getPath()").that(actual.getPath()).isEqualTo(path);
     return this;
   }
 
   public UriSubject doesNotHavePath() {
-    assertThat(actual().getPath())
-        .named("path")
-        .isNull();
+    check("getPath()").that(actual.getPath()).isNull();
     return this;
   }
 
   public UriSubject hasPort(int port) {
-    assertThat(actual().getPort())
-        .named("port")
-        .isEqualTo(port);
+    check("getPort()").that(actual.getPort()).isEqualTo(port);
     return this;
   }
 
-  public UriSubject hasHost(String host) {
-    assertThat(actual().getHost())
-        .named("host")
-        .isEqualTo(host);
+  public UriSubject hasHost(@Nullable String host) {
+    check("getHost()").that(actual.getHost()).isEqualTo(host);
     return this;
   }
 
-  public UriSubject hasFragment(String fragment) {
-    assertThat(actual().getFragment())
-        .named("fragment")
-        .isEqualTo(fragment);
+  public UriSubject hasFragment(@Nullable String fragment) {
+    check("getFragment()").that(actual.getFragment()).isEqualTo(fragment);
     return this;
   }
 
   public UriSubject doesNotHaveFragment() {
-    assertThat(actual().getFragment())
-        .named("fragment")
-        .isNull();
+    check("getFragment()").that(actual.getFragment()).isNull();
     return this;
   }
 
-  public UriSubject hasQuery(String query) {
-    assertThat(actual().getQuery())
-        .named("query")
-        .isEqualTo(query);
+  public UriSubject hasQuery(@Nullable String query) {
+    check("getQuery()").that(actual.getQuery()).isEqualTo(query);
     return this;
   }
 
   public UriSubject doesNotHaveQuery() {
-    assertThat(actual().getQuery())
-        .named("query")
-        .isNull();
+    check("getQuery()").that(actual.getQuery()).isNull();
     return this;
   }
 
-  public UriSubject hasScheme(String scheme) {
-    assertThat(actual().getScheme())
-        .named("scheme")
-        .isEqualTo(scheme);
+  public UriSubject hasScheme(@Nullable String scheme) {
+    check("getScheme()").that(actual.getScheme()).isEqualTo(scheme);
     return this;
   }
 
-  public UriSubject hasUserInfo(String userInfo) {
-    assertThat(actual().getUserInfo())
-        .named("user info")
-        .isEqualTo(userInfo);
+  public UriSubject hasUserInfo(@Nullable String userInfo) {
+    check("getUserInfo()").that(actual.getUserInfo()).isEqualTo(userInfo);
     return this;
   }
 
   public UriSubject doesNotHaveUserInfo() {
-    assertThat(actual().getUserInfo())
-        .named("user info")
-        .isNull();
-    return this;
-  }
-
-  public UriSubject isEqualTo(Uri uri) {
-    assertThat(actual().toString())
-        .isEqualTo(uri.toString());
+    check("getUserInfo()").that(actual.getUserInfo()).isNull();
     return this;
   }
 }

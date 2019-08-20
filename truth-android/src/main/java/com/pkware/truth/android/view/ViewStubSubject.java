@@ -17,31 +17,34 @@
 package com.pkware.truth.android.view;
 
 import android.view.ViewStub;
+
 import androidx.annotation.LayoutRes;
 
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link ViewStub} subjects.
  */
-public class ViewStubSubject extends AbstractViewSubject<ViewStubSubject, ViewStub> {
-  public ViewStubSubject(FailureMetadata failureMetadata, ViewStub subject) {
-    super(failureMetadata, subject);
+public class ViewStubSubject extends AbstractViewSubject<ViewStub> {
+
+  @Nullable
+  private final ViewStub actual;
+
+  public ViewStubSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ViewStub actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public ViewStubSubject hasInflatedId(int id) {
-    assertThat(actual().getInflatedId())
-        .named("view stub inflated ID")
-        .isEqualTo(id);
+    check("getInflatedId()").that(actual.getInflatedId()).isEqualTo(id);
     return this;
   }
 
   public ViewStubSubject hasLayoutResource(@LayoutRes int resId) {
-    assertThat(actual().getLayoutResource())
-        .named("view stub layout resource")
-        .isEqualTo(resId);
+    check("getLayoutResource()").that(actual.getLayoutResource()).isEqualTo(resId);
     return this;
   }
 }

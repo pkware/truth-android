@@ -17,48 +17,45 @@
 package com.pkware.truth.androidx.recyclerview.widget;
 
 import android.view.animation.Interpolator;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link RecyclerView.SmoothScroller.Action} subjects.
  */
-public class RecyclerViewSmoothScrollerActionSubject extends
-    Subject<RecyclerViewSmoothScrollerActionSubject, RecyclerView.SmoothScroller.Action> {
+public class RecyclerViewSmoothScrollerActionSubject extends Subject {
 
-  public RecyclerViewSmoothScrollerActionSubject(FailureMetadata failureMetadata, RecyclerView.SmoothScroller.Action subject) {
-    super(failureMetadata, subject);
+  @Nullable
+  private final RecyclerView.SmoothScroller.Action actual;
+
+  public RecyclerViewSmoothScrollerActionSubject(@Nonnull FailureMetadata failureMetadata, @Nullable RecyclerView.SmoothScroller.Action actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public RecyclerViewSmoothScrollerActionSubject hasDx(int dx) {
-    assertThat(actual().getDx())
-        .named("dx")
-        .isEqualTo(dx);
+    check("getDx()").that(actual.getDx()).isEqualTo(dx);
     return this;
   }
 
   public RecyclerViewSmoothScrollerActionSubject hasDy(int dy) {
-    assertThat(actual().getDy())
-        .named("dy")
-        .isEqualTo(dy);
+    check("getDy()").that(actual.getDy()).isEqualTo(dy);
     return this;
   }
 
   public RecyclerViewSmoothScrollerActionSubject hasDuration(int duration) {
-    assertThat(actual().getDuration())
-        .named("duration")
-        .isEqualTo(duration);
+    check("getDuration()").that(actual.getDuration()).isEqualTo(duration);
     return this;
   }
 
-  public RecyclerViewSmoothScrollerActionSubject hasInterpolator(Interpolator interpolator) {
-    assertThat(actual().getInterpolator())
-        .named("interpolator")
-        .isEqualTo(interpolator);
+  public RecyclerViewSmoothScrollerActionSubject hasInterpolator(@Nullable Interpolator interpolator) {
+    check("getInterpolator()").that(actual.getInterpolator()).isEqualTo(interpolator);
     return this;
   }
 }

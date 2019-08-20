@@ -21,27 +21,29 @@ import android.animation.Keyframe;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Keyframe} subjects.
  */
-public final class KeyframeSubject extends Subject<KeyframeSubject, Keyframe> {
-  public KeyframeSubject(FailureMetadata failureMetadata, Keyframe subject) {
-    super(failureMetadata, subject);
+public final class KeyframeSubject extends Subject {
+
+  @Nullable
+  private final Keyframe actual;
+
+  public KeyframeSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Keyframe actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public KeyframeSubject hasType(Class type) {
-    assertThat(actual().getType())
-        .named("type")
-        .isEqualTo(type);
+  public KeyframeSubject hasType(@Nonnull Class type) {
+    check("getType()").that(actual.getType()).isEqualTo(type);
     return this;
   }
 
-  public KeyframeSubject hasValue(Object value) {
-    assertThat(actual().getValue())
-        .named("value")
-        .isEqualTo(value);
+  public KeyframeSubject hasValue(@Nullable Object value) {
+    check("getValue()").that(actual.getValue()).isEqualTo(value);
     return this;
   }
 }

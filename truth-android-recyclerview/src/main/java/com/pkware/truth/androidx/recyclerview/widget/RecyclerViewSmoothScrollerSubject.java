@@ -21,57 +21,49 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link RecyclerView.SmoothScroller} subjects.
  */
-public class RecyclerViewSmoothScrollerSubject
-    extends Subject<RecyclerViewSmoothScrollerSubject, RecyclerView.SmoothScroller> {
+public class RecyclerViewSmoothScrollerSubject extends Subject {
 
-  public RecyclerViewSmoothScrollerSubject(FailureMetadata failureMetadata, RecyclerView.SmoothScroller subject) {
-    super(failureMetadata, subject);
+  @Nullable
+  private final RecyclerView.SmoothScroller actual;
+
+  public RecyclerViewSmoothScrollerSubject(@Nonnull FailureMetadata failureMetadata, @Nullable RecyclerView.SmoothScroller actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public RecyclerViewSmoothScrollerSubject isPendingInitialRun() {
-    assertThat(actual().isPendingInitialRun())
-        .named("is pending initial run")
-        .isTrue();
+    check("isPendingInitialRun()").that(actual.isPendingInitialRun()).isTrue();
     return this;
   }
 
   public RecyclerViewSmoothScrollerSubject isNotPendingInitialRun() {
-    assertThat(actual().isPendingInitialRun())
-        .named("is pending initial run")
-        .isFalse();
+    check("isPendingInitialRun()").that(actual.isPendingInitialRun()).isFalse();
     return this;
   }
 
   public RecyclerViewSmoothScrollerSubject isRunning() {
-    assertThat(actual().isRunning())
-        .named("is running")
-        .isFalse();
+    check("isRunning()").that(actual.isRunning()).isTrue();
     return this;
   }
 
   public RecyclerViewSmoothScrollerSubject isNotRunning() {
-    assertThat(actual().isRunning())
-        .named("is running")
-        .isFalse();
+    check("isRunning()").that(actual.isRunning()).isFalse();
     return this;
   }
 
   public RecyclerViewSmoothScrollerSubject hasTargetPosition(int position) {
-    assertThat(actual().getTargetPosition())
-        .named("target position")
-        .isEqualTo(position);
+    check("getTargetPosition()").that(actual.getTargetPosition()).isEqualTo(position);
     return this;
   }
 
   public RecyclerViewSmoothScrollerSubject hasChildCount(int count) {
-    assertThat(actual().getChildCount())
-        .named("child count")
-        .isEqualTo(count);
+    check("getChildCount()").that(actual.getChildCount()).isEqualTo(count);
     return this;
   }
 }

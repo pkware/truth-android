@@ -21,27 +21,29 @@ import android.os.Vibrator;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Vibrator} subjects.
  */
-public class VibratorSubject extends Subject<VibratorSubject, Vibrator> {
-  public VibratorSubject(FailureMetadata failureMetadata, Vibrator subject) {
-    super(failureMetadata, subject);
+public class VibratorSubject extends Subject {
+
+  @Nullable
+  private final Vibrator actual;
+
+  public VibratorSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Vibrator actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public VibratorSubject hasVibrator() {
-    assertThat(actual().hasVibrator())
-        .named("has vibrator")
-        .isTrue();
+    check("hasVibrator()").that(actual.hasVibrator()).isTrue();
     return this;
   }
 
   public VibratorSubject hasNoVibrator() {
-    assertThat(actual().hasVibrator())
-        .named("has vibrator")
-        .isFalse();
+    check("hasVibrator()").that(actual.hasVibrator()).isFalse();
     return this;
   }
 }

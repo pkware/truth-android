@@ -23,77 +23,48 @@ import android.view.animation.LayoutAnimationController;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public abstract class AbstractLayoutAnimationControllerSubject<S extends AbstractLayoutAnimationControllerSubject<S, T>, T extends LayoutAnimationController>
-    extends Subject<S, T> {
-  protected AbstractLayoutAnimationControllerSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractLayoutAnimationControllerSubject<T extends LayoutAnimationController> extends Subject {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractLayoutAnimationControllerSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S hasAnimation(Animation animation) {
-    assertThat(actual().getAnimation())
-        .named("animation")
-        .isSameAs(animation);
-    //noinspection unchecked
-    return (S) this;
+  public void hasAnimation(@Nullable Animation animation) {
+    check("getAnimation()").that(actual.getAnimation()).isSameInstanceAs(animation);
   }
 
-  public S hasDelay(float delay, float tolerance) {
-    float actualDelay = actual().getDelay();
-    assertThat(actual().getDelay())
-        .named("delay")
-        .isWithin(tolerance)
-        .of(delay);
-    //noinspection unchecked
-    return (S) this;
+  public void hasDelay(float delay, float tolerance) {
+    check("getDelay()").that(actual.getDelay()).isWithin(tolerance).of(delay);
   }
 
-  public S hasInterpolator(Interpolator interpolator) {
-    assertThat(actual().getInterpolator())
-        .named("interpolator")
-        .isSameAs(interpolator);
-    //noinspection unchecked
-    return (S) this;
+  public void hasInterpolator(@Nullable Interpolator interpolator) {
+    check("getInterpolator()").that(actual.getInterpolator()).isSameInstanceAs(interpolator);
   }
 
-  public S hasOrder(int order) {
-    assertThat(actual().getOrder())
-        .named("order")
-        .isEqualTo(order);
-    //noinspection unchecked
-    return (S) this;
+  public void hasOrder(int order) {
+    check("getOrder()").that(actual.getOrder()).isEqualTo(order);
   }
 
-  public S isDone() {
-    assertThat(actual().isDone())
-        .named("is done")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isDone() {
+    check("isDone()").that(actual.isDone()).isTrue();
   }
 
-  public S isNotDone() {
-    assertThat(actual().isDone())
-        .named("is done")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotDone() {
+    check("isDone()").that(actual.isDone()).isFalse();
   }
 
-  public S isOverlapping() {
-    assertThat(actual().willOverlap())
-        .named("is overlapping")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isOverlapping() {
+    check("willOverlap()").that(actual.willOverlap()).isTrue();
   }
 
-  public S isNotOverlapping() {
-    assertThat(actual().willOverlap())
-        .named("is overlapping")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotOverlapping() {
+    check("willOverlap()").that(actual.willOverlap()).isFalse();
   }
 }

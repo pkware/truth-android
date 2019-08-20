@@ -19,117 +19,37 @@ package com.pkware.truth.android.content;
 import android.content.SharedPreferences;
 
 import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.MapSubject;
 import com.google.common.truth.Subject;
 
-import java.util.Set;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
+public abstract class AbstractSharedPreferencesSubject<T extends SharedPreferences> extends Subject {
 
-public abstract class AbstractSharedPreferencesSubject<S extends AbstractSharedPreferencesSubject<S, T>, T extends SharedPreferences> extends Subject<S, T> {
-  protected AbstractSharedPreferencesSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+  @Nullable
+  private final T actual;
+
+  protected AbstractSharedPreferencesSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S hasKey(String key) {
-    assert_()
+  public void hasKey(@Nonnull String key) {
+    check("contains(key)")
         .withMessage("Expected key <%s> to be present but it was not.", key)
-        .that(actual().contains(key))
+        .that(actual.contains(key))
         .isTrue();
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S doesNotHaveKey(String key) {
-    assert_()
+  public void doesNotHaveKey(@Nonnull String key) {
+    check("contains(key)")
         .withMessage("Expected key <%s> not to be present but it was.", key)
-        .that(actual().contains(key))
+        .that(actual.contains(key))
         .isFalse();
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S contains(String key, String value) {
-    assertThat(actual().getAll())
-        .containsEntry(key, value);
-    //noinspection unchecked
-    return (S) this;
-  }
-
-  public S doesNotContain(String key, String value) {
-    assertThat(actual().getAll())
-        .doesNotContainEntry(key, value);
-    //noinspection unchecked
-    return (S) this;
-  }
-
-  public S contains(String key, int value) {
-    assertThat(actual().getAll())
-        .containsEntry(key, value);
-    //noinspection unchecked
-    return (S) this;
-  }
-
-  public S doesNotContain(String key, int value) {
-    assertThat(actual().getAll())
-        .doesNotContainEntry(key, value);
-    //noinspection unchecked
-    return (S) this;
-  }
-
-  public S contains(String key, boolean value) {
-    assertThat(actual().getAll())
-        .containsEntry(key, value);
-    //noinspection unchecked
-    return (S) this;
-  }
-
-  public S doesNotContain(String key, boolean value) {
-    assertThat(actual().getAll())
-        .doesNotContainEntry(key, value);
-    //noinspection unchecked
-    return (S) this;
-  }
-
-  public S contains(String key, float value) {
-    assertThat(actual().getAll())
-        .containsEntry(key, value);
-    //noinspection unchecked
-    return (S) this;
-  }
-
-  public S doesNotContain(String key, float value) {
-    assertThat(actual().getAll())
-        .doesNotContainEntry(key, value);
-    //noinspection unchecked
-    return (S) this;
-  }
-
-  public S contains(String key, long value) {
-    assertThat(actual().getAll())
-        .containsEntry(key, value);
-    //noinspection unchecked
-    return (S) this;
-  }
-
-  public S doesNotContain(String key, long value) {
-    assertThat(actual().getAll())
-        .doesNotContainEntry(key, value);
-    //noinspection unchecked
-    return (S) this;
-  }
-
-  public S contains(String key, Set<String> value) {
-    assertThat(actual().getAll())
-        .containsEntry(key, value);
-    //noinspection unchecked
-    return (S) this;
-  }
-
-  public S doesNotContain(String key, Set<String> value) {
-    assertThat(actual().getAll())
-        .doesNotContainEntry(key, value);
-    //noinspection unchecked
-    return (S) this;
+  public MapSubject asMap() {
+    return check("getAll()").that(actual.getAll());
   }
 }

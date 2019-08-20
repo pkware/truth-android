@@ -20,27 +20,31 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.widget.AbstractLinearLayoutSubject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link TextInputLayout} subjects.
  */
-public class TextInputLayoutSubject extends AbstractLinearLayoutSubject<TextInputLayoutSubject, TextInputLayout> {
-  public TextInputLayoutSubject(FailureMetadata failureMetadata, TextInputLayout subject) {
-    super(failureMetadata, subject);
+public class TextInputLayoutSubject extends AbstractLinearLayoutSubject<TextInputLayout> {
+
+  @Nullable
+  private final TextInputLayout actual;
+
+  public TextInputLayoutSubject(@Nonnull FailureMetadata failureMetadata, @Nullable TextInputLayout actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public TextInputLayoutSubject hasError(String error) {
-    CharSequence actualError = actual().getError();
+  public TextInputLayoutSubject hasError(@Nullable String error) {
+    CharSequence actualError = actual.getError();
     String actualErrorString;
     if (actualError == null) {
       actualErrorString = null;
     } else {
       actualErrorString = actualError.toString();
     }
-    assertThat(actualErrorString)
-        .named("error")
-        .isEqualTo(error);
+    check("getError()").that(actualErrorString).isEqualTo(error);
     return this;
   }
 }

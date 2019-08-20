@@ -21,27 +21,29 @@ import android.view.Surface;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Surface} subjects.
  */
-public class SurfaceSubject extends Subject<SurfaceSubject, Surface> {
-  public SurfaceSubject(FailureMetadata failureMetadata, Surface subject) {
-    super(failureMetadata, subject);
+public class SurfaceSubject extends Subject {
+
+  @Nullable
+  private final Surface actual;
+
+  public SurfaceSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Surface actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public SurfaceSubject isValid() {
-    assertThat(actual().isValid())
-        .named("is valid")
-        .isTrue();
+    check("isValid()").that(actual.isValid()).isTrue();
     return this;
   }
 
   public SurfaceSubject isNotValid() {
-    assertThat(actual().isValid())
-        .named("is valid")
-        .isFalse();
+    check("isValid()").that(actual.isValid()).isFalse();
     return this;
   }
 }

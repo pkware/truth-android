@@ -21,35 +21,35 @@ import android.graphics.PathMeasure;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link PathMeasure} subjects.
  */
-public class PathMeasureSubject extends Subject<PathMeasureSubject, PathMeasure> {
-  public PathMeasureSubject(FailureMetadata failureMetadata, PathMeasure subject) {
-    super(failureMetadata, subject);
+public class PathMeasureSubject extends Subject {
+
+  @Nullable
+  private final PathMeasure actual;
+
+  public PathMeasureSubject(@Nonnull FailureMetadata failureMetadata, @Nullable PathMeasure actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public PathMeasureSubject hasLength(float length, float tolerance) {
-    assertThat(actual().getLength())
-        .named("length")
-        .isWithin(tolerance)
+    check("getLength()").that(actual.getLength()).isWithin(tolerance)
         .of(length);
     return this;
   }
 
   public PathMeasureSubject isClosed() {
-    assertThat(actual().isClosed())
-        .named("is closed")
-        .isTrue();
+    check("isClosed()").that(actual.isClosed()).isTrue();
     return this;
   }
 
   public PathMeasureSubject isNotClosed() {
-    assertThat(actual().isClosed())
-        .named("is closed")
-        .isFalse();
+    check("isClosed()").that(actual.isClosed()).isFalse();
     return this;
   }
 }

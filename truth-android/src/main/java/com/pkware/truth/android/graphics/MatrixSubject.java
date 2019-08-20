@@ -21,27 +21,29 @@ import android.graphics.Matrix;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Matrix} subjects.
  */
-public class MatrixSubject extends Subject<MatrixSubject, Matrix> {
-  public MatrixSubject(FailureMetadata failureMetadata, Matrix subject) {
-    super(failureMetadata, subject);
+public class MatrixSubject extends Subject {
+
+  @Nullable
+  private final Matrix actual;
+
+  public MatrixSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Matrix actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public MatrixSubject isIdentity() {
-    assertThat(actual().isIdentity())
-        .named("is identity matrix")
-        .isTrue();
+    check("isIdentity()").that(actual.isIdentity()).isTrue();
     return this;
   }
 
   public MatrixSubject isNotIdentity() {
-    assertThat(actual().isIdentity())
-        .named("is identity matrix")
-        .isTrue();
+    check("isIdentity()").that(actual.isIdentity()).isFalse();
     return this;
   }
 }

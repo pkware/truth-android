@@ -20,125 +20,99 @@ import com.google.android.gms.maps.UiSettings;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link UiSettings} subjects.
  */
-public class UiSettingsSubject extends Subject<UiSettingsSubject, UiSettings> {
-  public UiSettingsSubject(FailureMetadata failureMetadata, UiSettings subject) {
-    super(failureMetadata, subject);
+public class UiSettingsSubject extends Subject {
+
+  @Nullable
+  private final UiSettings actual;
+
+  public UiSettingsSubject(@Nonnull FailureMetadata failureMetadata, @Nullable UiSettings actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public UiSettingsSubject hasCompassEnabled() {
-    assertThat(actual().isCompassEnabled())
-        .named("is compass enabled")
-        .isTrue();
+    check("isCompassEnabled()").that(actual.isCompassEnabled()).isTrue();
     return this;
   }
 
   public UiSettingsSubject hasCompassDisabled() {
-    assertThat(!actual().isCompassEnabled())
-        .named("is compass disabled")
-        .isTrue();
+    check("isCompassEnabled()").that(actual.isCompassEnabled()).isFalse();
     return this;
   }
 
   public UiSettingsSubject hasIndoorLevelPickerEnabled() {
-    assertThat(actual().isIndoorLevelPickerEnabled())
-        .named("is indoor level picker enabled")
-        .isTrue();
+    check("isIndoorLevelPickerEnabled()").that(actual.isIndoorLevelPickerEnabled()).isTrue();
     return this;
   }
 
   public UiSettingsSubject hasIndoorLevelPickerDisabled() {
-    assertThat(!actual().isIndoorLevelPickerEnabled())
-        .named("is indoor level picker disabled")
-        .isTrue();
+    check("isIndoorLevelPickerEnabled()").that(actual.isIndoorLevelPickerEnabled()).isFalse();
     return this;
   }
 
   public UiSettingsSubject hasMyLocationButtonEnabled() {
-    assertThat(actual().isMyLocationButtonEnabled())
-        .named("is 'my location' button enabled")
-        .isTrue();
+    check("isMyLocationButtonEnabled()").that(actual.isMyLocationButtonEnabled()).isTrue();
     return this;
   }
 
   public UiSettingsSubject hasMyLocationButtonDisabled() {
-    assertThat(!actual().isMyLocationButtonEnabled())
-        .named("is 'my location' button disabled")
-        .isTrue();
+    check("isMyLocationButtonEnabled()").that(actual.isMyLocationButtonEnabled()).isFalse();
     return this;
   }
 
   public UiSettingsSubject hasRotateGesturesEnabled() {
-    assertThat(actual().isRotateGesturesEnabled())
-        .named("is rotate gesture enabled")
-        .isTrue();
+    check("isRotateGesturesEnabled()").that(actual.isRotateGesturesEnabled()).isTrue();
     return this;
   }
 
   public UiSettingsSubject hasRotateGesturesDisabled() {
-    assertThat(!actual().isRotateGesturesEnabled())
-        .named("is rotate gesture disabled")
-        .isTrue();
+    check("isRotateGesturesEnabled()").that(actual.isRotateGesturesEnabled()).isFalse();
     return this;
   }
 
   public UiSettingsSubject hasScrollGesturesEnabled() {
-    assertThat(actual().isScrollGesturesEnabled())
-        .named("is scroll gesture enabled")
-        .isTrue();
+    check("isScrollGesturesEnabled()").that(actual.isScrollGesturesEnabled()).isTrue();
     return this;
   }
 
   public UiSettingsSubject hasScrollGesturesDisabled() {
-    assertThat(!actual().isScrollGesturesEnabled())
-        .named("is scroll gesture enabled")
-        .isTrue();
+    check("isScrollGesturesEnabled()").that(actual.isScrollGesturesEnabled()).isFalse();
     return this;
   }
 
   public UiSettingsSubject hasTiltGesturesEnabled() {
-    assertThat(actual().isTiltGesturesEnabled())
-        .named("is tilt gesture enabled")
-        .isTrue();
+    check("isTiltGesturesEnabled()").that(actual.isTiltGesturesEnabled()).isTrue();
     return this;
   }
 
   public UiSettingsSubject hasTiltGesturesDisabled() {
-    assertThat(!actual().isTiltGesturesEnabled())
-        .named("is tilt gesture disabled")
-        .isTrue();
+    check("isTiltGesturesEnabled()").that(actual.isTiltGesturesEnabled()).isFalse();
     return this;
   }
 
   public UiSettingsSubject hasZoomControlsEnabled() {
-    assertThat(actual().isZoomControlsEnabled())
-        .named("zoom controls are enabled")
-        .isTrue();
+    check("isZoomControlsEnabled()").that(actual.isZoomControlsEnabled()).isTrue();
     return this;
   }
 
   public UiSettingsSubject hasZoomControlsDisabled() {
-    assertThat(!actual().isZoomControlsEnabled())
-        .named("zoom controls are disabled")
-        .isTrue();
+    check("isZoomControlsEnabled()").that(actual.isZoomControlsEnabled()).isFalse();
     return this;
   }
 
   public UiSettingsSubject hasZoomGesturesEnabled() {
-    assertThat(actual().isZoomGesturesEnabled())
-        .named("is zoom gesture enabled")
-        .isTrue();
+    check("isZoomGesturesEnabled()").that(actual.isZoomGesturesEnabled()).isTrue();
     return this;
   }
 
   public UiSettingsSubject hasZoomGesturesDisabled() {
-    assertThat(!actual().isZoomGesturesEnabled())
-        .named("is zoom gesture enabled")
-        .isTrue();
+    check("isZoomGesturesEnabled()").that(actual.isZoomGesturesEnabled()).isFalse();
     return this;
   }
 }

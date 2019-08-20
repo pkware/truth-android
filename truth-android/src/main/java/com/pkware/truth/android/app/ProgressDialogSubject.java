@@ -17,50 +17,47 @@
 package com.pkware.truth.android.app;
 
 import android.app.ProgressDialog;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link ProgressDialog} subjects.
  */
-public class ProgressDialogSubject extends AbstractDialogSubject<ProgressDialogSubject, ProgressDialog> {
-  public ProgressDialogSubject(FailureMetadata failureMetadata, ProgressDialog subject) {
-    super(failureMetadata, subject);
+public class ProgressDialogSubject extends AbstractDialogSubject<ProgressDialog> {
+
+  @Nullable
+  private ProgressDialog actual;
+
+  public ProgressDialogSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ProgressDialog actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public ProgressDialogSubject hasMax(int max) {
-    assertThat(actual().getMax())
-        .named("max")
-        .isEqualTo(max);
+    check("getMax()").that(actual.getMax()).isEqualTo(max);
     return this;
   }
 
   public ProgressDialogSubject hasProgress(int progress) {
-    assertThat(actual().getProgress())
-        .named("progress")
-        .isEqualTo(progress);
+    check("getProgress()").that(actual.getProgress()).isEqualTo(progress);
     return this;
   }
 
   public ProgressDialogSubject hasSecondaryProgress(int progress) {
-    assertThat(actual().getSecondaryProgress())
-        .named("secondary progress")
-        .isEqualTo(progress);
+    check("getSecondaryProgress()").that(actual.getSecondaryProgress()).isEqualTo(progress);
     return this;
   }
 
   public ProgressDialogSubject isIndeterminate() {
-    assertThat(actual().isIndeterminate())
-        .named("is indeterminate")
-        .isTrue();
+    check("isIndeterminate()").that(actual.isIndeterminate()).isTrue();
     return this;
   }
 
   public ProgressDialogSubject isDeterminate() {
-    assertThat(actual().isIndeterminate())
-        .named("is indeterminate")
-        .isFalse();
+    check("isIndeterminate()").that(actual.isIndeterminate()).isFalse();
     return this;
   }
 }

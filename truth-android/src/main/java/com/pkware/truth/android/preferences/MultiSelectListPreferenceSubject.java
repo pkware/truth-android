@@ -17,57 +17,57 @@
 package com.pkware.truth.android.preferences;
 
 import android.preference.MultiSelectListPreference;
-import com.google.common.base.Function;
+
 import com.google.common.collect.FluentIterable;
 import com.google.common.truth.FailureMetadata;
 
-import java.util.Arrays;
-
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link MultiSelectListPreference} subjects.
  */
 public class MultiSelectListPreferenceSubject extends
-    AbstractDialogPreferenceSubject<MultiSelectListPreferenceSubject, MultiSelectListPreference> {
-  public MultiSelectListPreferenceSubject(FailureMetadata failureMetadata, MultiSelectListPreference subject) {
-    super(failureMetadata, subject);
+    AbstractDialogPreferenceSubject<MultiSelectListPreference> {
+
+  @Nullable
+  private MultiSelectListPreference actual;
+
+  public MultiSelectListPreferenceSubject(@Nonnull FailureMetadata failureMetadata, @Nullable MultiSelectListPreference actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public MultiSelectListPreferenceSubject hasEntries(String... entries) {
+  public MultiSelectListPreferenceSubject hasEntries(@Nonnull String... entries) {
 
     // We convert to Strings b/c most of the time we are interested in the text content
-    String[] actualEntries = FluentIterable.from(actual().getEntries())
-        .transform(mapToString())
-        .toArray(String.class);
+    FluentIterable<String> actualValues = FluentIterable.from(actual.getEntries())
+        .transform(CharSequence::toString);
 
-    assertThat(actualEntries)
-        .named("entries")
-        .isEqualTo(entries);
+    check("getEntries()")
+        .withMessage("Entries as strings")
+        .that(actualValues)
+        .containsExactlyElementsIn(entries)
+        .inOrder();
     return this;
   }
 
-  public MultiSelectListPreferenceSubject hasEntryValues(String... values) {
+  public MultiSelectListPreferenceSubject hasEntryValues(@Nonnull String... values) {
 
     // We convert to Strings b/c most of the time we are interested in the text content
-    String[] actualValues = FluentIterable.from(actual().getEntryValues())
-        .transform(mapToString())
-        .toArray(String.class);
+    FluentIterable<String> actualValues = FluentIterable.from(actual.getEntryValues())
+        .transform(CharSequence::toString);
 
-    assertThat(actualValues)
-        .named("entry values")
-        .isEqualTo(values);
+    check("getEntryValues()")
+        .withMessage("Entry values as strings")
+        .that(actualValues)
+        .containsExactlyElementsIn(values)
+        .inOrder();
     return this;
   }
 
-  public MultiSelectListPreferenceSubject hasValues(String... values) {
-    assertThat(actual().getValues())
-        .named("values")
-        .containsExactlyElementsIn(Arrays.asList(values));
+  public MultiSelectListPreferenceSubject hasValues(@Nonnull String... values) {
+    check("getValues()").that(actual.getValues()).containsExactlyElementsIn(values).inOrder();
     return this;
-  }
-
-  private Function<CharSequence, String> mapToString() {
-    return CharSequence::toString;
   }
 }

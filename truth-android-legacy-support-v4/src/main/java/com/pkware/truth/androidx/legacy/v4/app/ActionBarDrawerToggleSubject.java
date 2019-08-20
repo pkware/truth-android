@@ -21,28 +21,32 @@ import androidx.legacy.app.ActionBarDrawerToggle;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link ActionBarDrawerToggle} subjects.
  */
 @SuppressWarnings("deprecation")
-public class ActionBarDrawerToggleSubject extends Subject<ActionBarDrawerToggleSubject, ActionBarDrawerToggle> {
-  public ActionBarDrawerToggleSubject(FailureMetadata failureMetadata, ActionBarDrawerToggle subject) {
-    super(failureMetadata, subject);
+public class ActionBarDrawerToggleSubject extends Subject {
+
+  @Nullable
+  private final ActionBarDrawerToggle actual;
+
+  public ActionBarDrawerToggleSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ActionBarDrawerToggle actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public ActionBarDrawerToggleSubject hasDrawerIndicatorEnabled() {
-    assertThat(actual().isDrawerIndicatorEnabled())
-        .named("drawer indicator is enabled")
-        .isTrue();
+    check("isDrawerIndicatorEnabled()").that(actual.isDrawerIndicatorEnabled()).isTrue();
     return this;
   }
 
   public ActionBarDrawerToggleSubject doesNotHaveDrawerIndicatorEnabled() {
-    assertThat(!actual().isDrawerIndicatorEnabled())
-        .named("drawer indicator is disabled")
-        .isTrue();
+    check("isDrawerIndicatorEnabled()")
+        .withMessage("drawer indicator is disabled")
+        .that(actual.isDrawerIndicatorEnabled()).isTrue();
     return this;
   }
 }

@@ -18,10 +18,13 @@ package com.pkware.truth.android.telephony;
 
 import android.annotation.TargetApi;
 import android.telephony.CellSignalStrengthLte;
+
 import com.google.common.truth.FailureMetadata;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link CellSignalStrengthLte} subjects.
@@ -30,15 +33,18 @@ import static com.google.common.truth.Truth.assertThat;
  */
 @TargetApi(JELLY_BEAN_MR1)
 public final class CellSignalStrengthLteSubject
-    extends AbstractCellSignalStrengthSubject<CellSignalStrengthLteSubject, CellSignalStrengthLte> {
-  public CellSignalStrengthLteSubject(FailureMetadata failureMetadata, CellSignalStrengthLte subject) {
-    super(failureMetadata, subject);
+    extends AbstractCellSignalStrengthSubject<CellSignalStrengthLte> {
+
+  @Nullable
+  private CellSignalStrengthLte actual;
+
+  public CellSignalStrengthLteSubject(@Nonnull FailureMetadata failureMetadata, @Nullable CellSignalStrengthLte actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public CellSignalStrengthLteSubject hasTimingAdvance(int timingAdvance) {
-    assertThat(actual().getTimingAdvance())
-        .named("timing advance")
-        .isEqualTo(timingAdvance);
+    check("getTimingAdvance()").that(actual.getTimingAdvance()).isEqualTo(timingAdvance);
     return this;
   }
 }

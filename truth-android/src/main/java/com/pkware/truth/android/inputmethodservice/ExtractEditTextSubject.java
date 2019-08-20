@@ -21,27 +21,29 @@ import android.inputmethodservice.ExtractEditText;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link ExtractEditText} subjects.
  */
-public class ExtractEditTextSubject extends Subject<ExtractEditTextSubject, ExtractEditText> {
-  public ExtractEditTextSubject(FailureMetadata failureMetadata, ExtractEditText subject) {
-    super(failureMetadata, subject);
+public class ExtractEditTextSubject extends Subject {
+
+  @Nullable
+  private final ExtractEditText actual;
+
+  public ExtractEditTextSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ExtractEditText actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public ExtractEditTextSubject isInputMethodTarget() {
-    assertThat(actual().isInputMethodTarget())
-        .named("is input method target")
-        .isTrue();
+    check("isInputMethodTarget()").that(actual.isInputMethodTarget()).isTrue();
     return this;
   }
 
   public ExtractEditTextSubject isNotInputMethodTarget() {
-    assertThat(actual().isInputMethodTarget())
-        .named("is input method target")
-        .isFalse();
+    check("isInputMethodTarget()").that(actual.isInputMethodTarget()).isFalse();
     return this;
   }
 }

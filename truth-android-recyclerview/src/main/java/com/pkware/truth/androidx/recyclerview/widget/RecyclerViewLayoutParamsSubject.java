@@ -21,65 +21,55 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link RecyclerView.LayoutParams} subjects.
  */
-public class RecyclerViewLayoutParamsSubject
-    extends Subject<RecyclerViewLayoutParamsSubject, RecyclerView.LayoutParams> {
+public class RecyclerViewLayoutParamsSubject extends Subject {
 
-  public RecyclerViewLayoutParamsSubject(FailureMetadata failureMetadata, RecyclerView.LayoutParams subject) {
-    super(failureMetadata, subject);
+  @Nullable
+  private final RecyclerView.LayoutParams actual;
+
+  public RecyclerViewLayoutParamsSubject(@Nonnull FailureMetadata failureMetadata, @Nullable RecyclerView.LayoutParams actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public RecyclerViewLayoutParamsSubject viewNeedsUpdate() {
-    assertThat(actual().viewNeedsUpdate())
-        .named("view needs update")
-        .isTrue();
+    check("viewNeedsUpdate()").that(actual.viewNeedsUpdate()).isTrue();
     return this;
   }
 
   public RecyclerViewLayoutParamsSubject viewDoesNotNeedUpdate() {
-    assertThat(actual().viewNeedsUpdate())
-        .named("view needs update")
-        .isFalse();
+    check("viewNeedsUpdate()").that(actual.viewNeedsUpdate()).isFalse();
     return this;
   }
 
   public RecyclerViewLayoutParamsSubject isViewInvalid() {
-    assertThat(actual().isViewInvalid())
-        .named("is view invalid")
-        .isTrue();
+    check("isViewInvalid()").that(actual.isViewInvalid()).isTrue();
     return this;
   }
 
   public RecyclerViewLayoutParamsSubject isViewValid() {
-    assertThat(actual().isViewInvalid())
-        .named("is view invalid")
-        .isFalse();
+    check("isViewInvalid()").that(actual.isViewInvalid()).isFalse();
     return this;
   }
 
   public RecyclerViewLayoutParamsSubject isItemRemoved() {
-    assertThat(actual().isItemRemoved())
-        .named("is item removed")
-        .isTrue();
+    check("isItemRemoved()").that(actual.isItemRemoved()).isTrue();
     return this;
   }
 
   public RecyclerViewLayoutParamsSubject isItemNotRemoved() {
-    assertThat(actual().isItemRemoved())
-        .named("is item removed")
-        .isFalse();
+    check("isItemRemoved()").that(actual.isItemRemoved()).isFalse();
     return this;
   }
 
   @SuppressWarnings("deprecation")
   public RecyclerViewLayoutParamsSubject hasViewPosition(int position) {
-    assertThat(actual().getViewPosition())
-        .named("view position")
-        .isEqualTo(position);
+    check("getViewPosition()").that(actual.getViewPosition()).isEqualTo(position);
     return this;
   }
 }

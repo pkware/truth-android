@@ -17,50 +17,47 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.ScrollView;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link ScrollView} subjects.
  */
-public class ScrollViewSubject extends AbstractFrameLayoutSubject<ScrollViewSubject, ScrollView> {
-  public ScrollViewSubject(FailureMetadata failureMetadata, ScrollView subject) {
-    super(failureMetadata, subject);
+public class ScrollViewSubject extends AbstractFrameLayoutSubject<ScrollView> {
+
+  @Nullable
+  private final ScrollView actual;
+
+  public ScrollViewSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ScrollView actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public ScrollViewSubject hasMaxScrollAmount(int amount) {
-    assertThat(actual().getMaxScrollAmount())
-        .named("maximum scroll amount")
-        .isEqualTo(amount);
+    check("getMaxScrollAmount()").that(actual.getMaxScrollAmount()).isEqualTo(amount);
     return this;
   }
 
   public ScrollViewSubject isFillingViewport() {
-    assertThat(actual().isFillViewport())
-        .named("is filling viewport")
-        .isTrue();
+    check("isFillViewport()").that(actual.isFillViewport()).isTrue();
     return this;
   }
 
   public ScrollViewSubject isNotFillingViewport() {
-    assertThat(actual().isFillViewport())
-        .named("is filling viewport")
-        .isFalse();
+    check("isFillViewport()").that(actual.isFillViewport()).isFalse();
     return this;
   }
 
   public ScrollViewSubject hasSmoothScrollEnabled() {
-    assertThat(actual().isSmoothScrollingEnabled())
-        .named("has smooth scrolling enabled")
-        .isTrue();
+    check("isSmoothScrollingEnabled()").that(actual.isSmoothScrollingEnabled()).isTrue();
     return this;
   }
 
   public ScrollViewSubject hasSmoothScrollDisabled() {
-    assertThat(!actual().isSmoothScrollingEnabled())
-        .named("has smooth scrolling disabled")
-        .isTrue();
+    check("isSmoothScrollingEnabled()").that(actual.isSmoothScrollingEnabled()).isFalse();
     return this;
   }
 }

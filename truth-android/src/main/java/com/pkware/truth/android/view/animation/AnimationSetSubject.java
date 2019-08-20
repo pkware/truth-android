@@ -17,29 +17,32 @@
 package com.pkware.truth.android.view.animation;
 
 import android.view.animation.AnimationSet;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link AnimationSet} subjects.
  */
-public class AnimationSetSubject extends AbstractAnimationSubject<AnimationSetSubject, AnimationSet> {
-  public AnimationSetSubject(FailureMetadata failureMetadata, AnimationSet subject) {
-    super(failureMetadata, subject);
+public class AnimationSetSubject extends AbstractAnimationSubject<AnimationSet> {
+
+  @Nullable
+  private AnimationSet actual;
+
+  public AnimationSetSubject(@Nonnull FailureMetadata failureMetadata, @Nullable AnimationSet actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public AnimationSetSubject hasDurationHint(long duration) {
-    assertThat(actual().computeDurationHint())
-        .named("duration hint")
-        .isEqualTo(duration);
+    check("computeDurationHint()").that(actual.computeDurationHint()).isEqualTo(duration);
     return this;
   }
 
   public AnimationSetSubject hasAnimationCount(int count) {
-    assertThat(actual().getAnimations().size())
-        .named("animation count")
-        .isEqualTo(count);
+    check("getAnimations()").that(actual.getAnimations()).hasSize(count);
     return this;
   }
 }

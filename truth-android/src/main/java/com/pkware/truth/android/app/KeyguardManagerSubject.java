@@ -22,60 +22,55 @@ import android.app.KeyguardManager;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link KeyguardManager} subjects.
  */
-public class KeyguardManagerSubject extends Subject<KeyguardManagerSubject, KeyguardManager> {
-  public KeyguardManagerSubject(FailureMetadata failureMetadata, KeyguardManager subject) {
-    super(failureMetadata, subject);
+public class KeyguardManagerSubject extends Subject {
+
+  @Nullable
+  private final KeyguardManager actual;
+
+  public KeyguardManagerSubject(@Nonnull FailureMetadata failureMetadata, @Nullable KeyguardManager actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public KeyguardManagerSubject hasRestrictedInputMode() {
-    assertThat(actual().inKeyguardRestrictedInputMode())
-        .named("has restricted input mode")
-        .isTrue();
+    check("inKeyguardRestrictedInputMode()").that(actual.inKeyguardRestrictedInputMode()).isTrue();
     return this;
   }
 
   public KeyguardManagerSubject hasUnrestrictedInputMode() {
-    assertThat(actual().inKeyguardRestrictedInputMode())
-        .named("has restricted input mode")
-        .isFalse();
+    check("inKeyguardRestrictedInputMode()").that(actual.inKeyguardRestrictedInputMode()).isFalse();
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public KeyguardManagerSubject hasLockedKeyguard() {
-    assertThat(actual().isKeyguardLocked())
-        .named("has locked keyguard")
-        .isTrue();
+    check("isKeyguardLocked()").that(actual.isKeyguardLocked()).isTrue();
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public KeyguardManagerSubject hasUnlockedKeyguard() {
-    assertThat(actual().isKeyguardLocked())
-        .named("has locked keyguard")
-        .isFalse();
+    check("isKeyguardLocked()").that(actual.isKeyguardLocked()).isFalse();
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public KeyguardManagerSubject hasSecureKeyguard() {
-    assertThat(actual().isKeyguardSecure())
-        .named("has secure keyguard")
-        .isTrue();
+    check("isKeyguardSecure()").that(actual.isKeyguardSecure()).isTrue();
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public KeyguardManagerSubject hasInsecureKeyguard() {
-    assertThat(actual().isKeyguardSecure())
-        .named("has secure keyguard")
-        .isFalse();
+    check("isKeyguardSecure()").that(actual.isKeyguardSecure()).isFalse();
     return this;
   }
 }

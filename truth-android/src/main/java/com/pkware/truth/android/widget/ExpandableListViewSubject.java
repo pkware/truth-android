@@ -18,36 +18,37 @@ package com.pkware.truth.android.widget;
 
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link ExpandableListView} subjects.
  */
-public class ExpandableListViewSubject extends AbstractListViewSubject<ExpandableListViewSubject, ExpandableListView> {
-  public ExpandableListViewSubject(FailureMetadata failureMetadata, ExpandableListView subject) {
-    super(failureMetadata, subject);
+public class ExpandableListViewSubject extends AbstractListViewSubject<ExpandableListView> {
+
+  @Nullable
+  private final ExpandableListView actual;
+
+  public ExpandableListViewSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ExpandableListView actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public ExpandableListViewSubject hasExpandableListAdapter(ExpandableListAdapter adapter) {
-    assertThat(actual().getExpandableListAdapter())
-        .named("expandable list adapter")
-        .isSameAs(adapter);
+  public ExpandableListViewSubject hasExpandableListAdapter(@Nullable ExpandableListAdapter adapter) {
+    check("getExpandableListAdapter()").that(actual.getExpandableListAdapter()).isSameInstanceAs(adapter);
     return this;
   }
 
   public ExpandableListViewSubject hasSelectedId(long id) {
-    assertThat(actual().getSelectedId())
-        .named("selected ID")
-        .isEqualTo(id);
+    check("getSelectedId()").that(actual.getSelectedId()).isEqualTo(id);
     return this;
   }
 
   public ExpandableListViewSubject hasSelectedPosition(long position) {
-    assertThat(actual().getSelectedPosition())
-        .named("selected position")
-        .isEqualTo(position);
+    check("getSelectedPosition()").that(actual.getSelectedPosition()).isEqualTo(position);
     return this;
   }
 }

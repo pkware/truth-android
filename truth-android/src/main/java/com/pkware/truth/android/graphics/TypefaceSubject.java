@@ -21,48 +21,44 @@ import android.graphics.Typeface;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Typeface} subjects.
  */
-public class TypefaceSubject extends Subject<TypefaceSubject, Typeface> {
-  public TypefaceSubject(FailureMetadata failureMetadata, Typeface subject) {
-    super(failureMetadata, subject);
+public class TypefaceSubject extends Subject {
+
+  @Nullable
+  private final Typeface actual;
+
+  public TypefaceSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Typeface actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public TypefaceSubject hasStyle(int style) {
-    assertThat(actual().getStyle())
-        .named("style")
-        .isEqualTo(style);
+    check("getStyle()").that(actual.getStyle()).isEqualTo(style);
     return this;
   }
 
   public TypefaceSubject isBold() {
-    assertThat(actual().isBold())
-        .named("is bold")
-        .isTrue();
+    check("isBold()").that(actual.isBold()).isTrue();
     return this;
   }
 
   public TypefaceSubject isNotBold() {
-    assertThat(actual().isBold())
-        .named("is bold")
-        .isFalse();
+    check("isBold()").that(actual.isBold()).isFalse();
     return this;
   }
 
   public TypefaceSubject isItalic() {
-    assertThat(actual().isItalic())
-        .named("is italic")
-        .isTrue();
+    check("isItalic()").that(actual.isItalic()).isTrue();
     return this;
   }
 
   public TypefaceSubject isNotItalic() {
-    assertThat(actual().isItalic())
-        .named("is italic")
-        .isFalse();
+    check("isItalic()").that(actual.isItalic()).isFalse();
     return this;
   }
 }

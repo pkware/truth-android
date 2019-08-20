@@ -17,29 +17,32 @@
 package com.pkware.truth.android.graphics.drawable;
 
 import android.graphics.drawable.TransitionDrawable;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link TransitionDrawable} subjects.
  */
-public class TransitionDrawableSubject extends AbstractDrawableSubject<TransitionDrawableSubject, TransitionDrawable> {
-  public TransitionDrawableSubject(FailureMetadata failureMetadata, TransitionDrawable subject) {
-    super(failureMetadata, subject);
+public class TransitionDrawableSubject extends AbstractDrawableSubject<TransitionDrawable> {
+
+  @Nullable
+  private TransitionDrawable actual;
+
+  public TransitionDrawableSubject(@Nonnull FailureMetadata failureMetadata, @Nullable TransitionDrawable actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public TransitionDrawableSubject isCrossFadeEnabled() {
-    assertThat(actual().isCrossFadeEnabled())
-        .named("cross-fade is enabled")
-        .isTrue();
+    check("isCrossFadeEnabled()").that(actual.isCrossFadeEnabled()).isTrue();
     return this;
   }
 
   public TransitionDrawableSubject isCrossFadeDisabled() {
-    assertThat(!actual().isCrossFadeEnabled())
-        .named("cross-fade is disabled")
-        .isTrue();
+    check("isCrossFadeEnabled()").that(actual.isCrossFadeEnabled()).isFalse();
     return this;
   }
 }

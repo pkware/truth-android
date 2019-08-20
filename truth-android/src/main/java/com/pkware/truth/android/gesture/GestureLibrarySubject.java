@@ -21,41 +21,39 @@ import android.gesture.GestureLibrary;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link GestureLibrary} subjects.
  */
-public class GestureLibrarySubject extends Subject<GestureLibrarySubject, GestureLibrary> {
-  public GestureLibrarySubject(FailureMetadata failureMetadata, GestureLibrary subject) {
-    super(failureMetadata, subject);
+public class GestureLibrarySubject extends Subject {
+
+  @Nullable
+  private final GestureLibrary actual;
+
+  public GestureLibrarySubject(@Nonnull FailureMetadata failureMetadata, @Nullable GestureLibrary actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public GestureLibrarySubject hasOrientationStyle(int style) {
-    assertThat(actual().getOrientationStyle())
-        .named("orientation style")
-        .isEqualTo(style);
+    check("getOrientationStyle()").that(actual.getOrientationStyle()).isEqualTo(style);
     return this;
   }
 
   public GestureLibrarySubject hasSequenceType(int type) {
-    assertThat(actual().getSequenceType())
-        .named("sequence type")
-        .isEqualTo(type);
+    check("getSequenceType()").that(actual.getSequenceType()).isEqualTo(type);
     return this;
   }
 
   public GestureLibrarySubject isReadOnly() {
-    assertThat(actual().isReadOnly())
-        .named("is read only")
-        .isTrue();
+    check("isReadOnly()").that(actual.isReadOnly()).isTrue();
     return this;
   }
 
   public GestureLibrarySubject isNotReadOnly() {
-    assertThat(actual().isReadOnly())
-        .named("is read only")
-        .isFalse();
+    check("isReadOnly()").that(actual.isReadOnly()).isFalse();
     return this;
   }
 }

@@ -22,27 +22,29 @@ import android.location.GpsStatus;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link GpsStatus} subjects.
  */
-public class GpsStatusSubject extends Subject<GpsStatusSubject, GpsStatus> {
-  public GpsStatusSubject(FailureMetadata failureMetadata, GpsStatus subject) {
-    super(failureMetadata, subject);
+public class GpsStatusSubject extends Subject {
+
+  @Nullable
+  private final GpsStatus actual;
+
+  public GpsStatusSubject(@Nonnull FailureMetadata failureMetadata, @Nullable GpsStatus actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public GpsStatusSubject hasMaximumSatellites(int count) {
-    assertThat(actual().getMaxSatellites())
-        .named("maximum satellites")
-        .isEqualTo(count);
+    check("getMaxSatellites()").that(actual.getMaxSatellites()).isEqualTo(count);
     return this;
   }
 
   public GpsStatusSubject hasTimeToFirstFix(int time) {
-    assertThat(actual().getTimeToFirstFix())
-        .named("time to first fix")
-        .isEqualTo(time);
+    check("getTimeToFirstFix()").that(actual.getTimeToFirstFix()).isEqualTo(time);
     return this;
   }
 }

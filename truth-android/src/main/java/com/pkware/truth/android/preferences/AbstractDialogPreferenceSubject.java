@@ -19,88 +19,67 @@ package com.pkware.truth.android.preferences;
 import android.app.Dialog;
 import android.graphics.drawable.Drawable;
 import android.preference.DialogPreference;
+
 import androidx.annotation.LayoutRes;
 import androidx.annotation.StringRes;
 
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public abstract class AbstractDialogPreferenceSubject<S extends AbstractDialogPreferenceSubject<S, T>, T extends DialogPreference>
-    extends AbstractPreferenceSubject<S, T> {
-  protected AbstractDialogPreferenceSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractDialogPreferenceSubject<T extends DialogPreference>
+    extends AbstractPreferenceSubject<T> {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractDialogPreferenceSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S hasDialog(Dialog dialog) {
-    assertThat(actual().getDialog())
-        .named("dialog")
-        .isSameAs(dialog);
-    //noinspection unchecked
-    return (S) this;
+  public void hasDialog(@Nullable Dialog dialog) {
+    check("getDialog()").that(actual.getDialog()).isSameInstanceAs(dialog);
   }
 
-  public S hasDialogIcon(Drawable icon) {
-    assertThat(actual().getIcon())
-        .named("dialog icon")
-        .isSameAs(icon);
-    //noinspection unchecked
-    return (S) this;
+  public void hasDialogIcon(@Nullable Drawable icon) {
+    check("getIcon()").that(actual.getIcon()).isSameInstanceAs(icon);
   }
 
-  public S hasDialogLayoutResource(@LayoutRes int resource) {
-    assertThat(actual().getDialogLayoutResource())
-        .named("dialog layout resource")
-        .isEqualTo(resource);
-    //noinspection unchecked
-    return (S) this;
+  public void hasDialogLayoutResource(@LayoutRes int resource) {
+    check("getDialogLayoutResource()").that(actual.getDialogLayoutResource()).isEqualTo(resource);
   }
 
-  public S hasDialogMessage(CharSequence message) {
-    assertThat(actual().getDialogMessage())
-        .named("dialog message")
-        .isEqualTo(message);
-    //noinspection unchecked
-    return (S) this;
+  public void hasDialogMessage(@Nullable CharSequence message) {
+    check("getDialogMessage()").that(actual.getDialogMessage()).isEqualTo(message);
   }
 
-  public S hasDialogMessage(@StringRes int resId) {
-    return hasDialogMessage(actual().getContext().getString(resId));
+  public void hasDialogMessage(@StringRes int resId) {
+    hasDialogMessage(actual.getContext().getString(resId));
   }
 
-  public S hasDialogTitle(CharSequence title) {
-    assertThat(actual().getDialogTitle())
-        .named("dialog title")
-        .isEqualTo(title);
-    //noinspection unchecked
-    return (S) this;
+  public void hasDialogTitle(@Nullable CharSequence title) {
+    check("getDialogTitle()").that(actual.getDialogTitle()).isEqualTo(title);
   }
 
-  public S hasDialogTitle(@StringRes int resId) {
-    return hasDialogTitle(actual().getContext().getString(resId));
+  public void hasDialogTitle(@StringRes int resId) {
+    hasDialogTitle(actual.getContext().getString(resId));
   }
 
-  public S hasNegativeButtonText(CharSequence text) {
-    assertThat(actual().getNegativeButtonText())
-        .named("negative button text")
-        .isEqualTo(text);
-    //noinspection unchecked
-    return (S) this;
+  public void hasNegativeButtonText(@Nullable CharSequence text) {
+    check("getNegativeButtonText()").that(actual.getNegativeButtonText()).isEqualTo(text);
   }
 
-  public S hasNegativeButtonText(@StringRes int resId) {
-    return hasNegativeButtonText(actual().getContext().getString(resId));
+  public void hasNegativeButtonText(@StringRes int resId) {
+    hasNegativeButtonText(actual.getContext().getString(resId));
   }
 
-  public S hasPositiveButtonText(CharSequence text) {
-    assertThat(actual().getPositiveButtonText())
-        .named("positive button text")
-        .isEqualTo(text);
-    //noinspection unchecked
-    return (S) this;
+  public void hasPositiveButtonText(@Nullable CharSequence text) {
+    check("getPositiveButtonText()").that(actual.getPositiveButtonText()).isEqualTo(text);
   }
 
-  public S hasPositiveButtonText(@StringRes int resId) {
-    return hasPositiveButtonText(actual().getContext().getString(resId));
+  public void hasPositiveButtonText(@StringRes int resId) {
+    hasPositiveButtonText(actual.getContext().getString(resId));
   }
 }

@@ -21,77 +21,64 @@ import androidx.mediarouter.media.RemotePlaybackClient;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link RemotePlaybackClient} subjects.
  */
-public class RemotePlaybackClientSubject
-    extends Subject<RemotePlaybackClientSubject, RemotePlaybackClient> {
-  public RemotePlaybackClientSubject(FailureMetadata failureMetadata, RemotePlaybackClient subject) {
-    super(failureMetadata, subject);
+public class RemotePlaybackClientSubject extends Subject {
+
+  @Nullable
+  private final RemotePlaybackClient actual;
+
+  public RemotePlaybackClientSubject(@Nonnull FailureMetadata failureMetadata, @Nullable RemotePlaybackClient actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public RemotePlaybackClientSubject hasSessionId(String sessionId) {
-    assertThat(actual().getSessionId())
-        .named("session ID")
-        .isEqualTo(sessionId);
+  public RemotePlaybackClientSubject hasSessionId(@Nullable String sessionId) {
+    check("getSessionId()").that(actual.getSessionId()).isEqualTo(sessionId);
     return this;
   }
 
   public RemotePlaybackClientSubject hasSession() {
-    assertThat(actual().hasSession())
-        .named("has session")
-        .isTrue();
+    check("hasSession()").that(actual.hasSession()).isTrue();
     return this;
   }
 
   public RemotePlaybackClientSubject doesNotHaveSession() {
-    assertThat(actual().hasSession())
-        .named("has session")
-        .isFalse();
+    check("hasSession()").that(actual.hasSession()).isFalse();
     return this;
   }
 
   public RemotePlaybackClientSubject hasQueuingSupported() {
-    assertThat(actual().isQueuingSupported())
-        .named("supports queueing")
-        .isTrue();
+    check("isQueuingSupported()").that(actual.isQueuingSupported()).isTrue();
     return this;
   }
 
   public RemotePlaybackClientSubject doesNotHaveQueuingSupported() {
-    assertThat(actual().isQueuingSupported())
-        .named("supports queueing")
-        .isFalse();
+    check("isQueuingSupported()").that(actual.isQueuingSupported()).isFalse();
     return this;
   }
 
   public RemotePlaybackClientSubject hasRemotePlaybackSupported() {
-    assertThat(actual().isRemotePlaybackSupported())
-        .named("supports remote playback")
-        .isTrue();
+    check("isRemotePlaybackSupported()").that(actual.isRemotePlaybackSupported()).isTrue();
     return this;
   }
 
   public RemotePlaybackClientSubject doesNotHaveRemotePlaybackSupported() {
-    assertThat(actual().isRemotePlaybackSupported())
-        .named("supports remote playback")
-        .isFalse();
+    check("isRemotePlaybackSupported()").that(actual.isRemotePlaybackSupported()).isFalse();
     return this;
   }
 
   public RemotePlaybackClientSubject hasSessionManagementSupported() {
-    assertThat(actual().isSessionManagementSupported())
-        .named("supports session management")
-        .isTrue();
+    check("isSessionManagementSupported()").that(actual.isSessionManagementSupported()).isTrue();
     return this;
   }
 
   public RemotePlaybackClientSubject doesNotHaveSessionManagementSupported() {
-    assertThat(actual().isSessionManagementSupported())
-        .named("supports session management")
-        .isFalse();
+    check("isSessionManagementSupported()").that(actual.isSessionManagementSupported()).isFalse();
     return this;
   }
 }

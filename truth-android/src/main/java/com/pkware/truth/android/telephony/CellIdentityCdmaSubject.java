@@ -22,50 +22,47 @@ import android.telephony.CellIdentityCdma;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link CellIdentityCdma} subjects.
  */
 @TargetApi(JELLY_BEAN_MR1)
-public final class CellIdentityCdmaSubject extends Subject<CellIdentityCdmaSubject, CellIdentityCdma> {
-  public CellIdentityCdmaSubject(FailureMetadata failureMetadata, CellIdentityCdma subject) {
-    super(failureMetadata, subject);
+public final class CellIdentityCdmaSubject extends Subject {
+
+  @Nullable
+  private final CellIdentityCdma actual;
+
+  public CellIdentityCdmaSubject(@Nonnull FailureMetadata failureMetadata, @Nullable CellIdentityCdma actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public CellIdentityCdmaSubject hasBaseStationId(int id) {
-    assertThat(actual().getBasestationId())
-        .named("base station ID")
-        .isEqualTo(id);
+    check("getBasestationId()").that(actual.getBasestationId()).isEqualTo(id);
     return this;
   }
 
   public CellIdentityCdmaSubject hasLatitude(int latitude) {
-    assertThat(actual().getLatitude())
-        .named("latitude")
-        .isEqualTo(latitude);
+    check("getLatitude()").that(actual.getLatitude()).isEqualTo(latitude);
     return this;
   }
 
   public CellIdentityCdmaSubject hasLongitude(int longitude) {
-    assertThat(actual().getLongitude())
-        .named("longitude")
-        .isEqualTo(longitude);
+    check("getLongitude()").that(actual.getLongitude()).isEqualTo(longitude);
     return this;
   }
 
   public CellIdentityCdmaSubject hasNetworkId(int id) {
-    assertThat(actual().getNetworkId())
-        .named("network ID")
-        .isEqualTo(id);
+    check("getNetworkId()").that(actual.getNetworkId()).isEqualTo(id);
     return this;
   }
 
   public CellIdentityCdmaSubject hasSystemId(int id) {
-    assertThat(actual().getSystemId())
-        .named("system ID")
-        .isEqualTo(id);
+    check("getSystemId()").that(actual.getSystemId()).isEqualTo(id);
     return this;
   }
 }

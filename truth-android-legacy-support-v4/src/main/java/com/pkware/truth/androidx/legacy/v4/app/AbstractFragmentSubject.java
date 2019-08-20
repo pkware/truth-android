@@ -21,155 +21,88 @@ import androidx.fragment.app.Fragment;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public abstract class AbstractFragmentSubject<S extends AbstractFragmentSubject<S, T>, T extends Fragment>
-    extends Subject<S, T> {
+public abstract class AbstractFragmentSubject<T extends Fragment> extends Subject {
 
-  protected AbstractFragmentSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+  @Nullable
+  private final T actual;
+
+  protected AbstractFragmentSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S hasId(int id) {
-    assertThat(actual().getId())
-        .named("ID")
-        .isEqualTo(id);
-    //noinspection unchecked
-    return (S) this;
+  public void hasId(int id) {
+    check("getId()").that(actual.getId()).isEqualTo(id);
   }
 
-  public S hasTag(String tag) {
-    String actualTag = actual().getTag();
-    assertThat(actualTag).isEqualTo(tag);
-    //noinspection unchecked
-    return (S) this;
+  public void hasTag(@Nullable String tag) {
+    check("getTag()").that(actual.getTag()).isEqualTo(tag);
   }
 
-  public S isUserVisible() {
-    assertThat(actual().getUserVisibleHint())
-        .named("is visible to user hint")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isUserVisible() {
+    check("getUserVisibleHint()").that(actual.getUserVisibleHint()).isTrue();
   }
 
-  public S isNotUserVisible() {
-    assertThat(actual().getUserVisibleHint())
-        .named("is visible to user hint")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotUserVisible() {
+    check("getUserVisibleHint()").that(actual.getUserVisibleHint()).isFalse();
   }
 
-  public S isAdded() {
-    assertThat(actual().isAdded())
-        .named("is added")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isAdded() {
+    check("isAdded()").that(actual.isAdded()).isTrue();
   }
 
-  public S isNotAdded() {
-    assertThat(actual().isAdded())
-        .named("is added")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotAdded() {
+    check("isAdded()").that(actual.isAdded()).isFalse();
   }
 
-  public S isDetached() {
-    assertThat(actual().isDetached())
-        .named("is detached")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isDetached() {
+    check("isDetached()").that(actual.isDetached()).isTrue();
   }
 
-  public S isNotDetached() {
-    assertThat(actual().isDetached())
-        .named("is detached")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotDetached() {
+    check("isDetached()").that(actual.isDetached()).isFalse();
   }
 
-  public S isHidden() {
-    assertThat(actual().isHidden())
-        .named("is hidden")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isHidden() {
+    check("isHidden()").that(actual.isHidden()).isTrue();
   }
 
-  public S isNotHidden() {
-    assertThat(actual().isHidden())
-        .named("is hidden")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotHidden() {
+    check("isHidden()").that(actual.isHidden()).isFalse();
   }
 
-  public S isInLayout() {
-    assertThat(actual().isInLayout())
-        .named("is in layout")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isInLayout() {
+    check("isInLayout()").that(actual.isInLayout()).isTrue();
   }
 
-  public S isNotInLayout() {
-    assertThat(actual().isInLayout())
-        .named("is in layout")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotInLayout() {
+    check("isInLayout()").that(actual.isInLayout()).isFalse();
   }
 
-  public S isRemoving() {
-    assertThat(actual().isRemoving())
-        .named("is removing")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isRemoving() {
+    check("isRemoving()").that(actual.isRemoving()).isTrue();
   }
 
-  public S isNotRemoving() {
-    assertThat(actual().isRemoving())
-        .named("is removing")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotRemoving() {
+    check("isRemoving()").that(actual.isRemoving()).isFalse();
   }
 
-  public S isResumed() {
-    assertThat(actual().isResumed())
-        .named("is resumed")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isResumed() {
+    check("isResumed()").that(actual.isResumed()).isTrue();
   }
 
-  public S isNotResumed() {
-    assertThat(actual().isResumed())
-        .named("is resumed")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotResumed() {
+    check("isResumed()").that(actual.isResumed()).isFalse();
   }
 
-  public S isVisible() {
-    assertThat(actual().isVisible())
-        .named("is visible")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isVisible() {
+    check("isVisible()").that(actual.isVisible()).isTrue();
   }
 
-  public S isNotVisible() {
-    assertThat(actual().isVisible())
-        .named("is visible")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotVisible() {
+    check("isVisible()").that(actual.isVisible()).isFalse();
   }
 }

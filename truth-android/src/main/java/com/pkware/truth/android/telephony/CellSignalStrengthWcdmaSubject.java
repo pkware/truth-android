@@ -18,7 +18,11 @@ package com.pkware.truth.android.telephony;
 
 import android.annotation.TargetApi;
 import android.telephony.CellSignalStrengthWcdma;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
 
@@ -29,8 +33,8 @@ import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
  */
 @TargetApi(JELLY_BEAN_MR2)
 public final class CellSignalStrengthWcdmaSubject
-    extends AbstractCellSignalStrengthSubject<CellSignalStrengthWcdmaSubject, CellSignalStrengthWcdma> {
-  public CellSignalStrengthWcdmaSubject(FailureMetadata failureMetadata, CellSignalStrengthWcdma subject) {
-    super(failureMetadata, subject);
+    extends AbstractCellSignalStrengthSubject<CellSignalStrengthWcdma> {
+  public CellSignalStrengthWcdmaSubject(@Nonnull FailureMetadata failureMetadata, @Nullable CellSignalStrengthWcdma actual) {
+    super(failureMetadata, actual);
   }
 }

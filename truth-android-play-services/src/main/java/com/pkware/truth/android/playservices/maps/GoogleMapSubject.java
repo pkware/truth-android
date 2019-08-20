@@ -20,92 +20,76 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link GoogleMap} subjects.
  */
-public class GoogleMapSubject extends Subject<GoogleMapSubject, GoogleMap> {
-  public GoogleMapSubject(FailureMetadata failureMetadata, GoogleMap subject) {
-    super(failureMetadata, subject);
+public class GoogleMapSubject extends Subject {
+
+  @Nullable
+  private final GoogleMap actual;
+
+  public GoogleMapSubject(@Nonnull FailureMetadata failureMetadata, @Nullable GoogleMap actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public GoogleMapSubject hasMapType(int mapType) {
-    assertThat(actual().getMapType())
-        .named("map type")
-        .isEqualTo(mapType);
+    check("getMapType()").that(actual.getMapType()).isEqualTo(mapType);
     return this;
   }
 
   public GoogleMapSubject hasMaxZoomLevel(float zoomLevel, float tolerance) {
-    assertThat(actual().getMaxZoomLevel())
-        .named("maximum zoom level")
-        .isWithin(tolerance)
-        .of(zoomLevel);
+    check("getMaxZoomLevel()").that(actual.getMaxZoomLevel()).isWithin(tolerance).of(zoomLevel);
     return this;
   }
 
   public GoogleMapSubject hasMinZoomLevel(float zoomLevel, float tolerance) {
-    assertThat(actual().getMinZoomLevel())
-        .named("minimum zoom level")
-        .isWithin(tolerance)
-        .of(zoomLevel);
+    check("getMinZoomLevel()").that(actual.getMinZoomLevel()).isWithin(tolerance).of(zoomLevel);
     return this;
   }
 
   public GoogleMapSubject hasBuildingsEnabled() {
-    assertThat(actual().isBuildingsEnabled())
-        .named("has buildings enabled")
-        .isTrue();
+    check("isBuildingsEnabled()").that(actual.isBuildingsEnabled()).isTrue();
     return this;
   }
 
   public GoogleMapSubject hasBuildingsDisabled() {
-    assertThat(!actual().isBuildingsEnabled())
-        .named("has buildings disabled")
-        .isTrue();
+    check("isBuildingsEnabled()").that(actual.isBuildingsEnabled()).isFalse();
     return this;
   }
 
   public GoogleMapSubject hasIndoorEnabled() {
-    assertThat(actual().isIndoorEnabled())
-        .named("has indoor enabled")
-        .isTrue();
+    check("isIndoorEnabled()").that(actual.isIndoorEnabled()).isTrue();
     return this;
   }
 
   public GoogleMapSubject hasIndoorDisabled() {
-    assertThat(!actual().isIndoorEnabled())
-        .named("has indoor disabled")
-        .isTrue();
+    check("isIndoorEnabled()").that(actual.isIndoorEnabled()).isFalse();
     return this;
   }
 
   public GoogleMapSubject hasMyLocationEnabled() {
-    assertThat(actual().isMyLocationEnabled())
-        .named("has 'my location' enabled")
-        .isTrue();
+    check("isMyLocationEnabled()").that(actual.isMyLocationEnabled()).isTrue();
     return this;
   }
 
   public GoogleMapSubject hasMyLocationDisabled() {
-    assertThat(!actual().isMyLocationEnabled())
-        .named("has 'my location' disabled")
-        .isTrue();
+    check("isMyLocationEnabled()")
+        .withMessage("has 'my location' disabled")
+        .that(actual.isMyLocationEnabled()).isFalse();
     return this;
   }
 
   public GoogleMapSubject hasTrafficEnabled() {
-    assertThat(actual().isTrafficEnabled())
-        .named("has traffic enabled")
-        .isTrue();
+    check("isTrafficEnabled()").that(actual.isTrafficEnabled()).isTrue();
     return this;
   }
 
   public GoogleMapSubject hasTrafficDisabled() {
-    assertThat(!actual().isTrafficEnabled())
-        .named("has traffic disabled")
-        .isTrue();
+    check("isTrafficEnabled()").that(actual.isTrafficEnabled()).isFalse();
     return this;
   }
 }

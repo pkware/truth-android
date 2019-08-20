@@ -17,25 +17,33 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.GridLayout;
+
 import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import static android.widget.GridLayout.ALIGN_BOUNDS;
 import static android.widget.GridLayout.ALIGN_MARGINS;
 import static android.widget.GridLayout.HORIZONTAL;
 import static android.widget.GridLayout.VERTICAL;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
 /**
  * Propositions for {@link GridLayout} subjects.
  */
-public class GridLayoutSubject extends AbstractViewGroupSubject<GridLayoutSubject, GridLayout> {
-  public GridLayoutSubject(FailureMetadata failureMetadata, GridLayout subject) {
-    super(failureMetadata, subject);
+public class GridLayoutSubject extends AbstractViewGroupSubject<GridLayout> {
+
+  @Nullable
+  private final GridLayout actual;
+
+  public GridLayoutSubject(@Nonnull FailureMetadata failureMetadata, @Nullable GridLayout actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   public static String alignmentModeToString(@GridLayoutAlignmentMode int mode) {
     return buildNamedValueString(mode)
         .value(ALIGN_BOUNDS, "alignBounds")
@@ -43,6 +51,7 @@ public class GridLayoutSubject extends AbstractViewGroupSubject<GridLayoutSubjec
         .get();
   }
 
+  @Nonnull
   public static String orientationToString(@GridLayoutOrientation int orientation) {
     return buildNamedValueString(orientation)
         .value(HORIZONTAL, "horizontal")
@@ -51,9 +60,9 @@ public class GridLayoutSubject extends AbstractViewGroupSubject<GridLayoutSubjec
   }
 
   public GridLayoutSubject hasAlignmentMode(@GridLayoutAlignmentMode int mode) {
-    int actualMode = actual().getAlignmentMode();
+    int actualMode = actual.getAlignmentMode();
     //noinspection ResourceType
-    assert_()
+    check("getAlignmentMode()")
         .withMessage("Expected alignment mode <%s> but was <%s>.",
             alignmentModeToString(mode), alignmentModeToString(actualMode))
         .that(actualMode)
@@ -62,16 +71,14 @@ public class GridLayoutSubject extends AbstractViewGroupSubject<GridLayoutSubjec
   }
 
   public GridLayoutSubject hasColumnCount(int count) {
-    assertThat(actual().getColumnCount())
-        .named("column count")
-        .isEqualTo(count);
+    check("getColumnCount()").that(actual.getColumnCount()).isEqualTo(count);
     return this;
   }
 
   public GridLayoutSubject hasOrientation(@GridLayoutOrientation int orientation) {
-    int actualOrientation = actual().getOrientation();
+    int actualOrientation = actual.getOrientation();
     //noinspection ResourceType
-    assert_()
+    check("getOrientation()")
         .withMessage("Expected orientation <%s> but was <%s>.",
             orientationToString(orientation), orientationToString(actualOrientation))
         .that(actualOrientation)
@@ -88,51 +95,37 @@ public class GridLayoutSubject extends AbstractViewGroupSubject<GridLayoutSubjec
   }
 
   public GridLayoutSubject hasRowCount(int count) {
-    assertThat(actual().getRowCount())
-        .named("row count")
-        .isEqualTo(count);
+    check("getRowCount()").that(actual.getRowCount()).isEqualTo(count);
     return this;
   }
 
   public GridLayoutSubject isUsingDefaultMargins() {
-    assertThat(actual().getUseDefaultMargins())
-        .named("is using default margins")
-        .isTrue();
+    check("getUseDefaultMargins()").that(actual.getUseDefaultMargins()).isTrue();
     return this;
   }
 
   public GridLayoutSubject isNotUsingDefaultMargins() {
-    assertThat(actual().getUseDefaultMargins())
-        .named("is using default margins")
-        .isFalse();
+    check("getUseDefaultMargins()").that(actual.getUseDefaultMargins()).isFalse();
     return this;
   }
 
   public GridLayoutSubject isPreservingColumnOrder() {
-    assertThat(actual().isColumnOrderPreserved())
-        .named("is preserving column order")
-        .isTrue();
+    check("isColumnOrderPreserved()").that(actual.isColumnOrderPreserved()).isTrue();
     return this;
   }
 
   public GridLayoutSubject isNotPreservingColumnOrder() {
-    assertThat(actual().isColumnOrderPreserved())
-        .named("is preserving column order")
-        .isFalse();
+    check("isColumnOrderPreserved()").that(actual.isColumnOrderPreserved()).isFalse();
     return this;
   }
 
   public GridLayoutSubject isPreservingRowOrder() {
-    assertThat(actual().isRowOrderPreserved())
-        .named("is preserving row order")
-        .isTrue();
+    check("isRowOrderPreserved()").that(actual.isRowOrderPreserved()).isTrue();
     return this;
   }
 
   public GridLayoutSubject isNotPreservingRowOrder() {
-    assertThat(actual().isRowOrderPreserved())
-        .named("is preserving row order")
-        .isFalse();
+    check("isRowOrderPreserved()").that(actual.isRowOrderPreserved()).isFalse();
     return this;
   }
 }

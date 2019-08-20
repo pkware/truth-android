@@ -20,51 +20,37 @@ import android.widget.HorizontalScrollView;
 
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public abstract class AbstractHorizontalScrollViewSubject<S extends AbstractHorizontalScrollViewSubject<S, T>, T extends HorizontalScrollView>
-    extends AbstractFrameLayoutSubject<S, T> {
-  protected AbstractHorizontalScrollViewSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractHorizontalScrollViewSubject<T extends HorizontalScrollView>
+    extends AbstractFrameLayoutSubject<T> {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractHorizontalScrollViewSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S hasMaximumScrollAmount(int amount) {
-    assertThat(actual().getMaxScrollAmount())
-        .named("maximum scroll amount")
-        .isEqualTo(amount);
-    //noinspection unchecked
-    return (S) this;
+  public void hasMaximumScrollAmount(int amount) {
+    check("getMaxScrollAmount()").that(actual.getMaxScrollAmount()).isEqualTo(amount);
   }
 
-  public S isFillingViewport() {
-    assertThat(actual().isFillViewport())
-        .named("is filling viewport")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isFillingViewport() {
+    check("isFillViewport()").that(actual.isFillViewport()).isTrue();
   }
 
-  public S isNotFillingViewport() {
-    assertThat(actual().isFillViewport())
-        .named("is filling viewport")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotFillingViewport() {
+    check("isFillViewport()").that(actual.isFillViewport()).isFalse();
   }
 
-  public S isSmoothScrollingEnabled() {
-    assertThat(actual().isSmoothScrollingEnabled())
-        .named("is smooth scrolling enabled")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isSmoothScrollingEnabled() {
+    check("isSmoothScrollingEnabled()").that(actual.isSmoothScrollingEnabled()).isTrue();
   }
 
-  public S isSmoothScrollingDisabled() {
-    assertThat(actual().isSmoothScrollingEnabled())
-        .named("is smooth scrolling enabled")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isSmoothScrollingDisabled() {
+    check("isSmoothScrollingEnabled()").that(actual.isSmoothScrollingEnabled()).isFalse();
   }
 }

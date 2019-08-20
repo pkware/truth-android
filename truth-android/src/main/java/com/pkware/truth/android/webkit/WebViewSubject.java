@@ -22,97 +22,79 @@ import android.webkit.WebView;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link WebView} subjects.
  */
-public class WebViewSubject extends Subject<WebViewSubject, WebView> {
-  public WebViewSubject(FailureMetadata failureMetadata, WebView subject) {
-    super(failureMetadata, subject);
+public class WebViewSubject extends Subject {
+
+  @Nullable
+  private final WebView actual;
+
+  public WebViewSubject(@Nonnull FailureMetadata failureMetadata, @Nullable WebView actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public WebViewSubject canGoBack() {
-    assertThat(actual().canGoBack())
-        .named("can go back")
-        .isTrue();
+    check("canGoBack()").that(actual.canGoBack()).isTrue();
     return this;
   }
 
   public WebViewSubject canNotGoBack() {
-    assertThat(actual().canGoBack())
-        .named("can go back")
-        .isFalse();
+    check("canGoBack()").that(actual.canGoBack()).isFalse();
     return this;
   }
 
   public WebViewSubject canGoForward() {
-    assertThat(actual().canGoForward())
-        .named("can go forward")
-        .isTrue();
+    check("canGoForward()").that(actual.canGoForward()).isTrue();
     return this;
   }
 
   public WebViewSubject canNotGoForward() {
-    assertThat(actual().canGoForward())
-        .named("can go forward")
-        .isFalse();
+    check("canGoForward()").that(actual.canGoForward()).isFalse();
     return this;
   }
 
-  public WebViewSubject hasCertificate(SslCertificate certificate) {
-    assertThat(actual().getCertificate())
-        .named("certificate")
-        .isSameAs(certificate);
+  public WebViewSubject hasCertificate(@Nullable SslCertificate certificate) {
+    check("getCertificate()").that(actual.getCertificate()).isSameInstanceAs(certificate);
     return this;
   }
 
   public WebViewSubject hasContentHeight(int height) {
-    assertThat(actual().getContentHeight())
-        .named("content height")
-        .isEqualTo(height);
+    check("getContentHeight()").that(actual.getContentHeight()).isEqualTo(height);
     return this;
   }
 
-  public WebViewSubject hasOriginalUrl(String url) {
-    assertThat(actual().getOriginalUrl())
-        .named("original URL")
-        .isEqualTo(url);
+  public WebViewSubject hasOriginalUrl(@Nullable String url) {
+    check("getOriginalUrl()").that(actual.getOriginalUrl()).isEqualTo(url);
     return this;
   }
 
   public WebViewSubject hasProgress(int progress) {
-    assertThat(actual().getProgress())
-        .named("progress")
-        .isEqualTo(progress);
+    check("getProgress()").that(actual.getProgress()).isEqualTo(progress);
     return this;
   }
 
-  public WebViewSubject hasTitle(String title) {
-    assertThat(actual().getTitle())
-        .named("title")
-        .isEqualTo(title);
+  public WebViewSubject hasTitle(@Nullable String title) {
+    check("getTitle()").that(actual.getTitle()).isEqualTo(title);
     return this;
   }
 
-  public WebViewSubject hasUrl(String url) {
-    assertThat(actual().getUrl())
-        .named("URL")
-        .isEqualTo(url);
+  public WebViewSubject hasUrl(@Nullable String url) {
+    check("getUrl()").that(actual.getUrl()).isEqualTo(url);
     return this;
   }
 
   public WebViewSubject isPrivateBrowsingEnabled() {
-    assertThat(actual().isPrivateBrowsingEnabled())
-        .named("private browsing enabled")
-        .isTrue();
+    check("isPrivateBrowsingEnabled()").that(actual.isPrivateBrowsingEnabled()).isTrue();
     return this;
   }
 
   public WebViewSubject isPrivateBrowsingDisabled() {
-    assertThat(!actual().isPrivateBrowsingEnabled())
-        .named("private browsing disabled")
-        .isTrue();
+    check("isPrivateBrowsingEnabled()").that(actual.isPrivateBrowsingEnabled()).isFalse();
     return this;
   }
 }

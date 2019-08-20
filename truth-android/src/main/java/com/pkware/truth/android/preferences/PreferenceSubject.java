@@ -17,15 +17,19 @@
 package com.pkware.truth.android.preferences;
 
 import android.preference.Preference;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Preference} subjects.
  * <p/>
  * This class is final. To extend use {@link AbstractPreferenceSubject}.
  */
-public final class PreferenceSubject extends AbstractPreferenceSubject<PreferenceSubject, Preference> {
-  public PreferenceSubject(FailureMetadata failureMetadata, Preference subject) {
-    super(failureMetadata, subject);
+public final class PreferenceSubject extends AbstractPreferenceSubject<Preference> {
+  public PreferenceSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Preference actual) {
+    super(failureMetadata, actual);
   }
 }

@@ -18,102 +18,86 @@ package com.pkware.truth.android.widget;
 
 import android.annotation.TargetApi;
 import android.widget.VideoView;
+
 import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.view.AbstractViewSubject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link VideoView} subjects.
  */
-public class VideoViewSubject extends AbstractViewSubject<VideoViewSubject, VideoView> {
-  public VideoViewSubject(FailureMetadata failureMetadata, VideoView subject) {
-    super(failureMetadata, subject);
+public class VideoViewSubject extends AbstractViewSubject<VideoView> {
+
+  @Nullable
+  private final VideoView actual;
+
+  public VideoViewSubject(@Nonnull FailureMetadata failureMetadata, @Nullable VideoView actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public VideoViewSubject isPausable() {
-    assertThat(actual().canPause())
-        .named("is pausable")
-        .isTrue();
+    check("canPause()").that(actual.canPause()).isTrue();
     return this;
   }
 
   public VideoViewSubject isNotPausable() {
-    assertThat(actual().canPause())
-        .named("is pausable")
-        .isFalse();
+    check("canPause()").that(actual.canPause()).isFalse();
     return this;
   }
 
   public VideoViewSubject isSeekableBackward() {
-    assertThat(actual().canSeekBackward())
-        .named("is seekable backward")
-        .isTrue();
+    check("canSeekBackward()").that(actual.canSeekBackward()).isTrue();
     return this;
   }
 
   public VideoViewSubject isNotSeekableBackward() {
-    assertThat(actual().canSeekBackward())
-        .named("is seekable backward")
-        .isFalse();
+    check("canSeekBackward()").that(actual.canSeekBackward()).isFalse();
     return this;
   }
 
   public VideoViewSubject isSeekableForward() {
-    assertThat(actual().canSeekForward())
-        .named("is seekable forward")
-        .isTrue();
+    check("canSeekForward()").that(actual.canSeekForward()).isTrue();
     return this;
   }
 
   public VideoViewSubject isNotSeekableForward() {
-    assertThat(actual().canSeekForward())
-        .named("is seekable forward")
-        .isFalse();
+    check("canSeekForward()").that(actual.canSeekForward()).isFalse();
     return this;
   }
 
   @TargetApi(JELLY_BEAN_MR2)
   public VideoViewSubject hasAudioSessionId(int id) {
-    assertThat(actual().getAudioSessionId())
-        .named("audio session ID")
-        .isEqualTo(id);
+    check("getAudioSessionId()").that(actual.getAudioSessionId()).isEqualTo(id);
     return this;
   }
 
   public VideoViewSubject hasBufferPercentage(int percentage) {
-    assertThat(actual().getBufferPercentage())
-        .named("buffer percentage")
-        .isEqualTo(percentage);
+    check("getBufferPercentage()").that(actual.getBufferPercentage()).isEqualTo(percentage);
     return this;
   }
 
   public VideoViewSubject hasCurrentPosition(int position) {
-    assertThat(actual().getCurrentPosition())
-        .named("current positions")
-        .isEqualTo(position);
+    check("getCurrentPosition()").that(actual.getCurrentPosition()).isEqualTo(position);
     return this;
   }
 
   public VideoViewSubject hasDuration(int duration) {
-    assertThat(actual().getDuration())
-        .named("duration")
-        .isEqualTo(duration);
+    check("getDuration()").that(actual.getDuration()).isEqualTo(duration);
     return this;
   }
 
   public VideoViewSubject isPlaying() {
-    assertThat(actual().isPlaying())
-        .named("is playing")
-        .isTrue();
+    check("isPlaying()").that(actual.isPlaying()).isTrue();
     return this;
   }
 
   public VideoViewSubject isNotPlaying() {
-    assertThat(actual().isPlaying())
-        .named("is playing")
-        .isFalse();
+    check("isPlaying()").that(actual.isPlaying()).isFalse();
     return this;
   }
 }

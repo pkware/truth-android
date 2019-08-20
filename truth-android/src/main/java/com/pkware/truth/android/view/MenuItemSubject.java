@@ -20,172 +20,135 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.MenuItem;
 import android.view.View;
+
 import androidx.annotation.IdRes;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link MenuItem} subjects.
  */
-public class MenuItemSubject extends Subject<MenuItemSubject, MenuItem> {
-  public MenuItemSubject(FailureMetadata failureMetadata, MenuItem subject) {
-    super(failureMetadata, subject);
+public class MenuItemSubject extends Subject {
+
+  @Nullable
+  private final MenuItem actual;
+
+  public MenuItemSubject(@Nonnull FailureMetadata failureMetadata, @Nullable MenuItem actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public MenuItemSubject hasActionView(View view) {
-    assertThat(actual().getActionView())
-        .named("action view")
-        .isSameAs(view);
+  public MenuItemSubject hasActionView(@Nullable View view) {
+    check("getActionView()").that(actual.getActionView()).isSameInstanceAs(view);
     return this;
   }
 
   public MenuItemSubject hasAlphabeticShortcut(char shortcut) {
-    assertThat(actual().getAlphabeticShortcut())
-        .named("alphabetic shortcut")
-        .isEqualTo(shortcut);
+    check("getAlphabeticShortcut()").that(actual.getAlphabeticShortcut()).isEqualTo(shortcut);
     return this;
   }
 
   public MenuItemSubject hasGroupId(int id) {
-    assertThat(actual().getGroupId())
-        .named("group ID")
-        .isEqualTo(id);
+    check("getGroupId()").that(actual.getGroupId()).isEqualTo(id);
     return this;
   }
 
-  public MenuItemSubject hasIcon(Drawable icon) {
-    assertThat(actual().getIcon())
-        .named("icon")
-        .isSameAs(icon);
+  public MenuItemSubject hasIcon(@Nullable Drawable icon) {
+    check("getIcon()").that(actual.getIcon()).isSameInstanceAs(icon);
     return this;
   }
 
-  public MenuItemSubject hasIntent(Intent intent) {
-    assertThat(actual().getIntent())
-        .named("intent")
-        .isEqualTo(intent);
+  public MenuItemSubject hasIntent(@Nullable Intent intent) {
+    check("getIntent()").that(actual.getIntent()).isEqualTo(intent);
     return this;
   }
 
   public MenuItemSubject hasItemId(@IdRes int id) {
-    assertThat(actual().getItemId())
-        .named("item ID")
-        .isEqualTo(id);
+    check("getItemId()").that(actual.getItemId()).isEqualTo(id);
     return this;
   }
 
   public MenuItemSubject hasNumericShortcut(char shortcut) {
-    assertThat(actual().getNumericShortcut())
-        .named("numeric shortcut")
-        .isEqualTo(shortcut);
+    check("getNumericShortcut()").that(actual.getNumericShortcut()).isEqualTo(shortcut);
     return this;
   }
 
   public MenuItemSubject hasOrder(int order) {
-    assertThat(actual().getOrder())
-        .named("order")
-        .isEqualTo(order);
+    check("getOrder()").that(actual.getOrder()).isEqualTo(order);
     return this;
   }
 
-  public MenuItemSubject hasTitle(String title) {
-    assertThat(actual().getTitle().toString())
-        .named("title")
-        .isEqualTo(title);
+  public MenuItemSubject hasTitle(@Nullable String title) {
+    check("getTitle()").that(actual.getTitle().toString()).isEqualTo(title);
     return this;
   }
 
-  public MenuItemSubject hasCondensedTitle(String title) {
-    assertThat(actual().getTitleCondensed().toString())
-        .named("condensed title")
-        .isEqualTo(title);
+  public MenuItemSubject hasCondensedTitle(@Nullable String title) {
+    check("getTitleCondensed()").that(actual.getTitleCondensed().toString()).isEqualTo(title);
     return this;
   }
 
   public MenuItemSubject hasSubMenu() {
-    assertThat(actual().hasSubMenu())
-        .named("has sub-menu")
-        .isTrue();
+    check("hasSubMenu()").that(actual.hasSubMenu()).isTrue();
     return this;
   }
 
   public MenuItemSubject hasNoSubMenu() {
-    assertThat(actual().hasSubMenu())
-        .named("has sub-menu")
-        .isFalse();
+    check("hasSubMenu()").that(actual.hasSubMenu()).isFalse();
     return this;
   }
 
   public MenuItemSubject isActionViewExpanded() {
-    assertThat(actual().isActionViewExpanded())
-        .named("is action view expanded")
-        .isTrue();
+    check("isActionViewExpanded()").that(actual.isActionViewExpanded()).isTrue();
     return this;
   }
 
   public MenuItemSubject isActionViewCollapsed() {
-    assertThat(actual().isActionViewExpanded())
-        .named("is action view expanded")
-        .isFalse();
+    check("isActionViewExpanded()").that(actual.isActionViewExpanded()).isFalse();
     return this;
   }
 
   public MenuItemSubject isCheckable() {
-    assertThat(actual().isCheckable())
-        .named("is checkable")
-        .isTrue();
+    check("isCheckable()").that(actual.isCheckable()).isTrue();
     return this;
   }
 
   public MenuItemSubject isNotCheckable() {
-    assertThat(actual().isCheckable())
-        .named("is checkable")
-        .isFalse();
+    check("isCheckable()").that(actual.isCheckable()).isFalse();
     return this;
   }
 
   public MenuItemSubject isChecked() {
-    assertThat(actual().isChecked())
-        .named("is checked")
-        .isTrue();
+    check("isChecked()").that(actual.isChecked()).isTrue();
     return this;
   }
 
   public MenuItemSubject isNotChecked() {
-    assertThat(actual().isChecked())
-        .named("is checked")
-        .isFalse();
+    check("isChecked()").that(actual.isChecked()).isFalse();
     return this;
   }
 
   public MenuItemSubject isEnabled() {
-    assertThat(actual().isEnabled())
-        .named("is enabled")
-        .isTrue();
+    check("isEnabled()").that(actual.isEnabled()).isTrue();
     return this;
   }
 
   public MenuItemSubject isDisabled() {
-    assertThat(!actual().isEnabled())
-        .named("is disabled")
-        .isTrue();
+    check("isEnabled()").that(actual.isEnabled()).isFalse();
     return this;
   }
 
   public MenuItemSubject isVisible() {
-    assertThat(actual().isVisible())
-        .named("is visible")
-        .isTrue();
+    check("isVisible()").that(actual.isVisible()).isTrue();
     return this;
   }
 
   public MenuItemSubject isNotVisible() {
-    assertThat(actual().isVisible())
-        .named("is visible")
-        .isFalse();
+    check("isVisible()").that(actual.isVisible()).isFalse();
     return this;
   }
 }

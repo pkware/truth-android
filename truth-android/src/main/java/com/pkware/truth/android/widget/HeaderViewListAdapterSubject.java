@@ -18,36 +18,37 @@ package com.pkware.truth.android.widget;
 
 import android.widget.Filter;
 import android.widget.HeaderViewListAdapter;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link HeaderViewListAdapter} subjects.
  */
-public class HeaderViewListAdapterSubject extends AbstractWrapperListAdapterSubject<HeaderViewListAdapterSubject, HeaderViewListAdapter> {
-  public HeaderViewListAdapterSubject(FailureMetadata failureMetadata, HeaderViewListAdapter subject) {
-    super(failureMetadata, subject);
+public class HeaderViewListAdapterSubject extends AbstractWrapperListAdapterSubject<HeaderViewListAdapter> {
+
+  @Nullable
+  private final HeaderViewListAdapter actual;
+
+  public HeaderViewListAdapterSubject(@Nonnull FailureMetadata failureMetadata, @Nullable HeaderViewListAdapter actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public HeaderViewListAdapterSubject hasFootersCount(int count) {
-    assertThat(actual().getFootersCount())
-        .named("footers count")
-        .isEqualTo(count);
+    check("getFootersCount()").that(actual.getFootersCount()).isEqualTo(count);
     return this;
   }
 
   public HeaderViewListAdapterSubject hasHeadersCount(int count) {
-    assertThat(actual().getHeadersCount())
-        .named("headers count")
-        .isEqualTo(count);
+    check("getHeadersCount()").that(actual.getHeadersCount()).isEqualTo(count);
     return this;
   }
 
-  public HeaderViewListAdapterSubject hasFilter(Filter filter) {
-    assertThat(actual().getFilter())
-        .named("filter")
-        .isSameAs(filter);
+  public HeaderViewListAdapterSubject hasFilter(@Nullable Filter filter) {
+    check("getFilter()").that(actual.getFilter()).isSameInstanceAs(filter);
     return this;
   }
 }

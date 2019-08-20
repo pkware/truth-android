@@ -17,40 +17,47 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.ToggleButton;
+
 import androidx.annotation.StringRes;
 
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link ToggleButton} subjects.
  */
 public class ToggleButtonSubject
-    extends AbstractCompoundButtonSubject<ToggleButtonSubject, ToggleButton> {
-  public ToggleButtonSubject(FailureMetadata failureMetadata, ToggleButton subject) {
-    super(failureMetadata, subject);
+    extends AbstractCompoundButtonSubject<ToggleButton> {
+
+  @Nullable
+  private final ToggleButton actual;
+
+  public ToggleButtonSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ToggleButton actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public ToggleButtonSubject hasOnText(String text) {
-    assertThat(actual().getTextOn().toString())
-        .named("'on' text")
-        .isEqualTo(text);
+  public ToggleButtonSubject hasOnText(@Nullable String text) {
+    check("getTextOn()")
+        .withMessage("'on' text")
+        .that(actual.getTextOn().toString()).isEqualTo(text);
     return this;
   }
 
   public ToggleButtonSubject hasOnText(@StringRes int resId) {
-    return hasOnText(actual().getContext().getString(resId));
+    return hasOnText(actual.getContext().getString(resId));
   }
 
-  public ToggleButtonSubject hasOffText(String text) {
-    assertThat(actual().getTextOff().toString())
-        .named("'off' text")
-        .isEqualTo(text);
+  public ToggleButtonSubject hasOffText(@Nullable String text) {
+    check("getTextOff()")
+        .withMessage("'off' text")
+        .that(actual.getTextOn().toString()).isEqualTo(text);
     return this;
   }
 
   public ToggleButtonSubject hasOffText(@StringRes int resId) {
-    return hasOffText(actual().getContext().getString(resId));
+    return hasOffText(actual.getContext().getString(resId));
   }
 }

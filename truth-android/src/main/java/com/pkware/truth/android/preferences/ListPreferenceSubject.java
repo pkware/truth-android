@@ -17,67 +17,67 @@
 package com.pkware.truth.android.preferences;
 
 import android.preference.ListPreference;
+
 import androidx.annotation.StringRes;
 
-import com.google.common.base.Function;
 import com.google.common.collect.FluentIterable;
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link ListPreference} subjects.
  */
-public class ListPreferenceSubject extends AbstractDialogPreferenceSubject<ListPreferenceSubject, ListPreference> {
-  public ListPreferenceSubject(FailureMetadata failureMetadata, ListPreference subject) {
-    super(failureMetadata, subject);
+public class ListPreferenceSubject extends AbstractDialogPreferenceSubject<ListPreference> {
+
+  @Nullable
+  private ListPreference actual;
+
+  public ListPreferenceSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ListPreference actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public ListPreferenceSubject hasEntries(String... entries) {
+  public ListPreferenceSubject hasEntries(@Nonnull String... entries) {
 
     // We convert to Strings b/c most of the time we are interested in the text content
-    String[] actualEntries = FluentIterable.from(actual().getEntries())
-        .transform(mapToString())
-        .toArray(String.class);
+    FluentIterable<String> actualValues = FluentIterable.from(actual.getEntries())
+        .transform(CharSequence::toString);
 
-    assertThat(actualEntries)
-        .named("entries")
-        .isEqualTo(entries);
+    check("getEntries()")
+        .withMessage("Entries as strings")
+        .that(actualValues)
+        .containsExactlyElementsIn(entries)
+        .inOrder();
     return this;
   }
 
-  public ListPreferenceSubject hasEntry(CharSequence entry) {
-    assertThat(actual().getEntry())
-        .named("entry")
-        .isEqualTo(entry);
+  public ListPreferenceSubject hasEntry(@Nullable CharSequence entry) {
+    check("getEntry()").that(actual.getEntry()).isEqualTo(entry);
     return this;
   }
 
   public ListPreferenceSubject hasEntry(@StringRes int resId) {
-    return hasEntry(actual().getContext().getString(resId));
+    return hasEntry(actual.getContext().getString(resId));
   }
 
-  public ListPreferenceSubject hasEntryValues(String... values) {
+  public ListPreferenceSubject hasEntryValues(@Nonnull String... values) {
 
     // We convert to Strings b/c most of the time we are interested in the text content
-    String[] actualValues = FluentIterable.from(actual().getEntryValues())
-        .transform(mapToString())
-        .toArray(String.class);
+    FluentIterable<String> actualValues = FluentIterable.from(actual.getEntryValues())
+        .transform(CharSequence::toString);
 
-    assertThat(actualValues)
-        .named("entry values")
-        .isEqualTo(values);
+    check("getEntryValues()")
+        .withMessage("Entry values as strings")
+        .that(actualValues)
+        .containsExactlyElementsIn(values)
+        .inOrder();
     return this;
   }
 
-  public ListPreferenceSubject hasValue(String value) {
-    assertThat(actual().getValue())
-        .named("value")
-        .isEqualTo(value);
+  public ListPreferenceSubject hasValue(@Nullable String value) {
+    check("getValue()").that(actual.getValue()).isEqualTo(value);
     return this;
-  }
-
-  private Function<CharSequence, String> mapToString() {
-    return CharSequence::toString;
   }
 }

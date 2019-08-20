@@ -23,65 +23,58 @@ import android.graphics.NinePatch;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.KITKAT;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link NinePatch} subjects.
  */
-public class NinePatchSubject extends Subject<NinePatchSubject, NinePatch> {
-  public NinePatchSubject(FailureMetadata failureMetadata, NinePatch subject) {
-    super(failureMetadata, subject);
+public class NinePatchSubject extends Subject {
+
+  @Nullable
+  private final NinePatch actual;
+
+  public NinePatchSubject(@Nonnull FailureMetadata failureMetadata, @Nullable NinePatch actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public NinePatchSubject hasDensity(int density) {
-    assertThat(actual().getDensity())
-        .named("density")
-        .isEqualTo(density);
+    check("getDensity()").that(actual.getDensity()).isEqualTo(density);
     return this;
   }
 
   public NinePatchSubject hasHeight(int height) {
-    assertThat(actual().getHeight())
-        .named("height")
-        .isEqualTo(height);
+    check("getHeight()").that(actual.getHeight()).isEqualTo(height);
     return this;
   }
 
   public NinePatchSubject hasWidth(int width) {
-    assertThat(actual().getWidth())
-        .named("width")
-        .isEqualTo(width);
+    check("getWidth()").that(actual.getWidth()).isEqualTo(width);
     return this;
   }
 
   public NinePatchSubject hasAlpha() {
-    assertThat(actual().hasAlpha())
-        .named("has alpha")
-        .isTrue();
+    check("hasAlpha()").that(actual.hasAlpha()).isTrue();
     return this;
   }
 
   public NinePatchSubject hasNoAlpha() {
-    assertThat(actual().hasAlpha())
-        .named("has alpha")
-        .isFalse();
+    check("hasAlpha()").that(actual.hasAlpha()).isFalse();
     return this;
   }
 
   @TargetApi(KITKAT)
-  public NinePatchSubject hasName(String name) {
-    assertThat(actual().getName())
-        .named("name")
-        .isEqualTo(name);
+  public NinePatchSubject hasName(@Nullable String name) {
+    check("getName()").that(actual.getName()).isEqualTo(name);
     return this;
   }
 
   @TargetApi(KITKAT)
-  public NinePatchSubject hasBitmap(Bitmap bitmap) {
-    assertThat(actual().getBitmap())
-        .named("bitmap")
-        .isEqualTo(bitmap);
+  public NinePatchSubject hasBitmap(@Nullable Bitmap bitmap) {
+    check("getBitmap()").that(actual.getBitmap()).isEqualTo(bitmap);
     return this;
   }
 }

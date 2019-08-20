@@ -19,70 +19,61 @@ package com.pkware.truth.android.util;
 import android.util.LruCache;
 
 import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.MapSubject;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link LruCache} subjects.
  */
-public class LruCacheSubject<K, V> extends Subject<LruCacheSubject<K, V>, LruCache<K, V>> {
-  public LruCacheSubject(FailureMetadata failureMetadata, LruCache<K, V> subject) {
-    super(failureMetadata, subject);
+public class LruCacheSubject<K, V> extends Subject {
+
+  @Nullable
+  private final LruCache<K, V> actual;
+
+  public LruCacheSubject(@Nonnull FailureMetadata failureMetadata, @Nullable LruCache<K, V> actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public LruCacheSubject<K, V> hasEntry(K key) {
-    assertThat(actual().snapshot())
-        .containsKey(key);
-    return this;
+  public MapSubject asMap() {
+    return check("snapshot()").that(actual.snapshot());
   }
 
   public LruCacheSubject<K, V> hasCreateCount(int count) {
-    assertThat(actual().createCount())
-        .named("create count")
-        .isEqualTo(count);
+    check("createCount()").that(actual.createCount()).isEqualTo(count);
     return this;
   }
 
   public LruCacheSubject<K, V> hasEvictionCount(int count) {
-    assertThat(actual().evictionCount())
-        .named("eviction count")
-        .isEqualTo(count);
+    check("evictionCount()").that(actual.evictionCount()).isEqualTo(count);
     return this;
   }
 
   public LruCacheSubject<K, V> hasHitCount(int count) {
-    assertThat(actual().hitCount())
-        .named("hit count")
-        .isEqualTo(count);
+    check("hitCount()").that(actual.hitCount()).isEqualTo(count);
     return this;
   }
 
   public LruCacheSubject<K, V> hasMaxSize(int size) {
-    assertThat(actual().maxSize())
-        .named("max size")
-        .isEqualTo(size);
+    check("maxSize()").that(actual.maxSize()).isEqualTo(size);
     return this;
   }
 
   public LruCacheSubject<K, V> hasMissCount(int count) {
-    assertThat(actual().missCount())
-        .named("miss count")
-        .isEqualTo(count);
+    check("missCount()").that(actual.missCount()).isEqualTo(count);
     return this;
   }
 
   public LruCacheSubject<K, V> hasPutCount(int count) {
-    assertThat(actual().putCount())
-        .named("put count")
-        .isEqualTo(count);
+    check("putCount()").that(actual.putCount()).isEqualTo(count);
     return this;
   }
 
   public LruCacheSubject<K, V> hasSize(int size) {
-    assertThat(actual().size())
-        .named("size")
-        .isEqualTo(size);
+    check("size()").that(actual.size()).isEqualTo(size);
     return this;
   }
 }

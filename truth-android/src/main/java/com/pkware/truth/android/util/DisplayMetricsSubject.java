@@ -21,66 +21,54 @@ import android.util.DisplayMetrics;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link DisplayMetrics} subjects.
  */
-public class DisplayMetricsSubject extends Subject<DisplayMetricsSubject, DisplayMetrics> {
-  public DisplayMetricsSubject(FailureMetadata failureMetadata, DisplayMetrics subject) {
-    super(failureMetadata, subject);
+public class DisplayMetricsSubject extends Subject {
+
+  @Nullable
+  private final DisplayMetrics actual;
+
+  public DisplayMetricsSubject(@Nonnull FailureMetadata failureMetadata, @Nullable DisplayMetrics actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public DisplayMetricsSubject hasDensity(float density, float tolerance) {
-    assertThat(actual().density)
-        .named("density")
-        .isWithin(tolerance)
-        .of(density);
+    check("density").that(actual.density).isWithin(tolerance).of(density);
     return this;
   }
 
   public DisplayMetricsSubject hasDpi(int dpi) {
-    assertThat(actual().densityDpi)
-        .named("DPI")
-        .isEqualTo(dpi);
+    check("densityDpi").that(actual.densityDpi).isEqualTo(dpi);
     return this;
   }
 
   public DisplayMetricsSubject hasHeight(int height) {
-    assertThat(actual().heightPixels)
-        .named("height")
-        .isEqualTo(height);
+    check("heightPixels").that(actual.heightPixels).isEqualTo(height);
     return this;
   }
 
   public DisplayMetricsSubject hasScaledDensity(float scaledDensity, float tolerance) {
-    assertThat(actual().scaledDensity)
-        .named("scaled density")
-        .isWithin(tolerance)
-        .of(scaledDensity);
+    check("scaledDensity").that(actual.scaledDensity).isWithin(tolerance).of(scaledDensity);
     return this;
   }
 
   public DisplayMetricsSubject hasWidth(int width) {
-    assertThat(actual().widthPixels)
-        .named("width")
-        .isEqualTo(width);
+    check("widthPixels").that(actual.widthPixels).isEqualTo(width);
     return this;
   }
 
   public DisplayMetricsSubject hasXDpi(float xDpi, float tolerance) {
-    assertThat(actual().xdpi)
-        .named("X DPI")
-        .isWithin(tolerance)
-        .of(xDpi);
+    check("xdpi").that(actual.xdpi).isWithin(tolerance).of(xDpi);
     return this;
   }
 
   public DisplayMetricsSubject hasYDpi(float yDpi, float tolerance) {
-    assertThat(actual().ydpi)
-        .named("Y DPI")
-        .isWithin(tolerance)
-        .of(yDpi);
+    check("ydpi").that(actual.ydpi).isWithin(tolerance).of(yDpi);
     return this;
   }
 }

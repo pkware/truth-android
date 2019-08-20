@@ -23,6 +23,9 @@ import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 import com.pkware.truth.android.view.ViewLayoutDirection;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.content.res.Configuration.UI_MODE_TYPE_APPLIANCE;
 import static android.content.res.Configuration.UI_MODE_TYPE_CAR;
 import static android.content.res.Configuration.UI_MODE_TYPE_DESK;
@@ -32,19 +35,23 @@ import static android.content.res.Configuration.UI_MODE_TYPE_UNDEFINED;
 import static android.content.res.Configuration.UI_MODE_TYPE_WATCH;
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
 import static android.os.Build.VERSION_CODES.KITKAT;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 import static com.pkware.truth.android.view.AbstractViewSubject.layoutDirectionToString;
 
 /**
  * Propositions for {@link Configuration} subjects.
  */
-public class ConfigurationSubject extends Subject<ConfigurationSubject, Configuration> {
-  public ConfigurationSubject(FailureMetadata failureMetadata, Configuration subject) {
-    super(failureMetadata, subject);
+public class ConfigurationSubject extends Subject {
+
+  @Nullable
+  private final Configuration actual;
+
+  public ConfigurationSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Configuration actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   public static String uiModeTypeToString(@ConfigurationUiModeType int mode) {
     return buildNamedValueString(mode)
         .value(UI_MODE_TYPE_NORMAL, "normal")
@@ -59,9 +66,9 @@ public class ConfigurationSubject extends Subject<ConfigurationSubject, Configur
 
   @TargetApi(JELLY_BEAN_MR1)
   public ConfigurationSubject hasLayoutDirection(@ViewLayoutDirection int layoutDirection) {
-    int actualLayoutDirection = actual().getLayoutDirection();
+    int actualLayoutDirection = actual.getLayoutDirection();
     //noinspection ResourceType
-    assert_()
+    check("getLayoutDirection()")
         .withMessage("Expected layout direction to be <%s> but was <%s>.", layoutDirectionToString(layoutDirection), layoutDirectionToString(actualLayoutDirection))
         .that(actualLayoutDirection)
         .isEqualTo(layoutDirection);
@@ -70,9 +77,7 @@ public class ConfigurationSubject extends Subject<ConfigurationSubject, Configur
 
   @TargetApi(KITKAT)
   public ConfigurationSubject hasMnc(int mnc) {
-    assertThat(actual().mnc)
-        .named("mnc")
-        .isEqualTo(mnc);
+    check("mnc").that(actual.mnc).isEqualTo(mnc);
     return this;
   }
 }

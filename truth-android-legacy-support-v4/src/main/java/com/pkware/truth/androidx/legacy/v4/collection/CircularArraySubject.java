@@ -21,48 +21,44 @@ import androidx.collection.CircularArray;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link CircularArray} subjects.
  */
-public class CircularArraySubject<E> extends Subject<CircularArraySubject<E>, CircularArray<E>> {
-  public CircularArraySubject(FailureMetadata failureMetadata, CircularArray<E> subject) {
-    super(failureMetadata, subject);
+public class CircularArraySubject<E> extends Subject {
+
+  @Nullable
+  private final CircularArray<E> actual;
+
+  public CircularArraySubject(@Nonnull FailureMetadata failureMetadata, @Nullable CircularArray<E> actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public CircularArraySubject<E> hasFirst(E first) {
-    assertThat(actual().getFirst())
-        .named("first element")
-        .isEqualTo(first);
+  public CircularArraySubject<E> hasFirst(@Nullable E first) {
+    check("getFirst()").that(actual.getFirst()).isEqualTo(first);
     return this;
   }
 
-  public CircularArraySubject<E> hasLast(E last) {
-    assertThat(actual().getLast())
-        .named("last element")
-        .isEqualTo(last);
+  public CircularArraySubject<E> hasLast(@Nullable E last) {
+    check("getLast()").that(actual.getLast()).isEqualTo(last);
     return this;
   }
 
   public CircularArraySubject<E> isEmpty() {
-    assertThat(actual().isEmpty())
-        .named("is empty")
-        .isTrue();
+    check("isEmpty()").that(actual.isEmpty()).isTrue();
     return this;
   }
 
   public CircularArraySubject<E> isNotEmpty() {
-    assertThat(actual().isEmpty())
-        .named("is empty")
-        .isFalse();
+    check("isEmpty()").that(actual.isEmpty()).isFalse();
     return this;
   }
 
   public CircularArraySubject<E> hasSize(int size) {
-    assertThat(actual().size())
-        .named("size")
-        .isEqualTo(size);
+    check("size()").that(actual.size()).isEqualTo(size);
     return this;
   }
 }

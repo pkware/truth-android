@@ -21,68 +21,58 @@ import androidx.mediarouter.media.MediaRouter;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static com.pkware.truth.android.mediarouter.v7.media.MediaRouteDescriptorSubject.volumeHandling;
 
 /**
  * Propositions for {@link MediaRouter.RouteInfo} subjects.
  */
-public class MediaRouterRouteInfoSubject
-    extends Subject<MediaRouterRouteInfoSubject, MediaRouter.RouteInfo> {
+public class MediaRouterRouteInfoSubject extends Subject {
 
-  public MediaRouterRouteInfoSubject(FailureMetadata failureMetadata, MediaRouter.RouteInfo subject) {
-    super(failureMetadata, subject);
+  @Nullable
+  private final MediaRouter.RouteInfo actual;
+
+  public MediaRouterRouteInfoSubject(@Nonnull FailureMetadata failureMetadata, @Nullable MediaRouter.RouteInfo actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public MediaRouterRouteInfoSubject hasDescription(String description) {
-    assertThat(actual().getDescription())
-        .named("description")
-        .isEqualTo(description);
+  public MediaRouterRouteInfoSubject hasDescription(@Nullable String description) {
+    check("getDescription()").that(actual.getDescription()).isEqualTo(description);
     return this;
   }
 
-  public MediaRouterRouteInfoSubject hasId(String id) {
-    assertThat(actual().getId())
-        .named("ID")
-        .isEqualTo(id);
+  public MediaRouterRouteInfoSubject hasId(@Nullable String id) {
+    check("getId()").that(actual.getId()).isEqualTo(id);
     return this;
   }
 
-  public MediaRouterRouteInfoSubject hasName(String name) {
-    assertThat(actual().getName())
-        .named("name")
-        .isEqualTo(name);
+  public MediaRouterRouteInfoSubject hasName(@Nullable String name) {
+    check("getName()").that(actual.getName()).isEqualTo(name);
     return this;
   }
 
   public MediaRouterRouteInfoSubject hasPlaybackStream(int playbackStream) {
-    assertThat(actual().getPlaybackStream())
-        .named("playback stream")
-        .isEqualTo(playbackStream);
+    check("getPlaybackStream()").that(actual.getPlaybackStream()).isEqualTo(playbackStream);
     return this;
   }
 
   public MediaRouterRouteInfoSubject hasPlaybackType(int playbackType) {
-    int actualPlaybackType = actual().getPlaybackType();
-    assertThat(actual().getPlaybackType())
-        .named("playback type")
-        .isEqualTo(playbackType);
+    check("getPlaybackType()").that(actual.getPlaybackType()).isEqualTo(playbackType);
     return this;
   }
 
   public MediaRouterRouteInfoSubject hasVolume(int volume) {
-    int actualVolume = actual().getVolume();
-    assertThat(actual().getVolume())
-        .named("volume")
-        .isEqualTo(volume);
+    check("getVolume()").that(actual.getVolume()).isEqualTo(volume);
     return this;
   }
 
   public MediaRouterRouteInfoSubject hasVolumeHandling(@MediaRouteVolumeHandling int volumeHandling) {
-    int actualHandling = actual().getVolumeHandling();
+    int actualHandling = actual.getVolumeHandling();
     //noinspection WrongConstant
-    assert_()
+    check("hasVolumeHandling()")
         .withMessage("Expected volume handling <%s> but was <%s>.",
             volumeHandling(volumeHandling), volumeHandling(actualHandling))
         .that(actualHandling)
@@ -91,52 +81,37 @@ public class MediaRouterRouteInfoSubject
   }
 
   public MediaRouterRouteInfoSubject hasVolumeMax(int volumeMax) {
-    int actualVolumeMax = actual().getVolumeMax();
-    assertThat(actual().getVolumeMax())
-        .named("maximum volume")
-        .isEqualTo(volumeMax);
+    check("getVolumeMax()").that(actual.getVolumeMax()).isEqualTo(volumeMax);
     return this;
   }
 
   public MediaRouterRouteInfoSubject isConnecting() {
-    assertThat(actual().isConnecting())
-        .named("is connecting")
-        .isTrue();
+    check("isConnecting()").that(actual.isConnecting()).isTrue();
     return this;
   }
 
   public MediaRouterRouteInfoSubject isNotConnecting() {
-    assertThat(actual().isConnecting())
-        .named("is connecting")
-        .isFalse();
+    check("isConnecting()").that(actual.isConnecting()).isFalse();
     return this;
   }
 
   public MediaRouterRouteInfoSubject isEnabled() {
-    assertThat(actual().isEnabled())
-        .named("is enabled")
-        .isTrue();
+    check("isEnabled()").that(actual.isEnabled()).isTrue();
     return this;
   }
 
   public MediaRouterRouteInfoSubject isDisabled() {
-    assertThat(!actual().isEnabled())
-        .named("is disabled")
-        .isTrue();
+    check("isEnabled()").that(actual.isEnabled()).isFalse();
     return this;
   }
 
   public MediaRouterRouteInfoSubject isSelected() {
-    assertThat(actual().isSelected())
-        .named("is selected")
-        .isTrue();
+    check("isSelected()").that(actual.isSelected()).isTrue();
     return this;
   }
 
   public MediaRouterRouteInfoSubject isNotSelected() {
-    assertThat(actual().isSelected())
-        .named("is selected")
-        .isFalse();
+    check("isSelected()").that(actual.isSelected()).isFalse();
     return this;
   }
 }

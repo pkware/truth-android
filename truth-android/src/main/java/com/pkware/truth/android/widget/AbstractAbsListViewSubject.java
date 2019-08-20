@@ -18,19 +18,28 @@ package com.pkware.truth.android.widget;
 
 import android.annotation.TargetApi;
 import android.widget.AbsListView;
+
+import com.google.common.primitives.Longs;
 import com.google.common.truth.FailureMetadata;
+import com.pkware.truth.android.util.SparseBooleanArraySubject;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import static android.os.Build.VERSION_CODES.KITKAT;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
-import static com.pkware.truth.android.Assertions.assertThat;
 
-public abstract class AbstractAbsListViewSubject<S extends AbstractAbsListViewSubject<S, T>, T extends AbsListView>
-    extends AbstractAdapterViewSubject<S, T> {
-  protected AbstractAbsListViewSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractAbsListViewSubject<T extends AbsListView>
+    extends AbstractAdapterViewSubject<T> {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractAbsListViewSubject(@Nonnull FailureMetadata failureMetadata, T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   static String scrollDirectionToString(int direction) {
     if (direction == 0) {
       throw new IllegalArgumentException("direction must be positive or negative");
@@ -41,44 +50,30 @@ public abstract class AbstractAbsListViewSubject<S extends AbstractAbsListViewSu
     }
   }
 
-  public S hasCheckedItemsCount(int count) {
-    assertThat(actual().getCheckedItemCount())
-        .named("checked item count")
-        .isEqualTo(count);
-    //noinspection unchecked
-    return (S) this;
+  public void hasCheckedItemsCount(int count) {
+    check("getCheckedItemCount()").that(actual.getCheckedItemCount()).isEqualTo(count);
   }
 
-  public S containsItemIds(long... itemIds) {
-    assertThat(actual().getCheckedItemIds())
-        .asList()
-        .contains(itemIds);
-    //noinspection unchecked
-    return (S) this;
+  public void containsItemIds(@Nonnull long... itemIds) {
+    check("getCheckedItemIds()").that(actual.getCheckedItemIds()).asList().containsAtLeastElementsIn(Longs.asList(itemIds));
   }
 
-  public S hasCheckedItemPosition(int position) {
-    assertThat(actual().getCheckedItemPosition()).isEqualTo(position);
-    //noinspection unchecked
-    return (S) this;
+  public void hasCheckedItemPosition(int position) {
+    check("getCheckedItemPosition()").that(actual.getCheckedItemPosition()).isEqualTo(position);
   }
 
-  public S containsCheckedItemPositions(int... positions) {
+  public void containsCheckedItemPositions(int... positions) {
     for (int position : positions) {
-      assertThat(actual().getCheckedItemPositions()).keyIsTrue(position);
+      check("getCheckedItemPositions()").about(SparseBooleanArraySubject::new).that(actual.getCheckedItemPositions()).keyIsTrue(position);
     }
-    //noinspection unchecked
-    return (S) this;
   }
 
   @TargetApi(KITKAT)
-  public S canScrollList(int direction) {
-    assert_()
+  public void canScrollList(int direction) {
+    check("canScrollList(direction)")
         .withMessage("Expected to be able to scroll <%s> but cannot.",
             scrollDirectionToString(direction))
-        .that(actual().canScrollList(direction))
+        .that(actual.canScrollList(direction))
         .isTrue();
-    //noinspection unchecked
-    return (S) this;
   }
 }

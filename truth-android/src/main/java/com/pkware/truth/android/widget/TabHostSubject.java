@@ -18,43 +18,42 @@ package com.pkware.truth.android.widget;
 
 import android.view.View;
 import android.widget.TabHost;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link TabHost} subjects.
  */
-public class TabHostSubject extends AbstractFrameLayoutSubject<TabHostSubject, TabHost> {
-  public TabHostSubject(FailureMetadata failureMetadata, TabHost subject) {
-    super(failureMetadata, subject);
+public class TabHostSubject extends AbstractFrameLayoutSubject<TabHost> {
+
+  @Nullable
+  private final TabHost actual;
+
+  public TabHostSubject(@Nonnull FailureMetadata failureMetadata, @Nullable TabHost actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public TabHostSubject hasCurrentTab(int tab) {
-    assertThat(actual().getCurrentTab())
-        .named("current tab")
-        .isEqualTo(tab);
+    check("getCurrentTab()").that(actual.getCurrentTab()).isEqualTo(tab);
     return this;
   }
 
   public TabHostSubject hasCurrentTabTag(String tag) {
-    assertThat(actual().getCurrentTabTag())
-        .named("current tab tag")
-        .isEqualTo(tag);
+    check("getCurrentTabTag()").that(actual.getCurrentTabTag()).isEqualTo(tag);
     return this;
   }
 
-  public TabHostSubject hasCurrentTabView(View view) {
-    assertThat(actual().getCurrentTabView())
-        .named("current tab view")
-        .isSameAs(view);
+  public TabHostSubject hasCurrentTabView(@Nullable View view) {
+    check("getCurrentTabView()").that(actual.getCurrentTabView()).isSameInstanceAs(view);
     return this;
   }
 
-  public TabHostSubject hasCurrentView(View view) {
-    assertThat(actual().getCurrentView())
-        .named("current view")
-        .isSameAs(view);
+  public TabHostSubject hasCurrentView(@Nullable View view) {
+    check("getCurrentView()").that(actual.getCurrentView()).isSameInstanceAs(view);
     return this;
   }
 }

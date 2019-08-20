@@ -21,22 +21,29 @@ import android.telephony.ServiceState;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.telephony.ServiceState.STATE_EMERGENCY_ONLY;
 import static android.telephony.ServiceState.STATE_IN_SERVICE;
 import static android.telephony.ServiceState.STATE_OUT_OF_SERVICE;
 import static android.telephony.ServiceState.STATE_POWER_OFF;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
 /**
  * Propositions for {@link ServiceState} subjects.
  */
-public class ServiceStateSubject extends Subject<ServiceStateSubject, ServiceState> {
-  public ServiceStateSubject(FailureMetadata failureMetadata, ServiceState subject) {
-    super(failureMetadata, subject);
+public class ServiceStateSubject extends Subject {
+
+  @Nullable
+  private final ServiceState actual;
+
+  public ServiceStateSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ServiceState actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   public static String serviceStateToString(@ServiceStateState int serviceState) {
     return buildNamedValueString(serviceState)
         .value(STATE_EMERGENCY_ONLY, "emergency_only")
@@ -47,58 +54,44 @@ public class ServiceStateSubject extends Subject<ServiceStateSubject, ServiceSta
   }
 
   public ServiceStateSubject isManualSelection() {
-    assertThat(actual().getIsManualSelection())
-        .named("is manual selection mode")
-        .isTrue();
+    check("getIsManualSelection()").that(actual.getIsManualSelection()).isTrue();
     return this;
   }
 
   public ServiceStateSubject isAutomaticSelection() {
-    assertThat(!actual().getIsManualSelection())
-        .named("is automatic selection mode")
-        .isTrue();
+    check("getIsManualSelection()").that(actual.getIsManualSelection()).isFalse();
     return this;
   }
 
-  public ServiceStateSubject hasOperatorAlphaLong(String operatorAlphaLong) {
-    assertThat(actual().getOperatorAlphaLong())
-        .named("operator name in long alphanumeric format")
-        .isEqualTo(operatorAlphaLong);
+  public ServiceStateSubject hasOperatorAlphaLong(@Nullable String operatorAlphaLong) {
+    check("getOperatorAlphaLong()").that(actual.getOperatorAlphaLong()).isEqualTo(operatorAlphaLong);
     return this;
   }
 
-  public ServiceStateSubject hasOperatorAlphaShort(String operatorAlphaShort) {
-    assertThat(actual().getOperatorAlphaShort())
-        .named("operator name in short alphanumeric format")
-        .isEqualTo(operatorAlphaShort);
+  public ServiceStateSubject hasOperatorAlphaShort(@Nullable String operatorAlphaShort) {
+    check("getOperatorAlphaShort()").that(actual.getOperatorAlphaShort()).isEqualTo(operatorAlphaShort);
     return this;
   }
 
-  public ServiceStateSubject hasOperatorNumeric(String operatorNumeric) {
-    assertThat(actual().getOperatorNumeric())
-        .named("operator numeric ID")
-        .isEqualTo(operatorNumeric);
+  public ServiceStateSubject hasOperatorNumeric(@Nullable String operatorNumeric) {
+    check("getOperatorNumeric()").that(actual.getOperatorNumeric()).isEqualTo(operatorNumeric);
     return this;
   }
 
   public ServiceStateSubject isRoaming() {
-    assertThat(actual().getRoaming())
-        .named("is roaming")
-        .isTrue();
+    check("getRoaming()").that(actual.getRoaming()).isTrue();
     return this;
   }
 
   public ServiceStateSubject isNotRoaming() {
-    assertThat(actual().getRoaming())
-        .named("is roaming")
-        .isFalse();
+    check("getRoaming()").that(actual.getRoaming()).isFalse();
     return this;
   }
 
   public ServiceStateSubject hasState(@ServiceStateState int state) {
-    int actualState = actual().getState();
+    int actualState = actual.getState();
     //noinspection ResourceType
-    assert_()
+    check("getState()")
         .withMessage("Expected state <%s> but was <%s>.", serviceStateToString(state),
             serviceStateToString(actualState))
         .that(actualState)

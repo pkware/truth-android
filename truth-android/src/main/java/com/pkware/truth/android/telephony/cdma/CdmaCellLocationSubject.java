@@ -21,48 +21,44 @@ import android.telephony.cdma.CdmaCellLocation;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link CdmaCellLocation} subjects.
  */
-public class CdmaCellLocationSubject extends Subject<CdmaCellLocationSubject, CdmaCellLocation> {
-  public CdmaCellLocationSubject(FailureMetadata failureMetadata, CdmaCellLocation subject) {
-    super(failureMetadata, subject);
+public class CdmaCellLocationSubject extends Subject {
+
+  @Nullable
+  private final CdmaCellLocation actual;
+
+  public CdmaCellLocationSubject(@Nonnull FailureMetadata failureMetadata, @Nullable CdmaCellLocation actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public CdmaCellLocationSubject hasBaseStationId(int id) {
-    assertThat(actual().getBaseStationId())
-        .named("base station ID")
-        .isEqualTo(id);
+    check("getBaseStationId()").that(actual.getBaseStationId()).isEqualTo(id);
     return this;
   }
 
   public CdmaCellLocationSubject hasBaseStationLatitude(int latitude) {
-    assertThat(actual().getBaseStationLatitude())
-        .named("base station latitude")
-        .isEqualTo(latitude);
+    check("getBaseStationLatitude()").that(actual.getBaseStationLatitude()).isEqualTo(latitude);
     return this;
   }
 
   public CdmaCellLocationSubject hasBaseStationLongitude(int longitude) {
-    assertThat(actual().getBaseStationLongitude())
-        .named("base station longitude")
-        .isEqualTo(longitude);
+    check("getBaseStationLongitude()").that(actual.getBaseStationLongitude()).isEqualTo(longitude);
     return this;
   }
 
   public CdmaCellLocationSubject hasNetworkId(int id) {
-    assertThat(actual().getNetworkId())
-        .named("network ID")
-        .isEqualTo(id);
+    check("getNetworkId()").that(actual.getNetworkId()).isEqualTo(id);
     return this;
   }
 
   public CdmaCellLocationSubject hasSystemId(int id) {
-    assertThat(actual().getSystemId())
-        .named("system ID")
-        .isEqualTo(id);
+    check("getSystemId()").that(actual.getSystemId()).isEqualTo(id);
     return this;
   }
 }

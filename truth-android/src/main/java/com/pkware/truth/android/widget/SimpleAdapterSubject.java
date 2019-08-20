@@ -18,30 +18,33 @@ package com.pkware.truth.android.widget;
 
 import android.widget.Filter;
 import android.widget.SimpleAdapter;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link SimpleAdapter} subjects.
  */
 public class SimpleAdapterSubject
-    extends AbstractListAdapterSubject<SimpleAdapterSubject, SimpleAdapter> {
-  public SimpleAdapterSubject(FailureMetadata failureMetadata, SimpleAdapter subject) {
-    super(failureMetadata, subject);
+    extends AbstractListAdapterSubject<SimpleAdapter> {
+
+  @Nullable
+  private final SimpleAdapter actual;
+
+  public SimpleAdapterSubject(@Nonnull FailureMetadata failureMetadata, @Nullable SimpleAdapter actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public SimpleAdapterSubject hasFilter(Filter filter) {
-    assertThat(actual().getFilter())
-        .named("filter")
-        .isSameAs(filter);
+  public SimpleAdapterSubject hasFilter(@Nullable Filter filter) {
+    check("getFilter()").that(actual.getFilter()).isSameInstanceAs(filter);
     return this;
   }
 
-  public SimpleAdapterSubject hasViewBinder(SimpleAdapter.ViewBinder binder) {
-    assertThat(actual().getViewBinder())
-        .named("view binder")
-        .isSameAs(binder);
+  public SimpleAdapterSubject hasViewBinder(@Nullable SimpleAdapter.ViewBinder binder) {
+    check("getViewBinder()").that(actual.getViewBinder()).isSameInstanceAs(binder);
     return this;
   }
 }

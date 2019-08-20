@@ -22,36 +22,31 @@ import android.telephony.CellSignalStrength;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
-import static com.google.common.truth.Truth.assertThat;
 
 @TargetApi(JELLY_BEAN_MR1)
-public abstract class AbstractCellSignalStrengthSubject<S extends AbstractCellSignalStrengthSubject<S, T>, T extends CellSignalStrength> extends Subject<S, T> {
-  protected AbstractCellSignalStrengthSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractCellSignalStrengthSubject<T extends CellSignalStrength> extends Subject {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractCellSignalStrengthSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S hasAsuLevel(int level) {
-    assertThat(actual().getAsuLevel())
-        .named("ASU level")
-        .isEqualTo(level);
-    //noinspection unchecked
-    return (S) this;
+  public void hasAsuLevel(int level) {
+    check("getAsuLevel()").that(actual.getAsuLevel()).isEqualTo(level);
   }
 
-  public S hasDbm(int dbm) {
-    assertThat(actual().getDbm())
-        .named("dBm")
-        .isEqualTo(dbm);
-    //noinspection unchecked
-    return (S) this;
+  public void hasDbm(int dbm) {
+    check("getDbm()").that(actual.getDbm()).isEqualTo(dbm);
   }
 
-  public S hasLevel(int level) {
-    assertThat(actual().getLevel())
-        .named("level")
-        .isEqualTo(level);
-    //noinspection unchecked
-    return (S) this;
+  public void hasLevel(int level) {
+    check("getLevel()").that(actual.getLevel()).isEqualTo(level);
   }
 }

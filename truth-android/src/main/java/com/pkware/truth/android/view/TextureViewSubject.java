@@ -17,29 +17,32 @@
 package com.pkware.truth.android.view;
 
 import android.view.TextureView;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link TextureView} subjects.
  */
-public class TextureViewSubject extends AbstractViewSubject<TextureViewSubject, TextureView> {
-  public TextureViewSubject(FailureMetadata failureMetadata, TextureView subject) {
-    super(failureMetadata, subject);
+public class TextureViewSubject extends AbstractViewSubject<TextureView> {
+
+  @Nullable
+  private final TextureView actual;
+
+  public TextureViewSubject(@Nonnull FailureMetadata failureMetadata, @Nullable TextureView actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public TextureViewSubject isAvailable() {
-    assertThat(actual().isAvailable())
-        .named("is available")
-        .isTrue();
+    check("isAvailable()").that(actual.isAvailable()).isTrue();
     return this;
   }
 
   public TextureViewSubject isNotAvailable() {
-    assertThat(actual().isAvailable())
-        .named("is available")
-        .isFalse();
+    check("isAvailable()").that(actual.isAvailable()).isFalse();
     return this;
   }
 }

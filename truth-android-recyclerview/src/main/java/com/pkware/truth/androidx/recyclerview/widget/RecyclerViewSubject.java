@@ -17,8 +17,12 @@
 package com.pkware.truth.androidx.recyclerview.widget;
 
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import static androidx.recyclerview.widget.RecyclerView.Adapter;
 import static androidx.recyclerview.widget.RecyclerView.ItemAnimator;
@@ -28,18 +32,22 @@ import static androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_DRAGGING;
 import static androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_IDLE;
 import static androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_SETTLING;
 import static androidx.recyclerview.widget.RecyclerView.ViewHolder;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
 /**
  * Propositions for {@link RecyclerView} subjects.
  */
-public class RecyclerViewSubject extends AbstractViewGroupSubject<RecyclerViewSubject, RecyclerView> {
-  public RecyclerViewSubject(FailureMetadata failureMetadata, RecyclerView subject) {
-    super(failureMetadata, subject);
+public class RecyclerViewSubject extends AbstractViewGroupSubject<RecyclerView> {
+
+  @Nullable
+  private final RecyclerView actual;
+
+  public RecyclerViewSubject(@Nonnull FailureMetadata failureMetadata, @Nullable RecyclerView actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   public static String scrollStateToString(@RecyclerViewScrollState int scrollState) {
     return buildNamedValueString(scrollState)
         .value(SCROLL_STATE_DRAGGING, "dragging")
@@ -48,38 +56,30 @@ public class RecyclerViewSubject extends AbstractViewGroupSubject<RecyclerViewSu
         .get();
   }
 
-  public <VH extends ViewHolder> RecyclerViewSubject hasAdapter(Adapter<VH> adapter) {
-    assertThat(actual().getAdapter())
-        .named("adapter")
-        .isEqualTo(adapter);
+  public <VH extends ViewHolder> RecyclerViewSubject hasAdapter(@Nullable Adapter<VH> adapter) {
+    check("getAdapter()").that(actual.getAdapter()).isEqualTo(adapter);
     return this;
   }
 
-  public RecyclerViewSubject hasItemAnimator(ItemAnimator itemAnimator) {
-    assertThat(actual().getItemAnimator())
-        .named("item animator")
-        .isEqualTo(itemAnimator);
+  public RecyclerViewSubject hasItemAnimator(@Nullable ItemAnimator itemAnimator) {
+    check("getItemAnimator()").that(actual.getItemAnimator()).isEqualTo(itemAnimator);
     return this;
   }
 
-  public RecyclerViewSubject hasLayoutManager(LayoutManager layoutManager) {
-    assertThat(actual().getLayoutManager())
-        .named("layout manager")
-        .isEqualTo(layoutManager);
+  public RecyclerViewSubject hasLayoutManager(@Nullable LayoutManager layoutManager) {
+    check("getLayoutManager()").that(actual.getLayoutManager()).isEqualTo(layoutManager);
     return this;
   }
 
-  public RecyclerViewSubject hasRecycledViewPool(RecycledViewPool recycledViewPool) {
-    assertThat(actual().getRecycledViewPool())
-        .named("recycled view pool")
-        .isEqualTo(recycledViewPool);
+  public RecyclerViewSubject hasRecycledViewPool(@Nullable RecycledViewPool recycledViewPool) {
+    check("getRecycledViewPool()").that(actual.getRecycledViewPool()).isEqualTo(recycledViewPool);
     return this;
   }
 
   public RecyclerViewSubject hasScrollState(@RecyclerViewScrollState int scrollState) {
-    int actualScrollState = actual().getScrollState();
+    int actualScrollState = actual.getScrollState();
     //noinspection ResourceType
-    assert_()
+    check("getScrollState()")
         .withMessage("Expected scroll state <%s> but was <%s>.",
             scrollStateToString(scrollState), scrollStateToString(actualScrollState))
         .that(actualScrollState)
@@ -88,16 +88,12 @@ public class RecyclerViewSubject extends AbstractViewGroupSubject<RecyclerViewSu
   }
 
   public RecyclerViewSubject hasFixedSize() {
-    assertThat(actual().hasFixedSize())
-        .named("has fixed size")
-        .isTrue();
+    check("hasFixedSize()").that(actual.hasFixedSize()).isTrue();
     return this;
   }
 
   public RecyclerViewSubject doesNotHaveFixedSize() {
-    assertThat(actual().hasFixedSize())
-        .named("has fixed size")
-        .isFalse();
+    check("hasFixedSize()").that(actual.hasFixedSize()).isFalse();
     return this;
   }
 }

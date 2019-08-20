@@ -17,7 +17,11 @@
 package com.pkware.truth.android.view.accessbility;
 
 import android.view.accessibility.AccessibilityRecord;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link AccessibilityRecord} subjects.
@@ -25,8 +29,8 @@ import com.google.common.truth.FailureMetadata;
  * This class is final. To extend use {@link AbstractAccessibilityRecordSubject}.
  */
 public final class AccessibilityRecordSubject
-    extends AbstractAccessibilityRecordSubject<AccessibilityRecordSubject, AccessibilityRecord> {
-  public AccessibilityRecordSubject(FailureMetadata failureMetadata, AccessibilityRecord subject) {
-    super(failureMetadata, subject);
+    extends AbstractAccessibilityRecordSubject<AccessibilityRecord> {
+  public AccessibilityRecordSubject(@Nonnull FailureMetadata failureMetadata, @Nullable AccessibilityRecord actual) {
+    super(failureMetadata, actual);
   }
 }

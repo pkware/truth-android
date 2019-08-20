@@ -17,15 +17,19 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.ListAdapter;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Proposition for {@link ListAdapter} subjects.
  * <p/>
  * This class is final. To extend use {@link AbstractListAdapterSubject}.
  */
-public class ListAdapterSubject extends AbstractListAdapterSubject<ListAdapterSubject, ListAdapter> {
-  public ListAdapterSubject(FailureMetadata failureMetadata, ListAdapter subject) {
-    super(failureMetadata, subject);
+public class ListAdapterSubject extends AbstractListAdapterSubject<ListAdapter> {
+  public ListAdapterSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ListAdapter actual) {
+    super(failureMetadata, actual);
   }
 }

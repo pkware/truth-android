@@ -21,91 +21,69 @@ import android.graphics.RectF;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link RectF} subjects.
  */
-public class RectFSubject extends Subject<RectFSubject, RectF> {
-  public RectFSubject(FailureMetadata failureMetadata, RectF subject) {
-    super(failureMetadata, subject);
+public class RectFSubject extends Subject {
+
+  @Nullable
+  private final RectF actual;
+
+  public RectFSubject(@Nonnull FailureMetadata failureMetadata, @Nullable RectF actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public RectFSubject hasBottom(float bottom, float tolerance) {
-    assertThat(actual().bottom)
-        .named("bottom")
-        .isWithin(tolerance)
-        .of(bottom);
+    check("bottom").that(actual.bottom).isWithin(tolerance).of(bottom);
     return this;
   }
 
   public RectFSubject hasLeft(float left, float tolerance) {
-    assertThat(actual().left)
-        .named("left")
-        .isWithin(tolerance)
-        .of(left);
+    check("left").that(actual.left).isWithin(tolerance).of(left);
     return this;
   }
 
   public RectFSubject hasRight(float right, float tolerance) {
-    assertThat(actual().right)
-        .named("right")
-        .isWithin(tolerance)
-        .of(right);
+    check("right").that(actual.right).isWithin(tolerance).of(right);
     return this;
   }
 
   public RectFSubject hasTop(float top, float tolerance) {
-    assertThat(actual().top)
-        .named("top")
-        .isWithin(tolerance)
-        .of(top);
+    check("top").that(actual.top).isWithin(tolerance).of(top);
     return this;
   }
 
   public RectFSubject hasCenterX(float center, float tolerance) {
-    assertThat(actual().centerX())
-        .named("X center")
-        .isWithin(tolerance)
-        .of(center);
+    check("centerX()").that(actual.centerX()).isWithin(tolerance).of(center);
     return this;
   }
 
   public RectFSubject hasCenterY(float center, float tolerance) {
-    assertThat(actual().centerY())
-        .named("Y center")
-        .isWithin(tolerance)
-        .of(center);
+    check("centerY()").that(actual.centerY()).isWithin(tolerance).of(center);
     return this;
   }
 
   public RectFSubject hasHeight(float height, float tolerance) {
-    assertThat(actual().height())
-        .named("height")
-        .isWithin(tolerance)
-        .of(height);
+    check("height()").that(actual.height()).isWithin(tolerance).of(height);
     return this;
   }
 
   public RectFSubject isEmpty() {
-    assertThat(actual().isEmpty())
-        .named("is empty")
-        .isTrue();
+    check("isEmpty()").that(actual.isEmpty()).isTrue();
     return this;
   }
 
   public RectFSubject isNotEmpty() {
-    assertThat(actual().isEmpty())
-        .named("is empty")
-        .isFalse();
+    check("isEmpty()").that(actual.isEmpty()).isFalse();
     return this;
   }
 
   public RectFSubject hasWidth(float width, float tolerance) {
-    assertThat(actual().width())
-        .named("width")
-        .isWithin(tolerance)
-        .of(width);
+    check("width()").that(actual.width()).isWithin(tolerance).of(width);
     return this;
   }
 }

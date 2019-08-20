@@ -17,23 +17,28 @@
 package com.pkware.truth.androidx.cardview.widget;
 
 import androidx.cardview.widget.CardView;
+
 import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link CardView} subjects.
  */
-public class CardViewSubject extends AbstractViewGroupSubject<CardViewSubject, CardView> {
-  public CardViewSubject(FailureMetadata failureMetadata, CardView subject) {
-    super(failureMetadata, subject);
+public class CardViewSubject extends AbstractViewGroupSubject<CardView> {
+
+  @Nullable
+  private final CardView actual;
+
+  public CardViewSubject(@Nonnull FailureMetadata failureMetadata, @Nullable CardView actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public CardViewSubject hasRadius(int radius) {
-    assertThat(actual().getRadius())
-        .named("radius")
-        .isEqualTo(radius);
+    check("getRadius()").that(actual.getRadius()).isEqualTo(radius);
     return this;
   }
 }

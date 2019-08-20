@@ -22,25 +22,32 @@ import android.view.animation.Interpolator;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.view.animation.Animation.INFINITE;
 import static android.view.animation.Animation.RESTART;
 import static android.view.animation.Animation.REVERSE;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
-public abstract class AbstractAnimationSubject<S extends AbstractAnimationSubject<S, T>, T extends Animation>
-    extends Subject<S, T> {
-  protected AbstractAnimationSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractAnimationSubject<T extends Animation> extends Subject {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractAnimationSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   public static String repeatCountToString(int count) {
     return buildNamedValueString(count)
         .value(INFINITE, "infinite")
         .getOrValue();
   }
 
+  @Nonnull
   public static String repeatModeToString(@AnimationRepeatMode int mode) {
     return buildNamedValueString(mode)
         .value(RESTART, "restart")
@@ -48,206 +55,115 @@ public abstract class AbstractAnimationSubject<S extends AbstractAnimationSubjec
         .get();
   }
 
-  public S hasBackgroundColor(int color) {
-    int actualColor = actual().getBackgroundColor();
-    assert_()
+  public void hasBackgroundColor(int color) {
+    int actualColor = actual.getBackgroundColor();
+    check("getBackgroundColor()")
         .withMessage("Expected background color <%s> but was <%s>.",
             Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S hasDuration(long duration) {
-    long actualDuration = actual().getDuration();
-    assertThat(actual().getDuration())
-        .named("duration")
-        .isEqualTo(duration);
-    //noinspection unchecked
-    return (S) this;
+  public void hasDuration(long duration) {
+    check("getDuration()").that(actual.getDuration()).isEqualTo(duration);
   }
 
-  public S isFillingAfter() {
-    assertThat(actual().getFillAfter())
-        .named("is filling after")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isFillingAfter() {
+    check("getFillAfter()").that(actual.getFillAfter()).isTrue();
   }
 
-  public S isNotFillingAfter() {
-    assertThat(actual().getFillAfter())
-        .named("is filling after")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotFillingAfter() {
+    check("getFillAfter()").that(actual.getFillAfter()).isFalse();
   }
 
-  public S isFillingBefore() {
-    assertThat(actual().getFillBefore())
-        .named("is filling before")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isFillingBefore() {
+    check("getFillBefore()").that(actual.getFillBefore()).isTrue();
   }
 
-  public S isNotFillingBefore() {
-    assertThat(actual().getFillBefore())
-        .named("is filling before")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotFillingBefore() {
+    check("getFillBefore()").that(actual.getFillBefore()).isFalse();
   }
 
-  public S hasInterpolator(Interpolator interpolator) {
-    assertThat(actual().getInterpolator())
-        .named("interpolator")
-        .isSameAs(interpolator);
-    //noinspection unchecked
-    return (S) this;
+  public void hasInterpolator(@Nullable Interpolator interpolator) {
+    check("getInterpolator()").that(actual.getInterpolator()).isSameInstanceAs(interpolator);
   }
 
-  public S hasRepeatCount(int count) {
-    int actualCount = actual().getRepeatCount();
-    assert_()
+  public void hasRepeatCount(int count) {
+    int actualCount = actual.getRepeatCount();
+    check("getRepeatCount()")
         .withMessage("Expected repeat count <%s> but was <%s>.",
             repeatCountToString(count), repeatCountToString(actualCount))
         .that(actualCount)
         .isEqualTo(count);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S hasRepeatMode(@AnimationRepeatMode int mode) {
-    int actualMode = actual().getRepeatMode();
+  public void hasRepeatMode(@AnimationRepeatMode int mode) {
+    int actualMode = actual.getRepeatMode();
     //noinspection ResourceType
-    assert_()
+    check("getRepeatMode()")
         .withMessage("Expected repeat mode <%s> but was <%s>.", repeatModeToString(mode),
             repeatModeToString(actualMode))
         .that(actualMode)
         .isEqualTo(mode);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S hasStartOffset(long offset) {
-    assertThat(actual().getStartOffset())
-        .named("start offset")
-        .isEqualTo(offset);
-    //noinspection unchecked
-    return (S) this;
+  public void hasStartOffset(long offset) {
+    check("getStartOffset()").that(actual.getStartOffset()).isEqualTo(offset);
   }
 
-  public S hasStartTime(long time) {
-    assertThat(actual().getStartTime())
-        .named("start time")
-        .isEqualTo(time);
-    //noinspection unchecked
-    return (S) this;
+  public void hasStartTime(long time) {
+    check("getStartTime()").that(actual.getStartTime()).isEqualTo(time);
   }
 
-  public S hasZAdjustment(int adjustment) {
-    assertThat(actual().getZAdjustment())
-        .named("Z adjustment")
-        .isEqualTo(adjustment);
-    //noinspection unchecked
-    return (S) this;
+  public void hasZAdjustment(int adjustment) {
+    check("getZAdjustment()").that(actual.getZAdjustment()).isEqualTo(adjustment);
   }
 
-  public S isEnded() {
-    assertThat(actual().hasEnded())
-        .named("has ended")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isEnded() {
+    check("hasEnded()").that(actual.hasEnded()).isTrue();
   }
 
-  public S isNotEnded() {
-    assertThat(actual().hasEnded())
-        .named("has ended")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotEnded() {
+    check("hasEnded()").that(actual.hasEnded()).isFalse();
   }
 
-  public S isStarted() {
-    assertThat(actual().hasStarted())
-        .named("has started")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isStarted() {
+    check("hasStarted()").that(actual.hasStarted()).isTrue();
   }
 
-  public S isNotStarted() {
-    assertThat(actual().hasStarted())
-        .named("has started")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotStarted() {
+    check("hasStarted()").that(actual.hasStarted()).isFalse();
   }
 
-  public S isFillEnabled() {
-    assertThat(actual().isFillEnabled())
-        .named("is fill enabled")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isFillEnabled() {
+    check("isFillEnabled()").that(actual.isFillEnabled()).isTrue();
   }
 
-  public S isFillDisabled() {
-    assertThat(!actual().isFillEnabled())
-        .named("is fill disabled")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isFillDisabled() {
+    check("isFillEnabled()").that(actual.isFillEnabled()).isFalse();
   }
 
-  public S isInitialized() {
-    assertThat(actual().isInitialized())
-        .named("is initialized")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isInitialized() {
+    check("isInitialized()").that(actual.isInitialized()).isTrue();
   }
 
-  public S isNotInitialized() {
-    assertThat(actual().isInitialized())
-        .named("is initialized")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotInitialized() {
+    check("isInitialized()").that(actual.isInitialized()).isFalse();
   }
 
-  public S isChangingBounds() {
-    assertThat(actual().willChangeBounds())
-        .named("is changing bounds")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isChangingBounds() {
+    check("willChangeBounds()").that(actual.willChangeBounds()).isTrue();
   }
 
-  public S isNotChangingBounds() {
-    assertThat(actual().willChangeBounds())
-        .named("is changing bounds")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotChangingBounds() {
+    check("willChangeBounds()").that(actual.willChangeBounds()).isFalse();
   }
 
-  public S isChangingTransformationMatrix() {
-    assertThat(actual().willChangeTransformationMatrix())
-        .named("is changing transformation matrix")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isChangingTransformationMatrix() {
+    check("willChangeTransformationMatrix()").that(actual.willChangeTransformationMatrix()).isTrue();
   }
 
-  public S isNotChangingTransformationMatrix() {
-    assertThat(actual().willChangeTransformationMatrix())
-        .named("is changing transformation matrix")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotChangingTransformationMatrix() {
+    check("willChangeTransformationMatrix()").that(actual.willChangeTransformationMatrix()).isFalse();
   }
 }

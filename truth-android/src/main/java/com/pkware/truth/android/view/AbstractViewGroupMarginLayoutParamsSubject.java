@@ -21,43 +21,32 @@ import android.view.ViewGroup;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public abstract class AbstractViewGroupMarginLayoutParamsSubject<S extends AbstractViewGroupMarginLayoutParamsSubject<S, T>, T extends ViewGroup.MarginLayoutParams>
-    extends Subject<S, T> {
-  protected AbstractViewGroupMarginLayoutParamsSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractViewGroupMarginLayoutParamsSubject<T extends ViewGroup.MarginLayoutParams> extends Subject {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractViewGroupMarginLayoutParamsSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S hasBottomMargin(int margin) {
-    assertThat(actual().bottomMargin)
-        .named("bottom margin")
-        .isEqualTo(margin);
-    //noinspection unchecked
-    return (S) this;
+  public void hasBottomMargin(int margin) {
+    check("bottomMargin").that(actual.bottomMargin).isEqualTo(margin);
   }
 
-  public S hasLeftMargin(int margin) {
-    assertThat(actual().leftMargin)
-        .named("left margin")
-        .isEqualTo(margin);
-    //noinspection unchecked
-    return (S) this;
+  public void hasLeftMargin(int margin) {
+    check("leftMargin").that(actual.leftMargin).isEqualTo(margin);
   }
 
-  public S hasRightMargin(int margin) {
-    assertThat(actual().rightMargin)
-        .named("right margin")
-        .isEqualTo(margin);
-    //noinspection unchecked
-    return (S) this;
+  public void hasRightMargin(int margin) {
+    check("rightMargin").that(actual.rightMargin).isEqualTo(margin);
   }
 
-  public S hasTopMargin(int margin) {
-    assertThat(actual().topMargin)
-        .named("top margin")
-        .isEqualTo(margin);
-    //noinspection unchecked
-    return (S) this;
+  public void hasTopMargin(int margin) {
+    check("topMargin").that(actual.topMargin).isEqualTo(margin);
   }
 }

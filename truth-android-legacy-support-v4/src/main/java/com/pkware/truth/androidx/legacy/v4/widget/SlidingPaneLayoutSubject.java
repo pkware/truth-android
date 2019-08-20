@@ -17,66 +17,58 @@
 package com.pkware.truth.androidx.legacy.v4.widget;
 
 import androidx.slidingpanelayout.widget.SlidingPaneLayout;
+
 import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link SlidingPaneLayout} subjects.
  */
-public class SlidingPaneLayoutSubject
-    extends AbstractViewGroupSubject<SlidingPaneLayoutSubject, SlidingPaneLayout> {
-  public SlidingPaneLayoutSubject(FailureMetadata failureMetadata, SlidingPaneLayout subject) {
-    super(failureMetadata, subject);
+public class SlidingPaneLayoutSubject extends AbstractViewGroupSubject<SlidingPaneLayout> {
+
+  @Nullable
+  private final SlidingPaneLayout actual;
+
+  public SlidingPaneLayoutSubject(@Nonnull FailureMetadata failureMetadata, @Nullable SlidingPaneLayout actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public SlidingPaneLayoutSubject hasCoveredFadeColor(int color) {
-    assertThat(actual().getCoveredFadeColor())
-        .named("covered fade color")
-        .isEqualTo(color);
+    check("getCoveredFadeColor()").that(actual.getCoveredFadeColor()).isEqualTo(color);
     return this;
   }
 
   public SlidingPaneLayoutSubject hasParallaxDistance(int distance) {
-    assertThat(actual().getParallaxDistance())
-        .named("parallax distance")
-        .isEqualTo(distance);
+    check("getParallaxDistance()").that(actual.getParallaxDistance()).isEqualTo(distance);
     return this;
   }
 
   public SlidingPaneLayoutSubject hasSliderFadeColor(int color) {
-    assertThat(actual().getSliderFadeColor())
-        .named("slider fade color")
-        .isEqualTo(color);
+    check("getSliderFadeColor()").that(actual.getSliderFadeColor()).isEqualTo(color);
     return this;
   }
 
   public SlidingPaneLayoutSubject isOpen() {
-    assertThat(actual().isOpen())
-        .named("is open")
-        .isTrue();
+    check("isOpen()").that(actual.isOpen()).isTrue();
     return this;
   }
 
   public SlidingPaneLayoutSubject isNotOpen() {
-    assertThat(actual().isOpen())
-        .named("is open")
-        .isFalse();
+    check("isOpen()").that(actual.isOpen()).isFalse();
     return this;
   }
 
   public SlidingPaneLayoutSubject isSlideable() {
-    assertThat(actual().isSlideable())
-        .named("is slideable")
-        .isTrue();
+    check("isSlideable()").that(actual.isSlideable()).isTrue();
     return this;
   }
 
   public SlidingPaneLayoutSubject isNotSlideable() {
-    assertThat(actual().isSlideable())
-        .named("is slideable")
-        .isFalse();
+    check("isSlideable()").that(actual.isSlideable()).isFalse();
     return this;
   }
 }

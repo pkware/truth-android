@@ -23,159 +23,124 @@ import com.google.common.truth.Subject;
 
 import java.util.Locale;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public class AddressSubject extends Subject<AddressSubject, Address> {
-  public AddressSubject(FailureMetadata failureMetadata, Address subject) {
-    super(failureMetadata, subject);
+public class AddressSubject extends Subject {
+
+  @Nullable
+  private final Address actual;
+
+  public AddressSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Address actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public AddressSubject hasAddressLine(int index, String line) {
-    assertThat(actual().getAddressLine(index))
-        .named(String.format(Locale.ENGLISH, "address line %d", index))
+  public AddressSubject hasAddressLine(int index, @Nullable String line) {
+    check("getAddressLine(index)")
+        .withMessage("address line %s", index)
+        .that(actual.getAddressLine(index))
         .isEqualTo(line);
     return this;
   }
 
-  public AddressSubject hasAdminArea(String area) {
-    assertThat(actual().getAdminArea())
-        .named("admin area")
-        .isEqualTo(area);
+  public AddressSubject hasAdminArea(@Nullable String area) {
+    check("getAdminArea()").that(actual.getAdminArea()).isEqualTo(area);
     return this;
   }
 
-  public AddressSubject hasCountryCode(String code) {
-    assertThat(actual().getCountryCode())
-        .named("country code")
-        .isEqualTo(code);
+  public AddressSubject hasCountryCode(@Nullable String code) {
+    check("getCountryCode()").that(actual.getCountryCode()).isEqualTo(code);
     return this;
   }
 
-  public AddressSubject hasCountryName(String name) {
-    assertThat(actual().getCountryName())
-        .named("country name")
-        .isEqualTo(name);
+  public AddressSubject hasCountryName(@Nullable String name) {
+    check("getCountryName()").that(actual.getCountryName()).isEqualTo(name);
     return this;
   }
 
-  public AddressSubject hasFeatureName(String name) {
-    assertThat(actual().getFeatureName())
-        .named("feature name")
-        .isEqualTo(name);
+  public AddressSubject hasFeatureName(@Nullable String name) {
+    check("getFeatureName()").that(actual.getFeatureName()).isEqualTo(name);
     return this;
   }
 
   public AddressSubject hasLatitude(double latitude, double tolerance) {
-    assertThat(actual().getLatitude())
-        .named("latitude")
-        .isWithin(tolerance)
-        .of(latitude);
+    check("getLatitude()").that(actual.getLatitude()).isWithin(tolerance).of(latitude);
     return this;
   }
 
-  public AddressSubject hasLocale(Locale locale) {
-    assertThat(actual().getLocale())
-        .named("locale")
-        .isEqualTo(locale);
+  public AddressSubject hasLocale(@Nullable Locale locale) {
+    check("getLocale()").that(actual.getLocale()).isEqualTo(locale);
     return this;
   }
 
-  public AddressSubject hasLocality(String locality) {
-    assertThat(actual().getLocality())
-        .named("locality")
-        .isEqualTo(locality);
+  public AddressSubject hasLocality(@Nullable String locality) {
+    check("getLocality()").that(actual.getLocality()).isEqualTo(locality);
     return this;
   }
 
   public AddressSubject hasLongitude(double longitude, double tolerance) {
-    assertThat(actual().getLongitude())
-        .named("longitude")
-        .isWithin(tolerance)
-        .of(longitude);
+    check("getLongitude()").that(actual.getLongitude()).isWithin(tolerance).of(longitude);
     return this;
   }
 
   public AddressSubject hasMaximumAddressLineIndex(int index) {
-    assertThat(actual().getMaxAddressLineIndex())
-        .named("maximum address line index")
-        .isEqualTo(index);
+    check("getMaxAddressLineIndex()").that(actual.getMaxAddressLineIndex()).isEqualTo(index);
     return this;
   }
 
-  public AddressSubject hasPhone(String phone) {
-    assertThat(actual().getPhone())
-        .named("phone")
-        .isEqualTo(phone);
+  public AddressSubject hasPhone(@Nullable String phone) {
+    check("getPhone()").that(actual.getPhone()).isEqualTo(phone);
     return this;
   }
 
-  public AddressSubject hasPostalCode(String code) {
-    assertThat(actual().getPostalCode())
-        .named("postal code")
-        .isEqualTo(code);
+  public AddressSubject hasPostalCode(@Nullable String code) {
+    check("getPostalCode()").that(actual.getPostalCode()).isEqualTo(code);
     return this;
   }
 
-  public AddressSubject hasPremises(String premises) {
-    assertThat(actual().getPremises())
-        .named("premises")
-        .isEqualTo(premises);
+  public AddressSubject hasPremises(@Nullable String premises) {
+    check("getPremises()").that(actual.getPremises()).isEqualTo(premises);
     return this;
   }
 
-  public AddressSubject hasSubAdminArea(String area) {
-    assertThat(actual().getSubAdminArea())
-        .named("sub-admin area")
-        .isEqualTo(area);
+  public AddressSubject hasSubAdminArea(@Nullable String area) {
+    check("getSubAdminArea()").that(actual.getSubAdminArea()).isEqualTo(area);
     return this;
   }
 
-  public AddressSubject hasSubLocality(String locality) {
-    assertThat(actual().getSubLocality())
-        .named("sub-locality")
-        .isEqualTo(locality);
+  public AddressSubject hasSubLocality(@Nullable String locality) {
+    check("getSubLocality()").that(actual.getSubLocality()).isEqualTo(locality);
     return this;
   }
 
-  public AddressSubject hasThoroughfare(String thoroughfare) {
-    assertThat(actual().getThoroughfare())
-        .named("thoroughfare")
-        .isEqualTo(thoroughfare);
+  public AddressSubject hasThoroughfare(@Nullable String thoroughfare) {
+    check("getThoroughfare()").that(actual.getThoroughfare()).isEqualTo(thoroughfare);
     return this;
   }
 
-  public AddressSubject hasUrl(String url) {
-    assertThat(actual().getUrl())
-        .named("url")
-        .isEqualTo(url);
+  public AddressSubject hasUrl(@Nullable String url) {
+    check("getUrl()").that(actual.getUrl()).isEqualTo(url);
     return this;
   }
 
   public AddressSubject hasLatitude() {
-    assertThat(actual().hasLatitude())
-        .named("has latitude")
-        .isTrue();
+    check("hasLatitude()").that(actual.hasLatitude()).isTrue();
     return this;
   }
 
   public AddressSubject hasNoLatitude() {
-    assertThat(actual().hasLatitude())
-        .named("has latitude")
-        .isFalse();
+    check("hasLatitude()").that(actual.hasLatitude()).isFalse();
     return this;
   }
 
   public AddressSubject hasLongitude() {
-    assertThat(actual().hasLongitude())
-        .named("has longitude")
-        .isTrue();
+    check("hasLongitude()").that(actual.hasLongitude()).isTrue();
     return this;
   }
 
   public AddressSubject hasNoLongitude() {
-    assertThat(actual().hasLongitude())
-        .named("has longitude")
-        .isFalse();
+    check("hasLongitude()").that(actual.hasLongitude()).isFalse();
     return this;
   }
 }

@@ -22,90 +22,74 @@ import android.graphics.Rect;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Canvas} subjects.
  */
-public class CanvasSubject extends Subject<CanvasSubject, Canvas> {
-  public CanvasSubject(FailureMetadata failureMetadata, Canvas subject) {
-    super(failureMetadata, subject);
+public class CanvasSubject extends Subject {
+
+  @Nullable
+  private final Canvas actual;
+
+  public CanvasSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Canvas actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public CanvasSubject hasClipBounds(Rect bounds) {
-    assertThat(actual().getClipBounds())
-        .named("clip bound")
-        .isEqualTo(bounds);
+  public CanvasSubject hasClipBounds(@Nullable Rect bounds) {
+    check("getClipBounds()").that(actual.getClipBounds()).isEqualTo(bounds);
     return this;
   }
 
   public CanvasSubject hasDensity(int density) {
-    assertThat(actual().getDensity())
-        .named("density")
-        .isEqualTo(density);
+    check("getDensity()").that(actual.getDensity()).isEqualTo(density);
     return this;
   }
 
   public CanvasSubject hasHeight(int height) {
-    assertThat(actual().getHeight())
-        .named("height")
-        .isEqualTo(height);
+    check("getHeight()").that(actual.getHeight()).isEqualTo(height);
     return this;
   }
 
   public CanvasSubject hasMaximumBitmapHeight(int height) {
-    assertThat(actual().getMaximumBitmapHeight())
-        .named("maximum bitmap height")
-        .isEqualTo(height);
+    check("getMaximumBitmapHeight()").that(actual.getMaximumBitmapHeight()).isEqualTo(height);
     return this;
   }
 
   public CanvasSubject hasMaximumBitmapWidth(int width) {
-    assertThat(actual().getMaximumBitmapWidth())
-        .named("maximum bitmap width")
-        .isEqualTo(width);
+    check("getMaximumBitmapWidth()").that(actual.getMaximumBitmapWidth()).isEqualTo(width);
     return this;
   }
 
   public CanvasSubject hasSaveCount(int count) {
-    assertThat(actual().getSaveCount())
-        .named("save count")
-        .isEqualTo(count);
+    check("getSaveCount()").that(actual.getSaveCount()).isEqualTo(count);
     return this;
   }
 
   public CanvasSubject hasWidth(int width) {
-    assertThat(actual().getWidth())
-        .named("width")
-        .isEqualTo(width);
+    check("getWidth()").that(actual.getWidth()).isEqualTo(width);
     return this;
   }
 
   public CanvasSubject isHardwareAccelerated() {
-    assertThat(actual().isHardwareAccelerated())
-        .named("is hardware accelerated")
-        .isTrue();
+    check("isHardwareAccelerated()").that(actual.isHardwareAccelerated()).isTrue();
     return this;
   }
 
   public CanvasSubject isNotHardwareAccelerated() {
-    assertThat(actual().isHardwareAccelerated())
-        .named("is hardware accelerated")
-        .isFalse();
+    check("isHardwareAccelerated()").that(actual.isHardwareAccelerated()).isFalse();
     return this;
   }
 
   public CanvasSubject isOpaque() {
-    assertThat(actual().isOpaque())
-        .named("is opaque")
-        .isTrue();
+    check("isOpaque()").that(actual.isOpaque()).isTrue();
     return this;
   }
 
   public CanvasSubject isNotOpaque() {
-    assertThat(actual().isOpaque())
-        .named("is opaque")
-        .isFalse();
+    check("isOpaque()").that(actual.isOpaque()).isFalse();
     return this;
   }
 }

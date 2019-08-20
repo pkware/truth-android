@@ -17,24 +17,29 @@
 package com.pkware.truth.android.material.navigation;
 
 import android.graphics.drawable.Drawable;
+
 import com.google.android.material.navigation.NavigationView;
 import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.widget.AbstractFrameLayoutSubject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link NavigationView} subjects.
  */
-public class NavigationViewSubject extends AbstractFrameLayoutSubject<NavigationViewSubject, NavigationView> {
-  public NavigationViewSubject(FailureMetadata failureMetadata, NavigationView subject) {
-    super(failureMetadata, subject);
+public class NavigationViewSubject extends AbstractFrameLayoutSubject<NavigationView> {
+
+  @Nullable
+  private final NavigationView actual;
+
+  public NavigationViewSubject(@Nonnull FailureMetadata failureMetadata, @Nullable NavigationView actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public NavigationViewSubject hasItemBackground(Drawable itemBackground) {
-    assertThat(actual().getItemBackground())
-        .named("item background")
-        .isEqualTo(itemBackground);
+  public NavigationViewSubject hasItemBackground(@Nullable Drawable itemBackground) {
+    check("getItemBackground()").that(actual.getItemBackground()).isEqualTo(itemBackground);
     return this;
   }
 }

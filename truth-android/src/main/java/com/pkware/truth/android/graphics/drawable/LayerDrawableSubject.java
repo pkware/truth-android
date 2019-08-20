@@ -17,22 +17,27 @@
 package com.pkware.truth.android.graphics.drawable;
 
 import android.graphics.drawable.LayerDrawable;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link LayerDrawable} subjects.
  */
-public class LayerDrawableSubject extends AbstractDrawableSubject<LayerDrawableSubject, LayerDrawable> {
-  public LayerDrawableSubject(FailureMetadata failureMetadata, LayerDrawable subject) {
-    super(failureMetadata, subject);
+public class LayerDrawableSubject extends AbstractDrawableSubject<LayerDrawable> {
+
+  @Nullable
+  private LayerDrawable actual;
+
+  public LayerDrawableSubject(@Nonnull FailureMetadata failureMetadata, @Nullable LayerDrawable actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public LayerDrawableSubject hasLayerCount(int count) {
-    assertThat(actual().getNumberOfLayers())
-        .named("layer count")
-        .isEqualTo(count);
+    check("getNumberOfLayers()").that(actual.getNumberOfLayers()).isEqualTo(count);
     return this;
   }
 }

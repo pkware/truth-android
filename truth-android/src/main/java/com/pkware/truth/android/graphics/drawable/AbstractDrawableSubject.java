@@ -23,150 +23,89 @@ import android.graphics.drawable.Drawable;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.KITKAT;
-import static com.google.common.truth.Truth.assertThat;
 
-public abstract class AbstractDrawableSubject<S extends AbstractDrawableSubject<S, T>, T extends Drawable> extends Subject<S, T> {
-  protected AbstractDrawableSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractDrawableSubject<T extends Drawable> extends Subject {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractDrawableSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S hasBounds(Rect bounds) {
-    assertThat(actual().getBounds())
-        .named("bounds")
-        .isEqualTo(bounds);
-    //noinspection unchecked
-    return (S) this;
+  public void hasBounds(@Nullable Rect bounds) {
+    check("getBounds()").that(actual.getBounds()).isEqualTo(bounds);
   }
 
-  public S hasCallback(Drawable.Callback callback) {
-    assertThat(actual().getCallback())
-        .named("callback")
-        .isSameAs(callback);
-    //noinspection unchecked
-    return (S) this;
+  public void hasCallback(@Nullable Drawable.Callback callback) {
+    check("getCallback()").that(actual.getCallback()).isSameInstanceAs(callback);
   }
 
-  public S hasChangingConfigurations(int mask) {
-    assertThat(actual().getChangingConfigurations())
-        .named("changing configurations")
-        .isEqualTo(mask);
-    //noinspection unchecked
-    return (S) this;
+  public void hasChangingConfigurations(int mask) {
+    check("getChangingConfigurations()").that(actual.getChangingConfigurations()).isEqualTo(mask);
   }
 
-  public S hasConstantState(Drawable.ConstantState state) {
-    assertThat(actual().getConstantState())
-        .named("constant state")
-        .isEqualTo(state);
-    //noinspection unchecked
-    return (S) this;
+  public void hasConstantState(@Nullable Drawable.ConstantState state) {
+    check("getConstantState()").that(actual.getConstantState()).isEqualTo(state);
   }
 
-  public S hasIntrinsicHeight(int height) {
-    assertThat(actual().getIntrinsicHeight())
-        .named("intrinsic height")
-        .isEqualTo(height);
-    //noinspection unchecked
-    return (S) this;
+  public void hasIntrinsicHeight(int height) {
+    check("getIntrinsicHeight()").that(actual.getIntrinsicHeight()).isEqualTo(height);
   }
 
-  public S hasIntrinsicWidth(int width) {
-    assertThat(actual().getIntrinsicWidth())
-        .named("intrinsic width")
-        .isEqualTo(width);
-    //noinspection unchecked
-    return (S) this;
+  public void hasIntrinsicWidth(int width) {
+    check("getIntrinsicWidth()").that(actual.getIntrinsicWidth()).isEqualTo(width);
   }
 
-  public S hasLevel(int level) {
-    assertThat(actual().getLevel())
-        .named("level")
-        .isEqualTo(level);
-    //noinspection unchecked
-    return (S) this;
+  public void hasLevel(int level) {
+    check("getLevel()").that(actual.getLevel()).isEqualTo(level);
   }
 
-  public S hasMinimumHeight(int height) {
-    assertThat(actual().getMinimumHeight())
-        .named("minimum height")
-        .isEqualTo(height);
-    //noinspection unchecked
-    return (S) this;
+  public void hasMinimumHeight(int height) {
+    check("getMinimumHeight()").that(actual.getMinimumHeight()).isEqualTo(height);
   }
 
-  public S hasMinimumWidth(int width) {
-    assertThat(actual().getMinimumWidth())
-        .named("minimum width")
-        .isEqualTo(width);
-    //noinspection unchecked
-    return (S) this;
+  public void hasMinimumWidth(int width) {
+    check("getMinimumWidth()").that(actual.getMinimumWidth()).isEqualTo(width);
   }
 
-  public S hasOpacity(int opacity) {
-    assertThat(actual().getOpacity())
-        .named("opacity")
-        .isEqualTo(opacity);
-    //noinspection unchecked
-    return (S) this;
+  public void hasOpacity(int opacity) {
+    check("getOpacity()").that(actual.getOpacity()).isEqualTo(opacity);
   }
 
-  public S isStateful() {
-    assertThat(actual().isStateful())
-        .named("is stateful")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isStateful() {
+    check("isStateful()").that(actual.isStateful()).isTrue();
   }
 
-  public S isNotStateful() {
-    assertThat(actual().isStateful())
-        .named("is stateful")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotStateful() {
+    check("isStateful()").that(actual.isStateful()).isFalse();
   }
 
-  public S isVisible() {
-    assertThat(actual().isVisible())
-        .named("is visible")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isVisible() {
+    check("isVisible()").that(actual.isVisible()).isTrue();
   }
 
-  public S isNotVisible() {
-    assertThat(actual().isVisible())
-        .named("is visible")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotVisible() {
+    check("isVisible()").that(actual.isVisible()).isFalse();
   }
 
   @TargetApi(KITKAT)
-  public S hasAlpha(int alpha) {
-    assertThat(actual().getAlpha())
-        .named("alpha")
-        .isEqualTo(alpha);
-    //noinspection unchecked
-    return (S) this;
+  public void hasAlpha(int alpha) {
+    check("getAlpha()").that(actual.getAlpha()).isEqualTo(alpha);
   }
 
   @TargetApi(KITKAT)
-  public S isAutoMirrored() {
-    assertThat(actual().isAutoMirrored())
-        .named("is auto mirrored")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isAutoMirrored() {
+    check("isAutoMirrored()").that(actual.isAutoMirrored()).isTrue();
   }
 
   @TargetApi(KITKAT)
-  public S isNotAutoMirrored() {
-    assertThat(actual().isAutoMirrored())
-        .named("is auto mirrored")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotAutoMirrored() {
+    check("isAutoMirrored()").that(actual.isAutoMirrored()).isFalse();
   }
 }

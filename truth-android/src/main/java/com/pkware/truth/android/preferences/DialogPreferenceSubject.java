@@ -17,13 +17,17 @@
 package com.pkware.truth.android.preferences;
 
 import android.preference.DialogPreference;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link DialogPreference} subjects.
  */
-public class DialogPreferenceSubject extends AbstractDialogPreferenceSubject<DialogPreferenceSubject, DialogPreference> {
-  public DialogPreferenceSubject(FailureMetadata failureMetadata, DialogPreference subject) {
-    super(failureMetadata, subject);
+public class DialogPreferenceSubject extends AbstractDialogPreferenceSubject<DialogPreference> {
+  public DialogPreferenceSubject(@Nonnull FailureMetadata failureMetadata, @Nullable DialogPreference actual) {
+    super(failureMetadata, actual);
   }
 }

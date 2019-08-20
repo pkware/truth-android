@@ -21,11 +21,15 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewParent;
 import android.view.animation.Animation;
+
 import androidx.annotation.IdRes;
 import androidx.annotation.StringRes;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
@@ -65,15 +69,19 @@ import static android.view.View.TEXT_DIRECTION_LOCALE;
 import static android.view.View.TEXT_DIRECTION_LTR;
 import static android.view.View.TEXT_DIRECTION_RTL;
 import static android.view.View.VISIBLE;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
-public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T extends View> extends Subject<S, T> {
-  protected AbstractViewSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractViewSubject<T extends View> extends Subject {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractViewSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   public static String visibilityToString(@ViewVisibility int visibility) {
     return buildNamedValueString(visibility)
         .value(VISIBLE, "visible")
@@ -82,6 +90,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
         .get();
   }
 
+  @Nonnull
   public static String layerTypeToString(@ViewLayerType int type) {
     return buildNamedValueString(type)
         .value(LAYER_TYPE_NONE, "none")
@@ -90,6 +99,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
         .get();
   }
 
+  @Nonnull
   @TargetApi(JELLY_BEAN_MR1)
   public static String layoutDirectionToString(@ViewLayoutDirection int direction) {
     return buildNamedValueString(direction)
@@ -100,6 +110,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
         .get();
   }
 
+  @Nonnull
   public static String overScrollModeToString(@ViewOverscrollMode int mode) {
     return buildNamedValueString(mode)
         .value(OVER_SCROLL_ALWAYS, "always")
@@ -108,6 +119,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
         .get();
   }
 
+  @Nonnull
   public static String scrollBarStyleToString(@ViewScrollBarStyle int style) {
     return buildNamedValueString(style)
         .value(SCROLLBARS_INSIDE_INSET, "insideInset")
@@ -125,6 +137,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
         .get();
   }
 
+  @Nonnull
   public static String textAlignmentToString(@ViewTextAlignment int alignment) {
     return buildNamedValueString(alignment)
         .value(TEXT_ALIGNMENT_INHERIT, "inherit")
@@ -137,6 +150,7 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
         .get();
   }
 
+  @Nonnull
   public static String textDirectionToString(@ViewTextDirection int direction) {
     return buildNamedValueString(direction)
         .value(TEXT_DIRECTION_INHERIT, "inherit")
@@ -148,1411 +162,787 @@ public abstract class AbstractViewSubject<S extends AbstractViewSubject<S, T>, T
         .get();
   }
 
-  public S hasAlpha(float alpha, float tolerance) {
-    assertThat(actual().getAlpha())
-        .named("alpha")
-        .isWithin(tolerance)
-        .of(alpha);
-    //noinspection unchecked
-    return (S) this;
+  public void hasAlpha(float alpha, float tolerance) {
+    check("getAlpha()").that(actual.getAlpha()).isWithin(tolerance).of(alpha);
   }
 
-  public S hasAnimation(Animation animation) {
-    assertThat(actual().getAnimation())
-        .named("animation")
-        .isSameAs(animation);
-    //noinspection unchecked
-    return (S) this;
+  public void hasAnimation(@Nullable Animation animation) {
+    check("getAnimation()").that(actual.getAnimation()).isSameInstanceAs(animation);
   }
 
-  public S hasBackground(Drawable background) {
-    assertThat(actual().getBackground())
-        .named("background")
-        .isSameAs(background);
-    //noinspection unchecked
-    return (S) this;
+  public void hasBackground(@Nullable Drawable background) {
+    check("getBackground()").that(actual.getBackground()).isSameInstanceAs(background);
   }
 
-  public S hasBaseline(int baseline) {
-    assertThat(actual().getBaseline())
-        .named("baseline")
-        .isEqualTo(baseline);
-    //noinspection unchecked
-    return (S) this;
+  public void hasBaseline(int baseline) {
+    check("getBaseline()").that(actual.getBaseline()).isEqualTo(baseline);
   }
 
-  public S hasBottom(int bottom) {
-    assertThat(actual().getBottom())
-        .named("bottom")
-        .isEqualTo(bottom);
-    //noinspection unchecked
-    return (S) this;
+  public void hasBottom(int bottom) {
+    check("getBottom()").that(actual.getBottom()).isEqualTo(bottom);
   }
 
-  public S hasContentDescription(String contentDescription) {
-    assertThat(actual().getContentDescription().toString())
-        .named("content description")
+  public void hasContentDescription(@Nullable String contentDescription) {
+    check("getContentDescription()")
+        .that(actual.getContentDescription().toString())
         .isEqualTo(contentDescription);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S hasContentDescription(@StringRes int resId) {
-    return hasContentDescription(actual().getContext().getString(resId));
+  public void hasContentDescription(@StringRes int resId) {
+    hasContentDescription(actual.getContext().getString(resId));
   }
 
-  public S hasDrawingCacheBackgroundColor(int color) {
-    int actualColor = actual().getDrawingCacheBackgroundColor();
-    assert_()
+  public void hasDrawingCacheBackgroundColor(int color) {
+    int actualColor = actual.getDrawingCacheBackgroundColor();
+    check("getDrawingCacheBackgroundColor()")
         .withMessage("Expected drawing cache background color <%s> but was <%s>",
             Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S hasDrawingCacheQuality(int quality) {
-    assertThat(actual().getDrawingCacheQuality())
-        .named("drawing cache quality")
-        .isEqualTo(quality);
-    //noinspection unchecked
-    return (S) this;
+  public void hasDrawingCacheQuality(int quality) {
+    check("getDrawingCacheQuality()").that(actual.getDrawingCacheQuality()).isEqualTo(quality);
   }
 
   @TargetApi(LOLLIPOP)
-  public S hasElevation(float elevation, float tolerance) {
-    assertThat(actual().getElevation())
-        .named("elevation")
-        .isWithin(tolerance)
-        .of(elevation);
-    //noinspection unchecked
-    return (S) this;
+  public void hasElevation(float elevation, float tolerance) {
+    check("getElevation()").that(actual.getElevation()).isWithin(tolerance).of(elevation);
   }
 
-  public S hasHeight(int height) {
-    assertThat(actual().getHeight())
-        .named("height")
-        .isEqualTo(height);
-    //noinspection unchecked
-    return (S) this;
+  public void hasHeight(int height) {
+    check("getHeight()").that(actual.getHeight()).isEqualTo(height);
   }
 
-  public S hasHorizontalFadingEdgeLength(int length) {
-    assertThat(actual().getHorizontalFadingEdgeLength())
-        .named("horizontal fading edge length")
-        .isEqualTo(length);
-    //noinspection unchecked
-    return (S) this;
+  public void hasHorizontalFadingEdgeLength(int length) {
+    check("getHorizontalFadingEdgeLength()").that(actual.getHorizontalFadingEdgeLength()).isEqualTo(length);
   }
 
-  public S hasId(int id) {
-    int actualId = actual().getId();
-    assert_()
+  public void hasId(int id) {
+    int actualId = actual.getId();
+    check("getId()")
         .withMessage("Expected ID <%s> but was <%s>", Integer.toHexString(id),
             Integer.toHexString(actualId))
         .that(actualId)
         .isEqualTo(id);
-    //noinspection unchecked
-    return (S) this;
   }
 
   @TargetApi(LOLLIPOP)
-  public S isImportantForAccessibility() {
-    assertThat(actual().isImportantForAccessibility())
-        .named("is important for accessibility")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isImportantForAccessibility() {
+    check("isImportantForAccessibility()").that(actual.isImportantForAccessibility()).isTrue();
   }
 
   @TargetApi(LOLLIPOP)
-  public S isNotImportantForAccessibility() {
-    assertThat(actual().isImportantForAccessibility())
-        .named("is important for accessibility")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotImportantForAccessibility() {
+    check("isImportantForAccessibility()").that(actual.isImportantForAccessibility()).isFalse();
   }
 
-  public S isKeepingScreenOn() {
-    assertThat(actual().getKeepScreenOn())
-        .named("is keeping screen on")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isKeepingScreenOn() {
+    check("getKeepScreenOn()").that(actual.getKeepScreenOn()).isTrue();
   }
 
-  public S isNotKeepingScreenOn() {
-    assertThat(actual().getKeepScreenOn())
-        .named("is keeping screen on")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotKeepingScreenOn() {
+    check("getKeepScreenOn()").that(actual.getKeepScreenOn()).isFalse();
   }
 
   @TargetApi(JELLY_BEAN_MR1)
-  public S isLabelFor(@IdRes int id) {
-    assertThat(actual().getLabelFor())
-        .named("is label for view")
-        .isEqualTo(id);
-    //noinspection unchecked
-    return (S) this;
+  public void isLabelFor(@IdRes int id) {
+    check("getLabelFor()").that(actual.getLabelFor()).isEqualTo(id);
   }
 
-  public S hasLayerType(@ViewLayerType int type) {
-    int actualType = actual().getLayerType();
+  public void hasLayerType(@ViewLayerType int type) {
+    int actualType = actual.getLayerType();
     //noinspection ResourceType
-    assert_()
+    check("getLayerType()")
         .withMessage("Expected layer type <%s> but was <%s>", layerTypeToString(type),
             layerTypeToString(actualType))
         .that(actualType)
         .isEqualTo(type);
-    //noinspection unchecked
-    return (S) this;
   }
 
   @TargetApi(JELLY_BEAN_MR1)
-  public S hasLayoutDirection(int direction) {
-    int actualDirection = actual().getLayoutDirection();
-    assert_()
+  public void hasLayoutDirection(int direction) {
+    int actualDirection = actual.getLayoutDirection();
+    check("getLayoutDirection()")
         .withMessage("Expected layout direction <%s> but was <%s>",
             layoutDirectionToString(direction), layoutDirectionToString(actualDirection))
         .that(actualDirection)
         .isEqualTo(direction);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S hasLeft(int left) {
-    assertThat(actual().getLeft())
-        .named("left")
-        .isEqualTo(left);
-    //noinspection unchecked
-    return (S) this;
+  public void hasLeft(int left) {
+    check("getLeft()").that(actual.getLeft()).isEqualTo(left);
   }
 
-  public S hasMeasuredHeight(int height) {
-    assertThat(actual().getMeasuredHeight())
-        .named("measured height")
-        .isEqualTo(height);
-    //noinspection unchecked
-    return (S) this;
+  public void hasMeasuredHeight(int height) {
+    check("getMeasuredHeight()").that(actual.getMeasuredHeight()).isEqualTo(height);
   }
 
-  public S hasMeasuredHeightAndState(int heightAndState) {
-    assertThat(actual().getMeasuredHeightAndState())
-        .named("measured height and state")
-        .isEqualTo(heightAndState);
-    //noinspection unchecked
-    return (S) this;
+  public void hasMeasuredHeightAndState(int heightAndState) {
+    check("getMeasuredHeightAndState()").that(actual.getMeasuredHeightAndState()).isEqualTo(heightAndState);
   }
 
-  public S hasMeasuredState(int state) {
-    assertThat(actual().getMeasuredState())
-        .named("measured state")
-        .isEqualTo(state);
-    //noinspection unchecked
-    return (S) this;
+  public void hasMeasuredState(int state) {
+    check("getMeasuredState()").that(actual.getMeasuredState()).isEqualTo(state);
   }
 
-  public S hasMeasuredWidth(int width) {
-    assertThat(actual().getMeasuredWidth())
-        .named("measured width")
-        .isEqualTo(width);
-    //noinspection unchecked
-    return (S) this;
+  public void hasMeasuredWidth(int width) {
+    check("getMeasuredWidth()").that(actual.getMeasuredWidth()).isEqualTo(width);
   }
 
-  public S hasMeasuredWidthAndState(int widthAndState) {
-    assertThat(actual().getMeasuredWidthAndState())
-        .named("measured width and state")
-        .isEqualTo(widthAndState);
-    //noinspection unchecked
-    return (S) this;
+  public void hasMeasuredWidthAndState(int widthAndState) {
+    check("getMeasuredWidthAndState()").that(actual.getMeasuredWidthAndState()).isEqualTo(widthAndState);
   }
 
   @TargetApi(JELLY_BEAN)
-  public S hasMinimumHeight(int height) {
-    assertThat(actual().getMinimumHeight())
-        .named("minimum height")
-        .isEqualTo(height);
-    //noinspection unchecked
-    return (S) this;
+  public void hasMinimumHeight(int height) {
+    check("getMinimumHeight()").that(actual.getMinimumHeight()).isEqualTo(height);
   }
 
   @TargetApi(JELLY_BEAN)
-  public S hasMinimumWidth(int width) {
-    assertThat(actual().getMinimumWidth())
-        .named("minimum width")
-        .isEqualTo(width);
-    //noinspection unchecked
-    return (S) this;
+  public void hasMinimumWidth(int width) {
+    check("getMinimumWidth()").that(actual.getMinimumWidth()).isEqualTo(width);
   }
 
-  public S hasNextFocusDownId(@IdRes int id) {
-    assertThat(actual().getNextFocusDownId())
-        .named("next focus down ID")
-        .isEqualTo(id);
-    //noinspection unchecked
-    return (S) this;
+  public void hasNextFocusDownId(@IdRes int id) {
+    check("getNextFocusDownId()").that(actual.getNextFocusDownId()).isEqualTo(id);
   }
 
-  public S hasNextFocusForwardId(@IdRes int id) {
-    assertThat(actual().getNextFocusForwardId())
-        .named("next focus forward ID")
-        .isEqualTo(id);
-    //noinspection unchecked
-    return (S) this;
+  public void hasNextFocusForwardId(@IdRes int id) {
+    check("getNextFocusForwardId()").that(actual.getNextFocusForwardId()).isEqualTo(id);
   }
 
-  public S hasNextFocusLeftId(@IdRes int id) {
-    assertThat(actual().getNextFocusLeftId())
-        .named("next focus left ID")
-        .isEqualTo(id);
-    //noinspection unchecked
-    return (S) this;
+  public void hasNextFocusLeftId(@IdRes int id) {
+    check("getNextFocusLeftId()").that(actual.getNextFocusLeftId()).isEqualTo(id);
   }
 
-  public S hasNextFocusRightId(@IdRes int id) {
-    assertThat(actual().getNextFocusRightId())
-        .named("next focus right ID")
-        .isEqualTo(id);
-    //noinspection unchecked
-    return (S) this;
+  public void hasNextFocusRightId(@IdRes int id) {
+    check("getNextFocusRightId()").that(actual.getNextFocusRightId()).isEqualTo(id);
   }
 
-  public S hasNextFocusUpId(@IdRes int id) {
-    assertThat(actual().getNextFocusUpId())
-        .named("next focus up ID")
-        .isEqualTo(id);
-    //noinspection unchecked
-    return (S) this;
+  public void hasNextFocusUpId(@IdRes int id) {
+    check("getNextFocusUpId()").that(actual.getNextFocusUpId()).isEqualTo(id);
   }
 
-  public S hasOverScrollMode(@ViewOverscrollMode int mode) {
-    int actualMode = actual().getOverScrollMode();
+  public void hasOverScrollMode(@ViewOverscrollMode int mode) {
+    int actualMode = actual.getOverScrollMode();
     //noinspection ResourceType
-    assert_()
+    check("getOverScrollMode()")
         .withMessage("Expected over scroll mode <%s> but was <%s>",
             overScrollModeToString(mode), overScrollModeToString(actualMode))
         .that(actualMode)
         .isEqualTo(mode);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S hasPaddingBottom(int padding) {
-    assertThat(actual().getPaddingBottom())
-        .named("padding bottom")
-        .isEqualTo(padding);
-    //noinspection unchecked
-    return (S) this;
+  public void hasPaddingBottom(int padding) {
+    check("getPaddingBottom()").that(actual.getPaddingBottom()).isEqualTo(padding);
   }
 
   @TargetApi(JELLY_BEAN_MR1)
-  public S hasPaddingEnd(int padding) {
-    assertThat(actual().getPaddingEnd())
-        .named("padding end")
-        .isEqualTo(padding);
-    //noinspection unchecked
-    return (S) this;
+  public void hasPaddingEnd(int padding) {
+    check("getPaddingEnd()").that(actual.getPaddingEnd()).isEqualTo(padding);
   }
 
-  public S hasPaddingLeft(int padding) {
-    assertThat(actual().getPaddingLeft())
-        .named("padding left")
-        .isEqualTo(padding);
-    //noinspection unchecked
-    return (S) this;
+  public void hasPaddingLeft(int padding) {
+    check("getPaddingLeft()").that(actual.getPaddingLeft()).isEqualTo(padding);
   }
 
-  public S hasPaddingRight(int padding) {
-    assertThat(actual().getPaddingRight())
-        .named("padding right")
-        .isEqualTo(padding);
-    //noinspection unchecked
-    return (S) this;
+  public void hasPaddingRight(int padding) {
+    check("getPaddingRight()").that(actual.getPaddingRight()).isEqualTo(padding);
   }
 
   @TargetApi(JELLY_BEAN_MR1)
-  public S hasPaddingStart(int padding) {
-    assertThat(actual().getPaddingStart())
-        .named("padding start")
-        .isEqualTo(padding);
-    //noinspection unchecked
-    return (S) this;
+  public void hasPaddingStart(int padding) {
+    check("getPaddingStart()").that(actual.getPaddingStart()).isEqualTo(padding);
   }
 
-  public S hasPaddingTop(int padding) {
-    assertThat(actual().getPaddingTop())
-        .named("padding top")
-        .isEqualTo(padding);
-    //noinspection unchecked
-    return (S) this;
+  public void hasPaddingTop(int padding) {
+    check("getPaddingTop()").that(actual.getPaddingTop()).isEqualTo(padding);
   }
 
-  public S hasParent(ViewParent parent) {
-    assertThat(actual().getParent())
-        .named("parent")
-        .isSameAs(parent);
-    //noinspection unchecked
-    return (S) this;
+  public void hasParent(@Nullable ViewParent parent) {
+    check("getParent()").that(actual.getParent()).isSameInstanceAs(parent);
   }
 
   @TargetApi(JELLY_BEAN)
-  public S hasParentForAccessibility(ViewParent parent) {
-    assertThat(actual().getParentForAccessibility())
-        .named("parent for accessibility")
-        .isSameAs(parent);
-    //noinspection unchecked
-    return (S) this;
+  public void hasParentForAccessibility(@Nullable ViewParent parent) {
+    check("getParentForAccessibility()").that(actual.getParentForAccessibility()).isSameInstanceAs(parent);
   }
 
-  public S hasPivotX(float pivotX, float tolerance) {
-    assertThat(actual().getPivotX())
-        .named("X pivot")
-        .isWithin(tolerance)
-        .of(pivotX);
-    //noinspection unchecked
-    return (S) this;
+  public void hasPivotX(float pivotX, float tolerance) {
+    check("getPivotX()").that(actual.getPivotX()).isWithin(tolerance).of(pivotX);
   }
 
-  public S hasPivotY(float pivotY, float tolerance) {
-    assertThat(actual().getPivotY())
-        .named("Y pivot")
-        .isWithin(tolerance)
-        .of(pivotY);
-    //noinspection unchecked
-    return (S) this;
+  public void hasPivotY(float pivotY, float tolerance) {
+    check("getPivotY()").that(actual.getPivotY()).isWithin(tolerance).of(pivotY);
   }
 
-  public S hasRight(int right) {
-    assertThat(actual().getRight())
-        .named("right")
-        .isEqualTo(right);
-    //noinspection unchecked
-    return (S) this;
+  public void hasRight(int right) {
+    check("getRight()").that(actual.getRight()).isEqualTo(right);
   }
 
-  public S hasRootView(View view) {
-    assertThat(actual().getRootView())
-        .named("root view")
-        .isSameAs(view);
-    //noinspection unchecked
-    return (S) this;
+  public void hasRootView(@Nullable View view) {
+    check("getRootView()").that(actual.getRootView()).isSameInstanceAs(view);
   }
 
-  public S hasRotation(float rotation, float tolerance) {
-    assertThat(actual().getRotation())
-        .named("rotation")
-        .isWithin(tolerance)
-        .of(rotation);
-    //noinspection unchecked
-    return (S) this;
+  public void hasRotation(float rotation, float tolerance) {
+    check("getRotation()").that(actual.getRotation()).isWithin(tolerance).of(rotation);
   }
 
-  public S hasRotationX(float rotation, float tolerance) {
-    assertThat(actual().getRotationX())
-        .named("X rotation")
-        .isWithin(tolerance)
-        .of(rotation);
-    //noinspection unchecked
-    return (S) this;
+  public void hasRotationX(float rotation, float tolerance) {
+    check("getRotationX()").that(actual.getRotationX()).isWithin(tolerance).of(rotation);
   }
 
-  public S hasRotationY(float rotation, float tolerance) {
-    assertThat(actual().getRotationY())
-        .named("Y rotation")
-        .isWithin(tolerance)
-        .of(rotation);
-    //noinspection unchecked
-    return (S) this;
+  public void hasRotationY(float rotation, float tolerance) {
+    check("getRotationY()").that(actual.getRotationY()).isWithin(tolerance).of(rotation);
   }
 
-  public S hasScaleX(float scale, float tolerance) {
-    assertThat(actual().getScaleX())
-        .named("X scale")
-        .isWithin(tolerance)
+  public void hasScaleX(float scale, float tolerance) {
+    check("getScaleX()").that(actual.getScaleX()).isWithin(tolerance)
         .of(scale);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S hasScaleY(float scale, float tolerance) {
-    assertThat(actual().getScaleY())
-        .named("Y scale")
-        .isWithin(tolerance)
-        .of(scale);
-    //noinspection unchecked
-    return (S) this;
+  public void hasScaleY(float scale, float tolerance) {
+    check("getScaleY()").that(actual.getScaleY()).isWithin(tolerance).of(scale);
   }
 
   @TargetApi(JELLY_BEAN)
-  public S hasScrollBarDefaultDelayBeforeFade(int fade) {
-    assertThat(actual().getScrollBarDefaultDelayBeforeFade())
-        .named("scroll bar default delay before fade")
-        .isEqualTo(fade);
-    //noinspection unchecked
-    return (S) this;
+  public void hasScrollBarDefaultDelayBeforeFade(int fade) {
+    check("getScrollBarDefaultDelayBeforeFade()").that(actual.getScrollBarDefaultDelayBeforeFade()).isEqualTo(fade);
   }
 
   @TargetApi(JELLY_BEAN)
-  public S hasScrollBarFadeDuration(int fade) {
-    assertThat(actual().getScrollBarFadeDuration())
-        .named("scroll bar fade duration")
-        .isEqualTo(fade);
-    //noinspection unchecked
-    return (S) this;
+  public void hasScrollBarFadeDuration(int fade) {
+    check("getScrollBarFadeDuration()").that(actual.getScrollBarFadeDuration()).isEqualTo(fade);
   }
 
   @TargetApi(JELLY_BEAN)
-  public S hasScrollBarSize(int size) {
-    assertThat(actual().getScrollBarSize())
-        .named("scroll bar size")
-        .isEqualTo(size);
-    //noinspection unchecked
-    return (S) this;
+  public void hasScrollBarSize(int size) {
+    check("getScrollBarSize()").that(actual.getScrollBarSize()).isEqualTo(size);
   }
 
-  public S hasScrollBarStyle(@ViewScrollBarStyle int style) {
-    int actualStyle = actual().getScrollBarStyle();
+  public void hasScrollBarStyle(@ViewScrollBarStyle int style) {
+    int actualStyle = actual.getScrollBarStyle();
     //noinspection ResourceType
-    assert_()
+    check("getScrollBarStyle()")
         .withMessage("Expected scroll bar style <%s> but was <%s>",
             scrollBarStyleToString(style), scrollBarStyleToString(actualStyle))
         .that(actualStyle)
         .isEqualTo(style);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S hasScrollX(int scroll) {
-    assertThat(actual().getScrollX())
-        .named("X scroll")
-        .isEqualTo(scroll);
-    //noinspection unchecked
-    return (S) this;
+  public void hasScrollX(int scroll) {
+    check("getScrollX()").that(actual.getScrollX()).isEqualTo(scroll);
   }
 
-  public S hasScrollY(int scroll) {
-    assertThat(actual().getScrollY())
-        .named("Y scroll")
-        .isEqualTo(scroll);
-    //noinspection unchecked
-    return (S) this;
+  public void hasScrollY(int scroll) {
+    check("getScrollY()").that(actual.getScrollY()).isEqualTo(scroll);
   }
 
-  public S hasSolidColor(int color) {
-    int actualColor = actual().getSolidColor();
-    assert_()
+  public void hasSolidColor(int color) {
+    int actualColor = actual.getSolidColor();
+    check("getSolidColor()")
         .withMessage("Expected solid color <%s> but was <%s>",
             Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S hasSystemUiVisibility(int visibility) {
-    assertThat(actual().getSystemUiVisibility())
-        .named("system UI visibility")
-        .isEqualTo(visibility);
-    //noinspection unchecked
-    return (S) this;
+  public void hasSystemUiVisibility(int visibility) {
+    check("getSystemUiVisibility()").that(actual.getSystemUiVisibility()).isEqualTo(visibility);
   }
 
-  public S hasTag(int key, Object tag) {
-    assertThat(actual().getTag(key))
-        .named("tag")
-        .isEqualTo(tag);
-    //noinspection unchecked
-    return (S) this;
+  public void hasTag(int key, Object tag) {
+    check("getTag(key)").that(actual.getTag(key)).isEqualTo(tag);
   }
 
-  public S hasTag(Object tag) {
-    assertThat(actual().getTag())
-        .named("tag")
-        .isEqualTo(tag);
-    //noinspection unchecked
-    return (S) this;
+  public void hasTag(@Nullable Object tag) {
+    check("getTag()").that(actual.getTag()).isEqualTo(tag);
   }
 
   @TargetApi(JELLY_BEAN_MR1)
-  public S hasTextAlignment(@ViewTextAlignment int alignment) {
-    int actualAlignment = actual().getTextAlignment();
-    assert_()
+  public void hasTextAlignment(@ViewTextAlignment int alignment) {
+    int actualAlignment = actual.getTextAlignment();
+    check("getTextAlignment()")
         .withMessage("Expected text alignment <%s> but was <%s>",
             textAlignmentToString(alignment), textAlignmentToString(actualAlignment))
         .that(actualAlignment)
         .isEqualTo(alignment);
-    //noinspection unchecked
-    return (S) this;
   }
 
   @TargetApi(JELLY_BEAN_MR1)
-  public S hasTextDirection(@ViewTextDirection int direction) {
-    int actualDirection = actual().getTextDirection();
+  public void hasTextDirection(@ViewTextDirection int direction) {
+    int actualDirection = actual.getTextDirection();
     //noinspection ResourceType
-    assert_()
+    check("getTextDirection()")
         .withMessage("Expected text direction <%s> but was <%s>",
             textDirectionToString(direction), textDirectionToString(actualDirection))
         .that(actualDirection)
         .isEqualTo(direction);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S hasTop(int top) {
-    assertThat(actual().getTop())
-        .named("top")
-        .isEqualTo(top);
-    //noinspection unchecked
-    return (S) this;
+  public void hasTop(int top) {
+    check("getTop()").that(actual.getTop()).isEqualTo(top);
   }
 
-  public S hasTranslationX(float translation, float tolerance) {
-    assertThat(actual().getTranslationX())
-        .named("X translation")
-        .isWithin(tolerance)
-        .of(translation);
-    //noinspection unchecked
-    return (S) this;
+  public void hasTranslationX(float translation, float tolerance) {
+    check("getTranslationX()").that(actual.getTranslationX()).isWithin(tolerance).of(translation);
   }
 
-  public S hasTranslationY(float translation, float tolerance) {
-    assertThat(actual().getTranslationY())
-        .named("Y translation")
-        .isWithin(tolerance)
-        .of(translation);
-    //noinspection unchecked
-    return (S) this;
+  public void hasTranslationY(float translation, float tolerance) {
+    check("getTranslationY()").that(actual.getTranslationY()).isWithin(tolerance).of(translation);
   }
 
   @TargetApi(LOLLIPOP)
-  public S hasTranslationZ(float translation, float tolerance) {
-    assertThat(actual().getTranslationZ())
-        .named("Z translation")
-        .isWithin(tolerance)
-        .of(translation);
-    //noinspection unchecked
-    return (S) this;
+  public void hasTranslationZ(float translation, float tolerance) {
+    check("getTranslationZ()").that(actual.getTranslationZ()).isWithin(tolerance).of(translation);
   }
 
-  public S hasVerticalFadingEdgeLength(int length) {
-    assertThat(actual().getVerticalFadingEdgeLength())
-        .named("vertical fading edge length")
-        .isEqualTo(length);
-    //noinspection unchecked
-    return (S) this;
+  public void hasVerticalFadingEdgeLength(int length) {
+    check("getVerticalFadingEdgeLength()").that(actual.getVerticalFadingEdgeLength()).isEqualTo(length);
   }
 
-  public S hasVerticalScrollbarPosition(int position) {
-    int actualPosition = actual().getVerticalScrollbarPosition();
+  public void hasVerticalScrollbarPosition(int position) {
+    int actualPosition = actual.getVerticalScrollbarPosition();
     //noinspection ResourceType
-    assert_()
+    check("getVerticalScrollbarPosition()")
         .withMessage("Expected vertical scroll bar position <%s> but was <%s>",
             verticalScrollBarPositionToString(position),
             verticalScrollBarPositionToString(actualPosition))
         .that(actualPosition)
         .isEqualTo(position);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S hasVerticalScrollbarWidth(int width) {
-    assertThat(actual().getVerticalScrollbarWidth())
-        .named("vertical scroll bar width")
-        .isEqualTo(width);
-    //noinspection unchecked
-    return (S) this;
+  public void hasVerticalScrollbarWidth(int width) {
+    check("getVerticalScrollbarWidth()").that(actual.getVerticalScrollbarWidth()).isEqualTo(width);
   }
 
-  public S hasVisibility(@ViewVisibility int visibility) {
-    int actualVisibility = actual().getVisibility();
-    assert_()
+  public void hasVisibility(@ViewVisibility int visibility) {
+    int actualVisibility = actual.getVisibility();
+    check("getVisibility()")
         .withMessage("Expected visibility <%s> but was <%s>.",
             visibilityToString(visibility), visibilityToString(actualVisibility))
         .that(actualVisibility)
         .isEqualTo(visibility);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S isVisible() {
-    int actualVisibility = actual().getVisibility();
+  public void isVisible() {
+    int actualVisibility = actual.getVisibility();
     //noinspection ResourceType
-    assert_()
+    check("getVisibility()")
         .withMessage("Expected to be visible but was %s", visibilityToString(actualVisibility))
         .that(actualVisibility)
         .isEqualTo(VISIBLE);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S isNotVisible() {
-    int actualVisibility = actual().getVisibility();
-    assert_()
+  public void isNotVisible() {
+    int actualVisibility = actual.getVisibility();
+    check("getVisibility()")
         .withMessage("Expected to be not visible but was visible")
         .that(actualVisibility)
         .isNotEqualTo(VISIBLE);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S isInvisible() {
-    int actualVisibility = actual().getVisibility();
-    assert_()
+  public void isInvisible() {
+    int actualVisibility = actual.getVisibility();
+    check("getVisibility()")
         .withMessage("Expected to be invisible but was %s",
             visibilityToString(actualVisibility))
         .that(actualVisibility)
         .isEqualTo(INVISIBLE);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S isNotInvisible() {
-    int actualVisibility = actual().getVisibility();
-    assert_()
+  public void isNotInvisible() {
+    int actualVisibility = actual.getVisibility();
+    check("getVisibility()")
         .withMessage("Expected to be not invisible but was invisible")
         .that(actualVisibility)
         .isNotEqualTo(INVISIBLE);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S isGone() {
-    int actualVisibility = actual().getVisibility();
-    assert_()
+  public void isGone() {
+    int actualVisibility = actual.getVisibility();
+    check("getVisibility()")
         .withMessage("Expected to be gone but was %s", visibilityToString(actualVisibility))
         .that(actualVisibility)
         .isEqualTo(GONE);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S isNotGone() {
-    int actualVisibility = actual().getVisibility();
-    assert_()
+  public void isNotGone() {
+    int actualVisibility = actual.getVisibility();
+    check("getVisibility()")
         .withMessage("Expected to be not gone but was gone")
         .that(actualVisibility)
         .isNotEqualTo(GONE);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S hasWidth(int width) {
-    assertThat(actual().getWidth())
-        .named("width")
-        .isEqualTo(width);
-    //noinspection unchecked
-    return (S) this;
+  public void hasWidth(int width) {
+    check("getWidth()").that(actual.getWidth()).isEqualTo(width);
   }
 
-  public S hasWindowVisibility(int visibility) {
-    int actualVisibility = actual().getWindowVisibility();
-    assert_()
+  public void hasWindowVisibility(int visibility) {
+    int actualVisibility = actual.getWindowVisibility();
+    check("getWindowVisibility()")
         .withMessage("Expected window visibility <%s> but was <%s>",
             visibilityToString(visibility), visibilityToString(actualVisibility))
         .that(actualVisibility)
         .isEqualTo(visibility);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S hasX(float x, float tolerance) {
-    assertThat(actual().getX())
-        .named("X")
-        .isWithin(tolerance)
-        .of(x);
-    //noinspection unchecked
-    return (S) this;
+  public void hasX(float x, float tolerance) {
+    check("getX()").that(actual.getX()).isWithin(tolerance).of(x);
   }
 
-  public S hasY(float y, float tolerance) {
-    assertThat(actual().getY())
-        .named("Y")
-        .isWithin(tolerance)
-        .of(y);
-    //noinspection unchecked
-    return (S) this;
+  public void hasY(float y, float tolerance) {
+    check("getY()").that(actual.getY()).isWithin(tolerance).of(y);
   }
 
   @TargetApi(LOLLIPOP)
-  public S hasZ(float z, float tolerance) {
-    assertThat(actual().getZ())
-        .named("Z")
-        .isWithin(tolerance)
-        .of(z);
-    //noinspection unchecked
-    return (S) this;
+  public void hasZ(float z, float tolerance) {
+    check("getZ()").that(actual.getZ()).isWithin(tolerance).of(z);
   }
 
-  public S hasFocus() {
-    assertThat(actual().hasFocus())
-        .named("has focus")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void hasFocus() {
+    check("hasFocus()").that(actual.hasFocus()).isTrue();
   }
 
-  public S hasNoFocus() {
-    assertThat(actual().hasFocus())
-        .named("has focus")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void hasNoFocus() {
+    check("hasFocus()").that(actual.hasFocus()).isFalse();
   }
 
-  public S hasFocusable() {
-    assertThat(actual().hasFocusable())
-        .named("has focusable")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void hasFocusable() {
+    check("hasFocusable()").that(actual.hasFocusable()).isTrue();
   }
 
-  public S isInFocusedWindow() {
-    assertThat(actual().hasWindowFocus())
-        .named("is in focused window")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isInFocusedWindow() {
+    check("hasWindowFocus()").that(actual.hasWindowFocus()).isTrue();
   }
 
-  public S isNotInFocusedWindow() {
-    assertThat(actual().hasWindowFocus())
-        .named("is in focused window")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotInFocusedWindow() {
+    check("hasWindowFocus()").that(actual.hasWindowFocus()).isFalse();
   }
 
-  public S isActivated() {
-    assertThat(actual().isActivated())
-        .named("is activated")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isActivated() {
+    check("isActivated()").that(actual.isActivated()).isTrue();
   }
 
-  public S isNotActivated() {
-    assertThat(actual().isActivated())
-        .named("is activated")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotActivated() {
+    check("isActivated()").that(actual.isActivated()).isFalse();
   }
 
-  public S isClickable() {
-    assertThat(actual().isClickable())
-        .named("is clickable")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isClickable() {
+    check("isClickable()").that(actual.isClickable()).isTrue();
   }
 
-  public S isNotClickable() {
-    assertThat(actual().isClickable())
-        .named("is clickable")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotClickable() {
+    check("isClickable()").that(actual.isClickable()).isFalse();
   }
 
-  public S isDirty() {
-    assertThat(actual().isDirty())
-        .named("is dirty")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isDirty() {
+    check("isDirty()").that(actual.isDirty()).isTrue();
   }
 
-  public S isNotDirty() {
-    assertThat(actual().isDirty())
-        .named("is dirty")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotDirty() {
+    check("isDirty()").that(actual.isDirty()).isFalse();
   }
 
-  public S isUsingDrawingCache() {
-    assertThat(actual().isDrawingCacheEnabled())
-        .named("is using drawing cache")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isUsingDrawingCache() {
+    check("isDrawingCacheEnabled()").that(actual.isDrawingCacheEnabled()).isTrue();
   }
 
-  public S isNotUsingDrawingCache() {
-    assertThat(actual().isDrawingCacheEnabled())
-        .named("is using drawing cache")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotUsingDrawingCache() {
+    check("isDrawingCacheEnabled()").that(actual.isDrawingCacheEnabled()).isFalse();
   }
 
-  public S isDuplicatingParentState() {
-    assertThat(actual().isDuplicateParentStateEnabled())
-        .named("is duplicating parent state")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isDuplicatingParentState() {
+    check("isDuplicateParentStateEnabled()").that(actual.isDuplicateParentStateEnabled()).isTrue();
   }
 
-  public S isNotDuplicatingParentState() {
-    assertThat(actual().isDuplicateParentStateEnabled())
-        .named("is duplicating parent state")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotDuplicatingParentState() {
+    check("isDuplicateParentStateEnabled()").that(actual.isDuplicateParentStateEnabled()).isFalse();
   }
 
-  public S isEnabled() {
-    assertThat(actual().isEnabled())
-        .named("is enabled")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isEnabled() {
+    check("isEnabled()").that(actual.isEnabled()).isTrue();
   }
 
-  public S isDisabled() {
-    assertThat(!actual().isEnabled())
-        .named("is disabled")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isDisabled() {
+    check("isEnabled()").that(actual.isEnabled()).isFalse();
   }
 
-  public S isFocusable() {
-    assertThat(actual().isFocusable())
-        .named("is focusable")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isFocusable() {
+    check("isFocusable()").that(actual.isFocusable()).isTrue();
   }
 
-  public S isNotFocusable() {
-    assertThat(actual().isFocusable())
-        .named("is focusable")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotFocusable() {
+    check("isFocusable()").that(actual.isFocusable()).isFalse();
   }
 
-  public S isFocusableInTouchMode() {
-    assertThat(actual().isFocusableInTouchMode())
-        .named("is focusable in touch mode")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isFocusableInTouchMode() {
+    check("isFocusableInTouchMode()").that(actual.isFocusableInTouchMode()).isTrue();
   }
 
-  public S isNotFocusableInTouchMode() {
-    assertThat(actual().isFocusableInTouchMode())
-        .named("is focusable in touch mode")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotFocusableInTouchMode() {
+    check("isFocusableInTouchMode()").that(actual.isFocusableInTouchMode()).isFalse();
   }
 
-  public S isFocused() {
-    assertThat(actual().isFocused())
-        .named("is focused")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isFocused() {
+    check("isFocused()").that(actual.isFocused()).isTrue();
   }
 
-  public S isNotFocused() {
-    assertThat(actual().isFocused())
-        .named("is focused")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotFocused() {
+    check("isFocused()").that(actual.isFocused()).isFalse();
   }
 
-  public S hasHapticFeedbackEnabled() {
-    assertThat(actual().isHapticFeedbackEnabled())
-        .named("is haptic feedback enabled")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void hasHapticFeedbackEnabled() {
+    check("isHapticFeedbackEnabled()").that(actual.isHapticFeedbackEnabled()).isTrue();
   }
 
-  public S hasHapticFeedbackDisabled() {
-    assertThat(!actual().isHapticFeedbackEnabled())
-        .named("is haptic feedback disabled")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void hasHapticFeedbackDisabled() {
+    check("isHapticFeedbackEnabled()").that(actual.isHapticFeedbackEnabled()).isFalse();
   }
 
-  public S isHardwareAccelerated() {
-    assertThat(actual().isHardwareAccelerated())
-        .named("is hardware accelerated")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isHardwareAccelerated() {
+    check("isHardwareAccelerated()").that(actual.isHardwareAccelerated()).isTrue();
   }
 
-  public S isNotHardwareAccelerated() {
-    assertThat(actual().isHardwareAccelerated())
-        .named("is hardware accelerated")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotHardwareAccelerated() {
+    check("isHardwareAccelerated()").that(actual.isHardwareAccelerated()).isFalse();
   }
 
-  public S hasHorizontalFadingEdgesEnabled() {
-    assertThat(actual().isHorizontalFadingEdgeEnabled())
-        .named("is fading horizontal edges")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void hasHorizontalFadingEdgesEnabled() {
+    check("isHorizontalFadingEdgeEnabled()").that(actual.isHorizontalFadingEdgeEnabled()).isTrue();
   }
 
-  public S hasHorizontalFadingEdgesDisabled() {
-    assertThat(!actual().isHorizontalFadingEdgeEnabled())
-        .named("is not fading horizontal edges")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void hasHorizontalFadingEdgesDisabled() {
+    check("isHorizontalFadingEdgeEnabled()").that(actual.isHorizontalFadingEdgeEnabled()).isFalse();
   }
 
-  public S hasHorizontalScrollbarEnabled() {
-    assertThat(actual().isHorizontalScrollBarEnabled())
-        .named("is horizontal scroll bar enabled")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void hasHorizontalScrollbarEnabled() {
+    check("isHorizontalScrollBarEnabled()").that(actual.isHorizontalScrollBarEnabled()).isTrue();
   }
 
-  public S hasHorizontalScrollbarDisabled() {
-    assertThat(actual().isHorizontalScrollBarEnabled())
-        .named("is horizontal scroll bar enabled")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void hasHorizontalScrollbarDisabled() {
+    check("isHorizontalScrollBarEnabled()").that(actual.isHorizontalScrollBarEnabled()).isFalse();
   }
 
-  public S isHovered() {
-    assertThat(actual().isHovered())
-        .named("is hovered")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isHovered() {
+    check("isHovered()").that(actual.isHovered()).isTrue();
   }
 
-  public S isNotHovered() {
-    assertThat(actual().isHovered())
-        .named("is hovered")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotHovered() {
+    check("isHovered()").that(actual.isHovered()).isFalse();
   }
 
-  public S isInEditMode() {
-    assertThat(actual().isInEditMode())
-        .named("is in edit mode")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isInEditMode() {
+    check("isInEditMode()").that(actual.isInEditMode()).isTrue();
   }
 
-  public S isNotInEditMode() {
-    assertThat(actual().isInEditMode())
-        .named("is in edit mode")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotInEditMode() {
+    check("isInEditMode()").that(actual.isInEditMode()).isFalse();
   }
 
   @TargetApi(JELLY_BEAN_MR2)
-  public S isInLayout() {
-    assertThat(actual().isInLayout())
-        .named("is in layout")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isInLayout() {
+    check("isInLayout()").that(actual.isInLayout()).isTrue();
   }
 
   @TargetApi(JELLY_BEAN_MR2)
-  public S isNotInLayout() {
-    assertThat(actual().isInLayout())
-        .named("is in layout")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotInLayout() {
+    check("isInLayout()").that(actual.isInLayout()).isFalse();
   }
 
-  public S isInTouchMode() {
-    assertThat(actual().isInTouchMode())
-        .named("is in touch mode")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isInTouchMode() {
+    check("isInTouchMode()").that(actual.isInTouchMode()).isTrue();
   }
 
-  public S isNotInTouchMode() {
-    assertThat(actual().isInTouchMode())
-        .named("is in touch mode")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotInTouchMode() {
+    check("isInTouchMode()").that(actual.isInTouchMode()).isFalse();
   }
 
-  public S hasLayoutRequested() {
-    assertThat(actual().isLayoutRequested())
-        .named("is layout requested")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void hasLayoutRequested() {
+    check("isLayoutRequested()").that(actual.isLayoutRequested()).isTrue();
   }
 
-  public S hasNoLayoutRequested() {
-    assertThat(actual().isLayoutRequested())
-        .named("is layout requested")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void hasNoLayoutRequested() {
+    check("isLayoutRequested()").that(actual.isLayoutRequested()).isFalse();
   }
 
-  public S isLongClickable() {
-    assertThat(actual().isLongClickable())
-        .named("is long-clickable")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isLongClickable() {
+    check("isLongClickable()").that(actual.isLongClickable()).isTrue();
   }
 
-  public S isNotLongClickable() {
-    assertThat(actual().isLongClickable())
-        .named("is long-clickable")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotLongClickable() {
+    check("isLongClickable()").that(actual.isLongClickable()).isFalse();
   }
 
-  public S isOpaque() {
-    assertThat(actual().isOpaque())
-        .named("is opaque")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isOpaque() {
+    check("isOpaque()").that(actual.isOpaque()).isTrue();
   }
 
-  public S isNotOpaque() {
-    assertThat(actual().isOpaque())
-        .named("is opaque")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotOpaque() {
+    check("isOpaque()").that(actual.isOpaque()).isFalse();
   }
 
-  public S isPressed() {
-    assertThat(actual().isPressed())
-        .named("is pressed")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isPressed() {
+    check("isPressed()").that(actual.isPressed()).isTrue();
   }
 
-  public S isNotPressed() {
-    assertThat(actual().isPressed())
-        .named("is pressed")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotPressed() {
+    check("isPressed()").that(actual.isPressed()).isFalse();
   }
 
-  public S hasSaveEnabled() {
-    assertThat(actual().isSaveEnabled())
-        .named("is save enabled")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void hasSaveEnabled() {
+    check("isSaveEnabled()").that(actual.isSaveEnabled()).isTrue();
   }
 
-  public S hasSaveDisabled() {
-    assertThat(actual().isSaveEnabled())
-        .named("is save enabled")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void hasSaveDisabled() {
+    check("isSaveEnabled()").that(actual.isSaveEnabled()).isFalse();
   }
 
-  public S hasSaveFromParentEnabled() {
-    assertThat(actual().isSaveFromParentEnabled())
-        .named("is save from parent enabled")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void hasSaveFromParentEnabled() {
+    check("isSaveFromParentEnabled()").that(actual.isSaveFromParentEnabled()).isTrue();
   }
 
-  public S hasSaveFromParentDisabled() {
-    assertThat(actual().isSaveFromParentEnabled())
-        .named("is save from parent enabled")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void hasSaveFromParentDisabled() {
+    check("isSaveFromParentEnabled()").that(actual.isSaveFromParentEnabled()).isFalse();
   }
 
   @TargetApi(JELLY_BEAN)
-  public S isScrollContainer() {
-    assertThat(actual().isScrollContainer())
-        .named("is a scroll container")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isScrollContainer() {
+    check("isScrollContainer()").that(actual.isScrollContainer()).isTrue();
   }
 
   @TargetApi(JELLY_BEAN)
-  public S isNotScrollContainer() {
-    assertThat(actual().isScrollContainer())
-        .named("is a scroll container")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotScrollContainer() {
+    check("isScrollContainer()").that(actual.isScrollContainer()).isFalse();
   }
 
-  public S hasScrollbarFadingEnabled() {
-    assertThat(actual().isScrollbarFadingEnabled())
-        .named("is scroll bar fading enabled")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void hasScrollbarFadingEnabled() {
+    check("isScrollbarFadingEnabled()").that(actual.isScrollbarFadingEnabled()).isTrue();
   }
 
-  public S hasScrollbarFadingDisabled() {
-    assertThat(actual().isScrollbarFadingEnabled())
-        .named("is scroll bar fading enabled")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void hasScrollbarFadingDisabled() {
+    check("isScrollbarFadingEnabled()").that(actual.isScrollbarFadingEnabled()).isFalse();
   }
 
-  public S isSelected() {
-    assertThat(actual().isSelected())
-        .named("is selected")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isSelected() {
+    check("isSelected()").that(actual.isSelected()).isTrue();
   }
 
-  public S isNotSelected() {
-    assertThat(actual().isSelected())
-        .named("is selected")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotSelected() {
+    check("isSelected()").that(actual.isSelected()).isFalse();
   }
 
-  public S isShown() {
-    assertThat(actual().isShown())
-        .named("is shown")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isShown() {
+    check("isShown()").that(actual.isShown()).isTrue();
   }
 
-  public S isNotShown() {
-    assertThat(actual().isShown())
-        .named("is shown")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotShown() {
+    check("isShown()").that(actual.isShown()).isFalse();
   }
 
-  public S hasSoundEffectsEnabled() {
-    assertThat(actual().isSoundEffectsEnabled())
-        .named("are sound effects enabled")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void hasSoundEffectsEnabled() {
+    check("isSoundEffectsEnabled()").that(actual.isSoundEffectsEnabled()).isTrue();
   }
 
-  public S hasSoundEffectsDisabled() {
-    assertThat(actual().isSoundEffectsEnabled())
-        .named("are sound effects enabled")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void hasSoundEffectsDisabled() {
+    check("isSoundEffectsEnabled()").that(actual.isSoundEffectsEnabled()).isFalse();
   }
 
-  public S hasVerticalFadingEdgeEnabled() {
-    assertThat(actual().isVerticalFadingEdgeEnabled())
-        .named("is vertical fading edge enabled")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void hasVerticalFadingEdgeEnabled() {
+    check("isVerticalFadingEdgeEnabled()").that(actual.isVerticalFadingEdgeEnabled()).isTrue();
   }
 
-  public S hasVerticalFadingEdgeDisabled() {
-    assertThat(actual().isVerticalFadingEdgeEnabled())
-        .named("is vertical fading edge enabled")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void hasVerticalFadingEdgeDisabled() {
+    check("isVerticalFadingEdgeEnabled()").that(actual.isVerticalFadingEdgeEnabled()).isFalse();
   }
 
-  public S hasVerticalScrollBarEnabled() {
-    assertThat(actual().isVerticalScrollBarEnabled())
-        .named("is vertical scroll bar enabled")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void hasVerticalScrollBarEnabled() {
+    check("isVerticalScrollBarEnabled()").that(actual.isVerticalScrollBarEnabled()).isTrue();
   }
 
-  public S hasVerticalScrollBarDisabled() {
-    assertThat(actual().isVerticalScrollBarEnabled())
-        .named("is vertical scroll bar enabled")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void hasVerticalScrollBarDisabled() {
+    check("isVerticalScrollBarEnabled()").that(actual.isVerticalScrollBarEnabled()).isFalse();
   }
 
   @TargetApi(KITKAT)
-  public S canResolveLayoutDirection() {
-    assertThat(actual().canResolveLayoutDirection())
-        .named("can resolve layout direction")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void canResolveLayoutDirection() {
+    check("canResolveLayoutDirection()").that(actual.canResolveLayoutDirection()).isTrue();
   }
 
   @TargetApi(KITKAT)
-  public S canNotResolveLayoutDirection() {
-    assertThat(actual().canResolveLayoutDirection())
-        .named("can resolve layout direction")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void canNotResolveLayoutDirection() {
+    check("canResolveLayoutDirection()").that(actual.canResolveLayoutDirection()).isFalse();
   }
 
   @TargetApi(KITKAT)
-  public S canResolveTextAlignment() {
-    assertThat(actual().canResolveTextAlignment())
-        .named("can resolve text alignment")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void canResolveTextAlignment() {
+    check("canResolveTextAlignment()").that(actual.canResolveTextAlignment()).isTrue();
   }
 
   @TargetApi(KITKAT)
-  public S canNotResolveTextAlignment() {
-    assertThat(actual().canResolveTextAlignment())
-        .named("can resolve text alignment")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void canNotResolveTextAlignment() {
+    check("canResolveTextAlignment()").that(actual.canResolveTextAlignment()).isFalse();
   }
 
   @TargetApi(KITKAT)
-  public S canResolveTextDirection() {
-    assertThat(actual().canResolveTextDirection())
-        .named("can resolve text direction")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void canResolveTextDirection() {
+    check("canResolveTextDirection()").that(actual.canResolveTextDirection()).isTrue();
   }
 
   @TargetApi(KITKAT)
-  public S canNotResolveTextDirection() {
-    assertThat(actual().canResolveTextDirection())
-        .named("can resolve text direction")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void canNotResolveTextDirection() {
+    check("canResolveTextDirection()").that(actual.canResolveTextDirection()).isFalse();
   }
 
   @TargetApi(KITKAT)
-  public S isAttachedToWindow() {
-    assertThat(actual().isAttachedToWindow())
-        .named("is attached to window")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isAttachedToWindow() {
+    check("isAttachedToWindow()").that(actual.isAttachedToWindow()).isTrue();
   }
 
   @TargetApi(KITKAT)
-  public S isNotAttachedToWindow() {
-    assertThat(actual().isAttachedToWindow())
-        .named("is attached to window")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotAttachedToWindow() {
+    check("isAttachedToWindow()").that(actual.isAttachedToWindow()).isFalse();
   }
 
   @TargetApi(KITKAT)
-  public S isLaidOut() {
-    assertThat(actual().isLaidOut())
-        .named("is laid out")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isLaidOut() {
+    check("isLaidOut()").that(actual.isLaidOut()).isTrue();
   }
 
   @TargetApi(KITKAT)
-  public S isNotLaidOut() {
-    assertThat(actual().isLaidOut())
-        .named("is laid out")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotLaidOut() {
+    check("isLaidOut()").that(actual.isLaidOut()).isFalse();
   }
 
   @TargetApi(KITKAT)
-  public S hasResolvedLayoutDirection() {
-    assertThat(actual().isLayoutDirectionResolved())
-        .named("is layout direction resolved")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void hasResolvedLayoutDirection() {
+    check("isLayoutDirectionResolved()").that(actual.isLayoutDirectionResolved()).isTrue();
   }
 
   @TargetApi(KITKAT)
-  public S hasNotResolvedLayoutDirection() {
-    assertThat(actual().isLayoutDirectionResolved())
-        .named("is layout direction resolved")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void hasNotResolvedLayoutDirection() {
+    check("isLayoutDirectionResolved()").that(actual.isLayoutDirectionResolved()).isFalse();
   }
 
   @TargetApi(KITKAT)
-  public S hasResolvedTextAlignment() {
-    assertThat(actual().isTextAlignmentResolved())
-        .named("is text alignment resolved")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void hasResolvedTextAlignment() {
+    check("isTextAlignmentResolved()").that(actual.isTextAlignmentResolved()).isTrue();
   }
 
   @TargetApi(KITKAT)
-  public S hasNotResolvedTextAlignment() {
-    assertThat(actual().isTextAlignmentResolved())
-        .named("is text alignment resolved")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void hasNotResolvedTextAlignment() {
+    check("isTextAlignmentResolved()").that(actual.isTextAlignmentResolved()).isFalse();
   }
 
   @TargetApi(KITKAT)
-  public S hasResolvedTextDirection() {
-    assertThat(actual().isTextDirectionResolved())
-        .named("is text direction resolved")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void hasResolvedTextDirection() {
+    check("isTextDirectionResolved()").that(actual.isTextDirectionResolved()).isTrue();
   }
 
   @TargetApi(KITKAT)
-  public S hasNotResolvedTextDirection() {
-    assertThat(actual().isTextDirectionResolved())
-        .named("is text direction resolved")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void hasNotResolvedTextDirection() {
+    check("isTextDirectionResolved()").that(actual.isTextDirectionResolved()).isFalse();
   }
 }

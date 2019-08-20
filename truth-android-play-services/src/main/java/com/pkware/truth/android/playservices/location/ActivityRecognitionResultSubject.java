@@ -20,28 +20,29 @@ import com.google.android.gms.location.ActivityRecognitionResult;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link ActivityRecognitionResult} subjects.
  */
-public class ActivityRecognitionResultSubject
-    extends Subject<ActivityRecognitionResultSubject, ActivityRecognitionResult> {
-  public ActivityRecognitionResultSubject(FailureMetadata failureMetadata, ActivityRecognitionResult subject) {
-    super(failureMetadata, subject);
+public class ActivityRecognitionResultSubject extends Subject {
+
+  @Nullable
+  private final ActivityRecognitionResult actual;
+
+  public ActivityRecognitionResultSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ActivityRecognitionResult actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public ActivityRecognitionResultSubject hasElapsedRealtimeMillis(long millis) {
-    assertThat(actual().getElapsedRealtimeMillis())
-        .named("elapsed real-time millis")
-        .isEqualTo(millis);
+    check("getElapsedRealtimeMillis()").that(actual.getElapsedRealtimeMillis()).isEqualTo(millis);
     return this;
   }
 
   public ActivityRecognitionResultSubject hasTime(long time) {
-    assertThat(actual().getTime())
-        .named("time")
-        .isEqualTo(time);
+    check("getTime()").that(actual.getTime()).isEqualTo(time);
     return this;
   }
 }

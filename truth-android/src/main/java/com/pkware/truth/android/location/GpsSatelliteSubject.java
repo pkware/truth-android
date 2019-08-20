@@ -21,86 +21,69 @@ import android.location.GpsSatellite;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link GpsSatellite} subjects.
  */
-public class GpsSatelliteSubject extends Subject<GpsSatelliteSubject, GpsSatellite> {
-  public GpsSatelliteSubject(FailureMetadata failureMetadata, GpsSatellite subject) {
-    super(failureMetadata, subject);
+public class GpsSatelliteSubject extends Subject {
+
+  @Nullable
+  private final GpsSatellite actual;
+
+  public GpsSatelliteSubject(@Nonnull FailureMetadata failureMetadata, @Nullable GpsSatellite actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public GpsSatelliteSubject hasAzimuth(float azimuth, float tolerance) {
-    assertThat(actual().getAzimuth())
-        .named("azimuth")
-        .isWithin(tolerance)
-        .of(azimuth);
+    check("getAzimuth()").that(actual.getAzimuth()).isWithin(tolerance).of(azimuth);
     return this;
   }
 
   public GpsSatelliteSubject hasElevation(float elevation, float tolerance) {
-    assertThat(actual().getElevation())
-        .named("elevation")
-        .isWithin(tolerance)
-        .of(elevation);
+    check("getElevation()").that(actual.getElevation()).isWithin(tolerance).of(elevation);
     return this;
   }
 
   public GpsSatelliteSubject hasPrn(int prn) {
-    assertThat(actual().getPrn())
-        .named("PRN")
-        .isEqualTo(prn);
+    check("getPrn()").that(actual.getPrn()).isEqualTo(prn);
     return this;
   }
 
   public GpsSatelliteSubject hasSnr(float snr, float tolerance) {
-    assertThat(actual().getSnr())
-        .named("SNR")
-        .isWithin(tolerance)
-        .of(snr);
+    check("getSnr()").that(actual.getSnr()).isWithin(tolerance).of(snr);
     return this;
   }
 
   public GpsSatelliteSubject hasAlmanac() {
-    assertThat(actual().hasAlmanac())
-        .named("has almanac")
-        .isTrue();
+    check("hasAlmanac()").that(actual.hasAlmanac()).isTrue();
     return this;
   }
 
   public GpsSatelliteSubject hasNoAlmanac() {
-    assertThat(actual().hasAlmanac())
-        .named("has almanac")
-        .isFalse();
+    check("hasAlmanac()").that(actual.hasAlmanac()).isFalse();
     return this;
   }
 
   public GpsSatelliteSubject hasEphemeris() {
-    assertThat(actual().hasEphemeris())
-        .named("has ephemeris")
-        .isTrue();
+    check("hasEphemeris()").that(actual.hasEphemeris()).isTrue();
     return this;
   }
 
   public GpsSatelliteSubject hasNotEphemeris() {
-    assertThat(actual().hasEphemeris())
-        .named("has ephemeris")
-        .isFalse();
+    check("hasEphemeris()").that(actual.hasEphemeris()).isFalse();
     return this;
   }
 
   public GpsSatelliteSubject isUsedInFix() {
-    assertThat(actual().usedInFix())
-        .named("used in fix")
-        .isTrue();
+    check("usedInFix()").that(actual.usedInFix()).isTrue();
     return this;
   }
 
   public GpsSatelliteSubject isNotUsedInFix() {
-    assertThat(actual().usedInFix())
-        .named("used in fix")
-        .isFalse();
+    check("usedInFix()").that(actual.usedInFix()).isFalse();
     return this;
   }
 }

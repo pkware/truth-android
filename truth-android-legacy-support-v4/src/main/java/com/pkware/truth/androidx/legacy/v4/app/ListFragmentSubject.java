@@ -17,29 +17,32 @@
 package com.pkware.truth.androidx.legacy.v4.app;
 
 import androidx.fragment.app.ListFragment;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link ListFragment} subjects.
  */
-public class ListFragmentSubject extends AbstractFragmentSubject<ListFragmentSubject, ListFragment> {
-  public ListFragmentSubject(FailureMetadata failureMetadata, ListFragment subject) {
-    super(failureMetadata, subject);
+public class ListFragmentSubject extends AbstractFragmentSubject<ListFragment> {
+
+  @Nullable
+  private final ListFragment actual;
+
+  public ListFragmentSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ListFragment actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public ListFragmentSubject hasSelectedItemId(long id) {
-    assertThat(actual().getSelectedItemId())
-        .named("selected ID")
-        .isEqualTo(id);
+    check("getSelectedItemId()").that(actual.getSelectedItemId()).isEqualTo(id);
     return this;
   }
 
   public ListFragmentSubject hasSelectedItemPosition(int position) {
-    assertThat(actual().getSelectedItemPosition())
-        .named("selected item position")
-        .isEqualTo(position);
+    check("getSelectedItemPosition()").that(actual.getSelectedItemPosition()).isEqualTo(position);
     return this;
   }
 }

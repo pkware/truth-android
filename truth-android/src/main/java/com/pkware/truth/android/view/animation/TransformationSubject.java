@@ -22,20 +22,26 @@ import android.view.animation.Transformation;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.view.animation.Transformation.TYPE_ALPHA;
 import static android.view.animation.Transformation.TYPE_BOTH;
 import static android.view.animation.Transformation.TYPE_IDENTITY;
 import static android.view.animation.Transformation.TYPE_MATRIX;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
 /**
  * Propositions for {@link Transformation} subjects.
  */
-public class TransformationSubject extends Subject<TransformationSubject, Transformation> {
-  public TransformationSubject(FailureMetadata failureMetadata, Transformation subject) {
-    super(failureMetadata, subject);
+public class TransformationSubject extends Subject {
+
+  @Nullable
+  private final Transformation actual;
+
+  public TransformationSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Transformation actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public static String transformationTypeToString(@TransformationType int type) {
@@ -48,24 +54,19 @@ public class TransformationSubject extends Subject<TransformationSubject, Transf
   }
 
   public TransformationSubject hasAlpha(float alpha, float tolerance) {
-    assertThat(actual().getAlpha())
-        .named("alpha")
-        .isWithin(tolerance)
-        .of(alpha);
+    check("getAlpha()").that(actual.getAlpha()).isWithin(tolerance)        .of(alpha);
     return this;
   }
 
-  public TransformationSubject hasMatrix(Matrix matrix) {
-    assertThat(actual().getMatrix())
-        .named("matrix")
-        .isEqualTo(matrix);
+  public TransformationSubject hasMatrix(@Nullable Matrix matrix) {
+    check("getMatrix()").that(actual.getMatrix()).isEqualTo(matrix);
     return this;
   }
 
   public TransformationSubject hasTransformationType(@TransformationType int type) {
-    int actualType = actual().getTransformationType();
+    int actualType = actual.getTransformationType();
     //noinspection ResourceType
-    assert_()
+    check("getTransformationType()")
         .withMessage("Expected transformation type <%s> but was <%s>.",
             transformationTypeToString(type), transformationTypeToString(actualType))
         .that(actualType)

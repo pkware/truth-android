@@ -21,8 +21,12 @@ import android.content.Context;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-public abstract class AbstractContextSubject<S extends AbstractContextSubject<S, T>, T extends Context> extends Subject<S, T> {
-  protected AbstractContextSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+public abstract class AbstractContextSubject<T extends Context> extends Subject {
+
+  protected AbstractContextSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
   }
 }

@@ -23,36 +23,37 @@ import android.view.ViewPropertyAnimator;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link ViewPropertyAnimator} subjects.
  */
-public class ViewPropertyAnimatorSubject extends Subject<ViewPropertyAnimatorSubject, ViewPropertyAnimator> {
-  public ViewPropertyAnimatorSubject(FailureMetadata failureMetadata, ViewPropertyAnimator subject) {
-    super(failureMetadata, subject);
+public class ViewPropertyAnimatorSubject extends Subject {
+
+  @Nullable
+  private final ViewPropertyAnimator actual;
+
+  public ViewPropertyAnimatorSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ViewPropertyAnimator actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public ViewPropertyAnimatorSubject hasDuration(long duration) {
-    assertThat(actual().getDuration())
-        .named("duration")
-        .isEqualTo(duration);
+    check("getDuration()").that(actual.getDuration()).isEqualTo(duration);
     return this;
   }
 
   @TargetApi(JELLY_BEAN_MR2)
-  public ViewPropertyAnimatorSubject hasInterpolator(TimeInterpolator interpolator) {
-    assertThat(actual().getInterpolator())
-        .named("interpolator")
-        .isEqualTo(interpolator);
+  public ViewPropertyAnimatorSubject hasInterpolator(@Nullable TimeInterpolator interpolator) {
+    check("getInterpolator()").that(actual.getInterpolator()).isEqualTo(interpolator);
     return this;
   }
 
   public ViewPropertyAnimatorSubject hasStartDelay(long delay) {
-    assertThat(actual().getStartDelay())
-        .named("start delay")
-        .isEqualTo(delay);
+    check("getStartDelay()").that(actual.getStartDelay()).isEqualTo(delay);
     return this;
   }
 }

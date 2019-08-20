@@ -18,24 +18,27 @@ package com.pkware.truth.android.widget;
 
 import android.view.View;
 import android.widget.ViewSwitcher;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link ViewSwitcher} subjects.
  */
-public class ViewSwitcherSubject
-    extends AbstractViewAnimatorSubject<ViewSwitcherSubject, ViewSwitcher> {
-  public ViewSwitcherSubject(FailureMetadata failureMetadata, ViewSwitcher subject) {
-    super(failureMetadata, subject);
+public class ViewSwitcherSubject extends AbstractViewAnimatorSubject<ViewSwitcher> {
+
+  @Nullable
+  private final ViewSwitcher actual;
+
+  public ViewSwitcherSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ViewSwitcher actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public ViewSwitcherSubject hasNextView(View view) {
-    View actualView = actual().getNextView();
-    assertThat(actual().getNextView())
-        .named("next view")
-        .isSameAs(view);
+  public ViewSwitcherSubject hasNextView(@Nullable View view) {
+    check("getNextView()").that(actual.getNextView()).isSameInstanceAs(view);
     return this;
   }
 }

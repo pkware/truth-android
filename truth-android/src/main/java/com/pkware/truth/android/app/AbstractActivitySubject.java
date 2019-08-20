@@ -18,11 +18,15 @@ package com.pkware.truth.android.app;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+
 import androidx.annotation.ColorRes;
 import androidx.annotation.StringRes;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_BEHIND;
 import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR;
@@ -42,15 +46,19 @@ import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_USER_LANDSCAPE;
 import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_USER_PORTRAIT;
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
-public abstract class AbstractActivitySubject<S extends AbstractActivitySubject<S, T>, T extends Activity> extends Subject<S, T> {
-  protected AbstractActivitySubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractActivitySubject<T extends Activity> extends Subject {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractActivitySubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   public static String screenOrientationToString(@ActivityScreenOrientation int orientation) {
     return buildNamedValueString(orientation)
         .value(SCREEN_ORIENTATION_UNSPECIFIED, "unspecified")
@@ -72,143 +80,83 @@ public abstract class AbstractActivitySubject<S extends AbstractActivitySubject<
         .get();
   }
 
-  public S hasRequestedOrientation(@ActivityScreenOrientation int orientation) {
-    int actualOrientation = actual().getRequestedOrientation();
-    assert_()
+  public void hasRequestedOrientation(@ActivityScreenOrientation int orientation) {
+    int actualOrientation = actual.getRequestedOrientation();
+    check("getRequestedOrientation()")
         .withMessage("Expected orientation <%s> but was <%s>.", screenOrientationToString(orientation), screenOrientationToString(actualOrientation))
         .that(actualOrientation)
         .isEqualTo(orientation);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S hasTitle(CharSequence title) {
-    assertThat(actual().getTitle())
-        .named("title")
-        .isEqualTo(title);
-    //noinspection unchecked
-    return (S) this;
+  public void hasTitle(@Nullable CharSequence title) {
+    check("getTitle()").that(actual.getTitle()).isEqualTo(title);
   }
 
-  public S hasTitle(@StringRes int resId) {
-    return hasTitle(actual().getString(resId));
+  public void hasTitle(@StringRes int resId) {
+    hasTitle(actual.getString(resId));
   }
 
-  public S hasTitleColor(@ColorRes int color) {
-    int actualColor = actual().getTitleColor();
-    assert_()
+  public void hasTitleColor(@ColorRes int color) {
+    int actualColor = actual.getTitleColor();
+    check("getTitleColor()")
         .withMessage("Expected title color <%s> but was <%s>.", Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S hasWindowFocus() {
-    assertThat(actual().hasWindowFocus())
-        .named("has window focus")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void hasWindowFocus() {
+    check("hasWindowFocus()").that(actual.hasWindowFocus()).isTrue();
   }
 
-  public S isChangingConfigurations() {
-    assertThat(actual().isChangingConfigurations())
-        .named("is changing configurations")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isChangingConfigurations() {
+    check("isChangingConfigurations()").that(actual.isChangingConfigurations()).isTrue();
   }
 
-  public S isNotChangingConfigurations() {
-    assertThat(actual().isChangingConfigurations())
-        .named("is changing configurations")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotChangingConfigurations() {
+    check("isChangingConfigurations()").that(actual.isChangingConfigurations()).isFalse();
   }
 
-  public S isChild() {
-    assertThat(actual().isChild())
-        .named("is child")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isChild() {
+    check("isChild()").that(actual.isChild()).isTrue();
   }
 
-  public S isNotChild() {
-    assertThat(actual().isChild())
-        .named("is child")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotChild() {
+    check("isChild()").that(actual.isChild()).isFalse();
   }
 
   @TargetApi(JELLY_BEAN_MR1)
-  public S isDestroyed() {
-    assertThat(actual().isDestroyed())
-        .named("is destroyed")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isDestroyed() {
+    check("isDestroyed()").that(actual.isDestroyed()).isTrue();
   }
 
   @TargetApi(JELLY_BEAN_MR1)
-  public S isNotDestroyed() {
-    assertThat(actual().isDestroyed())
-        .named("is destroyed")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotDestroyed() {
+    check("isDestroyed()").that(actual.isDestroyed()).isFalse();
   }
 
-  public S isFinishing() {
-    assertThat(actual().isFinishing())
-        .named("is finishing")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isFinishing() {
+    check("isFinishing()").that(actual.isFinishing()).isTrue();
   }
 
-  public S isNotFinishing() {
-    assertThat(actual().isFinishing())
-        .named("is finishing")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotFinishing() {
+    check("isFinishing()").that(actual.isFinishing()).isFalse();
   }
 
   @TargetApi(JELLY_BEAN_MR2)
-  public S isImmersive() {
-    assertThat(actual().isImmersive())
-        .named("is immersive")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isImmersive() {
+    check("isImmersive()").that(actual.isImmersive()).isTrue();
   }
 
   @TargetApi(JELLY_BEAN_MR2)
-  public S isNotImmersive() {
-    assertThat(actual().isImmersive())
-        .named("is immersive")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotImmersive() {
+    check("isImmersive()").that(actual.isImmersive()).isFalse();
   }
 
-  public S isTaskRoot() {
-    assertThat(actual().isTaskRoot())
-        .named("is task root")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isTaskRoot() {
+    check("isTaskRoot()").that(actual.isTaskRoot()).isTrue();
   }
 
-  public S isNotTaskRoot() {
-    assertThat(actual().isTaskRoot())
-        .named("is task root")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotTaskRoot() {
+    check("isTaskRoot()").that(actual.isTaskRoot()).isFalse();
   }
 }

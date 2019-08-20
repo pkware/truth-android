@@ -20,50 +20,47 @@ import android.graphics.Bitmap;
 import android.graphics.Paint;
 import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link BitmapDrawable} subjects.
  */
-public class BitmapDrawableSubject extends AbstractDrawableSubject<BitmapDrawableSubject, BitmapDrawable> {
-  public BitmapDrawableSubject(FailureMetadata failureMetadata, BitmapDrawable subject) {
-    super(failureMetadata, subject);
+public class BitmapDrawableSubject extends AbstractDrawableSubject<BitmapDrawable> {
+
+  @Nullable
+  private BitmapDrawable actual;
+
+  public BitmapDrawableSubject(@Nonnull FailureMetadata failureMetadata, @Nullable BitmapDrawable actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public BitmapDrawableSubject hasBitmap(Bitmap bitmap) {
-    assertThat(actual().getBitmap())
-        .named("bitmap")
-        .isEqualTo(bitmap);
+  public BitmapDrawableSubject hasBitmap(@Nullable Bitmap bitmap) {
+    check("getBitmap()").that(actual.getBitmap()).isEqualTo(bitmap);
     return this;
   }
 
   public BitmapDrawableSubject hasGravity(int gravity) {
-    assertThat(actual().getGravity())
-        .named("gravity")
-        .isEqualTo(gravity);
+    check("getGravity()").that(actual.getGravity()).isEqualTo(gravity);
     return this;
   }
 
-  public BitmapDrawableSubject hasPaint(Paint paint) {
-    assertThat(actual().getPaint())
-        .named("paint")
-        .isEqualTo(paint);
+  public BitmapDrawableSubject hasPaint(@Nullable Paint paint) {
+    check("getPaint()").that(actual.getPaint()).isEqualTo(paint);
     return this;
   }
 
-  public BitmapDrawableSubject hasTileModeX(Shader.TileMode mode) {
-    assertThat(actual().getTileModeX())
-        .named("X tile mode")
-        .isEqualTo(mode);
+  public BitmapDrawableSubject hasTileModeX(@Nullable Shader.TileMode mode) {
+    check("getTileModeX()").that(actual.getTileModeX()).isEqualTo(mode);
     return this;
   }
 
-  public BitmapDrawableSubject hasTileModeY(Shader.TileMode mode) {
-    assertThat(actual().getTileModeY())
-        .named("Y tile mode")
-        .isEqualTo(mode);
+  public BitmapDrawableSubject hasTileModeY(@Nullable Shader.TileMode mode) {
+    check("getTileModeY()").that(actual.getTileModeY()).isEqualTo(mode);
     return this;
   }
 }

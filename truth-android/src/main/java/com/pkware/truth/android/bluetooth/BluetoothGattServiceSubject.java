@@ -24,22 +24,29 @@ import com.google.common.truth.Subject;
 
 import java.util.UUID;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.bluetooth.BluetoothGattService.SERVICE_TYPE_PRIMARY;
 import static android.bluetooth.BluetoothGattService.SERVICE_TYPE_SECONDARY;
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
 /**
  * Propositions for {@link BluetoothGattService} subjects.
  */
 @TargetApi(JELLY_BEAN_MR2)
-public class BluetoothGattServiceSubject extends Subject<BluetoothGattServiceSubject, BluetoothGattService> {
-  public BluetoothGattServiceSubject(FailureMetadata failureMetadata, BluetoothGattService subject) {
-    super(failureMetadata, subject);
+public class BluetoothGattServiceSubject extends Subject {
+
+  @Nullable
+  private final BluetoothGattService actual;
+
+  public BluetoothGattServiceSubject(@Nonnull FailureMetadata failureMetadata, @Nullable BluetoothGattService actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   public static String typeToString(@BluetoothGattServiceType int type) {
     return buildNamedValueString(type)
         .value(SERVICE_TYPE_PRIMARY, "primary")
@@ -48,16 +55,14 @@ public class BluetoothGattServiceSubject extends Subject<BluetoothGattServiceSub
   }
 
   public BluetoothGattServiceSubject hasInstanceId(int id) {
-    assertThat(actual().getInstanceId())
-        .named("instance id")
-        .isEqualTo(id);
+    check("getInstanceId()").that(actual.getInstanceId()).isEqualTo(id);
     return this;
   }
 
   public BluetoothGattServiceSubject hasType(@BluetoothGattServiceType int type) {
-    int actualType = actual().getType();
+    int actualType = actual.getType();
     //noinspection ResourceType
-    assert_()
+    check("getType()")
         .withMessage("Expected type <%s> but was <%s>.",
             typeToString(type),
             typeToString(actualType))
@@ -66,10 +71,8 @@ public class BluetoothGattServiceSubject extends Subject<BluetoothGattServiceSub
     return this;
   }
 
-  public BluetoothGattServiceSubject hasUuid(UUID uuid) {
-    assertThat(actual().getUuid())
-        .named("UUID")
-        .isEqualTo(uuid);
+  public BluetoothGattServiceSubject hasUuid(@Nullable UUID uuid) {
+    check("getUuid()").that(actual.getUuid()).isEqualTo(uuid);
     return this;
   }
 }

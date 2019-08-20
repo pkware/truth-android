@@ -17,15 +17,19 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.CursorAdapter;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link CursorAdapter} subjects.
  * <p/>
  * This class is final. To extend use {@link AbstractCursorAdapterSubject}.
  */
-public final class CursorAdapterSubject extends AbstractCursorAdapterSubject<CursorAdapterSubject, CursorAdapter> {
-  public CursorAdapterSubject(FailureMetadata failureMetadata, CursorAdapter subject) {
-    super(failureMetadata, subject);
+public final class CursorAdapterSubject extends AbstractCursorAdapterSubject<CursorAdapter> {
+  public CursorAdapterSubject(@Nonnull FailureMetadata failureMetadata, @Nullable CursorAdapter actual) {
+    super(failureMetadata, actual);
   }
 }

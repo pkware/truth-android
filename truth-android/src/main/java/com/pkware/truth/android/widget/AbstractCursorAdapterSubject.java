@@ -22,27 +22,25 @@ import android.widget.Filter;
 
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public abstract class AbstractCursorAdapterSubject<S extends AbstractCursorAdapterSubject<S, T>, T extends CursorAdapter>
-    extends AbstractListAdapterSubject<S, T> {
-  protected AbstractCursorAdapterSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractCursorAdapterSubject<T extends CursorAdapter>
+    extends AbstractListAdapterSubject<T> {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractCursorAdapterSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S hasCursor(Cursor cursor) {
-    assertThat(actual().getCursor())
-        .named("cursor")
-        .isSameAs(cursor);
-    //noinspection unchecked
-    return (S) this;
+  public void hasCursor(@Nullable Cursor cursor) {
+    check("getCursor()").that(actual.getCursor()).isSameInstanceAs(cursor);
   }
 
-  public S hasFilter(Filter filter) {
-    assertThat(actual().getFilter())
-        .named("filter")
-        .isSameAs(filter);
-    //noinspection unchecked
-    return (S) this;
+  public void hasFilter(@Nullable Filter filter) {
+    check("getFilter()").that(actual.getFilter()).isSameInstanceAs(filter);
   }
 }

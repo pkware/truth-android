@@ -21,24 +21,32 @@ import android.animation.ValueAnimator;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.animation.ValueAnimator.INFINITE;
 import static android.animation.ValueAnimator.RESTART;
 import static android.animation.ValueAnimator.REVERSE;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
-public abstract class AbstractValueAnimatorSubject<S extends AbstractValueAnimatorSubject<S, T>, T extends ValueAnimator> extends Subject<S, T> {
-  protected AbstractValueAnimatorSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractValueAnimatorSubject<T extends ValueAnimator> extends Subject {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractValueAnimatorSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   public static String repeatCountToString(int count) {
     return buildNamedValueString(count)
         .value(INFINITE, "infinite")
         .getOrValue();
   }
 
+  @Nonnull
   public static String repeatModeToString(@ValueAnimatorRepeatMode int mode) {
     return buildNamedValueString(mode)
         .value(RESTART, "restart")
@@ -46,40 +54,28 @@ public abstract class AbstractValueAnimatorSubject<S extends AbstractValueAnimat
         .get();
   }
 
-  public S hasAnimatedValue(Object value) {
-    assertThat(actual().getAnimatedValue())
-        .named("animated value")
-        .isEqualTo(value);
-    //noinspection unchecked
-    return (S) this;
+  public void hasAnimatedValue(@Nullable Object value) {
+    check("getAnimatedValue()").that(actual.getAnimatedValue()).isEqualTo(value);
   }
 
-  public S hasCurrentPlayTime(long time) {
-    assertThat(actual().getCurrentPlayTime())
-        .named("current play time")
-        .isEqualTo(time);
-    //noinspection unchecked
-    return (S) this;
+  public void hasCurrentPlayTime(long time) {
+    check("getCurrentPlayTime()").that(actual.getCurrentPlayTime()).isEqualTo(time);
   }
 
-  public S hasRepeatCount(int count) {
-    int actualCount = actual().getRepeatCount();
-    assert_()
+  public void hasRepeatCount(int count) {
+    int actualCount = actual.getRepeatCount();
+    check("getRepeatCount()")
         .withMessage("Expected repeat count <%s> but was <%s>.", repeatCountToString(count), repeatCountToString(actualCount))
         .that(actualCount)
         .isEqualTo(count);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S hasRepeatMode(@ValueAnimatorRepeatMode int mode) {
-    int actualMode = actual().getRepeatMode();
+  public void hasRepeatMode(@ValueAnimatorRepeatMode int mode) {
+    int actualMode = actual.getRepeatMode();
     //noinspection ResourceType
-    assert_()
+    check("getRepeatMode()")
         .withMessage("Expected repeat mode <%s> but was <%s>.", repeatModeToString(mode), repeatModeToString(actualMode))
         .that(actualMode)
         .isEqualTo(mode);
-    //noinspection unchecked
-    return (S) this;
   }
 }

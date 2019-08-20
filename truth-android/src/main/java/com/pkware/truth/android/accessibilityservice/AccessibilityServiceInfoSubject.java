@@ -19,9 +19,11 @@ package com.pkware.truth.android.accessibilityservice;
 import android.accessibilityservice.AccessibilityServiceInfo;
 import android.annotation.TargetApi;
 import android.content.pm.PackageManager;
-
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import static android.accessibilityservice.AccessibilityServiceInfo.CAPABILITY_CAN_REQUEST_ENHANCED_WEB_ACCESSIBILITY;
 import static android.accessibilityservice.AccessibilityServiceInfo.CAPABILITY_CAN_REQUEST_FILTER_KEY_EVENTS;
@@ -29,18 +31,22 @@ import static android.accessibilityservice.AccessibilityServiceInfo.CAPABILITY_C
 import static android.accessibilityservice.AccessibilityServiceInfo.CAPABILITY_CAN_RETRIEVE_WINDOW_CONTENT;
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildBitMaskString;
 
 /**
  * Propositions for {@link AccessibilityServiceInfo} subjects.
  */
-public final class AccessibilityServiceInfoSubject extends Subject<AccessibilityServiceInfoSubject, AccessibilityServiceInfo> {
-  public AccessibilityServiceInfoSubject(FailureMetadata failureMetadata, AccessibilityServiceInfo subject) {
-    super(failureMetadata, subject);
+public final class AccessibilityServiceInfoSubject extends Subject {
+
+  @Nullable
+  private final AccessibilityServiceInfo actual;
+
+  public AccessibilityServiceInfoSubject(@Nonnull FailureMetadata failureMetadata, @Nullable AccessibilityServiceInfo actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   public static String capabilitiesToString(@AccessibilityServiceInfoCapabilities int capabilities) {
     return buildBitMaskString(capabilities)
         .flag(CAPABILITY_CAN_REQUEST_ENHANCED_WEB_ACCESSIBILITY, "request_enhanced_web_accessibility")
@@ -52,9 +58,9 @@ public final class AccessibilityServiceInfoSubject extends Subject<Accessibility
 
   @TargetApi(JELLY_BEAN_MR2)
   public AccessibilityServiceInfoSubject hasCapabilities(@AccessibilityServiceInfoCapabilities int capabilities) {
-    int actualCapabilities = actual().getCapabilities();
+    int actualCapabilities = actual.getCapabilities();
     //noinspection ResourceType
-    assert_()
+    check("getCapabilities()")
         .withMessage("Expected capabilities <%s> but was <%s>.", capabilitiesToString(capabilities), capabilitiesToString(actualCapabilities))
         .that(actualCapabilities)
         .isEqualTo(capabilities);
@@ -65,32 +71,24 @@ public final class AccessibilityServiceInfoSubject extends Subject<Accessibility
    * @deprecated {@link AccessibilityServiceInfo#getDescription()} is deprecated
    */
   @Deprecated
-  public AccessibilityServiceInfoSubject hasDescription(String description) {
-    assertThat(actual().getDescription())
-        .named("description")
-        .isEqualTo(description);
+  public AccessibilityServiceInfoSubject hasDescription(@Nullable String description) {
+    check("getDescription()").that(actual.getDescription()).isEqualTo(description);
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public AccessibilityServiceInfoSubject hasDescription(String description, PackageManager packageManager) {
-    assertThat(actual().loadDescription(packageManager))
-        .named("description")
-        .isEqualTo(description);
+  public AccessibilityServiceInfoSubject hasDescription(@Nullable String description, @Nonnull PackageManager packageManager) {
+    check("loadDescription(packageManager)").that(actual.loadDescription(packageManager)).isEqualTo(description);
     return this;
   }
 
-  public AccessibilityServiceInfoSubject hasId(String id) {
-    assertThat(actual().getId())
-        .named("id")
-        .isEqualTo(id);
+  public AccessibilityServiceInfoSubject hasId(@Nullable String id) {
+    check("getId()").that(actual.getId()).isEqualTo(id);
     return this;
   }
 
-  public AccessibilityServiceInfoSubject hasSettingsActivityName(String name) {
-    assertThat(actual().getSettingsActivityName())
-        .named("settings activity name")
-        .isEqualTo(name);
+  public AccessibilityServiceInfoSubject hasSettingsActivityName(@Nullable String name) {
+    check("getSettingsActivityName()").that(actual.getSettingsActivityName()).isEqualTo(name);
     return this;
   }
 }

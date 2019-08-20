@@ -19,38 +19,40 @@ package com.pkware.truth.android.widget;
 import android.annotation.TargetApi;
 import android.graphics.drawable.Drawable;
 import android.widget.CheckedTextView;
+
 import com.google.common.truth.FailureMetadata;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link CheckedTextView} subjects.
  */
-public class CheckedTextViewSubject extends AbstractTextViewSubject<CheckedTextViewSubject, CheckedTextView> {
-  public CheckedTextViewSubject(FailureMetadata failureMetadata, CheckedTextView subject) {
-    super(failureMetadata, subject);
+public class CheckedTextViewSubject extends AbstractTextViewSubject<CheckedTextView> {
+
+  @Nullable
+  private final CheckedTextView actual;
+
+  public CheckedTextViewSubject(@Nonnull FailureMetadata failureMetadata, @Nullable CheckedTextView actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   @TargetApi(JELLY_BEAN)
-  public CheckedTextViewSubject hasCheckMarkDrawable(Drawable drawable) {
-    assertThat(actual().getCheckMarkDrawable())
-        .named("check mark drawable")
-        .isSameAs(drawable);
+  public CheckedTextViewSubject hasCheckMarkDrawable(@Nullable Drawable drawable) {
+    check("getCheckMarkDrawable()").that(actual.getCheckMarkDrawable()).isSameInstanceAs(drawable);
     return this;
   }
 
   public CheckedTextViewSubject isChecked() {
-    assertThat(actual().isChecked())
-        .named("is checked")
-        .isTrue();
+    check("isChecked()").that(actual.isChecked()).isTrue();
     return this;
   }
 
   public CheckedTextViewSubject isNotChecked() {
-    assertThat(actual().isChecked())
-        .named("is checked")
-        .isFalse();
+    check("isChecked()").that(actual.isChecked()).isFalse();
     return this;
   }
 }

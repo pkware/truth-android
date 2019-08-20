@@ -17,22 +17,27 @@
 package com.pkware.truth.android.animation;
 
 import android.animation.AnimatorSet;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link AnimatorSet} subjects.
  */
-public final class AnimatorSetSubject extends AbstractAnimatorSubject<AnimatorSetSubject, AnimatorSet> {
-  public AnimatorSetSubject(FailureMetadata failureMetadata, AnimatorSet subject) {
-    super(failureMetadata, subject);
+public final class AnimatorSetSubject extends AbstractAnimatorSubject<AnimatorSet> {
+
+  @Nullable
+  private AnimatorSet actual;
+
+  public AnimatorSetSubject(@Nonnull FailureMetadata failureMetadata, @Nullable AnimatorSet actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public AnimatorSetSubject hasAnimatorCount(int count) {
-    assertThat(actual().getChildAnimations().size())
-        .named("animator count")
-        .isEqualTo(count);
+    check("getChildAnimations()").that(actual.getChildAnimations()).hasSize(count);
     return this;
   }
 }

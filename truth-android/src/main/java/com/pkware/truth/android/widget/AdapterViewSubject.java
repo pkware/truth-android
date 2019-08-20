@@ -17,15 +17,19 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.AdapterView;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link AdapterView} subjects.
  * <p/>
  * This class is final. To extend use {@link AbstractAdapterViewSubject}.
  */
-public final class AdapterViewSubject extends AbstractAdapterViewSubject<AdapterViewSubject, AdapterView> {
-  public AdapterViewSubject(FailureMetadata failureMetadata, AdapterView subject) {
-    super(failureMetadata, subject);
+public final class AdapterViewSubject extends AbstractAdapterViewSubject<AdapterView> {
+  public AdapterViewSubject(@Nonnull FailureMetadata failureMetadata, @Nullable AdapterView actual) {
+    super(failureMetadata, actual);
   }
 }

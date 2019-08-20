@@ -21,34 +21,34 @@ import android.hardware.usb.UsbDeviceConnection;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link UsbDeviceConnection} subjects.
  */
-public class UsbDeviceConnectionSubject extends Subject<UsbDeviceConnectionSubject, UsbDeviceConnection> {
-  public UsbDeviceConnectionSubject(FailureMetadata failureMetadata, UsbDeviceConnection subject) {
-    super(failureMetadata, subject);
+public class UsbDeviceConnectionSubject extends Subject {
+
+  @Nullable
+  private final UsbDeviceConnection actual;
+
+  public UsbDeviceConnectionSubject(@Nonnull FailureMetadata failureMetadata, @Nullable UsbDeviceConnection actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public UsbDeviceConnectionSubject hasFileDescriptor(int descriptor) {
-    assertThat(actual().getFileDescriptor())
-        .named("file descriptor")
-        .isEqualTo(descriptor);
+    check("getFileDescriptor()").that(actual.getFileDescriptor()).isEqualTo(descriptor);
     return this;
   }
 
   public UsbDeviceConnectionSubject hasRawDescriptors(byte[] descriptors) {
-    assertThat(actual().getRawDescriptors())
-        .named("raw descriptors")
-        .isEqualTo(descriptors);
+    check("getRawDescriptors()").that(actual.getRawDescriptors()).isEqualTo(descriptors);
     return this;
   }
 
-  public UsbDeviceConnectionSubject hasSerial(String serial) {
-    assertThat(actual().getSerial())
-        .named("serial")
-        .isEqualTo(serial);
+  public UsbDeviceConnectionSubject hasSerial(@Nullable String serial) {
+    check("getSerial()").that(actual.getSerial()).isEqualTo(serial);
     return this;
   }
 }

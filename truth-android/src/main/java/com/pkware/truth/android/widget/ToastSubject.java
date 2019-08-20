@@ -22,64 +22,54 @@ import android.widget.Toast;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Toast} subjects.
  */
-public class ToastSubject extends Subject<ToastSubject, Toast> {
-  public ToastSubject(FailureMetadata failureMetadata, Toast subject) {
-    super(failureMetadata, subject);
+public class ToastSubject extends Subject {
+
+  @Nullable
+  private final Toast actual;
+
+  public ToastSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Toast actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public ToastSubject hasDuration(int duration) {
-    assertThat(actual().getDuration())
-        .named("duration")
-        .isEqualTo(duration);
+    check("getDuration()").that(actual.getDuration()).isEqualTo(duration);
     return this;
   }
 
   public ToastSubject hasGravity(int gravity) {
-    assertThat(actual().getGravity())
-        .named("gravity")
-        .isEqualTo(gravity);
+    check("getGravity()").that(actual.getGravity()).isEqualTo(gravity);
     return this;
   }
 
   public ToastSubject hasHorizontalMargin(float margin, float tolerance) {
-    assertThat(actual().getHorizontalMargin())
-        .named("horizontal margin")
-        .isWithin(tolerance)
-        .of(margin);
+    check("getHorizontalMargin()").that(actual.getHorizontalMargin()).isWithin(tolerance).of(margin);
     return this;
   }
 
   public ToastSubject hasVerticalMargin(float margin, float tolerance) {
-    assertThat(actual().getVerticalMargin())
-        .named("vertical margin")
-        .isWithin(tolerance)
-        .of(margin);
+    check("getVerticalMargin()").that(actual.getVerticalMargin()).isWithin(tolerance).of(margin);
     return this;
   }
 
-  public ToastSubject hasView(View view) {
-    assertThat(actual().getView())
-        .named("view")
-        .isSameAs(view);
+  public ToastSubject hasView(@Nullable View view) {
+    check("getView()").that(actual.getView()).isSameInstanceAs(view);
     return this;
   }
 
   public ToastSubject hasXOffset(int offset) {
-    assertThat(actual().getXOffset())
-        .named("X offset")
-        .isEqualTo(offset);
+    check("getXOffset()").that(actual.getXOffset()).isEqualTo(offset);
     return this;
   }
 
   public ToastSubject hasYOffset(int offset) {
-    assertThat(actual().getYOffset())
-        .named("Y offset")
-        .isEqualTo(offset);
+    check("getYOffset()").that(actual.getYOffset()).isEqualTo(offset);
     return this;
   }
 }

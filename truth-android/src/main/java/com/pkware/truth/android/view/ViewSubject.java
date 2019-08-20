@@ -18,15 +18,19 @@ package com.pkware.truth.android.view;
 
 
 import android.view.View;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link View} subjects.
  * <p/>
  * This class is final. To extend use {@link AbstractViewSubject}.
  */
-public final class ViewSubject extends AbstractViewSubject<ViewSubject, View> {
-  public ViewSubject(FailureMetadata failureMetadata, View subject) {
-    super(failureMetadata, subject);
+public final class ViewSubject extends AbstractViewSubject<View> {
+  public ViewSubject(@Nonnull FailureMetadata failureMetadata, @Nullable View actual) {
+    super(failureMetadata, actual);
   }
 }

@@ -21,195 +21,149 @@ import android.telephony.SmsMessage;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link SmsMessage} subjects.
  */
-public class SmsMessageSubject extends Subject<SmsMessageSubject, SmsMessage> {
-  public SmsMessageSubject(FailureMetadata failureMetadata, SmsMessage subject) {
-    super(failureMetadata, subject);
+public class SmsMessageSubject extends Subject {
+
+  @Nullable
+  private final SmsMessage actual;
+
+  public SmsMessageSubject(@Nonnull FailureMetadata failureMetadata, @Nullable SmsMessage actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public SmsMessageSubject hasDisplayMessageBody(String displayMessageBody) {
-    assertThat(actual().getDisplayMessageBody())
-        .named("display message body")
-        .isEqualTo(displayMessageBody);
+  public SmsMessageSubject hasDisplayMessageBody(@Nullable String displayMessageBody) {
+    check("getDisplayMessageBody()").that(actual.getDisplayMessageBody()).isEqualTo(displayMessageBody);
     return this;
   }
 
-  public SmsMessageSubject hasDisplayOriginatingAddress(String displayOriginatingAddress) {
-    assertThat(actual().getDisplayOriginatingAddress())
-        .named("display originating address")
-        .isEqualTo(displayOriginatingAddress);
+  public SmsMessageSubject hasDisplayOriginatingAddress(@Nullable String displayOriginatingAddress) {
+    check("getDisplayOriginatingAddress()").that(actual.getDisplayOriginatingAddress()).isEqualTo(displayOriginatingAddress);
     return this;
   }
 
-  public SmsMessageSubject hasEmailBody(String emailBody) {
-    assertThat(actual().getEmailBody())
-        .named("email body")
-        .isEqualTo(emailBody);
+  public SmsMessageSubject hasEmailBody(@Nullable String emailBody) {
+    check("getEmailBody()").that(actual.getEmailBody()).isEqualTo(emailBody);
     return this;
   }
 
-  public SmsMessageSubject hasEmailFrom(String emailFrom) {
-    assertThat(actual().getEmailFrom())
-        .named("email from")
-        .isEqualTo(emailFrom);
+  public SmsMessageSubject hasEmailFrom(@Nullable String emailFrom) {
+    check("getEmailFrom()").that(actual.getEmailFrom()).isEqualTo(emailFrom);
     return this;
   }
 
   public SmsMessageSubject hasIndexOnIcc(int index) {
-    assertThat(actual().getIndexOnIcc())
-        .named("index on ICC card")
-        .isEqualTo(index);
+    check("getIndexOnIcc()").that(actual.getIndexOnIcc()).isEqualTo(index);
     return this;
   }
 
   public SmsMessageSubject hasIndexOnSim(int index) {
-    assertThat(actual().getIndexOnSim())
-        .named("index on SIM card")
-        .isEqualTo(index);
+    check("getIndexOnSim()").that(actual.getIndexOnSim()).isEqualTo(index);
     return this;
   }
 
-  public SmsMessageSubject hasMessageBody(String messageBody) {
-    assertThat(actual().getMessageBody())
-        .named("message body")
-        .isEqualTo(messageBody);
+  public SmsMessageSubject hasMessageBody(@Nullable String messageBody) {
+    check("getMessageBody()").that(actual.getMessageBody()).isEqualTo(messageBody);
     return this;
   }
 
-  public SmsMessageSubject hasMessageClass(SmsMessage.MessageClass messageClass) {
-    assertThat(actual().getMessageClass())
-        .named("message class")
-        .isEqualTo(messageClass);
+  public SmsMessageSubject hasMessageClass(@Nullable SmsMessage.MessageClass messageClass) {
+    check("getMessageClass()").that(actual.getMessageClass()).isEqualTo(messageClass);
     return this;
   }
 
-  public SmsMessageSubject hasOriginatingAddress(String originatingAddress) {
-    assertThat(actual().getOriginatingAddress())
-        .named("originating address")
-        .isEqualTo(originatingAddress);
+  public SmsMessageSubject hasOriginatingAddress(@Nullable String originatingAddress) {
+    check("getOriginatingAddress()").that(actual.getOriginatingAddress()).isEqualTo(originatingAddress);
     return this;
   }
 
-  public SmsMessageSubject hasPdu(byte[] pdu) {
-    assertThat(actual().getPdu())
-        .named("PDU")
-        .isEqualTo(pdu);
+  public SmsMessageSubject hasPdu(@Nullable byte[] pdu) {
+    check("getPdu()").that(actual.getPdu()).isEqualTo(pdu);
     return this;
   }
 
   public SmsMessageSubject hasProtocolIdentifier(int protocolIdentifier) {
-    assertThat(actual().getProtocolIdentifier())
-        .named("protocol identifier")
-        .isEqualTo(protocolIdentifier);
+    check("getProtocolIdentifier()").that(actual.getProtocolIdentifier()).isEqualTo(protocolIdentifier);
     return this;
   }
 
-  public SmsMessageSubject hasPseudoSubject(String pseudoSubject) {
-    assertThat(actual().getPseudoSubject())
-        .named("psuedo subject")
-        .isEqualTo(pseudoSubject);
+  public SmsMessageSubject hasPseudoSubject(@Nullable String pseudoSubject) {
+    check("getPseudoSubject()").that(actual.getPseudoSubject()).isEqualTo(pseudoSubject);
     return this;
   }
 
-  public SmsMessageSubject hasServiceCenterAddress(String address) {
-    assertThat(actual().getServiceCenterAddress())
-        .named("service center address")
-        .isEqualTo(address);
+  public SmsMessageSubject hasServiceCenterAddress(@Nullable String address) {
+    check("getServiceCenterAddress()").that(actual.getServiceCenterAddress()).isEqualTo(address);
     return this;
   }
 
   public SmsMessageSubject hasStatus(int status) {
-    assertThat(actual().getStatus())
-        .named("status")
-        .isEqualTo(status);
+    check("getStatus()").that(actual.getStatus()).isEqualTo(status);
     return this;
   }
 
   public SmsMessageSubject hasStatusOnIcc(int status) {
-    assertThat(actual().getStatusOnIcc())
-        .named("status on the ICC card")
-        .isEqualTo(status);
+    check("getStatusOnIcc()").that(actual.getStatusOnIcc()).isEqualTo(status);
     return this;
   }
 
   public SmsMessageSubject hasStatusOnSim(int status) {
-    assertThat(actual().getStatusOnSim())
-        .named("status on the SIM card")
-        .isEqualTo(status);
+    check("getStatusOnSim()").that(actual.getStatusOnSim()).isEqualTo(status);
     return this;
   }
 
   public SmsMessageSubject hasTimestampMillis(long timestamp) {
-    assertThat(actual().getTimestampMillis())
-        .named("timestamp in millis")
-        .isEqualTo(timestamp);
+    check("getTimestampMillis()").that(actual.getTimestampMillis()).isEqualTo(timestamp);
     return this;
   }
 
-  public SmsMessageSubject hasUserData(byte[] data) {
-    assertThat(actual().getUserData())
-        .named("user data")
-        .isEqualTo(data);
+  public SmsMessageSubject hasUserData(@Nullable byte[] data) {
+    check("getUserData()").that(actual.getUserData()).isEqualTo(data);
     return this;
   }
 
   public SmsMessageSubject isCphsMwiMessage() {
-    assertThat(actual().isCphsMwiMessage())
-        .named("is CPHS MWI message")
-        .isTrue();
+    check("isCphsMwiMessage()").that(actual.isCphsMwiMessage()).isTrue();
     return this;
   }
 
   public SmsMessageSubject isEmail() {
-    assertThat(actual().isEmail())
-        .named("is email")
-        .isTrue();
+    check("isEmail()").that(actual.isEmail()).isTrue();
     return this;
   }
 
   public SmsMessageSubject isMWIClearMessage() {
-    assertThat(actual().isMWIClearMessage())
-        .named("is MWI clear message")
-        .isTrue();
+    check("isMWIClearMessage()").that(actual.isMWIClearMessage()).isTrue();
     return this;
   }
 
   public SmsMessageSubject isMWISetMessage() {
-    assertThat(actual().isMWISetMessage())
-        .named("is MWI set message")
-        .isTrue();
+    check("isMWISetMessage()").that(actual.isMWISetMessage()).isTrue();
     return this;
   }
 
   public SmsMessageSubject isMwiDontStore() {
-    assertThat(actual().isMwiDontStore())
-        .named("is MWI message that shouldn't be stored")
-        .isTrue();
+    check("isMwiDontStore()").that(actual.isMwiDontStore()).isTrue();
     return this;
   }
 
   public SmsMessageSubject isReplace() {
-    assertThat(actual().isReplace())
-        .named("is replace short message")
-        .isTrue();
+    check("isReplace()").that(actual.isReplace()).isTrue();
     return this;
   }
 
   public SmsMessageSubject isReplyPathPresent() {
-    assertThat(actual().isReplyPathPresent())
-        .named("is 'TP-Reply-Path' bit set")
-        .isTrue();
+    check("isReplyPathPresent()").that(actual.isReplyPathPresent()).isTrue();
     return this;
   }
 
   public SmsMessageSubject isStatusReportMessage() {
-    assertThat(actual().isStatusReportMessage())
-        .named("is a status report message")
-        .isTrue();
+    check("isStatusReportMessage()").that(actual.isStatusReportMessage()).isTrue();
     return this;
   }
 }

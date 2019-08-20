@@ -17,15 +17,19 @@
 package com.pkware.truth.android.view;
 
 import android.view.ViewGroup;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link android.view.ViewGroup.MarginLayoutParams} subjects.
  * <p/>
  * This class is final. To extend use {@link AbstractViewGroupMarginLayoutParamsSubject}.
  */
-public final class ViewGroupMarginLayoutParamsSubject extends AbstractViewGroupMarginLayoutParamsSubject<ViewGroupMarginLayoutParamsSubject, ViewGroup.MarginLayoutParams> {
-  public ViewGroupMarginLayoutParamsSubject(FailureMetadata failureMetadata, ViewGroup.MarginLayoutParams subject) {
-    super(failureMetadata, subject);
+public final class ViewGroupMarginLayoutParamsSubject extends AbstractViewGroupMarginLayoutParamsSubject<ViewGroup.MarginLayoutParams> {
+  public ViewGroupMarginLayoutParamsSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ViewGroup.MarginLayoutParams actual) {
+    super(failureMetadata, actual);
   }
 }

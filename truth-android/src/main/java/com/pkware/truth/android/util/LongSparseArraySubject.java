@@ -22,39 +22,43 @@ import android.util.LongSparseArray;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 
 /**
  * Propositions for {@link LongSparseArray} subjects.
  */
 @TargetApi(JELLY_BEAN)
-public class LongSparseArraySubject extends Subject<LongSparseArraySubject, LongSparseArray> {
-  public LongSparseArraySubject(FailureMetadata failureMetadata, LongSparseArray subject) {
-    super(failureMetadata, subject);
+public class LongSparseArraySubject extends Subject {
+
+  @Nullable
+  private final LongSparseArray actual;
+
+  public LongSparseArraySubject(@Nonnull FailureMetadata failureMetadata, @Nullable LongSparseArray actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public LongSparseArraySubject hasKey(int key) {
-    assert_()
+    check("indexOfKey(key)")
         .withMessage("Expected key <%s> to be present but was not.", key)
-        .that(actual().indexOfKey(key))
+        .that(actual.indexOfKey(key))
         .isGreaterThan(-1);
     return this;
   }
 
   public LongSparseArraySubject doesNotHaveKey(int key) {
-    assert_()
-        .withMessage("Expected key <%s> to not be present but was.")
-        .that(actual().indexOfKey(key))
+    check("indexOfKey(key)")
+        .withMessage("Expected key <%s> to not be present but was.", key)
+        .that(actual.indexOfKey(key))
         .isLessThan(0);
     return this;
   }
 
   public LongSparseArraySubject hasSize(int size) {
-    assertThat(actual().size())
-        .named("size")
-        .isEqualTo(size);
+    check("size()").that(actual.size()).isEqualTo(size);
     return this;
   }
 }

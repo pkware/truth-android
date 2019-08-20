@@ -19,29 +19,32 @@ package com.pkware.truth.android.widget;
 import android.content.Context;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link ArrayAdapter} subjects.
  */
-public class ArrayAdapterSubject extends AbstractListAdapterSubject<ArrayAdapterSubject, ArrayAdapter> {
-  public ArrayAdapterSubject(FailureMetadata failureMetadata, ArrayAdapter subject) {
-    super(failureMetadata, subject);
+public class ArrayAdapterSubject extends AbstractListAdapterSubject<ArrayAdapter> {
+
+  @Nullable
+  private final ArrayAdapter actual;
+
+  public ArrayAdapterSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ArrayAdapter actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public ArrayAdapterSubject hasContext(Context context) {
-    assertThat(actual().getContext())
-        .named("context")
-        .isSameAs(context);
+  public ArrayAdapterSubject hasContext(@Nullable Context context) {
+    check("getContext()").that(actual.getContext()).isSameInstanceAs(context);
     return this;
   }
 
-  public ArrayAdapterSubject hasFilter(Filter filter) {
-    assertThat(actual().getFilter())
-        .named("filter")
-        .isSameAs(filter);
+  public ArrayAdapterSubject hasFilter(@Nullable Filter filter) {
+    check("getFilter()").that(actual.getFilter()).isSameInstanceAs(filter);
     return this;
   }
 }

@@ -22,44 +22,43 @@ import android.os.PowerManager;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.KITKAT_WATCH;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link PowerManager} subjects.
  */
-public class PowerManagerSubject extends Subject<PowerManagerSubject, PowerManager> {
-  public PowerManagerSubject(FailureMetadata failureMetadata, PowerManager subject) {
-    super(failureMetadata, subject);
+public class PowerManagerSubject extends Subject {
+
+  @Nullable
+  private final PowerManager actual;
+
+  public PowerManagerSubject(@Nonnull FailureMetadata failureMetadata, @Nullable PowerManager actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public PowerManagerSubject isScreenOn() {
-    assertThat(actual().isScreenOn())
-        .named("is screen on")
-        .isTrue();
+    check("isScreenOn()").that(actual.isScreenOn()).isTrue();
     return this;
   }
 
   public PowerManagerSubject isScreenOff() {
-    assertThat(!actual().isScreenOn())
-        .named("is screen off")
-        .isTrue();
+    check("isScreenOn()").that(actual.isScreenOn()).isFalse();
     return this;
   }
 
   @TargetApi(KITKAT_WATCH)
   public PowerManagerSubject isInteractive() {
-    assertThat(actual().isInteractive())
-        .named("is interactive")
-        .isTrue();
+    check("isInteractive()").that(actual.isInteractive()).isTrue();
     return this;
   }
 
   @TargetApi(KITKAT_WATCH)
   public PowerManagerSubject isNotInteractive() {
-    assertThat(actual().isInteractive())
-        .named("is interactive")
-        .isFalse();
+    check("isInteractive()").that(actual.isInteractive()).isFalse();
     return this;
   }
 }

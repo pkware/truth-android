@@ -21,48 +21,44 @@ import android.hardware.usb.UsbInterface;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link UsbInterface} subjects.
  */
-public class UsbInterfaceSubject extends Subject<UsbInterfaceSubject, UsbInterface> {
-  public UsbInterfaceSubject(FailureMetadata failureMetadata, UsbInterface subject) {
-    super(failureMetadata, subject);
+public class UsbInterfaceSubject extends Subject {
+
+  @Nullable
+  private final UsbInterface actual;
+
+  public UsbInterfaceSubject(@Nonnull FailureMetadata failureMetadata, @Nullable UsbInterface actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public UsbInterfaceSubject hasEndpointCount(int count) {
-    assertThat(actual().getEndpointCount())
-        .named("endpoint count")
-        .isEqualTo(count);
+    check("getEndpointCount()").that(actual.getEndpointCount()).isEqualTo(count);
     return this;
   }
 
   public UsbInterfaceSubject hasId(int id) {
-    assertThat(actual().getId())
-        .named("id")
-        .isEqualTo(id);
+    check("getId()").that(actual.getId()).isEqualTo(id);
     return this;
   }
 
   public UsbInterfaceSubject hasInterfaceClass(int interfaceClass) {
-    assertThat(actual().getInterfaceClass())
-        .named("interface class")
-        .isEqualTo(interfaceClass);
+    check("getInterfaceClass()").that(actual.getInterfaceClass()).isEqualTo(interfaceClass);
     return this;
   }
 
   public UsbInterfaceSubject hasInterfaceProtocol(int protocol) {
-    assertThat(actual().getInterfaceProtocol())
-        .named("interface protocol")
-        .isEqualTo(protocol);
+    check("getInterfaceProtocol()").that(actual.getInterfaceProtocol()).isEqualTo(protocol);
     return this;
   }
 
   public UsbInterfaceSubject hasInterfaceSubclass(int subclass) {
-    assertThat(actual().getInterfaceSubclass())
-        .named("interface subclass")
-        .isEqualTo(subclass);
+    check("getInterfaceSubclass()").that(actual.getInterfaceSubclass()).isEqualTo(subclass);
     return this;
   }
 }

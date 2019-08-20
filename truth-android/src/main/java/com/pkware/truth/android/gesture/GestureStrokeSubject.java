@@ -22,35 +22,34 @@ import android.graphics.RectF;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link GestureStroke} subjects.
  */
-public class GestureStrokeSubject extends Subject<GestureStrokeSubject, GestureStroke> {
-  public GestureStrokeSubject(FailureMetadata failureMetadata, GestureStroke subject) {
-    super(failureMetadata, subject);
+public class GestureStrokeSubject extends Subject {
+
+  @Nullable
+  private final GestureStroke actual;
+
+  public GestureStrokeSubject(@Nonnull FailureMetadata failureMetadata, @Nullable GestureStroke actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public GestureStrokeSubject hasBoundingBox(RectF rect) {
-    assertThat(actual().boundingBox)
-        .named("bounding box")
-        .isEqualTo(rect);
+    check("boundingBox").that(actual.boundingBox).isEqualTo(rect);
     return this;
   }
 
   public GestureStrokeSubject hasLength(float length, float tolerance) {
-    assertThat(actual().length)
-        .named("length")
-        .isWithin(tolerance)
-        .of(length);
+    check("length").that(actual.length).isWithin(tolerance).of(length);
     return this;
   }
 
   public GestureStrokeSubject hasPoints(float[] points, float tolerance) {
-    assertThat(actual().points)
-        .hasValuesWithin(tolerance)
-        .of(points);
+    check("points").that(actual.points).usingTolerance(tolerance).containsAnyOf(points);
     return this;
   }
 }

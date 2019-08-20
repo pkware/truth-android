@@ -22,130 +22,98 @@ import android.view.ScaleGestureDetector;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.KITKAT;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link ScaleGestureDetector} subjects.
  */
-public class ScaleGestureDetectorSubject extends Subject<ScaleGestureDetectorSubject, ScaleGestureDetector> {
-  public ScaleGestureDetectorSubject(FailureMetadata failureMetadata, ScaleGestureDetector subject) {
-    super(failureMetadata, subject);
+public class ScaleGestureDetectorSubject extends Subject {
+
+  @Nullable
+  private final ScaleGestureDetector actual;
+
+  public ScaleGestureDetectorSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ScaleGestureDetector actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public ScaleGestureDetectorSubject hasCurrentSpan(float span, float tolerance) {
-    assertThat(actual().getCurrentSpan())
-        .named("current span")
-        .isWithin(tolerance)
-        .of(span);
+    check("getCurrentSpan()").that(actual.getCurrentSpan()).isWithin(tolerance).of(span);
     return this;
   }
 
   public ScaleGestureDetectorSubject hasCurrentSpanX(float span, float tolerance) {
-    assertThat(actual().getCurrentSpanX())
-        .named("current X span")
-        .isWithin(tolerance)
-        .of(span);
+    check("getCurrentSpanX()").that(actual.getCurrentSpanX()).isWithin(tolerance).of(span);
     return this;
   }
 
   public ScaleGestureDetectorSubject hasCurrentSpanY(float span, float tolerance) {
-    assertThat(actual().getCurrentSpanY())
-        .named("current Y span")
-        .isWithin(tolerance)
-        .of(span);
+    check("getCurrentSpanY()").that(actual.getCurrentSpanY()).isWithin(tolerance).of(span);
     return this;
   }
 
   public ScaleGestureDetectorSubject hasEventTime(long time) {
-    assertThat(actual().getEventTime())
-        .named("event time")
-        .isEqualTo(time);
+    check("getEventTime()").that(actual.getEventTime()).isEqualTo(time);
     return this;
   }
 
   public ScaleGestureDetectorSubject hasFocusX(float focus, float tolerance) {
-    assertThat(actual().getFocusX())
-        .named("X focus")
-        .isWithin(tolerance)
-        .of(focus);
+    check("getFocusX()").that(actual.getFocusX()).isWithin(tolerance).of(focus);
     return this;
   }
 
   public ScaleGestureDetectorSubject hasFocusY(float focus, float tolerance) {
-    assertThat(actual().getFocusY())
-        .named("Y focus")
-        .isWithin(tolerance)
-        .of(focus);
+    check("getFocusY()").that(actual.getFocusY()).isWithin(tolerance).of(focus);
     return this;
   }
 
   public ScaleGestureDetectorSubject hasPreviousSpan(float span, float tolerance) {
-    assertThat(actual().getPreviousSpan())
-        .named("previous span")
-        .isWithin(tolerance)
-        .of(span);
+    check("getPreviousSpan()").that(actual.getPreviousSpan()).isWithin(tolerance).of(span);
     return this;
   }
 
   public ScaleGestureDetectorSubject hasPreviousSpanX(float span, float tolerance) {
-    assertThat(actual().getPreviousSpanX())
-        .named("previous X span")
-        .isWithin(tolerance)
-        .of(span);
+    check("getPreviousSpanX()").that(actual.getPreviousSpanX()).isWithin(tolerance).of(span);
     return this;
   }
 
   public ScaleGestureDetectorSubject hasPreviousSpanY(float span, float tolerance) {
-    assertThat(actual().getPreviousSpanY())
-        .named("previous Y span")
-        .isWithin(tolerance)
-        .of(span);
+    check("getPreviousSpanY()").that(actual.getPreviousSpanY()).isWithin(tolerance).of(span);
     return this;
   }
 
   public ScaleGestureDetectorSubject hasScaleFactor(float factor, float tolerance) {
-    assertThat(actual().getScaleFactor())
-        .named("scale factor")
-        .isWithin(tolerance)
-        .of(factor);
+    check("getScaleFactor()").that(actual.getScaleFactor()).isWithin(tolerance).of(factor);
     return this;
   }
 
   public ScaleGestureDetectorSubject hasTimeDelta(long delta) {
-    assertThat(actual().getTimeDelta())
-        .named("time delta")
-        .isEqualTo(delta);
+    check("getTimeDelta()").that(actual.getTimeDelta()).isEqualTo(delta);
     return this;
   }
 
   public ScaleGestureDetectorSubject isInProgress() {
-    assertThat(actual().isInProgress())
-        .named("is in progress")
-        .isTrue();
+    check("isInProgress()").that(actual.isInProgress()).isTrue();
     return this;
   }
 
   public ScaleGestureDetectorSubject isNotInProgress() {
-    assertThat(actual().isInProgress())
-        .named("is in progress")
-        .isFalse();
+    check("isInProgress()").that(actual.isInProgress()).isFalse();
     return this;
   }
 
   @TargetApi(KITKAT)
   public ScaleGestureDetectorSubject isQuickScaleEnabled() {
-    assertThat(actual().isQuickScaleEnabled())
-        .named("is quick scale enabled")
-        .isTrue();
+    check("isQuickScaleEnabled()").that(actual.isQuickScaleEnabled()).isTrue();
     return this;
   }
 
   @TargetApi(KITKAT)
   public ScaleGestureDetectorSubject isQuickScaleDisabled() {
-    assertThat(actual().isQuickScaleEnabled())
-        .named("is quick scale enabled")
-        .isFalse();
+    check("isQuickScaleEnabled()").that(actual.isQuickScaleEnabled()).isFalse();
     return this;
   }
 }

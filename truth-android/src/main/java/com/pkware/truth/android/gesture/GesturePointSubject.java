@@ -21,36 +21,34 @@ import android.gesture.GesturePoint;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link GesturePoint} subjects.
  */
-public class GesturePointSubject extends Subject<GesturePointSubject, GesturePoint> {
-  public GesturePointSubject(FailureMetadata failureMetadata, GesturePoint subject) {
-    super(failureMetadata, subject);
+public class GesturePointSubject extends Subject {
+
+  @Nullable
+  private final GesturePoint actual;
+
+  public GesturePointSubject(@Nonnull FailureMetadata failureMetadata, @Nullable GesturePoint actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public GesturePointSubject hasTimestamp(long timestamp) {
-    assertThat(actual().timestamp)
-        .named("timestamp")
-        .isEqualTo(timestamp);
+    check("timestamp").that(actual.timestamp).isEqualTo(timestamp);
     return this;
   }
 
   public GesturePointSubject hasX(float x, float tolerance) {
-    assertThat(actual().x)
-        .named("X")
-        .isWithin(tolerance)
-        .of(x);
+    check("x").that(actual.x).isWithin(tolerance).of(x);
     return this;
   }
 
   public GesturePointSubject hasY(float y, float tolerance) {
-    assertThat(actual().y)
-        .named("Y")
-        .isWithin(tolerance)
-        .of(y);
+    check("y").that(actual.y).isWithin(tolerance).of(y);
     return this;
   }
 }

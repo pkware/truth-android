@@ -7,7 +7,7 @@ import re
 SRC_DIR = 'src/main/java/'
 ABSTRACT = re.compile(r'public abstract class Abstract')
 TYPE   = re.compile(r'class [A-Za-z0-9]+(<[^>]+?(?: extends ([A-Za-z0-9_]+))?>)?')
-TARGET = re.compile(r'\s[A-Z][A-Za-z0-9_]+<[A-Z][A-Za-z0-9_]+(?:<.+?>)?, (([A-Z][A-Za-z0-9_]+).*?)(<.+?>)?(?:, [A-Z])*> {')
+TARGET = re.compile(r'\s@Nullable (([A-Z][A-Za-z0-9_]+).*?)(<.+?>)? actual\) {')
 IMPORT = re.compile(r'import (?:static )?((?:com\.google\.)?android(x?)\..*?);')
 ASSERTIONS = 'Assertions.java'
 
@@ -104,14 +104,17 @@ for project in projects:
     out.write('//\n')
     out.write('// This class is generated. Do not modify directly!\n')
     out.write('package %s;\n\n' % classes_package)
+    out.write('import javax.annotation.Nonnull;\n')
+    out.write('import javax.annotation.Nullable;\n\n')
     out.write('import static com.google.common.truth.Truth.assertAbout;\n\n')
     out.write('/** Assertions for testing Android classes. */\n')
     out.write('@SuppressWarnings("deprecation")\n')
     out.write('public final class Assertions {')
     for package, target_package, bounds_type, generic_keys in sorted(assertions, key=lambda x: x[0]):
       out.write('\n')
+      out.write('  @Nonnull\n')
       out.write('  public static %s%s%s assertThat(\n' % (bounds_type + ' ' if bounds_type else '', package, generic_keys))
-      out.write('      %s%s target) {\n' % (target_package, generic_keys))
+      out.write('      @Nullable %s%s target) {\n' % (target_package, generic_keys))
       out.write('    return assertAbout(%s%s::new).that(target);\n' % (package, generic_keys))
       out.write('  }\n')
     out.write('\n')

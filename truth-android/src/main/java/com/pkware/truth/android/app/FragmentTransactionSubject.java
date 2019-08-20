@@ -21,41 +21,39 @@ import android.app.FragmentTransaction;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link FragmentTransaction} subjects.
  */
-public class FragmentTransactionSubject extends Subject<FragmentTransactionSubject, FragmentTransaction> {
-  public FragmentTransactionSubject(FailureMetadata failureMetadata, FragmentTransaction subject) {
-    super(failureMetadata, subject);
+public class FragmentTransactionSubject extends Subject {
+
+  @Nullable
+  private final FragmentTransaction actual;
+
+  public FragmentTransactionSubject(@Nonnull FailureMetadata failureMetadata, @Nullable FragmentTransaction actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public FragmentTransactionSubject isAddToBackStackAllowed() {
-    assertThat(actual().isAddToBackStackAllowed())
-        .named("is add to back stack allowed")
-        .isTrue();
+    check("isAddToBackStackAllowed()").that(actual.isAddToBackStackAllowed()).isTrue();
     return this;
   }
 
   public FragmentTransactionSubject isAddToBackStackDisallowed() {
-    assertThat(actual().isAddToBackStackAllowed())
-        .named("is add to back stack allowed")
-        .isFalse();
+    check("isAddToBackStackAllowed()").that(actual.isAddToBackStackAllowed()).isFalse();
     return this;
   }
 
   public FragmentTransactionSubject isEmpty() {
-    assertThat(actual().isEmpty())
-        .named("is empty")
-        .isTrue();
+    check("isEmpty()").that(actual.isEmpty()).isTrue();
     return this;
   }
 
   public FragmentTransactionSubject isNotEmpty() {
-    assertThat(actual().isEmpty())
-        .named("is empty")
-        .isFalse();
+    check("isEmpty()").that(actual.isEmpty()).isFalse();
     return this;
   }
 }

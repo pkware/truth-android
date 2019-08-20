@@ -17,7 +17,11 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.WrapperListAdapter;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link WrapperListAdapter} subjects.
@@ -25,8 +29,8 @@ import com.google.common.truth.FailureMetadata;
  * This class is final. To extend use {@link AbstractWrapperListAdapterSubject}.
  */
 public final class WrapperListAdapterSubject
-    extends AbstractWrapperListAdapterSubject<WrapperListAdapterSubject, WrapperListAdapter> {
-  public WrapperListAdapterSubject(FailureMetadata failureMetadata, WrapperListAdapter subject) {
-    super(failureMetadata, subject);
+    extends AbstractWrapperListAdapterSubject<WrapperListAdapter> {
+  public WrapperListAdapterSubject(@Nonnull FailureMetadata failureMetadata, @Nullable WrapperListAdapter actual) {
+    super(failureMetadata, actual);
   }
 }

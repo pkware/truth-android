@@ -21,69 +21,59 @@ import android.telephony.SignalStrength;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link SignalStrength} subjects.
  */
-public class SignalStrengthSubject extends Subject<SignalStrengthSubject, SignalStrength> {
-  public SignalStrengthSubject(FailureMetadata failureMetadata, SignalStrength subject) {
-    super(failureMetadata, subject);
+public class SignalStrengthSubject extends Subject {
+
+  @Nullable
+  private final SignalStrength actual;
+
+  public SignalStrengthSubject(@Nonnull FailureMetadata failureMetadata, @Nullable SignalStrength actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public SignalStrengthSubject hasCdmaDbm(int dbm) {
-    assertThat(actual().getCdmaDbm())
-        .named("CDMA dBm")
-        .isEqualTo(dbm);
+    check("getCdmaDbm()").that(actual.getCdmaDbm()).isEqualTo(dbm);
     return this;
   }
 
   public SignalStrengthSubject hasCdmaEcio(int ecio) {
-    assertThat(actual().getCdmaEcio())
-        .named("CDMA Ec/Io")
-        .isEqualTo(ecio);
+    check("getCdmaEcio()").that(actual.getCdmaEcio()).isEqualTo(ecio);
     return this;
   }
 
   public SignalStrengthSubject hasEvdoDbm(int dbm) {
-    assertThat(actual().getEvdoDbm())
-        .named("EVDO dBm")
-        .isEqualTo(dbm);
+    check("getEvdoDbm()").that(actual.getEvdoDbm()).isEqualTo(dbm);
     return this;
   }
 
   public SignalStrengthSubject hasEvdoEcio(int ecio) {
-    assertThat(actual().getEvdoEcio())
-        .named("EVDO Ec/Io")
-        .isEqualTo(ecio);
+    check("getEvdoEcio()").that(actual.getEvdoEcio()).isEqualTo(ecio);
     return this;
   }
 
   public SignalStrengthSubject hasEvdoSnr(int snr) {
-    assertThat(actual().getEvdoSnr())
-        .named("EVDO signal to noise ratio")
-        .isEqualTo(snr);
+    check("getEvdoSnr()").that(actual.getEvdoSnr()).isEqualTo(snr);
     return this;
   }
 
   public SignalStrengthSubject hasGsmSignalStrength(int signalStrength) {
-    assertThat(actual().getGsmSignalStrength())
-        .named("GSM signal strength")
-        .isEqualTo(signalStrength);
+    check("getGsmSignalStrength()").that(actual.getGsmSignalStrength()).isEqualTo(signalStrength);
     return this;
   }
 
   public SignalStrengthSubject isGsm() {
-    assertThat(actual().isGsm())
-        .named("is GSM")
-        .isTrue();
+    check("isGsm()").that(actual.isGsm()).isTrue();
     return this;
   }
 
   public SignalStrengthSubject isNotGsm() {
-    assertThat(actual().isGsm())
-        .named("is GSM")
-        .isFalse();
+    check("isGsm()").that(actual.isGsm()).isFalse();
     return this;
   }
 }

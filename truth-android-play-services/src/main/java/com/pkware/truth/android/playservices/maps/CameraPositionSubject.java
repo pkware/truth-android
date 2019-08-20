@@ -21,45 +21,39 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link CameraPosition} subjects.
  */
-public class CameraPositionSubject extends Subject<CameraPositionSubject, CameraPosition> {
-  public CameraPositionSubject(FailureMetadata failureMetadata, CameraPosition subject) {
-    super(failureMetadata, subject);
+public class CameraPositionSubject extends Subject {
+
+  @Nullable
+  private final CameraPosition actual;
+
+  public CameraPositionSubject(@Nonnull FailureMetadata failureMetadata, @Nullable CameraPosition actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public CameraPositionSubject hasBearing(float bearing, float tolerance) {
-    assertThat(actual().bearing)
-        .named("bearing")
-        .isWithin(tolerance)
-        .of(bearing);
+    check("bearing").that(actual.bearing).isWithin(tolerance).of(bearing);
     return this;
   }
 
   public CameraPositionSubject hasTarget(LatLng target) {
-    LatLng actualTarget = actual().target;
-    assertThat(actual().target)
-        .named("target")
-        .isEqualTo(target);
+    check("target").that(actual.target).isEqualTo(target);
     return this;
   }
 
   public CameraPositionSubject hasTilt(float tilt, float tolerance) {
-    assertThat(actual().tilt)
-        .named("tilt")
-        .isWithin(tolerance)
-        .of(tilt);
+    check("tilt").that(actual.tilt).isWithin(tolerance).of(tilt);
     return this;
   }
 
   public CameraPositionSubject hasZoom(float zoom, float tolerance) {
-    assertThat(actual().zoom)
-        .named("zoom")
-        .isWithin(tolerance)
-        .of(zoom);
+    check("zoom").that(actual.zoom).isWithin(tolerance).of(zoom);
     return this;
   }
 }

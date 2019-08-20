@@ -17,23 +17,27 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.TableRow;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link TableRow} subjects.
  */
-public class TableRowSubject extends AbstractLinearLayoutSubject<TableRowSubject, TableRow> {
-  public TableRowSubject(FailureMetadata failureMetadata, TableRow subject) {
-    super(failureMetadata, subject);
+public class TableRowSubject extends AbstractLinearLayoutSubject<TableRow> {
+
+  @Nullable
+  private final TableRow actual;
+
+  public TableRowSubject(@Nonnull FailureMetadata failureMetadata, @Nullable TableRow actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public TableRowSubject hasVirtualChildCount(int count) {
-    int actualCount = actual().getVirtualChildCount();
-    assertThat(actual().getVirtualChildCount())
-        .named("virtual child count")
-        .isEqualTo(count);
+    check("getVirtualChildCount()").that(actual.getVirtualChildCount()).isEqualTo(count);
     return this;
   }
 }

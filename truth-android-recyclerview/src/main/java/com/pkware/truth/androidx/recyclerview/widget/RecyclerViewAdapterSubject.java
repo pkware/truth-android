@@ -21,51 +21,46 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static androidx.recyclerview.widget.RecyclerView.ViewHolder;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link RecyclerView.Adapter} subjects.
  */
-public class RecyclerViewAdapterSubject<VH extends ViewHolder>
-    extends Subject<RecyclerViewAdapterSubject<VH>, RecyclerView.Adapter<VH>> {
+public class RecyclerViewAdapterSubject<VH extends ViewHolder> extends Subject {
 
-  public RecyclerViewAdapterSubject(FailureMetadata failureMetadata, RecyclerView.Adapter<VH> subject) {
-    super(failureMetadata, subject);
+  @Nullable
+  private final RecyclerView.Adapter<VH> actual;
+
+  public RecyclerViewAdapterSubject(@Nonnull FailureMetadata failureMetadata, @Nullable RecyclerView.Adapter<VH> actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public RecyclerViewAdapterSubject<VH> hasItemCount(int count) {
-    assertThat(actual().getItemCount())
-        .named("item count")
-        .isEqualTo(count);
+    check("getItemCount()").that(actual.getItemCount()).isEqualTo(count);
     return this;
   }
 
   public RecyclerViewAdapterSubject<VH> hasStableIds() {
-    assertThat(actual().hasStableIds())
-        .named("has stable IDs")
-        .isTrue();
+    check("hasStableIds()").that(actual.hasStableIds()).isTrue();
     return this;
   }
 
   public RecyclerViewAdapterSubject<VH> doesNotHaveStableIds() {
-    assertThat(actual().hasStableIds())
-        .named("has stable IDs")
-        .isFalse();
+    check("hasStableIds()").that(actual.hasStableIds()).isFalse();
     return this;
   }
 
   public RecyclerViewAdapterSubject<VH> hasObservers() {
-    assertThat(actual().hasObservers())
-        .named("has observers")
-        .isTrue();
+    check("hasObservers()").that(actual.hasObservers()).isTrue();
     return this;
   }
 
   public RecyclerViewAdapterSubject<VH> doesNotHaveObservers() {
-    assertThat(actual().hasObservers())
-        .named("has observers")
-        .isFalse();
+    check("hasObservers()").that(actual.hasObservers()).isFalse();
     return this;
   }
 }

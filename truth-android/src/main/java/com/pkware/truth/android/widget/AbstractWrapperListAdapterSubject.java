@@ -21,19 +21,21 @@ import android.widget.WrapperListAdapter;
 
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public abstract class AbstractWrapperListAdapterSubject<S extends AbstractWrapperListAdapterSubject<S, T>, T extends WrapperListAdapter>
-    extends AbstractListAdapterSubject<S, T> {
-  protected AbstractWrapperListAdapterSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractWrapperListAdapterSubject<T extends WrapperListAdapter>
+    extends AbstractListAdapterSubject<T> {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractWrapperListAdapterSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S hasWrappedAdapter(ListAdapter adapter) {
-    assertThat(actual().getWrappedAdapter())
-        .named("wrapper adapter")
-        .isSameAs(adapter);
-    //noinspection unchecked
-    return (S) this;
+  public void hasWrappedAdapter(@Nullable ListAdapter adapter) {
+    check("getWrappedAdapter()").that(actual.getWrappedAdapter()).isSameInstanceAs(adapter);
   }
 }

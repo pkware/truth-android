@@ -20,35 +20,29 @@ import android.preference.PreferenceGroup;
 
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public abstract class AbstractPreferenceGroupSubject<S extends AbstractPreferenceGroupSubject<S, T>, T extends PreferenceGroup>
-    extends AbstractPreferenceSubject<S, T> {
-  protected AbstractPreferenceGroupSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractPreferenceGroupSubject<T extends PreferenceGroup>
+    extends AbstractPreferenceSubject<T> {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractPreferenceGroupSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S hasPreferenceCount(int count) {
-    assertThat(actual().getPreferenceCount())
-        .named("preference count")
-        .isEqualTo(count);
-    //noinspection unchecked
-    return (S) this;
+  public void hasPreferenceCount(int count) {
+    check("getPreferenceCount()").that(actual.getPreferenceCount()).isEqualTo(count);
   }
 
-  public S isOrderingAsAdded() {
-    assertThat(actual().isOrderingAsAdded())
-        .named("is ordering as added")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isOrderingAsAdded() {
+    check("isOrderingAsAdded()").that(actual.isOrderingAsAdded()).isTrue();
   }
 
-  public S isNotOrderingAsAdded() {
-    assertThat(actual().isOrderingAsAdded())
-        .named("is ordering as added")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotOrderingAsAdded() {
+    check("isOrderingAsAdded()").that(actual.isOrderingAsAdded()).isFalse();
   }
 }

@@ -28,6 +28,9 @@ import com.google.common.truth.Subject;
 
 import java.util.Locale;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.graphics.Paint.ANTI_ALIAS_FLAG;
 import static android.graphics.Paint.DEV_KERN_TEXT_FLAG;
 import static android.graphics.Paint.DITHER_FLAG;
@@ -39,15 +42,19 @@ import static android.graphics.Paint.STRIKE_THRU_TEXT_FLAG;
 import static android.graphics.Paint.SUBPIXEL_TEXT_FLAG;
 import static android.graphics.Paint.UNDERLINE_TEXT_FLAG;
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildBitMaskString;
 
-public abstract class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>, T extends Paint> extends Subject<S, T> {
-  protected AbstractPaintSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractPaintSubject<T extends Paint> extends Subject {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractPaintSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   private static String flagsToString(@PaintFlags int flags) {
     return buildBitMaskString(flags)
         .flag(ANTI_ALIAS_FLAG, "antiAlias")
@@ -63,281 +70,145 @@ public abstract class AbstractPaintSubject<S extends AbstractPaintSubject<S, T>,
         .get();
   }
 
-  public S hasAscent(float ascent, float tolerance) {
-    assertThat(actual().ascent())
-        .named("ascent")
-        .isWithin(tolerance)
-        .of(ascent);
-    //noinspection unchecked
-    return (S) this;
+  public void hasAscent(float ascent, float tolerance) {
+    check("ascent()").that(actual.ascent()).isWithin(tolerance).of(ascent);
   }
 
-  public S hasDescent(float descent, float tolerance) {
-    assertThat(actual().descent())
-        .named("descent")
-        .isWithin(tolerance)
-        .of(descent);
-    //noinspection unchecked
-    return (S) this;
+  public void hasDescent(float descent, float tolerance) {
+    check("descent()").that(actual.descent()).isWithin(tolerance).of(descent);
   }
 
-  public S hasAlpha(int alpha) {
-    assertThat(actual().getAlpha())
-        .named("alpha")
-        .isEqualTo(alpha);
-    //noinspection unchecked
-    return (S) this;
+  public void hasAlpha(int alpha) {
+    check("getAlpha()").that(actual.getAlpha()).isEqualTo(alpha);
   }
 
-  public S hasColor(int color) {
-    int actualColor = actual().getColor();
-    assert_()
+  public void hasColor(int color) {
+    int actualColor = actual.getColor();
+    check("getColor()")
         .withMessage("Expected color <%s> but was <%s>.", Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S hasFlags(@PaintFlags int flags) {
-    int actualFlags = actual().getFlags();
+  public void hasFlags(@PaintFlags int flags) {
+    int actualFlags = actual.getFlags();
     //noinspection ResourceType
-    assert_()
+    check("getFlags()")
         .withMessage("Expected flags <%s> but was <%s>.", flagsToString(flags), flagsToString(actualFlags))
         .that(actualFlags)
         .isEqualTo(flags);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S hasFontSpacing(float spacing, float tolerance) {
-    assertThat(actual().getFontSpacing())
-        .named("font spacing")
-        .isWithin(tolerance)
-        .of(spacing);
-    //noinspection unchecked
-    return (S) this;
+  public void hasFontSpacing(float spacing, float tolerance) {
+    check("getFontSpacing()").that(actual.getFontSpacing()).isWithin(tolerance).of(spacing);
   }
 
-  public S hasHinting(int hinting) {
-    assertThat(actual().getHinting())
-        .named("hinting")
-        .isEqualTo(hinting);
-    //noinspection unchecked
-    return (S) this;
+  public void hasHinting(int hinting) {
+    check("getHinting()").that(actual.getHinting()).isEqualTo(hinting);
   }
 
-  public S hasMaskFilter(MaskFilter filter) {
-    assertThat(actual().getMaskFilter())
-        .named("mask filter")
-        .isSameAs(filter);
-    //noinspection unchecked
-    return (S) this;
+  public void hasMaskFilter(@Nullable MaskFilter filter) {
+    check("getMaskFilter()").that(actual.getMaskFilter()).isSameInstanceAs(filter);
   }
 
-  public S hasPathEffect(PathEffect effect) {
-    assertThat(actual().getPathEffect())
-        .named("path effect")
-        .isSameAs(effect);
-    //noinspection unchecked
-    return (S) this;
+  public void hasPathEffect(@Nullable PathEffect effect) {
+    check("getPathEffect()").that(actual.getPathEffect()).isSameInstanceAs(effect);
   }
 
-  public S hasShader(Shader shader) {
-    assertThat(actual().getShader())
-        .named("shader")
-        .isSameAs(shader);
-    //noinspection unchecked
-    return (S) this;
+  public void hasShader(@Nullable Shader shader) {
+    check("getShader()").that(actual.getShader()).isSameInstanceAs(shader);
   }
 
-  public S hasStrokeCap(Paint.Cap cap) {
-    assertThat(actual().getStrokeCap())
-        .named("stroke cap")
-        .isEqualTo(cap);
-    //noinspection unchecked
-    return (S) this;
+  public void hasStrokeCap(@Nullable Paint.Cap cap) {
+    check("getStrokeCap()").that(actual.getStrokeCap()).isEqualTo(cap);
   }
 
-  public S hasStrokeJoin(Paint.Join join) {
-    assertThat(actual().getStrokeJoin())
-        .named("stroke join")
-        .isEqualTo(join);
-    //noinspection unchecked
-    return (S) this;
+  public void hasStrokeJoin(@Nullable Paint.Join join) {
+    check("getStrokeJoin()").that(actual.getStrokeJoin()).isEqualTo(join);
   }
 
-  public S hasStrokeMiter(float miter, float tolerance) {
-    assertThat(actual().getStrokeMiter())
-        .named("stroke miter")
-        .isWithin(tolerance)
-        .of(miter);
-    //noinspection unchecked
-    return (S) this;
+  public void hasStrokeMiter(float miter, float tolerance) {
+    check("getStrokeMiter()").that(actual.getStrokeMiter()).isWithin(tolerance).of(miter);
   }
 
-  public S hasStrokeWidth(float width, float tolerance) {
-    assertThat(actual().getStrokeWidth())
-        .named("stroke width")
-        .isWithin(tolerance)
-        .of(width);
-    //noinspection unchecked
-    return (S) this;
+  public void hasStrokeWidth(float width, float tolerance) {
+    check("getStrokeWidth()").that(actual.getStrokeWidth()).isWithin(tolerance).of(width);
   }
 
-  public S hasStyle(Paint.Style style) {
-    assertThat(actual().getStyle())
-        .named("style")
-        .isEqualTo(style);
-    //noinspection unchecked
-    return (S) this;
+  public void hasStyle(@Nullable Paint.Style style) {
+    check("getStyle()").that(actual.getStyle()).isEqualTo(style);
   }
 
-  public S hasTextAlign(Paint.Align align) {
-    assertThat(actual().getTextAlign())
-        .named("text align")
-        .isEqualTo(align);
-    //noinspection unchecked
-    return (S) this;
+  public void hasTextAlign(@Nullable Paint.Align align) {
+    check("getTextAlign()").that(actual.getTextAlign()).isEqualTo(align);
   }
 
   @TargetApi(JELLY_BEAN_MR1)
-  public S hasTextLocale(Locale locale) {
-    assertThat(actual().getTextLocale())
-        .named("text locale")
-        .isEqualTo(locale);
-    //noinspection unchecked
-    return (S) this;
+  public void hasTextLocale(@Nullable Locale locale) {
+    check("getTextLocale()").that(actual.getTextLocale()).isEqualTo(locale);
   }
 
-  public S hasTextScaleX(float scale, float tolerance) {
-    assertThat(actual().getTextScaleX())
-        .named("text X scale")
-        .isWithin(tolerance)
-        .of(scale);
-    //noinspection unchecked
-    return (S) this;
+  public void hasTextScaleX(float scale, float tolerance) {
+    check("getTextScaleX()").that(actual.getTextScaleX()).isWithin(tolerance).of(scale);
   }
 
-  public S hasTextSize(float size, float tolerance) {
-    assertThat(actual().getTextSize())
-        .named("text size")
-        .isWithin(tolerance)
-        .of(size);
-    //noinspection unchecked
-    return (S) this;
+  public void hasTextSize(float size, float tolerance) {
+    check("getTextSize()").that(actual.getTextSize()).isWithin(tolerance).of(size);
   }
 
-  public S hasTextSkewX(float skew, float tolerance) {
-    assertThat(actual().getTextSkewX())
-        .named("text X skew")
-        .isWithin(tolerance)
-        .of(skew);
-    //noinspection unchecked
-    return (S) this;
+  public void hasTextSkewX(float skew, float tolerance) {
+    check("getTextSkewX()").that(actual.getTextSkewX()).isWithin(tolerance).of(skew);
   }
 
-  public S hasTypeface(Typeface typeface) {
-    assertThat(actual().getTypeface())
-        .named("typeface")
-        .isSameAs(typeface);
-    //noinspection unchecked
-    return (S) this;
+  public void hasTypeface(@Nullable Typeface typeface) {
+    check("getTypeface()").that(actual.getTypeface()).isSameInstanceAs(typeface);
   }
 
-  public S isAntiAliased() {
-    assertThat(actual().isAntiAlias())
-        .named("is anti-aliased")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isAntiAliased() {
+    check("isAntiAlias()").that(actual.isAntiAlias()).isTrue();
   }
 
-  public S isNotAntiAliased() {
-    assertThat(actual().isAntiAlias())
-        .named("is anti-aliased")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotAntiAliased() {
+    check("isAntiAlias()").that(actual.isAntiAlias()).isFalse();
   }
 
-  public S isDithering() {
-    assertThat(actual().isDither())
-        .named("is dithering")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isDithering() {
+    check("isDither()").that(actual.isDither()).isTrue();
   }
 
-  public S isNotDithering() {
-    assertThat(actual().isDither())
-        .named("is dithering")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotDithering() {
+    check("isDither()").that(actual.isDither()).isFalse();
   }
 
-  public S isFakingBoldText() {
-    assertThat(actual().isFakeBoldText())
-        .named("is faking bold text")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isFakingBoldText() {
+    check("isFakeBoldText()").that(actual.isFakeBoldText()).isTrue();
   }
 
-  public S isNotFakingBoldText() {
-    assertThat(actual().isFakeBoldText())
-        .named("is faking bold text")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotFakingBoldText() {
+    check("isFakeBoldText()").that(actual.isFakeBoldText()).isFalse();
   }
 
-  public S isStrikingThroughText() {
-    assertThat(actual().isStrikeThruText())
-        .named("is striking through text")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isStrikingThroughText() {
+    check("isStrikeThruText()").that(actual.isStrikeThruText()).isTrue();
   }
 
-  public S isNotStrikingThroughText() {
-    assertThat(actual().isStrikeThruText())
-        .named("is striking through text")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotStrikingThroughText() {
+    check("isStrikeThruText()").that(actual.isStrikeThruText()).isFalse();
   }
 
-  public S isSubpixelText() {
-    assertThat(actual().isSubpixelText())
-        .named("has subpixel text")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isSubpixelText() {
+    check("isSubpixelText()").that(actual.isSubpixelText()).isTrue();
   }
 
-  public S isNotSubpixelText() {
-    assertThat(actual().isSubpixelText())
-        .named("has subpixel text")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotSubpixelText() {
+    check("isSubpixelText()").that(actual.isSubpixelText()).isFalse();
   }
 
-  public S isUnderliningText() {
-    assertThat(actual().isUnderlineText())
-        .named("is underlining text")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isUnderliningText() {
+    check("isUnderlineText()").that(actual.isUnderlineText()).isTrue();
   }
 
-  public S isNotUnderliningText() {
-    assertThat(actual().isUnderlineText())
-        .named("is underlining text")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotUnderliningText() {
+    check("isUnderlineText()").that(actual.isUnderlineText()).isFalse();
   }
 }

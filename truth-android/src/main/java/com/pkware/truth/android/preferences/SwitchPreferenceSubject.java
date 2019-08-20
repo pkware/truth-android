@@ -17,39 +17,42 @@
 package com.pkware.truth.android.preferences;
 
 import android.preference.SwitchPreference;
+
 import androidx.annotation.StringRes;
 
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link SwitchPreference} subjects.
  */
-public class SwitchPreferenceSubject extends AbstractTwoStatePreferenceSubject<SwitchPreferenceSubject, SwitchPreference> {
-  public SwitchPreferenceSubject(FailureMetadata failureMetadata, SwitchPreference subject) {
-    super(failureMetadata, subject);
+public class SwitchPreferenceSubject extends AbstractTwoStatePreferenceSubject<SwitchPreference> {
+
+  @Nullable
+  private SwitchPreference actual;
+
+  public SwitchPreferenceSubject(@Nonnull FailureMetadata failureMetadata, @Nullable SwitchPreference actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public SwitchPreferenceSubject hasSwitchTextOff(CharSequence text) {
-    assertThat(actual().getSwitchTextOff())
-        .named("switch off text")
-        .isEqualTo(text);
+  public SwitchPreferenceSubject hasSwitchTextOff(@Nullable CharSequence text) {
+    check("getSwitchTextOff()").that(actual.getSwitchTextOff()).isEqualTo(text);
     return this;
   }
 
   public SwitchPreferenceSubject hasSwitchTextOff(@StringRes int resId) {
-    return hasSwitchTextOff(actual().getContext().getString(resId));
+    return hasSwitchTextOff(actual.getContext().getString(resId));
   }
 
-  public SwitchPreferenceSubject hasSwitchTextOn(CharSequence text) {
-    assertThat(actual().getSwitchTextOn())
-        .named("switch on text")
-        .isEqualTo(text);
+  public SwitchPreferenceSubject hasSwitchTextOn(@Nullable CharSequence text) {
+    check("getSwitchTextOn()").that(actual.getSwitchTextOn()).isEqualTo(text);
     return this;
   }
 
   public SwitchPreferenceSubject hasSwitchTextOn(@StringRes int resId) {
-    return hasSwitchTextOn(actual().getContext().getString(resId));
+    return hasSwitchTextOn(actual.getContext().getString(resId));
   }
 }

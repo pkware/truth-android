@@ -22,39 +22,43 @@ import android.util.SparseIntArray;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 
 /**
  * Propositions for {@link SparseIntArray} subjects.
  */
 @TargetApi(JELLY_BEAN_MR2)
-public class SparseIntArraySubject extends Subject<SparseIntArraySubject, SparseIntArray> {
-  public SparseIntArraySubject(FailureMetadata failureMetadata, SparseIntArray subject) {
-    super(failureMetadata, subject);
+public class SparseIntArraySubject extends Subject {
+
+  @Nullable
+  private final SparseIntArray actual;
+
+  public SparseIntArraySubject(@Nonnull FailureMetadata failureMetadata, @Nullable SparseIntArray actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public SparseIntArraySubject hasKey(int key) {
-    assert_()
+    check("indexOfKey(key)")
         .withMessage("Expected key <%s> to be present but was not.", key)
-        .that(actual().indexOfKey(key))
+        .that(actual.indexOfKey(key))
         .isGreaterThan(-1);
     return this;
   }
 
   public SparseIntArraySubject doesNotHaveKey(int key) {
-    assert_()
-        .withMessage("Expected key <%s> to not be present but was.")
-        .that(actual().indexOfKey(key))
+    check("indexOfKey(key)")
+        .withMessage("Expected key <%s> to not be present but was.", key)
+        .that(actual.indexOfKey(key))
         .isLessThan(0);
     return this;
   }
 
   public SparseIntArraySubject hasSize(int size) {
-    assertThat(actual().size())
-        .named("size")
-        .isEqualTo(size);
+    check("size()").that(actual.size()).isEqualTo(size);
     return this;
   }
 }

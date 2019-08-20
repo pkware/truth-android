@@ -22,109 +22,90 @@ import android.graphics.Bitmap;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
 import static android.os.Build.VERSION_CODES.KITKAT;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link Bitmap} subjects.
  */
-public class BitmapSubject extends Subject<BitmapSubject, Bitmap> {
-  public BitmapSubject(FailureMetadata failureMetadata, Bitmap subject) {
-    super(failureMetadata, subject);
+public class BitmapSubject extends Subject {
+
+  @Nullable
+  private final Bitmap actual;
+
+  public BitmapSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Bitmap actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public BitmapSubject isRecycled() {
-    assertThat(actual().isRecycled())
-        .named("is recycled")
-        .isTrue();
+    check("isRecycled()").that(actual.isRecycled()).isTrue();
     return this;
   }
 
   public BitmapSubject isNotRecycled() {
-    assertThat(actual().isRecycled())
-        .named("is recycled")
-        .isFalse();
+    check("isRecycled()").that(actual.isRecycled()).isFalse();
     return this;
   }
 
   public BitmapSubject isMutable() {
-    assertThat(actual().isMutable())
-        .named("is mutable")
-        .isTrue();
+    check("isMutable()").that(actual.isMutable()).isTrue();
     return this;
   }
 
   public BitmapSubject isNotMutable() {
-    assertThat(actual().isMutable())
-        .named("is mutable")
-        .isFalse();
+    check("isMutable()").that(actual.isMutable()).isFalse();
     return this;
   }
 
   @TargetApi(JELLY_BEAN_MR1)
   public BitmapSubject isPremultiplied() {
-    assertThat(actual().isPremultiplied())
-        .named("is premultiplied")
-        .isTrue();
+    check("isPremultiplied()").that(actual.isPremultiplied()).isTrue();
     return this;
   }
 
   @TargetApi(JELLY_BEAN_MR1)
   public BitmapSubject isNotPremultiplied() {
-    assertThat(actual().isPremultiplied())
-        .named("is premultiplied")
-        .isFalse();
+    check("isPremultiplied()").that(actual.isPremultiplied()).isFalse();
     return this;
   }
 
   @TargetApi(KITKAT)
   public BitmapSubject hasAllocationByteCount(int count) {
-    assertThat(actual().getAllocationByteCount())
-        .named("allocation byte count")
-        .isEqualTo(count);
+    check("getAllocationByteCount()").that(actual.getAllocationByteCount()).isEqualTo(count);
     return this;
   }
 
   public BitmapSubject hasByteCount(int count) {
-    assertThat(actual().getByteCount())
-        .named("byte count")
-        .isEqualTo(count);
+    check("getByteCount()").that(actual.getByteCount()).isEqualTo(count);
     return this;
   }
 
   public BitmapSubject hasDensity(int density) {
-    assertThat(actual().getDensity())
-        .named("density")
-        .isEqualTo(density);
+    check("getDensity()").that(actual.getDensity()).isEqualTo(density);
     return this;
   }
 
   public BitmapSubject hasWidth(int width) {
-    assertThat(actual().getWidth())
-        .named("width")
-        .isEqualTo(width);
+    check("getWidth()").that(actual.getWidth()).isEqualTo(width);
     return this;
   }
 
   public BitmapSubject hasHeight(int height) {
-    assertThat(actual().getHeight())
-        .named("height")
-        .isEqualTo(height);
+    check("getHeight()").that(actual.getHeight()).isEqualTo(height);
     return this;
   }
 
   public BitmapSubject hasAlphaSupport() {
-    assertThat(actual().hasAlpha())
-        .named("has alpha support")
-        .isTrue();
+    check("hasAlpha()").that(actual.hasAlpha()).isTrue();
     return this;
   }
 
   public BitmapSubject hasNoAlphaSupport() {
-    assertThat(actual().hasAlpha())
-        .named("has alpha support")
-        .isFalse();
+    check("hasAlpha()").that(actual.hasAlpha()).isFalse();
     return this;
   }
 }

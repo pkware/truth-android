@@ -21,41 +21,39 @@ import android.graphics.BitmapRegionDecoder;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link BitmapRegionDecoder} subjects.
  */
-public class BitmapRegionDecoderSubject extends Subject<BitmapRegionDecoderSubject, BitmapRegionDecoder> {
-  public BitmapRegionDecoderSubject(FailureMetadata failureMetadata, BitmapRegionDecoder subject) {
-    super(failureMetadata, subject);
+public class BitmapRegionDecoderSubject extends Subject {
+
+  @Nullable
+  private final BitmapRegionDecoder actual;
+
+  public BitmapRegionDecoderSubject(@Nonnull FailureMetadata failureMetadata, @Nullable BitmapRegionDecoder actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public BitmapRegionDecoderSubject hasHeight(int height) {
-    assertThat(actual().getHeight())
-        .named("height")
-        .isEqualTo(height);
+    check("getHeight()").that(actual.getHeight()).isEqualTo(height);
     return this;
   }
 
   public BitmapRegionDecoderSubject hasWidth(int width) {
-    assertThat(actual().getWidth())
-        .named("width")
-        .isEqualTo(width);
+    check("getWidth()").that(actual.getWidth()).isEqualTo(width);
     return this;
   }
 
   public BitmapRegionDecoderSubject isRecycled() {
-    assertThat(actual().isRecycled())
-        .named("is recycled")
-        .isTrue();
+    check("isRecycled()").that(actual.isRecycled()).isTrue();
     return this;
   }
 
   public BitmapRegionDecoderSubject isNotRecycled() {
-    assertThat(actual().isRecycled())
-        .named("is recycled")
-        .isFalse();
+    check("isRecycled()").that(actual.isRecycled()).isFalse();
     return this;
   }
 }

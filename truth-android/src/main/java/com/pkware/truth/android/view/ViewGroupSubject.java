@@ -17,15 +17,19 @@
 package com.pkware.truth.android.view;
 
 import android.view.ViewGroup;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link ViewGroup} subjects.
  * <p/>
  * This class is final. To extend use {@link AbstractViewGroupSubject}.
  */
-public final class ViewGroupSubject extends AbstractViewGroupSubject<ViewGroupSubject, ViewGroup> {
-  public ViewGroupSubject(FailureMetadata failureMetadata, ViewGroup subject) {
-    super(failureMetadata, subject);
+public final class ViewGroupSubject extends AbstractViewGroupSubject<ViewGroup> {
+  public ViewGroupSubject(@Nonnull FailureMetadata failureMetadata, @Nullable ViewGroup actual) {
+    super(failureMetadata, actual);
   }
 }

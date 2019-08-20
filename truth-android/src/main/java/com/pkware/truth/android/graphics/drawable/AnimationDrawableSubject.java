@@ -17,50 +17,47 @@
 package com.pkware.truth.android.graphics.drawable;
 
 import android.graphics.drawable.AnimationDrawable;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link AnimationDrawable} subjects.
  */
-public class AnimationDrawableSubject extends AbstractDrawableSubject<AnimationDrawableSubject, AnimationDrawable> {
-  public AnimationDrawableSubject(FailureMetadata failureMetadata, AnimationDrawable subject) {
-    super(failureMetadata, subject);
+public class AnimationDrawableSubject extends AbstractDrawableSubject<AnimationDrawable> {
+
+  @Nullable
+  private AnimationDrawable actual;
+
+  public AnimationDrawableSubject(@Nonnull FailureMetadata failureMetadata, @Nullable AnimationDrawable actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public AnimationDrawableSubject hasFrameCount(int count) {
-    assertThat(actual().getNumberOfFrames())
-        .named("frame count")
-        .isEqualTo(count);
+    check("getNumberOfFrames()").that(actual.getNumberOfFrames()).isEqualTo(count);
     return this;
   }
 
   public AnimationDrawableSubject isOneShot() {
-    assertThat(actual().isOneShot())
-        .named("is one-shot")
-        .isTrue();
+    check("isOneShot()").that(actual.isOneShot()).isTrue();
     return this;
   }
 
   public AnimationDrawableSubject isNotOneShot() {
-    assertThat(actual().isOneShot())
-        .named("is one-shot")
-        .isFalse();
+    check("isOneShot()").that(actual.isOneShot()).isFalse();
     return this;
   }
 
   public AnimationDrawableSubject isRunning() {
-    assertThat(actual().isRunning())
-        .named("is running")
-        .isTrue();
+    check("isRunning()").that(actual.isRunning()).isTrue();
     return this;
   }
 
   public AnimationDrawableSubject isNotRunning() {
-    assertThat(actual().isRunning())
-        .named("is running")
-        .isFalse();
+    check("isRunning()").that(actual.isRunning()).isFalse();
     return this;
   }
 }

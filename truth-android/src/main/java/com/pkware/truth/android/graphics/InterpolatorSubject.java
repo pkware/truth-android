@@ -21,27 +21,29 @@ import android.graphics.Interpolator;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Interpolator} subjects.
  */
-public class InterpolatorSubject extends Subject<InterpolatorSubject, Interpolator> {
-  public InterpolatorSubject(FailureMetadata failureMetadata, Interpolator subject) {
-    super(failureMetadata, subject);
+public class InterpolatorSubject extends Subject {
+
+  @Nullable
+  private final Interpolator actual;
+
+  public InterpolatorSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Interpolator actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public InterpolatorSubject hasKeyFrameCount(int count) {
-    assertThat(actual().getKeyFrameCount())
-        .named("key frame count")
-        .isEqualTo(count);
+    check("getKeyFrameCount()").that(actual.getKeyFrameCount()).isEqualTo(count);
     return this;
   }
 
   public InterpolatorSubject hasValueCount(int count) {
-    assertThat(actual().getValueCount())
-        .named("value count")
-        .isEqualTo(count);
+    check("getValueCount()").that(actual.getValueCount()).isEqualTo(count);
     return this;
   }
 }

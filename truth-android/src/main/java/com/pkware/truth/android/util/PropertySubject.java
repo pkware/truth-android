@@ -21,41 +21,39 @@ import android.util.Property;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Property} subjects.
  */
-public class PropertySubject<T, V> extends Subject<PropertySubject<T, V>, Property<T, V>> {
-  public PropertySubject(FailureMetadata failureMetadata, Property<T, V> subject) {
-    super(failureMetadata, subject);
+public class PropertySubject<T, V> extends Subject {
+
+  @Nullable
+  private final Property<T, V> actual;
+
+  public PropertySubject(@Nonnull FailureMetadata failureMetadata, @Nullable Property<T, V> actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public PropertySubject<T, V> hasName(String name) {
-    assertThat(actual().getName())
-        .named("name")
-        .isEqualTo(name);
+  public PropertySubject<T, V> hasName(@Nullable String name) {
+    check("getName()").that(actual.getName()).isEqualTo(name);
     return this;
   }
 
-  public PropertySubject<T, V> hasType(Class<?> type) {
-    assertThat(actual().getType())
-        .named("type")
-        .isEqualTo(type);
+  public PropertySubject<T, V> hasType(@Nullable Class<?> type) {
+    check("getType()").that(actual.getType()).isEqualTo(type);
     return this;
   }
 
   public PropertySubject<T, V> isReadOnly() {
-    assertThat(actual().isReadOnly())
-        .named("is read only")
-        .isTrue();
+    check("isReadOnly()").that(actual.isReadOnly()).isTrue();
     return this;
   }
 
   public PropertySubject<T, V> isNotReadOnly() {
-    assertThat(actual().isReadOnly())
-        .named("is read only")
-        .isFalse();
+    check("isReadOnly()").that(actual.isReadOnly()).isFalse();
     return this;
   }
 }

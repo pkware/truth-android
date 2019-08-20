@@ -22,42 +22,32 @@ import android.widget.ListView;
 
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public abstract class AbstractListActivitySubject<S extends AbstractListActivitySubject<S, T>, T extends ListActivity> extends AbstractActivitySubject<S, T> {
-  protected AbstractListActivitySubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractListActivitySubject<T extends ListActivity> extends AbstractActivitySubject<T> {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractListActivitySubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S hasListAdapter(ListAdapter adapter) {
-    assertThat(actual().getListAdapter())
-        .named("list adapter")
-        .isSameAs(adapter);
-    //noinspection unchecked
-    return (S) this;
+  public void hasListAdapter(@Nullable ListAdapter adapter) {
+    check("getListAdapter()").that(actual.getListAdapter()).isSameInstanceAs(adapter);
   }
 
-  public S hasListView(ListView listView) {
-    assertThat(actual().getListView())
-        .named("list view")
-        .isSameAs(listView);
-    //noinspection unchecked
-    return (S) this;
+  public void hasListView(@Nullable ListView listView) {
+    check("getListView()").that(actual.getListView()).isSameInstanceAs(listView);
   }
 
-  public S hasSelectedItemId(long id) {
-    assertThat(actual().getSelectedItemId())
-        .named("selected item id")
-        .isEqualTo(id);
-    //noinspection unchecked
-    return (S) this;
+  public void hasSelectedItemId(long id) {
+    check("getSelectedItemId()").that(actual.getSelectedItemId()).isEqualTo(id);
   }
 
-  public S hasSelectedItemPosition(int position) {
-    assertThat(actual().getSelectedItemPosition())
-        .named("selected item position")
-        .isEqualTo(position);
-    //noinspection unchecked
-    return (S) this;
+  public void hasSelectedItemPosition(int position) {
+    check("getSelectedItemPosition()").that(actual.getSelectedItemPosition()).isEqualTo(position);
   }
 }

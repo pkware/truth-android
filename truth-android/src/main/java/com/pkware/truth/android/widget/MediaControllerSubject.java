@@ -17,29 +17,32 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.MediaController;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link MediaController} subjects.
  */
-public class MediaControllerSubject extends AbstractFrameLayoutSubject<MediaControllerSubject, MediaController> {
-  public MediaControllerSubject(FailureMetadata failureMetadata, MediaController subject) {
-    super(failureMetadata, subject);
+public class MediaControllerSubject extends AbstractFrameLayoutSubject<MediaController> {
+
+  @Nullable
+  private final MediaController actual;
+
+  public MediaControllerSubject(@Nonnull FailureMetadata failureMetadata, @Nullable MediaController actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public MediaControllerSubject isShowing() {
-    assertThat(actual().isShowing())
-        .named("is showing")
-        .isTrue();
+    check("isShowing()").that(actual.isShowing()).isTrue();
     return this;
   }
 
   public MediaControllerSubject isNotShowing() {
-    assertThat(actual().isShowing())
-        .named("is showing")
-        .isFalse();
+    check("isShowing()").that(actual.isShowing()).isFalse();
     return this;
   }
 }

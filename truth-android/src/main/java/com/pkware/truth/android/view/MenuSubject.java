@@ -17,53 +17,56 @@
 package com.pkware.truth.android.view;
 
 import android.view.Menu;
+
 import androidx.annotation.IdRes;
 
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Menu} subjects.
  */
-public class MenuSubject extends Subject<MenuSubject, Menu> {
-  public MenuSubject(FailureMetadata failureMetadata, Menu subject) {
-    super(failureMetadata, subject);
+public class MenuSubject extends Subject {
+
+  @Nullable
+  private final Menu actual;
+
+  public MenuSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Menu actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public MenuSubject hasItem(@IdRes int id) {
-    assertThat(actual().findItem(id))
-        .named("menu item with ID " + id)
+    check("findItem(id)")
+        .withMessage("menu item with ID %s", id)
+        .that(actual.findItem(id))
         .isNotNull();
     return this;
   }
 
   public MenuSubject hasItemAt(int index) {
-    assertThat(actual().getItem(index))
-        .named("menu item at index " + index)
+    check("getItem(index)")
+        .withMessage("menu item at index %s", index)
+        .that(actual.getItem(index))
         .isNotNull();
     return this;
   }
 
   public MenuSubject hasVisibleItems() {
-    assertThat(actual().hasVisibleItems())
-        .named("has visible items")
-        .isTrue();
+    check("hasVisibleItems()").that(actual.hasVisibleItems()).isTrue();
     return this;
   }
 
   public MenuSubject hasNoVisibleItems() {
-    assertThat(actual().hasVisibleItems())
-        .named("has visible items")
-        .isFalse();
+    check("hasVisibleItems()").that(actual.hasVisibleItems()).isFalse();
     return this;
   }
 
   public MenuSubject hasSize(int size) {
-    assertThat(actual().size())
-        .named("size")
-        .isEqualTo(size);
+    check("size()").that(actual.size()).isEqualTo(size);
     return this;
   }
 }

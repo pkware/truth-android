@@ -22,128 +22,105 @@ import android.database.sqlite.SQLiteDatabase;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link SQLiteDatabase} subjects.
  */
-public class SqliteDatabaseSubject extends Subject<SqliteDatabaseSubject, SQLiteDatabase> {
-  public SqliteDatabaseSubject(FailureMetadata failureMetadata, SQLiteDatabase subject) {
-    super(failureMetadata, subject);
+public class SqliteDatabaseSubject extends Subject {
+
+  @Nullable
+  private final SQLiteDatabase actual;
+
+  public SqliteDatabaseSubject(@Nonnull FailureMetadata failureMetadata, @Nullable SQLiteDatabase actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public SqliteDatabaseSubject hasMaximumSize(long size) {
-    assertThat(actual().getMaximumSize())
-        .named("maximum size")
-        .isEqualTo(size);
+    check("getMaximumSize()").that(actual.getMaximumSize()).isEqualTo(size);
     return this;
   }
 
   public SqliteDatabaseSubject hasPageSize(long size) {
-    assertThat(actual().getPageSize())
-        .named("page size")
-        .isEqualTo(size);
+    check("getPageSize()").that(actual.getPageSize()).isEqualTo(size);
     return this;
   }
 
-  public SqliteDatabaseSubject hasPath(String path) {
-    assertThat(actual().getPath())
-        .named("path")
-        .isEqualTo(path);
+  public SqliteDatabaseSubject hasPath(@Nullable String path) {
+    check("getPath()").that(actual.getPath()).isEqualTo(path);
     return this;
   }
 
   public SqliteDatabaseSubject hasVersion(int version) {
-    assertThat(actual().getVersion())
-        .named("version")
-        .isEqualTo(version);
+    check("getVersion()").that(actual.getVersion()).isEqualTo(version);
     return this;
   }
 
   public SqliteDatabaseSubject isInTransaction() {
-    assertThat(actual().inTransaction())
-        .named("is in transaction")
-        .isTrue();
+    check("inTransaction()").that(actual.inTransaction()).isTrue();
     return this;
   }
 
   public SqliteDatabaseSubject isNotInTransaction() {
-    assertThat(actual().inTransaction())
-        .named("is in transaction")
-        .isFalse();
+    check("inTransaction()").that(actual.inTransaction()).isFalse();
     return this;
   }
 
   public SqliteDatabaseSubject isDatabaseIntegrityOk() {
-    assertThat(actual().isDatabaseIntegrityOk())
-        .named("is database integrity ok")
-        .isTrue();
+    check("isDatabaseIntegrityOk()").that(actual.isDatabaseIntegrityOk()).isTrue();
     return this;
   }
 
   public SqliteDatabaseSubject isDatabaseIntegrityNotOk() {
-    assertThat(actual().isDatabaseIntegrityOk())
-        .named("is database integrity ok")
-        .isFalse();
+    check("isDatabaseIntegrityOk()").that(actual.isDatabaseIntegrityOk()).isFalse();
     return this;
   }
 
   public SqliteDatabaseSubject isLockedByCurrentThread() {
-    assertThat(actual().isDbLockedByCurrentThread())
-        .named("is locked by current thread")
-        .isTrue();
+    check("isDbLockedByCurrentThread()").that(actual.isDbLockedByCurrentThread()).isTrue();
     return this;
   }
 
   public SqliteDatabaseSubject isNotLockedByCurrentThread() {
-    assertThat(actual().isDbLockedByCurrentThread())
-        .named("is locked by current thread")
-        .isFalse();
+    check("isDbLockedByCurrentThread()").that(actual.isDbLockedByCurrentThread()).isFalse();
     return this;
   }
 
   public SqliteDatabaseSubject isOpen() {
-    assertThat(actual().isOpen())
-        .named("is open")
-        .isTrue();
+    check("isOpen()").that(actual.isOpen()).isTrue();
     return this;
   }
 
   public SqliteDatabaseSubject isNotOpen() {
-    assertThat(actual().isOpen())
-        .named("is open")
-        .isFalse();
+    check("isOpen()").that(actual.isOpen()).isFalse();
     return this;
   }
 
   public SqliteDatabaseSubject isReadOnly() {
-    assertThat(actual().isReadOnly())
-        .named("is read only")
-        .isTrue();
+    check("isReadOnly()").that(actual.isReadOnly()).isTrue();
     return this;
   }
 
   public SqliteDatabaseSubject isNotReadOnly() {
-    assertThat(actual().isReadOnly())
-        .named("is read only")
-        .isFalse();
+    check("isReadOnly()").that(actual.isReadOnly()).isFalse();
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public SqliteDatabaseSubject isWriteAheadLoggingEnabled() {
-    assertThat(actual().isWriteAheadLoggingEnabled())
-        .named("write-ahead logging is enabled")
-        .isTrue();
+    check("isWriteAheadLoggingEnabled()").that(actual.isWriteAheadLoggingEnabled()).isTrue();
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public SqliteDatabaseSubject isWriteAheadLoggingDisabled() {
-    assertThat(!actual().isWriteAheadLoggingEnabled())
-        .named("write-ahead logging is disabled")
-        .isTrue();
+    check("isWriteAheadLoggingEnabled()")
+        .that(actual.isWriteAheadLoggingEnabled())
+        .isFalse();
     return this;
   }
 }

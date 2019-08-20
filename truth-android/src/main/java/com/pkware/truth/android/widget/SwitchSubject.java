@@ -19,82 +19,76 @@ package com.pkware.truth.android.widget;
 import android.annotation.TargetApi;
 import android.graphics.drawable.Drawable;
 import android.widget.Switch;
+
 import androidx.annotation.StringRes;
 
 import com.google.common.truth.FailureMetadata;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.ICE_CREAM_SANDWICH;
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link Switch} subjects.
  */
 @TargetApi(ICE_CREAM_SANDWICH)
-public class SwitchSubject extends AbstractCompoundButtonSubject<SwitchSubject, Switch> {
-  public SwitchSubject(FailureMetadata failureMetadata, Switch subject) {
-    super(failureMetadata, subject);
+public class SwitchSubject extends AbstractCompoundButtonSubject<Switch> {
+
+  @Nullable
+  private final Switch actual;
+
+  public SwitchSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Switch actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   @TargetApi(JELLY_BEAN)
   public SwitchSubject hasSwitchMinWidth(int width) {
-    assertThat(actual().getSwitchMinWidth())
-        .named("switch minimum width")
-        .isEqualTo(width);
+    check("getSwitchMinWidth()").that(actual.getSwitchMinWidth()).isEqualTo(width);
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public SwitchSubject hasSwitchPadding(int padding) {
-    assertThat(actual().getSwitchPadding())
-        .named("switch padding")
-        .isEqualTo(padding);
+    check("getSwitchPadding()").that(actual.getSwitchPadding()).isEqualTo(padding);
     return this;
   }
 
-  public SwitchSubject hasOnText(String text) {
-    assertThat(actual().getTextOn().toString())
-        .named("'on' text")
-        .isEqualTo(text);
+  public SwitchSubject hasOnText(@Nullable String text) {
+    check("getTextOn()").that(actual.getTextOn().toString()).isEqualTo(text);
     return this;
   }
 
   public SwitchSubject hasOnText(@StringRes int resId) {
-    return hasOnText(actual().getContext().getString(resId));
+    return hasOnText(actual.getContext().getString(resId));
   }
 
-  public SwitchSubject hasOffText(String text) {
-    assertThat(actual().getTextOff().toString())
-        .named("'off' text")
-        .isEqualTo(text);
+  public SwitchSubject hasOffText(@Nullable String text) {
+    check("getTextOff()").that(actual.getTextOff().toString()).isEqualTo(text);
     return this;
   }
 
   public SwitchSubject hasOffText(@StringRes int resId) {
-    return hasOffText(actual().getContext().getString(resId));
+    return hasOffText(actual.getContext().getString(resId));
   }
 
   @TargetApi(JELLY_BEAN)
-  public SwitchSubject hasThumbDrawable(Drawable drawable) {
-    assertThat(actual().getThumbDrawable())
-        .named("thumb drawable")
-        .isSameAs(drawable);
+  public SwitchSubject hasThumbDrawable(@Nullable Drawable drawable) {
+    check("getThumbDrawable()").that(actual.getThumbDrawable()).isSameInstanceAs(drawable);
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
   public SwitchSubject hasThumbTextPadding(int padding) {
-    assertThat(actual().getThumbTextPadding())
-        .named("thumb text padding")
-        .isEqualTo(padding);
+    check("getThumbTextPadding()").that(actual.getThumbTextPadding()).isEqualTo(padding);
     return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public SwitchSubject hasTrackDrawable(Drawable drawable) {
-    assertThat(actual().getTrackDrawable())
-        .named("track drawable")
-        .isSameAs(drawable);
+  public SwitchSubject hasTrackDrawable(@Nullable Drawable drawable) {
+    check("getTrackDrawable()").that(actual.getTrackDrawable()).isSameInstanceAs(drawable);
     return this;
   }
 }

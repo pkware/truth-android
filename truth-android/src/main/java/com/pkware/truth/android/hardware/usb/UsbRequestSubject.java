@@ -22,27 +22,29 @@ import android.hardware.usb.UsbRequest;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link UsbRequest} subjects.
  */
-public class UsbRequestSubject extends Subject<UsbRequestSubject, UsbRequest> {
-  public UsbRequestSubject(FailureMetadata failureMetadata, UsbRequest subject) {
-    super(failureMetadata, subject);
+public class UsbRequestSubject extends Subject {
+
+  @Nullable
+  private final UsbRequest actual;
+
+  public UsbRequestSubject(@Nonnull FailureMetadata failureMetadata, @Nullable UsbRequest actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public UsbRequestSubject hasClientData(Object data) {
-    assertThat(actual().getClientData())
-        .named("client data")
-        .isEqualTo(data);
+  public UsbRequestSubject hasClientData(@Nullable Object data) {
+    check("getClientData()").that(actual.getClientData()).isEqualTo(data);
     return this;
   }
 
-  public UsbRequestSubject hasEndpoint(UsbEndpoint endpoint) {
-    assertThat(actual().getEndpoint())
-        .named("endpoint")
-        .isEqualTo(endpoint);
+  public UsbRequestSubject hasEndpoint(@Nullable UsbEndpoint endpoint) {
+    check("getEndpoint()").that(actual.getEndpoint()).isEqualTo(endpoint);
     return this;
   }
 }

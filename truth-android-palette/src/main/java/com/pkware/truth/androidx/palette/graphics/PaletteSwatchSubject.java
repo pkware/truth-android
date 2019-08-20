@@ -21,21 +21,24 @@ import androidx.palette.graphics.Palette;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Palette.Swatch} subjects.
  */
-public class PaletteSwatchSubject extends Subject<PaletteSwatchSubject, Palette.Swatch> {
+public class PaletteSwatchSubject extends Subject {
 
-  public PaletteSwatchSubject(FailureMetadata failureMetadata, Palette.Swatch subject) {
-    super(failureMetadata, subject);
+  @Nullable
+  private final Palette.Swatch actual;
+
+  public PaletteSwatchSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Palette.Swatch actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public PaletteSwatchSubject hasRgb(int rgb) {
-    assertThat(actual().getRgb())
-        .named("RGB")
-        .isEqualTo(rgb);
+    check("getRgb()").that(actual.getRgb()).isEqualTo(rgb);
     return this;
   }
 }

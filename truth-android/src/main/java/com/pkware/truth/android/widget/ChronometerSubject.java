@@ -17,29 +17,32 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.Chronometer;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Chronometer} subjects.
  */
-public class ChronometerSubject extends AbstractTextViewSubject<ChronometerSubject, Chronometer> {
-  public ChronometerSubject(FailureMetadata failureMetadata, Chronometer subject) {
-    super(failureMetadata, subject);
+public class ChronometerSubject extends AbstractTextViewSubject<Chronometer> {
+
+  @Nullable
+  private final Chronometer actual;
+
+  public ChronometerSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Chronometer actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public ChronometerSubject hasBase(long base) {
-    assertThat(actual().getBase())
-        .named("base time")
-        .isEqualTo(base);
+    check("getBase()").that(actual.getBase()).isEqualTo(base);
     return this;
   }
 
-  public ChronometerSubject hasFormat(String format) {
-    assertThat(actual().getFormat())
-        .named("format")
-        .isEqualTo(format);
+  public ChronometerSubject hasFormat(@Nullable String format) {
+    check("getFormat()").that(actual.getFormat()).isEqualTo(format);
     return this;
   }
 }

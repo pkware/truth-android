@@ -22,55 +22,59 @@ import android.util.SparseBooleanArray;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import java.util.Locale;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
 
 /**
  * Propositions for {@link SparseBooleanArray} subjects.
  */
 @TargetApi(JELLY_BEAN_MR2)
-public class SparseBooleanArraySubject extends Subject<SparseBooleanArraySubject, SparseBooleanArray> {
-  public SparseBooleanArraySubject(FailureMetadata failureMetadata, SparseBooleanArray subject) {
-    super(failureMetadata, subject);
+public class SparseBooleanArraySubject extends Subject {
+
+  @Nullable
+  private final SparseBooleanArray actual;
+
+  public SparseBooleanArraySubject(@Nonnull FailureMetadata failureMetadata, @Nullable SparseBooleanArray actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public SparseBooleanArraySubject keyIsTrue(int key) {
-    assertThat(actual().get(key))
-        .named(String.format(Locale.ENGLISH, "key %d", key))
+    check("get(key)")
+        .withMessage("key %s", key)
+        .that(actual.get(key))
         .isTrue();
     return this;
   }
 
   public SparseBooleanArraySubject keyIsFalse(int key) {
-    assertThat(actual().get(key))
-        .named(String.format(Locale.ENGLISH, "key %d", key))
+    check("get(key)")
+        .withMessage("key %s", key)
+        .that(actual.get(key))
         .isFalse();
     return this;
   }
 
   public SparseBooleanArraySubject hasKey(int key) {
-    assert_()
+    check("indexOfKey(key)")
         .withMessage("Expected key <%s> to be present but was not.", key)
-        .that(actual().indexOfKey(key))
+        .that(actual.indexOfKey(key))
         .isGreaterThan(-1);
     return this;
   }
 
   public SparseBooleanArraySubject doesNotHaveKey(int key) {
-    assert_()
-        .withMessage("Expected key <%s> to not be present but was.")
-        .that(actual().indexOfKey(key))
+    check("indexOfKey(key)")
+        .withMessage("Expected key <%s> to not be present but was.", key)
+        .that(actual.indexOfKey(key))
         .isLessThan(0);
     return this;
   }
 
   public SparseBooleanArraySubject hasSize(int size) {
-    assertThat(actual().size())
-        .named("size")
-        .isEqualTo(size);
+    check("size()").that(actual.size()).isEqualTo(size);
     return this;
   }
 }

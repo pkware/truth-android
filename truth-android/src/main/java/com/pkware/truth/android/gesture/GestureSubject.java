@@ -21,35 +21,35 @@ import android.gesture.Gesture;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Gesture} subjects.
  */
-public class GestureSubject extends Subject<GestureSubject, Gesture> {
-  public GestureSubject(FailureMetadata failureMetadata, Gesture subject) {
-    super(failureMetadata, subject);
+public class GestureSubject extends Subject {
+
+  @Nullable
+  private final Gesture actual;
+
+  public GestureSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Gesture actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public GestureSubject hasId(long id) {
-    assertThat(actual().getID())
-        .named("id")
-        .isEqualTo(id);
+    check("getID()").that(actual.getID()).isEqualTo(id);
     return this;
   }
 
   public GestureSubject hasLength(float length, float tolerance) {
-    assertThat(actual().getLength())
-        .named("length")
-        .isWithin(tolerance)
+    check("getLength()").that(actual.getLength()).isWithin(tolerance)
         .of(length);
     return this;
   }
 
   public GestureSubject hasStrokeCount(int count) {
-    assertThat(actual().getStrokesCount())
-        .named("stroke count")
-        .isEqualTo(count);
+    check("getStrokesCount()").that(actual.getStrokesCount()).isEqualTo(count);
     return this;
   }
 }

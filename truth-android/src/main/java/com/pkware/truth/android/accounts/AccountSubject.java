@@ -21,27 +21,29 @@ import android.accounts.Account;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Account} subjects.
  */
-public final class AccountSubject extends Subject<AccountSubject, Account> {
-  public AccountSubject(FailureMetadata failureMetadata, Account subject) {
-    super(failureMetadata, subject);
+public final class AccountSubject extends Subject {
+
+  @Nullable
+  private final Account actual;
+
+  public AccountSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Account actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public AccountSubject hasName(String name) {
-    assertThat(actual().name)
-        .named("name")
-        .isEqualTo(name);
+  public AccountSubject hasName(@Nullable String name) {
+    check("name").that(actual.name).isEqualTo(name);
     return this;
   }
 
-  public AccountSubject hasType(String type) {
-    assertThat(actual().type)
-        .named("type")
-        .isEqualTo(type);
+  public AccountSubject hasType(@Nullable String type) {
+    check("type").that(actual.type).isEqualTo(type);
     return this;
   }
 }

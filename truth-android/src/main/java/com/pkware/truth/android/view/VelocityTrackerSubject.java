@@ -21,43 +21,45 @@ import android.view.VelocityTracker;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link VelocityTracker} subjects.
  */
-public class VelocityTrackerSubject extends Subject<VelocityTrackerSubject, VelocityTracker> {
-  public VelocityTrackerSubject(FailureMetadata failureMetadata, VelocityTracker subject) {
-    super(failureMetadata, subject);
+public class VelocityTrackerSubject extends Subject {
+
+  @Nullable
+  private final VelocityTracker actual;
+
+  public VelocityTrackerSubject(@Nonnull FailureMetadata failureMetadata, @Nullable VelocityTracker actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public VelocityTrackerSubject hasXVelocity(float velocity, float tolerance) {
-    assertThat(actual().getXVelocity())
-        .named("X velocity")
-        .isWithin(tolerance)
-        .of(velocity);
+    check("getXVelocity()").that(actual.getXVelocity()).isWithin(tolerance).of(velocity);
     return this;
   }
 
   public VelocityTrackerSubject hasXVelocity(int id, float velocity, float tolerance) {
-    assertThat(actual().getXVelocity(id))
-        .named("X velocity for ID " + id)
+    check("getItem(index)")
+        .withMessage("X velocity for ID %s", id)
+        .that(actual.getXVelocity(id))
         .isWithin(tolerance)
         .of(velocity);
     return this;
   }
 
   public VelocityTrackerSubject hasYVelocity(float velocity, float tolerance) {
-    assertThat(actual().getYVelocity())
-        .named("Y velocity")
-        .isWithin(tolerance)
-        .of(velocity);
+    check("getYVelocity()").that(actual.getYVelocity()).isWithin(tolerance).of(velocity);
     return this;
   }
 
   public VelocityTrackerSubject hasYVelocity(int id, float velocity, float tolerance) {
-    assertThat(actual().getYVelocity(id))
-        .named("Y velocity for ID " + id)
+    check("getYVelocity(id)")
+        .withMessage("Y velocity for ID %s", id)
+        .that(actual.getYVelocity(id))
         .isWithin(tolerance)
         .of(velocity);
     return this;

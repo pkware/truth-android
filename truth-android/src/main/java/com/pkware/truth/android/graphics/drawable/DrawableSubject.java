@@ -17,15 +17,19 @@
 package com.pkware.truth.android.graphics.drawable;
 
 import android.graphics.drawable.Drawable;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Drawable} subjects.
  * <p/>
  * This class is final. To extend use {@link AbstractDrawableSubject}.
  */
-public final class DrawableSubject extends AbstractDrawableSubject<DrawableSubject, Drawable> {
-  public DrawableSubject(FailureMetadata failureMetadata, Drawable subject) {
-    super(failureMetadata, subject);
+public final class DrawableSubject extends AbstractDrawableSubject<Drawable> {
+  public DrawableSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Drawable actual) {
+    super(failureMetadata, actual);
   }
 }

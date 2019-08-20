@@ -21,23 +21,31 @@ import androidx.print.PrintHelper;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static androidx.print.PrintHelper.COLOR_MODE_COLOR;
 import static androidx.print.PrintHelper.COLOR_MODE_MONOCHROME;
 import static androidx.print.PrintHelper.ORIENTATION_LANDSCAPE;
 import static androidx.print.PrintHelper.ORIENTATION_PORTRAIT;
 import static androidx.print.PrintHelper.SCALE_MODE_FILL;
 import static androidx.print.PrintHelper.SCALE_MODE_FIT;
-import static com.google.common.truth.Truth.assert_;
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
 /**
  * Propositions for {@link PrintHelper} subjects.
  */
-public class PrintHelperSubject extends Subject<PrintHelperSubject, PrintHelper> {
-  public PrintHelperSubject(FailureMetadata failureMetadata, PrintHelper subject) {
-    super(failureMetadata, subject);
+public class PrintHelperSubject extends Subject {
+
+  @Nullable
+  private final PrintHelper actual;
+
+  public PrintHelperSubject(@Nonnull FailureMetadata failureMetadata, @Nullable PrintHelper actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   public static String colorModeToString(@PrintHelperColorMode int colorMode) {
     return buildNamedValueString(colorMode)
         .value(COLOR_MODE_COLOR, "color")
@@ -45,6 +53,7 @@ public class PrintHelperSubject extends Subject<PrintHelperSubject, PrintHelper>
         .get();
   }
 
+  @Nonnull
   public static String orientationToString(@PrintHelperOrientation int orientation) {
     return buildNamedValueString(orientation)
         .value(ORIENTATION_LANDSCAPE, "landscape")
@@ -52,6 +61,7 @@ public class PrintHelperSubject extends Subject<PrintHelperSubject, PrintHelper>
         .get();
   }
 
+  @Nonnull
   public static String scaleModeToString(@PrintHelperScaleMode int scaleMode) {
     return buildNamedValueString(scaleMode)
         .value(SCALE_MODE_FILL, "fill")
@@ -60,9 +70,9 @@ public class PrintHelperSubject extends Subject<PrintHelperSubject, PrintHelper>
   }
 
   public PrintHelperSubject hasColorMode(@PrintHelperColorMode int colorMode) {
-    int actualColorMode = actual().getColorMode();
+    int actualColorMode = actual.getColorMode();
     //noinspection ResourceType
-    assert_()
+    check("getColorMode()")
         .withMessage("Expected color mode <%s> but was <%s>.",
             colorModeToString(colorMode), colorModeToString(actualColorMode))
         .that(actualColorMode)
@@ -71,9 +81,9 @@ public class PrintHelperSubject extends Subject<PrintHelperSubject, PrintHelper>
   }
 
   public PrintHelperSubject hasOrientation(@PrintHelperOrientation int orientation) {
-    int actualOrientation = actual().getOrientation();
+    int actualOrientation = actual.getOrientation();
     //noinspection ResourceType
-    assert_()
+    check("getOrientation()")
         .withMessage("Expected orientation <%s> but was <%s>.",
             orientationToString(orientation), orientationToString(actualOrientation))
         .that(actualOrientation)
@@ -82,9 +92,9 @@ public class PrintHelperSubject extends Subject<PrintHelperSubject, PrintHelper>
   }
 
   public PrintHelperSubject hasScaleMode(@PrintHelperScaleMode int scaleMode) {
-    int actualScaleMode = actual().getScaleMode();
+    int actualScaleMode = actual.getScaleMode();
     //noinspection ResourceType
-    assert_()
+    check("getScaleMode()")
         .withMessage("Expected scale mode <%s> but was <%s>.",
             scaleModeToString(scaleMode), scaleModeToString(actualScaleMode))
         .that(actualScaleMode)

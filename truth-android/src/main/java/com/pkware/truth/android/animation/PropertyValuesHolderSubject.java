@@ -21,20 +21,24 @@ import android.animation.PropertyValuesHolder;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link PropertyValuesHolder} subjects.
  */
-public final class PropertyValuesHolderSubject extends Subject<PropertyValuesHolderSubject, PropertyValuesHolder> {
-  public PropertyValuesHolderSubject(FailureMetadata failureMetadata, PropertyValuesHolder subject) {
-    super(failureMetadata, subject);
+public final class PropertyValuesHolderSubject extends Subject {
+
+  @Nullable
+  private final PropertyValuesHolder actual;
+
+  public PropertyValuesHolderSubject(@Nonnull FailureMetadata failureMetadata, @Nullable PropertyValuesHolder actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public PropertyValuesHolderSubject hasPropertyName(String name) {
-    assertThat(actual().getPropertyName())
-        .named("property name")
-        .isEqualTo(name);
+  public PropertyValuesHolderSubject hasPropertyName(@Nullable String name) {
+    check("getPropertyName()").that(actual.getPropertyName()).isEqualTo(name);
     return this;
   }
 }

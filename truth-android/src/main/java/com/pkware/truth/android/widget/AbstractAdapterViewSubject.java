@@ -23,99 +23,70 @@ import android.widget.AdapterView;
 import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public abstract class AbstractAdapterViewSubject<S extends AbstractAdapterViewSubject<S, T>, T extends AdapterView>
-    extends AbstractViewGroupSubject<S, T> {
-  protected AbstractAdapterViewSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractAdapterViewSubject<T extends AdapterView>
+    extends AbstractViewGroupSubject<T> {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractAdapterViewSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S hasAdapter(Adapter adapter) {
-    assertThat(actual().getAdapter())
-        .named("adapter")
-        .isSameAs(adapter);
-    //noinspection unchecked
-    return (S) this;
+  public void hasAdapter(@Nullable Adapter adapter) {
+    check("getAdapter()").that(actual.getAdapter()).isSameInstanceAs(adapter);
   }
 
-  public S hasCount(int count) {
-    assertThat(actual().getCount())
-        .named("count")
-        .isEqualTo(count);
-    //noinspection unchecked
-    return (S) this;
+  public void hasCount(int count) {
+    check("getCount()").that(actual.getCount()).isEqualTo(count);
   }
 
-  public S hasFirstVisiblePosition(int position) {
-    assertThat(actual().getFirstVisiblePosition())
-        .named("first visible position")
-        .isEqualTo(position);
-    //noinspection unchecked
-    return (S) this;
+  public void hasFirstVisiblePosition(int position) {
+    check("getFirstVisiblePosition()").that(actual.getFirstVisiblePosition()).isEqualTo(position);
   }
 
-  public S hasItemAtPosition(int position, Object item) {
-    assertThat(actual().getItemAtPosition(position))
-        .named("item at positions " + position)
+  public void hasItemAtPosition(int position, @Nullable Object item) {
+    check("getItemAtPosition(position)")
+        .withMessage("item at positions %s", position)
+        .that(actual.getItemAtPosition(position))
         .isEqualTo(item);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S hasItemIdAtPosition(int position, long id) {
-    assertThat(actual().getItemIdAtPosition(position))
-        .named("ID for item at position " + position)
+  public void hasItemIdAtPosition(int position, long id) {
+    check("getItemIdAtPosition(position)")
+        .withMessage("ID for item at position %s", position)
+        .that(actual.getItemIdAtPosition(position))
         .isEqualTo(id);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S hasLastVisiblePosition(int position) {
-    assertThat(actual().getLastVisiblePosition())
-        .named("last visible position")
+  public void hasLastVisiblePosition(int position) {
+    check("getLastVisiblePosition()").that(actual.getLastVisiblePosition()).isEqualTo(position);
+  }
+
+  public void hasPositionForView(@Nullable View view, int position) {
+    check("getPositionForView(view)")
+        .withMessage("position for view")
+        .that(actual.getPositionForView(view))
         .isEqualTo(position);
-    //noinspection unchecked
-    return (S) this;
   }
 
-  public S hasPositionForView(View view, int position) {
-    assertThat(actual().getPositionForView(view))
-        .named("position for view")
-        .isEqualTo(position);
-    //noinspection unchecked
-    return (S) this;
+  public void hasSelectedItem(@Nullable Object item) {
+    check("getSelectedItem()").that(actual.getSelectedItem()).isEqualTo(item);
   }
 
-  public S hasSelectedItem(Object item) {
-    assertThat(actual().getSelectedItem())
-        .named("selected item")
-        .isEqualTo(item);
-    //noinspection unchecked
-    return (S) this;
+  public void hasSelectedItemId(long id) {
+    check("getSelectedItemId()").that(actual.getSelectedItemId()).isEqualTo(id);
   }
 
-  public S hasSelectedItemId(long id) {
-    assertThat(actual().getSelectedItemId())
-        .named("selected item ID")
-        .isEqualTo(id);
-    //noinspection unchecked
-    return (S) this;
+  public void hasSelectedItemPosition(int position) {
+    check("getSelectedItemPosition()").that(actual.getSelectedItemPosition()).isEqualTo(position);
   }
 
-  public S hasSelectedItemPosition(int position) {
-    assertThat(actual().getSelectedItemPosition())
-        .named("selected item position")
-        .isEqualTo(position);
-    //noinspection unchecked
-    return (S) this;
-  }
-
-  public S hasSelectedView(View view) {
-    assertThat(actual().getSelectedView())
-        .named("selected view")
-        .isSameAs(view);
-    //noinspection unchecked
-    return (S) this;
+  public void hasSelectedView(@Nullable View view) {
+    check("getSelectedView()").that(actual.getSelectedView()).isSameInstanceAs(view);
   }
 }

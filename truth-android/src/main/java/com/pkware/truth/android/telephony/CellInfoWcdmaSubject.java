@@ -20,31 +20,35 @@ import android.annotation.TargetApi;
 import android.telephony.CellIdentityWcdma;
 import android.telephony.CellInfoWcdma;
 import android.telephony.CellSignalStrengthWcdma;
+
 import com.google.common.truth.FailureMetadata;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link CellInfoWcdma} subjects.
  */
 @TargetApi(JELLY_BEAN_MR2)
-public final class CellInfoWcdmaSubject extends AbstractCellInfoSubject<CellInfoWcdmaSubject, CellInfoWcdma> {
-  public CellInfoWcdmaSubject(FailureMetadata failureMetadata, CellInfoWcdma subject) {
-    super(failureMetadata, subject);
+public final class CellInfoWcdmaSubject extends AbstractCellInfoSubject<CellInfoWcdma> {
+
+  @Nullable
+  private CellInfoWcdma actual;
+
+  public CellInfoWcdmaSubject(@Nonnull FailureMetadata failureMetadata, @Nullable CellInfoWcdma actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public CellInfoWcdmaSubject hasCellIdentity(CellIdentityWcdma cellIdentity) {
-    assertThat(actual().getCellIdentity())
-        .named("cell identity")
-        .isEqualTo(cellIdentity);
+  public CellInfoWcdmaSubject hasCellIdentity(@Nullable CellIdentityWcdma cellIdentity) {
+    check("getCellIdentity()").that(actual.getCellIdentity()).isEqualTo(cellIdentity);
     return this;
   }
 
-  public CellInfoWcdmaSubject hasCellSignalStrength(CellSignalStrengthWcdma cellSignalStrength) {
-    assertThat(actual().getCellSignalStrength())
-        .named("cell signal strength")
-        .isEqualTo(cellSignalStrength);
+  public CellInfoWcdmaSubject hasCellSignalStrength(@Nullable CellSignalStrengthWcdma cellSignalStrength) {
+    check("getCellSignalStrength()").that(actual.getCellSignalStrength()).isEqualTo(cellSignalStrength);
     return this;
   }
 }

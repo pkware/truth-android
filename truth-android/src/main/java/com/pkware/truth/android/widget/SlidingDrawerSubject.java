@@ -18,59 +18,54 @@ package com.pkware.truth.android.widget;
 
 import android.view.View;
 import android.widget.SlidingDrawer;
+
 import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link SlidingDrawer} subjects.
  */
 public class SlidingDrawerSubject
-    extends AbstractViewGroupSubject<SlidingDrawerSubject, SlidingDrawer> {
-  public SlidingDrawerSubject(FailureMetadata failureMetadata, SlidingDrawer subject) {
-    super(failureMetadata, subject);
+    extends AbstractViewGroupSubject<SlidingDrawer> {
+
+  @Nullable
+  private final SlidingDrawer actual;
+
+  public SlidingDrawerSubject(@Nonnull FailureMetadata failureMetadata, @Nullable SlidingDrawer actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public SlidingDrawerSubject hasContent(View view) {
-    assertThat(actual().getContent())
-        .named("content")
-        .isSameAs(view);
+  public SlidingDrawerSubject hasContent(@Nullable View view) {
+    check("getContent()").that(actual.getContent()).isSameInstanceAs(view);
     return this;
   }
 
-  public SlidingDrawerSubject hasHandle(View view) {
-    assertThat(actual().getHandle())
-        .named("handle")
-        .isSameAs(view);
+  public SlidingDrawerSubject hasHandle(@Nullable View view) {
+    check("getHandle()").that(actual.getHandle()).isSameInstanceAs(view);
     return this;
   }
 
   public SlidingDrawerSubject isMoving() {
-    assertThat(actual().isMoving())
-        .named("is moving")
-        .isTrue();
+    check("isMoving()").that(actual.isMoving()).isTrue();
     return this;
   }
 
   public SlidingDrawerSubject isNotMoving() {
-    assertThat(actual().isMoving())
-        .named("is moving")
-        .isFalse();
+    check("isMoving()").that(actual.isMoving()).isFalse();
     return this;
   }
 
   public SlidingDrawerSubject isOpened() {
-    assertThat(actual().isMoving())
-        .named("is opened")
-        .isTrue();
+    check("isMoving()").that(actual.isMoving()).isTrue();
     return this;
   }
 
   public SlidingDrawerSubject isClosed() {
-    assertThat(actual().isMoving())
-        .named("is opened")
-        .isFalse();
+    check("isMoving()").that(actual.isMoving()).isFalse();
     return this;
   }
 }

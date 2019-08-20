@@ -23,75 +23,49 @@ import android.widget.ProgressBar;
 import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.view.AbstractViewSubject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public abstract class AbstractProgressBarSubject<S extends AbstractProgressBarSubject<S, T>, T extends ProgressBar>
-    extends AbstractViewSubject<S, T> {
-  protected AbstractProgressBarSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractProgressBarSubject<T extends ProgressBar>
+    extends AbstractViewSubject<T> {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractProgressBarSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S hasIndeterminateDrawable(Drawable drawable) {
-    assertThat(actual().getIndeterminateDrawable())
-        .named("indeterminate drawable")
-        .isSameAs(drawable);
-    //noinspection unchecked
-    return (S) this;
+  public void hasIndeterminateDrawable(@Nullable Drawable drawable) {
+    check("getIndeterminateDrawable()").that(actual.getIndeterminateDrawable()).isSameInstanceAs(drawable);
   }
 
-  public S hasInterpolator(Interpolator interpolator) {
-    assertThat(actual().getInterpolator())
-        .named("interpolator")
-        .isSameAs(interpolator);
-    //noinspection unchecked
-    return (S) this;
+  public void hasInterpolator(@Nullable Interpolator interpolator) {
+    check("getInterpolator()").that(actual.getInterpolator()).isSameInstanceAs(interpolator);
   }
 
-  public S hasMaximum(int maximum) {
-    assertThat(actual().getMax())
-        .named("maximum")
-        .isEqualTo(maximum);
-    //noinspection unchecked
-    return (S) this;
+  public void hasMaximum(int maximum) {
+    check("getMax()").that(actual.getMax()).isEqualTo(maximum);
   }
 
-  public S hasProgress(int progress) {
-    assertThat(actual().getProgress())
-        .named("progress")
-        .isEqualTo(progress);
-    //noinspection unchecked
-    return (S) this;
+  public void hasProgress(int progress) {
+    check("getProgress()").that(actual.getProgress()).isEqualTo(progress);
   }
 
-  public S hasProgressDrawable(Drawable drawable) {
-    assertThat(actual().getProgressDrawable())
-        .named("progress drawable")
-        .isSameAs(drawable);
-    //noinspection unchecked
-    return (S) this;
+  public void hasProgressDrawable(@Nullable Drawable drawable) {
+    check("getProgressDrawable()").that(actual.getProgressDrawable()).isSameInstanceAs(drawable);
   }
 
-  public S hasSecondaryProgress(int progress) {
-    assertThat(actual().getSecondaryProgress())
-        .named("secondary progress")
-        .isEqualTo(progress);
-    //noinspection unchecked
-    return (S) this;
+  public void hasSecondaryProgress(int progress) {
+    check("getSecondaryProgress()").that(actual.getSecondaryProgress()).isEqualTo(progress);
   }
 
-  public S isIndeterminate() {
-    assertThat(actual().isIndeterminate())
-        .named("is indeterminate")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isIndeterminate() {
+    check("isIndeterminate()").that(actual.isIndeterminate()).isTrue();
   }
 
-  public S isNotIndeterminate() {
-    assertThat(actual().isIndeterminate())
-        .named("is indeterminate")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotIndeterminate() {
+    check("isIndeterminate()").that(actual.isIndeterminate()).isFalse();
   }
 }

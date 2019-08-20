@@ -20,18 +20,25 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.common.truth.FailureMetadata;
 import com.pkware.truth.android.widget.AbstractHorizontalScrollViewSubject;
 
-import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueString;
 
 /**
  * Propositions for {@link TabLayout} subjects.
  */
-public class TabLayoutSubject extends AbstractHorizontalScrollViewSubject<TabLayoutSubject, TabLayout> {
-  public TabLayoutSubject(FailureMetadata failureMetadata, TabLayout subject) {
-    super(failureMetadata, subject);
+public class TabLayoutSubject extends AbstractHorizontalScrollViewSubject<TabLayout> {
+
+  @Nullable
+  private final TabLayout actual;
+
+  public TabLayoutSubject(@Nonnull FailureMetadata failureMetadata, @Nullable TabLayout actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
+  @Nonnull
   public static String gravityToString(@TabGravity int gravity) {
     return buildNamedValueString(gravity)
         .value(TabLayout.GRAVITY_CENTER, "center")
@@ -39,6 +46,7 @@ public class TabLayoutSubject extends AbstractHorizontalScrollViewSubject<TabLay
         .get();
   }
 
+  @Nonnull
   public static String modeToString(@TabMode int mode) {
     return buildNamedValueString(mode)
         .value(TabLayout.MODE_FIXED, "fixed")
@@ -47,16 +55,14 @@ public class TabLayoutSubject extends AbstractHorizontalScrollViewSubject<TabLay
   }
 
   public TabLayoutSubject hasTabCount(int count) {
-    assertThat(actual().getTabCount())
-        .named("tab count")
-        .isEqualTo(count);
+    check("getTabCount()").that(actual.getTabCount()).isEqualTo(count);
     return this;
   }
 
   public TabLayoutSubject hasTabGravity(@TabGravity int gravity) {
-    int actualGravity = actual().getTabGravity();
+    int actualGravity = actual.getTabGravity();
     //noinspection ResourceType
-    assert_()
+    check("getTabGravity()")
         .withMessage("Expected tab gravity of <%s> but was <%s>.",
             gravityToString(gravity), gravityToString(actualGravity))
         .that(actualGravity)
@@ -65,9 +71,9 @@ public class TabLayoutSubject extends AbstractHorizontalScrollViewSubject<TabLay
   }
 
   public TabLayoutSubject hasTabMode(@TabMode int mode) {
-    int actualMode = actual().getTabMode();
+    int actualMode = actual.getTabMode();
     //noinspection ResourceType
-    assert_()
+    check("getTabMode()")
         .withMessage("Expected tab mode of <%s> but was <%s>.", modeToString(mode),
             modeToString(actualMode))
         .that(actualMode)

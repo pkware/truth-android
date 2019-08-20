@@ -17,55 +17,46 @@
 package com.pkware.truth.android.preferences;
 
 import android.preference.TwoStatePreference;
+
 import androidx.annotation.StringRes;
 
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public abstract class AbstractTwoStatePreferenceSubject<S extends AbstractTwoStatePreferenceSubject<S, T>, T extends TwoStatePreference>
-    extends AbstractPreferenceSubject<S, T> {
-  protected AbstractTwoStatePreferenceSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+public abstract class AbstractTwoStatePreferenceSubject<T extends TwoStatePreference>
+    extends AbstractPreferenceSubject<T> {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractTwoStatePreferenceSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S hasSummaryOff(CharSequence summary) {
-    assertThat(actual().getSummaryOff())
-        .named("off summary")
-        .isEqualTo(summary);
-    //noinspection unchecked
-    return (S) this;
+  public void hasSummaryOff(@Nullable CharSequence summary) {
+    check("getSummaryOff()").that(actual.getSummaryOff()).isEqualTo(summary);
   }
 
-  public S hasSummaryOff(@StringRes int resId) {
-    return hasSummaryOff(actual().getContext().getString(resId));
+  public void hasSummaryOff(@StringRes int resId) {
+    hasSummaryOff(actual.getContext().getString(resId));
   }
 
-  public S hasSummaryOn(CharSequence summary) {
-    assertThat(actual().getSummaryOn())
-        .named("on summary")
-        .isEqualTo(summary);
-    //noinspection unchecked
-    return (S) this;
+  public void hasSummaryOn(@Nullable CharSequence summary) {
+    check("getSummaryOn()").that(actual.getSummaryOn()).isEqualTo(summary);
   }
 
-  public S hasSummaryOn(@StringRes int resId) {
-    return hasSummaryOn(actual().getContext().getString(resId));
+  public void hasSummaryOn(@StringRes int resId) {
+    hasSummaryOn(actual.getContext().getString(resId));
   }
 
-  public S isChecked() {
-    assertThat(actual().isChecked())
-        .named("is checked")
-        .isTrue();
-    //noinspection unchecked
-    return (S) this;
+  public void isChecked() {
+    check("isChecked()").that(actual.isChecked()).isTrue();
   }
 
-  public S isNotChecked() {
-    assertThat(actual().isChecked())
-        .named("is checked")
-        .isFalse();
-    //noinspection unchecked
-    return (S) this;
+  public void isNotChecked() {
+    check("isChecked()").that(actual.isChecked()).isFalse();
   }
 }

@@ -21,28 +21,29 @@ import android.gesture.Prediction;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Prediction} subjects.
  */
-public class PredictionSubject extends Subject<PredictionSubject, Prediction> {
-  public PredictionSubject(FailureMetadata failureMetadata, Prediction subject) {
-    super(failureMetadata, subject);
+public class PredictionSubject extends Subject {
+
+  @Nullable
+  private final Prediction actual;
+
+  public PredictionSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Prediction actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public PredictionSubject hasName(String name) {
-    assertThat(actual().name)
-        .named("name")
-        .isEqualTo(name);
+    check("name").that(actual.name).isEqualTo(name);
     return this;
   }
 
   public PredictionSubject hasScore(double score, double tolerance) {
-    assertThat(actual().score)
-        .named("score")
-        .isWithin(tolerance)
-        .of(score);
+    check("score").that(actual.score).isWithin(tolerance).of(score);
     return this;
   }
 }

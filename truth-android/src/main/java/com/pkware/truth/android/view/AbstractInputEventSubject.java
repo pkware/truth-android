@@ -22,37 +22,31 @@ import android.view.InputEvent;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static android.os.Build.VERSION_CODES.JELLY_BEAN;
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public abstract class AbstractInputEventSubject<S extends AbstractInputEventSubject<S, T>, T extends InputEvent>
-    extends Subject<S, T> {
-  protected AbstractInputEventSubject(FailureMetadata failureMetadata, T subject) {
-    super(failureMetadata, subject);
+import static android.os.Build.VERSION_CODES.JELLY_BEAN;
+
+public abstract class AbstractInputEventSubject<T extends InputEvent> extends Subject {
+
+  @Nullable
+  private final T actual;
+
+  protected AbstractInputEventSubject(@Nonnull FailureMetadata failureMetadata, @Nullable T actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public S hasDeviceId(int id) {
-    assertThat(actual().getDeviceId())
-        .named("device ID")
-        .isEqualTo(id);
-    //noinspection unchecked
-    return (S) this;
+  public void hasDeviceId(int id) {
+    check("getDeviceId()").that(actual.getDeviceId()).isEqualTo(id);
   }
 
   @TargetApi(JELLY_BEAN)
-  public S hasEventTime(long time) {
-    assertThat(actual().getEventTime())
-        .named("event time")
-        .isEqualTo(time);
-    //noinspection unchecked
-    return (S) this;
+  public void hasEventTime(long time) {
+    check("getEventTime()").that(actual.getEventTime()).isEqualTo(time);
   }
 
-  public S hasSource(int source) {
-    assertThat(actual().getSource())
-        .named("source")
-        .isEqualTo(source);
-    //noinspection unchecked
-    return (S) this;
+  public void hasSource(int source) {
+    check("getSource()").that(actual.getSource()).isEqualTo(source);
   }
 }

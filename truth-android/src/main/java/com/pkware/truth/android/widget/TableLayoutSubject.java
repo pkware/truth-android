@@ -17,56 +17,69 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.TableLayout;
+
 import com.google.common.truth.FailureMetadata;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link TableLayout} subjects.
  */
-public class TableLayoutSubject extends AbstractLinearLayoutSubject<TableLayoutSubject, TableLayout> {
-  public TableLayoutSubject(FailureMetadata failureMetadata, TableLayout subject) {
-    super(failureMetadata, subject);
+public class TableLayoutSubject extends AbstractLinearLayoutSubject<TableLayout> {
+
+  @Nullable
+  private final TableLayout actual;
+
+  public TableLayoutSubject(@Nonnull FailureMetadata failureMetadata, @Nullable TableLayout actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public TableLayoutSubject isCollapsedColumn(int index) {
-    assertThat(actual().isColumnCollapsed(index))
-        .named("column " + index + " is collapsed")
+    check("isColumnCollapsed(index)")
+        .withMessage("column %s is collapsed", index)
+        .that(actual.isColumnCollapsed(index))
         .isTrue();
     return this;
   }
 
   public TableLayoutSubject isNotCollapsedColumn(int index) {
-    assertThat(actual().isColumnCollapsed(index))
-        .named("column " + index + " is collapsed")
+    check("isColumnCollapsed(index)")
+        .withMessage("column %s is not collapsed", index)
+        .that(actual.isColumnCollapsed(index))
         .isFalse();
     return this;
   }
 
   public TableLayoutSubject isShrinkableColumn(int index) {
-    assertThat(actual().isColumnShrinkable(index))
-        .named("column " + index + " is shrinkable")
+    check("isColumnShrinkable(index)")
+        .withMessage("column %s is shrinkable", index)
+        .that(actual.isColumnShrinkable(index))
         .isTrue();
     return this;
   }
 
   public TableLayoutSubject isNotShrinkableColumn(int index) {
-    assertThat(actual().isColumnShrinkable(index))
-        .named("column " + index + " is shrinkable")
+    check("isColumnShrinkable(index)")
+        .withMessage("column %s is not shrinkable", index)
+        .that(actual.isColumnShrinkable(index))
         .isFalse();
     return this;
   }
 
   public TableLayoutSubject isStretchableColumn(int index) {
-    assertThat(actual().isColumnStretchable(index))
-        .named("column " + index + " is stretchable")
+    check("isColumnStretchable(index)")
+        .withMessage("column %s is stretchable", index)
+        .that(actual.isColumnStretchable(index))
         .isTrue();
     return this;
   }
 
   public TableLayoutSubject isNotStretchableColumn(int index) {
-    assertThat(actual().isColumnStretchable(index))
-        .named("column " + index + " is stretchable")
+    check("isColumnStretchable(index)")
+        .withMessage("column %s is not stretchable", index)
+        .that(actual.isColumnStretchable(index))
         .isFalse();
     return this;
   }

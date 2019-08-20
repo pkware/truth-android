@@ -20,31 +20,35 @@ import android.annotation.TargetApi;
 import android.telephony.CellIdentityLte;
 import android.telephony.CellInfoLte;
 import android.telephony.CellSignalStrengthLte;
+
 import com.google.common.truth.FailureMetadata;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link CellInfoLte} subjects.
  */
 @TargetApi(JELLY_BEAN_MR1)
-public final class CellInfoLteSubject extends AbstractCellInfoSubject<CellInfoLteSubject, CellInfoLte> {
-  public CellInfoLteSubject(FailureMetadata failureMetadata, CellInfoLte subject) {
-    super(failureMetadata, subject);
+public final class CellInfoLteSubject extends AbstractCellInfoSubject<CellInfoLte> {
+
+  @Nullable
+  private CellInfoLte actual;
+
+  public CellInfoLteSubject(@Nonnull FailureMetadata failureMetadata, @Nullable CellInfoLte actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
-  public CellInfoLteSubject hasCellIdentity(CellIdentityLte cellIdentity) {
-    assertThat(actual().getCellIdentity())
-        .named("cell identity")
-        .isEqualTo(cellIdentity);
+  public CellInfoLteSubject hasCellIdentity(@Nullable CellIdentityLte cellIdentity) {
+    check("getCellIdentity()").that(actual.getCellIdentity()).isEqualTo(cellIdentity);
     return this;
   }
 
-  public CellInfoLteSubject hasCellSignalStrength(CellSignalStrengthLte cellSignalStrength) {
-    assertThat(actual().getCellSignalStrength())
-        .named("cell signal strength")
-        .isEqualTo(cellSignalStrength);
+  public CellInfoLteSubject hasCellSignalStrength(@Nullable CellSignalStrengthLte cellSignalStrength) {
+    check("getCellSignalStrength()").that(actual.getCellSignalStrength()).isEqualTo(cellSignalStrength);
     return this;
   }
 }

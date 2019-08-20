@@ -21,27 +21,29 @@ import android.view.OrientationEventListener;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
-import static com.google.common.truth.Truth.assertThat;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link OrientationEventListener} subjects.
  */
-public class OrientationEventListenerSubject extends Subject<OrientationEventListenerSubject, OrientationEventListener> {
-  public OrientationEventListenerSubject(FailureMetadata failureMetadata, OrientationEventListener subject) {
-    super(failureMetadata, subject);
+public class OrientationEventListenerSubject extends Subject {
+
+  @Nullable
+  private final OrientationEventListener actual;
+
+  public OrientationEventListenerSubject(@Nonnull FailureMetadata failureMetadata, @Nullable OrientationEventListener actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public OrientationEventListenerSubject isDetectingOrientation() {
-    assertThat(actual().canDetectOrientation())
-        .named("is able to detect orientation")
-        .isTrue();
+    check("canDetectOrientation()").that(actual.canDetectOrientation()).isTrue();
     return this;
   }
 
   public OrientationEventListenerSubject isNotDetectingOrientation() {
-    assertThat(actual().canDetectOrientation())
-        .named("is able to detect orientation")
-        .isFalse();
+    check("canDetectOrientation()").that(actual.canDetectOrientation()).isFalse();
     return this;
   }
 }

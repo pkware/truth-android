@@ -23,29 +23,36 @@ import android.content.Intent;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link TaskStackBuilder} subjects.
  */
 @TargetApi(JELLY_BEAN)
-public class TaskStackBuilderSubject extends Subject<TaskStackBuilderSubject, TaskStackBuilder> {
-  public TaskStackBuilderSubject(FailureMetadata failureMetadata, TaskStackBuilder subject) {
-    super(failureMetadata, subject);
+public class TaskStackBuilderSubject extends Subject {
+
+  @Nullable
+  private final TaskStackBuilder actual;
+
+  public TaskStackBuilderSubject(@Nonnull FailureMetadata failureMetadata, @Nullable TaskStackBuilder actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public TaskStackBuilderSubject hasIntentCount(int count) {
-    assertThat(actual().getIntentCount())
-        .named("intent count")
-        .isEqualTo(count);
+    check("getIntentCount()").that(actual.getIntentCount()).isEqualTo(count);
     return this;
   }
 
-  public TaskStackBuilderSubject containsIntents(Intent... intents) {
-    assertThat(actual().getIntents())
+  public TaskStackBuilderSubject containsIntents(@Nonnull Intent... intents) {
+    check("getIntents()")
+        .that(actual.getIntents())
         .asList()
-        .contains(intents);
+        .containsExactlyElementsIn(intents)
+        .inOrder();
     return this;
   }
 }

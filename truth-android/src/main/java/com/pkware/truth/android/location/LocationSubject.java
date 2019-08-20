@@ -22,157 +22,120 @@ import android.location.Location;
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
-import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link Location} subjects.
  */
-public class LocationSubject extends Subject<LocationSubject, Location> {
-  public LocationSubject(FailureMetadata failureMetadata, Location subject) {
-    super(failureMetadata, subject);
+public class LocationSubject extends Subject {
+
+  @Nullable
+  private final Location actual;
+
+  public LocationSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Location actual) {
+    super(failureMetadata, actual);
+    this.actual = actual;
   }
 
   public LocationSubject hasAccuracy(float accuracy, float tolerance) {
-    assertThat(actual().getAccuracy())
-        .named("accuracy")
-        .isWithin(tolerance)
-        .of(accuracy);
+    check("getAccuracy()").that(actual.getAccuracy()).isWithin(tolerance).of(accuracy);
     return this;
   }
 
   public LocationSubject hasAltitude(double altitude, double tolerance) {
-    assertThat(actual().getAltitude())
-        .named("altitude")
-        .isWithin(tolerance)
-        .of(altitude);
+    check("getAltitude()").that(actual.getAltitude()).isWithin(tolerance).of(altitude);
     return this;
   }
 
   public LocationSubject hasBearing(float bearing, float tolerance) {
-    assertThat(actual().getBearing())
-        .named("bearing")
-        .isWithin(tolerance)
-        .of(bearing);
+    check("getBearing()").that(actual.getBearing()).isWithin(tolerance).of(bearing);
     return this;
   }
 
   @TargetApi(JELLY_BEAN_MR1)
   public LocationSubject hasElapsedRealTimeNanos(long nanos) {
-    assertThat(actual().getElapsedRealtimeNanos())
-        .named("elapsed real-time nanos")
-        .isEqualTo(nanos);
+    check("getElapsedRealtimeNanos()").that(actual.getElapsedRealtimeNanos()).isEqualTo(nanos);
     return this;
   }
 
   public LocationSubject hasLatitude(double latitude, double tolerance) {
-    assertThat(actual().getLatitude())
-        .named("latitude")
-        .isWithin(tolerance)
-        .of(latitude);
+    check("getLatitude()").that(actual.getLatitude()).isWithin(tolerance).of(latitude);
     return this;
   }
 
   public LocationSubject hasLongitude(double longitude, double tolerance) {
-    assertThat(actual().getLongitude())
-        .named("longitude")
-        .isWithin(tolerance)
-        .of(longitude);
+    check("getLongitude()").that(actual.getLongitude()).isWithin(tolerance).of(longitude);
     return this;
   }
 
-  public LocationSubject hasProvider(String name) {
-    assertThat(actual().getProvider())
-        .named("provider")
-        .isEqualTo(name);
+  public LocationSubject hasProvider(@Nullable String name) {
+    check("getProvider()").that(actual.getProvider()).isEqualTo(name);
     return this;
   }
 
   public LocationSubject hasSpeed(float speed, float tolerance) {
-    assertThat(actual().getSpeed())
-        .named("speed")
-        .isWithin(tolerance)
-        .of(speed);
+    check("getSpeed()").that(actual.getSpeed()).isWithin(tolerance).of(speed);
     return this;
   }
 
   public LocationSubject hasTime(long time) {
-    assertThat(actual().getTime())
-        .named("time")
-        .isEqualTo(time);
+    check("getTime()").that(actual.getTime()).isEqualTo(time);
     return this;
   }
 
   public LocationSubject hasAccuracy() {
-    assertThat(actual().hasAccuracy())
-        .named("has accuracy")
-        .isTrue();
+    check("hasAccuracy()").that(actual.hasAccuracy()).isTrue();
     return this;
   }
 
   public LocationSubject hasNoAccuracy() {
-    assertThat(actual().hasAccuracy())
-        .named("has accuracy")
-        .isFalse();
+    check("hasAccuracy()").that(actual.hasAccuracy()).isFalse();
     return this;
   }
 
   public LocationSubject hasAltitude() {
-    assertThat(actual().hasAltitude())
-        .named("has altitude")
-        .isTrue();
+    check("hasAltitude()").that(actual.hasAltitude()).isTrue();
     return this;
   }
 
   public LocationSubject hasNoAltitude() {
-    assertThat(actual().hasAltitude())
-        .named("has altitude")
-        .isFalse();
+    check("hasAltitude()").that(actual.hasAltitude()).isFalse();
     return this;
   }
 
   public LocationSubject hasBearing() {
-    assertThat(actual().hasBearing())
-        .named("has bearing")
-        .isTrue();
+    check("hasBearing()").that(actual.hasBearing()).isTrue();
     return this;
   }
 
   public LocationSubject hasNoBearing() {
-    assertThat(actual().hasBearing())
-        .named("has bearing")
-        .isFalse();
+    check("hasBearing()").that(actual.hasBearing()).isFalse();
     return this;
   }
 
   public LocationSubject hasSpeed() {
-    assertThat(actual().hasSpeed())
-        .named("has speed")
-        .isTrue();
+    check("hasSpeed()").that(actual.hasSpeed()).isTrue();
     return this;
   }
 
   public LocationSubject hasNoSpeed() {
-    assertThat(actual().hasSpeed())
-        .named("has speed")
-        .isFalse();
+    check("hasSpeed()").that(actual.hasSpeed()).isFalse();
     return this;
   }
 
   @TargetApi(JELLY_BEAN_MR2)
   public LocationSubject isFromMockProvider() {
-    assertThat(actual().isFromMockProvider())
-        .named("is from mock provider")
-        .isTrue();
+    check("isFromMockProvider()").that(actual.isFromMockProvider()).isTrue();
     return this;
   }
 
   @TargetApi(JELLY_BEAN_MR2)
   public LocationSubject isNotFromMockProvider() {
-    assertThat(actual().isFromMockProvider())
-        .named("is from mock provider")
-        .isFalse();
+    check("isFromMockProvider()").that(actual.isFromMockProvider()).isFalse();
     return this;
   }
 }

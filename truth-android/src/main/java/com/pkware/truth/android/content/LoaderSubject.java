@@ -17,15 +17,19 @@
 package com.pkware.truth.android.content;
 
 import android.content.Loader;
+
 import com.google.common.truth.FailureMetadata;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Propositions for {@link Loader} subjects.
  * <p/>
  * This class is final. To extend use {@link AbstractLoaderSubject}.
  */
-public final class LoaderSubject extends AbstractLoaderSubject<LoaderSubject, Loader> {
-  public LoaderSubject(FailureMetadata failureMetadata, Loader subject) {
-    super(failureMetadata, subject);
+public final class LoaderSubject extends AbstractLoaderSubject<Loader> {
+  public LoaderSubject(@Nonnull FailureMetadata failureMetadata, @Nullable Loader actual) {
+    super(failureMetadata, actual);
   }
 }

@@ -17,9 +17,7 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.TextView;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link TextView} subjects.
@@ -27,11 +25,7 @@ import com.google.common.truth.Subject;
  * This class is final. To extend use {@link AbstractTextViewSubject}.
  */
 public final class TextViewSubject extends AbstractTextViewSubject<TextViewSubject, TextView> {
-  private TextViewSubject(FailureMetadata failureMetadata, TextView subject) {
+  public TextViewSubject(FailureMetadata failureMetadata, TextView subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<TextViewSubject, TextView> type() {
-    return TextViewSubject::new;
   }
 }

@@ -17,9 +17,7 @@
 package com.pkware.truth.android.content;
 
 import android.content.SharedPreferences;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link SharedPreferences} subjects.
@@ -27,11 +25,7 @@ import com.google.common.truth.Subject;
  * This class is final. To extend use {@link AbstractSharedPreferencesSubject}.
  */
 public final class SharedPreferencesSubject extends AbstractSharedPreferencesSubject<SharedPreferencesSubject, SharedPreferences> {
-  private SharedPreferencesSubject(FailureMetadata failureMetadata, SharedPreferences subject) {
+  public SharedPreferencesSubject(FailureMetadata failureMetadata, SharedPreferences subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<SharedPreferencesSubject, SharedPreferences> type() {
-    return SharedPreferencesSubject::new;
   }
 }

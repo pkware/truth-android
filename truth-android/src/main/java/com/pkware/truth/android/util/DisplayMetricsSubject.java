@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link DisplayMetrics} subjects.
  */
 public class DisplayMetricsSubject extends Subject<DisplayMetricsSubject, DisplayMetrics> {
-  protected DisplayMetricsSubject(FailureMetadata failureMetadata, DisplayMetrics subject) {
+  public DisplayMetricsSubject(FailureMetadata failureMetadata, DisplayMetrics subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<DisplayMetricsSubject, DisplayMetrics> type() {
-    return DisplayMetricsSubject::new;
   }
 
   public DisplayMetricsSubject hasDensity(float density, float tolerance) {

@@ -29,12 +29,8 @@ import static com.pkware.truth.android.telephony.TelephonyManagerSubject.network
  * Propositions for {@link NeighboringCellInfo} subjects.
  */
 public class NeighboringCellInfoSubject extends Subject<NeighboringCellInfoSubject, NeighboringCellInfo> {
-  protected NeighboringCellInfoSubject(FailureMetadata failureMetadata, NeighboringCellInfo subject) {
+  public NeighboringCellInfoSubject(FailureMetadata failureMetadata, NeighboringCellInfo subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<NeighboringCellInfoSubject, NeighboringCellInfo> type() {
-    return NeighboringCellInfoSubject::new;
   }
 
   public NeighboringCellInfoSubject hasCid(int cid) {

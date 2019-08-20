@@ -19,9 +19,7 @@ package com.pkware.truth.android.widget;
 import android.annotation.TargetApi;
 import android.graphics.drawable.Drawable;
 import android.widget.CheckedTextView;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 import static com.google.common.truth.Truth.assertThat;
@@ -30,12 +28,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link CheckedTextView} subjects.
  */
 public class CheckedTextViewSubject extends AbstractTextViewSubject<CheckedTextViewSubject, CheckedTextView> {
-  protected CheckedTextViewSubject(FailureMetadata failureMetadata, CheckedTextView subject) {
+  public CheckedTextViewSubject(FailureMetadata failureMetadata, CheckedTextView subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<CheckedTextViewSubject, CheckedTextView> type() {
-    return CheckedTextViewSubject::new;
   }
 
   @TargetApi(JELLY_BEAN)

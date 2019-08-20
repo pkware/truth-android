@@ -28,12 +28,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Canvas} subjects.
  */
 public class CanvasSubject extends Subject<CanvasSubject, Canvas> {
-  protected CanvasSubject(FailureMetadata failureMetadata, Canvas subject) {
+  public CanvasSubject(FailureMetadata failureMetadata, Canvas subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<CanvasSubject, Canvas> type() {
-    return CanvasSubject::new;
   }
 
   public CanvasSubject hasClipBounds(Rect bounds) {

@@ -31,12 +31,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link MenuItem} subjects.
  */
 public class MenuItemSubject extends Subject<MenuItemSubject, MenuItem> {
-  protected MenuItemSubject(FailureMetadata failureMetadata, MenuItem subject) {
+  public MenuItemSubject(FailureMetadata failureMetadata, MenuItem subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<MenuItemSubject, MenuItem> type() {
-    return MenuItemSubject::new;
   }
 
   public MenuItemSubject hasActionView(View view) {

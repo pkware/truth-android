@@ -17,9 +17,7 @@
 package com.pkware.truth.android.graphics;
 
 import android.graphics.Paint;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link Paint} instances.
@@ -27,11 +25,7 @@ import com.google.common.truth.Subject;
  * This class is final. To extend use {@link AbstractPaintSubject}.
  */
 public final class PaintSubject extends AbstractPaintSubject<PaintSubject, Paint> {
-  protected PaintSubject(FailureMetadata failureMetadata, Paint subject) {
+  public PaintSubject(FailureMetadata failureMetadata, Paint subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<PaintSubject, Paint> type() {
-    return PaintSubject::new;
   }
 }

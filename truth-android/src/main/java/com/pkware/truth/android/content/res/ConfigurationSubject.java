@@ -41,12 +41,8 @@ import static com.pkware.truth.android.view.AbstractViewSubject.layoutDirectionT
  * Propositions for {@link Configuration} subjects.
  */
 public class ConfigurationSubject extends Subject<ConfigurationSubject, Configuration> {
-  protected ConfigurationSubject(FailureMetadata failureMetadata, Configuration subject) {
+  public ConfigurationSubject(FailureMetadata failureMetadata, Configuration subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ConfigurationSubject, Configuration> type() {
-    return ConfigurationSubject::new;
   }
 
   public static String uiModeTypeToString(@ConfigurationUiModeType int mode) {

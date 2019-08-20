@@ -18,9 +18,7 @@ package com.pkware.truth.androidx.legacy.v4.widget;
 
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -29,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ViewPager} subjects.
  */
 public class ViewPagerSubject extends AbstractViewGroupSubject<ViewPagerSubject, ViewPager> {
-  protected ViewPagerSubject(FailureMetadata failureMetadata, ViewPager subject) {
+  public ViewPagerSubject(FailureMetadata failureMetadata, ViewPager subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ViewPagerSubject, ViewPager> type() {
-    return ViewPagerSubject::new;
   }
 
   public ViewPagerSubject hasAdapter(PagerAdapter adapter) {

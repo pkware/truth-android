@@ -17,9 +17,7 @@
 package com.pkware.truth.androidx.legacy.v4.widget;
 
 import androidx.slidingpanelayout.widget.SlidingPaneLayout;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -29,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class SlidingPaneLayoutSubject
     extends AbstractViewGroupSubject<SlidingPaneLayoutSubject, SlidingPaneLayout> {
-  protected SlidingPaneLayoutSubject(FailureMetadata failureMetadata, SlidingPaneLayout subject) {
+  public SlidingPaneLayoutSubject(FailureMetadata failureMetadata, SlidingPaneLayout subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<SlidingPaneLayoutSubject, SlidingPaneLayout> type() {
-    return SlidingPaneLayoutSubject::new;
   }
 
   public SlidingPaneLayoutSubject hasCoveredFadeColor(int color) {

@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link KeyEvent} subjects.
  */
 public class KeyEventSubject extends Subject<KeyEventSubject, KeyEvent> {
-  protected KeyEventSubject(FailureMetadata failureMetadata, KeyEvent subject) {
+  public KeyEventSubject(FailureMetadata failureMetadata, KeyEvent subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<KeyEventSubject, KeyEvent> type() {
-    return KeyEventSubject::new;
   }
 
   public KeyEventSubject hasAction(int action) {

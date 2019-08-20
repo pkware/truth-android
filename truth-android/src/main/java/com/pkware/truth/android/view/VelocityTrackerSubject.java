@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link VelocityTracker} subjects.
  */
 public class VelocityTrackerSubject extends Subject<VelocityTrackerSubject, VelocityTracker> {
-  protected VelocityTrackerSubject(FailureMetadata failureMetadata, VelocityTracker subject) {
+  public VelocityTrackerSubject(FailureMetadata failureMetadata, VelocityTracker subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<VelocityTrackerSubject, VelocityTracker> type() {
-    return VelocityTrackerSubject::new;
   }
 
   public VelocityTrackerSubject hasXVelocity(float velocity, float tolerance) {

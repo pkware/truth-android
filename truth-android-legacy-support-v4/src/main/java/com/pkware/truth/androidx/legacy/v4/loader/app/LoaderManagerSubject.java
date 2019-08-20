@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link LoaderManager} subjects.
  */
 public class LoaderManagerSubject extends Subject<LoaderManagerSubject, LoaderManager> {
-  protected LoaderManagerSubject(FailureMetadata failureMetadata, LoaderManager subject) {
+  public LoaderManagerSubject(FailureMetadata failureMetadata, LoaderManager subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<LoaderManagerSubject, LoaderManager> type() {
-    return LoaderManagerSubject::new;
   }
 
   public LoaderManagerSubject hasLoader(int id) {

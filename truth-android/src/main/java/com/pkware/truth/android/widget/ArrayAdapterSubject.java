@@ -19,9 +19,7 @@ package com.pkware.truth.android.widget;
 import android.content.Context;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -29,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ArrayAdapter} subjects.
  */
 public class ArrayAdapterSubject extends AbstractListAdapterSubject<ArrayAdapterSubject, ArrayAdapter> {
-  protected ArrayAdapterSubject(FailureMetadata failureMetadata, ArrayAdapter subject) {
+  public ArrayAdapterSubject(FailureMetadata failureMetadata, ArrayAdapter subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ArrayAdapterSubject, ArrayAdapter> type() {
-    return ArrayAdapterSubject::new;
   }
 
   public ArrayAdapterSubject hasContext(Context context) {

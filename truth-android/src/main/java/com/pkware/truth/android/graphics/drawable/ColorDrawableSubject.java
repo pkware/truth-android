@@ -17,9 +17,7 @@
 package com.pkware.truth.android.graphics.drawable;
 
 import android.graphics.drawable.ColorDrawable;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assert_;
 
@@ -27,12 +25,8 @@ import static com.google.common.truth.Truth.assert_;
  * Propositions for {@link ColorDrawable} subjects.
  */
 public class ColorDrawableSubject extends AbstractDrawableSubject<ColorDrawableSubject, ColorDrawable> {
-  protected ColorDrawableSubject(FailureMetadata failureMetadata, ColorDrawable subject) {
+  public ColorDrawableSubject(FailureMetadata failureMetadata, ColorDrawable subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ColorDrawableSubject, ColorDrawable> type() {
-    return ColorDrawableSubject::new;
   }
 
   public ColorDrawableSubject hasColor(int color) {

@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Rect} subjects.
  */
 public class RectSubject extends Subject<RectSubject, Rect> {
-  protected RectSubject(FailureMetadata failureMetadata, Rect subject) {
+  public RectSubject(FailureMetadata failureMetadata, Rect subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<RectSubject, Rect> type() {
-    return RectSubject::new;
   }
 
   public RectSubject hasBottom(int bottom) {

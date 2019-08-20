@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link OrientedBoundingBox} subjects.
  */
 public class OrientedBoundingBoxSubject extends Subject<OrientedBoundingBoxSubject, OrientedBoundingBox> {
-  protected OrientedBoundingBoxSubject(FailureMetadata failureMetadata, OrientedBoundingBox subject) {
+  public OrientedBoundingBoxSubject(FailureMetadata failureMetadata, OrientedBoundingBox subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<OrientedBoundingBoxSubject, OrientedBoundingBox> type() {
-    return OrientedBoundingBoxSubject::new;
   }
 
   public OrientedBoundingBoxSubject hasCenterX(float centerX, float tolerance) {

@@ -20,9 +20,7 @@ import android.annotation.TargetApi;
 import android.telephony.CellIdentityWcdma;
 import android.telephony.CellInfoWcdma;
 import android.telephony.CellSignalStrengthWcdma;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
 import static com.google.common.truth.Truth.assertThat;
@@ -32,12 +30,8 @@ import static com.google.common.truth.Truth.assertThat;
  */
 @TargetApi(JELLY_BEAN_MR2)
 public final class CellInfoWcdmaSubject extends AbstractCellInfoSubject<CellInfoWcdmaSubject, CellInfoWcdma> {
-  private CellInfoWcdmaSubject(FailureMetadata failureMetadata, CellInfoWcdma subject) {
+  public CellInfoWcdmaSubject(FailureMetadata failureMetadata, CellInfoWcdma subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<CellInfoWcdmaSubject, CellInfoWcdma> type() {
-    return CellInfoWcdmaSubject::new;
   }
 
   public CellInfoWcdmaSubject hasCellIdentity(CellIdentityWcdma cellIdentity) {

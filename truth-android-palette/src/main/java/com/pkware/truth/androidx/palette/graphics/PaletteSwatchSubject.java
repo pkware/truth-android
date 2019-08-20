@@ -28,12 +28,8 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class PaletteSwatchSubject extends Subject<PaletteSwatchSubject, Palette.Swatch> {
 
-  protected PaletteSwatchSubject(FailureMetadata failureMetadata, Palette.Swatch subject) {
+  public PaletteSwatchSubject(FailureMetadata failureMetadata, Palette.Swatch subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<PaletteSwatchSubject, Palette.Swatch> type() {
-    return PaletteSwatchSubject::new;
   }
 
   public PaletteSwatchSubject hasRgb(int rgb) {

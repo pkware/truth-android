@@ -20,7 +20,6 @@ import android.widget.ToggleButton;
 import androidx.annotation.StringRes;
 
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -29,12 +28,8 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class ToggleButtonSubject
     extends AbstractCompoundButtonSubject<ToggleButtonSubject, ToggleButton> {
-  protected ToggleButtonSubject(FailureMetadata failureMetadata, ToggleButton subject) {
+  public ToggleButtonSubject(FailureMetadata failureMetadata, ToggleButton subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ToggleButtonSubject, ToggleButton> type() {
-    return ToggleButtonSubject::new;
   }
 
   public ToggleButtonSubject hasOnText(String text) {

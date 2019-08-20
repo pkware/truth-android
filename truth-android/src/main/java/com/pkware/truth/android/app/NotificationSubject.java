@@ -49,12 +49,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link Notification} subjects.
  */
 public class NotificationSubject extends Subject<NotificationSubject, Notification> {
-  protected NotificationSubject(FailureMetadata failureMetadata, Notification subject) {
+  public NotificationSubject(FailureMetadata failureMetadata, Notification subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<NotificationSubject, Notification> type() {
-    return NotificationSubject::new;
   }
 
   public static String flagsToString(@NotificationFlags int flags) {

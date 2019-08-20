@@ -20,9 +20,7 @@ import android.graphics.Bitmap;
 import android.graphics.Paint;
 import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -30,12 +28,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link BitmapDrawable} subjects.
  */
 public class BitmapDrawableSubject extends AbstractDrawableSubject<BitmapDrawableSubject, BitmapDrawable> {
-  protected BitmapDrawableSubject(FailureMetadata failureMetadata, BitmapDrawable subject) {
+  public BitmapDrawableSubject(FailureMetadata failureMetadata, BitmapDrawable subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<BitmapDrawableSubject, BitmapDrawable> type() {
-    return BitmapDrawableSubject::new;
   }
 
   public BitmapDrawableSubject hasBitmap(Bitmap bitmap) {

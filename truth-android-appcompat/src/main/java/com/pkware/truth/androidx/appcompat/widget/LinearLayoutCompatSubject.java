@@ -17,9 +17,7 @@
 package com.pkware.truth.androidx.appcompat.widget;
 
 import androidx.appcompat.widget.LinearLayoutCompat;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link LinearLayoutCompat} subjects.
@@ -28,11 +26,7 @@ import com.google.common.truth.Subject;
  */
 public final class LinearLayoutCompatSubject extends
     AbstractLinearLayoutCompatSubject<LinearLayoutCompatSubject, LinearLayoutCompat> {
-  protected LinearLayoutCompatSubject(FailureMetadata failureMetadata, LinearLayoutCompat subject) {
+  public LinearLayoutCompatSubject(FailureMetadata failureMetadata, LinearLayoutCompat subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<LinearLayoutCompatSubject, LinearLayoutCompat> type() {
-    return LinearLayoutCompatSubject::new;
   }
 }

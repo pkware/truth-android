@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link CdmaCellLocation} subjects.
  */
 public class CdmaCellLocationSubject extends Subject<CdmaCellLocationSubject, CdmaCellLocation> {
-  protected CdmaCellLocationSubject(FailureMetadata failureMetadata, CdmaCellLocation subject) {
+  public CdmaCellLocationSubject(FailureMetadata failureMetadata, CdmaCellLocation subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<CdmaCellLocationSubject, CdmaCellLocation> type() {
-    return CdmaCellLocationSubject::new;
   }
 
   public CdmaCellLocationSubject hasBaseStationId(int id) {

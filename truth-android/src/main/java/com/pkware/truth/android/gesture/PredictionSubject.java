@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Prediction} subjects.
  */
 public class PredictionSubject extends Subject<PredictionSubject, Prediction> {
-  protected PredictionSubject(FailureMetadata failureMetadata, Prediction subject) {
+  public PredictionSubject(FailureMetadata failureMetadata, Prediction subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<PredictionSubject, Prediction> type() {
-    return PredictionSubject::new;
   }
 
   public PredictionSubject hasName(String name) {

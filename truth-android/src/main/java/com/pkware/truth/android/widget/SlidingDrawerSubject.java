@@ -18,9 +18,7 @@ package com.pkware.truth.android.widget;
 
 import android.view.View;
 import android.widget.SlidingDrawer;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -30,12 +28,8 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class SlidingDrawerSubject
     extends AbstractViewGroupSubject<SlidingDrawerSubject, SlidingDrawer> {
-  protected SlidingDrawerSubject(FailureMetadata failureMetadata, SlidingDrawer subject) {
+  public SlidingDrawerSubject(FailureMetadata failureMetadata, SlidingDrawer subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<SlidingDrawerSubject, SlidingDrawer> type() {
-    return SlidingDrawerSubject::new;
   }
 
   public SlidingDrawerSubject hasContent(View view) {

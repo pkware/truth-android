@@ -26,12 +26,8 @@ import java.util.Locale;
 import static com.google.common.truth.Truth.assertThat;
 
 public class AddressSubject extends Subject<AddressSubject, Address> {
-  protected AddressSubject(FailureMetadata failureMetadata, Address subject) {
+  public AddressSubject(FailureMetadata failureMetadata, Address subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<AddressSubject, Address> type() {
-    return AddressSubject::new;
   }
 
   public AddressSubject hasAddressLine(int index, String line) {

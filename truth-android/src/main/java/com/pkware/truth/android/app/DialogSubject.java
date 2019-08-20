@@ -17,9 +17,7 @@
 package com.pkware.truth.android.app;
 
 import android.app.Dialog;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link Dialog} subjects.
@@ -27,11 +25,7 @@ import com.google.common.truth.Subject;
  * This class is final. To extend use {@link AbstractDialogSubject}.
  */
 public final class DialogSubject extends AbstractDialogSubject<DialogSubject, Dialog> {
-  private DialogSubject(FailureMetadata failureMetadata, Dialog subject) {
+  public DialogSubject(FailureMetadata failureMetadata, Dialog subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<DialogSubject, Dialog> type() {
-    return DialogSubject::new;
   }
 }

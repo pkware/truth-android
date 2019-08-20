@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Typeface} subjects.
  */
 public class TypefaceSubject extends Subject<TypefaceSubject, Typeface> {
-  protected TypefaceSubject(FailureMetadata failureMetadata, Typeface subject) {
+  public TypefaceSubject(FailureMetadata failureMetadata, Typeface subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<TypefaceSubject, Typeface> type() {
-    return TypefaceSubject::new;
   }
 
   public TypefaceSubject hasStyle(int style) {

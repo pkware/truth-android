@@ -33,12 +33,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  */
 public class MediaSessionStatusSubject
     extends Subject<MediaSessionStatusSubject, MediaSessionStatus> {
-  protected MediaSessionStatusSubject(FailureMetadata failureMetadata, MediaSessionStatus subject) {
+  public MediaSessionStatusSubject(FailureMetadata failureMetadata, MediaSessionStatus subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<MediaSessionStatusSubject, MediaSessionStatus> type() {
-    return MediaSessionStatusSubject::new;
   }
 
   public static String sessionStateToString(@MediaSessionStatusState int state) {

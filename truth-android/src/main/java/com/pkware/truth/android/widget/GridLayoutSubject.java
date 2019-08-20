@@ -17,9 +17,7 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.GridLayout;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 
 import static android.widget.GridLayout.ALIGN_BOUNDS;
@@ -34,12 +32,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link GridLayout} subjects.
  */
 public class GridLayoutSubject extends AbstractViewGroupSubject<GridLayoutSubject, GridLayout> {
-  protected GridLayoutSubject(FailureMetadata failureMetadata, GridLayout subject) {
+  public GridLayoutSubject(FailureMetadata failureMetadata, GridLayout subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<GridLayoutSubject, GridLayout> type() {
-    return GridLayoutSubject::new;
   }
 
   public static String alignmentModeToString(@GridLayoutAlignmentMode int mode) {

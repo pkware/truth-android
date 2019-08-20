@@ -17,9 +17,7 @@
 package com.pkware.truth.androidx.cardview.widget;
 
 import androidx.cardview.widget.CardView;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -28,12 +26,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link CardView} subjects.
  */
 public class CardViewSubject extends AbstractViewGroupSubject<CardViewSubject, CardView> {
-  protected CardViewSubject(FailureMetadata failureMetadata, CardView subject) {
+  public CardViewSubject(FailureMetadata failureMetadata, CardView subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<CardViewSubject, CardView> type() {
-    return CardViewSubject::new;
   }
 
   public CardViewSubject hasRadius(int radius) {

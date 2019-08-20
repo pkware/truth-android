@@ -17,9 +17,7 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.RelativeLayout;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link RelativeLayout} subjects.
@@ -27,11 +25,7 @@ import com.google.common.truth.Subject;
  * This class is final. To extend use {@link AbstractRelativeLayoutSubject}.
  */
 public final class RelativeLayoutSubject extends AbstractRelativeLayoutSubject<RelativeLayoutSubject, RelativeLayout> {
-  private RelativeLayoutSubject(FailureMetadata failureMetadata, RelativeLayout subject) {
+  public RelativeLayoutSubject(FailureMetadata failureMetadata, RelativeLayout subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<RelativeLayoutSubject, RelativeLayout> type() {
-    return RelativeLayoutSubject::new;
   }
 }

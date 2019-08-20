@@ -17,9 +17,7 @@
 package com.pkware.truth.android.view;
 
 import android.view.ViewGroup;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link android.view.ViewGroup.MarginLayoutParams} subjects.
@@ -27,11 +25,7 @@ import com.google.common.truth.Subject;
  * This class is final. To extend use {@link AbstractViewGroupMarginLayoutParamsSubject}.
  */
 public final class ViewGroupMarginLayoutParamsSubject extends AbstractViewGroupMarginLayoutParamsSubject<ViewGroupMarginLayoutParamsSubject, ViewGroup.MarginLayoutParams> {
-  private ViewGroupMarginLayoutParamsSubject(FailureMetadata failureMetadata, ViewGroup.MarginLayoutParams subject) {
+  public ViewGroupMarginLayoutParamsSubject(FailureMetadata failureMetadata, ViewGroup.MarginLayoutParams subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ViewGroupMarginLayoutParamsSubject, ViewGroup.MarginLayoutParams> type() {
-    return ViewGroupMarginLayoutParamsSubject::new;
   }
 }

@@ -18,9 +18,7 @@ package com.pkware.truth.android.telephony;
 
 import android.annotation.TargetApi;
 import android.telephony.CellSignalStrengthWcdma;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
 
@@ -32,11 +30,7 @@ import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR2;
 @TargetApi(JELLY_BEAN_MR2)
 public final class CellSignalStrengthWcdmaSubject
     extends AbstractCellSignalStrengthSubject<CellSignalStrengthWcdmaSubject, CellSignalStrengthWcdma> {
-  private CellSignalStrengthWcdmaSubject(FailureMetadata failureMetadata, CellSignalStrengthWcdma subject) {
+  public CellSignalStrengthWcdmaSubject(FailureMetadata failureMetadata, CellSignalStrengthWcdma subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<CellSignalStrengthWcdmaSubject, CellSignalStrengthWcdma> type() {
-    return CellSignalStrengthWcdmaSubject::new;
   }
 }

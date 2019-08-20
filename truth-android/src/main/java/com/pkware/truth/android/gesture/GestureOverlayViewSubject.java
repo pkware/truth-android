@@ -33,12 +33,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link GestureOverlayView} subjects.
  */
 public class GestureOverlayViewSubject extends Subject<GestureOverlayViewSubject, GestureOverlayView> {
-  protected GestureOverlayViewSubject(FailureMetadata failureMetadata, GestureOverlayView subject) {
+  public GestureOverlayViewSubject(FailureMetadata failureMetadata, GestureOverlayView subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<GestureOverlayViewSubject, GestureOverlayView> type() {
-    return GestureOverlayViewSubject::new;
   }
 
   public static String gestureStrokeTypeToString(@GestureOverlayViewGestureStrokeType int type) {

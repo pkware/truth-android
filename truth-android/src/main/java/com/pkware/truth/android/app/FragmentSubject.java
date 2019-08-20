@@ -17,9 +17,7 @@
 package com.pkware.truth.android.app;
 
 import android.app.Fragment;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link Fragment} subjects.
@@ -27,11 +25,7 @@ import com.google.common.truth.Subject;
  * This class is final. To extend use {@link AbstractFragmentSubject}.
  */
 public final class FragmentSubject extends AbstractFragmentSubject<FragmentSubject, Fragment> {
-  private FragmentSubject(FailureMetadata failureMetadata, Fragment subject) {
+  public FragmentSubject(FailureMetadata failureMetadata, Fragment subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<FragmentSubject, Fragment> type() {
-    return FragmentSubject::new;
   }
 }

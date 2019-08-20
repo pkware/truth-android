@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link PagerAdapter} subjects.
  */
 public class PagerAdapterSubject extends Subject<PagerAdapterSubject, PagerAdapter> {
-  protected PagerAdapterSubject(FailureMetadata failureMetadata, PagerAdapter subject) {
+  public PagerAdapterSubject(FailureMetadata failureMetadata, PagerAdapter subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<PagerAdapterSubject, PagerAdapter> type() {
-    return PagerAdapterSubject::new;
   }
 
   public PagerAdapterSubject hasCount(int count) {

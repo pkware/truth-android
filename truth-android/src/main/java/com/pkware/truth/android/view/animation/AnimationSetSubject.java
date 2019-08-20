@@ -17,9 +17,7 @@
 package com.pkware.truth.android.view.animation;
 
 import android.view.animation.AnimationSet;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,12 +25,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link AnimationSet} subjects.
  */
 public class AnimationSetSubject extends AbstractAnimationSubject<AnimationSetSubject, AnimationSet> {
-  protected AnimationSetSubject(FailureMetadata failureMetadata, AnimationSet subject) {
+  public AnimationSetSubject(FailureMetadata failureMetadata, AnimationSet subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<AnimationSetSubject, AnimationSet> type() {
-    return AnimationSetSubject::new;
   }
 
   public AnimationSetSubject hasDurationHint(long duration) {

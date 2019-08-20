@@ -28,12 +28,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link GpsStatus} subjects.
  */
 public class GpsStatusSubject extends Subject<GpsStatusSubject, GpsStatus> {
-  protected GpsStatusSubject(FailureMetadata failureMetadata, GpsStatus subject) {
+  public GpsStatusSubject(FailureMetadata failureMetadata, GpsStatus subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<GpsStatusSubject, GpsStatus> type() {
-    return GpsStatusSubject::new;
   }
 
   public GpsStatusSubject hasMaximumSatellites(int count) {

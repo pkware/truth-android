@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Interpolator} subjects.
  */
 public class InterpolatorSubject extends Subject<InterpolatorSubject, Interpolator> {
-  protected InterpolatorSubject(FailureMetadata failureMetadata, Interpolator subject) {
+  public InterpolatorSubject(FailureMetadata failureMetadata, Interpolator subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<InterpolatorSubject, Interpolator> type() {
-    return InterpolatorSubject::new;
   }
 
   public InterpolatorSubject hasKeyFrameCount(int count) {

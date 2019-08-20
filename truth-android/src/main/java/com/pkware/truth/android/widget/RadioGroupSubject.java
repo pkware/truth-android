@@ -17,9 +17,7 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.RadioGroup;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,12 +25,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link RadioGroup} subjects.
  */
 public class RadioGroupSubject extends AbstractLinearLayoutSubject<RadioGroupSubject, RadioGroup> {
-  protected RadioGroupSubject(FailureMetadata failureMetadata, RadioGroup subject) {
+  public RadioGroupSubject(FailureMetadata failureMetadata, RadioGroup subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<RadioGroupSubject, RadioGroup> type() {
-    return RadioGroupSubject::new;
   }
 
   public RadioGroupSubject hasCheckedRadioButtonId(int id) {

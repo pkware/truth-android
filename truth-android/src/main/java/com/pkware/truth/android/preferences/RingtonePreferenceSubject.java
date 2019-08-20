@@ -17,9 +17,7 @@
 package com.pkware.truth.android.preferences;
 
 import android.preference.RingtonePreference;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static android.media.RingtoneManager.TYPE_ALARM;
 import static android.media.RingtoneManager.TYPE_NOTIFICATION;
@@ -32,12 +30,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildBitMaskString;
  * Propositions for {@link RingtonePreference} subjects.
  */
 public class RingtonePreferenceSubject extends AbstractPreferenceSubject<RingtonePreferenceSubject, RingtonePreference> {
-  protected RingtonePreferenceSubject(FailureMetadata failureMetadata, RingtonePreference subject) {
+  public RingtonePreferenceSubject(FailureMetadata failureMetadata, RingtonePreference subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<RingtonePreferenceSubject, RingtonePreference> type() {
-    return RingtonePreferenceSubject::new;
   }
 
   private static String ringtoneTypeToString(@RingtoneType int type) {

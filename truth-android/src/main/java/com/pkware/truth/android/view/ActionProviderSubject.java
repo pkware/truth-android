@@ -29,12 +29,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ActionProvider} subjects.
  */
 public class ActionProviderSubject extends Subject<ActionProviderSubject, ActionProvider> {
-  protected ActionProviderSubject(FailureMetadata failureMetadata, ActionProvider subject) {
+  public ActionProviderSubject(FailureMetadata failureMetadata, ActionProvider subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ActionProviderSubject, ActionProvider> type() {
-    return ActionProviderSubject::new;
   }
 
   public ActionProviderSubject hasSubMenu() {

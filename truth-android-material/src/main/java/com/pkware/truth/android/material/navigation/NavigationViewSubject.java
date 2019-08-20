@@ -17,10 +17,8 @@
 package com.pkware.truth.android.material.navigation;
 
 import android.graphics.drawable.Drawable;
-
 import com.google.android.material.navigation.NavigationView;
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 import com.pkware.truth.android.widget.AbstractFrameLayoutSubject;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -28,14 +26,9 @@ import static com.google.common.truth.Truth.assertThat;
 /**
  * Propositions for {@link NavigationView} subjects.
  */
-public class NavigationViewSubject
-    extends AbstractFrameLayoutSubject<NavigationViewSubject, NavigationView> {
-  protected NavigationViewSubject(FailureMetadata failureMetadata, NavigationView subject) {
+public class NavigationViewSubject extends AbstractFrameLayoutSubject<NavigationViewSubject, NavigationView> {
+  public NavigationViewSubject(FailureMetadata failureMetadata, NavigationView subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<NavigationViewSubject, NavigationView> type() {
-    return NavigationViewSubject::new;
   }
 
   public NavigationViewSubject hasItemBackground(Drawable itemBackground) {

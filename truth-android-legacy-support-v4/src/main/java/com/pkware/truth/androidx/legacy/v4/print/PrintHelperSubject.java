@@ -34,12 +34,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link PrintHelper} subjects.
  */
 public class PrintHelperSubject extends Subject<PrintHelperSubject, PrintHelper> {
-  protected PrintHelperSubject(FailureMetadata failureMetadata, PrintHelper subject) {
+  public PrintHelperSubject(FailureMetadata failureMetadata, PrintHelper subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<PrintHelperSubject, PrintHelper> type() {
-    return PrintHelperSubject::new;
   }
 
   public static String colorModeToString(@PrintHelperColorMode int colorMode) {

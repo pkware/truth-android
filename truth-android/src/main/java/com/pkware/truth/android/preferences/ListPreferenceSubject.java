@@ -22,7 +22,6 @@ import androidx.annotation.StringRes;
 import com.google.common.base.Function;
 import com.google.common.collect.FluentIterable;
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -30,12 +29,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ListPreference} subjects.
  */
 public class ListPreferenceSubject extends AbstractDialogPreferenceSubject<ListPreferenceSubject, ListPreference> {
-  protected ListPreferenceSubject(FailureMetadata failureMetadata, ListPreference subject) {
+  public ListPreferenceSubject(FailureMetadata failureMetadata, ListPreference subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ListPreferenceSubject, ListPreference> type() {
-    return ListPreferenceSubject::new;
   }
 
   public ListPreferenceSubject hasEntries(String... entries) {

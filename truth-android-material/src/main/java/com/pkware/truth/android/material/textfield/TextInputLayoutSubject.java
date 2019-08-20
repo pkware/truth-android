@@ -18,7 +18,6 @@ package com.pkware.truth.android.material.textfield;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 import com.pkware.truth.android.widget.AbstractLinearLayoutSubject;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -27,12 +26,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link TextInputLayout} subjects.
  */
 public class TextInputLayoutSubject extends AbstractLinearLayoutSubject<TextInputLayoutSubject, TextInputLayout> {
-  protected TextInputLayoutSubject(FailureMetadata failureMetadata, TextInputLayout subject) {
+  public TextInputLayoutSubject(FailureMetadata failureMetadata, TextInputLayout subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<TextInputLayoutSubject, TextInputLayout> type() {
-    return TextInputLayoutSubject::new;
   }
 
   public TextInputLayoutSubject hasError(String error) {

@@ -28,12 +28,8 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class UriSubject extends Subject<UriSubject, Uri> {
 
-  protected UriSubject(FailureMetadata failureMetadata, Uri subject) {
+  public UriSubject(FailureMetadata failureMetadata, Uri subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<UriSubject, Uri> type() {
-    return UriSubject::new;
   }
 
   public UriSubject hasPath(String path) {

@@ -30,12 +30,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Location} subjects.
  */
 public class LocationSubject extends Subject<LocationSubject, Location> {
-  protected LocationSubject(FailureMetadata failureMetadata, Location subject) {
+  public LocationSubject(FailureMetadata failureMetadata, Location subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<LocationSubject, Location> type() {
-    return LocationSubject::new;
   }
 
   public LocationSubject hasAccuracy(float accuracy, float tolerance) {

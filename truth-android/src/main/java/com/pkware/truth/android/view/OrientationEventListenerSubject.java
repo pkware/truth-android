@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link OrientationEventListener} subjects.
  */
 public class OrientationEventListenerSubject extends Subject<OrientationEventListenerSubject, OrientationEventListener> {
-  protected OrientationEventListenerSubject(FailureMetadata failureMetadata, OrientationEventListener subject) {
+  public OrientationEventListenerSubject(FailureMetadata failureMetadata, OrientationEventListener subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<OrientationEventListenerSubject, OrientationEventListener> type() {
-    return OrientationEventListenerSubject::new;
   }
 
   public OrientationEventListenerSubject isDetectingOrientation() {

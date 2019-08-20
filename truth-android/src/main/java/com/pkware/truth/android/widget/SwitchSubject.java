@@ -22,7 +22,6 @@ import android.widget.Switch;
 import androidx.annotation.StringRes;
 
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.ICE_CREAM_SANDWICH;
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
@@ -33,12 +32,8 @@ import static com.google.common.truth.Truth.assertThat;
  */
 @TargetApi(ICE_CREAM_SANDWICH)
 public class SwitchSubject extends AbstractCompoundButtonSubject<SwitchSubject, Switch> {
-  protected SwitchSubject(FailureMetadata failureMetadata, Switch subject) {
+  public SwitchSubject(FailureMetadata failureMetadata, Switch subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<SwitchSubject, Switch> type() {
-    return SwitchSubject::new;
   }
 
   @TargetApi(JELLY_BEAN)

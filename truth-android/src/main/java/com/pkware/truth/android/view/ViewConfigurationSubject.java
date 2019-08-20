@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ViewConfiguration} subjects.
  */
 public class ViewConfigurationSubject extends Subject<ViewConfigurationSubject, ViewConfiguration> {
-  protected ViewConfigurationSubject(FailureMetadata failureMetadata, ViewConfiguration subject) {
+  public ViewConfigurationSubject(FailureMetadata failureMetadata, ViewConfiguration subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ViewConfigurationSubject, ViewConfiguration> type() {
-    return ViewConfigurationSubject::new;
   }
 
   public ViewConfigurationSubject hasScaledDoubleTapSlop(int slop) {

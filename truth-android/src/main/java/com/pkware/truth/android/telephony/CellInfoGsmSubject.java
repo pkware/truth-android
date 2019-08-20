@@ -20,9 +20,7 @@ import android.annotation.TargetApi;
 import android.telephony.CellIdentityGsm;
 import android.telephony.CellInfoGsm;
 import android.telephony.CellSignalStrengthGsm;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
 import static com.google.common.truth.Truth.assertThat;
@@ -32,12 +30,8 @@ import static com.google.common.truth.Truth.assertThat;
  */
 @TargetApi(JELLY_BEAN_MR1)
 public final class CellInfoGsmSubject extends AbstractCellInfoSubject<CellInfoGsmSubject, CellInfoGsm> {
-  private CellInfoGsmSubject(FailureMetadata failureMetadata, CellInfoGsm subject) {
+  public CellInfoGsmSubject(FailureMetadata failureMetadata, CellInfoGsm subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<CellInfoGsmSubject, CellInfoGsm> type() {
-    return CellInfoGsmSubject::new;
   }
 
   public CellInfoGsmSubject hasCellIdentity(CellIdentityGsm cellIdentity) {

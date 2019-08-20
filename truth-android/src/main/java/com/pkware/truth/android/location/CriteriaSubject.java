@@ -38,12 +38,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link Criteria} subjects.
  */
 public class CriteriaSubject extends Subject<CriteriaSubject, Criteria> {
-  protected CriteriaSubject(FailureMetadata failureMetadata, Criteria subject) {
+  public CriteriaSubject(FailureMetadata failureMetadata, Criteria subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<CriteriaSubject, Criteria> type() {
-    return CriteriaSubject::new;
   }
 
   public static String accuracyRequirementToString(@CriteriaAccuracyRequirement int accuracy) {

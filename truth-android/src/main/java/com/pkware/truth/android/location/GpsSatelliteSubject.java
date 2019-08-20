@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link GpsSatellite} subjects.
  */
 public class GpsSatelliteSubject extends Subject<GpsSatelliteSubject, GpsSatellite> {
-  protected GpsSatelliteSubject(FailureMetadata failureMetadata, GpsSatellite subject) {
+  public GpsSatelliteSubject(FailureMetadata failureMetadata, GpsSatellite subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<GpsSatelliteSubject, GpsSatellite> type() {
-    return GpsSatelliteSubject::new;
   }
 
   public GpsSatelliteSubject hasAzimuth(float azimuth, float tolerance) {

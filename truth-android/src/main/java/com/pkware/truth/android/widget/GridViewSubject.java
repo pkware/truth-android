@@ -18,9 +18,7 @@ package com.pkware.truth.android.widget;
 
 import android.annotation.TargetApi;
 import android.widget.GridView;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 import static android.widget.GridView.NO_STRETCH;
@@ -35,12 +33,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link GridView} subjects.
  */
 public class GridViewSubject extends AbstractAbsListViewSubject<GridViewSubject, GridView> {
-  protected GridViewSubject(FailureMetadata failureMetadata, GridView subject) {
+  public GridViewSubject(FailureMetadata failureMetadata, GridView subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<GridViewSubject, GridView> type() {
-    return GridViewSubject::new;
   }
 
   public static String stretchModeToString(@GridViewStretchMode int mode) {

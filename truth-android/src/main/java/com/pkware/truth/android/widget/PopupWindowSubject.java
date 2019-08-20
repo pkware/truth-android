@@ -31,12 +31,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link PopupWindow} subjects.
  */
 public class PopupWindowSubject extends Subject<PopupWindowSubject, PopupWindow> {
-  protected PopupWindowSubject(FailureMetadata failureMetadata, PopupWindow subject) {
+  public PopupWindowSubject(FailureMetadata failureMetadata, PopupWindow subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<PopupWindowSubject, PopupWindow> type() {
-    return PopupWindowSubject::new;
   }
 
   public static String inputMethodModeToString(@PopupWindowInputMethodMode int mode) {

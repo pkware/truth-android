@@ -29,12 +29,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link KeyguardManager} subjects.
  */
 public class KeyguardManagerSubject extends Subject<KeyguardManagerSubject, KeyguardManager> {
-  protected KeyguardManagerSubject(FailureMetadata failureMetadata, KeyguardManager subject) {
+  public KeyguardManagerSubject(FailureMetadata failureMetadata, KeyguardManager subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<KeyguardManagerSubject, KeyguardManager> type() {
-    return KeyguardManagerSubject::new;
   }
 
   public KeyguardManagerSubject hasRestrictedInputMode() {

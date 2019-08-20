@@ -17,9 +17,7 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.CursorAdapter;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link CursorAdapter} subjects.
@@ -27,11 +25,7 @@ import com.google.common.truth.Subject;
  * This class is final. To extend use {@link AbstractCursorAdapterSubject}.
  */
 public final class CursorAdapterSubject extends AbstractCursorAdapterSubject<CursorAdapterSubject, CursorAdapter> {
-  private CursorAdapterSubject(FailureMetadata failureMetadata, CursorAdapter subject) {
+  public CursorAdapterSubject(FailureMetadata failureMetadata, CursorAdapter subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<CursorAdapterSubject, CursorAdapter> type() {
-    return CursorAdapterSubject::new;
   }
 }

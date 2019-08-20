@@ -28,12 +28,8 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class ViewTreeObserverSubject extends Subject<ViewTreeObserverSubject, ViewTreeObserver> {
 
-  protected ViewTreeObserverSubject(FailureMetadata failureMetadata, ViewTreeObserver subject) {
+  public ViewTreeObserverSubject(FailureMetadata failureMetadata, ViewTreeObserver subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ViewTreeObserverSubject, ViewTreeObserver> type() {
-    return ViewTreeObserverSubject::new;
   }
 
   public ViewTreeObserverSubject isAlive() {

@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Palette} subjects.
  */
 public class PaletteSubject extends Subject<PaletteSubject, Palette> {
-  protected PaletteSubject(FailureMetadata failureMetadata, Palette subject) {
+  public PaletteSubject(FailureMetadata failureMetadata, Palette subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<PaletteSubject, Palette> type() {
-    return PaletteSubject::new;
   }
 
   private static int getAnotherColor(int color) {

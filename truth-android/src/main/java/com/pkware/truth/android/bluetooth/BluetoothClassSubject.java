@@ -31,12 +31,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link BluetoothClass} subjects.
  */
 public class BluetoothClassSubject extends Subject<BluetoothClassSubject, BluetoothClass> {
-  protected BluetoothClassSubject(FailureMetadata failureMetadata, BluetoothClass subject) {
+  public BluetoothClassSubject(FailureMetadata failureMetadata, BluetoothClass subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<BluetoothClassSubject, BluetoothClass> type() {
-    return BluetoothClassSubject::new;
   }
 
   public static String deviceClassToString(int deviceClass) {

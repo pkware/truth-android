@@ -17,10 +17,8 @@
 package com.pkware.truth.android.view.animation;
 
 import android.view.animation.GridLayoutAnimationController;
-
 import com.google.common.collect.Iterables;
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,12 +39,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  */
 public class GridLayoutAnimationControllerSubject extends
     AbstractLayoutAnimationControllerSubject<GridLayoutAnimationControllerSubject, GridLayoutAnimationController> {
-  protected GridLayoutAnimationControllerSubject(FailureMetadata failureMetadata, GridLayoutAnimationController subject) {
+  public GridLayoutAnimationControllerSubject(FailureMetadata failureMetadata, GridLayoutAnimationController subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<GridLayoutAnimationControllerSubject, GridLayoutAnimationController> type() {
-    return GridLayoutAnimationControllerSubject::new;
   }
 
   private static String directionToString(@GridLayoutAnimationControllerDirection int direction) {

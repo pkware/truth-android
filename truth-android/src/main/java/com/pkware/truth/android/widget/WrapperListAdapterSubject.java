@@ -17,9 +17,7 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.WrapperListAdapter;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link WrapperListAdapter} subjects.
@@ -28,11 +26,7 @@ import com.google.common.truth.Subject;
  */
 public final class WrapperListAdapterSubject
     extends AbstractWrapperListAdapterSubject<WrapperListAdapterSubject, WrapperListAdapter> {
-  protected WrapperListAdapterSubject(FailureMetadata failureMetadata, WrapperListAdapter subject) {
+  public WrapperListAdapterSubject(FailureMetadata failureMetadata, WrapperListAdapter subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<WrapperListAdapterSubject, WrapperListAdapter> type() {
-    return WrapperListAdapterSubject::new;
   }
 }

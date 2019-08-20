@@ -17,9 +17,7 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.AdapterView;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link AdapterView} subjects.
@@ -27,11 +25,7 @@ import com.google.common.truth.Subject;
  * This class is final. To extend use {@link AbstractAdapterViewSubject}.
  */
 public final class AdapterViewSubject extends AbstractAdapterViewSubject<AdapterViewSubject, AdapterView> {
-  private AdapterViewSubject(FailureMetadata failureMetadata, AdapterView subject) {
+  public AdapterViewSubject(FailureMetadata failureMetadata, AdapterView subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<AdapterViewSubject, AdapterView> type() {
-    return AdapterViewSubject::new;
   }
 }

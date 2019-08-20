@@ -31,12 +31,8 @@ import static com.google.common.truth.Truth.assert_;
  */
 @TargetApi(JELLY_BEAN)
 public class LongSparseArraySubject extends Subject<LongSparseArraySubject, LongSparseArray> {
-  protected LongSparseArraySubject(FailureMetadata failureMetadata, LongSparseArray subject) {
+  public LongSparseArraySubject(FailureMetadata failureMetadata, LongSparseArray subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<LongSparseArraySubject, LongSparseArray> type() {
-    return LongSparseArraySubject::new;
   }
 
   public LongSparseArraySubject hasKey(int key) {

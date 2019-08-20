@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link AccessibilityManager} subjects.
  */
 public class AccessibilityManagerSubject extends Subject<AccessibilityManagerSubject, AccessibilityManager> {
-  protected AccessibilityManagerSubject(FailureMetadata failureMetadata, AccessibilityManager subject) {
+  public AccessibilityManagerSubject(FailureMetadata failureMetadata, AccessibilityManager subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<AccessibilityManagerSubject, AccessibilityManager> type() {
-    return AccessibilityManagerSubject::new;
   }
 
   public AccessibilityManagerSubject isEnabled() {

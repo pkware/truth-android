@@ -17,9 +17,7 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.LinearLayout;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link LinearLayout} subjects.
@@ -27,11 +25,7 @@ import com.google.common.truth.Subject;
  * This class is final. To extend use {@link AbstractLinearLayoutSubject}.
  */
 public final class LinearLayoutSubject extends AbstractLinearLayoutSubject<LinearLayoutSubject, LinearLayout> {
-  private LinearLayoutSubject(FailureMetadata failureMetadata, LinearLayout subject) {
+  public LinearLayoutSubject(FailureMetadata failureMetadata, LinearLayout subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<LinearLayoutSubject, LinearLayout> type() {
-    return LinearLayoutSubject::new;
   }
 }

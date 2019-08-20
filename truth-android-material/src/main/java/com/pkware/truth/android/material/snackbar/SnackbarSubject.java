@@ -28,12 +28,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Snackbar} subjects.
  */
 public class SnackbarSubject extends Subject<SnackbarSubject, Snackbar> {
-  protected SnackbarSubject(FailureMetadata failureMetadata, Snackbar subject) {
+  public SnackbarSubject(FailureMetadata failureMetadata, Snackbar subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<SnackbarSubject, Snackbar> type() {
-    return SnackbarSubject::new;
   }
 
   public SnackbarSubject hasDuration(int duration) {

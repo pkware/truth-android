@@ -17,9 +17,7 @@
 package com.pkware.truth.android.graphics.drawable;
 
 import android.graphics.drawable.AnimationDrawable;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,12 +25,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link AnimationDrawable} subjects.
  */
 public class AnimationDrawableSubject extends AbstractDrawableSubject<AnimationDrawableSubject, AnimationDrawable> {
-  protected AnimationDrawableSubject(FailureMetadata failureMetadata, AnimationDrawable subject) {
+  public AnimationDrawableSubject(FailureMetadata failureMetadata, AnimationDrawable subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<AnimationDrawableSubject, AnimationDrawable> type() {
-    return AnimationDrawableSubject::new;
   }
 
   public AnimationDrawableSubject hasFrameCount(int count) {

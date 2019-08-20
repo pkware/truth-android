@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Vibrator} subjects.
  */
 public class VibratorSubject extends Subject<VibratorSubject, Vibrator> {
-  protected VibratorSubject(FailureMetadata failureMetadata, Vibrator subject) {
+  public VibratorSubject(FailureMetadata failureMetadata, Vibrator subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<VibratorSubject, Vibrator> type() {
-    return VibratorSubject::new;
   }
 
   public VibratorSubject hasVibrator() {

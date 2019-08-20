@@ -30,12 +30,8 @@ import static com.google.common.truth.Truth.assertThat;
 public class RecyclerViewAdapterSubject<VH extends ViewHolder>
     extends Subject<RecyclerViewAdapterSubject<VH>, RecyclerView.Adapter<VH>> {
 
-  protected RecyclerViewAdapterSubject(FailureMetadata failureMetadata, RecyclerView.Adapter<VH> subject) {
+  public RecyclerViewAdapterSubject(FailureMetadata failureMetadata, RecyclerView.Adapter<VH> subject) {
     super(failureMetadata, subject);
-  }
-
-  public static <VH extends ViewHolder> Subject.Factory<RecyclerViewAdapterSubject<VH>, RecyclerView.Adapter<VH>> type() {
-    return RecyclerViewAdapterSubject::new;
   }
 
   public RecyclerViewAdapterSubject<VH> hasItemCount(int count) {

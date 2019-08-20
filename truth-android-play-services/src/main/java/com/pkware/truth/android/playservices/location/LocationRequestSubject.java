@@ -26,12 +26,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link LocationRequest} subjects.
  */
 public class LocationRequestSubject extends Subject<LocationRequestSubject, LocationRequest> {
-  protected LocationRequestSubject(FailureMetadata failureMetadata, LocationRequest subject) {
+  public LocationRequestSubject(FailureMetadata failureMetadata, LocationRequest subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<LocationRequestSubject, LocationRequest> type() {
-    return LocationRequestSubject::new;
   }
 
   public LocationRequestSubject hasExpirationTime(long time) {

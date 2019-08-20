@@ -32,12 +32,8 @@ import static com.google.common.truth.Truth.assertThat;
  */
 @TargetApi(JELLY_BEAN_MR1)
 public class AtomicFileSubject extends Subject<AtomicFileSubject, AtomicFile> {
-  protected AtomicFileSubject(FailureMetadata failureMetadata, AtomicFile subject) {
+  public AtomicFileSubject(FailureMetadata failureMetadata, AtomicFile subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<AtomicFileSubject, AtomicFile> type() {
-    return AtomicFileSubject::new;
   }
 
   public AtomicFileSubject hasBaseFile(File file) {

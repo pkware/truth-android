@@ -17,9 +17,7 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.TableLayout;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,12 +25,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link TableLayout} subjects.
  */
 public class TableLayoutSubject extends AbstractLinearLayoutSubject<TableLayoutSubject, TableLayout> {
-  protected TableLayoutSubject(FailureMetadata failureMetadata, TableLayout subject) {
+  public TableLayoutSubject(FailureMetadata failureMetadata, TableLayout subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<TableLayoutSubject, TableLayout> type() {
-    return TableLayoutSubject::new;
   }
 
   public TableLayoutSubject isCollapsedColumn(int index) {

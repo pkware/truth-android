@@ -18,9 +18,7 @@ package com.pkware.truth.android.content;
 
 import android.annotation.TargetApi;
 import android.content.AsyncTaskLoader;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 import static com.google.common.truth.Truth.assertThat;
@@ -30,12 +28,8 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class AsyncTaskLoaderSubject extends AbstractLoaderSubject<AsyncTaskLoaderSubject, AsyncTaskLoader> {
 
-  protected AsyncTaskLoaderSubject(FailureMetadata failureMetadata, AsyncTaskLoader subject) {
+  public AsyncTaskLoaderSubject(FailureMetadata failureMetadata, AsyncTaskLoader subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<AsyncTaskLoaderSubject, AsyncTaskLoader> type() {
-    return AsyncTaskLoaderSubject::new;
   }
 
   @TargetApi(JELLY_BEAN)

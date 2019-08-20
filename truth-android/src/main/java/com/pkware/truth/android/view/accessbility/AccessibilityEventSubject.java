@@ -18,9 +18,7 @@ package com.pkware.truth.android.view.accessbility;
 
 import android.annotation.TargetApi;
 import android.view.accessibility.AccessibilityEvent;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 import static com.google.common.truth.Truth.assertThat;
@@ -30,12 +28,8 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class AccessibilityEventSubject
     extends AbstractAccessibilityRecordSubject<AccessibilityEventSubject, AccessibilityEvent> {
-  protected AccessibilityEventSubject(FailureMetadata failureMetadata, AccessibilityEvent subject) {
+  public AccessibilityEventSubject(FailureMetadata failureMetadata, AccessibilityEvent subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<AccessibilityEventSubject, AccessibilityEvent> type() {
-    return AccessibilityEventSubject::new;
   }
 
   @TargetApi(JELLY_BEAN)

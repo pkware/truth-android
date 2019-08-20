@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link GestureLibrary} subjects.
  */
 public class GestureLibrarySubject extends Subject<GestureLibrarySubject, GestureLibrary> {
-  protected GestureLibrarySubject(FailureMetadata failureMetadata, GestureLibrary subject) {
+  public GestureLibrarySubject(FailureMetadata failureMetadata, GestureLibrary subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<GestureLibrarySubject, GestureLibrary> type() {
-    return GestureLibrarySubject::new;
   }
 
   public GestureLibrarySubject hasOrientationStyle(int style) {

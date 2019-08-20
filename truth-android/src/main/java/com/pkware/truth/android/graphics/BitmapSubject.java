@@ -30,12 +30,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Bitmap} subjects.
  */
 public class BitmapSubject extends Subject<BitmapSubject, Bitmap> {
-  protected BitmapSubject(FailureMetadata failureMetadata, Bitmap subject) {
+  public BitmapSubject(FailureMetadata failureMetadata, Bitmap subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<BitmapSubject, Bitmap> type() {
-    return BitmapSubject::new;
   }
 
   public BitmapSubject isRecycled() {

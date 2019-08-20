@@ -65,12 +65,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link Display} subjects.
  */
 public class DisplaySubject extends Subject<DisplaySubject, Display> {
-  protected DisplaySubject(FailureMetadata failureMetadata, Display subject) {
+  public DisplaySubject(FailureMetadata failureMetadata, Display subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<DisplaySubject, Display> type() {
-    return DisplaySubject::new;
   }
 
   public static String orientationToString(@SurfaceRotation int orientation) {

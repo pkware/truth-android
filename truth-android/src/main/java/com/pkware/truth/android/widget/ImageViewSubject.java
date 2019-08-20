@@ -19,9 +19,7 @@ package com.pkware.truth.android.widget;
 import android.annotation.TargetApi;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 import com.pkware.truth.android.view.AbstractViewSubject;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
@@ -31,12 +29,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ImageView} subjects.
  */
 public class ImageViewSubject extends AbstractViewSubject<ImageViewSubject, ImageView> {
-  protected ImageViewSubject(FailureMetadata failureMetadata, ImageView subject) {
+  public ImageViewSubject(FailureMetadata failureMetadata, ImageView subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ImageViewSubject, ImageView> type() {
-    return ImageViewSubject::new;
   }
 
   public ImageViewSubject isAligningBaselineToBottom() {

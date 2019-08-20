@@ -17,9 +17,7 @@
 package com.pkware.truth.android.view.accessbility;
 
 import android.view.accessibility.AccessibilityRecord;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link AccessibilityRecord} subjects.
@@ -28,11 +26,7 @@ import com.google.common.truth.Subject;
  */
 public final class AccessibilityRecordSubject
     extends AbstractAccessibilityRecordSubject<AccessibilityRecordSubject, AccessibilityRecord> {
-  private AccessibilityRecordSubject(FailureMetadata failureMetadata, AccessibilityRecord subject) {
+  public AccessibilityRecordSubject(FailureMetadata failureMetadata, AccessibilityRecord subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<AccessibilityRecordSubject, AccessibilityRecord> type() {
-    return AccessibilityRecordSubject::new;
   }
 }

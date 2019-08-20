@@ -17,9 +17,7 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.MediaController;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,12 +25,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link MediaController} subjects.
  */
 public class MediaControllerSubject extends AbstractFrameLayoutSubject<MediaControllerSubject, MediaController> {
-  protected MediaControllerSubject(FailureMetadata failureMetadata, MediaController subject) {
+  public MediaControllerSubject(FailureMetadata failureMetadata, MediaController subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<MediaControllerSubject, MediaController> type() {
-    return MediaControllerSubject::new;
   }
 
   public MediaControllerSubject isShowing() {

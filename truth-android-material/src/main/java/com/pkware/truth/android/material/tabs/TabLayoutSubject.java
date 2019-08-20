@@ -18,7 +18,6 @@ package com.pkware.truth.android.material.tabs;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 import com.pkware.truth.android.widget.AbstractHorizontalScrollViewSubject;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -28,14 +27,9 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
 /**
  * Propositions for {@link TabLayout} subjects.
  */
-public class TabLayoutSubject extends
-    AbstractHorizontalScrollViewSubject<TabLayoutSubject, TabLayout> {
-  protected TabLayoutSubject(FailureMetadata failureMetadata, TabLayout subject) {
+public class TabLayoutSubject extends AbstractHorizontalScrollViewSubject<TabLayoutSubject, TabLayout> {
+  public TabLayoutSubject(FailureMetadata failureMetadata, TabLayout subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<TabLayoutSubject, TabLayout> type() {
-    return TabLayoutSubject::new;
   }
 
   public static String gravityToString(@TabGravity int gravity) {

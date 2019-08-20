@@ -18,9 +18,7 @@ package com.pkware.truth.android.widget;
 
 import android.widget.Filter;
 import android.widget.HeaderViewListAdapter;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,12 +26,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link HeaderViewListAdapter} subjects.
  */
 public class HeaderViewListAdapterSubject extends AbstractWrapperListAdapterSubject<HeaderViewListAdapterSubject, HeaderViewListAdapter> {
-  protected HeaderViewListAdapterSubject(FailureMetadata failureMetadata, HeaderViewListAdapter subject) {
+  public HeaderViewListAdapterSubject(FailureMetadata failureMetadata, HeaderViewListAdapter subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<HeaderViewListAdapterSubject, HeaderViewListAdapter> type() {
-    return HeaderViewListAdapterSubject::new;
   }
 
   public HeaderViewListAdapterSubject hasFootersCount(int count) {

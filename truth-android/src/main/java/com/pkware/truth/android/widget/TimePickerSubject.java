@@ -21,7 +21,6 @@ import android.widget.TimePicker;
 import androidx.annotation.IntRange;
 
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.M;
 import static com.google.common.truth.Truth.assertThat;
@@ -30,12 +29,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link TimePicker} subjects.
  */
 public class TimePickerSubject extends AbstractFrameLayoutSubject<TimePickerSubject, TimePicker> {
-  protected TimePickerSubject(FailureMetadata failureMetadata, TimePicker subject) {
+  public TimePickerSubject(FailureMetadata failureMetadata, TimePicker subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<TimePickerSubject, TimePicker> type() {
-    return TimePickerSubject::new;
   }
 
   public TimePickerSubject hasCurrentHour(Integer hour) {

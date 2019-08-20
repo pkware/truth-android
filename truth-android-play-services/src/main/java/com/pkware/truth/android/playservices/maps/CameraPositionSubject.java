@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link CameraPosition} subjects.
  */
 public class CameraPositionSubject extends Subject<CameraPositionSubject, CameraPosition> {
-  protected CameraPositionSubject(FailureMetadata failureMetadata, CameraPosition subject) {
+  public CameraPositionSubject(FailureMetadata failureMetadata, CameraPosition subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<CameraPositionSubject, CameraPosition> type() {
-    return CameraPositionSubject::new;
   }
 
   public CameraPositionSubject hasBearing(float bearing, float tolerance) {

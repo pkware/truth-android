@@ -26,13 +26,9 @@ import static com.google.common.truth.Truth.assertThat;
 /**
  * Propositions for {@link Account} subjects.
  */
-public class AccountSubject extends Subject<AccountSubject, Account> {
-  private AccountSubject(FailureMetadata failureMetadata, Account subject) {
+public final class AccountSubject extends Subject<AccountSubject, Account> {
+  public AccountSubject(FailureMetadata failureMetadata, Account subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<AccountSubject, Account> type() {
-    return AccountSubject::new;
   }
 
   public AccountSubject hasName(String name) {

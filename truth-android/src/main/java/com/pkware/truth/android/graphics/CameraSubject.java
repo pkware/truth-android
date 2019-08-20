@@ -29,12 +29,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Camera} subjects.
  */
 public class CameraSubject extends Subject<CameraSubject, Camera> {
-  protected CameraSubject(FailureMetadata failureMetadata, Camera subject) {
+  public CameraSubject(FailureMetadata failureMetadata, Camera subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<CameraSubject, Camera> type() {
-    return CameraSubject::new;
   }
 
   @TargetApi(JELLY_BEAN)

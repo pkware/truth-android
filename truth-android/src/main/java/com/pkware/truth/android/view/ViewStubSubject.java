@@ -20,7 +20,6 @@ import android.view.ViewStub;
 import androidx.annotation.LayoutRes;
 
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ViewStub} subjects.
  */
 public class ViewStubSubject extends AbstractViewSubject<ViewStubSubject, ViewStub> {
-  protected ViewStubSubject(FailureMetadata failureMetadata, ViewStub subject) {
+  public ViewStubSubject(FailureMetadata failureMetadata, ViewStub subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ViewStubSubject, ViewStub> type() {
-    return ViewStubSubject::new;
   }
 
   public ViewStubSubject hasInflatedId(int id) {

@@ -18,13 +18,12 @@ package com.pkware.truth.android.widget;
 
 import android.annotation.TargetApi;
 import android.widget.AbsListView;
-
 import com.google.common.truth.FailureMetadata;
-import com.pkware.truth.android.util.SparseBooleanArraySubject;
 
 import static android.os.Build.VERSION_CODES.KITKAT;
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assert_;
+import static com.pkware.truth.android.Assertions.assertThat;
 
 public abstract class AbstractAbsListViewSubject<S extends AbstractAbsListViewSubject<S, T>, T extends AbsListView>
     extends AbstractAdapterViewSubject<S, T> {
@@ -66,10 +65,7 @@ public abstract class AbstractAbsListViewSubject<S extends AbstractAbsListViewSu
 
   public S containsCheckedItemPositions(int... positions) {
     for (int position : positions) {
-      assert_()
-          .about(SparseBooleanArraySubject.type())
-          .that(actual().getCheckedItemPositions())
-          .keyIsTrue(position);
+      assertThat(actual().getCheckedItemPositions()).keyIsTrue(position);
     }
     //noinspection unchecked
     return (S) this;

@@ -30,12 +30,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link NinePatch} subjects.
  */
 public class NinePatchSubject extends Subject<NinePatchSubject, NinePatch> {
-  protected NinePatchSubject(FailureMetadata failureMetadata, NinePatch subject) {
+  public NinePatchSubject(FailureMetadata failureMetadata, NinePatch subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<NinePatchSubject, NinePatch> type() {
-    return NinePatchSubject::new;
   }
 
   public NinePatchSubject hasDensity(int density) {

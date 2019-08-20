@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link SignalStrength} subjects.
  */
 public class SignalStrengthSubject extends Subject<SignalStrengthSubject, SignalStrength> {
-  protected SignalStrengthSubject(FailureMetadata failureMetadata, SignalStrength subject) {
+  public SignalStrengthSubject(FailureMetadata failureMetadata, SignalStrength subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<SignalStrengthSubject, SignalStrength> type() {
-    return SignalStrengthSubject::new;
   }
 
   public SignalStrengthSubject hasCdmaDbm(int dbm) {

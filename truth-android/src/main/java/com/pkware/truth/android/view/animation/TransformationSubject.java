@@ -34,12 +34,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link Transformation} subjects.
  */
 public class TransformationSubject extends Subject<TransformationSubject, Transformation> {
-  protected TransformationSubject(FailureMetadata failureMetadata, Transformation subject) {
+  public TransformationSubject(FailureMetadata failureMetadata, Transformation subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<TransformationSubject, Transformation> type() {
-    return TransformationSubject::new;
   }
 
   public static String transformationTypeToString(@TransformationType int type) {

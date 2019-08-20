@@ -29,12 +29,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link SQLiteDatabase} subjects.
  */
 public class SqliteDatabaseSubject extends Subject<SqliteDatabaseSubject, SQLiteDatabase> {
-  protected SqliteDatabaseSubject(FailureMetadata failureMetadata, SQLiteDatabase subject) {
+  public SqliteDatabaseSubject(FailureMetadata failureMetadata, SQLiteDatabase subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<SqliteDatabaseSubject, SQLiteDatabase> type() {
-    return SqliteDatabaseSubject::new;
   }
 
   public SqliteDatabaseSubject hasMaximumSize(long size) {

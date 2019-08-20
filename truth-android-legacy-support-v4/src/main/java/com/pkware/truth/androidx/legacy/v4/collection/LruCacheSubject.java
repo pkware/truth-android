@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link LruCache} subjects.
  */
 public class LruCacheSubject<K, V> extends Subject<LruCacheSubject<K, V>, LruCache<K, V>> {
-  protected LruCacheSubject(FailureMetadata failureMetadata, LruCache<K, V> subject) {
+  public LruCacheSubject(FailureMetadata failureMetadata, LruCache<K, V> subject) {
     super(failureMetadata, subject);
-  }
-
-  public static <K, V> Subject.Factory<LruCacheSubject<K, V>, LruCache<K, V>> type() {
-    return LruCacheSubject::new;
   }
 
   public LruCacheSubject<K, V> hasEntry(K key) {

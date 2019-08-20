@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Shape} subjects.
  */
 public class ShapeSubject extends Subject<ShapeSubject, Shape> {
-  protected ShapeSubject(FailureMetadata failureMetadata, Shape subject) {
+  public ShapeSubject(FailureMetadata failureMetadata, Shape subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ShapeSubject, Shape> type() {
-    return ShapeSubject::new;
   }
 
   public ShapeSubject hasHeight(float height, float tolerance) {

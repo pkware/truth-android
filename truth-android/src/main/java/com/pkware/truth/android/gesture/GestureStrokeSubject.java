@@ -28,12 +28,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link GestureStroke} subjects.
  */
 public class GestureStrokeSubject extends Subject<GestureStrokeSubject, GestureStroke> {
-  protected GestureStrokeSubject(FailureMetadata failureMetadata, GestureStroke subject) {
+  public GestureStrokeSubject(FailureMetadata failureMetadata, GestureStroke subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<GestureStrokeSubject, GestureStroke> type() {
-    return GestureStrokeSubject::new;
   }
 
   public GestureStrokeSubject hasBoundingBox(RectF rect) {

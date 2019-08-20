@@ -18,9 +18,7 @@ package com.pkware.truth.android.widget;
 
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,12 +26,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ExpandableListView} subjects.
  */
 public class ExpandableListViewSubject extends AbstractListViewSubject<ExpandableListViewSubject, ExpandableListView> {
-  protected ExpandableListViewSubject(FailureMetadata failureMetadata, ExpandableListView subject) {
+  public ExpandableListViewSubject(FailureMetadata failureMetadata, ExpandableListView subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ExpandableListViewSubject, ExpandableListView> type() {
-    return ExpandableListViewSubject::new;
   }
 
   public ExpandableListViewSubject hasExpandableListAdapter(ExpandableListAdapter adapter) {

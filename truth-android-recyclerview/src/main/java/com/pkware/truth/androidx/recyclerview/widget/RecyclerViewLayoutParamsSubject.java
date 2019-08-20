@@ -29,12 +29,8 @@ import static com.google.common.truth.Truth.assertThat;
 public class RecyclerViewLayoutParamsSubject
     extends Subject<RecyclerViewLayoutParamsSubject, RecyclerView.LayoutParams> {
 
-  protected RecyclerViewLayoutParamsSubject(FailureMetadata failureMetadata, RecyclerView.LayoutParams subject) {
+  public RecyclerViewLayoutParamsSubject(FailureMetadata failureMetadata, RecyclerView.LayoutParams subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<RecyclerViewLayoutParamsSubject, RecyclerView.LayoutParams> type() {
-    return RecyclerViewLayoutParamsSubject::new;
   }
 
   public RecyclerViewLayoutParamsSubject viewNeedsUpdate() {
@@ -79,6 +75,7 @@ public class RecyclerViewLayoutParamsSubject
     return this;
   }
 
+  @SuppressWarnings("deprecation")
   public RecyclerViewLayoutParamsSubject hasViewPosition(int position) {
     assertThat(actual().getViewPosition())
         .named("view position")

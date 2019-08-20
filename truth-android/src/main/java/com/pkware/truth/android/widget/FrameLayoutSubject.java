@@ -17,9 +17,7 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.FrameLayout;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link FrameLayout} subjects.
@@ -27,11 +25,7 @@ import com.google.common.truth.Subject;
  * This class is final. To extend use {@link AbstractFrameLayoutSubject}.
  */
 public final class FrameLayoutSubject extends AbstractFrameLayoutSubject<FrameLayoutSubject, FrameLayout> {
-  private FrameLayoutSubject(FailureMetadata failureMetadata, FrameLayout subject) {
+  public FrameLayoutSubject(FailureMetadata failureMetadata, FrameLayout subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<FrameLayoutSubject, FrameLayout> type() {
-    return FrameLayoutSubject::new;
   }
 }

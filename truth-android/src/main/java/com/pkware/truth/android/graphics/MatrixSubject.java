@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Matrix} subjects.
  */
 public class MatrixSubject extends Subject<MatrixSubject, Matrix> {
-  protected MatrixSubject(FailureMetadata failureMetadata, Matrix subject) {
+  public MatrixSubject(FailureMetadata failureMetadata, Matrix subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<MatrixSubject, Matrix> type() {
-    return MatrixSubject::new;
   }
 
   public MatrixSubject isIdentity() {

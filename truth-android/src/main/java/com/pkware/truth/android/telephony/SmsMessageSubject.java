@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link SmsMessage} subjects.
  */
 public class SmsMessageSubject extends Subject<SmsMessageSubject, SmsMessage> {
-  protected SmsMessageSubject(FailureMetadata failureMetadata, SmsMessage subject) {
+  public SmsMessageSubject(FailureMetadata failureMetadata, SmsMessage subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<SmsMessageSubject, SmsMessage> type() {
-    return SmsMessageSubject::new;
   }
 
   public SmsMessageSubject hasDisplayMessageBody(String displayMessageBody) {

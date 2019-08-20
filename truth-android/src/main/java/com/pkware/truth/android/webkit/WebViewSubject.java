@@ -28,12 +28,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link WebView} subjects.
  */
 public class WebViewSubject extends Subject<WebViewSubject, WebView> {
-  protected WebViewSubject(FailureMetadata failureMetadata, WebView subject) {
+  public WebViewSubject(FailureMetadata failureMetadata, WebView subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<WebViewSubject, WebView> type() {
-    return WebViewSubject::new;
   }
 
   public WebViewSubject canGoBack() {

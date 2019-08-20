@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ExtractEditText} subjects.
  */
 public class ExtractEditTextSubject extends Subject<ExtractEditTextSubject, ExtractEditText> {
-  protected ExtractEditTextSubject(FailureMetadata failureMetadata, ExtractEditText subject) {
+  public ExtractEditTextSubject(FailureMetadata failureMetadata, ExtractEditText subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ExtractEditTextSubject, ExtractEditText> type() {
-    return ExtractEditTextSubject::new;
   }
 
   public ExtractEditTextSubject isInputMethodTarget() {

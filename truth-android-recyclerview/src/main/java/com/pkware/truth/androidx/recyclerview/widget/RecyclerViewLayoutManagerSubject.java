@@ -31,12 +31,8 @@ import static com.pkware.truth.android.view.AbstractViewSubject.layoutDirectionT
 public class RecyclerViewLayoutManagerSubject
     extends Subject<RecyclerViewLayoutManagerSubject, RecyclerView.LayoutManager> {
 
-  protected RecyclerViewLayoutManagerSubject(FailureMetadata failureMetadata, RecyclerView.LayoutManager subject) {
+  public RecyclerViewLayoutManagerSubject(FailureMetadata failureMetadata, RecyclerView.LayoutManager subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<RecyclerViewLayoutManagerSubject, RecyclerView.LayoutManager> type() {
-    return RecyclerViewLayoutManagerSubject::new;
   }
 
   public RecyclerViewLayoutManagerSubject supportsPredictiveItemAnimations() {

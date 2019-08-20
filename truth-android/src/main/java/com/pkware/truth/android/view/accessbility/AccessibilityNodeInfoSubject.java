@@ -30,12 +30,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link AccessibilityNodeInfo} subjects.
  */
 public class AccessibilityNodeInfoSubject extends Subject<AccessibilityNodeInfoSubject, AccessibilityNodeInfo> {
-  protected AccessibilityNodeInfoSubject(FailureMetadata failureMetadata, AccessibilityNodeInfo subject) {
+  public AccessibilityNodeInfoSubject(FailureMetadata failureMetadata, AccessibilityNodeInfo subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<AccessibilityNodeInfoSubject, AccessibilityNodeInfo> type() {
-    return AccessibilityNodeInfoSubject::new;
   }
 
   public AccessibilityNodeInfoSubject hasActions(int actions) {

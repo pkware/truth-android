@@ -17,9 +17,7 @@
 package com.pkware.truth.android.preferences;
 
 import android.preference.PreferenceActivity;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 import com.pkware.truth.android.app.AbstractListActivitySubject;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -29,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class PreferenceActivitySubject
     extends AbstractListActivitySubject<PreferenceActivitySubject, PreferenceActivity> {
-  protected PreferenceActivitySubject(FailureMetadata failureMetadata, PreferenceActivity subject) {
+  public PreferenceActivitySubject(FailureMetadata failureMetadata, PreferenceActivity subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<PreferenceActivitySubject, PreferenceActivity> type() {
-    return PreferenceActivitySubject::new;
   }
 
   public PreferenceActivitySubject hasHeaders() {

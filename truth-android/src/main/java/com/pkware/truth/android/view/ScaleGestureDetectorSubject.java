@@ -29,12 +29,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ScaleGestureDetector} subjects.
  */
 public class ScaleGestureDetectorSubject extends Subject<ScaleGestureDetectorSubject, ScaleGestureDetector> {
-  protected ScaleGestureDetectorSubject(FailureMetadata failureMetadata, ScaleGestureDetector subject) {
+  public ScaleGestureDetectorSubject(FailureMetadata failureMetadata, ScaleGestureDetector subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ScaleGestureDetectorSubject, ScaleGestureDetector> type() {
-    return ScaleGestureDetectorSubject::new;
   }
 
   public ScaleGestureDetectorSubject hasCurrentSpan(float span, float tolerance) {

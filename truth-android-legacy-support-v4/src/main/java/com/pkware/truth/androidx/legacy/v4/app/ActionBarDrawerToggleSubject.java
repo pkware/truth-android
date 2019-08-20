@@ -26,13 +26,10 @@ import static com.google.common.truth.Truth.assertThat;
 /**
  * Propositions for {@link ActionBarDrawerToggle} subjects.
  */
+@SuppressWarnings("deprecation")
 public class ActionBarDrawerToggleSubject extends Subject<ActionBarDrawerToggleSubject, ActionBarDrawerToggle> {
-  protected ActionBarDrawerToggleSubject(FailureMetadata failureMetadata, ActionBarDrawerToggle subject) {
+  public ActionBarDrawerToggleSubject(FailureMetadata failureMetadata, ActionBarDrawerToggle subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ActionBarDrawerToggleSubject, ActionBarDrawerToggle> type() {
-    return ActionBarDrawerToggleSubject::new;
   }
 
   public ActionBarDrawerToggleSubject hasDrawerIndicatorEnabled() {

@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link PathMeasure} subjects.
  */
 public class PathMeasureSubject extends Subject<PathMeasureSubject, PathMeasure> {
-  protected PathMeasureSubject(FailureMetadata failureMetadata, PathMeasure subject) {
+  public PathMeasureSubject(FailureMetadata failureMetadata, PathMeasure subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<PathMeasureSubject, PathMeasure> type() {
-    return PathMeasureSubject::new;
   }
 
   public PathMeasureSubject hasLength(float length, float tolerance) {

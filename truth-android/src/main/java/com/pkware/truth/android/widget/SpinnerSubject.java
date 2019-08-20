@@ -22,7 +22,6 @@ import android.widget.Spinner;
 import androidx.annotation.StringRes;
 
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 import static com.google.common.truth.Truth.assertThat;
@@ -31,12 +30,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Spinner} subjects.
  */
 public class SpinnerSubject extends AbstractAbsSpinnerSubject<SpinnerSubject, Spinner> {
-  protected SpinnerSubject(FailureMetadata failureMetadata, Spinner subject) {
+  public SpinnerSubject(FailureMetadata failureMetadata, Spinner subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<SpinnerSubject, Spinner> type() {
-    return SpinnerSubject::new;
   }
 
   @TargetApi(JELLY_BEAN)

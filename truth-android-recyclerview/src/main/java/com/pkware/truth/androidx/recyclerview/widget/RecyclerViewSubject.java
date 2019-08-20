@@ -17,9 +17,7 @@
 package com.pkware.truth.androidx.recyclerview.widget;
 
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 
 import static androidx.recyclerview.widget.RecyclerView.Adapter;
@@ -38,12 +36,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link RecyclerView} subjects.
  */
 public class RecyclerViewSubject extends AbstractViewGroupSubject<RecyclerViewSubject, RecyclerView> {
-  protected RecyclerViewSubject(FailureMetadata failureMetadata, RecyclerView subject) {
+  public RecyclerViewSubject(FailureMetadata failureMetadata, RecyclerView subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<RecyclerViewSubject, RecyclerView> type() {
-    return RecyclerViewSubject::new;
   }
 
   public static String scrollStateToString(@RecyclerViewScrollState int scrollState) {

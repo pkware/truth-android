@@ -18,9 +18,7 @@ package com.pkware.truth.android.widget;
 
 import android.widget.Filter;
 import android.widget.SimpleAdapter;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -29,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class SimpleAdapterSubject
     extends AbstractListAdapterSubject<SimpleAdapterSubject, SimpleAdapter> {
-  protected SimpleAdapterSubject(FailureMetadata failureMetadata, SimpleAdapter subject) {
+  public SimpleAdapterSubject(FailureMetadata failureMetadata, SimpleAdapter subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<SimpleAdapterSubject, SimpleAdapter> type() {
-    return SimpleAdapterSubject::new;
   }
 
   public SimpleAdapterSubject hasFilter(Filter filter) {

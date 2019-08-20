@@ -17,9 +17,7 @@
 package com.pkware.truth.android.animation;
 
 import android.animation.ValueAnimator;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link ValueAnimator} subjects.
@@ -27,11 +25,7 @@ import com.google.common.truth.Subject;
  * This class is final. To extend use {@link AbstractValueAnimatorSubject}.
  */
 public final class ValueAnimatorSubject extends AbstractValueAnimatorSubject<ValueAnimatorSubject, ValueAnimator> {
-  private ValueAnimatorSubject(FailureMetadata failureMetadata, ValueAnimator subject) {
+  public ValueAnimatorSubject(FailureMetadata failureMetadata, ValueAnimator subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ValueAnimatorSubject, ValueAnimator> type() {
-    return ValueAnimatorSubject::new;
   }
 }

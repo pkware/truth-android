@@ -30,12 +30,8 @@ import static com.google.common.truth.Truth.assertThat;
 public class MediaRouteProviderProviderMetadataSubject extends
     Subject<MediaRouteProviderProviderMetadataSubject, MediaRouteProvider.ProviderMetadata> {
 
-  protected MediaRouteProviderProviderMetadataSubject(FailureMetadata failureMetadata, MediaRouteProvider.ProviderMetadata subject) {
+  public MediaRouteProviderProviderMetadataSubject(FailureMetadata failureMetadata, MediaRouteProvider.ProviderMetadata subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<MediaRouteProviderProviderMetadataSubject, MediaRouteProvider.ProviderMetadata> type() {
-    return MediaRouteProviderProviderMetadataSubject::new;
   }
 
   public MediaRouteProviderProviderMetadataSubject hasComponentName(ComponentName componentName) {

@@ -17,22 +17,16 @@
 package com.pkware.truth.android.animation;
 
 import android.animation.ObjectAnimator;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Propositions for {@link ObjectAnimator} subjects.
  */
-public class ObjectAnimatorSubject extends AbstractValueAnimatorSubject<ObjectAnimatorSubject, ObjectAnimator> {
-  private ObjectAnimatorSubject(FailureMetadata failureMetadata, ObjectAnimator subject) {
+public final class ObjectAnimatorSubject extends AbstractValueAnimatorSubject<ObjectAnimatorSubject, ObjectAnimator> {
+  public ObjectAnimatorSubject(FailureMetadata failureMetadata, ObjectAnimator subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ObjectAnimatorSubject, ObjectAnimator> type() {
-    return ObjectAnimatorSubject::new;
   }
 
   public ObjectAnimatorSubject hasPropertyName(String name) {

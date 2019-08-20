@@ -23,7 +23,6 @@ import android.widget.ListAdapter;
 import androidx.annotation.StringRes;
 
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 import static com.google.common.truth.Truth.assertThat;
@@ -32,12 +31,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link AutoCompleteTextView} subjects.
  */
 public class AutoCompleteTextViewSubject extends AbstractTextViewSubject<AutoCompleteTextViewSubject, AutoCompleteTextView> {
-  protected AutoCompleteTextViewSubject(FailureMetadata failureMetadata, AutoCompleteTextView subject) {
+  public AutoCompleteTextViewSubject(FailureMetadata failureMetadata, AutoCompleteTextView subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<AutoCompleteTextViewSubject, AutoCompleteTextView> type() {
-    return AutoCompleteTextViewSubject::new;
   }
 
   public AutoCompleteTextViewSubject hasEnoughToFilter() {

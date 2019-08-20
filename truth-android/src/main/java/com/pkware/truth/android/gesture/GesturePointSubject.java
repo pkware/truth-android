@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link GesturePoint} subjects.
  */
 public class GesturePointSubject extends Subject<GesturePointSubject, GesturePoint> {
-  protected GesturePointSubject(FailureMetadata failureMetadata, GesturePoint subject) {
+  public GesturePointSubject(FailureMetadata failureMetadata, GesturePoint subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<GesturePointSubject, GesturePoint> type() {
-    return GesturePointSubject::new;
   }
 
   public GesturePointSubject hasTimestamp(long timestamp) {

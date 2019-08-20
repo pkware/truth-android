@@ -21,11 +21,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.pkware.truth.android.net.UriSubject;
-import com.pkware.truth.android.os.BundleSubject;
 
 import java.util.Locale;
 
@@ -56,18 +53,15 @@ import static android.content.Intent.FLAG_RECEIVER_NO_ABORT;
 import static android.content.Intent.FLAG_RECEIVER_REGISTERED_ONLY;
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assert_;
+import static com.pkware.truth.android.Assertions.assertThat;
 import static com.pkware.truth.android.internal.IntegerUtils.buildBitMaskString;
 
 /**
  * Propositions for {@link Intent} subjects.
  */
 public class IntentSubject extends Subject<IntentSubject, Intent> {
-  protected IntentSubject(FailureMetadata failureMetadata, Intent subject) {
+  public IntentSubject(FailureMetadata failureMetadata, Intent subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<IntentSubject, Intent> type() {
-    return IntentSubject::new;
   }
 
   public static String flagsToString(@IntentFlags int flags) {
@@ -124,8 +118,7 @@ public class IntentSubject extends Subject<IntentSubject, Intent> {
   public IntentSubject hasExtra(String name, Object expectedValue) {
     hasExtra(name);
     Bundle extras = actual().getExtras();
-    assert_().about(BundleSubject.type()).that(extras)
-        .hasValue(name, expectedValue);
+    assertThat(extras).hasValue(name, expectedValue);
     return this;
   }
 
@@ -152,8 +145,7 @@ public class IntentSubject extends Subject<IntentSubject, Intent> {
   }
 
   public IntentSubject hasData(Uri uri) {
-    assert_().about(UriSubject.type())
-        .that(actual().getData())
+    assertThat(actual().getData())
         .named("data")
         .isEqualTo(uri);
     return this;

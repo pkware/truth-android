@@ -42,12 +42,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link Window} subjects.
  */
 public class WindowSubject extends Subject<WindowSubject, Window> {
-  protected WindowSubject(FailureMetadata failureMetadata, Window subject) {
+  public WindowSubject(FailureMetadata failureMetadata, Window subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<WindowSubject, Window> type() {
-    return WindowSubject::new;
   }
 
   public static String featureToString(@WindowFeature int feature) {

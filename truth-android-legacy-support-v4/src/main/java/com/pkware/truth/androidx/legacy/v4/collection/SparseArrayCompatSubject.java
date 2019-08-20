@@ -27,14 +27,9 @@ import static com.google.common.truth.Truth.assert_;
 /**
  * Propositions for {@link SparseArrayCompat} subjects.
  */
-public class SparseArrayCompatSubject<E>
-    extends Subject<SparseArrayCompatSubject<E>, SparseArrayCompat<E>> {
-  protected SparseArrayCompatSubject(FailureMetadata failureMetadata, SparseArrayCompat<E> subject) {
+public class SparseArrayCompatSubject<E> extends Subject<SparseArrayCompatSubject<E>, SparseArrayCompat<E>> {
+  public SparseArrayCompatSubject(FailureMetadata failureMetadata, SparseArrayCompat<E> subject) {
     super(failureMetadata, subject);
-  }
-
-  public static <E> Subject.Factory<SparseArrayCompatSubject<E>, SparseArrayCompat<E>> type() {
-    return SparseArrayCompatSubject::new;
   }
 
   public SparseArrayCompatSubject<E> hasKey(int key) {

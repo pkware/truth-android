@@ -17,11 +17,9 @@
 package com.pkware.truth.android.preferences;
 
 import android.preference.MultiSelectListPreference;
-
 import com.google.common.base.Function;
 import com.google.common.collect.FluentIterable;
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import java.util.Arrays;
 
@@ -32,12 +30,8 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class MultiSelectListPreferenceSubject extends
     AbstractDialogPreferenceSubject<MultiSelectListPreferenceSubject, MultiSelectListPreference> {
-  protected MultiSelectListPreferenceSubject(FailureMetadata failureMetadata, MultiSelectListPreference subject) {
+  public MultiSelectListPreferenceSubject(FailureMetadata failureMetadata, MultiSelectListPreference subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<MultiSelectListPreferenceSubject, MultiSelectListPreference> type() {
-    return MultiSelectListPreferenceSubject::new;
   }
 
   public MultiSelectListPreferenceSubject hasEntries(String... entries) {

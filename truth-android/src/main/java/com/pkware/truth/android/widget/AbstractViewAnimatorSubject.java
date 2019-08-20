@@ -18,13 +18,12 @@ package com.pkware.truth.android.widget;
 
 import android.view.View;
 import android.widget.ViewAnimator;
-
 import com.google.common.truth.FailureMetadata;
+import com.google.common.truth.Truth;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
-import com.pkware.truth.android.view.ViewSubject;
 
 import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
+import static com.pkware.truth.android.Assertions.assertThat;
 
 public abstract class AbstractViewAnimatorSubject<S extends AbstractViewAnimatorSubject<S, T>, T extends ViewAnimator>
     extends AbstractViewGroupSubject<S, T> {
@@ -33,7 +32,7 @@ public abstract class AbstractViewAnimatorSubject<S extends AbstractViewAnimator
   }
 
   public S hasDisplayedChild(View view) {
-    assertThat(getDisplayedView())
+    Truth.assertThat(getDisplayedView())
         .named("displayed child")
         .isSameAs(view);
     //noinspection unchecked
@@ -41,10 +40,7 @@ public abstract class AbstractViewAnimatorSubject<S extends AbstractViewAnimator
   }
 
   public S hasDisplayedChildId(int id) {
-    assert_()
-        .about(ViewSubject.type())
-        .that(getDisplayedView())
-        .hasId(id);
+    assertThat(getDisplayedView()).hasId(id);
     //noinspection unchecked
     return (S) this;
   }

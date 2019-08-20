@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Movie} subjects.
  */
 public class MovieSubject extends Subject<MovieSubject, Movie> {
-  protected MovieSubject(FailureMetadata failureMetadata, Movie subject) {
+  public MovieSubject(FailureMetadata failureMetadata, Movie subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<MovieSubject, Movie> type() {
-    return MovieSubject::new;
   }
 
   public MovieSubject hasDuration(int duration) {

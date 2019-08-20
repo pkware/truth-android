@@ -40,12 +40,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
 @SuppressWarnings("MissingPermission")
 public class BluetoothDeviceSubject extends Subject<BluetoothDeviceSubject, BluetoothDevice> {
 
-  protected BluetoothDeviceSubject(FailureMetadata failureMetadata, BluetoothDevice subject) {
+  public BluetoothDeviceSubject(FailureMetadata failureMetadata, BluetoothDevice subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<BluetoothDeviceSubject, BluetoothDevice> type() {
-    return BluetoothDeviceSubject::new;
   }
 
   public static String bondStateToString(@BluetoothDeviceBondState int state) {

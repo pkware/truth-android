@@ -26,12 +26,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link GoogleMap} subjects.
  */
 public class GoogleMapSubject extends Subject<GoogleMapSubject, GoogleMap> {
-  protected GoogleMapSubject(FailureMetadata failureMetadata, GoogleMap subject) {
+  public GoogleMapSubject(FailureMetadata failureMetadata, GoogleMap subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<GoogleMapSubject, GoogleMap> type() {
-    return GoogleMapSubject::new;
   }
 
   public GoogleMapSubject hasMapType(int mapType) {

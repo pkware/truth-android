@@ -17,9 +17,7 @@
 package com.pkware.truth.android.app;
 
 import android.app.ExpandableListActivity;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,12 +25,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ExpandableListActivity} subjects.
  */
 public class ExpandableListActivitySubject extends AbstractActivitySubject<ExpandableListActivitySubject, ExpandableListActivity> {
-  protected ExpandableListActivitySubject(FailureMetadata failureMetadata, ExpandableListActivity subject) {
+  public ExpandableListActivitySubject(FailureMetadata failureMetadata, ExpandableListActivity subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ExpandableListActivitySubject, ExpandableListActivity> type() {
-    return ExpandableListActivitySubject::new;
   }
 
   public ExpandableListActivitySubject hasSelectedId(long id) {

@@ -71,12 +71,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link TelephonyManager} subjects.
  */
 public class TelephonyManagerSubject extends Subject<TelephonyManagerSubject, TelephonyManager> {
-  protected TelephonyManagerSubject(FailureMetadata failureMetadata, TelephonyManager subject) {
+  public TelephonyManagerSubject(FailureMetadata failureMetadata, TelephonyManager subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<TelephonyManagerSubject, TelephonyManager> type() {
-    return TelephonyManagerSubject::new;
   }
 
   public static String callStateToString(@TelephonyManagerCallState int callState) {

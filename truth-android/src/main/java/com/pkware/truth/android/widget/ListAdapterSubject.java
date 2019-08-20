@@ -17,9 +17,7 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.ListAdapter;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Proposition for {@link ListAdapter} subjects.
@@ -27,11 +25,7 @@ import com.google.common.truth.Subject;
  * This class is final. To extend use {@link AbstractListAdapterSubject}.
  */
 public class ListAdapterSubject extends AbstractListAdapterSubject<ListAdapterSubject, ListAdapter> {
-  private ListAdapterSubject(FailureMetadata failureMetadata, ListAdapter subject) {
+  public ListAdapterSubject(FailureMetadata failureMetadata, ListAdapter subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ListAdapterSubject, ListAdapter> type() {
-    return ListAdapterSubject::new;
   }
 }

@@ -17,9 +17,7 @@
 package com.pkware.truth.android.preferences;
 
 import android.preference.EditTextPreference;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,12 +25,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link EditTextPreference} subjects.
  */
 public class EditTextPreferencesSubject extends AbstractDialogPreferenceSubject<EditTextPreferencesSubject, EditTextPreference> {
-  protected EditTextPreferencesSubject(FailureMetadata failureMetadata, EditTextPreference subject) {
+  public EditTextPreferencesSubject(FailureMetadata failureMetadata, EditTextPreference subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<EditTextPreferencesSubject, EditTextPreference> type() {
-    return EditTextPreferencesSubject::new;
   }
 
   public EditTextPreferencesSubject hasText(String text) {

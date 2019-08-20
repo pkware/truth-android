@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link SensorEvent} subjects.
  */
 public class SensorEventSubject extends Subject<SensorEventSubject, SensorEvent> {
-  protected SensorEventSubject(FailureMetadata failureMetadata, SensorEvent subject) {
+  public SensorEventSubject(FailureMetadata failureMetadata, SensorEvent subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<SensorEventSubject, SensorEvent> type() {
-    return SensorEventSubject::new;
   }
 
   public SensorEventSubject hasAccuracy(int accuracy) {

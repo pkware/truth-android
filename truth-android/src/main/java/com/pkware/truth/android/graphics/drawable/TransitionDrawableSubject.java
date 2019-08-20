@@ -17,9 +17,7 @@
 package com.pkware.truth.android.graphics.drawable;
 
 import android.graphics.drawable.TransitionDrawable;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,12 +25,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link TransitionDrawable} subjects.
  */
 public class TransitionDrawableSubject extends AbstractDrawableSubject<TransitionDrawableSubject, TransitionDrawable> {
-  protected TransitionDrawableSubject(FailureMetadata failureMetadata, TransitionDrawable subject) {
+  public TransitionDrawableSubject(FailureMetadata failureMetadata, TransitionDrawable subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<TransitionDrawableSubject, TransitionDrawable> type() {
-    return TransitionDrawableSubject::new;
   }
 
   public TransitionDrawableSubject isCrossFadeEnabled() {

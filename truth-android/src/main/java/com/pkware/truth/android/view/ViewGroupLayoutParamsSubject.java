@@ -17,9 +17,7 @@
 package com.pkware.truth.android.view;
 
 import android.view.ViewGroup;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link android.view.ViewGroup.LayoutParams} subjects.
@@ -28,11 +26,7 @@ import com.google.common.truth.Subject;
  */
 public final class ViewGroupLayoutParamsSubject
     extends AbstractViewGroupLayoutParamsSubject<ViewGroupLayoutParamsSubject, ViewGroup.LayoutParams> {
-  private ViewGroupLayoutParamsSubject(FailureMetadata failureMetadata, ViewGroup.LayoutParams subject) {
+  public ViewGroupLayoutParamsSubject(FailureMetadata failureMetadata, ViewGroup.LayoutParams subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ViewGroupLayoutParamsSubject, ViewGroup.LayoutParams> type() {
-    return ViewGroupLayoutParamsSubject::new;
   }
 }

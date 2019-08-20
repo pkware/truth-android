@@ -17,19 +17,13 @@
 package com.pkware.truth.android.preferences;
 
 import android.preference.DialogPreference;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link DialogPreference} subjects.
  */
 public class DialogPreferenceSubject extends AbstractDialogPreferenceSubject<DialogPreferenceSubject, DialogPreference> {
-  protected DialogPreferenceSubject(FailureMetadata failureMetadata, DialogPreference subject) {
+  public DialogPreferenceSubject(FailureMetadata failureMetadata, DialogPreference subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<DialogPreferenceSubject, DialogPreference> type() {
-    return DialogPreferenceSubject::new;
   }
 }

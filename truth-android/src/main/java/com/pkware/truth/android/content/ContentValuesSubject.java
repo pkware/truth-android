@@ -35,12 +35,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ContentValues} subjects.
  */
 public class ContentValuesSubject extends Subject<ContentValuesSubject, ContentValues> {
-  protected ContentValuesSubject(FailureMetadata failureMetadata, ContentValues subject) {
+  public ContentValuesSubject(FailureMetadata failureMetadata, ContentValues subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ContentValuesSubject, ContentValues> type() {
-    return ContentValuesSubject::new;
   }
 
   public ContentValuesSubject isEmpty() {

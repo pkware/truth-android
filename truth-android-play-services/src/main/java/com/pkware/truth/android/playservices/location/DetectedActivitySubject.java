@@ -37,12 +37,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  */
 public class DetectedActivitySubject
     extends Subject<DetectedActivitySubject, DetectedActivity> {
-  protected DetectedActivitySubject(FailureMetadata failureMetadata, DetectedActivity subject) {
+  public DetectedActivitySubject(FailureMetadata failureMetadata, DetectedActivity subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<DetectedActivitySubject, DetectedActivity> type() {
-    return DetectedActivitySubject::new;
   }
 
   public static String typeToString(@DetectedActivityType int type) {

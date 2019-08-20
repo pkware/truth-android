@@ -29,12 +29,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Region} subjects.
  */
 public class RegionSubject extends Subject<RegionSubject, Region> {
-  protected RegionSubject(FailureMetadata failureMetadata, Region subject) {
+  public RegionSubject(FailureMetadata failureMetadata, Region subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<RegionSubject, Region> type() {
-    return RegionSubject::new;
   }
 
   public RegionSubject hasBoundaryPath(Path path) {

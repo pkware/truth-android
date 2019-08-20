@@ -17,19 +17,13 @@
 package com.pkware.truth.android.preferences;
 
 import android.preference.CheckBoxPreference;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link CheckBoxPreference} subjects.
  */
 public class CheckBoxPreferenceSubject extends AbstractTwoStatePreferenceSubject<CheckBoxPreferenceSubject, CheckBoxPreference> {
-  protected CheckBoxPreferenceSubject(FailureMetadata failureMetadata, CheckBoxPreference subject) {
+  public CheckBoxPreferenceSubject(FailureMetadata failureMetadata, CheckBoxPreference subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<CheckBoxPreferenceSubject, CheckBoxPreference> type() {
-    return CheckBoxPreferenceSubject::new;
   }
 }

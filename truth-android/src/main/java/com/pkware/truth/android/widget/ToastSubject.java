@@ -28,12 +28,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Toast} subjects.
  */
 public class ToastSubject extends Subject<ToastSubject, Toast> {
-  protected ToastSubject(FailureMetadata failureMetadata, Toast subject) {
+  public ToastSubject(FailureMetadata failureMetadata, Toast subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ToastSubject, Toast> type() {
-    return ToastSubject::new;
   }
 
   public ToastSubject hasDuration(int duration) {

@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Path} subjects.
  */
 public class PathSubject extends Subject<PathSubject, Path> {
-  protected PathSubject(FailureMetadata failureMetadata, Path subject) {
+  public PathSubject(FailureMetadata failureMetadata, Path subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<PathSubject, Path> type() {
-    return PathSubject::new;
   }
 
   public PathSubject hasFillType(Path.FillType type) {

@@ -17,9 +17,7 @@
 package com.pkware.truth.android.database;
 
 import android.database.AbstractCursor;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link AbstractCursor} subjects.
@@ -27,11 +25,7 @@ import com.google.common.truth.Subject;
  * This class is final. To extend use {@link AbstractAbstractCursorSubject}.
  */
 public final class AbstractCursor_Subject extends AbstractAbstractCursorSubject<AbstractCursor_Subject, AbstractCursor> {
-  protected AbstractCursor_Subject(FailureMetadata failureMetadata, AbstractCursor subject) {
+  public AbstractCursor_Subject(FailureMetadata failureMetadata, AbstractCursor subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<AbstractCursor_Subject, AbstractCursor> type() {
-    return AbstractCursor_Subject::new;
   }
 }

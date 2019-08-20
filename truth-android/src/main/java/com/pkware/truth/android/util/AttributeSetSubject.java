@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link AttributeSet} subjects.
  */
 public class AttributeSetSubject extends Subject<AttributeSetSubject, AttributeSet> {
-  protected AttributeSetSubject(FailureMetadata failureMetadata, AttributeSet subject) {
+  public AttributeSetSubject(FailureMetadata failureMetadata, AttributeSet subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<AttributeSetSubject, AttributeSet> type() {
-    return AttributeSetSubject::new;
   }
 
   public AttributeSetSubject hasAttributeCount(int count) {

@@ -28,12 +28,8 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class RemotePlaybackClientSubject
     extends Subject<RemotePlaybackClientSubject, RemotePlaybackClient> {
-  protected RemotePlaybackClientSubject(FailureMetadata failureMetadata, RemotePlaybackClient subject) {
+  public RemotePlaybackClientSubject(FailureMetadata failureMetadata, RemotePlaybackClient subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<RemotePlaybackClientSubject, RemotePlaybackClient> type() {
-    return RemotePlaybackClientSubject::new;
   }
 
   public RemotePlaybackClientSubject hasSessionId(String sessionId) {

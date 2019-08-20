@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
 
 @TargetApi(JELLY_BEAN_MR2)
 public class BidiFormatterSubject extends Subject<BidiFormatterSubject, BidiFormatter> {
-  protected BidiFormatterSubject(FailureMetadata failureMetadata, BidiFormatter subject) {
+  public BidiFormatterSubject(FailureMetadata failureMetadata, BidiFormatter subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<BidiFormatterSubject, BidiFormatter> type() {
-    return BidiFormatterSubject::new;
   }
 
   public BidiFormatterSubject hasRtlContext() {

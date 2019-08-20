@@ -19,9 +19,7 @@ package com.pkware.truth.android.widget;
 import android.annotation.TargetApi;
 import android.graphics.drawable.Drawable;
 import android.widget.CalendarView;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import java.util.Calendar;
 
@@ -33,12 +31,8 @@ import static com.google.common.truth.Truth.assert_;
  * Propositions for {@link CalendarView} subjects.
  */
 public class CalendarViewSubject extends AbstractFrameLayoutSubject<CalendarViewSubject, CalendarView> {
-  protected CalendarViewSubject(FailureMetadata failureMetadata, CalendarView subject) {
+  public CalendarViewSubject(FailureMetadata failureMetadata, CalendarView subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<CalendarViewSubject, CalendarView> type() {
-    return CalendarViewSubject::new;
   }
 
   private static String dayOfWeekToString(@DayOfTheWeek int day) {

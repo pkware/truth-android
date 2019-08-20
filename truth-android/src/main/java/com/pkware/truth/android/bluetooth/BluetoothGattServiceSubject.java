@@ -36,12 +36,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  */
 @TargetApi(JELLY_BEAN_MR2)
 public class BluetoothGattServiceSubject extends Subject<BluetoothGattServiceSubject, BluetoothGattService> {
-  protected BluetoothGattServiceSubject(FailureMetadata failureMetadata, BluetoothGattService subject) {
+  public BluetoothGattServiceSubject(FailureMetadata failureMetadata, BluetoothGattService subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<BluetoothGattServiceSubject, BluetoothGattService> type() {
-    return BluetoothGattServiceSubject::new;
   }
 
   public static String typeToString(@BluetoothGattServiceType int type) {

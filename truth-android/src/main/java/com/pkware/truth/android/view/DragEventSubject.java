@@ -35,12 +35,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link DragEvent} subjects.
  */
 public class DragEventSubject extends Subject<DragEventSubject, DragEvent> {
-  protected DragEventSubject(FailureMetadata failureMetadata, DragEvent subject) {
+  public DragEventSubject(FailureMetadata failureMetadata, DragEvent subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<DragEventSubject, DragEvent> type() {
-    return DragEventSubject::new;
   }
 
   public static String dragEventActionToString(@DragEventAction int action) {

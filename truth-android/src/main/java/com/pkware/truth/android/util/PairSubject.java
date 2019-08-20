@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Pair} subjects.
  */
 public class PairSubject<F, S> extends Subject<PairSubject<F, S>, Pair<F, S>> {
-  protected PairSubject(FailureMetadata failureMetadata, Pair<F, S> subject) {
+  public PairSubject(FailureMetadata failureMetadata, Pair<F, S> subject) {
     super(failureMetadata, subject);
-  }
-
-  public static <F, S> Subject.Factory<PairSubject<F, S>, Pair<F, S>> type() {
-    return PairSubject::new;
   }
 
   public PairSubject<F, S> hasFirst(F first) {

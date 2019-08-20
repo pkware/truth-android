@@ -29,12 +29,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link PowerManager} subjects.
  */
 public class PowerManagerSubject extends Subject<PowerManagerSubject, PowerManager> {
-  protected PowerManagerSubject(FailureMetadata failureMetadata, PowerManager subject) {
+  public PowerManagerSubject(FailureMetadata failureMetadata, PowerManager subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<PowerManagerSubject, PowerManager> type() {
-    return PowerManagerSubject::new;
   }
 
   public PowerManagerSubject isScreenOn() {

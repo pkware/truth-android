@@ -28,12 +28,8 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class MediaRouteDiscoveryRequestSubject
     extends Subject<MediaRouteDiscoveryRequestSubject, MediaRouteDiscoveryRequest> {
-  protected MediaRouteDiscoveryRequestSubject(FailureMetadata failureMetadata, MediaRouteDiscoveryRequest subject) {
+  public MediaRouteDiscoveryRequestSubject(FailureMetadata failureMetadata, MediaRouteDiscoveryRequest subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<MediaRouteDiscoveryRequestSubject, MediaRouteDiscoveryRequest> type() {
-    return MediaRouteDiscoveryRequestSubject::new;
   }
 
   public MediaRouteDiscoveryRequestSubject isActiveScan() {

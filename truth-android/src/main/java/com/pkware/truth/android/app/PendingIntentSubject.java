@@ -30,12 +30,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link PendingIntent} subjects.
  */
 public class PendingIntentSubject extends Subject<PendingIntentSubject, PendingIntent> {
-  protected PendingIntentSubject(FailureMetadata failureMetadata, PendingIntent subject) {
+  public PendingIntentSubject(FailureMetadata failureMetadata, PendingIntent subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<PendingIntentSubject, PendingIntent> type() {
-    return PendingIntentSubject::new;
   }
 
   @TargetApi(JELLY_BEAN_MR1)

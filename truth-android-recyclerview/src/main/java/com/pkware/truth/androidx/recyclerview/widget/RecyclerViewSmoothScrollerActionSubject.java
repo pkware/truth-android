@@ -30,12 +30,8 @@ import static com.google.common.truth.Truth.assertThat;
 public class RecyclerViewSmoothScrollerActionSubject extends
     Subject<RecyclerViewSmoothScrollerActionSubject, RecyclerView.SmoothScroller.Action> {
 
-  protected RecyclerViewSmoothScrollerActionSubject(FailureMetadata failureMetadata, RecyclerView.SmoothScroller.Action subject) {
+  public RecyclerViewSmoothScrollerActionSubject(FailureMetadata failureMetadata, RecyclerView.SmoothScroller.Action subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<RecyclerViewSmoothScrollerActionSubject, RecyclerView.SmoothScroller.Action> type() {
-    return RecyclerViewSmoothScrollerActionSubject::new;
   }
 
   public RecyclerViewSmoothScrollerActionSubject hasDx(int dx) {

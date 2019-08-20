@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Point} subjects.
  */
 public class PointSubject extends Subject<PointSubject, Point> {
-  protected PointSubject(FailureMetadata failureMetadata, Point subject) {
+  public PointSubject(FailureMetadata failureMetadata, Point subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<PointSubject, Point> type() {
-    return PointSubject::new;
   }
 
   public PointSubject hasX(int x) {

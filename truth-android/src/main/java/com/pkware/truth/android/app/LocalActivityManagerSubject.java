@@ -29,12 +29,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link LocalActivityManager} subjects.
  */
 public class LocalActivityManagerSubject extends Subject<LocalActivityManagerSubject, LocalActivityManager> {
-  protected LocalActivityManagerSubject(FailureMetadata failureMetadata, LocalActivityManager subject) {
+  public LocalActivityManagerSubject(FailureMetadata failureMetadata, LocalActivityManager subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<LocalActivityManagerSubject, LocalActivityManager> type() {
-    return LocalActivityManagerSubject::new;
   }
 
   public LocalActivityManagerSubject hasActivity(String id) {

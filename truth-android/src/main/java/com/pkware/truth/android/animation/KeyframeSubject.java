@@ -26,13 +26,9 @@ import static com.google.common.truth.Truth.assertThat;
 /**
  * Propositions for {@link Keyframe} subjects.
  */
-public class KeyframeSubject extends Subject<KeyframeSubject, Keyframe> {
-  private KeyframeSubject(FailureMetadata failureMetadata, Keyframe subject) {
+public final class KeyframeSubject extends Subject<KeyframeSubject, Keyframe> {
+  public KeyframeSubject(FailureMetadata failureMetadata, Keyframe subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<KeyframeSubject, Keyframe> type() {
-    return KeyframeSubject::new;
   }
 
   public KeyframeSubject hasType(Class type) {

@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Property} subjects.
  */
 public class PropertySubject<T, V> extends Subject<PropertySubject<T, V>, Property<T, V>> {
-  protected PropertySubject(FailureMetadata failureMetadata, Property<T, V> subject) {
+  public PropertySubject(FailureMetadata failureMetadata, Property<T, V> subject) {
     super(failureMetadata, subject);
-  }
-
-  public static <T, V> Subject.Factory<PropertySubject<T, V>, Property<T, V>> type() {
-    return PropertySubject::new;
   }
 
   public PropertySubject<T, V> hasName(String name) {

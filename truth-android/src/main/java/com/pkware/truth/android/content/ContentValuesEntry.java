@@ -18,7 +18,7 @@ package com.pkware.truth.android.content;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
-public class ContentValuesEntry {
+public final class ContentValuesEntry {
   private final String key;
   private final Object value;
 

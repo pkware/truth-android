@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link AsyncTask} subjects.
  */
 public class AsyncTaskSubject extends Subject<AsyncTaskSubject, AsyncTask> {
-  protected AsyncTaskSubject(FailureMetadata failureMetadata, AsyncTask subject) {
+  public AsyncTaskSubject(FailureMetadata failureMetadata, AsyncTask subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<AsyncTaskSubject, AsyncTask> type() {
-    return AsyncTaskSubject::new;
   }
 
   public AsyncTaskSubject hasStatus(AsyncTask.Status status) {

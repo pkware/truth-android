@@ -33,12 +33,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link ServiceState} subjects.
  */
 public class ServiceStateSubject extends Subject<ServiceStateSubject, ServiceState> {
-  protected ServiceStateSubject(FailureMetadata failureMetadata, ServiceState subject) {
+  public ServiceStateSubject(FailureMetadata failureMetadata, ServiceState subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ServiceStateSubject, ServiceState> type() {
-    return ServiceStateSubject::new;
   }
 
   public static String serviceStateToString(@ServiceStateState int serviceState) {

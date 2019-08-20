@@ -17,9 +17,7 @@
 package com.pkware.truth.android.content;
 
 import android.content.Loader;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link Loader} subjects.
@@ -27,11 +25,7 @@ import com.google.common.truth.Subject;
  * This class is final. To extend use {@link AbstractLoaderSubject}.
  */
 public final class LoaderSubject extends AbstractLoaderSubject<LoaderSubject, Loader> {
-  private LoaderSubject(FailureMetadata failureMetadata, Loader subject) {
+  public LoaderSubject(FailureMetadata failureMetadata, Loader subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<LoaderSubject, Loader> type() {
-    return LoaderSubject::new;
   }
 }

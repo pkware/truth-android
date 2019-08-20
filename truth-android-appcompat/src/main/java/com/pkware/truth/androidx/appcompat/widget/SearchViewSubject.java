@@ -19,9 +19,7 @@ package com.pkware.truth.androidx.appcompat.widget;
 import androidx.annotation.StringRes;
 import androidx.appcompat.widget.SearchView;
 import androidx.cursoradapter.widget.CursorAdapter;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -29,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link SearchView} subjects.
  */
 public class SearchViewSubject extends AbstractLinearLayoutCompatSubject<SearchViewSubject, SearchView> {
-  protected SearchViewSubject(FailureMetadata failureMetadata, SearchView subject) {
+  public SearchViewSubject(FailureMetadata failureMetadata, SearchView subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<SearchViewSubject, SearchView> type() {
-    return SearchViewSubject::new;
   }
 
   public SearchViewSubject hasImeOptions(int options) {

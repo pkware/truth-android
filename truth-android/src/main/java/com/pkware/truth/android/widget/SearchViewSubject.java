@@ -22,7 +22,6 @@ import android.widget.SearchView;
 import androidx.annotation.StringRes;
 
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.HONEYCOMB;
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
@@ -33,12 +32,8 @@ import static com.google.common.truth.Truth.assertThat;
  */
 @TargetApi(HONEYCOMB)
 public class SearchViewSubject extends AbstractLinearLayoutSubject<SearchViewSubject, SearchView> {
-  protected SearchViewSubject(FailureMetadata failureMetadata, SearchView subject) {
+  public SearchViewSubject(FailureMetadata failureMetadata, SearchView subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<SearchViewSubject, SearchView> type() {
-    return SearchViewSubject::new;
   }
 
   @TargetApi(JELLY_BEAN)

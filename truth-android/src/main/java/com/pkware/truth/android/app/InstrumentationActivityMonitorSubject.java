@@ -28,12 +28,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Instrumentation.ActivityMonitor} subjects.
  */
 public class InstrumentationActivityMonitorSubject extends Subject<InstrumentationActivityMonitorSubject, Instrumentation.ActivityMonitor> {
-  protected InstrumentationActivityMonitorSubject(FailureMetadata failureMetadata, Instrumentation.ActivityMonitor subject) {
+  public InstrumentationActivityMonitorSubject(FailureMetadata failureMetadata, Instrumentation.ActivityMonitor subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<InstrumentationActivityMonitorSubject, Instrumentation.ActivityMonitor> type() {
-    return InstrumentationActivityMonitorSubject::new;
   }
 
   public InstrumentationActivityMonitorSubject hasHits(int hits) {

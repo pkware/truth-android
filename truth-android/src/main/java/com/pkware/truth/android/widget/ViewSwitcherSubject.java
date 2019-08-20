@@ -18,9 +18,7 @@ package com.pkware.truth.android.widget;
 
 import android.view.View;
 import android.widget.ViewSwitcher;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -29,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class ViewSwitcherSubject
     extends AbstractViewAnimatorSubject<ViewSwitcherSubject, ViewSwitcher> {
-  protected ViewSwitcherSubject(FailureMetadata failureMetadata, ViewSwitcher subject) {
+  public ViewSwitcherSubject(FailureMetadata failureMetadata, ViewSwitcher subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ViewSwitcherSubject, ViewSwitcher> type() {
-    return ViewSwitcherSubject::new;
   }
 
   public ViewSwitcherSubject hasNextView(View view) {

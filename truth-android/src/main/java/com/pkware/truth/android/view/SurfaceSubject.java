@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Surface} subjects.
  */
 public class SurfaceSubject extends Subject<SurfaceSubject, Surface> {
-  protected SurfaceSubject(FailureMetadata failureMetadata, Surface subject) {
+  public SurfaceSubject(FailureMetadata failureMetadata, Surface subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<SurfaceSubject, Surface> type() {
-    return SurfaceSubject::new;
   }
 
   public SurfaceSubject isValid() {

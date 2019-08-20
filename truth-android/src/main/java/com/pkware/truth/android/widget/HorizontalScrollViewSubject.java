@@ -17,9 +17,7 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.HorizontalScrollView;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link HorizontalScrollView} subjects.
@@ -28,11 +26,7 @@ import com.google.common.truth.Subject;
  */
 public final class HorizontalScrollViewSubject
     extends AbstractHorizontalScrollViewSubject<HorizontalScrollViewSubject, HorizontalScrollView> {
-  private HorizontalScrollViewSubject(FailureMetadata failureMetadata, HorizontalScrollView subject) {
+  public HorizontalScrollViewSubject(FailureMetadata failureMetadata, HorizontalScrollView subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<HorizontalScrollViewSubject, HorizontalScrollView> type() {
-    return HorizontalScrollViewSubject::new;
   }
 }

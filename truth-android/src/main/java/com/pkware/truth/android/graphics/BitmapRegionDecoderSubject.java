@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link BitmapRegionDecoder} subjects.
  */
 public class BitmapRegionDecoderSubject extends Subject<BitmapRegionDecoderSubject, BitmapRegionDecoder> {
-  protected BitmapRegionDecoderSubject(FailureMetadata failureMetadata, BitmapRegionDecoder subject) {
+  public BitmapRegionDecoderSubject(FailureMetadata failureMetadata, BitmapRegionDecoder subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<BitmapRegionDecoderSubject, BitmapRegionDecoder> type() {
-    return BitmapRegionDecoderSubject::new;
   }
 
   public BitmapRegionDecoderSubject hasHeight(int height) {

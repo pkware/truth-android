@@ -33,12 +33,8 @@ import static com.google.common.truth.Truth.assert_;
  */
 //TODO consider adding hasValue for array types
 public class BundleSubject extends Subject<BundleSubject, Bundle> {
-  protected BundleSubject(FailureMetadata failureMetadata, Bundle subject) {
+  public BundleSubject(FailureMetadata failureMetadata, Bundle subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<BundleSubject, Bundle> type() {
-    return BundleSubject::new;
   }
 
   public BundleSubject hasKey(String key) {

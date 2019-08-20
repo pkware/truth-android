@@ -30,12 +30,8 @@ import static com.pkware.truth.android.content.res.ConfigurationSubject.uiModeTy
  * Propositions for {@link UiModeManager} subjects.
  */
 public class UiModeManagerSubject extends Subject<UiModeManagerSubject, UiModeManager> {
-  protected UiModeManagerSubject(FailureMetadata failureMetadata, UiModeManager subject) {
+  public UiModeManagerSubject(FailureMetadata failureMetadata, UiModeManager subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<UiModeManagerSubject, UiModeManager> type() {
-    return UiModeManagerSubject::new;
   }
 
   public UiModeManagerSubject isNightMode() {

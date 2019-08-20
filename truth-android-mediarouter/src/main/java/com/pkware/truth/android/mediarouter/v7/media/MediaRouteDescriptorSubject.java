@@ -31,12 +31,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  */
 public class MediaRouteDescriptorSubject
     extends Subject<MediaRouteDescriptorSubject, MediaRouteDescriptor> {
-  protected MediaRouteDescriptorSubject(FailureMetadata failureMetadata, MediaRouteDescriptor subject) {
+  public MediaRouteDescriptorSubject(FailureMetadata failureMetadata, MediaRouteDescriptor subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<MediaRouteDescriptorSubject, MediaRouteDescriptor> type() {
-    return MediaRouteDescriptorSubject::new;
   }
 
   public static String volumeHandling(@MediaRouteVolumeHandling int handling) {
@@ -113,6 +109,7 @@ public class MediaRouteDescriptorSubject
     return this;
   }
 
+  @SuppressWarnings("deprecation")
   public MediaRouteDescriptorSubject isConnecting() {
     assertThat(actual().isConnecting())
         .named("is connecting")
@@ -120,6 +117,7 @@ public class MediaRouteDescriptorSubject
     return this;
   }
 
+  @SuppressWarnings("deprecation")
   public MediaRouteDescriptorSubject isNotConnecting() {
     assertThat(actual().isConnecting())
         .named("is connecting")

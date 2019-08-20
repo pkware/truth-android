@@ -31,12 +31,8 @@ import static com.google.common.truth.Truth.assertThat;
  */
 @TargetApi(KITKAT)
 public class ArrayMapSubject<K, V> extends Subject<ArrayMapSubject<K, V>, ArrayMap<K, V>> {
-  protected ArrayMapSubject(FailureMetadata failureMetadata, ArrayMap<K, V> subject) {
+  public ArrayMapSubject(FailureMetadata failureMetadata, ArrayMap<K, V> subject) {
     super(failureMetadata, subject);
-  }
-
-  public static <K, V> Subject.Factory<ArrayMapSubject<K, V>, ArrayMap<K, V>> type() {
-    return ArrayMapSubject::new;
   }
 
   public ArrayMapSubject<K, V> hasKeyAt(int index, K key) {

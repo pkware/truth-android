@@ -29,12 +29,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link FragmentManager} subjects.
  */
 public class FragmentManagerSubject extends Subject<FragmentManagerSubject, FragmentManager> {
-  protected FragmentManagerSubject(FailureMetadata failureMetadata, FragmentManager subject) {
+  public FragmentManagerSubject(FailureMetadata failureMetadata, FragmentManager subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<FragmentManagerSubject, FragmentManager> type() {
-    return FragmentManagerSubject::new;
   }
 
   public FragmentManagerSubject hasFragmentWithId(int id) {

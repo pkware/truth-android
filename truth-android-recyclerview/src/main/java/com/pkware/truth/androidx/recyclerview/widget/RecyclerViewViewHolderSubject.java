@@ -29,14 +29,11 @@ import static com.google.common.truth.Truth.assertThat;
 public class RecyclerViewViewHolderSubject
     extends Subject<RecyclerViewViewHolderSubject, RecyclerView.ViewHolder> {
 
-  protected RecyclerViewViewHolderSubject(FailureMetadata failureMetadata, RecyclerView.ViewHolder subject) {
+  public RecyclerViewViewHolderSubject(FailureMetadata failureMetadata, RecyclerView.ViewHolder subject) {
     super(failureMetadata, subject);
   }
 
-  public static Subject.Factory<RecyclerViewViewHolderSubject, RecyclerView.ViewHolder> type() {
-    return RecyclerViewViewHolderSubject::new;
-  }
-
+  @SuppressWarnings("deprecation")
   public RecyclerViewViewHolderSubject hasPosition(int position) {
     assertThat(actual().getPosition())
         .named("position")

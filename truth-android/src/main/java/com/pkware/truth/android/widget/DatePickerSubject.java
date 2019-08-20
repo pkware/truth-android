@@ -17,9 +17,7 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.DatePicker;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,12 +25,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link DatePicker} subjects.
  */
 public class DatePickerSubject extends AbstractFrameLayoutSubject<DatePickerSubject, DatePicker> {
-  protected DatePickerSubject(FailureMetadata failureMetadata, DatePicker subject) {
+  public DatePickerSubject(FailureMetadata failureMetadata, DatePicker subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<DatePickerSubject, DatePicker> type() {
-    return DatePickerSubject::new;
   }
 
   public DatePickerSubject isShowingCalendarView() {

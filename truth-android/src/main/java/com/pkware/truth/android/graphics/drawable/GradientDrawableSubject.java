@@ -18,9 +18,7 @@ package com.pkware.truth.android.graphics.drawable;
 
 import android.annotation.TargetApi;
 import android.graphics.drawable.GradientDrawable;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static android.os.Build.VERSION_CODES.JELLY_BEAN;
 import static com.google.common.truth.Truth.assertThat;
@@ -29,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link GradientDrawable} subjects.
  */
 public class GradientDrawableSubject extends AbstractDrawableSubject<GradientDrawableSubject, GradientDrawable> {
-  protected GradientDrawableSubject(FailureMetadata failureMetadata, GradientDrawable subject) {
+  public GradientDrawableSubject(FailureMetadata failureMetadata, GradientDrawable subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<GradientDrawableSubject, GradientDrawable> type() {
-    return GradientDrawableSubject::new;
   }
 
   @TargetApi(JELLY_BEAN)

@@ -17,9 +17,7 @@
 package com.pkware.truth.android.animation;
 
 import android.animation.Animator;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link Animator} subjects.
@@ -27,11 +25,7 @@ import com.google.common.truth.Subject;
  * This class if final. To extend us {@link AbstractAnimatorSubject}.
  */
 public final class AnimatorSubject extends AbstractAnimatorSubject<AnimatorSubject, Animator> {
-  private AnimatorSubject(FailureMetadata failureMetadata, Animator subject) {
+  public AnimatorSubject(FailureMetadata failureMetadata, Animator subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<AnimatorSubject, Animator> type() {
-    return AnimatorSubject::new;
   }
 }

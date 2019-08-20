@@ -34,12 +34,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link KeyCharacterMap} subjects.
  */
 public class KeyCharacterMapSubject extends Subject<KeyCharacterMapSubject, KeyCharacterMap> {
-  protected KeyCharacterMapSubject(FailureMetadata failureMetadata, KeyCharacterMap subject) {
+  public KeyCharacterMapSubject(FailureMetadata failureMetadata, KeyCharacterMap subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<KeyCharacterMapSubject, KeyCharacterMap> type() {
-    return KeyCharacterMapSubject::new;
   }
 
   public static String keyboardTypeToString(@KeyCharacterMapKeyboardType int type) {

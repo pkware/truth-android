@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link YuvImage} subjects.
  */
 public class YuvImageSubject extends Subject<YuvImageSubject, YuvImage> {
-  protected YuvImageSubject(FailureMetadata failureMetadata, YuvImage subject) {
+  public YuvImageSubject(FailureMetadata failureMetadata, YuvImage subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<YuvImageSubject, YuvImage> type() {
-    return YuvImageSubject::new;
   }
 
   public YuvImageSubject hasHeight(int height) {

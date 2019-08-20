@@ -39,12 +39,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link ActionBar} subjects.
  */
 public class ActionBarSubject extends Subject<ActionBarSubject, ActionBar> {
-  protected ActionBarSubject(FailureMetadata failureMetadata, ActionBar subject) {
+  public ActionBarSubject(FailureMetadata failureMetadata, ActionBar subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ActionBarSubject, ActionBar> type() {
-    return ActionBarSubject::new;
   }
 
   public static String navigationModeToString(@ActionBarNavigationMode int mode) {

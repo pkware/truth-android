@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Picture} subjects.
  */
 public class PictureSubject extends Subject<PictureSubject, Picture> {
-  protected PictureSubject(FailureMetadata failureMetadata, Picture subject) {
+  public PictureSubject(FailureMetadata failureMetadata, Picture subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<PictureSubject, Picture> type() {
-    return PictureSubject::new;
   }
 
   public PictureSubject hasHeight(int height) {

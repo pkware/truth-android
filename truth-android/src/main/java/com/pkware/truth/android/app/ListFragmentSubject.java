@@ -17,9 +17,7 @@
 package com.pkware.truth.android.app;
 
 import android.app.ListFragment;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,12 +25,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ListFragment} subjects.
  */
 public class ListFragmentSubject extends AbstractFragmentSubject<ListFragmentSubject, ListFragment> {
-  protected ListFragmentSubject(FailureMetadata failureMetadata, ListFragment subject) {
+  public ListFragmentSubject(FailureMetadata failureMetadata, ListFragment subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ListFragmentSubject, ListFragment> type() {
-    return ListFragmentSubject::new;
   }
 
   public ListFragmentSubject hasSelectedItemId(long id) {

@@ -17,9 +17,7 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.ListView;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link ListView} subjects.
@@ -27,11 +25,7 @@ import com.google.common.truth.Subject;
  * This class is final. To extend use {@link AbstractListViewSubject}.
  */
 public final class ListViewSubject extends AbstractListViewSubject<ListViewSubject, ListView> {
-  private ListViewSubject(FailureMetadata failureMetadata, ListView subject) {
+  public ListViewSubject(FailureMetadata failureMetadata, ListView subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ListViewSubject, ListView> type() {
-    return ListViewSubject::new;
   }
 }

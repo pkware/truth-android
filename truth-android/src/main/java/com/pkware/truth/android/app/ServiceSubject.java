@@ -17,9 +17,7 @@
 package com.pkware.truth.android.app;
 
 import android.app.Service;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link Service} subjects.
@@ -27,11 +25,7 @@ import com.google.common.truth.Subject;
  * This class is final. To extend use {@link AbstractServiceSubject}.
  */
 public final class ServiceSubject extends AbstractServiceSubject<ServiceSubject, Service> {
-  protected ServiceSubject(FailureMetadata failureMetadata, Service subject) {
+  public ServiceSubject(FailureMetadata failureMetadata, Service subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ServiceSubject, Service> type() {
-    return ServiceSubject::new;
   }
 }

@@ -37,12 +37,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link MediaItemStatus} subjects.
  */
 public class MediaItemStatusSubject extends Subject<MediaItemStatusSubject, MediaItemStatus> {
-  protected MediaItemStatusSubject(FailureMetadata failureMetadata, MediaItemStatus subject) {
+  public MediaItemStatusSubject(FailureMetadata failureMetadata, MediaItemStatus subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<MediaItemStatusSubject, MediaItemStatus> type() {
-    return MediaItemStatusSubject::new;
   }
 
   public static String playbackStateToString(@MediaItemStatusPlaybackState int playbackState) {

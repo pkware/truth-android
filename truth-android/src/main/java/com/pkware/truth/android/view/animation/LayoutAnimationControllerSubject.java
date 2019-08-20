@@ -17,9 +17,7 @@
 package com.pkware.truth.android.view.animation;
 
 import android.view.animation.LayoutAnimationController;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link LayoutAnimationController} subjects.
@@ -28,11 +26,7 @@ import com.google.common.truth.Subject;
  */
 public final class LayoutAnimationControllerSubject extends
     AbstractLayoutAnimationControllerSubject<LayoutAnimationControllerSubject, LayoutAnimationController> {
-  private LayoutAnimationControllerSubject(FailureMetadata failureMetadata, LayoutAnimationController subject) {
+  public LayoutAnimationControllerSubject(FailureMetadata failureMetadata, LayoutAnimationController subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<LayoutAnimationControllerSubject, LayoutAnimationController> type() {
-    return LayoutAnimationControllerSubject::new;
   }
 }

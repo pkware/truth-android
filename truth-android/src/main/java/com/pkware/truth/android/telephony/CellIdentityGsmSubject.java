@@ -30,12 +30,8 @@ import static com.google.common.truth.Truth.assertThat;
  */
 @TargetApi(JELLY_BEAN_MR1)
 public final class CellIdentityGsmSubject extends Subject<CellIdentityGsmSubject, CellIdentityGsm> {
-  private CellIdentityGsmSubject(FailureMetadata failureMetadata, CellIdentityGsm subject) {
+  public CellIdentityGsmSubject(FailureMetadata failureMetadata, CellIdentityGsm subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<CellIdentityGsmSubject, CellIdentityGsm> type() {
-    return CellIdentityGsmSubject::new;
   }
 
   public CellIdentityGsmSubject hasCid(int cid) {

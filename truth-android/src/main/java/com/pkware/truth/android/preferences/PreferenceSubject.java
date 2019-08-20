@@ -17,9 +17,7 @@
 package com.pkware.truth.android.preferences;
 
 import android.preference.Preference;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link Preference} subjects.
@@ -27,11 +25,7 @@ import com.google.common.truth.Subject;
  * This class is final. To extend use {@link AbstractPreferenceSubject}.
  */
 public final class PreferenceSubject extends AbstractPreferenceSubject<PreferenceSubject, Preference> {
-  protected PreferenceSubject(FailureMetadata failureMetadata, Preference subject) {
+  public PreferenceSubject(FailureMetadata failureMetadata, Preference subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<PreferenceSubject, Preference> type() {
-    return PreferenceSubject::new;
   }
 }

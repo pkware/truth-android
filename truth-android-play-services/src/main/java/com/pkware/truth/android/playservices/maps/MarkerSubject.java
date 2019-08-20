@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Marker} subjects.
  */
 public class MarkerSubject extends Subject<MarkerSubject, Marker> {
-  protected MarkerSubject(FailureMetadata failureMetadata, Marker subject) {
+  public MarkerSubject(FailureMetadata failureMetadata, Marker subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<MarkerSubject, Marker> type() {
-    return MarkerSubject::new;
   }
 
   public MarkerSubject hasAlpha(float alpha, float tolerance) {

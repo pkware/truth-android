@@ -28,12 +28,8 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class FragmentTransactionSubject
     extends Subject<FragmentTransactionSubject, FragmentTransaction> {
-  protected FragmentTransactionSubject(FailureMetadata failureMetadata, FragmentTransaction subject) {
+  public FragmentTransactionSubject(FailureMetadata failureMetadata, FragmentTransaction subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<FragmentTransactionSubject, FragmentTransaction> type() {
-    return FragmentTransactionSubject::new;
   }
 
   public FragmentTransactionSubject isAddToBackStackAllowed() {

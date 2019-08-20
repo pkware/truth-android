@@ -17,9 +17,7 @@
 package com.pkware.truth.android.graphics.drawable;
 
 import android.graphics.drawable.Drawable;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link Drawable} subjects.
@@ -27,11 +25,7 @@ import com.google.common.truth.Subject;
  * This class is final. To extend use {@link AbstractDrawableSubject}.
  */
 public final class DrawableSubject extends AbstractDrawableSubject<DrawableSubject, Drawable> {
-  protected DrawableSubject(FailureMetadata failureMetadata, Drawable subject) {
+  public DrawableSubject(FailureMetadata failureMetadata, Drawable subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<DrawableSubject, Drawable> type() {
-    return DrawableSubject::new;
   }
 }

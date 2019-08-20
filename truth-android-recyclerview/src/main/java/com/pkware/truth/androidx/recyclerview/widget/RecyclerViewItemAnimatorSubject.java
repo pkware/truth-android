@@ -29,12 +29,8 @@ import static com.google.common.truth.Truth.assertThat;
 public class RecyclerViewItemAnimatorSubject
     extends Subject<RecyclerViewItemAnimatorSubject, RecyclerView.ItemAnimator> {
 
-  protected RecyclerViewItemAnimatorSubject(FailureMetadata failureMetadata, RecyclerView.ItemAnimator subject) {
+  public RecyclerViewItemAnimatorSubject(FailureMetadata failureMetadata, RecyclerView.ItemAnimator subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<RecyclerViewItemAnimatorSubject, RecyclerView.ItemAnimator> type() {
-    return RecyclerViewItemAnimatorSubject::new;
   }
 
   public RecyclerViewItemAnimatorSubject hasMoveDuration(long duration) {

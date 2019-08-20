@@ -17,9 +17,7 @@
 package com.pkware.truth.android.app;
 
 import android.app.ProgressDialog;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,12 +25,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ProgressDialog} subjects.
  */
 public class ProgressDialogSubject extends AbstractDialogSubject<ProgressDialogSubject, ProgressDialog> {
-  protected ProgressDialogSubject(FailureMetadata failureMetadata, ProgressDialog subject) {
+  public ProgressDialogSubject(FailureMetadata failureMetadata, ProgressDialog subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ProgressDialogSubject, ProgressDialog> type() {
-    return ProgressDialogSubject::new;
   }
 
   public ProgressDialogSubject hasMax(int max) {

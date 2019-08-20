@@ -20,7 +20,6 @@ import android.preference.SwitchPreference;
 import androidx.annotation.StringRes;
 
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -28,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link SwitchPreference} subjects.
  */
 public class SwitchPreferenceSubject extends AbstractTwoStatePreferenceSubject<SwitchPreferenceSubject, SwitchPreference> {
-  protected SwitchPreferenceSubject(FailureMetadata failureMetadata, SwitchPreference subject) {
+  public SwitchPreferenceSubject(FailureMetadata failureMetadata, SwitchPreference subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<SwitchPreferenceSubject, SwitchPreference> type() {
-    return SwitchPreferenceSubject::new;
   }
 
   public SwitchPreferenceSubject hasSwitchTextOff(CharSequence text) {

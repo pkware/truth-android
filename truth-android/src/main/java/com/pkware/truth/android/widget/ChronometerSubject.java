@@ -17,9 +17,7 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.Chronometer;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,12 +25,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link Chronometer} subjects.
  */
 public class ChronometerSubject extends AbstractTextViewSubject<ChronometerSubject, Chronometer> {
-  protected ChronometerSubject(FailureMetadata failureMetadata, Chronometer subject) {
+  public ChronometerSubject(FailureMetadata failureMetadata, Chronometer subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ChronometerSubject, Chronometer> type() {
-    return ChronometerSubject::new;
   }
 
   public ChronometerSubject hasBase(long base) {

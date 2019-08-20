@@ -17,9 +17,7 @@
 package com.pkware.truth.android.graphics.drawable;
 
 import android.graphics.drawable.LayerDrawable;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,12 +25,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link LayerDrawable} subjects.
  */
 public class LayerDrawableSubject extends AbstractDrawableSubject<LayerDrawableSubject, LayerDrawable> {
-  protected LayerDrawableSubject(FailureMetadata failureMetadata, LayerDrawable subject) {
+  public LayerDrawableSubject(FailureMetadata failureMetadata, LayerDrawable subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<LayerDrawableSubject, LayerDrawable> type() {
-    return LayerDrawableSubject::new;
   }
 
   public LayerDrawableSubject hasLayerCount(int count) {

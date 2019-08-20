@@ -17,9 +17,7 @@
 package com.pkware.truth.android.view.animation;
 
 import android.view.animation.Animation;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link Animation} subjects.
@@ -27,11 +25,7 @@ import com.google.common.truth.Subject;
  * This class is final. To extend use {@link AbstractAnimationSubject}.
  */
 public final class AnimationSubject extends AbstractAnimationSubject<AnimationSubject, Animation> {
-  private AnimationSubject(FailureMetadata failureMetadata, Animation subject) {
+  public AnimationSubject(FailureMetadata failureMetadata, Animation subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<AnimationSubject, Animation> type() {
-    return AnimationSubject::new;
   }
 }

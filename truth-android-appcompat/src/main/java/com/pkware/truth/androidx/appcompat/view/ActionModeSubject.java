@@ -28,12 +28,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ActionMode} subjects.
  */
 public class ActionModeSubject extends Subject<ActionModeSubject, ActionMode> {
-  protected ActionModeSubject(FailureMetadata failureMetadata, ActionMode subject) {
+  public ActionModeSubject(FailureMetadata failureMetadata, ActionMode subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ActionModeSubject, ActionMode> type() {
-    return ActionModeSubject::new;
   }
 
   public ActionModeSubject hasCustomView() {

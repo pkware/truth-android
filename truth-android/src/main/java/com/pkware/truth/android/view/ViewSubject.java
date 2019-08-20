@@ -18,9 +18,7 @@ package com.pkware.truth.android.view;
 
 
 import android.view.View;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link View} subjects.
@@ -28,11 +26,7 @@ import com.google.common.truth.Subject;
  * This class is final. To extend use {@link AbstractViewSubject}.
  */
 public final class ViewSubject extends AbstractViewSubject<ViewSubject, View> {
-  private ViewSubject(FailureMetadata failureMetadata, View subject) {
+  public ViewSubject(FailureMetadata failureMetadata, View subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ViewSubject, View> type() {
-    return ViewSubject::new;
   }
 }

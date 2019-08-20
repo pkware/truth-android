@@ -17,9 +17,7 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.CompoundButton;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link CompoundButton} subjects.
@@ -27,11 +25,7 @@ import com.google.common.truth.Subject;
  * This class is final. To extend use {@link AbstractCompoundButtonSubject}.
  */
 public final class CompoundButtonSubject extends AbstractCompoundButtonSubject<CompoundButtonSubject, CompoundButton> {
-  private CompoundButtonSubject(FailureMetadata failureMetadata, CompoundButton subject) {
+  public CompoundButtonSubject(FailureMetadata failureMetadata, CompoundButton subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<CompoundButtonSubject, CompoundButton> type() {
-    return CompoundButtonSubject::new;
   }
 }

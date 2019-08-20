@@ -30,12 +30,8 @@ import static com.pkware.truth.android.location.CriteriaSubject.powerRequirement
  * Propositions for {@link LocationProvider} subjects.
  */
 public class LocationProviderSubject extends Subject<LocationProviderSubject, LocationProvider> {
-  protected LocationProviderSubject(FailureMetadata failureMetadata, LocationProvider subject) {
+  public LocationProviderSubject(FailureMetadata failureMetadata, LocationProvider subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<LocationProviderSubject, LocationProvider> type() {
-    return LocationProviderSubject::new;
   }
 
   public LocationProviderSubject hasAccuracy(int accuracy) {

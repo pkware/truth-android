@@ -33,12 +33,8 @@ import static com.google.common.truth.Truth.assert_;
  */
 @TargetApi(JELLY_BEAN_MR2)
 public class SparseBooleanArraySubject extends Subject<SparseBooleanArraySubject, SparseBooleanArray> {
-  protected SparseBooleanArraySubject(FailureMetadata failureMetadata, SparseBooleanArray subject) {
+  public SparseBooleanArraySubject(FailureMetadata failureMetadata, SparseBooleanArray subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<SparseBooleanArraySubject, SparseBooleanArray> type() {
-    return SparseBooleanArraySubject::new;
   }
 
   public SparseBooleanArraySubject keyIsTrue(int key) {

@@ -17,9 +17,7 @@
 package com.pkware.truth.android.app;
 
 import android.app.DialogFragment;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,12 +25,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link DialogFragment} subjects.
  */
 public class DialogFragmentSubject extends AbstractFragmentSubject<DialogFragmentSubject, DialogFragment> {
-  protected DialogFragmentSubject(FailureMetadata failureMetadata, DialogFragment subject) {
+  public DialogFragmentSubject(FailureMetadata failureMetadata, DialogFragment subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<DialogFragmentSubject, DialogFragment> type() {
-    return DialogFragmentSubject::new;
   }
 
   public DialogFragmentSubject isCancelable() {

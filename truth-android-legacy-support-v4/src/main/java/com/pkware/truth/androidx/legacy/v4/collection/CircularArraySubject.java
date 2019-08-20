@@ -26,14 +26,9 @@ import static com.google.common.truth.Truth.assertThat;
 /**
  * Propositions for {@link CircularArray} subjects.
  */
-public class CircularArraySubject<E>
-    extends Subject<CircularArraySubject<E>, CircularArray<E>> {
-  protected CircularArraySubject(FailureMetadata failureMetadata, CircularArray<E> subject) {
+public class CircularArraySubject<E> extends Subject<CircularArraySubject<E>, CircularArray<E>> {
+  public CircularArraySubject(FailureMetadata failureMetadata, CircularArray<E> subject) {
     super(failureMetadata, subject);
-  }
-
-  public static <E> Subject.Factory<CircularArraySubject<E>, CircularArray<E>> type() {
-    return CircularArraySubject::new;
   }
 
   public CircularArraySubject<E> hasFirst(E first) {

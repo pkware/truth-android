@@ -17,9 +17,7 @@
 package com.pkware.truth.androidx.legacy.v4.widget;
 
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 import com.pkware.truth.android.view.AbstractViewGroupSubject;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -29,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class SwipeRefreshLayoutSubject
     extends AbstractViewGroupSubject<SwipeRefreshLayoutSubject, SwipeRefreshLayout> {
-  protected SwipeRefreshLayoutSubject(FailureMetadata failureMetadata, SwipeRefreshLayout subject) {
+  public SwipeRefreshLayoutSubject(FailureMetadata failureMetadata, SwipeRefreshLayout subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<SwipeRefreshLayoutSubject, SwipeRefreshLayout> type() {
-    return SwipeRefreshLayoutSubject::new;
   }
 
   public SwipeRefreshLayoutSubject isRefreshing() {

@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link UsbAccessory} subjects.
  */
 public class UsbAccessorySubject extends Subject<UsbAccessorySubject, UsbAccessory> {
-  protected UsbAccessorySubject(FailureMetadata failureMetadata, UsbAccessory subject) {
+  public UsbAccessorySubject(FailureMetadata failureMetadata, UsbAccessory subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<UsbAccessorySubject, UsbAccessory> type() {
-    return UsbAccessorySubject::new;
   }
 
   public UsbAccessorySubject hasDescription(String description) {

@@ -26,12 +26,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link UiSettings} subjects.
  */
 public class UiSettingsSubject extends Subject<UiSettingsSubject, UiSettings> {
-  protected UiSettingsSubject(FailureMetadata failureMetadata, UiSettings subject) {
+  public UiSettingsSubject(FailureMetadata failureMetadata, UiSettings subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<UiSettingsSubject, UiSettings> type() {
-    return UiSettingsSubject::new;
   }
 
   public UiSettingsSubject hasCompassEnabled() {

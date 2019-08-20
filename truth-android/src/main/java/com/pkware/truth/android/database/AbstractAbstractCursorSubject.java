@@ -18,12 +18,10 @@ package com.pkware.truth.android.database;
 
 import android.database.AbstractCursor;
 import android.net.Uri;
-
 import com.google.common.truth.FailureMetadata;
 import com.google.common.truth.Subject;
-import com.pkware.truth.android.net.UriSubject;
 
-import static com.google.common.truth.Truth.assert_;
+import static com.pkware.truth.android.Assertions.assertThat;
 
 public abstract class AbstractAbstractCursorSubject<S extends AbstractAbstractCursorSubject<S, T>, T extends AbstractCursor> extends Subject<S, T> {
   protected AbstractAbstractCursorSubject(FailureMetadata failureMetadata, T subject) {
@@ -31,9 +29,7 @@ public abstract class AbstractAbstractCursorSubject<S extends AbstractAbstractCu
   }
 
   public S hasNotificationUri(Uri uri) {
-    assert_()
-        .about(UriSubject.type())
-        .that(uri)
+    assertThat(uri)
         .named("notification uri")
         .isEqualTo(uri);
     //noinspection unchecked

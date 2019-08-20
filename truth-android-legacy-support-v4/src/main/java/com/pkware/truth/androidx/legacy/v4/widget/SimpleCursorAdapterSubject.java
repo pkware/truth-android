@@ -17,9 +17,7 @@
 package com.pkware.truth.androidx.legacy.v4.widget;
 
 import androidx.cursoradapter.widget.SimpleCursorAdapter;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static androidx.cursoradapter.widget.SimpleCursorAdapter.CursorToStringConverter;
 import static com.google.common.truth.Truth.assertThat;
@@ -29,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class SimpleCursorAdapterSubject
     extends AbstractCursorAdapterSubject<SimpleCursorAdapterSubject, SimpleCursorAdapter> {
-  protected SimpleCursorAdapterSubject(FailureMetadata failureMetadata, SimpleCursorAdapter subject) {
+  public SimpleCursorAdapterSubject(FailureMetadata failureMetadata, SimpleCursorAdapter subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<SimpleCursorAdapterSubject, SimpleCursorAdapter> type() {
-    return SimpleCursorAdapterSubject::new;
   }
 
   public SimpleCursorAdapterSubject hasCursorToStringConverter(CursorToStringConverter converter) {

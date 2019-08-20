@@ -28,12 +28,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link TabLayout.Tab} subjects.
  */
 public class TabLayoutTabSubject extends Subject<TabLayoutTabSubject, TabLayout.Tab> {
-  protected TabLayoutTabSubject(FailureMetadata failureMetadata, TabLayout.Tab subject) {
+  public TabLayoutTabSubject(FailureMetadata failureMetadata, TabLayout.Tab subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<TabLayoutTabSubject, TabLayout.Tab> type() {
-    return TabLayoutTabSubject::new;
   }
 
   public TabLayoutTabSubject hasContentDescription(String contentDescription) {

@@ -36,13 +36,9 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildBitMaskString;
 /**
  * Propositions for {@link AccessibilityServiceInfo} subjects.
  */
-public class AccessibilityServiceInfoSubject extends Subject<AccessibilityServiceInfoSubject, AccessibilityServiceInfo> {
-  private AccessibilityServiceInfoSubject(FailureMetadata failureMetadata, AccessibilityServiceInfo subject) {
+public final class AccessibilityServiceInfoSubject extends Subject<AccessibilityServiceInfoSubject, AccessibilityServiceInfo> {
+  public AccessibilityServiceInfoSubject(FailureMetadata failureMetadata, AccessibilityServiceInfo subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<AccessibilityServiceInfoSubject, AccessibilityServiceInfo> type() {
-    return AccessibilityServiceInfoSubject::new;
   }
 
   public static String capabilitiesToString(@AccessibilityServiceInfoCapabilities int capabilities) {

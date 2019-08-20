@@ -31,12 +31,8 @@ import static com.google.common.truth.Truth.assertThat;
  */
 @TargetApi(JELLY_BEAN)
 public class TaskStackBuilderSubject extends Subject<TaskStackBuilderSubject, TaskStackBuilder> {
-  protected TaskStackBuilderSubject(FailureMetadata failureMetadata, TaskStackBuilder subject) {
+  public TaskStackBuilderSubject(FailureMetadata failureMetadata, TaskStackBuilder subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<TaskStackBuilderSubject, TaskStackBuilder> type() {
-    return TaskStackBuilderSubject::new;
   }
 
   public TaskStackBuilderSubject hasIntentCount(int count) {

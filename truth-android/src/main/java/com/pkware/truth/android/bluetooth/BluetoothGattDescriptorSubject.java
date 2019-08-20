@@ -42,12 +42,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildBitMaskString;
  */
 @TargetApi(JELLY_BEAN_MR2)
 public class BluetoothGattDescriptorSubject extends Subject<BluetoothGattDescriptorSubject, BluetoothGattDescriptor> {
-  protected BluetoothGattDescriptorSubject(FailureMetadata failureMetadata, BluetoothGattDescriptor subject) {
+  public BluetoothGattDescriptorSubject(FailureMetadata failureMetadata, BluetoothGattDescriptor subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<BluetoothGattDescriptorSubject, BluetoothGattDescriptor> type() {
-    return BluetoothGattDescriptorSubject::new;
   }
 
   public static String permissionsToString(@BluetoothGattDescriptorPermissions int permissions) {

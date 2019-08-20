@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link GsmCellLocation} subjects.
  */
 public class GsmCellLocationSubject extends Subject<GsmCellLocationSubject, GsmCellLocation> {
-  protected GsmCellLocationSubject(FailureMetadata failureMetadata, GsmCellLocation subject) {
+  public GsmCellLocationSubject(FailureMetadata failureMetadata, GsmCellLocation subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<GsmCellLocationSubject, GsmCellLocation> type() {
-    return GsmCellLocationSubject::new;
   }
 
   public GsmCellLocationSubject hasCid(int cid) {

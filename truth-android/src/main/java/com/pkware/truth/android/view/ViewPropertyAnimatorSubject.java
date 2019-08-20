@@ -30,12 +30,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link ViewPropertyAnimator} subjects.
  */
 public class ViewPropertyAnimatorSubject extends Subject<ViewPropertyAnimatorSubject, ViewPropertyAnimator> {
-  protected ViewPropertyAnimatorSubject(FailureMetadata failureMetadata, ViewPropertyAnimator subject) {
+  public ViewPropertyAnimatorSubject(FailureMetadata failureMetadata, ViewPropertyAnimator subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ViewPropertyAnimatorSubject, ViewPropertyAnimator> type() {
-    return ViewPropertyAnimatorSubject::new;
   }
 
   public ViewPropertyAnimatorSubject hasDuration(long duration) {

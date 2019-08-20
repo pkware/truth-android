@@ -53,12 +53,8 @@ import static com.pkware.truth.android.internal.IntegerUtils.buildNamedValueStri
  * Propositions for {@link Sensor} subjects.
  */
 public class SensorSubject extends Subject<SensorSubject, Sensor> {
-  protected SensorSubject(FailureMetadata failureMetadata, Sensor subject) {
+  public SensorSubject(FailureMetadata failureMetadata, Sensor subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<SensorSubject, Sensor> type() {
-    return SensorSubject::new;
   }
 
   public static String typeToString(@SensorType int type) {

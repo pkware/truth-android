@@ -18,26 +18,19 @@ package com.pkware.truth.android.content;
 
 import android.content.CursorLoader;
 import android.net.Uri;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
-import com.pkware.truth.android.net.UriSubject;
 
 import java.util.Arrays;
 
 import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth.assert_;
+import static com.pkware.truth.android.Assertions.assertThat;
 
 /**
  * Propositions for {@link CursorLoader} subjects.
  */
 public class CursorLoaderSubject extends AbstractLoaderSubject<CursorLoaderSubject, CursorLoader> {
-  protected CursorLoaderSubject(FailureMetadata failureMetadata, CursorLoader subject) {
+  public CursorLoaderSubject(FailureMetadata failureMetadata, CursorLoader subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<CursorLoaderSubject, CursorLoader> type() {
-    return CursorLoaderSubject::new;
   }
 
   public CursorLoaderSubject hasProjection(String... projection) {
@@ -131,8 +124,7 @@ public class CursorLoaderSubject extends AbstractLoaderSubject<CursorLoaderSubje
   }
 
   public CursorLoaderSubject hasUri(Uri uri) {
-    assert_().about(UriSubject.type())
-        .that(actual().getUri())
+    assertThat(actual().getUri())
         .named("uri")
         .isEqualTo(uri);
     return this;

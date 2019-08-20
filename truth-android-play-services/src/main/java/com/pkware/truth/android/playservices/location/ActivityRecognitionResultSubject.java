@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class ActivityRecognitionResultSubject
     extends Subject<ActivityRecognitionResultSubject, ActivityRecognitionResult> {
-  protected ActivityRecognitionResultSubject(FailureMetadata failureMetadata, ActivityRecognitionResult subject) {
+  public ActivityRecognitionResultSubject(FailureMetadata failureMetadata, ActivityRecognitionResult subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ActivityRecognitionResultSubject, ActivityRecognitionResult> type() {
-    return ActivityRecognitionResultSubject::new;
   }
 
   public ActivityRecognitionResultSubject hasElapsedRealtimeMillis(long millis) {

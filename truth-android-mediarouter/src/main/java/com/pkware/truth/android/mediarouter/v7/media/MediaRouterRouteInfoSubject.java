@@ -31,12 +31,8 @@ import static com.pkware.truth.android.mediarouter.v7.media.MediaRouteDescriptor
 public class MediaRouterRouteInfoSubject
     extends Subject<MediaRouterRouteInfoSubject, MediaRouter.RouteInfo> {
 
-  protected MediaRouterRouteInfoSubject(FailureMetadata failureMetadata, MediaRouter.RouteInfo subject) {
+  public MediaRouterRouteInfoSubject(FailureMetadata failureMetadata, MediaRouter.RouteInfo subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<MediaRouterRouteInfoSubject, MediaRouter.RouteInfo> type() {
-    return MediaRouterRouteInfoSubject::new;
   }
 
   public MediaRouterRouteInfoSubject hasDescription(String description) {

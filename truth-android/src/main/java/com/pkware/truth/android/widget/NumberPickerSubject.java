@@ -17,9 +17,7 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.NumberPicker;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,12 +25,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link NumberPicker} subjects.
  */
 public class NumberPickerSubject extends AbstractLinearLayoutSubject<NumberPickerSubject, NumberPicker> {
-  protected NumberPickerSubject(FailureMetadata failureMetadata, NumberPicker subject) {
+  public NumberPickerSubject(FailureMetadata failureMetadata, NumberPicker subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<NumberPickerSubject, NumberPicker> type() {
-    return NumberPickerSubject::new;
   }
 
   public NumberPickerSubject hasDisplayedValues(String[] values) {

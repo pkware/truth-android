@@ -19,9 +19,7 @@ package com.pkware.truth.android.preferences;
 import android.app.Dialog;
 import android.preference.PreferenceScreen;
 import android.widget.ListAdapter;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -29,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link PreferenceScreen} subjects.
  */
 public class PreferenceScreenSubject extends AbstractPreferenceGroupSubject<PreferenceScreenSubject, PreferenceScreen> {
-  protected PreferenceScreenSubject(FailureMetadata failureMetadata, PreferenceScreen subject) {
+  public PreferenceScreenSubject(FailureMetadata failureMetadata, PreferenceScreen subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<PreferenceScreenSubject, PreferenceScreen> type() {
-    return PreferenceScreenSubject::new;
   }
 
   public PreferenceScreenSubject hasDialog(Dialog dialog) {

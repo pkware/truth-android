@@ -29,12 +29,8 @@ import static com.google.common.truth.Truth.assertThat;
 public class RecyclerViewSmoothScrollerSubject
     extends Subject<RecyclerViewSmoothScrollerSubject, RecyclerView.SmoothScroller> {
 
-  protected RecyclerViewSmoothScrollerSubject(FailureMetadata failureMetadata, RecyclerView.SmoothScroller subject) {
+  public RecyclerViewSmoothScrollerSubject(FailureMetadata failureMetadata, RecyclerView.SmoothScroller subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<RecyclerViewSmoothScrollerSubject, RecyclerView.SmoothScroller> type() {
-    return RecyclerViewSmoothScrollerSubject::new;
   }
 
   public RecyclerViewSmoothScrollerSubject isPendingInitialRun() {

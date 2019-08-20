@@ -17,9 +17,7 @@
 package com.pkware.truth.android.view;
 
 import android.view.TextureView;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,12 +25,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link TextureView} subjects.
  */
 public class TextureViewSubject extends AbstractViewSubject<TextureViewSubject, TextureView> {
-  protected TextureViewSubject(FailureMetadata failureMetadata, TextureView subject) {
+  public TextureViewSubject(FailureMetadata failureMetadata, TextureView subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<TextureViewSubject, TextureView> type() {
-    return TextureViewSubject::new;
   }
 
   public TextureViewSubject isAvailable() {

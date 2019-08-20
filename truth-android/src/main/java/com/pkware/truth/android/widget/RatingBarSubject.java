@@ -17,9 +17,7 @@
 package com.pkware.truth.android.widget;
 
 import android.widget.RatingBar;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -27,12 +25,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link RatingBar} subjects.
  */
 public class RatingBarSubject extends AbstractAbsSeekBarSubject<RatingBarSubject, RatingBar> {
-  protected RatingBarSubject(FailureMetadata failureMetadata, RatingBar subject) {
+  public RatingBarSubject(FailureMetadata failureMetadata, RatingBar subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<RatingBarSubject, RatingBar> type() {
-    return RatingBarSubject::new;
   }
 
   public RatingBarSubject hasStarCount(int count) {

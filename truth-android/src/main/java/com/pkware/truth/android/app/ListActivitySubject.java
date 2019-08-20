@@ -17,9 +17,7 @@
 package com.pkware.truth.android.app;
 
 import android.app.ListActivity;
-
 import com.google.common.truth.FailureMetadata;
-import com.google.common.truth.Subject;
 
 /**
  * Propositions for {@link ListActivity} subjects.
@@ -27,11 +25,7 @@ import com.google.common.truth.Subject;
  * This class is final. To extend use {@link AbstractListActivitySubject}.
  */
 public final class ListActivitySubject extends AbstractListActivitySubject<ListActivitySubject, ListActivity> {
-  protected ListActivitySubject(FailureMetadata failureMetadata, ListActivity subject) {
+  public ListActivitySubject(FailureMetadata failureMetadata, ListActivity subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<ListActivitySubject, ListActivity> type() {
-    return ListActivitySubject::new;
   }
 }

@@ -27,12 +27,8 @@ import static com.google.common.truth.Truth.assertThat;
  * Propositions for {@link CursorWindow} subjects.
  */
 public class CursorWindowSubject extends Subject<CursorWindowSubject, CursorWindow> {
-  protected CursorWindowSubject(FailureMetadata failureMetadata, CursorWindow subject) {
+  public CursorWindowSubject(FailureMetadata failureMetadata, CursorWindow subject) {
     super(failureMetadata, subject);
-  }
-
-  public static Subject.Factory<CursorWindowSubject, CursorWindow> type() {
-    return CursorWindowSubject::new;
   }
 
   public CursorWindowSubject hasRowCount(int count) {

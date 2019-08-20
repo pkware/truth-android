@@ -28,12 +28,8 @@ import static com.google.common.truth.Truth.assert_;
  * Propositions for {@link SparseArray} subjects.
  */
 public class SparseArraySubject<E> extends Subject<SparseArraySubject<E>, SparseArray<E>> {
-  protected SparseArraySubject(FailureMetadata failureMetadata, SparseArray<E> subject) {
+  public SparseArraySubject(FailureMetadata failureMetadata, SparseArray<E> subject) {
     super(failureMetadata, subject);
-  }
-
-  public static <E> Subject.Factory<SparseArraySubject<E>, SparseArray<E>> type() {
-    return SparseArraySubject::new;
   }
 
   public SparseArraySubject<E> hasKey(int key) {

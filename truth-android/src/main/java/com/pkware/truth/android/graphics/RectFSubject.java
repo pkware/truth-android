@@ -37,53 +37,43 @@ public class RectFSubject extends Subject {
     this.actual = actual;
   }
 
-  public RectFSubject hasBottom(float bottom, float tolerance) {
+  public void hasBottom(float bottom, float tolerance) {
     check("bottom").that(actual.bottom).isWithin(tolerance).of(bottom);
-    return this;
   }
 
-  public RectFSubject hasLeft(float left, float tolerance) {
+  public void hasLeft(float left, float tolerance) {
     check("left").that(actual.left).isWithin(tolerance).of(left);
-    return this;
   }
 
-  public RectFSubject hasRight(float right, float tolerance) {
+  public void hasRight(float right, float tolerance) {
     check("right").that(actual.right).isWithin(tolerance).of(right);
-    return this;
   }
 
-  public RectFSubject hasTop(float top, float tolerance) {
+  public void hasTop(float top, float tolerance) {
     check("top").that(actual.top).isWithin(tolerance).of(top);
-    return this;
   }
 
-  public RectFSubject hasCenterX(float center, float tolerance) {
+  public void hasCenterX(float center, float tolerance) {
     check("centerX()").that(actual.centerX()).isWithin(tolerance).of(center);
-    return this;
   }
 
-  public RectFSubject hasCenterY(float center, float tolerance) {
+  public void hasCenterY(float center, float tolerance) {
     check("centerY()").that(actual.centerY()).isWithin(tolerance).of(center);
-    return this;
   }
 
-  public RectFSubject hasHeight(float height, float tolerance) {
+  public void hasHeight(float height, float tolerance) {
     check("height()").that(actual.height()).isWithin(tolerance).of(height);
-    return this;
   }
 
-  public RectFSubject isEmpty() {
+  public void isEmpty() {
     check("isEmpty()").that(actual.isEmpty()).isTrue();
-    return this;
   }
 
-  public RectFSubject isNotEmpty() {
+  public void isNotEmpty() {
     check("isEmpty()").that(actual.isEmpty()).isFalse();
-    return this;
   }
 
-  public RectFSubject hasWidth(float width, float tolerance) {
+  public void hasWidth(float width, float tolerance) {
     check("width()").that(actual.width()).isWithin(tolerance).of(width);
-    return this;
   }
 }

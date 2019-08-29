@@ -37,13 +37,11 @@ public final class AccountSubject extends Subject {
     this.actual = actual;
   }
 
-  public AccountSubject hasName(@Nullable String name) {
+  public void hasName(@Nullable String name) {
     check("name").that(actual.name).isEqualTo(name);
-    return this;
   }
 
-  public AccountSubject hasType(@Nullable String type) {
+  public void hasType(@Nullable String type) {
     check("type").that(actual.type).isEqualTo(type);
-    return this;
   }
 }

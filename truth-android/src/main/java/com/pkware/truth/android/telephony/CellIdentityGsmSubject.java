@@ -41,28 +41,23 @@ public final class CellIdentityGsmSubject extends Subject {
     this.actual = actual;
   }
 
-  public CellIdentityGsmSubject hasCid(int cid) {
+  public void hasCid(int cid) {
     check("getCid()").that(actual.getCid()).isEqualTo(cid);
-    return this;
   }
 
-  public CellIdentityGsmSubject hasLac(int lac) {
+  public void hasLac(int lac) {
     check("getLac()").that(actual.getLac()).isEqualTo(lac);
-    return this;
   }
 
-  public CellIdentityGsmSubject hasMcc(int mcc) {
+  public void hasMcc(int mcc) {
     check("getMcc()").that(actual.getMcc()).isEqualTo(mcc);
-    return this;
   }
 
-  public CellIdentityGsmSubject hasMnc(int mnc) {
+  public void hasMnc(int mnc) {
     check("getMnc()").that(actual.getMnc()).isEqualTo(mnc);
-    return this;
   }
 
-  public CellIdentityGsmSubject hasPsc(int psc) {
+  public void hasPsc(int psc) {
     check("getPsc()").that(actual.getPsc()).isEqualTo(psc);
-    return this;
   }
 }

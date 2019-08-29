@@ -37,28 +37,23 @@ public class AttributeSetSubject extends Subject {
     this.actual = actual;
   }
 
-  public AttributeSetSubject hasAttributeCount(int count) {
+  public void hasAttributeCount(int count) {
     check("getAttributeCount()").that(actual.getAttributeCount()).isEqualTo(count);
-    return this;
   }
 
-  public AttributeSetSubject hasClassAttribute(@Nullable String value) {
+  public void hasClassAttribute(@Nullable String value) {
     check("getClassAttribute()").that(actual.getClassAttribute()).isEqualTo(value);
-    return this;
   }
 
-  public AttributeSetSubject hasIdAttribute(@Nullable String value) {
+  public void hasIdAttribute(@Nullable String value) {
     check("getIdAttribute()").that(actual.getIdAttribute()).isEqualTo(value);
-    return this;
   }
 
-  public AttributeSetSubject hasPositionDescription(@Nullable String position) {
+  public void hasPositionDescription(@Nullable String position) {
     check("getPositionDescription()").that(actual.getPositionDescription()).isEqualTo(position);
-    return this;
   }
 
-  public AttributeSetSubject hasStyleAttribute(int value) {
+  public void hasStyleAttribute(int value) {
     check("getStyleAttribute()").that(actual.getStyleAttribute()).isEqualTo(value);
-    return this;
   }
 }

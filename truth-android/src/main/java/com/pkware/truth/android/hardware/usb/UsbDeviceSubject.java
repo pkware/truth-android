@@ -37,43 +37,35 @@ public class UsbDeviceSubject extends Subject {
     this.actual = actual;
   }
 
-  public UsbDeviceSubject hasDeviceClass(int value) {
+  public void hasDeviceClass(int value) {
     check("getDeviceClass()").that(actual.getDeviceClass()).isEqualTo(value);
-    return this;
   }
 
-  public UsbDeviceSubject hasDeviceId(int id) {
+  public void hasDeviceId(int id) {
     check("getDeviceId()").that(actual.getDeviceId()).isEqualTo(id);
-    return this;
   }
 
-  public UsbDeviceSubject hasDeviceName(@Nullable String name) {
+  public void hasDeviceName(@Nullable String name) {
     check("getDeviceName()").that(actual.getDeviceName()).isEqualTo(name);
-    return this;
   }
 
-  public UsbDeviceSubject hasDeviceProtocol(int protocol) {
+  public void hasDeviceProtocol(int protocol) {
     check("getDeviceProtocol()").that(actual.getDeviceProtocol()).isEqualTo(protocol);
-    return this;
   }
 
-  public UsbDeviceSubject hasDeviceSubclass(int subclass) {
+  public void hasDeviceSubclass(int subclass) {
     check("getDeviceSubclass()").that(actual.getDeviceSubclass()).isEqualTo(subclass);
-    return this;
   }
 
-  public UsbDeviceSubject hasInterfaceCount(int count) {
+  public void hasInterfaceCount(int count) {
     check("getInterfaceCount()").that(actual.getInterfaceCount()).isEqualTo(count);
-    return this;
   }
 
-  public UsbDeviceSubject hasProductId(int id) {
+  public void hasProductId(int id) {
     check("getProductId()").that(actual.getProductId()).isEqualTo(id);
-    return this;
   }
 
-  public UsbDeviceSubject hasVendorId(int id) {
+  public void hasVendorId(int id) {
     check("getVendorId()").that(actual.getVendorId()).isEqualTo(id);
-    return this;
   }
 }

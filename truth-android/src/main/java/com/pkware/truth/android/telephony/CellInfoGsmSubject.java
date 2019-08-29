@@ -42,13 +42,11 @@ public final class CellInfoGsmSubject extends AbstractCellInfoSubject<CellInfoGs
     this.actual = actual;
   }
 
-  public CellInfoGsmSubject hasCellIdentity(@Nullable CellIdentityGsm cellIdentity) {
+  public void hasCellIdentity(@Nullable CellIdentityGsm cellIdentity) {
     check("getCellIdentity()").that(actual.getCellIdentity()).isEqualTo(cellIdentity);
-    return this;
   }
 
-  public CellInfoGsmSubject hasCellSignalStrength(@Nullable CellSignalStrengthGsm cellSignalStrength) {
+  public void hasCellSignalStrength(@Nullable CellSignalStrengthGsm cellSignalStrength) {
     check("getCellSignalStrength()").that(actual.getCellSignalStrength()).isEqualTo(cellSignalStrength);
-    return this;
   }
 }

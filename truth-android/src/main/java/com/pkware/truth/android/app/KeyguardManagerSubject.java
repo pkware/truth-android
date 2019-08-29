@@ -40,37 +40,31 @@ public class KeyguardManagerSubject extends Subject {
     this.actual = actual;
   }
 
-  public KeyguardManagerSubject hasRestrictedInputMode() {
+  public void hasRestrictedInputMode() {
     check("inKeyguardRestrictedInputMode()").that(actual.inKeyguardRestrictedInputMode()).isTrue();
-    return this;
   }
 
-  public KeyguardManagerSubject hasUnrestrictedInputMode() {
+  public void hasUnrestrictedInputMode() {
     check("inKeyguardRestrictedInputMode()").that(actual.inKeyguardRestrictedInputMode()).isFalse();
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public KeyguardManagerSubject hasLockedKeyguard() {
+  public void hasLockedKeyguard() {
     check("isKeyguardLocked()").that(actual.isKeyguardLocked()).isTrue();
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public KeyguardManagerSubject hasUnlockedKeyguard() {
+  public void hasUnlockedKeyguard() {
     check("isKeyguardLocked()").that(actual.isKeyguardLocked()).isFalse();
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public KeyguardManagerSubject hasSecureKeyguard() {
+  public void hasSecureKeyguard() {
     check("isKeyguardSecure()").that(actual.isKeyguardSecure()).isTrue();
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public KeyguardManagerSubject hasInsecureKeyguard() {
+  public void hasInsecureKeyguard() {
     check("isKeyguardSecure()").that(actual.isKeyguardSecure()).isFalse();
-    return this;
   }
 }

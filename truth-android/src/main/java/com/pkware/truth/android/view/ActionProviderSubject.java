@@ -40,25 +40,21 @@ public class ActionProviderSubject extends Subject {
     this.actual = actual;
   }
 
-  public ActionProviderSubject hasSubMenu() {
+  public void hasSubMenu() {
     check("hasSubMenu()").that(actual.hasSubMenu()).isTrue();
-    return this;
   }
 
-  public ActionProviderSubject hasNoSubMenu() {
+  public void hasNoSubMenu() {
     check("hasSubMenu()").that(actual.hasSubMenu()).isFalse();
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public ActionProviderSubject isVisible() {
+  public void isVisible() {
     check("isVisible()").that(actual.isVisible()).isTrue();
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public ActionProviderSubject isNotVisible() {
+  public void isNotVisible() {
     check("isVisible()").that(actual.isVisible()).isFalse();
-    return this;
   }
 }

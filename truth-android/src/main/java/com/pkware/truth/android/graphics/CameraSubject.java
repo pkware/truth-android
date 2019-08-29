@@ -41,20 +41,17 @@ public class CameraSubject extends Subject {
   }
 
   @TargetApi(JELLY_BEAN)
-  public CameraSubject hasLocationX(float location, float tolerance) {
+  public void hasLocationX(float location, float tolerance) {
     check("getLocationX()").that(actual.getLocationX()).isWithin(tolerance).of(location);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public CameraSubject hasLocationY(float location, float tolerance) {
+  public void hasLocationY(float location, float tolerance) {
     check("getLocationY()").that(actual.getLocationY()).isWithin(tolerance).of(location);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public CameraSubject hasLocationZ(float location, float tolerance) {
+  public void hasLocationZ(float location, float tolerance) {
     check("getLocationZ()").that(actual.getLocationZ()).isWithin(tolerance).of(location);
-    return this;
   }
 }

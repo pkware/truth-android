@@ -37,28 +37,23 @@ public class MovieSubject extends Subject {
     this.actual = actual;
   }
 
-  public MovieSubject hasDuration(int duration) {
+  public void hasDuration(int duration) {
     check("duration()").that(actual.duration()).isEqualTo(duration);
-    return this;
   }
 
-  public MovieSubject hasHeight(int height) {
+  public void hasHeight(int height) {
     check("height()").that(actual.height()).isEqualTo(height);
-    return this;
   }
 
-  public MovieSubject isOpaque() {
+  public void isOpaque() {
     check("isOpaque()").that(actual.isOpaque()).isTrue();
-    return this;
   }
 
-  public MovieSubject isNotOpaque() {
+  public void isNotOpaque() {
     check("isOpaque()").that(actual.isOpaque()).isFalse();
-    return this;
   }
 
-  public MovieSubject hasWidth(int width) {
+  public void hasWidth(int width) {
     check("width()").that(actual.width()).isEqualTo(width);
-    return this;
   }
 }

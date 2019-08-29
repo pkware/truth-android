@@ -36,35 +36,29 @@ public class LocationRequestSubject extends Subject {
     this.actual = actual;
   }
 
-  public LocationRequestSubject hasExpirationTime(long time) {
+  public void hasExpirationTime(long time) {
     check("getExpirationTime()").that(actual.getExpirationTime()).isEqualTo(time);
-    return this;
   }
 
-  public LocationRequestSubject hasFastestInterval(long interval) {
+  public void hasFastestInterval(long interval) {
     check("getFastestInterval()").that(actual.getFastestInterval()).isEqualTo(interval);
-    return this;
   }
 
-  public LocationRequestSubject hasInterval(long interval) {
+  public void hasInterval(long interval) {
     long actualInterval = actual.getInterval();
     check("getInterval()").that(actual.getInterval()).isEqualTo(interval);
-    return this;
   }
 
-  public LocationRequestSubject hasUpdates(int updates) {
+  public void hasUpdates(int updates) {
     check("getNumUpdates()").that(actual.getNumUpdates()).isEqualTo(updates);
-    return this;
   }
 
-  public LocationRequestSubject hasPriority(int priority) {
+  public void hasPriority(int priority) {
     check("getPriority()").that(actual.getPriority()).isEqualTo(priority);
-    return this;
   }
 
-  public LocationRequestSubject hasSmallestDisplacement(float displacement, float tolerance) {
+  public void hasSmallestDisplacement(float displacement, float tolerance) {
     check("getSmallestDisplacement()").that(actual.getSmallestDisplacement()).isWithin(tolerance)
         .of(displacement);
-    return this;
   }
 }

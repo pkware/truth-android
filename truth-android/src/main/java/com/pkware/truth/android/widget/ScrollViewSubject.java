@@ -36,28 +36,23 @@ public class ScrollViewSubject extends AbstractFrameLayoutSubject<ScrollView> {
     this.actual = actual;
   }
 
-  public ScrollViewSubject hasMaxScrollAmount(int amount) {
+  public void hasMaxScrollAmount(int amount) {
     check("getMaxScrollAmount()").that(actual.getMaxScrollAmount()).isEqualTo(amount);
-    return this;
   }
 
-  public ScrollViewSubject isFillingViewport() {
+  public void isFillingViewport() {
     check("isFillViewport()").that(actual.isFillViewport()).isTrue();
-    return this;
   }
 
-  public ScrollViewSubject isNotFillingViewport() {
+  public void isNotFillingViewport() {
     check("isFillViewport()").that(actual.isFillViewport()).isFalse();
-    return this;
   }
 
-  public ScrollViewSubject hasSmoothScrollEnabled() {
+  public void hasSmoothScrollEnabled() {
     check("isSmoothScrollingEnabled()").that(actual.isSmoothScrollingEnabled()).isTrue();
-    return this;
   }
 
-  public ScrollViewSubject hasSmoothScrollDisabled() {
+  public void hasSmoothScrollDisabled() {
     check("isSmoothScrollingEnabled()").that(actual.isSmoothScrollingEnabled()).isFalse();
-    return this;
   }
 }

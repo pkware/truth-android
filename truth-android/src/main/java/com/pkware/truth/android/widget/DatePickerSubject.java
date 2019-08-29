@@ -36,48 +36,39 @@ public class DatePickerSubject extends AbstractFrameLayoutSubject<DatePicker> {
     this.actual = actual;
   }
 
-  public DatePickerSubject isShowingCalendarView() {
+  public void isShowingCalendarView() {
     check("getCalendarViewShown()").that(actual.getCalendarViewShown()).isTrue();
-    return this;
   }
 
-  public DatePickerSubject isNotShowingCalendarView() {
+  public void isNotShowingCalendarView() {
     check("getCalendarViewShown()").that(actual.getCalendarViewShown()).isFalse();
-    return this;
   }
 
-  public DatePickerSubject hasDayOfMonth(int day) {
+  public void hasDayOfMonth(int day) {
     check("getDayOfMonth()").that(actual.getDayOfMonth()).isEqualTo(day);
-    return this;
   }
 
-  public DatePickerSubject hasMaxDate(long date) {
+  public void hasMaxDate(long date) {
     check("getMaxDate()").that(actual.getMaxDate()).isEqualTo(date);
-    return this;
   }
 
-  public DatePickerSubject hasMinDate(long date) {
+  public void hasMinDate(long date) {
     check("getMinDate()").that(actual.getMinDate()).isEqualTo(date);
-    return this;
   }
 
-  public DatePickerSubject hasMonth(int month) {
+  public void hasMonth(int month) {
     check("getMonth()").that(actual.getMonth()).isEqualTo(month);
-    return this;
   }
 
-  public DatePickerSubject isShowingSpinners() {
+  public void isShowingSpinners() {
     check("getSpinnersShown()").that(actual.getSpinnersShown()).isTrue();
-    return this;
   }
 
-  public DatePickerSubject isNotShowingSpinners() {
+  public void isNotShowingSpinners() {
     check("getSpinnersShown()").that(actual.getSpinnersShown()).isFalse();
-    return this;
   }
 
-  public DatePickerSubject hasYear(int year) {
+  public void hasYear(int year) {
     check("getYear()").that(actual.getYear()).isEqualTo(year);
-    return this;
   }
 }

@@ -37,8 +37,7 @@ public class PagerAdapterSubject extends Subject {
     this.actual = actual;
   }
 
-  public PagerAdapterSubject hasCount(int count) {
+  public void hasCount(int count) {
     check("getCount()").that(actual.getCount()).isEqualTo(count);
-    return this;
   }
 }

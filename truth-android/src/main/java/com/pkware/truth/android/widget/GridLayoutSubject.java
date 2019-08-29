@@ -59,7 +59,7 @@ public class GridLayoutSubject extends AbstractViewGroupSubject<GridLayout> {
         .get();
   }
 
-  public GridLayoutSubject hasAlignmentMode(@GridLayoutAlignmentMode int mode) {
+  public void hasAlignmentMode(@GridLayoutAlignmentMode int mode) {
     int actualMode = actual.getAlignmentMode();
     //noinspection ResourceType
     check("getAlignmentMode()")
@@ -67,15 +67,13 @@ public class GridLayoutSubject extends AbstractViewGroupSubject<GridLayout> {
             alignmentModeToString(mode), alignmentModeToString(actualMode))
         .that(actualMode)
         .isEqualTo(mode);
-    return this;
   }
 
-  public GridLayoutSubject hasColumnCount(int count) {
+  public void hasColumnCount(int count) {
     check("getColumnCount()").that(actual.getColumnCount()).isEqualTo(count);
-    return this;
   }
 
-  public GridLayoutSubject hasOrientation(@GridLayoutOrientation int orientation) {
+  public void hasOrientation(@GridLayoutOrientation int orientation) {
     int actualOrientation = actual.getOrientation();
     //noinspection ResourceType
     check("getOrientation()")
@@ -83,49 +81,41 @@ public class GridLayoutSubject extends AbstractViewGroupSubject<GridLayout> {
             orientationToString(orientation), orientationToString(actualOrientation))
         .that(actualOrientation)
         .isEqualTo(orientation);
-    return this;
   }
 
-  public GridLayoutSubject isVertical() {
-    return hasOrientation(VERTICAL);
+  public void isVertical() {
+    hasOrientation(VERTICAL);
   }
 
-  public GridLayoutSubject isHorizontal() {
-    return hasOrientation(HORIZONTAL);
+  public void isHorizontal() {
+    hasOrientation(HORIZONTAL);
   }
 
-  public GridLayoutSubject hasRowCount(int count) {
+  public void hasRowCount(int count) {
     check("getRowCount()").that(actual.getRowCount()).isEqualTo(count);
-    return this;
   }
 
-  public GridLayoutSubject isUsingDefaultMargins() {
+  public void isUsingDefaultMargins() {
     check("getUseDefaultMargins()").that(actual.getUseDefaultMargins()).isTrue();
-    return this;
   }
 
-  public GridLayoutSubject isNotUsingDefaultMargins() {
+  public void isNotUsingDefaultMargins() {
     check("getUseDefaultMargins()").that(actual.getUseDefaultMargins()).isFalse();
-    return this;
   }
 
-  public GridLayoutSubject isPreservingColumnOrder() {
+  public void isPreservingColumnOrder() {
     check("isColumnOrderPreserved()").that(actual.isColumnOrderPreserved()).isTrue();
-    return this;
   }
 
-  public GridLayoutSubject isNotPreservingColumnOrder() {
+  public void isNotPreservingColumnOrder() {
     check("isColumnOrderPreserved()").that(actual.isColumnOrderPreserved()).isFalse();
-    return this;
   }
 
-  public GridLayoutSubject isPreservingRowOrder() {
+  public void isPreservingRowOrder() {
     check("isRowOrderPreserved()").that(actual.isRowOrderPreserved()).isTrue();
-    return this;
   }
 
-  public GridLayoutSubject isNotPreservingRowOrder() {
+  public void isNotPreservingRowOrder() {
     check("isRowOrderPreserved()").that(actual.isRowOrderPreserved()).isFalse();
-    return this;
   }
 }

@@ -38,78 +38,65 @@ public abstract class AbstractAccessibilityRecordSubject<T extends Accessibility
     this.actual = actual;
   }
 
-  public AbstractAccessibilityRecordSubject hasAddedCount(int count) {
+  public void hasAddedCount(int count) {
     check("getAddedCount()").that(actual.getAddedCount()).isEqualTo(count);
-    return this;
   }
 
-  public AbstractAccessibilityRecordSubject hasBeforeText(@Nullable String text) {
+  public void hasBeforeText(@Nullable String text) {
     check("getBeforeText()")
         .that(actual.getBeforeText().toString())
         .isEqualTo(text);
-    return this;
   }
 
-  public AbstractAccessibilityRecordSubject hasClassName(@Nullable String name) {
+  public void hasClassName(@Nullable String name) {
     check("getClassName()")
         .that(actual.getClassName().toString())
         .isEqualTo(name);
-    return this;
   }
 
-  public AbstractAccessibilityRecordSubject hasContentDescription(@Nullable String description) {
+  public void hasContentDescription(@Nullable String description) {
     check("getContentDescription()")
         .that(actual.getContentDescription().toString())
         .isEqualTo(description);
-    return this;
   }
 
-  public AbstractAccessibilityRecordSubject hasCurrentItemIndex(int index) {
+  public void hasCurrentItemIndex(int index) {
     check("getCurrentItemIndex()").that(actual.getCurrentItemIndex()).isEqualTo(index);
-    return this;
   }
 
-  public AbstractAccessibilityRecordSubject hasFromIndex(int index) {
+  public void hasFromIndex(int index) {
     check("getFromIndex()").that(actual.getFromIndex()).isEqualTo(index);
-    return this;
   }
 
-  public AbstractAccessibilityRecordSubject hasItemCount(int count) {
+  public void hasItemCount(int count) {
     check("getItemCount()").that(actual.getItemCount()).isEqualTo(count);
-    return this;
   }
 
-  public AbstractAccessibilityRecordSubject hasMaximumScrollX(int scroll) {
+  public void hasMaximumScrollX(int scroll) {
     check("getMaxScrollX()").that(actual.getMaxScrollX()).isEqualTo(scroll);
-    return this;
   }
 
-  public AbstractAccessibilityRecordSubject hasMaximumScrollY(int scroll) {
+  public void hasMaximumScrollY(int scroll) {
     check("getMaxScrollY()").that(actual.getMaxScrollY()).isEqualTo(scroll);
-    return this;
   }
 
-  public AbstractAccessibilityRecordSubject hasRemovedCount(int count) {
+  public void hasRemovedCount(int count) {
     check("getRemovedCount()").that(actual.getRemovedCount()).isEqualTo(count);
-    return this;
   }
 
-  public AbstractAccessibilityRecordSubject hasScrollX(int scroll) {
+  public void hasScrollX(int scroll) {
     check("getScrollX()").that(actual.getScrollX()).isEqualTo(scroll);
-    return this;
   }
 
-  public AbstractAccessibilityRecordSubject hasScrollY(int scroll) {
+  public void hasScrollY(int scroll) {
     check("getScrollY()").that(actual.getScrollY()).isEqualTo(scroll);
-    return this;
   }
 
-  public AbstractAccessibilityRecordSubject hasSource(@Nullable AccessibilityNodeInfo info) {
+  public void hasSource(@Nullable AccessibilityNodeInfo info) {
     check("getSource()").that(actual.getSource()).isSameInstanceAs(info);
-    return this;
   }
 
-  public AbstractAccessibilityRecordSubject hasText(@Nonnull List<String> text) {
+  public void hasText(@Nonnull List<String> text) {
     FluentIterable<String> actualText = FluentIterable.from(actual.getText())
         .transform(CharSequence::toString);
     check("getText()")
@@ -117,67 +104,54 @@ public abstract class AbstractAccessibilityRecordSubject<T extends Accessibility
         .that(actualText)
         .containsExactlyElementsIn(text)
         .inOrder();
-    return this;
   }
 
-  public AbstractAccessibilityRecordSubject hasToIndex(int index) {
+  public void hasToIndex(int index) {
     check("getToIndex()").that(actual.getToIndex()).isEqualTo(index);
-    return this;
   }
 
-  public AbstractAccessibilityRecordSubject hasWindowId(int id) {
+  public void hasWindowId(int id) {
     int actualId = actual.getWindowId();
     check("getWindowId()").that(actual.getWindowId()).isEqualTo(id);
-    return this;
   }
 
-  public AbstractAccessibilityRecordSubject isChecked() {
+  public void isChecked() {
     check("isChecked()").that(actual.isChecked()).isTrue();
-    return this;
   }
 
-  public AbstractAccessibilityRecordSubject isNotChecked() {
+  public void isNotChecked() {
     check("isChecked()").that(actual.isChecked()).isFalse();
-    return this;
   }
 
-  public AbstractAccessibilityRecordSubject isEnabled() {
+  public void isEnabled() {
     check("isEnabled()").that(actual.isEnabled()).isTrue();
-    return this;
   }
 
-  public AbstractAccessibilityRecordSubject isNotEnabled() {
+  public void isNotEnabled() {
     check("isEnabled()").that(actual.isEnabled()).isFalse();
-    return this;
   }
 
-  public AbstractAccessibilityRecordSubject isFullScreen() {
+  public void isFullScreen() {
     check("isFullScreen()").that(actual.isFullScreen()).isTrue();
-    return this;
   }
 
-  public AbstractAccessibilityRecordSubject isNotFullScreen() {
+  public void isNotFullScreen() {
     check("isFullScreen()").that(actual.isFullScreen()).isFalse();
-    return this;
   }
 
-  public AbstractAccessibilityRecordSubject isPassword() {
+  public void isPassword() {
     check("isPassword()").that(actual.isPassword()).isTrue();
-    return this;
   }
 
-  public AbstractAccessibilityRecordSubject isNotPassword() {
+  public void isNotPassword() {
     check("isPassword()").that(actual.isPassword()).isFalse();
-    return this;
   }
 
-  public AbstractAccessibilityRecordSubject isScrollable() {
+  public void isScrollable() {
     check("isScrollable()").that(actual.isScrollable()).isTrue();
-    return this;
   }
 
-  public AbstractAccessibilityRecordSubject isNotScrollable() {
+  public void isNotScrollable() {
     check("isScrollable()").that(actual.isScrollable()).isFalse();
-    return this;
   }
 }

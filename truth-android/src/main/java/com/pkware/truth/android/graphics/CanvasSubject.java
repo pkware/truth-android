@@ -38,58 +38,47 @@ public class CanvasSubject extends Subject {
     this.actual = actual;
   }
 
-  public CanvasSubject hasClipBounds(@Nullable Rect bounds) {
+  public void hasClipBounds(@Nullable Rect bounds) {
     check("getClipBounds()").that(actual.getClipBounds()).isEqualTo(bounds);
-    return this;
   }
 
-  public CanvasSubject hasDensity(int density) {
+  public void hasDensity(int density) {
     check("getDensity()").that(actual.getDensity()).isEqualTo(density);
-    return this;
   }
 
-  public CanvasSubject hasHeight(int height) {
+  public void hasHeight(int height) {
     check("getHeight()").that(actual.getHeight()).isEqualTo(height);
-    return this;
   }
 
-  public CanvasSubject hasMaximumBitmapHeight(int height) {
+  public void hasMaximumBitmapHeight(int height) {
     check("getMaximumBitmapHeight()").that(actual.getMaximumBitmapHeight()).isEqualTo(height);
-    return this;
   }
 
-  public CanvasSubject hasMaximumBitmapWidth(int width) {
+  public void hasMaximumBitmapWidth(int width) {
     check("getMaximumBitmapWidth()").that(actual.getMaximumBitmapWidth()).isEqualTo(width);
-    return this;
   }
 
-  public CanvasSubject hasSaveCount(int count) {
+  public void hasSaveCount(int count) {
     check("getSaveCount()").that(actual.getSaveCount()).isEqualTo(count);
-    return this;
   }
 
-  public CanvasSubject hasWidth(int width) {
+  public void hasWidth(int width) {
     check("getWidth()").that(actual.getWidth()).isEqualTo(width);
-    return this;
   }
 
-  public CanvasSubject isHardwareAccelerated() {
+  public void isHardwareAccelerated() {
     check("isHardwareAccelerated()").that(actual.isHardwareAccelerated()).isTrue();
-    return this;
   }
 
-  public CanvasSubject isNotHardwareAccelerated() {
+  public void isNotHardwareAccelerated() {
     check("isHardwareAccelerated()").that(actual.isHardwareAccelerated()).isFalse();
-    return this;
   }
 
-  public CanvasSubject isOpaque() {
+  public void isOpaque() {
     check("isOpaque()").that(actual.isOpaque()).isTrue();
-    return this;
   }
 
-  public CanvasSubject isNotOpaque() {
+  public void isNotOpaque() {
     check("isOpaque()").that(actual.isOpaque()).isFalse();
-    return this;
   }
 }

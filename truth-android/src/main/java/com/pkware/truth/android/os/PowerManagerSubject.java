@@ -40,25 +40,21 @@ public class PowerManagerSubject extends Subject {
     this.actual = actual;
   }
 
-  public PowerManagerSubject isScreenOn() {
+  public void isScreenOn() {
     check("isScreenOn()").that(actual.isScreenOn()).isTrue();
-    return this;
   }
 
-  public PowerManagerSubject isScreenOff() {
+  public void isScreenOff() {
     check("isScreenOn()").that(actual.isScreenOn()).isFalse();
-    return this;
   }
 
   @TargetApi(KITKAT_WATCH)
-  public PowerManagerSubject isInteractive() {
+  public void isInteractive() {
     check("isInteractive()").that(actual.isInteractive()).isTrue();
-    return this;
   }
 
   @TargetApi(KITKAT_WATCH)
-  public PowerManagerSubject isNotInteractive() {
+  public void isNotInteractive() {
     check("isInteractive()").that(actual.isInteractive()).isFalse();
-    return this;
   }
 }

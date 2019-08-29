@@ -64,18 +64,16 @@ public class CalendarViewSubject extends AbstractFrameLayoutSubject<CalendarView
     }
   }
 
-  public CalendarViewSubject hasDate(long date) {
+  public void hasDate(long date) {
     check("getDate()").that(actual.getDate()).isEqualTo(date);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public CalendarViewSubject hasDateTextAppearance(int resId) {
+  public void hasDateTextAppearance(int resId) {
     check("getDateTextAppearance()").that(actual.getDateTextAppearance()).isEqualTo(resId);
-    return this;
   }
 
-  public CalendarViewSubject hasFirstDayOfWeek(@DayOfTheWeek int day) {
+  public void hasFirstDayOfWeek(@DayOfTheWeek int day) {
     int actualDay = actual.getFirstDayOfWeek();
     //noinspection WrongConstant
     check("getFirstDayOfWeek()")
@@ -83,99 +81,86 @@ public class CalendarViewSubject extends AbstractFrameLayoutSubject<CalendarView
             dayOfWeekToString(day), dayOfWeekToString(actualDay))
         .that(actualDay)
         .isEqualTo(day);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public CalendarViewSubject hasFocusedMonthDateColor(int color) {
+  public void hasFocusedMonthDateColor(int color) {
     int actualColor = actual.getFocusedMonthDateColor();
     check("getFocusedMonthDateColor()")
         .withMessage("Expected focused month date color <%s> but was <%s>.",
             Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
-    return this;
   }
 
-  public CalendarViewSubject hasMaxDate(long date) {
+  public void hasMaxDate(long date) {
     check("getMaxDate()").that(actual.getMaxDate()).isEqualTo(date);
-    return this;
   }
 
-  public CalendarViewSubject hasMinDate(long date) {
+  public void hasMinDate(long date) {
     check("getMinDate()").that(actual.getMinDate()).isEqualTo(date);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public CalendarViewSubject hasSelectedDateVerticalBar(@Nullable Drawable drawable) {
+  public void hasSelectedDateVerticalBar(@Nullable Drawable drawable) {
     check("getSelectedDateVerticalBar()").that(actual.getSelectedDateVerticalBar()).isSameInstanceAs(drawable);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public CalendarViewSubject hasSelectedWeekBackgroundColor(int color) {
+  public void hasSelectedWeekBackgroundColor(int color) {
     int actualColor = actual.getSelectedWeekBackgroundColor();
     check("getSelectedWeekBackgroundColor()")
         .withMessage("Expected selected week background color <%s> but was <%s>.",
             Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
-    return this;
   }
 
-  public CalendarViewSubject isShowingWeekNumber() {
+  public void isShowingWeekNumber() {
     check("getShowWeekNumber()").that(actual.getShowWeekNumber()).isTrue();
-    return this;
   }
 
-  public CalendarViewSubject isNotShowingWeekNumber() {
+  public void isNotShowingWeekNumber() {
     check("getShowWeekNumber()").that(actual.getShowWeekNumber()).isFalse();
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public CalendarViewSubject hasShownWeekCount(int count) {
+  public void hasShownWeekCount(int count) {
     check("getShownWeekCount()").that(actual.getShownWeekCount()).isEqualTo(count);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public CalendarViewSubject hasUnfocusedMonthDateColor(int color) {
+  public void hasUnfocusedMonthDateColor(int color) {
     int actualColor = actual.getUnfocusedMonthDateColor();
     check("getUnfocusedMonthDateColor()")
         .withMessage("Expected unfocused month date color <%s> but was <%s>.",
             Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public CalendarViewSubject hasWeekDayTextAppearance(int resId) {
+  public void hasWeekDayTextAppearance(int resId) {
     check("getWeekDayTextAppearance()").that(actual.getWeekDayTextAppearance()).isEqualTo(resId);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public CalendarViewSubject hasWeekNumberColor(int color) {
+  public void hasWeekNumberColor(int color) {
     int actualColor = actual.getWeekNumberColor();
     check("getWeekNumberColor()")
         .withMessage("Expected week number color <%s> but was <%s>.",
             Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public CalendarViewSubject hasWeekSeparatorLineColor(int color) {
+  public void hasWeekSeparatorLineColor(int color) {
     int actualColor = actual.getWeekSeparatorLineColor();
     check("getWeekSeparatorLineColor()")
         .withMessage("Expected week separator line color <%s> but was <%s>.",
             Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
-    return this;
   }
 }

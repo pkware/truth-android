@@ -37,31 +37,27 @@ public class VelocityTrackerSubject extends Subject {
     this.actual = actual;
   }
 
-  public VelocityTrackerSubject hasXVelocity(float velocity, float tolerance) {
+  public void hasXVelocity(float velocity, float tolerance) {
     check("getXVelocity()").that(actual.getXVelocity()).isWithin(tolerance).of(velocity);
-    return this;
   }
 
-  public VelocityTrackerSubject hasXVelocity(int id, float velocity, float tolerance) {
+  public void hasXVelocity(int id, float velocity, float tolerance) {
     check("getItem(index)")
         .withMessage("X velocity for ID %s", id)
         .that(actual.getXVelocity(id))
         .isWithin(tolerance)
         .of(velocity);
-    return this;
   }
 
-  public VelocityTrackerSubject hasYVelocity(float velocity, float tolerance) {
+  public void hasYVelocity(float velocity, float tolerance) {
     check("getYVelocity()").that(actual.getYVelocity()).isWithin(tolerance).of(velocity);
-    return this;
   }
 
-  public VelocityTrackerSubject hasYVelocity(int id, float velocity, float tolerance) {
+  public void hasYVelocity(int id, float velocity, float tolerance) {
     check("getYVelocity(id)")
         .withMessage("Y velocity for ID %s", id)
         .that(actual.getYVelocity(id))
         .isWithin(tolerance)
         .of(velocity);
-    return this;
   }
 }

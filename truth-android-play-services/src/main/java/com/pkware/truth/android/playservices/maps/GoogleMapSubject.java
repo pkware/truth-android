@@ -36,60 +36,49 @@ public class GoogleMapSubject extends Subject {
     this.actual = actual;
   }
 
-  public GoogleMapSubject hasMapType(int mapType) {
+  public void hasMapType(int mapType) {
     check("getMapType()").that(actual.getMapType()).isEqualTo(mapType);
-    return this;
   }
 
-  public GoogleMapSubject hasMaxZoomLevel(float zoomLevel, float tolerance) {
+  public void hasMaxZoomLevel(float zoomLevel, float tolerance) {
     check("getMaxZoomLevel()").that(actual.getMaxZoomLevel()).isWithin(tolerance).of(zoomLevel);
-    return this;
   }
 
-  public GoogleMapSubject hasMinZoomLevel(float zoomLevel, float tolerance) {
+  public void hasMinZoomLevel(float zoomLevel, float tolerance) {
     check("getMinZoomLevel()").that(actual.getMinZoomLevel()).isWithin(tolerance).of(zoomLevel);
-    return this;
   }
 
-  public GoogleMapSubject hasBuildingsEnabled() {
+  public void hasBuildingsEnabled() {
     check("isBuildingsEnabled()").that(actual.isBuildingsEnabled()).isTrue();
-    return this;
   }
 
-  public GoogleMapSubject hasBuildingsDisabled() {
+  public void hasBuildingsDisabled() {
     check("isBuildingsEnabled()").that(actual.isBuildingsEnabled()).isFalse();
-    return this;
   }
 
-  public GoogleMapSubject hasIndoorEnabled() {
+  public void hasIndoorEnabled() {
     check("isIndoorEnabled()").that(actual.isIndoorEnabled()).isTrue();
-    return this;
   }
 
-  public GoogleMapSubject hasIndoorDisabled() {
+  public void hasIndoorDisabled() {
     check("isIndoorEnabled()").that(actual.isIndoorEnabled()).isFalse();
-    return this;
   }
 
-  public GoogleMapSubject hasMyLocationEnabled() {
+  public void hasMyLocationEnabled() {
     check("isMyLocationEnabled()").that(actual.isMyLocationEnabled()).isTrue();
-    return this;
   }
 
-  public GoogleMapSubject hasMyLocationDisabled() {
+  public void hasMyLocationDisabled() {
     check("isMyLocationEnabled()")
         .withMessage("has 'my location' disabled")
         .that(actual.isMyLocationEnabled()).isFalse();
-    return this;
   }
 
-  public GoogleMapSubject hasTrafficEnabled() {
+  public void hasTrafficEnabled() {
     check("isTrafficEnabled()").that(actual.isTrafficEnabled()).isTrue();
-    return this;
   }
 
-  public GoogleMapSubject hasTrafficDisabled() {
+  public void hasTrafficDisabled() {
     check("isTrafficEnabled()").that(actual.isTrafficEnabled()).isFalse();
-    return this;
   }
 }

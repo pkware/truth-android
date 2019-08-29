@@ -42,17 +42,15 @@ public class TaskStackBuilderSubject extends Subject {
     this.actual = actual;
   }
 
-  public TaskStackBuilderSubject hasIntentCount(int count) {
+  public void hasIntentCount(int count) {
     check("getIntentCount()").that(actual.getIntentCount()).isEqualTo(count);
-    return this;
   }
 
-  public TaskStackBuilderSubject containsIntents(@Nonnull Intent... intents) {
+  public void containsIntents(@Nonnull Intent... intents) {
     check("getIntents()")
         .that(actual.getIntents())
         .asList()
         .containsExactlyElementsIn(intents)
         .inOrder();
-    return this;
   }
 }

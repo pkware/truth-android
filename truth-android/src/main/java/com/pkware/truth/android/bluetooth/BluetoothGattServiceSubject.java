@@ -54,12 +54,11 @@ public class BluetoothGattServiceSubject extends Subject {
         .get();
   }
 
-  public BluetoothGattServiceSubject hasInstanceId(int id) {
+  public void hasInstanceId(int id) {
     check("getInstanceId()").that(actual.getInstanceId()).isEqualTo(id);
-    return this;
   }
 
-  public BluetoothGattServiceSubject hasType(@BluetoothGattServiceType int type) {
+  public void hasType(@BluetoothGattServiceType int type) {
     int actualType = actual.getType();
     //noinspection ResourceType
     check("getType()")
@@ -68,11 +67,9 @@ public class BluetoothGattServiceSubject extends Subject {
             typeToString(actualType))
         .that(actualType)
         .isEqualTo(type);
-    return this;
   }
 
-  public BluetoothGattServiceSubject hasUuid(@Nullable UUID uuid) {
+  public void hasUuid(@Nullable UUID uuid) {
     check("getUuid()").that(actual.getUuid()).isEqualTo(uuid);
-    return this;
   }
 }

@@ -87,122 +87,103 @@ public class NotificationSubject extends Subject {
         .get();
   }
 
-  public NotificationSubject hasContentIntent(@Nullable PendingIntent intent) {
+  public void hasContentIntent(@Nullable PendingIntent intent) {
     check("contentIntent").that(actual.contentIntent).isEqualTo(intent);
-    return this;
   }
 
-  public NotificationSubject hasDefaults(int defaults) {
+  public void hasDefaults(int defaults) {
     check("defaults").that(actual.defaults).isEqualTo(defaults);
-    return this;
   }
 
-  public NotificationSubject hasDeleteIntent(@Nullable PendingIntent intent) {
+  public void hasDeleteIntent(@Nullable PendingIntent intent) {
     check("deleteIntent").that(actual.deleteIntent).isEqualTo(intent);
-    return this;
   }
 
-  public NotificationSubject hasFlags(@NotificationFlags int flags) {
+  public void hasFlags(@NotificationFlags int flags) {
     int actualFlags = actual.flags;
     //noinspection ResourceType
     check("flags")
         .withMessage("Expected flags <%s> but was <%s>.", flagsToString(flags), flagsToString(actualFlags & flags))
         .that(actualFlags & flags)
         .isEqualTo(flags);
-    return this;
   }
 
-  public NotificationSubject hasOnlyFlags(@NotificationFlags int flags) {
+  public void hasOnlyFlags(@NotificationFlags int flags) {
     int actualFlags = actual.flags;
     //noinspection ResourceType
     check("flags")
         .withMessage("Expected flags <%s> but was <%s>.", flagsToString(flags), flagsToString(actualFlags))
         .that(actualFlags)
         .isEqualTo(flags);
-    return this;
   }
 
-  public NotificationSubject hasFullScreenIntent(@Nullable PendingIntent intent) {
+  public void hasFullScreenIntent(@Nullable PendingIntent intent) {
     check("fullScreenIntent").that(actual.fullScreenIntent).isEqualTo(intent);
-    return this;
   }
 
   @TargetApi(KITKAT_WATCH)
-  public NotificationSubject hasGroup(@Nullable String group) {
+  public void hasGroup(@Nullable String group) {
     check("getGroup()").that(actual.getGroup()).isEqualTo(group);
-    return this;
   }
 
-  public NotificationSubject hasIcon(@DrawableRes int resId) {
+  public void hasIcon(@DrawableRes int resId) {
     check("icon").that(actual.icon).isEqualTo(resId);
-    return this;
   }
 
-  public NotificationSubject hasIconLevel(int level) {
+  public void hasIconLevel(int level) {
     check("iconLevel").that(actual.iconLevel).isEqualTo(level);
-    return this;
   }
 
-  public NotificationSubject hasLargeIcon(@Nullable Bitmap bitmap) {
+  public void hasLargeIcon(@Nullable Bitmap bitmap) {
     check("largeIcon").that(actual.largeIcon).isEqualTo(bitmap);
-    return this;
   }
 
-  public NotificationSubject hasLedColor(int color) {
+  public void hasLedColor(int color) {
     int actualColor = actual.ledARGB;
     check("ledARGB")
         .withMessage("Expected LED color <%s> but was <%s>.", Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
-    return this;
   }
 
-  public NotificationSubject hasLedOffMs(int length) {
+  public void hasLedOffMs(int length) {
     check("ledOffMS").withMessage("LED off time (ms)").that(actual.ledOffMS).isEqualTo(length);
-    return this;
   }
 
-  public NotificationSubject hasLedOnMs(int length) {
+  public void hasLedOnMs(int length) {
     check("ledOnMS").withMessage("LED on time (ms)").that(actual.ledOnMS).isEqualTo(length);
-    return this;
   }
 
-  public NotificationSubject hasNumber(int number) {
+  public void hasNumber(int number) {
     check("number").that(actual.number).isEqualTo(number);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public NotificationSubject hasPriority(@NotificationPriority int priority) {
+  public void hasPriority(@NotificationPriority int priority) {
     int actualPriority = actual.priority;
     //noinspection ResourceType
     check("priority")
         .withMessage("Expected priority <%s> but was <%s>.", priorityToString(priority), priorityToString(actualPriority))
         .that(actualPriority)
         .isEqualTo(priority);
-    return this;
   }
 
   @TargetApi(KITKAT_WATCH)
-  public NotificationSubject hasSortKey(@Nullable String sortKey) {
+  public void hasSortKey(@Nullable String sortKey) {
     check("getSortKey()").that(actual.getSortKey()).isEqualTo(sortKey);
-    return this;
   }
 
-  public NotificationSubject hasTickerText(@Nullable CharSequence text) {
+  public void hasTickerText(@Nullable CharSequence text) {
     check("tickerText").that(actual.tickerText).isEqualTo(text);
-    return this;
   }
 
-  public NotificationSubject hasVibration(long[] vibration) {
+  public void hasVibration(long[] vibration) {
     List<Object> vibrations = new ArrayList<>(vibration.length);
     Collections.addAll(vibrations, vibration);
     check("vibrate").that(actual.vibrate).asList().containsExactlyElementsIn(vibrations).inOrder();
-    return this;
   }
 
-  public NotificationSubject hasWhen(long when) {
+  public void hasWhen(long when) {
     check("when").that(actual.when).isEqualTo(when);
-    return this;
   }
 }

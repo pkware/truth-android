@@ -37,38 +37,31 @@ public class UsbEndpointSubject extends Subject {
     this.actual = actual;
   }
 
-  public UsbEndpointSubject hasAddress(int address) {
+  public void hasAddress(int address) {
     check("getAddress()").that(actual.getAddress()).isEqualTo(address);
-    return this;
   }
 
-  public UsbEndpointSubject hasAttributes(int attributes) {
+  public void hasAttributes(int attributes) {
     check("getAttributes()").that(actual.getAttributes()).isEqualTo(attributes);
-    return this;
   }
 
-  public UsbEndpointSubject hasDirection(int direction) {
+  public void hasDirection(int direction) {
     check("getDirection()").that(actual.getDirection()).isEqualTo(direction);
-    return this;
   }
 
-  public UsbEndpointSubject hasEndpointNumber(int number) {
+  public void hasEndpointNumber(int number) {
     check("getEndpointNumber()").that(actual.getEndpointNumber()).isEqualTo(number);
-    return this;
   }
 
-  public UsbEndpointSubject hasInterval(int interval) {
+  public void hasInterval(int interval) {
     check("getInterval()").that(actual.getInterval()).isEqualTo(interval);
-    return this;
   }
 
-  public UsbEndpointSubject hasMaximumPacketSize(int size) {
+  public void hasMaximumPacketSize(int size) {
     check("getMaxPacketSize()").that(actual.getMaxPacketSize()).isEqualTo(size);
-    return this;
   }
 
-  public UsbEndpointSubject hasType(int type) {
+  public void hasType(int type) {
     check("getType()").that(actual.getType()).isEqualTo(type);
-    return this;
   }
 }

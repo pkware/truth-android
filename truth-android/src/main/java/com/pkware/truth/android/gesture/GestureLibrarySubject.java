@@ -37,23 +37,19 @@ public class GestureLibrarySubject extends Subject {
     this.actual = actual;
   }
 
-  public GestureLibrarySubject hasOrientationStyle(int style) {
+  public void hasOrientationStyle(int style) {
     check("getOrientationStyle()").that(actual.getOrientationStyle()).isEqualTo(style);
-    return this;
   }
 
-  public GestureLibrarySubject hasSequenceType(int type) {
+  public void hasSequenceType(int type) {
     check("getSequenceType()").that(actual.getSequenceType()).isEqualTo(type);
-    return this;
   }
 
-  public GestureLibrarySubject isReadOnly() {
+  public void isReadOnly() {
     check("isReadOnly()").that(actual.isReadOnly()).isTrue();
-    return this;
   }
 
-  public GestureLibrarySubject isNotReadOnly() {
+  public void isNotReadOnly() {
     check("isReadOnly()").that(actual.isReadOnly()).isFalse();
-    return this;
   }
 }

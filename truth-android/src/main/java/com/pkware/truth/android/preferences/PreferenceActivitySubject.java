@@ -38,23 +38,19 @@ public class PreferenceActivitySubject
     this.actual = actual;
   }
 
-  public PreferenceActivitySubject hasHeaders() {
+  public void hasHeaders() {
     check("hasHeaders()").that(actual.hasHeaders()).isTrue();
-    return this;
   }
 
-  public PreferenceActivitySubject hasNoHeaders() {
+  public void hasNoHeaders() {
     check("hasHeaders()").that(actual.hasHeaders()).isFalse();
-    return this;
   }
 
-  public PreferenceActivitySubject isMultiPane() {
+  public void isMultiPane() {
     check("isMultiPane()").that(actual.isMultiPane()).isTrue();
-    return this;
   }
 
-  public PreferenceActivitySubject isNotMultiPane() {
+  public void isNotMultiPane() {
     check("isMultiPane()").that(actual.isMultiPane()).isFalse();
-    return this;
   }
 }

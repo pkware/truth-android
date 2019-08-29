@@ -37,23 +37,19 @@ public class GestureStoreSubject extends Subject {
     this.actual = actual;
   }
 
-  public GestureStoreSubject hasOrientationStyle(int style) {
+  public void hasOrientationStyle(int style) {
     check("getOrientationStyle()").that(actual.getOrientationStyle()).isEqualTo(style);
-    return this;
   }
 
-  public GestureStoreSubject hasSequenceType(int type) {
+  public void hasSequenceType(int type) {
     check("getSequenceType()").that(actual.getSequenceType()).isEqualTo(type);
-    return this;
   }
 
-  public GestureStoreSubject hasChanged() {
+  public void hasChanged() {
     check("hasChanged()").that(actual.hasChanged()).isTrue();
-    return this;
   }
 
-  public GestureStoreSubject hasNotChanged() {
+  public void hasNotChanged() {
     check("hasChanged()").that(actual.hasChanged()).isFalse();
-    return this;
   }
 }

@@ -37,8 +37,7 @@ public class CardViewSubject extends AbstractViewGroupSubject<CardView> {
     this.actual = actual;
   }
 
-  public CardViewSubject hasRadius(int radius) {
+  public void hasRadius(int radius) {
     check("getRadius()").that(actual.getRadius()).isEqualTo(radius);
-    return this;
   }
 }

@@ -37,18 +37,15 @@ public class PointFSubject extends Subject {
     this.actual = actual;
   }
 
-  public PointFSubject hasX(float x, float tolerance) {
+  public void hasX(float x, float tolerance) {
     check("x").that(actual.x).isWithin(tolerance).of(x);
-    return this;
   }
 
-  public PointFSubject hasY(float y, float tolerance) {
+  public void hasY(float y, float tolerance) {
     check("y").that(actual.y).isWithin(tolerance).of(y);
-    return this;
   }
 
-  public PointFSubject hasLength(float length, float tolerance) {
+  public void hasLength(float length, float tolerance) {
     check("length()").that(actual.length()).isWithin(tolerance).of(length);
-    return this;
   }
 }

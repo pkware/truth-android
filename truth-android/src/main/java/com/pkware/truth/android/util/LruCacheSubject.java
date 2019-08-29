@@ -42,38 +42,31 @@ public class LruCacheSubject<K, V> extends Subject {
     return check("snapshot()").that(actual.snapshot());
   }
 
-  public LruCacheSubject<K, V> hasCreateCount(int count) {
+  public void hasCreateCount(int count) {
     check("createCount()").that(actual.createCount()).isEqualTo(count);
-    return this;
   }
 
-  public LruCacheSubject<K, V> hasEvictionCount(int count) {
+  public void hasEvictionCount(int count) {
     check("evictionCount()").that(actual.evictionCount()).isEqualTo(count);
-    return this;
   }
 
-  public LruCacheSubject<K, V> hasHitCount(int count) {
+  public void hasHitCount(int count) {
     check("hitCount()").that(actual.hitCount()).isEqualTo(count);
-    return this;
   }
 
-  public LruCacheSubject<K, V> hasMaxSize(int size) {
+  public void hasMaxSize(int size) {
     check("maxSize()").that(actual.maxSize()).isEqualTo(size);
-    return this;
   }
 
-  public LruCacheSubject<K, V> hasMissCount(int count) {
+  public void hasMissCount(int count) {
     check("missCount()").that(actual.missCount()).isEqualTo(count);
-    return this;
   }
 
-  public LruCacheSubject<K, V> hasPutCount(int count) {
+  public void hasPutCount(int count) {
     check("putCount()").that(actual.putCount()).isEqualTo(count);
-    return this;
   }
 
-  public LruCacheSubject<K, V> hasSize(int size) {
+  public void hasSize(int size) {
     check("size()").that(actual.size()).isEqualTo(size);
-    return this;
   }
 }

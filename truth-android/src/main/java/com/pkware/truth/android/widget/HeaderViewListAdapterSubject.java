@@ -37,18 +37,15 @@ public class HeaderViewListAdapterSubject extends AbstractWrapperListAdapterSubj
     this.actual = actual;
   }
 
-  public HeaderViewListAdapterSubject hasFootersCount(int count) {
+  public void hasFootersCount(int count) {
     check("getFootersCount()").that(actual.getFootersCount()).isEqualTo(count);
-    return this;
   }
 
-  public HeaderViewListAdapterSubject hasHeadersCount(int count) {
+  public void hasHeadersCount(int count) {
     check("getHeadersCount()").that(actual.getHeadersCount()).isEqualTo(count);
-    return this;
   }
 
-  public HeaderViewListAdapterSubject hasFilter(@Nullable Filter filter) {
+  public void hasFilter(@Nullable Filter filter) {
     check("getFilter()").that(actual.getFilter()).isSameInstanceAs(filter);
-    return this;
   }
 }

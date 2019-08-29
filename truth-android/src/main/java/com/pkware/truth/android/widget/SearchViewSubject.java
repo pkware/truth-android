@@ -45,30 +45,26 @@ public class SearchViewSubject extends AbstractLinearLayoutSubject<SearchView> {
   }
 
   @TargetApi(JELLY_BEAN)
-  public SearchViewSubject hasImeOptions(int options) {
+  public void hasImeOptions(int options) {
     check("getImeOptions()").that(actual.getImeOptions()).isEqualTo(options);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public SearchViewSubject hasInputType(int type) {
+  public void hasInputType(int type) {
     check("getInputType()").that(actual.getInputType()).isEqualTo(type);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public SearchViewSubject hasMaximumWidth(int width) {
+  public void hasMaximumWidth(int width) {
     check("getMaxWidth()").that(actual.getMaxWidth()).isEqualTo(width);
-    return this;
   }
 
-  public SearchViewSubject hasQuery(@Nullable String query) {
+  public void hasQuery(@Nullable String query) {
     check("getQuery()").that(actual.getQuery().toString()).isEqualTo(query);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public SearchViewSubject hasQueryHint(@Nullable String hint) {
+  public void hasQueryHint(@Nullable String hint) {
     CharSequence actualHint = actual.getQueryHint();
     String actualHintString;
     if (actualHint == null) {
@@ -77,55 +73,45 @@ public class SearchViewSubject extends AbstractLinearLayoutSubject<SearchView> {
       actualHintString = actualHint.toString();
     }
     check("getQueryHint()").that(actualHintString).isEqualTo(hint);
-    return this;
   }
 
-  public SearchViewSubject hasQueryHint(@StringRes int resId) {
-    return hasQueryHint(actual.getContext().getString(resId));
+  public void hasQueryHint(@StringRes int resId) {
+    hasQueryHint(actual.getContext().getString(resId));
   }
 
-  public SearchViewSubject hasSuggestionsAdapter(@Nullable CursorAdapter adapter) {
+  public void hasSuggestionsAdapter(@Nullable CursorAdapter adapter) {
     check("getSuggestionsAdapter()").that(actual.getSuggestionsAdapter()).isSameInstanceAs(adapter);
-    return this;
   }
 
-  public SearchViewSubject isIconifiedByDefault() {
+  public void isIconifiedByDefault() {
     check("isIconfiedByDefault()").that(actual.isIconfiedByDefault()).isTrue();
-    return this;
   }
 
-  public SearchViewSubject isNotIconifiedByDefault() {
+  public void isNotIconifiedByDefault() {
     check("isIconfiedByDefault()").that(actual.isIconfiedByDefault()).isFalse();
-    return this;
   }
 
-  public SearchViewSubject isIconified() {
+  public void isIconified() {
     check("isIconified()").that(actual.isIconified()).isTrue();
-    return this;
   }
 
-  public SearchViewSubject isNotIconified() {
+  public void isNotIconified() {
     check("isIconified()").that(actual.isIconified()).isFalse();
-    return this;
   }
 
-  public SearchViewSubject isQueryRefinementEnabled() {
+  public void isQueryRefinementEnabled() {
     check("isQueryRefinementEnabled()").that(actual.isQueryRefinementEnabled()).isTrue();
-    return this;
   }
 
-  public SearchViewSubject isQueryRefinementDisabled() {
+  public void isQueryRefinementDisabled() {
     check("isQueryRefinementEnabled()").that(actual.isQueryRefinementEnabled()).isFalse();
-    return this;
   }
 
-  public SearchViewSubject isSubmitButtonEnabled() {
+  public void isSubmitButtonEnabled() {
     check("isSubmitButtonEnabled()").that(actual.isSubmitButtonEnabled()).isTrue();
-    return this;
   }
 
-  public SearchViewSubject isSubmitButtonDisabled() {
+  public void isSubmitButtonDisabled() {
     check("isSubmitButtonEnabled()").that(actual.isSubmitButtonEnabled()).isFalse();
-    return this;
   }
 }

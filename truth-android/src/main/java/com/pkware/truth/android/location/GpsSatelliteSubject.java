@@ -37,53 +37,43 @@ public class GpsSatelliteSubject extends Subject {
     this.actual = actual;
   }
 
-  public GpsSatelliteSubject hasAzimuth(float azimuth, float tolerance) {
+  public void hasAzimuth(float azimuth, float tolerance) {
     check("getAzimuth()").that(actual.getAzimuth()).isWithin(tolerance).of(azimuth);
-    return this;
   }
 
-  public GpsSatelliteSubject hasElevation(float elevation, float tolerance) {
+  public void hasElevation(float elevation, float tolerance) {
     check("getElevation()").that(actual.getElevation()).isWithin(tolerance).of(elevation);
-    return this;
   }
 
-  public GpsSatelliteSubject hasPrn(int prn) {
+  public void hasPrn(int prn) {
     check("getPrn()").that(actual.getPrn()).isEqualTo(prn);
-    return this;
   }
 
-  public GpsSatelliteSubject hasSnr(float snr, float tolerance) {
+  public void hasSnr(float snr, float tolerance) {
     check("getSnr()").that(actual.getSnr()).isWithin(tolerance).of(snr);
-    return this;
   }
 
-  public GpsSatelliteSubject hasAlmanac() {
+  public void hasAlmanac() {
     check("hasAlmanac()").that(actual.hasAlmanac()).isTrue();
-    return this;
   }
 
-  public GpsSatelliteSubject hasNoAlmanac() {
+  public void hasNoAlmanac() {
     check("hasAlmanac()").that(actual.hasAlmanac()).isFalse();
-    return this;
   }
 
-  public GpsSatelliteSubject hasEphemeris() {
+  public void hasEphemeris() {
     check("hasEphemeris()").that(actual.hasEphemeris()).isTrue();
-    return this;
   }
 
-  public GpsSatelliteSubject hasNotEphemeris() {
+  public void hasNotEphemeris() {
     check("hasEphemeris()").that(actual.hasEphemeris()).isFalse();
-    return this;
   }
 
-  public GpsSatelliteSubject isUsedInFix() {
+  public void isUsedInFix() {
     check("usedInFix()").that(actual.usedInFix()).isTrue();
-    return this;
   }
 
-  public GpsSatelliteSubject isNotUsedInFix() {
+  public void isNotUsedInFix() {
     check("usedInFix()").that(actual.usedInFix()).isFalse();
-    return this;
   }
 }

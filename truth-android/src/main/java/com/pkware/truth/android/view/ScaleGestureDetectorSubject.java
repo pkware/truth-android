@@ -40,80 +40,65 @@ public class ScaleGestureDetectorSubject extends Subject {
     this.actual = actual;
   }
 
-  public ScaleGestureDetectorSubject hasCurrentSpan(float span, float tolerance) {
+  public void hasCurrentSpan(float span, float tolerance) {
     check("getCurrentSpan()").that(actual.getCurrentSpan()).isWithin(tolerance).of(span);
-    return this;
   }
 
-  public ScaleGestureDetectorSubject hasCurrentSpanX(float span, float tolerance) {
+  public void hasCurrentSpanX(float span, float tolerance) {
     check("getCurrentSpanX()").that(actual.getCurrentSpanX()).isWithin(tolerance).of(span);
-    return this;
   }
 
-  public ScaleGestureDetectorSubject hasCurrentSpanY(float span, float tolerance) {
+  public void hasCurrentSpanY(float span, float tolerance) {
     check("getCurrentSpanY()").that(actual.getCurrentSpanY()).isWithin(tolerance).of(span);
-    return this;
   }
 
-  public ScaleGestureDetectorSubject hasEventTime(long time) {
+  public void hasEventTime(long time) {
     check("getEventTime()").that(actual.getEventTime()).isEqualTo(time);
-    return this;
   }
 
-  public ScaleGestureDetectorSubject hasFocusX(float focus, float tolerance) {
+  public void hasFocusX(float focus, float tolerance) {
     check("getFocusX()").that(actual.getFocusX()).isWithin(tolerance).of(focus);
-    return this;
   }
 
-  public ScaleGestureDetectorSubject hasFocusY(float focus, float tolerance) {
+  public void hasFocusY(float focus, float tolerance) {
     check("getFocusY()").that(actual.getFocusY()).isWithin(tolerance).of(focus);
-    return this;
   }
 
-  public ScaleGestureDetectorSubject hasPreviousSpan(float span, float tolerance) {
+  public void hasPreviousSpan(float span, float tolerance) {
     check("getPreviousSpan()").that(actual.getPreviousSpan()).isWithin(tolerance).of(span);
-    return this;
   }
 
-  public ScaleGestureDetectorSubject hasPreviousSpanX(float span, float tolerance) {
+  public void hasPreviousSpanX(float span, float tolerance) {
     check("getPreviousSpanX()").that(actual.getPreviousSpanX()).isWithin(tolerance).of(span);
-    return this;
   }
 
-  public ScaleGestureDetectorSubject hasPreviousSpanY(float span, float tolerance) {
+  public void hasPreviousSpanY(float span, float tolerance) {
     check("getPreviousSpanY()").that(actual.getPreviousSpanY()).isWithin(tolerance).of(span);
-    return this;
   }
 
-  public ScaleGestureDetectorSubject hasScaleFactor(float factor, float tolerance) {
+  public void hasScaleFactor(float factor, float tolerance) {
     check("getScaleFactor()").that(actual.getScaleFactor()).isWithin(tolerance).of(factor);
-    return this;
   }
 
-  public ScaleGestureDetectorSubject hasTimeDelta(long delta) {
+  public void hasTimeDelta(long delta) {
     check("getTimeDelta()").that(actual.getTimeDelta()).isEqualTo(delta);
-    return this;
   }
 
-  public ScaleGestureDetectorSubject isInProgress() {
+  public void isInProgress() {
     check("isInProgress()").that(actual.isInProgress()).isTrue();
-    return this;
   }
 
-  public ScaleGestureDetectorSubject isNotInProgress() {
+  public void isNotInProgress() {
     check("isInProgress()").that(actual.isInProgress()).isFalse();
-    return this;
   }
 
   @TargetApi(KITKAT)
-  public ScaleGestureDetectorSubject isQuickScaleEnabled() {
+  public void isQuickScaleEnabled() {
     check("isQuickScaleEnabled()").that(actual.isQuickScaleEnabled()).isTrue();
-    return this;
   }
 
   @TargetApi(KITKAT)
-  public ScaleGestureDetectorSubject isQuickScaleDisabled() {
+  public void isQuickScaleDisabled() {
     check("isQuickScaleEnabled()").that(actual.isQuickScaleEnabled()).isFalse();
-    return this;
   }
 }

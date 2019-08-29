@@ -37,13 +37,11 @@ public class SurfaceSubject extends Subject {
     this.actual = actual;
   }
 
-  public SurfaceSubject isValid() {
+  public void isValid() {
     check("isValid()").that(actual.isValid()).isTrue();
-    return this;
   }
 
-  public SurfaceSubject isNotValid() {
+  public void isNotValid() {
     check("isValid()").that(actual.isValid()).isFalse();
-    return this;
   }
 }

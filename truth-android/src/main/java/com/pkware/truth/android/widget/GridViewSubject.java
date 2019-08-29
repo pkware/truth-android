@@ -55,41 +55,35 @@ public class GridViewSubject extends AbstractAbsListViewSubject<GridView> {
   }
 
   @TargetApi(JELLY_BEAN)
-  public GridViewSubject hasColumnWidth(int width) {
+  public void hasColumnWidth(int width) {
     check("getColumnWidth()").that(actual.getColumnWidth()).isEqualTo(width);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public GridViewSubject hasGravity(int gravity) {
+  public void hasGravity(int gravity) {
     check("getGravity()").that(actual.getGravity()).isEqualTo(gravity);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public GridViewSubject hasHorizontalSpacing(int spacing) {
+  public void hasHorizontalSpacing(int spacing) {
     check("getHorizontalSpacing()").that(actual.getHorizontalSpacing()).isEqualTo(spacing);
-    return this;
   }
 
-  public GridViewSubject hasColumnCount(int count) {
+  public void hasColumnCount(int count) {
     check("getNumColumns()").that(actual.getNumColumns()).isEqualTo(count);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public GridViewSubject hasRequestedColumnWidth(int width) {
+  public void hasRequestedColumnWidth(int width) {
     check("getRequestedColumnWidth()").that(actual.getRequestedColumnWidth()).isEqualTo(width);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public GridViewSubject hasRequestedHorizontalSpacing(int spacing) {
+  public void hasRequestedHorizontalSpacing(int spacing) {
     check("getRequestedHorizontalSpacing()").that(actual.getRequestedHorizontalSpacing()).isEqualTo(spacing);
-    return this;
   }
 
-  public GridViewSubject hasStretchMode(@GridViewStretchMode int mode) {
+  public void hasStretchMode(@GridViewStretchMode int mode) {
     int actualMode = actual.getStretchMode();
     //noinspection ResourceType
     check("getStretchMode()")
@@ -97,12 +91,10 @@ public class GridViewSubject extends AbstractAbsListViewSubject<GridView> {
             stretchModeToString(mode), stretchModeToString(actualMode))
         .that(actualMode)
         .isEqualTo(mode);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public GridViewSubject hasVerticalSpacing(int spacing) {
+  public void hasVerticalSpacing(int spacing) {
     check("getVerticalSpacing()").that(actual.getVerticalSpacing()).isEqualTo(spacing);
-    return this;
   }
 }

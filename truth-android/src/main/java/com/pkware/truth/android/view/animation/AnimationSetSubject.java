@@ -36,13 +36,11 @@ public class AnimationSetSubject extends AbstractAnimationSubject<AnimationSet> 
     this.actual = actual;
   }
 
-  public AnimationSetSubject hasDurationHint(long duration) {
+  public void hasDurationHint(long duration) {
     check("computeDurationHint()").that(actual.computeDurationHint()).isEqualTo(duration);
-    return this;
   }
 
-  public AnimationSetSubject hasAnimationCount(int count) {
+  public void hasAnimationCount(int count) {
     check("getAnimations()").that(actual.getAnimations()).hasSize(count);
-    return this;
   }
 }

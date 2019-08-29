@@ -39,23 +39,19 @@ public class RecyclerViewSmoothScrollerActionSubject extends Subject {
     this.actual = actual;
   }
 
-  public RecyclerViewSmoothScrollerActionSubject hasDx(int dx) {
+  public void hasDx(int dx) {
     check("getDx()").that(actual.getDx()).isEqualTo(dx);
-    return this;
   }
 
-  public RecyclerViewSmoothScrollerActionSubject hasDy(int dy) {
+  public void hasDy(int dy) {
     check("getDy()").that(actual.getDy()).isEqualTo(dy);
-    return this;
   }
 
-  public RecyclerViewSmoothScrollerActionSubject hasDuration(int duration) {
+  public void hasDuration(int duration) {
     check("getDuration()").that(actual.getDuration()).isEqualTo(duration);
-    return this;
   }
 
-  public RecyclerViewSmoothScrollerActionSubject hasInterpolator(@Nullable Interpolator interpolator) {
+  public void hasInterpolator(@Nullable Interpolator interpolator) {
     check("getInterpolator()").that(actual.getInterpolator()).isEqualTo(interpolator);
-    return this;
   }
 }

@@ -48,42 +48,35 @@ public class MediaRouteDescriptorSubject extends Subject {
         .get();
   }
 
-  public MediaRouteDescriptorSubject hasDescription(String description) {
+  public void hasDescription(String description) {
     check("getDescription()").that(actual.getDescription()).isEqualTo(description);
-    return this;
   }
 
-  public MediaRouteDescriptorSubject hasId(@Nullable String id) {
+  public void hasId(@Nullable String id) {
     check("getId()").that(actual.getId()).isEqualTo(id);
-    return this;
   }
 
-  public MediaRouteDescriptorSubject hasName(@Nullable String name) {
+  public void hasName(@Nullable String name) {
     check("getName()").that(actual.getName()).isEqualTo(name);
-    return this;
   }
 
-  public MediaRouteDescriptorSubject hasPlaybackStream(int playbackStream) {
+  public void hasPlaybackStream(int playbackStream) {
     check("getPlaybackStream()").that(actual.getPlaybackStream()).isEqualTo(playbackStream);
-    return this;
   }
 
-  public MediaRouteDescriptorSubject hasPlaybackType(int playbackType) {
+  public void hasPlaybackType(int playbackType) {
     check("getPlaybackType()").that(actual.getPlaybackType()).isEqualTo(playbackType);
-    return this;
   }
 
-  public MediaRouteDescriptorSubject hasPresentationDisplayId(int displayId) {
+  public void hasPresentationDisplayId(int displayId) {
     check("getPresentationDisplayId()").that(actual.getPresentationDisplayId()).isEqualTo(displayId);
-    return this;
   }
 
-  public MediaRouteDescriptorSubject hasVolume(int volume) {
+  public void hasVolume(int volume) {
     check("getVolume()").that(actual.getVolume()).isEqualTo(volume);
-    return this;
   }
 
-  public MediaRouteDescriptorSubject hasVolumeHandling(@MediaSessionStatusState int volumeHandling) {
+  public void hasVolumeHandling(@MediaSessionStatusState int volumeHandling) {
     int actualHandling = actual.getVolumeHandling();
     //noinspection WrongConstant
     check("getVolumeHandling()")
@@ -91,43 +84,35 @@ public class MediaRouteDescriptorSubject extends Subject {
             volumeHandling(volumeHandling), volumeHandling(actualHandling))
         .that(actualHandling)
         .isEqualTo(volumeHandling);
-    return this;
   }
 
-  public MediaRouteDescriptorSubject hasVolumeMax(int volumeMax) {
+  public void hasVolumeMax(int volumeMax) {
     check("getVolumeMax()").that(actual.getVolumeMax()).isEqualTo(volumeMax);
-    return this;
   }
 
   @SuppressWarnings("deprecation")
-  public MediaRouteDescriptorSubject isConnecting() {
+  public void isConnecting() {
     check("isConnecting()").that(actual.isConnecting()).isTrue();
-    return this;
   }
 
   @SuppressWarnings("deprecation")
-  public MediaRouteDescriptorSubject isNotConnecting() {
+  public void isNotConnecting() {
     check("isConnecting()").that(actual.isConnecting()).isFalse();
-    return this;
   }
 
-  public MediaRouteDescriptorSubject isEnabled() {
+  public void isEnabled() {
     check("isEnabled()").that(actual.isEnabled()).isTrue();
-    return this;
   }
 
-  public MediaRouteDescriptorSubject isDisabled() {
+  public void isDisabled() {
     check("isEnabled()").that(actual.isEnabled()).isFalse();
-    return this;
   }
 
-  public MediaRouteDescriptorSubject isValid() {
+  public void isValid() {
     check("isValid()").that(actual.isValid()).isTrue();
-    return this;
   }
 
-  public MediaRouteDescriptorSubject isNotValid() {
+  public void isNotValid() {
     check("isValid()").that(actual.isValid()).isFalse();
-    return this;
   }
 }

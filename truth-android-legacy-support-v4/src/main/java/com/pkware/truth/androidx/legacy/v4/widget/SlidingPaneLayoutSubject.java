@@ -37,38 +37,31 @@ public class SlidingPaneLayoutSubject extends AbstractViewGroupSubject<SlidingPa
     this.actual = actual;
   }
 
-  public SlidingPaneLayoutSubject hasCoveredFadeColor(int color) {
+  public void hasCoveredFadeColor(int color) {
     check("getCoveredFadeColor()").that(actual.getCoveredFadeColor()).isEqualTo(color);
-    return this;
   }
 
-  public SlidingPaneLayoutSubject hasParallaxDistance(int distance) {
+  public void hasParallaxDistance(int distance) {
     check("getParallaxDistance()").that(actual.getParallaxDistance()).isEqualTo(distance);
-    return this;
   }
 
-  public SlidingPaneLayoutSubject hasSliderFadeColor(int color) {
+  public void hasSliderFadeColor(int color) {
     check("getSliderFadeColor()").that(actual.getSliderFadeColor()).isEqualTo(color);
-    return this;
   }
 
-  public SlidingPaneLayoutSubject isOpen() {
+  public void isOpen() {
     check("isOpen()").that(actual.isOpen()).isTrue();
-    return this;
   }
 
-  public SlidingPaneLayoutSubject isNotOpen() {
+  public void isNotOpen() {
     check("isOpen()").that(actual.isOpen()).isFalse();
-    return this;
   }
 
-  public SlidingPaneLayoutSubject isSlideable() {
+  public void isSlideable() {
     check("isSlideable()").that(actual.isSlideable()).isTrue();
-    return this;
   }
 
-  public SlidingPaneLayoutSubject isNotSlideable() {
+  public void isNotSlideable() {
     check("isSlideable()").that(actual.isSlideable()).isFalse();
-    return this;
   }
 }

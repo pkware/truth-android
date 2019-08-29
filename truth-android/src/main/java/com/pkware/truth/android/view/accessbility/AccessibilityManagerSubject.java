@@ -37,23 +37,19 @@ public class AccessibilityManagerSubject extends Subject {
     this.actual = actual;
   }
 
-  public AccessibilityManagerSubject isEnabled() {
+  public void isEnabled() {
     check("isEnabled()").that(actual.isEnabled()).isTrue();
-    return this;
   }
 
-  public AccessibilityManagerSubject isDisabled() {
+  public void isDisabled() {
     check("isEnabled()").that(actual.isEnabled()).isFalse();
-    return this;
   }
 
-  public AccessibilityManagerSubject isTouchExplorationEnabled() {
+  public void isTouchExplorationEnabled() {
     check("isTouchExplorationEnabled()").that(actual.isTouchExplorationEnabled()).isTrue();
-    return this;
   }
 
-  public AccessibilityManagerSubject isTouchExplorationDisabled() {
+  public void isTouchExplorationDisabled() {
     check("isTouchExplorationEnabled()").that(actual.isTouchExplorationEnabled()).isFalse();
-    return this;
   }
 }

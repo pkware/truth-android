@@ -36,8 +36,7 @@ public class EditTextPreferencesSubject extends AbstractDialogPreferenceSubject<
     this.actual = actual;
   }
 
-  public EditTextPreferencesSubject hasText(@Nullable String text) {
+  public void hasText(@Nullable String text) {
     check("getText()").that(actual.getText()).isEqualTo(text);
-    return this;
   }
 }

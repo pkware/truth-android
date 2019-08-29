@@ -54,12 +54,11 @@ public class TabLayoutSubject extends AbstractHorizontalScrollViewSubject<TabLay
         .get();
   }
 
-  public TabLayoutSubject hasTabCount(int count) {
+  public void hasTabCount(int count) {
     check("getTabCount()").that(actual.getTabCount()).isEqualTo(count);
-    return this;
   }
 
-  public TabLayoutSubject hasTabGravity(@TabGravity int gravity) {
+  public void hasTabGravity(@TabGravity int gravity) {
     int actualGravity = actual.getTabGravity();
     //noinspection ResourceType
     check("getTabGravity()")
@@ -67,10 +66,9 @@ public class TabLayoutSubject extends AbstractHorizontalScrollViewSubject<TabLay
             gravityToString(gravity), gravityToString(actualGravity))
         .that(actualGravity)
         .isEqualTo(gravity);
-    return this;
   }
 
-  public TabLayoutSubject hasTabMode(@TabMode int mode) {
+  public void hasTabMode(@TabMode int mode) {
     int actualMode = actual.getTabMode();
     //noinspection ResourceType
     check("getTabMode()")
@@ -78,14 +76,13 @@ public class TabLayoutSubject extends AbstractHorizontalScrollViewSubject<TabLay
             modeToString(actualMode))
         .that(actualMode)
         .isEqualTo(mode);
-    return this;
   }
 
-  public TabLayoutSubject hasFixedTabs() {
-    return hasTabMode(TabLayout.MODE_FIXED);
+  public void hasFixedTabs() {
+    hasTabMode(TabLayout.MODE_FIXED);
   }
 
-  public TabLayoutSubject hasScrollingTabs() {
-    return hasTabMode(TabLayout.MODE_SCROLLABLE);
+  public void hasScrollingTabs() {
+    hasTabMode(TabLayout.MODE_SCROLLABLE);
   }
 }

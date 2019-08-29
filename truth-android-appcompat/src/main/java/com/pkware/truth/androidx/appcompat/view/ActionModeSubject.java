@@ -39,49 +39,40 @@ public class ActionModeSubject extends Subject {
     this.actual = actual;
   }
 
-  public ActionModeSubject hasCustomView() {
+  public void hasCustomView() {
     check("getCustomView()").that(actual.getCustomView()).isNotNull();
-    return this;
   }
 
-  public ActionModeSubject hasCustomView(@Nullable View view) {
+  public void hasCustomView(@Nullable View view) {
     View actualView = actual.getCustomView();
     check("getCustomView()").that(actual.getCustomView()).isEqualTo(view);
-    return this;
   }
 
-  public ActionModeSubject hasSubtitle(@Nullable String subtitle) {
+  public void hasSubtitle(@Nullable String subtitle) {
     check("getSubtitle()").that(actual.getSubtitle().toString()).isEqualTo(subtitle);
-    return this;
   }
 
-  public ActionModeSubject hasTag(@Nullable Object tag) {
+  public void hasTag(@Nullable Object tag) {
     check("getTag()").that(actual.getTag()).isEqualTo(tag);
-    return this;
   }
 
-  public ActionModeSubject hasTitle(@Nullable String title) {
+  public void hasTitle(@Nullable String title) {
     check("getTitle()").that(actual.getTitle().toString()).isEqualTo(title);
-    return this;
   }
 
-  public ActionModeSubject hasOptionalTitleHint() {
+  public void hasOptionalTitleHint() {
     check("getTitleOptionalHint()").that(actual.getTitleOptionalHint()).isTrue();
-    return this;
   }
 
-  public ActionModeSubject hasNonOptionalTitleHint() {
+  public void hasNonOptionalTitleHint() {
     check("getTitleOptionalHint()").that(actual.getTitleOptionalHint()).isFalse();
-    return this;
   }
 
-  public ActionModeSubject hasOptionalTitle() {
+  public void hasOptionalTitle() {
     check("isTitleOptional()").that(actual.isTitleOptional()).isTrue();
-    return this;
   }
 
-  public ActionModeSubject hasNonOptionalTitle() {
+  public void hasNonOptionalTitle() {
     check("isTitleOptional()").that(actual.isTitleOptional()).isFalse();
-    return this;
   }
 }

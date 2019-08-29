@@ -69,12 +69,11 @@ public class ActionBarSubject extends Subject {
         .get();
   }
 
-  public ActionBarSubject hasCustomView() {
+  public void hasCustomView() {
     check("getCustomView()").that(actual.getCustomView()).isNotNull();
-    return this;
   }
 
-  public ActionBarSubject hasDisplayOptions(@ActionBarDisplayOptions int options) {
+  public void hasDisplayOptions(@ActionBarDisplayOptions int options) {
     final int actualOptions = actual.getDisplayOptions();
     //noinspection ResourceType
     check("getDisplayOptions()")
@@ -82,20 +81,17 @@ public class ActionBarSubject extends Subject {
             displayOptionsToString(options), displayOptionsToString(actualOptions))
         .that(actualOptions)
         .isEqualTo(options);
-    return this;
   }
 
-  public ActionBarSubject hasHeight(int height) {
+  public void hasHeight(int height) {
     check("getHeight()").that(actual.getHeight()).isEqualTo(height);
-    return this;
   }
 
-  public ActionBarSubject hasNavigationItemCount(int count) {
+  public void hasNavigationItemCount(int count) {
     check("getNavigationItemCount()").that(actual.getNavigationItemCount()).isEqualTo(count);
-    return this;
   }
 
-  public ActionBarSubject hasNavigationMode(int mode) {
+  public void hasNavigationMode(int mode) {
     int actualMode = actual.getNavigationMode();
     //noinspection ResourceType
     check("getNavigationMode()")
@@ -103,44 +99,37 @@ public class ActionBarSubject extends Subject {
             navigationModeToString(actualMode))
         .that(actualMode)
         .isEqualTo(mode);
-    return this;
   }
 
-  public ActionBarSubject hasSelectedNavigationIndex(int index) {
+  public void hasSelectedNavigationIndex(int index) {
     check("getSelectedNavigationIndex()").that(actual.getSelectedNavigationIndex()).isEqualTo(index);
-    return this;
   }
 
-  public ActionBarSubject hasSubtitle(@Nullable String subtitle) {
+  public void hasSubtitle(@Nullable String subtitle) {
     check("getSubtitle()").that(actual.getSubtitle().toString()).isEqualTo(subtitle);
-    return this;
   }
 
-  public ActionBarSubject hasSubtitle(@StringRes int resId) {
-    return hasSubtitle(actual.getThemedContext().getString(resId));
+  public void hasSubtitle(@StringRes int resId) {
+    hasSubtitle(actual.getThemedContext().getString(resId));
   }
 
-  public ActionBarSubject hasTabCount(int count) {
+  public void hasTabCount(int count) {
     check("getTabCount()").that(actual.getTabCount()).isEqualTo(count);
-    return this;
   }
 
-  public ActionBarSubject hasTitle(@Nullable String title) {
+  public void hasTitle(@Nullable String title) {
     check("getTitle()").that(actual.getTitle().toString()).isEqualTo(title);
-    return this;
   }
 
-  public ActionBarSubject hasTitle(@StringRes int resId) {
-    return hasTitle(actual.getThemedContext().getString(resId));
+  public void hasTitle(@StringRes int resId) {
+    hasTitle(actual.getThemedContext().getString(resId));
   }
 
-  public ActionBarSubject isShowing() {
+  public void isShowing() {
     check("isShowing()").that(actual.isShowing()).isTrue();
-    return this;
   }
 
-  public ActionBarSubject isNotShowing() {
+  public void isNotShowing() {
     check("isShowing()").that(actual.isShowing()).isFalse();
-    return this;
   }
 }

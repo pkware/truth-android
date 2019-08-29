@@ -37,38 +37,31 @@ public class DisplayMetricsSubject extends Subject {
     this.actual = actual;
   }
 
-  public DisplayMetricsSubject hasDensity(float density, float tolerance) {
+  public void hasDensity(float density, float tolerance) {
     check("density").that(actual.density).isWithin(tolerance).of(density);
-    return this;
   }
 
-  public DisplayMetricsSubject hasDpi(int dpi) {
+  public void hasDpi(int dpi) {
     check("densityDpi").that(actual.densityDpi).isEqualTo(dpi);
-    return this;
   }
 
-  public DisplayMetricsSubject hasHeight(int height) {
+  public void hasHeight(int height) {
     check("heightPixels").that(actual.heightPixels).isEqualTo(height);
-    return this;
   }
 
-  public DisplayMetricsSubject hasScaledDensity(float scaledDensity, float tolerance) {
+  public void hasScaledDensity(float scaledDensity, float tolerance) {
     check("scaledDensity").that(actual.scaledDensity).isWithin(tolerance).of(scaledDensity);
-    return this;
   }
 
-  public DisplayMetricsSubject hasWidth(int width) {
+  public void hasWidth(int width) {
     check("widthPixels").that(actual.widthPixels).isEqualTo(width);
-    return this;
   }
 
-  public DisplayMetricsSubject hasXDpi(float xDpi, float tolerance) {
+  public void hasXDpi(float xDpi, float tolerance) {
     check("xdpi").that(actual.xdpi).isWithin(tolerance).of(xDpi);
-    return this;
   }
 
-  public DisplayMetricsSubject hasYDpi(float yDpi, float tolerance) {
+  public void hasYDpi(float yDpi, float tolerance) {
     check("ydpi").that(actual.ydpi).isWithin(tolerance).of(yDpi);
-    return this;
   }
 }

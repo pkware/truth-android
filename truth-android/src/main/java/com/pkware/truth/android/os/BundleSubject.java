@@ -40,107 +40,94 @@ public class BundleSubject extends Subject {
     this.actual = actual;
   }
 
-  public BundleSubject hasKey(@Nonnull String key) {
+  public void hasKey(@Nonnull String key) {
     check("containsKey(key)")
         .withMessage("Expected to contain key <%s> but did not.", key)
         .that(actual.containsKey(key))
         .isTrue();
-    return this;
   }
 
-  public BundleSubject hasValue(@Nonnull String key, boolean value) {
+  public void hasValue(@Nonnull String key, boolean value) {
     hasKey(key);
     check("getBoolean(key)")
         .withMessage("value for key <%s>", key)
         .that(actual.getBoolean(key))
         .isEqualTo(value);
-    return this;
   }
 
-  public BundleSubject hasValue(@Nonnull String key, short value) {
+  public void hasValue(@Nonnull String key, short value) {
     hasKey(key);
     check("getShort(key)")
         .withMessage("value for key <%s>", key)
         .that(actual.getShort(key))
         .isEqualTo(value);
-    return this;
   }
 
-  public BundleSubject hasValue(@Nonnull String key, int value) {
+  public void hasValue(@Nonnull String key, int value) {
     hasKey(key);
     check("getInt(key)")
         .withMessage("value for key <%s>", key)
         .that(actual.getInt(key))
         .isEqualTo(value);
-    return this;
   }
 
-  public BundleSubject hasValue(@Nonnull String key, long value) {
+  public void hasValue(@Nonnull String key, long value) {
     hasKey(key);
     check("getLong(key)")
         .withMessage("value for key <%s>", key)
         .that(actual.getLong(key))
         .isEqualTo(value);
-    return this;
   }
 
-  public BundleSubject hasValue(@Nonnull String key, char value) {
+  public void hasValue(@Nonnull String key, char value) {
     hasKey(key);
     check("getChar(key)")
         .withMessage("value for key <%s>", key)
         .that(actual.getChar(key))
         .isEqualTo(value);
-    return this;
   }
 
-  public BundleSubject hasValue(@Nonnull String key, byte value) {
+  public void hasValue(@Nonnull String key, byte value) {
     hasKey(key);
     check("getByte(key)")
         .withMessage("value for key <%s>", key)
         .that(actual.getByte(key))
         .isEqualTo(value);
-    return this;
   }
 
-  public BundleSubject hasValue(@Nonnull String key, @Nullable Parcelable value) {
+  public void hasValue(@Nonnull String key, @Nullable Parcelable value) {
     hasKey(key);
     check("getParcelable(key)")
         .withMessage("value for key <%s>", key)
         .that((Parcelable) actual.getParcelable(key))
         .isEqualTo(value);
-    return this;
   }
 
-  public BundleSubject hasValue(@Nonnull String key, @Nullable Serializable value) {
+  public void hasValue(@Nonnull String key, @Nullable Serializable value) {
     hasKey(key);
     check("getSerializable(key)")
         .withMessage("value for key <%s>", key)
         .that(actual.getSerializable(key))
         .isEqualTo(value);
-    return this;
   }
 
-  public BundleSubject hasValue(@Nonnull String key, @Nullable Object value) {
+  public void hasValue(@Nonnull String key, @Nullable Object value) {
     hasKey(key);
     check("get(key)")
         .withMessage("value for key <%s>", key)
         .that(actual.get(key))
         .isEqualTo(value);
-    return this;
   }
 
-  public BundleSubject isEmpty() {
+  public void isEmpty() {
     check("isEmpty()").that(actual.isEmpty()).isTrue();
-    return this;
   }
 
-  public BundleSubject isNotEmpty() {
+  public void isNotEmpty() {
     check("isEmpty()").that(actual.isEmpty()).isFalse();
-    return this;
   }
 
-  public BundleSubject hasSize(int size) {
+  public void hasSize(int size) {
     check("size()").that(actual.size()).isEqualTo(size);
-    return this;
   }
 }

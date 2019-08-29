@@ -36,28 +36,23 @@ public class AnimationDrawableSubject extends AbstractDrawableSubject<AnimationD
     this.actual = actual;
   }
 
-  public AnimationDrawableSubject hasFrameCount(int count) {
+  public void hasFrameCount(int count) {
     check("getNumberOfFrames()").that(actual.getNumberOfFrames()).isEqualTo(count);
-    return this;
   }
 
-  public AnimationDrawableSubject isOneShot() {
+  public void isOneShot() {
     check("isOneShot()").that(actual.isOneShot()).isTrue();
-    return this;
   }
 
-  public AnimationDrawableSubject isNotOneShot() {
+  public void isNotOneShot() {
     check("isOneShot()").that(actual.isOneShot()).isFalse();
-    return this;
   }
 
-  public AnimationDrawableSubject isRunning() {
+  public void isRunning() {
     check("isRunning()").that(actual.isRunning()).isTrue();
-    return this;
   }
 
-  public AnimationDrawableSubject isNotRunning() {
+  public void isNotRunning() {
     check("isRunning()").that(actual.isRunning()).isFalse();
-    return this;
   }
 }

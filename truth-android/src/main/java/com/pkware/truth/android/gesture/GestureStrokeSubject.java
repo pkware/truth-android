@@ -38,18 +38,15 @@ public class GestureStrokeSubject extends Subject {
     this.actual = actual;
   }
 
-  public GestureStrokeSubject hasBoundingBox(RectF rect) {
+  public void hasBoundingBox(RectF rect) {
     check("boundingBox").that(actual.boundingBox).isEqualTo(rect);
-    return this;
   }
 
-  public GestureStrokeSubject hasLength(float length, float tolerance) {
+  public void hasLength(float length, float tolerance) {
     check("length").that(actual.length).isWithin(tolerance).of(length);
-    return this;
   }
 
-  public GestureStrokeSubject hasPoints(float[] points, float tolerance) {
+  public void hasPoints(float[] points, float tolerance) {
     check("points").that(actual.points).usingTolerance(tolerance).containsAnyOf(points);
-    return this;
   }
 }

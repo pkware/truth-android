@@ -43,83 +43,68 @@ public class AutoCompleteTextViewSubject extends AbstractTextViewSubject<AutoCom
     this.actual = actual;
   }
 
-  public AutoCompleteTextViewSubject hasEnoughToFilter() {
+  public void hasEnoughToFilter() {
     check("enoughToFilter()").that(actual.enoughToFilter()).isTrue();
-    return this;
   }
 
-  public AutoCompleteTextViewSubject hasAdapter(@Nullable ListAdapter adapter) {
+  public void hasAdapter(@Nullable ListAdapter adapter) {
     check("getAdapter()").that(actual.getAdapter()).isSameInstanceAs(adapter);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public AutoCompleteTextViewSubject hasCompletionHint(@Nullable String hint) {
+  public void hasCompletionHint(@Nullable String hint) {
     check("getCompletionHint()").that(actual.getCompletionHint().toString()).isEqualTo(hint);
-    return this;
   }
 
-  public AutoCompleteTextViewSubject hasCompletionHint(@StringRes int resId) {
-    return hasCompletionHint(actual.getContext().getString(resId));
+  public void hasCompletionHint(@StringRes int resId) {
+    hasCompletionHint(actual.getContext().getString(resId));
   }
 
-  public AutoCompleteTextViewSubject hasDropDownAnchor(int id) {
+  public void hasDropDownAnchor(int id) {
     check("getDropDownAnchor()").that(actual.getDropDownAnchor()).isEqualTo(id);
-    return this;
   }
 
-  public AutoCompleteTextViewSubject hasDropDownBackground(@Nullable Drawable background) {
+  public void hasDropDownBackground(@Nullable Drawable background) {
     check("getDropDownBackground()").that(actual.getDropDownBackground()).isSameInstanceAs(background);
-    return this;
   }
 
-  public AutoCompleteTextViewSubject hasDropDownHeight(int height) {
+  public void hasDropDownHeight(int height) {
     check("getDropDownHeight()").that(actual.getDropDownHeight()).isEqualTo(height);
-    return this;
   }
 
-  public AutoCompleteTextViewSubject hasDropDownHorizontalOffset(int offset) {
+  public void hasDropDownHorizontalOffset(int offset) {
     check("getDropDownHorizontalOffset()").that(actual.getDropDownHorizontalOffset()).isEqualTo(offset);
-    return this;
   }
 
-  public AutoCompleteTextViewSubject hasDropDownVerticalOffset(int offset) {
+  public void hasDropDownVerticalOffset(int offset) {
     check("getDropDownVerticalOffset()").that(actual.getDropDownVerticalOffset()).isEqualTo(offset);
-    return this;
   }
 
-  public AutoCompleteTextViewSubject hasDropDownWidth(int width) {
+  public void hasDropDownWidth(int width) {
     check("getDropDownWidth()").that(actual.getDropDownWidth()).isEqualTo(width);
-    return this;
   }
 
-  public AutoCompleteTextViewSubject hasListSelection(int position) {
+  public void hasListSelection(int position) {
     check("getListSelection()").that(actual.getListSelection()).isEqualTo(position);
-    return this;
   }
 
-  public AutoCompleteTextViewSubject hasThreshold(int threshold) {
+  public void hasThreshold(int threshold) {
     check("getThreshold()").that(actual.getThreshold()).isEqualTo(threshold);
-    return this;
   }
 
-  public AutoCompleteTextViewSubject isPerformingCompletion() {
+  public void isPerformingCompletion() {
     check("isPerformingCompletion()").that(actual.isPerformingCompletion()).isTrue();
-    return this;
   }
 
-  public AutoCompleteTextViewSubject isNotPerformingCompletion() {
+  public void isNotPerformingCompletion() {
     check("isPerformingCompletion()").that(actual.isPerformingCompletion()).isFalse();
-    return this;
   }
 
-  public AutoCompleteTextViewSubject isShowingPopup() {
+  public void isShowingPopup() {
     check("isPopupShowing()").that(actual.isPopupShowing()).isTrue();
-    return this;
   }
 
-  public AutoCompleteTextViewSubject isNotShowingPopup() {
+  public void isNotShowingPopup() {
     check("isPopupShowing()").that(actual.isPopupShowing()).isFalse();
-    return this;
   }
 }

@@ -37,73 +37,59 @@ public class MarkerSubject extends Subject {
     this.actual = actual;
   }
 
-  public MarkerSubject hasAlpha(float alpha, float tolerance) {
+  public void hasAlpha(float alpha, float tolerance) {
     check("getAlpha()").that(actual.getAlpha()).isWithin(tolerance).of(alpha);
-    return this;
   }
 
-  public MarkerSubject hasId(@Nullable String id) {
+  public void hasId(@Nullable String id) {
     check("getId()").that(actual.getId()).isEqualTo(id);
-    return this;
   }
 
-  public MarkerSubject hasPosition(@Nullable LatLng position) {
+  public void hasPosition(@Nullable LatLng position) {
     check("getPosition()").that(actual.getPosition()).isEqualTo(position);
-    return this;
   }
 
-  public MarkerSubject hasRotation(float rotation, float tolerance) {
+  public void hasRotation(float rotation, float tolerance) {
     check("getRotation()").that(actual.getRotation()).isWithin(tolerance).of(rotation);
-    return this;
   }
 
-  public MarkerSubject hasSnippet(@Nullable String snippet) {
+  public void hasSnippet(@Nullable String snippet) {
     check("getSnippet()").that(actual.getSnippet()).isEqualTo(snippet);
-    return this;
   }
 
-  public MarkerSubject hasTitle(@Nullable String title) {
+  public void hasTitle(@Nullable String title) {
     check("getTitle()").that(actual.getTitle()).isEqualTo(title);
-    return this;
   }
 
-  public MarkerSubject isDraggable() {
+  public void isDraggable() {
     check("isDraggable()").that(actual.isDraggable()).isTrue();
-    return this;
   }
 
-  public MarkerSubject isNotDraggable() {
+  public void isNotDraggable() {
     check("isDraggable()").that(actual.isDraggable()).isFalse();
-    return this;
   }
 
-  public MarkerSubject isFlat() {
+  public void isFlat() {
     check("isFlat()").that(actual.isFlat()).isTrue();
-    return this;
   }
 
-  public MarkerSubject isNotFlat() {
+  public void isNotFlat() {
     check("isFlat()").that(actual.isFlat()).isFalse();
-    return this;
   }
 
-  public MarkerSubject hasInfoWindowShown() {
+  public void hasInfoWindowShown() {
     check("isInfoWindowShown()").that(actual.isInfoWindowShown()).isTrue();
-    return this;
   }
 
-  public MarkerSubject hasInfoWindowNotShown() {
+  public void hasInfoWindowNotShown() {
     check("isInfoWindowShown()").that(actual.isInfoWindowShown()).isFalse();
-    return this;
   }
 
-  public MarkerSubject isVisible() {
+  public void isVisible() {
     check("isVisible()").that(actual.isVisible()).isTrue();
-    return this;
   }
 
-  public MarkerSubject isNotVisible() {
+  public void isNotVisible() {
     check("isVisible()").that(actual.isVisible()).isFalse();
-    return this;
   }
 }

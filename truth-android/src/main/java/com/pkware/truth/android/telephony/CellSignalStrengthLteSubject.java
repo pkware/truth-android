@@ -43,8 +43,7 @@ public final class CellSignalStrengthLteSubject
     this.actual = actual;
   }
 
-  public CellSignalStrengthLteSubject hasTimingAdvance(int timingAdvance) {
+  public void hasTimingAdvance(int timingAdvance) {
     check("getTimingAdvance()").that(actual.getTimingAdvance()).isEqualTo(timingAdvance);
-    return this;
   }
 }

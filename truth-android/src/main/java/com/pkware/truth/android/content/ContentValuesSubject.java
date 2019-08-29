@@ -44,14 +44,13 @@ public class ContentValuesSubject extends Subject {
     this.actual = actual;
   }
 
-  public ContentValuesSubject containsValue(@Nullable Object expectedValue) {
+  public void containsValue(@Nullable Object expectedValue) {
     Set<Map.Entry<String, Object>> entries = actual.valueSet();
     List<Object> values = new ArrayList<>(entries.size());
     for (Map.Entry<String, Object> entry : entries) {
       values.add(entry.getValue());
     }
     check("valueSet()").that(values).contains(expectedValue);
-    return this;
   }
 
   public MapSubject asMap() {
@@ -63,8 +62,7 @@ public class ContentValuesSubject extends Subject {
     return check("asMap()").that(actual);
   }
 
-  public ContentValuesSubject hasSize(int expected) {
+  public void hasSize(int expected) {
     check("size()").that(actual.size()).isEqualTo(expected);
-    return this;
   }
 }

@@ -37,23 +37,19 @@ public class FragmentTransactionSubject extends Subject {
     this.actual = actual;
   }
 
-  public FragmentTransactionSubject isAddToBackStackAllowed() {
+  public void isAddToBackStackAllowed() {
     check("isAddToBackStackAllowed()").that(actual.isAddToBackStackAllowed()).isTrue();
-    return this;
   }
 
-  public FragmentTransactionSubject isAddToBackStackDisallowed() {
+  public void isAddToBackStackDisallowed() {
     check("isAddToBackStackAllowed()").that(actual.isAddToBackStackAllowed()).isFalse();
-    return this;
   }
 
-  public FragmentTransactionSubject isEmpty() {
+  public void isEmpty() {
     check("isEmpty()").that(actual.isEmpty()).isTrue();
-    return this;
   }
 
-  public FragmentTransactionSubject isNotEmpty() {
+  public void isNotEmpty() {
     check("isEmpty()").that(actual.isEmpty()).isFalse();
-    return this;
   }
 }

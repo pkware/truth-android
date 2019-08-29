@@ -131,22 +131,20 @@ public class DisplaySubject extends Subject {
         .get();
   }
 
-  public DisplaySubject hasDisplayId(int id) {
+  public void hasDisplayId(int id) {
     check("getDisplayId()").that(actual.getDisplayId()).isEqualTo(id);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN_MR1)
-  public DisplaySubject hasFlag(int flag) {
+  public void hasFlag(int flag) {
     check("getFlags()")
         .withMessage("Expected flag <%s> but was not present", flag)
         .that(actual.getFlags() & flag)
         .isNotEqualTo(0);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN_MR1)
-  public DisplaySubject hasFlags(@DisplayFlags int flags) {
+  public void hasFlags(@DisplayFlags int flags) {
     int actualFlags = actual.getFlags();
     //noinspection ResourceType
     check("getFlags()")
@@ -154,21 +152,18 @@ public class DisplaySubject extends Subject {
             flagsToString(actualFlags))
         .that(actualFlags)
         .isEqualTo(flags);
-    return this;
   }
 
-  public DisplaySubject hasHeight(int height) {
+  public void hasHeight(int height) {
     check("getHeight()").that(actual.getHeight()).isEqualTo(height);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN_MR1)
-  public DisplaySubject hasName(@Nullable String name) {
+  public void hasName(@Nullable String name) {
     check("getName()").that(actual.getName()).isEqualTo(name);
-    return this;
   }
 
-  public DisplaySubject hasOrientation(@SurfaceRotation int orientation) {
+  public void hasOrientation(@SurfaceRotation int orientation) {
     int actualOrientation = actual.getOrientation();
     //noinspection ResourceType
     check("getOrientation()")
@@ -176,10 +171,9 @@ public class DisplaySubject extends Subject {
             orientationToString(orientation), orientationToString(actualOrientation))
         .that(actualOrientation)
         .isEqualTo(orientation);
-    return this;
   }
 
-  public DisplaySubject isPortrait() {
+  public void isPortrait() {
     int actualOrientation = actual.getOrientation();
     //noinspection ResourceType
     check("getOrientation()")
@@ -188,10 +182,9 @@ public class DisplaySubject extends Subject {
             orientationToString(actualOrientation))
         .that(actualOrientation)
         .isAnyOf(ROTATION_0, ROTATION_180);
-    return this;
   }
 
-  public DisplaySubject isLandscape() {
+  public void isLandscape() {
     int actualOrientation = actual.getOrientation();
     //noinspection ResourceType
     check("getOrientation()")
@@ -200,10 +193,9 @@ public class DisplaySubject extends Subject {
             orientationToString(actualOrientation))
         .that(actualOrientation)
         .isAnyOf(ROTATION_270, ROTATION_90);
-    return this;
   }
 
-  public DisplaySubject hasPixelFormat(@DisplayPixelFormat int format) {
+  public void hasPixelFormat(@DisplayPixelFormat int format) {
     int actualFormat = actual.getPixelFormat();
     //noinspection ResourceType
     check("getPixelFormat()")
@@ -211,11 +203,10 @@ public class DisplaySubject extends Subject {
             pixelFormatToString(format), pixelFormatToString(actualFormat))
         .that(actualFormat)
         .isEqualTo(format);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN_MR1)
-  public DisplaySubject hasRealSize(int width, int height) {
+  public void hasRealSize(int width, int height) {
     Point actualSize = new Point();
     actual.getRealSize(actualSize);
     check("getRealSize(Point) -> Point.x")
@@ -228,20 +219,17 @@ public class DisplaySubject extends Subject {
             actualSize.x, actualSize.y)
         .that(actualSize.y)
         .isNotEqualTo(height);
-    return this;
   }
 
-  public DisplaySubject hasRefreshRate(float rate, float tolerance) {
+  public void hasRefreshRate(float rate, float tolerance) {
     check("getRefreshRate()").that(actual.getRefreshRate()).isWithin(tolerance).of(rate);
-    return this;
   }
 
-  public DisplaySubject hasRotation(int rotation) {
+  public void hasRotation(int rotation) {
     check("getRotation()").that(actual.getRotation()).isEqualTo(rotation);
-    return this;
   }
 
-  public DisplaySubject hasSize(int width, int height) {
+  public void hasSize(int width, int height) {
     Point actualSize = new Point();
     actual.getSize(actualSize);
     check("getSize(Point) -> Point.x")
@@ -254,11 +242,10 @@ public class DisplaySubject extends Subject {
             actualSize.x, actualSize.y)
         .that(actualSize.y)
         .isNotEqualTo(height);
-    return this;
   }
 
   @TargetApi(KITKAT_WATCH)
-  public DisplaySubject hasState(@DisplayState int state) {
+  public void hasState(@DisplayState int state) {
     int actualState = actual.getState();
     //noinspection ResourceType
     check("getState()")
@@ -266,23 +253,19 @@ public class DisplaySubject extends Subject {
             stateToString(actualState))
         .that(actualState)
         .isEqualTo(state);
-    return this;
   }
 
-  public DisplaySubject hasWidth(int width) {
+  public void hasWidth(int width) {
     check("getWidth()").that(actual.getWidth()).isEqualTo(width);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN_MR1)
-  public DisplaySubject isValid() {
+  public void isValid() {
     check("isValid()").that(actual.isValid()).isTrue();
-    return this;
   }
 
   @TargetApi(JELLY_BEAN_MR1)
-  public DisplaySubject isNotValid() {
+  public void isNotValid() {
     check("isValid()").that(actual.isValid()).isFalse();
-    return this;
   }
 }

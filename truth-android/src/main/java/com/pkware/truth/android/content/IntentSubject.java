@@ -100,70 +100,62 @@ public class IntentSubject extends Subject {
         .get();
   }
 
-  public IntentSubject hasAction(@Nullable String action) {
+  public void hasAction(@Nullable String action) {
     check("getAction()").that(actual.getAction()).isEqualTo(action);
-    return this;
   }
 
-  public IntentSubject hasType(@Nullable String type) {
+  public void hasType(@Nullable String type) {
     check("getType()").that(actual.getType()).isEqualTo(type);
-    return this;
   }
 
-  public IntentSubject hasExtra(@Nonnull String name) {
+  public void hasExtra(@Nonnull String name) {
     check("hasExtra(name)")
         .withMessage("has extra <%s>", name)
         .that(actual.hasExtra(name))
         .isTrue();
-    return this;
   }
 
-  public IntentSubject hasExtra(@Nonnull String name, @Nullable Object expectedValue) {
+  public void hasExtra(@Nonnull String name, @Nullable Object expectedValue) {
     hasExtra(name);
     Bundle extras = actual.getExtras();
     assertThat(extras).hasValue(name, expectedValue);
-    return this;
   }
 
-  public IntentSubject hasFlags(@IntentFlags int flags) {
+  public void hasFlags(@IntentFlags int flags) {
     int actualFlags = actual.getFlags();
     //noinspection ResourceType
     check("getFlags()")
         .withMessage("Expected <%s> but was <%s>.", flagsToString(flags), flagsToString(actualFlags))
         .that(actualFlags)
         .isEqualTo(flags);
-    return this;
   }
 
-  public IntentSubject hasPackage(@Nullable String packageName) {
+  public void hasPackage(@Nullable String packageName) {
     String actualPackage = actual.getPackage();
     check("getPackage()").that(actualPackage).isEqualTo(packageName);
-    return this;
   }
 
-  public IntentSubject hasData(@Nonnull String uri) {
-    return hasData(Uri.parse(uri));
+  public void hasData(@Nonnull String uri) {
+    hasData(Uri.parse(uri));
   }
 
-  public IntentSubject hasData(@Nullable Uri uri) {
+  public void hasData(@Nullable Uri uri) {
     check("getData()").that(actual.getData()).isEqualTo(uri);
-    return this;
   }
 
-  public IntentSubject hasComponent(@Nonnull ComponentName expected) {
+  public void hasComponent(@Nonnull ComponentName expected) {
     ComponentName componentName = actual.getComponent();
     check("getComponent()")
         .withMessage("Expected component name <%s> but was <%s>.", expected.flattenToString(), componentName.flattenToString())
         .that(componentName)
         .isEqualTo(expected);
-    return this;
   }
 
-  public IntentSubject hasComponent(@Nonnull Context context, @Nonnull Class<?> cls) {
-    return hasComponent(new ComponentName(context, cls.getName()));
+  public void hasComponent(@Nonnull Context context, @Nonnull Class<?> cls) {
+    hasComponent(new ComponentName(context, cls.getName()));
   }
 
-  public IntentSubject hasComponent(@Nonnull String appPkg, @Nonnull Class<?> cls) {
-    return hasComponent(new ComponentName(appPkg, cls.getName()));
+  public void hasComponent(@Nonnull String appPkg, @Nonnull Class<?> cls) {
+    hasComponent(new ComponentName(appPkg, cls.getName()));
   }
 }

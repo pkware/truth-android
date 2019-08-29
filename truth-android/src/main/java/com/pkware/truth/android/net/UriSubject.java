@@ -37,58 +37,47 @@ public class UriSubject extends Subject {
     this.actual = actual;
   }
 
-  public UriSubject hasPath(@Nullable String path) {
+  public void hasPath(@Nullable String path) {
     check("getPath()").that(actual.getPath()).isEqualTo(path);
-    return this;
   }
 
-  public UriSubject doesNotHavePath() {
+  public void doesNotHavePath() {
     check("getPath()").that(actual.getPath()).isNull();
-    return this;
   }
 
-  public UriSubject hasPort(int port) {
+  public void hasPort(int port) {
     check("getPort()").that(actual.getPort()).isEqualTo(port);
-    return this;
   }
 
-  public UriSubject hasHost(@Nullable String host) {
+  public void hasHost(@Nullable String host) {
     check("getHost()").that(actual.getHost()).isEqualTo(host);
-    return this;
   }
 
-  public UriSubject hasFragment(@Nullable String fragment) {
+  public void hasFragment(@Nullable String fragment) {
     check("getFragment()").that(actual.getFragment()).isEqualTo(fragment);
-    return this;
   }
 
-  public UriSubject doesNotHaveFragment() {
+  public void doesNotHaveFragment() {
     check("getFragment()").that(actual.getFragment()).isNull();
-    return this;
   }
 
-  public UriSubject hasQuery(@Nullable String query) {
+  public void hasQuery(@Nullable String query) {
     check("getQuery()").that(actual.getQuery()).isEqualTo(query);
-    return this;
   }
 
-  public UriSubject doesNotHaveQuery() {
+  public void doesNotHaveQuery() {
     check("getQuery()").that(actual.getQuery()).isNull();
-    return this;
   }
 
-  public UriSubject hasScheme(@Nullable String scheme) {
+  public void hasScheme(@Nullable String scheme) {
     check("getScheme()").that(actual.getScheme()).isEqualTo(scheme);
-    return this;
   }
 
-  public UriSubject hasUserInfo(@Nullable String userInfo) {
+  public void hasUserInfo(@Nullable String userInfo) {
     check("getUserInfo()").that(actual.getUserInfo()).isEqualTo(userInfo);
-    return this;
   }
 
-  public UriSubject doesNotHaveUserInfo() {
+  public void doesNotHaveUserInfo() {
     check("getUserInfo()").that(actual.getUserInfo()).isNull();
-    return this;
   }
 }

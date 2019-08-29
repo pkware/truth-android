@@ -37,19 +37,16 @@ public class GestureSubject extends Subject {
     this.actual = actual;
   }
 
-  public GestureSubject hasId(long id) {
+  public void hasId(long id) {
     check("getID()").that(actual.getID()).isEqualTo(id);
-    return this;
   }
 
-  public GestureSubject hasLength(float length, float tolerance) {
+  public void hasLength(float length, float tolerance) {
     check("getLength()").that(actual.getLength()).isWithin(tolerance)
         .of(length);
-    return this;
   }
 
-  public GestureSubject hasStrokeCount(int count) {
+  public void hasStrokeCount(int count) {
     check("getStrokesCount()").that(actual.getStrokesCount()).isEqualTo(count);
-    return this;
   }
 }

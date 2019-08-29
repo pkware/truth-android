@@ -38,13 +38,11 @@ public class UsbRequestSubject extends Subject {
     this.actual = actual;
   }
 
-  public UsbRequestSubject hasClientData(@Nullable Object data) {
+  public void hasClientData(@Nullable Object data) {
     check("getClientData()").that(actual.getClientData()).isEqualTo(data);
-    return this;
   }
 
-  public UsbRequestSubject hasEndpoint(@Nullable UsbEndpoint endpoint) {
+  public void hasEndpoint(@Nullable UsbEndpoint endpoint) {
     check("getEndpoint()").that(actual.getEndpoint()).isEqualTo(endpoint);
-    return this;
   }
 }

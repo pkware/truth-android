@@ -41,18 +41,15 @@ public class CheckedTextViewSubject extends AbstractTextViewSubject<CheckedTextV
   }
 
   @TargetApi(JELLY_BEAN)
-  public CheckedTextViewSubject hasCheckMarkDrawable(@Nullable Drawable drawable) {
+  public void hasCheckMarkDrawable(@Nullable Drawable drawable) {
     check("getCheckMarkDrawable()").that(actual.getCheckMarkDrawable()).isSameInstanceAs(drawable);
-    return this;
   }
 
-  public CheckedTextViewSubject isChecked() {
+  public void isChecked() {
     check("isChecked()").that(actual.isChecked()).isTrue();
-    return this;
   }
 
-  public CheckedTextViewSubject isNotChecked() {
+  public void isNotChecked() {
     check("isChecked()").that(actual.isChecked()).isFalse();
-    return this;
   }
 }

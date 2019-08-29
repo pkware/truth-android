@@ -37,23 +37,19 @@ public class PropertySubject<T, V> extends Subject {
     this.actual = actual;
   }
 
-  public PropertySubject<T, V> hasName(@Nullable String name) {
+  public void hasName(@Nullable String name) {
     check("getName()").that(actual.getName()).isEqualTo(name);
-    return this;
   }
 
-  public PropertySubject<T, V> hasType(@Nullable Class<?> type) {
+  public void hasType(@Nullable Class<?> type) {
     check("getType()").that(actual.getType()).isEqualTo(type);
-    return this;
   }
 
-  public PropertySubject<T, V> isReadOnly() {
+  public void isReadOnly() {
     check("isReadOnly()").that(actual.isReadOnly()).isTrue();
-    return this;
   }
 
-  public PropertySubject<T, V> isNotReadOnly() {
+  public void isNotReadOnly() {
     check("isReadOnly()").that(actual.isReadOnly()).isFalse();
-    return this;
   }
 }

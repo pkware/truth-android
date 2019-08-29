@@ -37,8 +37,7 @@ public final class PropertyValuesHolderSubject extends Subject {
     this.actual = actual;
   }
 
-  public PropertyValuesHolderSubject hasPropertyName(@Nullable String name) {
+  public void hasPropertyName(@Nullable String name) {
     check("getPropertyName()").that(actual.getPropertyName()).isEqualTo(name);
-    return this;
   }
 }

@@ -37,48 +37,39 @@ public class RemotePlaybackClientSubject extends Subject {
     this.actual = actual;
   }
 
-  public RemotePlaybackClientSubject hasSessionId(@Nullable String sessionId) {
+  public void hasSessionId(@Nullable String sessionId) {
     check("getSessionId()").that(actual.getSessionId()).isEqualTo(sessionId);
-    return this;
   }
 
-  public RemotePlaybackClientSubject hasSession() {
+  public void hasSession() {
     check("hasSession()").that(actual.hasSession()).isTrue();
-    return this;
   }
 
-  public RemotePlaybackClientSubject doesNotHaveSession() {
+  public void doesNotHaveSession() {
     check("hasSession()").that(actual.hasSession()).isFalse();
-    return this;
   }
 
-  public RemotePlaybackClientSubject hasQueuingSupported() {
+  public void hasQueuingSupported() {
     check("isQueuingSupported()").that(actual.isQueuingSupported()).isTrue();
-    return this;
   }
 
-  public RemotePlaybackClientSubject doesNotHaveQueuingSupported() {
+  public void doesNotHaveQueuingSupported() {
     check("isQueuingSupported()").that(actual.isQueuingSupported()).isFalse();
-    return this;
   }
 
-  public RemotePlaybackClientSubject hasRemotePlaybackSupported() {
+  public void hasRemotePlaybackSupported() {
     check("isRemotePlaybackSupported()").that(actual.isRemotePlaybackSupported()).isTrue();
-    return this;
   }
 
-  public RemotePlaybackClientSubject doesNotHaveRemotePlaybackSupported() {
+  public void doesNotHaveRemotePlaybackSupported() {
     check("isRemotePlaybackSupported()").that(actual.isRemotePlaybackSupported()).isFalse();
-    return this;
   }
 
-  public RemotePlaybackClientSubject hasSessionManagementSupported() {
+  public void hasSessionManagementSupported() {
     check("isSessionManagementSupported()").that(actual.isSessionManagementSupported()).isTrue();
-    return this;
   }
 
-  public RemotePlaybackClientSubject doesNotHaveSessionManagementSupported() {
+  public void doesNotHaveSessionManagementSupported() {
     check("isSessionManagementSupported()").that(actual.isSessionManagementSupported()).isFalse();
-    return this;
   }
 }

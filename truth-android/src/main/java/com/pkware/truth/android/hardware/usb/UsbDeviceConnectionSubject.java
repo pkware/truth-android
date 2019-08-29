@@ -37,18 +37,15 @@ public class UsbDeviceConnectionSubject extends Subject {
     this.actual = actual;
   }
 
-  public UsbDeviceConnectionSubject hasFileDescriptor(int descriptor) {
+  public void hasFileDescriptor(int descriptor) {
     check("getFileDescriptor()").that(actual.getFileDescriptor()).isEqualTo(descriptor);
-    return this;
   }
 
-  public UsbDeviceConnectionSubject hasRawDescriptors(byte[] descriptors) {
+  public void hasRawDescriptors(byte[] descriptors) {
     check("getRawDescriptors()").that(actual.getRawDescriptors()).isEqualTo(descriptors);
-    return this;
   }
 
-  public UsbDeviceConnectionSubject hasSerial(@Nullable String serial) {
+  public void hasSerial(@Nullable String serial) {
     check("getSerial()").that(actual.getSerial()).isEqualTo(serial);
-    return this;
   }
 }

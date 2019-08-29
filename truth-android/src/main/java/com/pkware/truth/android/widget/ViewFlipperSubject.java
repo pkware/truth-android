@@ -36,23 +36,19 @@ public class ViewFlipperSubject extends AbstractViewAnimatorSubject<ViewFlipper>
     this.actual = actual;
   }
 
-  public ViewFlipperSubject isAutoStarting() {
+  public void isAutoStarting() {
     check("isAutoStart()").that(actual.isAutoStart()).isTrue();
-    return this;
   }
 
-  public ViewFlipperSubject isNotAutoStarting() {
+  public void isNotAutoStarting() {
     check("isAutoStart()").that(actual.isAutoStart()).isFalse();
-    return this;
   }
 
-  public ViewFlipperSubject isFlipping() {
+  public void isFlipping() {
     check("isFlipping()").that(actual.isFlipping()).isTrue();
-    return this;
   }
 
-  public ViewFlipperSubject isNotFlipping() {
+  public void isNotFlipping() {
     check("isFlipping()").that(actual.isFlipping()).isFalse();
-    return this;
   }
 }

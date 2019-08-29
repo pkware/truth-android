@@ -53,17 +53,15 @@ public class TransformationSubject extends Subject {
         .get();
   }
 
-  public TransformationSubject hasAlpha(float alpha, float tolerance) {
-    check("getAlpha()").that(actual.getAlpha()).isWithin(tolerance)        .of(alpha);
-    return this;
+  public void hasAlpha(float alpha, float tolerance) {
+    check("getAlpha()").that(actual.getAlpha()).isWithin(tolerance).of(alpha);
   }
 
-  public TransformationSubject hasMatrix(@Nullable Matrix matrix) {
+  public void hasMatrix(@Nullable Matrix matrix) {
     check("getMatrix()").that(actual.getMatrix()).isEqualTo(matrix);
-    return this;
   }
 
-  public TransformationSubject hasTransformationType(@TransformationType int type) {
+  public void hasTransformationType(@TransformationType int type) {
     int actualType = actual.getTransformationType();
     //noinspection ResourceType
     check("getTransformationType()")
@@ -71,6 +69,5 @@ public class TransformationSubject extends Subject {
             transformationTypeToString(type), transformationTypeToString(actualType))
         .that(actualType)
         .isEqualTo(type);
-    return this;
   }
 }

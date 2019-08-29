@@ -41,19 +41,17 @@ public class ArrayMapSubject<K, V> extends Subject {
     this.actual = actual;
   }
 
-  public ArrayMapSubject<K, V> hasKeyAt(int index, K key) {
+  public void hasKeyAt(int index, K key) {
     check("keyAt(index)")
         .withMessage("key at index %s", index)
         .that(actual.keyAt(index))
         .isEqualTo(key);
-    return this;
   }
 
-  public ArrayMapSubject<K, V> hasValueAt(int index, V value) {
+  public void hasValueAt(int index, V value) {
     check("valueAt(index)")
         .withMessage("value at index %s", index)
         .that(actual.valueAt(index))
         .isEqualTo(value);
-    return this;
   }
 }

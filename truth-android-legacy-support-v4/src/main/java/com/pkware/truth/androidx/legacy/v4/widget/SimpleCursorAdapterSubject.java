@@ -38,18 +38,15 @@ public class SimpleCursorAdapterSubject extends AbstractCursorAdapterSubject<Sim
     this.actual = actual;
   }
 
-  public SimpleCursorAdapterSubject hasCursorToStringConverter(@Nullable CursorToStringConverter converter) {
+  public void hasCursorToStringConverter(@Nullable CursorToStringConverter converter) {
     check("getCursorToStringConverter()").that(actual.getCursorToStringConverter()).isSameInstanceAs(converter);
-    return this;
   }
 
-  public SimpleCursorAdapterSubject hasStringConversionColumn(int column) {
+  public void hasStringConversionColumn(int column) {
     check("getStringConversionColumn()").that(actual.getStringConversionColumn()).isEqualTo(column);
-    return this;
   }
 
-  public SimpleCursorAdapterSubject hasViewBinder(@Nullable SimpleCursorAdapter.ViewBinder binder) {
+  public void hasViewBinder(@Nullable SimpleCursorAdapter.ViewBinder binder) {
     check("getViewBinder()").that(actual.getViewBinder()).isSameInstanceAs(binder);
-    return this;
   }
 }

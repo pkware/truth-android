@@ -41,101 +41,82 @@ public class LocationSubject extends Subject {
     this.actual = actual;
   }
 
-  public LocationSubject hasAccuracy(float accuracy, float tolerance) {
+  public void hasAccuracy(float accuracy, float tolerance) {
     check("getAccuracy()").that(actual.getAccuracy()).isWithin(tolerance).of(accuracy);
-    return this;
   }
 
-  public LocationSubject hasAltitude(double altitude, double tolerance) {
+  public void hasAltitude(double altitude, double tolerance) {
     check("getAltitude()").that(actual.getAltitude()).isWithin(tolerance).of(altitude);
-    return this;
   }
 
-  public LocationSubject hasBearing(float bearing, float tolerance) {
+  public void hasBearing(float bearing, float tolerance) {
     check("getBearing()").that(actual.getBearing()).isWithin(tolerance).of(bearing);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN_MR1)
-  public LocationSubject hasElapsedRealTimeNanos(long nanos) {
+  public void hasElapsedRealTimeNanos(long nanos) {
     check("getElapsedRealtimeNanos()").that(actual.getElapsedRealtimeNanos()).isEqualTo(nanos);
-    return this;
   }
 
-  public LocationSubject hasLatitude(double latitude, double tolerance) {
+  public void hasLatitude(double latitude, double tolerance) {
     check("getLatitude()").that(actual.getLatitude()).isWithin(tolerance).of(latitude);
-    return this;
   }
 
-  public LocationSubject hasLongitude(double longitude, double tolerance) {
+  public void hasLongitude(double longitude, double tolerance) {
     check("getLongitude()").that(actual.getLongitude()).isWithin(tolerance).of(longitude);
-    return this;
   }
 
-  public LocationSubject hasProvider(@Nullable String name) {
+  public void hasProvider(@Nullable String name) {
     check("getProvider()").that(actual.getProvider()).isEqualTo(name);
-    return this;
   }
 
-  public LocationSubject hasSpeed(float speed, float tolerance) {
+  public void hasSpeed(float speed, float tolerance) {
     check("getSpeed()").that(actual.getSpeed()).isWithin(tolerance).of(speed);
-    return this;
   }
 
-  public LocationSubject hasTime(long time) {
+  public void hasTime(long time) {
     check("getTime()").that(actual.getTime()).isEqualTo(time);
-    return this;
   }
 
-  public LocationSubject hasAccuracy() {
+  public void hasAccuracy() {
     check("hasAccuracy()").that(actual.hasAccuracy()).isTrue();
-    return this;
   }
 
-  public LocationSubject hasNoAccuracy() {
+  public void hasNoAccuracy() {
     check("hasAccuracy()").that(actual.hasAccuracy()).isFalse();
-    return this;
   }
 
-  public LocationSubject hasAltitude() {
+  public void hasAltitude() {
     check("hasAltitude()").that(actual.hasAltitude()).isTrue();
-    return this;
   }
 
-  public LocationSubject hasNoAltitude() {
+  public void hasNoAltitude() {
     check("hasAltitude()").that(actual.hasAltitude()).isFalse();
-    return this;
   }
 
-  public LocationSubject hasBearing() {
+  public void hasBearing() {
     check("hasBearing()").that(actual.hasBearing()).isTrue();
-    return this;
   }
 
-  public LocationSubject hasNoBearing() {
+  public void hasNoBearing() {
     check("hasBearing()").that(actual.hasBearing()).isFalse();
-    return this;
   }
 
-  public LocationSubject hasSpeed() {
+  public void hasSpeed() {
     check("hasSpeed()").that(actual.hasSpeed()).isTrue();
-    return this;
   }
 
-  public LocationSubject hasNoSpeed() {
+  public void hasNoSpeed() {
     check("hasSpeed()").that(actual.hasSpeed()).isFalse();
-    return this;
   }
 
   @TargetApi(JELLY_BEAN_MR2)
-  public LocationSubject isFromMockProvider() {
+  public void isFromMockProvider() {
     check("isFromMockProvider()").that(actual.isFromMockProvider()).isTrue();
-    return this;
   }
 
   @TargetApi(JELLY_BEAN_MR2)
-  public LocationSubject isNotFromMockProvider() {
+  public void isNotFromMockProvider() {
     check("isFromMockProvider()").that(actual.isFromMockProvider()).isFalse();
-    return this;
   }
 }

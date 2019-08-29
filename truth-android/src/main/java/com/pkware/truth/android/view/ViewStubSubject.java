@@ -38,13 +38,11 @@ public class ViewStubSubject extends AbstractViewSubject<ViewStub> {
     this.actual = actual;
   }
 
-  public ViewStubSubject hasInflatedId(int id) {
+  public void hasInflatedId(int id) {
     check("getInflatedId()").that(actual.getInflatedId()).isEqualTo(id);
-    return this;
   }
 
-  public ViewStubSubject hasLayoutResource(@LayoutRes int resId) {
+  public void hasLayoutResource(@LayoutRes int resId) {
     check("getLayoutResource()").that(actual.getLayoutResource()).isEqualTo(resId);
-    return this;
   }
 }

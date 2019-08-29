@@ -39,25 +39,23 @@ public class ToggleButtonSubject
     this.actual = actual;
   }
 
-  public ToggleButtonSubject hasOnText(@Nullable String text) {
+  public void hasOnText(@Nullable String text) {
     check("getTextOn()")
         .withMessage("'on' text")
         .that(actual.getTextOn().toString()).isEqualTo(text);
-    return this;
   }
 
-  public ToggleButtonSubject hasOnText(@StringRes int resId) {
-    return hasOnText(actual.getContext().getString(resId));
+  public void hasOnText(@StringRes int resId) {
+    hasOnText(actual.getContext().getString(resId));
   }
 
-  public ToggleButtonSubject hasOffText(@Nullable String text) {
+  public void hasOffText(@Nullable String text) {
     check("getTextOff()")
         .withMessage("'off' text")
         .that(actual.getTextOn().toString()).isEqualTo(text);
-    return this;
   }
 
-  public ToggleButtonSubject hasOffText(@StringRes int resId) {
-    return hasOffText(actual.getContext().getString(resId));
+  public void hasOffText(@StringRes int resId) {
+    hasOffText(actual.getContext().getString(resId));
   }
 }

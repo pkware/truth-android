@@ -38,8 +38,7 @@ public class NavigationViewSubject extends AbstractFrameLayoutSubject<Navigation
     this.actual = actual;
   }
 
-  public NavigationViewSubject hasItemBackground(@Nullable Drawable itemBackground) {
+  public void hasItemBackground(@Nullable Drawable itemBackground) {
     check("getItemBackground()").that(actual.getItemBackground()).isEqualTo(itemBackground);
-    return this;
   }
 }

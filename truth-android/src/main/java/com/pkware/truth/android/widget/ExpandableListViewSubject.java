@@ -37,18 +37,15 @@ public class ExpandableListViewSubject extends AbstractListViewSubject<Expandabl
     this.actual = actual;
   }
 
-  public ExpandableListViewSubject hasExpandableListAdapter(@Nullable ExpandableListAdapter adapter) {
+  public void hasExpandableListAdapter(@Nullable ExpandableListAdapter adapter) {
     check("getExpandableListAdapter()").that(actual.getExpandableListAdapter()).isSameInstanceAs(adapter);
-    return this;
   }
 
-  public ExpandableListViewSubject hasSelectedId(long id) {
+  public void hasSelectedId(long id) {
     check("getSelectedId()").that(actual.getSelectedId()).isEqualTo(id);
-    return this;
   }
 
-  public ExpandableListViewSubject hasSelectedPosition(long position) {
+  public void hasSelectedPosition(long position) {
     check("getSelectedPosition()").that(actual.getSelectedPosition()).isEqualTo(position);
-    return this;
   }
 }

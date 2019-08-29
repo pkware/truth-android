@@ -38,13 +38,11 @@ public class SnackbarSubject extends Subject {
     this.actual = actual;
   }
 
-  public SnackbarSubject hasDuration(int duration) {
+  public void hasDuration(int duration) {
     check("getDuration()").that(actual.getDuration()).isEqualTo(duration);
-    return this;
   }
 
-  public SnackbarSubject hasView(@Nullable View view) {
+  public void hasView(@Nullable View view) {
     check("getView()").that(actual.getView()).isSameInstanceAs(view);
-    return this;
   }
 }

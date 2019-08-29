@@ -36,13 +36,11 @@ public class DialogFragmentSubject extends AbstractFragmentSubject<DialogFragmen
     this.actual = actual;
   }
 
-  public DialogFragmentSubject isCancelable() {
+  public void isCancelable() {
     check("isCancelable()").that(actual.isCancelable()).isTrue();
-    return this;
   }
 
-  public DialogFragmentSubject isNotCancelable() {
+  public void isNotCancelable() {
     check("isCancelable()").that(actual.isCancelable()).isFalse();
-    return this;
   }
 }

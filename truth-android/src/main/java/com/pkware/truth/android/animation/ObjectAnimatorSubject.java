@@ -36,13 +36,11 @@ public final class ObjectAnimatorSubject extends AbstractValueAnimatorSubject<Ob
     this.actual = actual;
   }
 
-  public ObjectAnimatorSubject hasPropertyName(@Nullable String name) {
+  public void hasPropertyName(@Nullable String name) {
     check("getPropertyName()").that(actual.getPropertyName()).isEqualTo(name);
-    return this;
   }
 
-  public ObjectAnimatorSubject hasTarget(@Nullable Object target) {
+  public void hasTarget(@Nullable Object target) {
     check("getTarget()").that(actual.getTarget()).isSameInstanceAs(target);
-    return this;
   }
 }

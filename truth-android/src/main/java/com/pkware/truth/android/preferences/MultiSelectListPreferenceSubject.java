@@ -38,8 +38,7 @@ public class MultiSelectListPreferenceSubject extends
     this.actual = actual;
   }
 
-  public MultiSelectListPreferenceSubject hasEntries(@Nonnull String... entries) {
-
+  public void hasEntries(@Nonnull String... entries) {
     // We convert to Strings b/c most of the time we are interested in the text content
     FluentIterable<String> actualValues = FluentIterable.from(actual.getEntries())
         .transform(CharSequence::toString);
@@ -49,11 +48,9 @@ public class MultiSelectListPreferenceSubject extends
         .that(actualValues)
         .containsExactlyElementsIn(entries)
         .inOrder();
-    return this;
   }
 
-  public MultiSelectListPreferenceSubject hasEntryValues(@Nonnull String... values) {
-
+  public void hasEntryValues(@Nonnull String... values) {
     // We convert to Strings b/c most of the time we are interested in the text content
     FluentIterable<String> actualValues = FluentIterable.from(actual.getEntryValues())
         .transform(CharSequence::toString);
@@ -63,11 +60,9 @@ public class MultiSelectListPreferenceSubject extends
         .that(actualValues)
         .containsExactlyElementsIn(values)
         .inOrder();
-    return this;
   }
 
-  public MultiSelectListPreferenceSubject hasValues(@Nonnull String... values) {
+  public void hasValues(@Nonnull String... values) {
     check("getValues()").that(actual.getValues()).containsExactlyElementsIn(values).inOrder();
-    return this;
   }
 }

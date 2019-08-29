@@ -37,18 +37,15 @@ public class PathSubject extends Subject {
     this.actual = actual;
   }
 
-  public PathSubject hasFillType(@Nullable Path.FillType type) {
+  public void hasFillType(@Nullable Path.FillType type) {
     check("getFillType()").that(actual.getFillType()).isEqualTo(type);
-    return this;
   }
 
-  public PathSubject isEmpty() {
+  public void isEmpty() {
     check("isEmpty()").that(actual.isEmpty()).isTrue();
-    return this;
   }
 
-  public PathSubject isNotEmpty() {
+  public void isNotEmpty() {
     check("isEmpty()").that(actual.isEmpty()).isFalse();
-    return this;
   }
 }

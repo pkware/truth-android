@@ -37,65 +37,53 @@ public class RectSubject extends Subject {
     this.actual = actual;
   }
 
-  public RectSubject hasBottom(int bottom) {
+  public void hasBottom(int bottom) {
     check("bottom").that(actual.bottom).isEqualTo(bottom);
-    return this;
   }
 
-  public RectSubject hasLeft(int left) {
+  public void hasLeft(int left) {
     check("left").that(actual.left).isEqualTo(left);
-    return this;
   }
 
-  public RectSubject hasRight(int right) {
+  public void hasRight(int right) {
     check("right").that(actual.right).isEqualTo(right);
-    return this;
   }
 
-  public RectSubject hasTop(int top) {
+  public void hasTop(int top) {
     check("top").that(actual.top).isEqualTo(top);
-    return this;
   }
 
-  public RectSubject hasCenterX(int center) {
+  public void hasCenterX(int center) {
     check("centerX()").that(actual.centerX()).isEqualTo(center);
-    return this;
   }
 
-  public RectSubject hasCenterY(int center) {
+  public void hasCenterY(int center) {
     check("centerY()").that(actual.centerY()).isEqualTo(center);
-    return this;
   }
 
-  public RectSubject hasExactCenterX(float center, float tolerance) {
+  public void hasExactCenterX(float center, float tolerance) {
     check("exactCenterX()").that(actual.exactCenterX()).isWithin(tolerance)
         .of(center);
-    return this;
   }
 
-  public RectSubject hasExactCenterY(float center, float tolerance) {
+  public void hasExactCenterY(float center, float tolerance) {
     check("exactCenterY()").that(actual.exactCenterY()).isWithin(tolerance)
         .of(center);
-    return this;
   }
 
-  public RectSubject hasHeight(int height) {
+  public void hasHeight(int height) {
     check("height()").that(actual.height()).isEqualTo(height);
-    return this;
   }
 
-  public RectSubject isEmpty() {
+  public void isEmpty() {
     check("isEmpty()").that(actual.isEmpty()).isTrue();
-    return this;
   }
 
-  public RectSubject isNotEmpty() {
+  public void isNotEmpty() {
     check("isEmpty()").that(actual.isEmpty()).isFalse();
-    return this;
   }
 
-  public RectSubject hasWidth(int width) {
+  public void hasWidth(int width) {
     check("width()").that(actual.width()).isEqualTo(width);
-    return this;
   }
 }

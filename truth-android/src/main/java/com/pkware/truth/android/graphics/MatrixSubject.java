@@ -37,13 +37,11 @@ public class MatrixSubject extends Subject {
     this.actual = actual;
   }
 
-  public MatrixSubject isIdentity() {
+  public void isIdentity() {
     check("isIdentity()").that(actual.isIdentity()).isTrue();
-    return this;
   }
 
-  public MatrixSubject isNotIdentity() {
+  public void isNotIdentity() {
     check("isIdentity()").that(actual.isIdentity()).isFalse();
-    return this;
   }
 }

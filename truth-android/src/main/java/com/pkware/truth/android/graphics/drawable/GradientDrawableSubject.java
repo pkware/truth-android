@@ -40,8 +40,7 @@ public class GradientDrawableSubject extends AbstractDrawableSubject<GradientDra
   }
 
   @TargetApi(JELLY_BEAN)
-  public GradientDrawableSubject hasOrientation(@Nullable GradientDrawable.Orientation orientation) {
+  public void hasOrientation(@Nullable GradientDrawable.Orientation orientation) {
     check("getOrientation()").that(actual.getOrientation()).isEqualTo(orientation);
-    return this;
   }
 }

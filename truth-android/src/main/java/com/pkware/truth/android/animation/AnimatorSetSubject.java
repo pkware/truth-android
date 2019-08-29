@@ -36,8 +36,7 @@ public final class AnimatorSetSubject extends AbstractAnimatorSubject<AnimatorSe
     this.actual = actual;
   }
 
-  public AnimatorSetSubject hasAnimatorCount(int count) {
+  public void hasAnimatorCount(int count) {
     check("getChildAnimations()").that(actual.getChildAnimations()).hasSize(count);
-    return this;
   }
 }

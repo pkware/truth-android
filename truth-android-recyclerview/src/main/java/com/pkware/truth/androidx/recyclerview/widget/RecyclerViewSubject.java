@@ -56,27 +56,23 @@ public class RecyclerViewSubject extends AbstractViewGroupSubject<RecyclerView> 
         .get();
   }
 
-  public <VH extends ViewHolder> RecyclerViewSubject hasAdapter(@Nullable Adapter<VH> adapter) {
+  public <VH extends ViewHolder> void hasAdapter(@Nullable Adapter<VH> adapter) {
     check("getAdapter()").that(actual.getAdapter()).isEqualTo(adapter);
-    return this;
   }
 
-  public RecyclerViewSubject hasItemAnimator(@Nullable ItemAnimator itemAnimator) {
+  public void hasItemAnimator(@Nullable ItemAnimator itemAnimator) {
     check("getItemAnimator()").that(actual.getItemAnimator()).isEqualTo(itemAnimator);
-    return this;
   }
 
-  public RecyclerViewSubject hasLayoutManager(@Nullable LayoutManager layoutManager) {
+  public void hasLayoutManager(@Nullable LayoutManager layoutManager) {
     check("getLayoutManager()").that(actual.getLayoutManager()).isEqualTo(layoutManager);
-    return this;
   }
 
-  public RecyclerViewSubject hasRecycledViewPool(@Nullable RecycledViewPool recycledViewPool) {
+  public void hasRecycledViewPool(@Nullable RecycledViewPool recycledViewPool) {
     check("getRecycledViewPool()").that(actual.getRecycledViewPool()).isEqualTo(recycledViewPool);
-    return this;
   }
 
-  public RecyclerViewSubject hasScrollState(@RecyclerViewScrollState int scrollState) {
+  public void hasScrollState(@RecyclerViewScrollState int scrollState) {
     int actualScrollState = actual.getScrollState();
     //noinspection ResourceType
     check("getScrollState()")
@@ -84,16 +80,13 @@ public class RecyclerViewSubject extends AbstractViewGroupSubject<RecyclerView> 
             scrollStateToString(scrollState), scrollStateToString(actualScrollState))
         .that(actualScrollState)
         .isEqualTo(scrollState);
-    return this;
   }
 
-  public RecyclerViewSubject hasFixedSize() {
+  public void hasFixedSize() {
     check("hasFixedSize()").that(actual.hasFixedSize()).isTrue();
-    return this;
   }
 
-  public RecyclerViewSubject doesNotHaveFixedSize() {
+  public void doesNotHaveFixedSize() {
     check("hasFixedSize()").that(actual.hasFixedSize()).isFalse();
-    return this;
   }
 }

@@ -38,38 +38,31 @@ public class ToastSubject extends Subject {
     this.actual = actual;
   }
 
-  public ToastSubject hasDuration(int duration) {
+  public void hasDuration(int duration) {
     check("getDuration()").that(actual.getDuration()).isEqualTo(duration);
-    return this;
   }
 
-  public ToastSubject hasGravity(int gravity) {
+  public void hasGravity(int gravity) {
     check("getGravity()").that(actual.getGravity()).isEqualTo(gravity);
-    return this;
   }
 
-  public ToastSubject hasHorizontalMargin(float margin, float tolerance) {
+  public void hasHorizontalMargin(float margin, float tolerance) {
     check("getHorizontalMargin()").that(actual.getHorizontalMargin()).isWithin(tolerance).of(margin);
-    return this;
   }
 
-  public ToastSubject hasVerticalMargin(float margin, float tolerance) {
+  public void hasVerticalMargin(float margin, float tolerance) {
     check("getVerticalMargin()").that(actual.getVerticalMargin()).isWithin(tolerance).of(margin);
-    return this;
   }
 
-  public ToastSubject hasView(@Nullable View view) {
+  public void hasView(@Nullable View view) {
     check("getView()").that(actual.getView()).isSameInstanceAs(view);
-    return this;
   }
 
-  public ToastSubject hasXOffset(int offset) {
+  public void hasXOffset(int offset) {
     check("getXOffset()").that(actual.getXOffset()).isEqualTo(offset);
-    return this;
   }
 
-  public ToastSubject hasYOffset(int offset) {
+  public void hasYOffset(int offset) {
     check("getYOffset()").that(actual.getYOffset()).isEqualTo(offset);
-    return this;
   }
 }

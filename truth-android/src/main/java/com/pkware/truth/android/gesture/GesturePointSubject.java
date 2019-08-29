@@ -37,18 +37,15 @@ public class GesturePointSubject extends Subject {
     this.actual = actual;
   }
 
-  public GesturePointSubject hasTimestamp(long timestamp) {
+  public void hasTimestamp(long timestamp) {
     check("timestamp").that(actual.timestamp).isEqualTo(timestamp);
-    return this;
   }
 
-  public GesturePointSubject hasX(float x, float tolerance) {
+  public void hasX(float x, float tolerance) {
     check("x").that(actual.x).isWithin(tolerance).of(x);
-    return this;
   }
 
-  public GesturePointSubject hasY(float y, float tolerance) {
+  public void hasY(float y, float tolerance) {
     check("y").that(actual.y).isWithin(tolerance).of(y);
-    return this;
   }
 }

@@ -37,13 +37,11 @@ public class OrientationEventListenerSubject extends Subject {
     this.actual = actual;
   }
 
-  public OrientationEventListenerSubject isDetectingOrientation() {
+  public void isDetectingOrientation() {
     check("canDetectOrientation()").that(actual.canDetectOrientation()).isTrue();
-    return this;
   }
 
-  public OrientationEventListenerSubject isNotDetectingOrientation() {
+  public void isNotDetectingOrientation() {
     check("canDetectOrientation()").that(actual.canDetectOrientation()).isFalse();
-    return this;
   }
 }

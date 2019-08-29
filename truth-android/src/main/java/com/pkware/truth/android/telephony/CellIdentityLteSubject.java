@@ -41,28 +41,23 @@ public final class CellIdentityLteSubject extends Subject {
     this.actual = actual;
   }
 
-  public CellIdentityLteSubject hasCi(int ci) {
+  public void hasCi(int ci) {
     check("getCi()").that(actual.getCi()).isEqualTo(ci);
-    return this;
   }
 
-  public CellIdentityLteSubject hasMcc(int mcc) {
+  public void hasMcc(int mcc) {
     check("getMcc()").that(actual.getMcc()).isEqualTo(mcc);
-    return this;
   }
 
-  public CellIdentityLteSubject hasMnc(int mnc) {
+  public void hasMnc(int mnc) {
     check("getMnc()").that(actual.getMnc()).isEqualTo(mnc);
-    return this;
   }
 
-  public CellIdentityLteSubject hasPci(int pci) {
+  public void hasPci(int pci) {
     check("getPci()").that(actual.getPci()).isEqualTo(pci);
-    return this;
   }
 
-  public CellIdentityLteSubject hasTac(int tac) {
+  public void hasTac(int tac) {
     check("getTac()").that(actual.getTac()).isEqualTo(tac);
-    return this;
   }
 }

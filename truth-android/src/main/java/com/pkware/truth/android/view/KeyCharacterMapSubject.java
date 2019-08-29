@@ -55,7 +55,7 @@ public class KeyCharacterMapSubject extends Subject {
         .get();
   }
 
-  public KeyCharacterMapSubject hasKeyboardType(@KeyCharacterMapKeyboardType int type) {
+  public void hasKeyboardType(@KeyCharacterMapKeyboardType int type) {
     int actualType = actual.getKeyboardType();
     //noinspection ResourceType
     check("getKeyboardType()")
@@ -63,11 +63,9 @@ public class KeyCharacterMapSubject extends Subject {
             keyboardTypeToString(type), keyboardTypeToString(actualType))
         .that(actualType)
         .isEqualTo(type);
-    return this;
   }
 
-  public KeyCharacterMapSubject hasModifierBehavior(int value) {
+  public void hasModifierBehavior(int value) {
     check("getModifierBehavior()").that(actual.getModifierBehavior()).isEqualTo(value);
-    return this;
   }
 }

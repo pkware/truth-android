@@ -66,7 +66,7 @@ public class BluetoothGattDescriptorSubject extends Subject {
         .get();
   }
 
-  public BluetoothGattDescriptorSubject hasPermissions(@BluetoothGattDescriptorPermissions int permissions) {
+  public void hasPermissions(@BluetoothGattDescriptorPermissions int permissions) {
     int actualPermissions = actual.getPermissions();
     //noinspection ResourceType
     check("getPermissions()")
@@ -75,16 +75,13 @@ public class BluetoothGattDescriptorSubject extends Subject {
             permissionsToString(actualPermissions))
         .that(actualPermissions)
         .isEqualTo(permissions);
-    return this;
   }
 
-  public BluetoothGattDescriptorSubject hasUuid(@Nullable UUID uuid) {
+  public void hasUuid(@Nullable UUID uuid) {
     check("getUuid()").that(actual.getUuid()).isEqualTo(uuid);
-    return this;
   }
 
-  public BluetoothGattDescriptorSubject hasValue(@Nonnull byte[] value) {
+  public void hasValue(@Nonnull byte[] value) {
     check("getValue()").that(actual.getValue()).isEqualTo(value);
-    return this;
   }
 }

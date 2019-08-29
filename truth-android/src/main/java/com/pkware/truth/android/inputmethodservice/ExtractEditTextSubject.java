@@ -37,13 +37,11 @@ public class ExtractEditTextSubject extends Subject {
     this.actual = actual;
   }
 
-  public ExtractEditTextSubject isInputMethodTarget() {
+  public void isInputMethodTarget() {
     check("isInputMethodTarget()").that(actual.isInputMethodTarget()).isTrue();
-    return this;
   }
 
-  public ExtractEditTextSubject isNotInputMethodTarget() {
+  public void isNotInputMethodTarget() {
     check("isInputMethodTarget()").that(actual.isInputMethodTarget()).isFalse();
-    return this;
   }
 }

@@ -36,13 +36,11 @@ public class ListFragmentSubject extends AbstractFragmentSubject<ListFragment> {
     this.actual = actual;
   }
 
-  public ListFragmentSubject hasSelectedItemId(long id) {
+  public void hasSelectedItemId(long id) {
     check("getSelectedItemId()").that(actual.getSelectedItemId()).isEqualTo(id);
-    return this;
   }
 
-  public ListFragmentSubject hasSelectedItemPosition(int position) {
+  public void hasSelectedItemPosition(int position) {
     check("getSelectedItemPosition()").that(actual.getSelectedItemPosition()).isEqualTo(position);
-    return this;
   }
 }

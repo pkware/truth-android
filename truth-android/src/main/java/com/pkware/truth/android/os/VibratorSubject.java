@@ -37,13 +37,11 @@ public class VibratorSubject extends Subject {
     this.actual = actual;
   }
 
-  public VibratorSubject hasVibrator() {
+  public void hasVibrator() {
     check("hasVibrator()").that(actual.hasVibrator()).isTrue();
-    return this;
   }
 
-  public VibratorSubject hasNoVibrator() {
+  public void hasNoVibrator() {
     check("hasVibrator()").that(actual.hasVibrator()).isFalse();
-    return this;
   }
 }

@@ -38,13 +38,11 @@ public class InstrumentationActivityMonitorSubject extends Subject {
     this.actual = actual;
   }
 
-  public InstrumentationActivityMonitorSubject hasHits(int hits) {
+  public void hasHits(int hits) {
     check("getHits()").that(actual.getHits()).isEqualTo(hits);
-    return this;
   }
 
-  public InstrumentationActivityMonitorSubject hasLastActivity(@Nullable Activity activity) {
+  public void hasLastActivity(@Nullable Activity activity) {
     check("getLastActivity()").that(actual.getLastActivity()).isSameInstanceAs(activity);
-    return this;
   }
 }

@@ -41,29 +41,24 @@ public class AccessibilityEventSubject
   }
 
   @TargetApi(JELLY_BEAN)
-  public AccessibilityEventSubject hasAction(int action) {
+  public void hasAction(int action) {
     check("getAction()").that(actual.getAction()).isEqualTo(action);
-    return this;
   }
 
-  public AccessibilityEventSubject hasEventTime(long time) {
+  public void hasEventTime(long time) {
     check("getEventTime()").that(actual.getEventTime()).isEqualTo(time);
-    return this;
   }
 
-  public AccessibilityEventSubject hasEventType(int type) {
+  public void hasEventType(int type) {
     check("getEventType()").that(actual.getEventType()).isEqualTo(type);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public AccessibilityEventSubject hasMovementGranularity(int granularity) {
+  public void hasMovementGranularity(int granularity) {
     check("getMovementGranularity()").that(actual.getMovementGranularity()).isEqualTo(granularity);
-    return this;
   }
 
-  public AccessibilityEventSubject hasPackageName(@Nullable CharSequence name) {
+  public void hasPackageName(@Nullable CharSequence name) {
     check("getPackageName()").that(actual.getPackageName()).isEqualTo(name);
-    return this;
   }
 }

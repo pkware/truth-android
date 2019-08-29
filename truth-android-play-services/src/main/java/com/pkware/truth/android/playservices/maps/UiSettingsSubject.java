@@ -36,83 +36,67 @@ public class UiSettingsSubject extends Subject {
     this.actual = actual;
   }
 
-  public UiSettingsSubject hasCompassEnabled() {
+  public void hasCompassEnabled() {
     check("isCompassEnabled()").that(actual.isCompassEnabled()).isTrue();
-    return this;
   }
 
-  public UiSettingsSubject hasCompassDisabled() {
+  public void hasCompassDisabled() {
     check("isCompassEnabled()").that(actual.isCompassEnabled()).isFalse();
-    return this;
   }
 
-  public UiSettingsSubject hasIndoorLevelPickerEnabled() {
+  public void hasIndoorLevelPickerEnabled() {
     check("isIndoorLevelPickerEnabled()").that(actual.isIndoorLevelPickerEnabled()).isTrue();
-    return this;
   }
 
-  public UiSettingsSubject hasIndoorLevelPickerDisabled() {
+  public void hasIndoorLevelPickerDisabled() {
     check("isIndoorLevelPickerEnabled()").that(actual.isIndoorLevelPickerEnabled()).isFalse();
-    return this;
   }
 
-  public UiSettingsSubject hasMyLocationButtonEnabled() {
+  public void hasMyLocationButtonEnabled() {
     check("isMyLocationButtonEnabled()").that(actual.isMyLocationButtonEnabled()).isTrue();
-    return this;
   }
 
-  public UiSettingsSubject hasMyLocationButtonDisabled() {
+  public void hasMyLocationButtonDisabled() {
     check("isMyLocationButtonEnabled()").that(actual.isMyLocationButtonEnabled()).isFalse();
-    return this;
   }
 
-  public UiSettingsSubject hasRotateGesturesEnabled() {
+  public void hasRotateGesturesEnabled() {
     check("isRotateGesturesEnabled()").that(actual.isRotateGesturesEnabled()).isTrue();
-    return this;
   }
 
-  public UiSettingsSubject hasRotateGesturesDisabled() {
+  public void hasRotateGesturesDisabled() {
     check("isRotateGesturesEnabled()").that(actual.isRotateGesturesEnabled()).isFalse();
-    return this;
   }
 
-  public UiSettingsSubject hasScrollGesturesEnabled() {
+  public void hasScrollGesturesEnabled() {
     check("isScrollGesturesEnabled()").that(actual.isScrollGesturesEnabled()).isTrue();
-    return this;
   }
 
-  public UiSettingsSubject hasScrollGesturesDisabled() {
+  public void hasScrollGesturesDisabled() {
     check("isScrollGesturesEnabled()").that(actual.isScrollGesturesEnabled()).isFalse();
-    return this;
   }
 
-  public UiSettingsSubject hasTiltGesturesEnabled() {
+  public void hasTiltGesturesEnabled() {
     check("isTiltGesturesEnabled()").that(actual.isTiltGesturesEnabled()).isTrue();
-    return this;
   }
 
-  public UiSettingsSubject hasTiltGesturesDisabled() {
+  public void hasTiltGesturesDisabled() {
     check("isTiltGesturesEnabled()").that(actual.isTiltGesturesEnabled()).isFalse();
-    return this;
   }
 
-  public UiSettingsSubject hasZoomControlsEnabled() {
+  public void hasZoomControlsEnabled() {
     check("isZoomControlsEnabled()").that(actual.isZoomControlsEnabled()).isTrue();
-    return this;
   }
 
-  public UiSettingsSubject hasZoomControlsDisabled() {
+  public void hasZoomControlsDisabled() {
     check("isZoomControlsEnabled()").that(actual.isZoomControlsEnabled()).isFalse();
-    return this;
   }
 
-  public UiSettingsSubject hasZoomGesturesEnabled() {
+  public void hasZoomGesturesEnabled() {
     check("isZoomGesturesEnabled()").that(actual.isZoomGesturesEnabled()).isTrue();
-    return this;
   }
 
-  public UiSettingsSubject hasZoomGesturesDisabled() {
+  public void hasZoomGesturesDisabled() {
     check("isZoomGesturesEnabled()").that(actual.isZoomGesturesEnabled()).isFalse();
-    return this;
   }
 }

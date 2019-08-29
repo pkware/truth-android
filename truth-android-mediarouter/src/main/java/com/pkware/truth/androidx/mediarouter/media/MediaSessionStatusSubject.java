@@ -51,7 +51,7 @@ public class MediaSessionStatusSubject extends Subject {
         .get();
   }
 
-  public MediaSessionStatusSubject hasSessionState(@MediaSessionStatusState int state) {
+  public void hasSessionState(@MediaSessionStatusState int state) {
     int actualState = actual.getSessionState();
     //noinspection ResourceType
     check("getSessionState()")
@@ -59,21 +59,17 @@ public class MediaSessionStatusSubject extends Subject {
             sessionStateToString(state), sessionStateToString(actualState))
         .that(actualState)
         .isEqualTo(state);
-    return this;
   }
 
-  public MediaSessionStatusSubject hasTimestamp(long timestamp) {
+  public void hasTimestamp(long timestamp) {
     check("getTimestamp()").that(actual.getTimestamp()).isEqualTo(timestamp);
-    return this;
   }
 
-  public MediaSessionStatusSubject hasQueuePaused() {
+  public void hasQueuePaused() {
     check("isQueuePaused()").that(actual.isQueuePaused()).isTrue();
-    return this;
   }
 
-  public MediaSessionStatusSubject doesNotHaveQueuePaused() {
+  public void doesNotHaveQueuePaused() {
     check("isQueuePaused()").that(actual.isQueuePaused()).isFalse();
-    return this;
   }
 }

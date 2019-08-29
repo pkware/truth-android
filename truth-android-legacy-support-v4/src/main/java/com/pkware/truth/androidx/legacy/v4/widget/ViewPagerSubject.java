@@ -38,33 +38,27 @@ public class ViewPagerSubject extends AbstractViewGroupSubject<ViewPager> {
     this.actual = actual;
   }
 
-  public ViewPagerSubject hasAdapter(@Nullable PagerAdapter adapter) {
+  public void hasAdapter(@Nullable PagerAdapter adapter) {
     check("getAdapter()").that(actual.getAdapter()).isSameInstanceAs(adapter);
-    return this;
   }
 
-  public ViewPagerSubject hasCurrentItem(int index) {
+  public void hasCurrentItem(int index) {
     check("getCurrentItem()").that(actual.getCurrentItem()).isEqualTo(index);
-    return this;
   }
 
-  public ViewPagerSubject hasOffscreenPageLimit(int limit) {
+  public void hasOffscreenPageLimit(int limit) {
     check("getOffscreenPageLimit()").that(actual.getOffscreenPageLimit()).isEqualTo(limit);
-    return this;
   }
 
-  public ViewPagerSubject hasPageMargin(int margin) {
+  public void hasPageMargin(int margin) {
     check("getPageMargin()").that(actual.getPageMargin()).isEqualTo(margin);
-    return this;
   }
 
-  public ViewPagerSubject isFakeDragging() {
+  public void isFakeDragging() {
     check("isFakeDragging()").that(actual.isFakeDragging()).isTrue();
-    return this;
   }
 
-  public ViewPagerSubject isNotFakeDragging() {
+  public void isNotFakeDragging() {
     check("isFakeDragging()").that(actual.isFakeDragging()).isFalse();
-    return this;
   }
 }

@@ -39,28 +39,23 @@ public class BitmapDrawableSubject extends AbstractDrawableSubject<BitmapDrawabl
     this.actual = actual;
   }
 
-  public BitmapDrawableSubject hasBitmap(@Nullable Bitmap bitmap) {
+  public void hasBitmap(@Nullable Bitmap bitmap) {
     check("getBitmap()").that(actual.getBitmap()).isEqualTo(bitmap);
-    return this;
   }
 
-  public BitmapDrawableSubject hasGravity(int gravity) {
+  public void hasGravity(int gravity) {
     check("getGravity()").that(actual.getGravity()).isEqualTo(gravity);
-    return this;
   }
 
-  public BitmapDrawableSubject hasPaint(@Nullable Paint paint) {
+  public void hasPaint(@Nullable Paint paint) {
     check("getPaint()").that(actual.getPaint()).isEqualTo(paint);
-    return this;
   }
 
-  public BitmapDrawableSubject hasTileModeX(@Nullable Shader.TileMode mode) {
+  public void hasTileModeX(@Nullable Shader.TileMode mode) {
     check("getTileModeX()").that(actual.getTileModeX()).isEqualTo(mode);
-    return this;
   }
 
-  public BitmapDrawableSubject hasTileModeY(@Nullable Shader.TileMode mode) {
+  public void hasTileModeY(@Nullable Shader.TileMode mode) {
     check("getTileModeY()").that(actual.getTileModeY()).isEqualTo(mode);
-    return this;
   }
 }

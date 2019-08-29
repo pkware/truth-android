@@ -40,96 +40,79 @@ public class LocationProviderSubject extends Subject {
     this.actual = actual;
   }
 
-  public LocationProviderSubject hasAccuracy(int accuracy) {
+  public void hasAccuracy(int accuracy) {
     int actualAccuracy = actual.getAccuracy();
     check("getAccuracy()")
         .withMessage("Expected accuracy <%s> but was <%s>.", accuracyRequirementToString(accuracy), accuracyRequirementToString(actualAccuracy))
         .that(actualAccuracy)
         .isEqualTo(accuracy);
-    return this;
   }
 
-  public LocationProviderSubject hasName(@Nullable String name) {
+  public void hasName(@Nullable String name) {
     check("getName()").that(actual.getName()).isEqualTo(name);
-    return this;
   }
 
-  public LocationProviderSubject hasPowerRequirement(int requirement) {
+  public void hasPowerRequirement(int requirement) {
     int actualRequirement = actual.getPowerRequirement();
     check("getPowerRequirement()")
         .withMessage("Expected power requirement <%s> but was <%s>.", powerRequirementToString(requirement), powerRequirementToString(actualRequirement))
         .that(actualRequirement)
         .isEqualTo(requirement);
-    return this;
   }
 
-  public LocationProviderSubject hasMonetaryCost() {
+  public void hasMonetaryCost() {
     check("hasMonetaryCost()").that(actual.hasMonetaryCost()).isTrue();
-    return this;
   }
 
-  public LocationProviderSubject hasNoMonetaryCost() {
+  public void hasNoMonetaryCost() {
     check("hasMonetaryCost()").that(actual.hasMonetaryCost()).isFalse();
-    return this;
   }
 
-  public LocationProviderSubject hasCellRequirement() {
+  public void hasCellRequirement() {
     check("requiresCell()").that(actual.requiresCell()).isTrue();
-    return this;
   }
 
-  public LocationProviderSubject hasNoCellRequirement() {
+  public void hasNoCellRequirement() {
     check("requiresCell()").that(actual.requiresCell()).isFalse();
-    return this;
   }
 
-  public LocationProviderSubject hasNetworkRequirement() {
+  public void hasNetworkRequirement() {
     check("requiresNetwork()").that(actual.requiresNetwork()).isTrue();
-    return this;
   }
 
-  public LocationProviderSubject hasNoNetworkRequirement() {
+  public void hasNoNetworkRequirement() {
     check("requiresNetwork()").that(actual.requiresNetwork()).isFalse();
-    return this;
   }
 
-  public LocationProviderSubject hasSatelliteRequirement() {
+  public void hasSatelliteRequirement() {
     check("requiresSatellite()").that(actual.requiresSatellite()).isTrue();
-    return this;
   }
 
-  public LocationProviderSubject hasNoSatelliteRequirement() {
+  public void hasNoSatelliteRequirement() {
     check("requiresSatellite()").that(actual.requiresSatellite()).isFalse();
-    return this;
   }
 
-  public LocationProviderSubject hasAltitudeSupport() {
+  public void hasAltitudeSupport() {
     check("supportsAltitude()").that(actual.supportsAltitude()).isTrue();
-    return this;
   }
 
-  public LocationProviderSubject hasNoAltitudeSupport() {
+  public void hasNoAltitudeSupport() {
     check("supportsAltitude()").that(actual.supportsAltitude()).isFalse();
-    return this;
   }
 
-  public LocationProviderSubject hasBearingSupport() {
+  public void hasBearingSupport() {
     check("supportsBearing()").that(actual.supportsBearing()).isTrue();
-    return this;
   }
 
-  public LocationProviderSubject hasNoBearingSupport() {
+  public void hasNoBearingSupport() {
     check("supportsBearing()").that(actual.supportsBearing()).isFalse();
-    return this;
   }
 
-  public LocationProviderSubject hasSpeedSupport() {
+  public void hasSpeedSupport() {
     check("supportsSpeed()").that(actual.supportsSpeed()).isTrue();
-    return this;
   }
 
-  public LocationProviderSubject hasNoSpeedSupport() {
+  public void hasNoSpeedSupport() {
     check("supportsSpeed()").that(actual.supportsSpeed()).isFalse();
-    return this;
   }
 }

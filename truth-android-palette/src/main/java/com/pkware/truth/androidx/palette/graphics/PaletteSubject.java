@@ -41,33 +41,27 @@ public class PaletteSubject extends Subject {
     return 0xFFFFFFFF - color;
   }
 
-  public PaletteSubject hasVibrantColor(int color) {
+  public void hasVibrantColor(int color) {
     check("vibrant color").that(actual.getVibrantColor(getAnotherColor(color))).isEqualTo(color);
-    return this;
   }
 
-  public PaletteSubject hasDarkVibrantColor(int color) {
+  public void hasDarkVibrantColor(int color) {
     check("dark vibrant color").that(actual.getDarkVibrantColor(getAnotherColor(color))).isEqualTo(color);
-    return this;
   }
 
-  public PaletteSubject hasLightVibrantColor(int color) {
+  public void hasLightVibrantColor(int color) {
     check("light vibrant color").that(actual.getLightVibrantColor(getAnotherColor(color))).isEqualTo(color);
-    return this;
   }
 
-  public PaletteSubject hasMutedColor(int color) {
+  public void hasMutedColor(int color) {
     check("muted color").that(actual.getMutedColor(getAnotherColor(color))).isEqualTo(color);
-    return this;
   }
 
-  public PaletteSubject hasDarkMutedColor(int color) {
+  public void hasDarkMutedColor(int color) {
     check("dark muted color").that(actual.getDarkMutedColor(getAnotherColor(color))).isEqualTo(color);
-    return this;
   }
 
-  public PaletteSubject hasLightMutedColor(int color) {
+  public void hasLightMutedColor(int color) {
     check("light muted color").that(actual.getLightMutedColor(color)).isEqualTo(color);
-    return this;
   }
 }

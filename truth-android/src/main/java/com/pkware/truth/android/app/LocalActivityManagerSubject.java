@@ -37,11 +37,10 @@ public class LocalActivityManagerSubject extends Subject {
     this.actual = actual;
   }
 
-  public LocalActivityManagerSubject hasActivity(@Nonnull String id) {
+  public void hasActivity(@Nonnull String id) {
     check("getActivity(id)")
         .withMessage("Has activity with id <%s>", id)
         .that(actual.getActivity(id))
         .isNotNull();
-    return this;
   }
 }

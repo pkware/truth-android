@@ -39,47 +39,39 @@ public class RecyclerViewLayoutManagerSubject extends Subject {
     this.actual = actual;
   }
 
-  public RecyclerViewLayoutManagerSubject supportsPredictiveItemAnimations() {
+  public void supportsPredictiveItemAnimations() {
     check("supportsPredictiveItemAnimations()").that(actual.supportsPredictiveItemAnimations()).isTrue();
-    return this;
   }
 
-  public RecyclerViewLayoutManagerSubject doesNotSupportPredictiveItemAnimations() {
+  public void doesNotSupportPredictiveItemAnimations() {
     check("supportsPredictiveItemAnimations()").that(actual.supportsPredictiveItemAnimations()).isFalse();
-    return this;
   }
 
-  public RecyclerViewLayoutManagerSubject canScrollHorizontally() {
+  public void canScrollHorizontally() {
     check("canScrollHorizontally()").that(actual.canScrollHorizontally()).isTrue();
-    return this;
   }
 
-  public RecyclerViewLayoutManagerSubject canNotScrollHorizontally() {
+  public void canNotScrollHorizontally() {
     check("canScrollHorizontally()").that(actual.canScrollHorizontally()).isFalse();
-    return this;
   }
 
-  public RecyclerViewLayoutManagerSubject canScrollVertically() {
+  public void canScrollVertically() {
     check("canScrollVertically()").that(actual.canScrollVertically()).isTrue();
-    return this;
   }
 
-  public RecyclerViewLayoutManagerSubject canNotScrollVertically() {
+  public void canNotScrollVertically() {
     check("canScrollVertically()").that(actual.canScrollVertically()).isFalse();
-    return this;
   }
 
-  public RecyclerViewLayoutManagerSubject isSmoothScrolling() {
+  public void isSmoothScrolling() {
     check("isSmoothScrolling()").that(actual.isSmoothScrolling()).isTrue();
-    return this;
   }
 
-  public RecyclerViewLayoutManagerSubject isNotSmoothScrolling() {
+  public void isNotSmoothScrolling() {
     check("isSmoothScrolling()").that(actual.isSmoothScrolling()).isFalse();
-    return this;
   }
 
-  public RecyclerViewLayoutManagerSubject hasLayoutDirection(int direction) {
+  public void hasLayoutDirection(int direction) {
     int actualDirection = actual.getLayoutDirection();
     //noinspection WrongConstant
     check("getLayoutDirection()")
@@ -87,86 +79,69 @@ public class RecyclerViewLayoutManagerSubject extends Subject {
             layoutDirectionToString(direction), layoutDirectionToString(actualDirection))
         .that(actualDirection)
         .isEqualTo(direction);
-    return this;
   }
 
-  public RecyclerViewLayoutManagerSubject hasChildCount(int count) {
+  public void hasChildCount(int count) {
     check("getChildCount()").that(actual.getChildCount()).isEqualTo(count);
-    return this;
   }
 
-  public RecyclerViewLayoutManagerSubject hasWidth(int width) {
+  public void hasWidth(int width) {
     check("getWidth()").that(actual.getWidth()).isEqualTo(width);
-    return this;
   }
 
-  public RecyclerViewLayoutManagerSubject hasHeight(int height) {
+  public void hasHeight(int height) {
     check("getHeight()").that(actual.getHeight()).isEqualTo(height);
-    return this;
   }
 
-  public RecyclerViewLayoutManagerSubject hasPaddingLeft(int padding) {
+  public void hasPaddingLeft(int padding) {
     check("getPaddingLeft()").that(actual.getPaddingLeft()).isEqualTo(padding);
-    return this;
   }
 
-  public RecyclerViewLayoutManagerSubject hasPaddingTop(int padding) {
+  public void hasPaddingTop(int padding) {
     check("getPaddingTop()").that(actual.getPaddingTop()).isEqualTo(padding);
-    return this;
   }
 
-  public RecyclerViewLayoutManagerSubject hasPaddingRight(int padding) {
+  public void hasPaddingRight(int padding) {
     check("getPaddingRight()").that(actual.getPaddingRight()).isEqualTo(padding);
-    return this;
   }
 
-  public RecyclerViewLayoutManagerSubject hasPaddingBottom(int padding) {
+  public void hasPaddingBottom(int padding) {
     check("getPaddingBottom()").that(actual.getPaddingBottom()).isEqualTo(padding);
-    return this;
   }
 
-  public RecyclerViewLayoutManagerSubject hasPaddingStart(int padding) {
+  public void hasPaddingStart(int padding) {
     check("getPaddingStart()").that(actual.getPaddingStart()).isEqualTo(padding);
-    return this;
   }
 
-  public RecyclerViewLayoutManagerSubject hasPaddingEnd(int padding) {
+  public void hasPaddingEnd(int padding) {
     check("getPaddingEnd()").that(actual.getPaddingEnd()).isEqualTo(padding);
-    return this;
   }
 
-  public RecyclerViewLayoutManagerSubject isFocused() {
+  public void isFocused() {
     check("isFocused()").that(actual.isFocused()).isTrue();
-    return this;
   }
 
-  public RecyclerViewLayoutManagerSubject isNotFocused() {
+  public void isNotFocused() {
     check("isFocused()").that(actual.isFocused()).isFalse();
-    return this;
   }
 
-  public RecyclerViewLayoutManagerSubject hasFocus() {
+  public void hasFocus() {
     check("hasFocus()").that(actual.hasFocus()).isTrue();
-    return this;
   }
 
-  public RecyclerViewLayoutManagerSubject doesNotHaveFocus() {
+  public void doesNotHaveFocus() {
     check("hasFocus()").that(actual.hasFocus()).isFalse();
-    return this;
   }
 
-  public RecyclerViewLayoutManagerSubject hasItemCount(int count) {
+  public void hasItemCount(int count) {
     check("getItemCount()").that(actual.getItemCount()).isEqualTo(count);
-    return this;
   }
 
-  public RecyclerViewLayoutManagerSubject hasMinimumWidth(int width) {
+  public void hasMinimumWidth(int width) {
     check("getMinimumWidth()").that(actual.getMinimumWidth()).isEqualTo(width);
-    return this;
   }
 
-  public RecyclerViewLayoutManagerSubject hasMinimumHeight(int height) {
+  public void hasMinimumHeight(int height) {
     check("getMinimumHeight()").that(actual.getMinimumHeight()).isEqualTo(height);
-    return this;
   }
 }

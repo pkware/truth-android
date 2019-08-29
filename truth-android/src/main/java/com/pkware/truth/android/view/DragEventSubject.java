@@ -57,7 +57,7 @@ public class DragEventSubject extends Subject {
         .get();
   }
 
-  public DragEventSubject hasAction(@DragEventAction int action) {
+  public void hasAction(@DragEventAction int action) {
     int actualAction = actual.getAction();
     //noinspection ResourceType
     check("getAction()")
@@ -65,31 +65,25 @@ public class DragEventSubject extends Subject {
             dragEventActionToString(action), dragEventActionToString(actualAction))
         .that(actualAction)
         .isEqualTo(action);
-    return this;
   }
 
-  public DragEventSubject hasLocalState(@Nullable Object localState) {
+  public void hasLocalState(@Nullable Object localState) {
     check("getLocalState()").that(actual.getLocalState()).isEqualTo(localState);
-    return this;
   }
 
-  public DragEventSubject hasSuccessfulResult() {
+  public void hasSuccessfulResult() {
     check("getResult()").that(actual.getResult()).isTrue();
-    return this;
   }
 
-  public DragEventSubject hasUnsuccessfulResult() {
+  public void hasUnsuccessfulResult() {
     check("getResult()").that(actual.getResult()).isFalse();
-    return this;
   }
 
-  public DragEventSubject hasX(float x, float tolerance) {
+  public void hasX(float x, float tolerance) {
     check("getX()").that(actual.getX()).isWithin(tolerance).of(x);
-    return this;
   }
 
-  public DragEventSubject hasY(float y, float tolerance) {
+  public void hasY(float y, float tolerance) {
     check("getY()").that(actual.getY()).isWithin(tolerance).of(y);
-    return this;
   }
 }

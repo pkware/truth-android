@@ -40,64 +40,52 @@ public class VideoViewSubject extends AbstractViewSubject<VideoView> {
     this.actual = actual;
   }
 
-  public VideoViewSubject isPausable() {
+  public void isPausable() {
     check("canPause()").that(actual.canPause()).isTrue();
-    return this;
   }
 
-  public VideoViewSubject isNotPausable() {
+  public void isNotPausable() {
     check("canPause()").that(actual.canPause()).isFalse();
-    return this;
   }
 
-  public VideoViewSubject isSeekableBackward() {
+  public void isSeekableBackward() {
     check("canSeekBackward()").that(actual.canSeekBackward()).isTrue();
-    return this;
   }
 
-  public VideoViewSubject isNotSeekableBackward() {
+  public void isNotSeekableBackward() {
     check("canSeekBackward()").that(actual.canSeekBackward()).isFalse();
-    return this;
   }
 
-  public VideoViewSubject isSeekableForward() {
+  public void isSeekableForward() {
     check("canSeekForward()").that(actual.canSeekForward()).isTrue();
-    return this;
   }
 
-  public VideoViewSubject isNotSeekableForward() {
+  public void isNotSeekableForward() {
     check("canSeekForward()").that(actual.canSeekForward()).isFalse();
-    return this;
   }
 
   @TargetApi(JELLY_BEAN_MR2)
-  public VideoViewSubject hasAudioSessionId(int id) {
+  public void hasAudioSessionId(int id) {
     check("getAudioSessionId()").that(actual.getAudioSessionId()).isEqualTo(id);
-    return this;
   }
 
-  public VideoViewSubject hasBufferPercentage(int percentage) {
+  public void hasBufferPercentage(int percentage) {
     check("getBufferPercentage()").that(actual.getBufferPercentage()).isEqualTo(percentage);
-    return this;
   }
 
-  public VideoViewSubject hasCurrentPosition(int position) {
+  public void hasCurrentPosition(int position) {
     check("getCurrentPosition()").that(actual.getCurrentPosition()).isEqualTo(position);
-    return this;
   }
 
-  public VideoViewSubject hasDuration(int duration) {
+  public void hasDuration(int duration) {
     check("getDuration()").that(actual.getDuration()).isEqualTo(duration);
-    return this;
   }
 
-  public VideoViewSubject isPlaying() {
+  public void isPlaying() {
     check("isPlaying()").that(actual.isPlaying()).isTrue();
-    return this;
   }
 
-  public VideoViewSubject isNotPlaying() {
+  public void isNotPlaying() {
     check("isPlaying()").that(actual.isPlaying()).isFalse();
-    return this;
   }
 }

@@ -37,24 +37,21 @@ public class SparseArraySubject<E> extends Subject {
     this.actual = actual;
   }
 
-  public SparseArraySubject<E> hasKey(int key) {
+  public void hasKey(int key) {
     check("indexOfKey(key)")
         .withMessage("Expected key <%s> to be present but was not.", key)
         .that(actual.indexOfKey(key))
         .isGreaterThan(-1);
-    return this;
   }
 
-  public SparseArraySubject<E> doesNotHaveKey(int key) {
+  public void doesNotHaveKey(int key) {
     check("indexOfKey(key)")
         .withMessage("Expected key <%s> to not be present but was.", key)
         .that(actual.indexOfKey(key))
         .isLessThan(0);
-    return this;
   }
 
-  public SparseArraySubject<E> hasSize(int size) {
+  public void hasSize(int size) {
     check("size()").that(actual.size()).isEqualTo(size);
-    return this;
   }
 }

@@ -38,13 +38,11 @@ public class BidiFormatterSubject extends Subject {
     this.actual = actual;
   }
 
-  public BidiFormatterSubject hasRtlContext() {
+  public void hasRtlContext() {
     check("isRtlContext()").that(actual.isRtlContext()).isTrue();
-    return this;
   }
 
-  public BidiFormatterSubject doesNotHaveRtlContext() {
+  public void doesNotHaveRtlContext() {
     check("isRtlContext()").that(actual.isRtlContext()).isFalse();
-    return this;
   }
 }

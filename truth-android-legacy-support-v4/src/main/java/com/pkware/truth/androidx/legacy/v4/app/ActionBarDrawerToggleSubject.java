@@ -38,15 +38,13 @@ public class ActionBarDrawerToggleSubject extends Subject {
     this.actual = actual;
   }
 
-  public ActionBarDrawerToggleSubject hasDrawerIndicatorEnabled() {
+  public void hasDrawerIndicatorEnabled() {
     check("isDrawerIndicatorEnabled()").that(actual.isDrawerIndicatorEnabled()).isTrue();
-    return this;
   }
 
-  public ActionBarDrawerToggleSubject doesNotHaveDrawerIndicatorEnabled() {
+  public void doesNotHaveDrawerIndicatorEnabled() {
     check("isDrawerIndicatorEnabled()")
         .withMessage("drawer indicator is disabled")
         .that(actual.isDrawerIndicatorEnabled()).isTrue();
-    return this;
   }
 }

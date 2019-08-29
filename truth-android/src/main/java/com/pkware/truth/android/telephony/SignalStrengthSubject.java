@@ -37,43 +37,35 @@ public class SignalStrengthSubject extends Subject {
     this.actual = actual;
   }
 
-  public SignalStrengthSubject hasCdmaDbm(int dbm) {
+  public void hasCdmaDbm(int dbm) {
     check("getCdmaDbm()").that(actual.getCdmaDbm()).isEqualTo(dbm);
-    return this;
   }
 
-  public SignalStrengthSubject hasCdmaEcio(int ecio) {
+  public void hasCdmaEcio(int ecio) {
     check("getCdmaEcio()").that(actual.getCdmaEcio()).isEqualTo(ecio);
-    return this;
   }
 
-  public SignalStrengthSubject hasEvdoDbm(int dbm) {
+  public void hasEvdoDbm(int dbm) {
     check("getEvdoDbm()").that(actual.getEvdoDbm()).isEqualTo(dbm);
-    return this;
   }
 
-  public SignalStrengthSubject hasEvdoEcio(int ecio) {
+  public void hasEvdoEcio(int ecio) {
     check("getEvdoEcio()").that(actual.getEvdoEcio()).isEqualTo(ecio);
-    return this;
   }
 
-  public SignalStrengthSubject hasEvdoSnr(int snr) {
+  public void hasEvdoSnr(int snr) {
     check("getEvdoSnr()").that(actual.getEvdoSnr()).isEqualTo(snr);
-    return this;
   }
 
-  public SignalStrengthSubject hasGsmSignalStrength(int signalStrength) {
+  public void hasGsmSignalStrength(int signalStrength) {
     check("getGsmSignalStrength()").that(actual.getGsmSignalStrength()).isEqualTo(signalStrength);
-    return this;
   }
 
-  public SignalStrengthSubject isGsm() {
+  public void isGsm() {
     check("isGsm()").that(actual.isGsm()).isTrue();
-    return this;
   }
 
-  public SignalStrengthSubject isNotGsm() {
+  public void isNotGsm() {
     check("isGsm()").that(actual.isGsm()).isFalse();
-    return this;
   }
 }

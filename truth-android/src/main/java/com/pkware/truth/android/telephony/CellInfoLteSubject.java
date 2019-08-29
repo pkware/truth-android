@@ -42,13 +42,11 @@ public final class CellInfoLteSubject extends AbstractCellInfoSubject<CellInfoLt
     this.actual = actual;
   }
 
-  public CellInfoLteSubject hasCellIdentity(@Nullable CellIdentityLte cellIdentity) {
+  public void hasCellIdentity(@Nullable CellIdentityLte cellIdentity) {
     check("getCellIdentity()").that(actual.getCellIdentity()).isEqualTo(cellIdentity);
-    return this;
   }
 
-  public CellInfoLteSubject hasCellSignalStrength(@Nullable CellSignalStrengthLte cellSignalStrength) {
+  public void hasCellSignalStrength(@Nullable CellSignalStrengthLte cellSignalStrength) {
     check("getCellSignalStrength()").that(actual.getCellSignalStrength()).isEqualTo(cellSignalStrength);
-    return this;
   }
 }

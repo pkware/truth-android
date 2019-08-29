@@ -36,13 +36,11 @@ public class TransitionDrawableSubject extends AbstractDrawableSubject<Transitio
     this.actual = actual;
   }
 
-  public TransitionDrawableSubject isCrossFadeEnabled() {
+  public void isCrossFadeEnabled() {
     check("isCrossFadeEnabled()").that(actual.isCrossFadeEnabled()).isTrue();
-    return this;
   }
 
-  public TransitionDrawableSubject isCrossFadeDisabled() {
+  public void isCrossFadeDisabled() {
     check("isCrossFadeEnabled()").that(actual.isCrossFadeEnabled()).isFalse();
-    return this;
   }
 }

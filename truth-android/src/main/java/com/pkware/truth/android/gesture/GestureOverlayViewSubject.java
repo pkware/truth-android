@@ -59,110 +59,93 @@ public class GestureOverlayViewSubject extends Subject {
         .get();
   }
 
-  public GestureOverlayViewSubject hasFadeOffset(long offset) {
+  public void hasFadeOffset(long offset) {
     check("getFadeOffset()").that(actual.getFadeOffset()).isEqualTo(offset);
-    return this;
   }
 
-  public GestureOverlayViewSubject hasGestureColor(int color) {
+  public void hasGestureColor(int color) {
     int actualColor = actual.getGestureColor();
     check("getGestureColor()")
         .withMessage("Expected gesture color <%s> but was <%s>.", Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
-    return this;
   }
 
-  public GestureOverlayViewSubject hasGestureStrokeAngleThreshold(float threshold, float tolerance) {
+  public void hasGestureStrokeAngleThreshold(float threshold, float tolerance) {
     check("getGestureStrokeAngleThreshold()").that(actual.getGestureStrokeAngleThreshold()).isWithin(tolerance)
         .of(threshold);
-    return this;
   }
 
-  public GestureOverlayViewSubject hasGestureStrokeLengthThreshold(float threshold, float tolerance) {
+  public void hasGestureStrokeLengthThreshold(float threshold, float tolerance) {
     check("getGestureStrokeLengthThreshold()").that(actual.getGestureStrokeLengthThreshold()).isWithin(tolerance)
         .of(threshold);
-    return this;
   }
 
-  public GestureOverlayViewSubject hasGestureStrokeSquarenessThreshold(float threshold, float tolerance) {
+  public void hasGestureStrokeSquarenessThreshold(float threshold, float tolerance) {
     check("getGestureStrokeSquarenessTreshold()").that(actual.getGestureStrokeSquarenessTreshold()).isWithin(tolerance)
         .of(threshold);
-    return this;
   }
 
-  public GestureOverlayViewSubject hasGestureStokeType(@GestureOverlayViewGestureStrokeType int type) {
+  public void hasGestureStokeType(@GestureOverlayViewGestureStrokeType int type) {
     int actualType = actual.getGestureStrokeType();
     //noinspection ResourceType
     check("getGestureStrokeType()")
         .withMessage("Expected gesture stroke type <%s> but was <%s>.", gestureStrokeTypeToString(type), gestureStrokeTypeToString(actualType))
         .that(actualType)
         .isEqualTo(type);
-    return this;
   }
 
-  public GestureOverlayViewSubject hasGestureStrokeWidth(float width, float tolerance) {
+  public void hasGestureStrokeWidth(float width, float tolerance) {
     check("getGestureStrokeWidth()").that(actual.getGestureStrokeWidth()).isWithin(tolerance)
         .of(width);
-    return this;
   }
 
-  public GestureOverlayViewSubject hasOrientation(@GestureOverlayViewOrientation int orientation) {
+  public void hasOrientation(@GestureOverlayViewOrientation int orientation) {
     int actualOrientation = actual.getOrientation();
     //noinspection ResourceType
     check("getOrientation()")
         .withMessage("Expected orientation <%s> but was <%s>.", orientationToString(orientation), orientationToString(actualOrientation))
         .that(actualOrientation)
         .isEqualTo(orientation);
-    return this;
   }
 
-  public GestureOverlayViewSubject hasUncertainGestureColor(int color) {
+  public void hasUncertainGestureColor(int color) {
     int actualColor = actual.getUncertainGestureColor();
     check("getUncertainGestureColor()")
         .withMessage("Expected uncertain gesture color <%s> but was <%s>.", Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
-    return this;
   }
 
-  public GestureOverlayViewSubject isInterceptingEvents() {
+  public void isInterceptingEvents() {
     check("isEventsInterceptionEnabled()").that(actual.isEventsInterceptionEnabled()).isTrue();
-    return this;
   }
 
-  public GestureOverlayViewSubject isNotInterceptingEvents() {
+  public void isNotInterceptingEvents() {
     check("isEventsInterceptionEnabled()").that(actual.isEventsInterceptionEnabled()).isFalse();
-    return this;
   }
 
-  public GestureOverlayViewSubject isFadeEnabled() {
+  public void isFadeEnabled() {
     check("isFadeEnabled()").that(actual.isFadeEnabled()).isTrue();
-    return this;
   }
 
-  public GestureOverlayViewSubject isFadeDisabled() {
+  public void isFadeDisabled() {
     check("isFadeEnabled()").that(actual.isFadeEnabled()).isFalse();
-    return this;
   }
 
-  public GestureOverlayViewSubject isGestureVisible() {
+  public void isGestureVisible() {
     check("isGestureVisible()").that(actual.isGestureVisible()).isTrue();
-    return this;
   }
 
-  public GestureOverlayViewSubject isGestureNotVisible() {
+  public void isGestureNotVisible() {
     check("isGestureVisible()").that(actual.isGestureVisible()).isFalse();
-    return this;
   }
 
-  public GestureOverlayViewSubject isGesturing() {
+  public void isGesturing() {
     check("isGesturing()").that(actual.isGesturing()).isTrue();
-    return this;
   }
 
-  public GestureOverlayViewSubject isNotGesturing() {
+  public void isNotGesturing() {
     check("isGesturing()").that(actual.isGesturing()).isFalse();
-    return this;
   }
 }

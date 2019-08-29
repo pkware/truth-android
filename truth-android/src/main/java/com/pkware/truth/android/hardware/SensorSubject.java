@@ -91,60 +91,50 @@ public class SensorSubject extends Subject {
         .get();
   }
 
-  public SensorSubject hasMaximumRange(float range, float tolerance) {
+  public void hasMaximumRange(float range, float tolerance) {
     check("getMaximumRange()").that(actual.getMaximumRange()).isWithin(tolerance).of(range);
-    return this;
   }
 
-  public SensorSubject hasMinDelay(int delay) {
+  public void hasMinDelay(int delay) {
     check("getMinDelay()").that(actual.getMinDelay()).isEqualTo(delay);
-    return this;
   }
 
-  public SensorSubject hasName(@Nullable String name) {
+  public void hasName(@Nullable String name) {
     check("getName()").that(actual.getName()).isEqualTo(name);
-    return this;
   }
 
-  public SensorSubject hasPower(float power, float tolerance) {
+  public void hasPower(float power, float tolerance) {
     check("getPower()").that(actual.getPower()).isWithin(tolerance).of(power);
-    return this;
   }
 
-  public SensorSubject hasResolution(float resolution, float tolerance) {
+  public void hasResolution(float resolution, float tolerance) {
     check("getResolution()").that(actual.getResolution()).isWithin(tolerance).of(resolution);
-    return this;
   }
 
-  public SensorSubject hasType(@SensorType int type) {
+  public void hasType(@SensorType int type) {
     int actualType = actual.getType();
     //noinspection ResourceType
     check("getType()")
         .withMessage("Expected type <%s> but was <%s>.", typeToString(type), typeToString(actualType))
         .that(actualType)
         .isEqualTo(type);
-    return this;
   }
 
-  public SensorSubject hasVendor(@Nullable String vendor) {
+  public void hasVendor(@Nullable String vendor) {
     check("getVendor()").that(actual.getVendor()).isEqualTo(vendor);
-    return this;
   }
 
-  public SensorSubject hasVersion(int version) {
+  public void hasVersion(int version) {
     check("getVersion()").that(actual.getVersion()).isEqualTo(version);
-    return this;
   }
 
   @TargetApi(KITKAT)
-  public SensorSubject hasFifoMaxEventCount(int count) {
+  public void hasFifoMaxEventCount(int count) {
     check("getFifoMaxEventCount()").that(actual.getFifoMaxEventCount()).isEqualTo(count);
-    return this;
   }
 
   @TargetApi(KITKAT)
-  public SensorSubject hasFifoReservedEventCount(int count) {
+  public void hasFifoReservedEventCount(int count) {
     check("getFifoReservedEventCount()").that(actual.getFifoReservedEventCount()).isEqualTo(count);
-    return this;
   }
 }

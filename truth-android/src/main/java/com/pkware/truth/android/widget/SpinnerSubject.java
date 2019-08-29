@@ -43,41 +43,35 @@ public class SpinnerSubject extends AbstractAbsSpinnerSubject<Spinner> {
   }
 
   @TargetApi(JELLY_BEAN)
-  public SpinnerSubject hasDropDownHorizontalOffset(int offset) {
+  public void hasDropDownHorizontalOffset(int offset) {
     check("getDropDownHorizontalOffset()").that(actual.getDropDownHorizontalOffset()).isEqualTo(offset);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public SpinnerSubject hasDropDownVerticalOffset(int offset) {
+  public void hasDropDownVerticalOffset(int offset) {
     check("getDropDownVerticalOffset()").that(actual.getDropDownVerticalOffset()).isEqualTo(offset);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public SpinnerSubject hasDropDownWidth(int width) {
+  public void hasDropDownWidth(int width) {
     check("getDropDownWidth()").that(actual.getDropDownWidth()).isEqualTo(width);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public SpinnerSubject hasGravity(int gravity) {
+  public void hasGravity(int gravity) {
     check("getGravity()").that(actual.getGravity()).isEqualTo(gravity);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public SpinnerSubject hasPopupBackground(@Nullable Drawable background) {
+  public void hasPopupBackground(@Nullable Drawable background) {
     check("getPopupBackground()").that(actual.getPopupBackground()).isSameInstanceAs(background);
-    return this;
   }
 
-  public SpinnerSubject hasPrompt(@Nullable String text) {
+  public void hasPrompt(@Nullable String text) {
     check("getPrompt()").that(actual.getPrompt().toString()).isEqualTo(text);
-    return this;
   }
 
-  public SpinnerSubject hasPrompt(@StringRes int resId) {
-    return hasPrompt(actual.getContext().getString(resId));
+  public void hasPrompt(@StringRes int resId) {
+    hasPrompt(actual.getContext().getString(resId));
   }
 }

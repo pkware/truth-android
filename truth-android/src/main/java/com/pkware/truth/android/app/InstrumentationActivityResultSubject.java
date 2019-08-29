@@ -38,13 +38,11 @@ public class InstrumentationActivityResultSubject extends Subject {
     this.actual = actual;
   }
 
-  public InstrumentationActivityResultSubject hasResultCode(int code) {
+  public void hasResultCode(int code) {
     check("getResultCode()").that(actual.getResultCode()).isEqualTo(code);
-    return this;
   }
 
-  public InstrumentationActivityResultSubject hasResultData(@Nullable Intent intent) {
+  public void hasResultData(@Nullable Intent intent) {
     check("getResultData()").that(actual.getResultData()).isEqualTo(intent);
-    return this;
   }
 }

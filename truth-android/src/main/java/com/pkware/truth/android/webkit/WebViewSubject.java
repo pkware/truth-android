@@ -38,63 +38,51 @@ public class WebViewSubject extends Subject {
     this.actual = actual;
   }
 
-  public WebViewSubject canGoBack() {
+  public void canGoBack() {
     check("canGoBack()").that(actual.canGoBack()).isTrue();
-    return this;
   }
 
-  public WebViewSubject canNotGoBack() {
+  public void canNotGoBack() {
     check("canGoBack()").that(actual.canGoBack()).isFalse();
-    return this;
   }
 
-  public WebViewSubject canGoForward() {
+  public void canGoForward() {
     check("canGoForward()").that(actual.canGoForward()).isTrue();
-    return this;
   }
 
-  public WebViewSubject canNotGoForward() {
+  public void canNotGoForward() {
     check("canGoForward()").that(actual.canGoForward()).isFalse();
-    return this;
   }
 
-  public WebViewSubject hasCertificate(@Nullable SslCertificate certificate) {
+  public void hasCertificate(@Nullable SslCertificate certificate) {
     check("getCertificate()").that(actual.getCertificate()).isSameInstanceAs(certificate);
-    return this;
   }
 
-  public WebViewSubject hasContentHeight(int height) {
+  public void hasContentHeight(int height) {
     check("getContentHeight()").that(actual.getContentHeight()).isEqualTo(height);
-    return this;
   }
 
-  public WebViewSubject hasOriginalUrl(@Nullable String url) {
+  public void hasOriginalUrl(@Nullable String url) {
     check("getOriginalUrl()").that(actual.getOriginalUrl()).isEqualTo(url);
-    return this;
   }
 
-  public WebViewSubject hasProgress(int progress) {
+  public void hasProgress(int progress) {
     check("getProgress()").that(actual.getProgress()).isEqualTo(progress);
-    return this;
   }
 
-  public WebViewSubject hasTitle(@Nullable String title) {
+  public void hasTitle(@Nullable String title) {
     check("getTitle()").that(actual.getTitle()).isEqualTo(title);
-    return this;
   }
 
-  public WebViewSubject hasUrl(@Nullable String url) {
+  public void hasUrl(@Nullable String url) {
     check("getUrl()").that(actual.getUrl()).isEqualTo(url);
-    return this;
   }
 
-  public WebViewSubject isPrivateBrowsingEnabled() {
+  public void isPrivateBrowsingEnabled() {
     check("isPrivateBrowsingEnabled()").that(actual.isPrivateBrowsingEnabled()).isTrue();
-    return this;
   }
 
-  public WebViewSubject isPrivateBrowsingDisabled() {
+  public void isPrivateBrowsingDisabled() {
     check("isPrivateBrowsingEnabled()").that(actual.isPrivateBrowsingEnabled()).isFalse();
-    return this;
   }
 }

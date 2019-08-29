@@ -61,17 +61,15 @@ public class MediaItemStatusSubject extends Subject {
         .get();
   }
 
-  public MediaItemStatusSubject hasContentDuration(long duration) {
+  public void hasContentDuration(long duration) {
     check("getContentDuration()").that(actual.getContentDuration()).isEqualTo(duration);
-    return this;
   }
 
-  public MediaItemStatusSubject hasContentPosition(long position) {
+  public void hasContentPosition(long position) {
     check("getContentPosition()").that(actual.getContentPosition()).isEqualTo(position);
-    return this;
   }
 
-  public MediaItemStatusSubject hasPlaybackState(@MediaItemStatusPlaybackState int state) {
+  public void hasPlaybackState(@MediaItemStatusPlaybackState int state) {
     int actualState = actual.getPlaybackState();
     //noinspection ResourceType
     check("getPlaybackState()")
@@ -79,11 +77,9 @@ public class MediaItemStatusSubject extends Subject {
             playbackStateToString(state), playbackStateToString(actualState))
         .that(actualState)
         .isEqualTo(state);
-    return this;
   }
 
-  public MediaItemStatusSubject hasTimestamp(long timestamp) {
+  public void hasTimestamp(long timestamp) {
     check("getTimestamp()").that(actual.getTimestamp()).isEqualTo(timestamp);
-    return this;
   }
 }

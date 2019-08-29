@@ -37,13 +37,11 @@ public class PointSubject extends Subject {
     this.actual = actual;
   }
 
-  public PointSubject hasX(int x) {
+  public void hasX(int x) {
     check("x").that(actual.x).isEqualTo(x);
-    return this;
   }
 
-  public PointSubject hasY(int y) {
+  public void hasY(int y) {
     check("y").that(actual.y).isEqualTo(y);
-    return this;
   }
 }

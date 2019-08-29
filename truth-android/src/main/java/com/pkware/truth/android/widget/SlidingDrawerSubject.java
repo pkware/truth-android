@@ -39,33 +39,27 @@ public class SlidingDrawerSubject
     this.actual = actual;
   }
 
-  public SlidingDrawerSubject hasContent(@Nullable View view) {
+  public void hasContent(@Nullable View view) {
     check("getContent()").that(actual.getContent()).isSameInstanceAs(view);
-    return this;
   }
 
-  public SlidingDrawerSubject hasHandle(@Nullable View view) {
+  public void hasHandle(@Nullable View view) {
     check("getHandle()").that(actual.getHandle()).isSameInstanceAs(view);
-    return this;
   }
 
-  public SlidingDrawerSubject isMoving() {
+  public void isMoving() {
     check("isMoving()").that(actual.isMoving()).isTrue();
-    return this;
   }
 
-  public SlidingDrawerSubject isNotMoving() {
+  public void isNotMoving() {
     check("isMoving()").that(actual.isMoving()).isFalse();
-    return this;
   }
 
-  public SlidingDrawerSubject isOpened() {
+  public void isOpened() {
     check("isMoving()").that(actual.isMoving()).isTrue();
-    return this;
   }
 
-  public SlidingDrawerSubject isClosed() {
+  public void isClosed() {
     check("isMoving()").that(actual.isMoving()).isFalse();
-    return this;
   }
 }

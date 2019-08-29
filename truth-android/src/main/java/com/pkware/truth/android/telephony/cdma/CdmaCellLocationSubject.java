@@ -37,28 +37,23 @@ public class CdmaCellLocationSubject extends Subject {
     this.actual = actual;
   }
 
-  public CdmaCellLocationSubject hasBaseStationId(int id) {
+  public void hasBaseStationId(int id) {
     check("getBaseStationId()").that(actual.getBaseStationId()).isEqualTo(id);
-    return this;
   }
 
-  public CdmaCellLocationSubject hasBaseStationLatitude(int latitude) {
+  public void hasBaseStationLatitude(int latitude) {
     check("getBaseStationLatitude()").that(actual.getBaseStationLatitude()).isEqualTo(latitude);
-    return this;
   }
 
-  public CdmaCellLocationSubject hasBaseStationLongitude(int longitude) {
+  public void hasBaseStationLongitude(int longitude) {
     check("getBaseStationLongitude()").that(actual.getBaseStationLongitude()).isEqualTo(longitude);
-    return this;
   }
 
-  public CdmaCellLocationSubject hasNetworkId(int id) {
+  public void hasNetworkId(int id) {
     check("getNetworkId()").that(actual.getNetworkId()).isEqualTo(id);
-    return this;
   }
 
-  public CdmaCellLocationSubject hasSystemId(int id) {
+  public void hasSystemId(int id) {
     check("getSystemId()").that(actual.getSystemId()).isEqualTo(id);
-    return this;
   }
 }

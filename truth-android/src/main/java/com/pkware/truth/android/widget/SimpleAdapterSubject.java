@@ -38,13 +38,11 @@ public class SimpleAdapterSubject
     this.actual = actual;
   }
 
-  public SimpleAdapterSubject hasFilter(@Nullable Filter filter) {
+  public void hasFilter(@Nullable Filter filter) {
     check("getFilter()").that(actual.getFilter()).isSameInstanceAs(filter);
-    return this;
   }
 
-  public SimpleAdapterSubject hasViewBinder(@Nullable SimpleAdapter.ViewBinder binder) {
+  public void hasViewBinder(@Nullable SimpleAdapter.ViewBinder binder) {
     check("getViewBinder()").that(actual.getViewBinder()).isSameInstanceAs(binder);
-    return this;
   }
 }

@@ -37,19 +37,16 @@ public class PathMeasureSubject extends Subject {
     this.actual = actual;
   }
 
-  public PathMeasureSubject hasLength(float length, float tolerance) {
+  public void hasLength(float length, float tolerance) {
     check("getLength()").that(actual.getLength()).isWithin(tolerance)
         .of(length);
-    return this;
   }
 
-  public PathMeasureSubject isClosed() {
+  public void isClosed() {
     check("isClosed()").that(actual.isClosed()).isTrue();
-    return this;
   }
 
-  public PathMeasureSubject isNotClosed() {
+  public void isNotClosed() {
     check("isClosed()").that(actual.isClosed()).isFalse();
-    return this;
   }
 }

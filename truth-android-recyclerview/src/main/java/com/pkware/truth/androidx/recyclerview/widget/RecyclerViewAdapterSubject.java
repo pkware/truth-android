@@ -39,28 +39,23 @@ public class RecyclerViewAdapterSubject<VH extends ViewHolder> extends Subject {
     this.actual = actual;
   }
 
-  public RecyclerViewAdapterSubject<VH> hasItemCount(int count) {
+  public void hasItemCount(int count) {
     check("getItemCount()").that(actual.getItemCount()).isEqualTo(count);
-    return this;
   }
 
-  public RecyclerViewAdapterSubject<VH> hasStableIds() {
+  public void hasStableIds() {
     check("hasStableIds()").that(actual.hasStableIds()).isTrue();
-    return this;
   }
 
-  public RecyclerViewAdapterSubject<VH> doesNotHaveStableIds() {
+  public void doesNotHaveStableIds() {
     check("hasStableIds()").that(actual.hasStableIds()).isFalse();
-    return this;
   }
 
-  public RecyclerViewAdapterSubject<VH> hasObservers() {
+  public void hasObservers() {
     check("hasObservers()").that(actual.hasObservers()).isTrue();
-    return this;
   }
 
-  public RecyclerViewAdapterSubject<VH> doesNotHaveObservers() {
+  public void doesNotHaveObservers() {
     check("hasObservers()").that(actual.hasObservers()).isFalse();
-    return this;
   }
 }

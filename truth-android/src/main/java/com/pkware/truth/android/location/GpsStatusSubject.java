@@ -38,13 +38,11 @@ public class GpsStatusSubject extends Subject {
     this.actual = actual;
   }
 
-  public GpsStatusSubject hasMaximumSatellites(int count) {
+  public void hasMaximumSatellites(int count) {
     check("getMaxSatellites()").that(actual.getMaxSatellites()).isEqualTo(count);
-    return this;
   }
 
-  public GpsStatusSubject hasTimeToFirstFix(int time) {
+  public void hasTimeToFirstFix(int time) {
     check("getTimeToFirstFix()").that(actual.getTimeToFirstFix()).isEqualTo(time);
-    return this;
   }
 }

@@ -36,8 +36,7 @@ public class LayerDrawableSubject extends AbstractDrawableSubject<LayerDrawable>
     this.actual = actual;
   }
 
-  public LayerDrawableSubject hasLayerCount(int count) {
+  public void hasLayerCount(int count) {
     check("getNumberOfLayers()").that(actual.getNumberOfLayers()).isEqualTo(count);
-    return this;
   }
 }

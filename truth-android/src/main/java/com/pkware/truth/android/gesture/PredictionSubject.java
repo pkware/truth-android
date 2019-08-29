@@ -37,13 +37,11 @@ public class PredictionSubject extends Subject {
     this.actual = actual;
   }
 
-  public PredictionSubject hasName(String name) {
+  public void hasName(String name) {
     check("name").that(actual.name).isEqualTo(name);
-    return this;
   }
 
-  public PredictionSubject hasScore(double score, double tolerance) {
+  public void hasScore(double score, double tolerance) {
     check("score").that(actual.score).isWithin(tolerance).of(score);
-    return this;
   }
 }

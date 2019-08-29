@@ -37,63 +37,51 @@ public class ViewConfigurationSubject extends Subject {
     this.actual = actual;
   }
 
-  public ViewConfigurationSubject hasScaledDoubleTapSlop(int slop) {
+  public void hasScaledDoubleTapSlop(int slop) {
     check("getScaledDoubleTapSlop()").that(actual.getScaledDoubleTapSlop()).isEqualTo(slop);
-    return this;
   }
 
-  public ViewConfigurationSubject hasScaledEdgeSlop(int slop) {
+  public void hasScaledEdgeSlop(int slop) {
     check("getScaledEdgeSlop()").that(actual.getScaledEdgeSlop()).isEqualTo(slop);
-    return this;
   }
 
-  public ViewConfigurationSubject hasScaledFadingEdgeLength(int length) {
+  public void hasScaledFadingEdgeLength(int length) {
     check("getScaledFadingEdgeLength()").that(actual.getScaledFadingEdgeLength()).isEqualTo(length);
-    return this;
   }
 
-  public ViewConfigurationSubject hasScaledMaximumDrawingCacheSize(int size) {
+  public void hasScaledMaximumDrawingCacheSize(int size) {
     check("getScaledMaximumDrawingCacheSize()").that(actual.getScaledMaximumDrawingCacheSize()).isEqualTo(size);
-    return this;
   }
 
-  public ViewConfigurationSubject hasScaledMaximumFlingVelocity(int velocity) {
+  public void hasScaledMaximumFlingVelocity(int velocity) {
     check("getScaledMaximumFlingVelocity()").that(actual.getScaledMaximumFlingVelocity()).isEqualTo(velocity);
-    return this;
   }
 
-  public ViewConfigurationSubject hasScaledMinimumFlingVelocity(int velocity) {
+  public void hasScaledMinimumFlingVelocity(int velocity) {
     check("getScaledMinimumFlingVelocity()").that(actual.getScaledMinimumFlingVelocity()).isEqualTo(velocity);
-    return this;
   }
 
-  public ViewConfigurationSubject hasScaledOverflingDistance(int distance) {
+  public void hasScaledOverflingDistance(int distance) {
     check("getScaledOverflingDistance()").that(actual.getScaledOverflingDistance()).isEqualTo(distance);
-    return this;
   }
 
-  public ViewConfigurationSubject hasScaledOverscrollDistance(int distance) {
+  public void hasScaledOverscrollDistance(int distance) {
     check("getScaledOverscrollDistance()").that(actual.getScaledOverscrollDistance()).isEqualTo(distance);
-    return this;
   }
 
-  public ViewConfigurationSubject hasScaledPagingTouchSlop(int slop) {
+  public void hasScaledPagingTouchSlop(int slop) {
     check("getScaledPagingTouchSlop()").that(actual.getScaledPagingTouchSlop()).isEqualTo(slop);
-    return this;
   }
 
-  public ViewConfigurationSubject hasScaledScrollBarSize(int size) {
+  public void hasScaledScrollBarSize(int size) {
     check("getScaledScrollBarSize()").that(actual.getScaledScrollBarSize()).isEqualTo(size);
-    return this;
   }
 
-  public ViewConfigurationSubject hasScaledTouchSlop(int slop) {
+  public void hasScaledTouchSlop(int slop) {
     check("getScaledTouchSlop()").that(actual.getScaledTouchSlop()).isEqualTo(slop);
-    return this;
   }
 
-  public ViewConfigurationSubject hasScaledWindowTouchSlop(int slop) {
+  public void hasScaledWindowTouchSlop(int slop) {
     check("getScaledWindowTouchSlop()").that(actual.getScaledWindowTouchSlop()).isEqualTo(slop);
-    return this;
   }
 }

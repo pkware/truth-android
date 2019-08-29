@@ -37,39 +37,32 @@ public class RecyclerViewLayoutParamsSubject extends Subject {
     this.actual = actual;
   }
 
-  public RecyclerViewLayoutParamsSubject viewNeedsUpdate() {
+  public void viewNeedsUpdate() {
     check("viewNeedsUpdate()").that(actual.viewNeedsUpdate()).isTrue();
-    return this;
   }
 
-  public RecyclerViewLayoutParamsSubject viewDoesNotNeedUpdate() {
+  public void viewDoesNotNeedUpdate() {
     check("viewNeedsUpdate()").that(actual.viewNeedsUpdate()).isFalse();
-    return this;
   }
 
-  public RecyclerViewLayoutParamsSubject isViewInvalid() {
+  public void isViewInvalid() {
     check("isViewInvalid()").that(actual.isViewInvalid()).isTrue();
-    return this;
   }
 
-  public RecyclerViewLayoutParamsSubject isViewValid() {
+  public void isViewValid() {
     check("isViewInvalid()").that(actual.isViewInvalid()).isFalse();
-    return this;
   }
 
-  public RecyclerViewLayoutParamsSubject isItemRemoved() {
+  public void isItemRemoved() {
     check("isItemRemoved()").that(actual.isItemRemoved()).isTrue();
-    return this;
   }
 
-  public RecyclerViewLayoutParamsSubject isItemNotRemoved() {
+  public void isItemNotRemoved() {
     check("isItemRemoved()").that(actual.isItemRemoved()).isFalse();
-    return this;
   }
 
   @SuppressWarnings("deprecation")
-  public RecyclerViewLayoutParamsSubject hasViewPosition(int position) {
+  public void hasViewPosition(int position) {
     check("getViewPosition()").that(actual.getViewPosition()).isEqualTo(position);
-    return this;
   }
 }

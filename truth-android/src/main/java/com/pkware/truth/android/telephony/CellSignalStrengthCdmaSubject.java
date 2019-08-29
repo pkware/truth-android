@@ -43,38 +43,31 @@ public final class CellSignalStrengthCdmaSubject
     this.actual = actual;
   }
 
-  public CellSignalStrengthCdmaSubject hasCdmaDbm(int dbm) {
+  public void hasCdmaDbm(int dbm) {
     check("getCdmaDbm()").that(actual.getCdmaDbm()).isEqualTo(dbm);
-    return this;
   }
 
-  public CellSignalStrengthCdmaSubject hasCdmaEcio(int ecio) {
+  public void hasCdmaEcio(int ecio) {
     check("getCdmaEcio()").that(actual.getCdmaEcio()).isEqualTo(ecio);
-    return this;
   }
 
-  public CellSignalStrengthCdmaSubject hasCdmaLevel(int level) {
+  public void hasCdmaLevel(int level) {
     check("getCdmaLevel()").that(actual.getCdmaLevel()).isEqualTo(level);
-    return this;
   }
 
-  public CellSignalStrengthCdmaSubject hasEvdoDbm(int dbm) {
+  public void hasEvdoDbm(int dbm) {
     check("getEvdoDbm()").that(actual.getEvdoDbm()).isEqualTo(dbm);
-    return this;
   }
 
-  public CellSignalStrengthCdmaSubject hasEvdoEcio(int ecio) {
+  public void hasEvdoEcio(int ecio) {
     check("getEvdoEcio()").that(actual.getEvdoEcio()).isEqualTo(ecio);
-    return this;
   }
 
-  public CellSignalStrengthCdmaSubject hasEvdoLevel(int level) {
+  public void hasEvdoLevel(int level) {
     check("getEvdoLevel()").that(actual.getEvdoLevel()).isEqualTo(level);
-    return this;
   }
 
-  public CellSignalStrengthCdmaSubject hasEvdoSnr(int snr) {
+  public void hasEvdoSnr(int snr) {
     check("getEvdoSnr()").that(actual.getEvdoSnr()).isEqualTo(snr);
-    return this;
   }
 }

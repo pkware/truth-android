@@ -37,28 +37,23 @@ public class RecyclerViewItemAnimatorSubject extends Subject {
     this.actual = actual;
   }
 
-  public RecyclerViewItemAnimatorSubject hasMoveDuration(long duration) {
+  public void hasMoveDuration(long duration) {
     check("getMoveDuration()").that(actual.getMoveDuration()).isEqualTo(duration);
-    return this;
   }
 
-  public RecyclerViewItemAnimatorSubject hasAddDuration(long duration) {
+  public void hasAddDuration(long duration) {
     check("getAddDuration()").that(actual.getAddDuration()).isEqualTo(duration);
-    return this;
   }
 
-  public RecyclerViewItemAnimatorSubject hasRemoveDuration(long duration) {
+  public void hasRemoveDuration(long duration) {
     check("getRemoveDuration()").that(actual.getRemoveDuration()).isEqualTo(duration);
-    return this;
   }
 
-  public RecyclerViewItemAnimatorSubject isRunning() {
+  public void isRunning() {
     check("isRunning()").that(actual.isRunning()).isTrue();
-    return this;
   }
 
-  public RecyclerViewItemAnimatorSubject isNotRunning() {
+  public void isNotRunning() {
     check("isRunning()").that(actual.isRunning()).isFalse();
-    return this;
   }
 }

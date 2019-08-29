@@ -37,40 +37,35 @@ public class FragmentManagerSubject extends Subject {
     this.actual = actual;
   }
 
-  public FragmentManagerSubject hasFragmentWithId(int id) {
+  public void hasFragmentWithId(int id) {
     check("findFragmentById(id)")
         .withMessage("Fragment with id <%s>", id)
         .that(actual.findFragmentById(id))
         .isNotNull();
-    return this;
   }
 
-  public FragmentManagerSubject doesNotHaveFragmentWithId(int id) {
+  public void doesNotHaveFragmentWithId(int id) {
     check("findFragmentById(id)")
         .withMessage("Fragment with id <%s>", id)
         .that(actual.findFragmentById(id))
         .isNull();
-    return this;
   }
 
-  public FragmentManagerSubject hasFragmentWithTag(@Nonnull String tag) {
+  public void hasFragmentWithTag(@Nonnull String tag) {
     check("findFragmentByTag(tag)")
         .withMessage("Fragment with tag <%s>", tag)
         .that(actual.findFragmentByTag(tag))
         .isNotNull();
-    return this;
   }
 
-  public FragmentManagerSubject doesNotHaveFragmentWithTag(@Nonnull String tag) {
+  public void doesNotHaveFragmentWithTag(@Nonnull String tag) {
     check("findFragmentByTag(tag)")
         .withMessage("Fragment with tag <%s>", tag)
         .that(actual.findFragmentByTag(tag))
         .isNull();
-    return this;
   }
 
-  public FragmentManagerSubject hasBackStackEntryCount(int count) {
+  public void hasBackStackEntryCount(int count) {
     check("getBackStackEntryCount()").that(actual.getBackStackEntryCount()).isEqualTo(count);
-    return this;
   }
 }

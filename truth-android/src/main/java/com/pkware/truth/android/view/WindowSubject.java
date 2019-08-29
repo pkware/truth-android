@@ -70,48 +70,40 @@ public class WindowSubject extends Subject {
         .get();
   }
 
-  public WindowSubject hasCurrentFocus(@Nullable View view) {
+  public void hasCurrentFocus(@Nullable View view) {
     check("getCurrentFocus()").that(actual.getCurrentFocus()).isSameInstanceAs(view);
-    return this;
   }
 
-  public WindowSubject hasChildren() {
+  public void hasChildren() {
     check("hasChildren()").that(actual.hasChildren()).isTrue();
-    return this;
   }
 
-  public WindowSubject hasNoChildren() {
+  public void hasNoChildren() {
     check("hasChildren()").that(actual.hasChildren()).isFalse();
-    return this;
   }
 
-  public WindowSubject hasFeature(@WindowFeature int feature) {
+  public void hasFeature(@WindowFeature int feature) {
     //noinspection ResourceType
     check("hasFeature(feature)")
         .withMessage("Expected feature <%s> but was not present.",
             featureToString(feature))
         .that(actual.hasFeature(feature))
         .isTrue();
-    return this;
   }
 
-  public WindowSubject isActive() {
+  public void isActive() {
     check("isActive()").that(actual.isActive()).isTrue();
-    return this;
   }
 
-  public WindowSubject isNotActive() {
+  public void isNotActive() {
     check("isActive()").that(actual.isActive()).isFalse();
-    return this;
   }
 
-  public WindowSubject isFloating() {
+  public void isFloating() {
     check("isFloating()").that(actual.isFloating()).isTrue();
-    return this;
   }
 
-  public WindowSubject isNotFloating() {
+  public void isNotFloating() {
     check("isFloating()").that(actual.isFloating()).isFalse();
-    return this;
   }
 }

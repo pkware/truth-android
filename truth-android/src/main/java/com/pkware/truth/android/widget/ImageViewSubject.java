@@ -41,41 +41,34 @@ public class ImageViewSubject extends AbstractViewSubject<ImageView> {
     this.actual = actual;
   }
 
-  public ImageViewSubject isAligningBaselineToBottom() {
+  public void isAligningBaselineToBottom() {
     check("getBaselineAlignBottom()").that(actual.getBaselineAlignBottom()).isTrue();
-    return this;
   }
 
-  public ImageViewSubject isNotAligningBaselineToBottom() {
+  public void isNotAligningBaselineToBottom() {
     check("getBaselineAlignBottom()").that(actual.getBaselineAlignBottom()).isFalse();
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public ImageViewSubject isCroppingToPadding() {
+  public void isCroppingToPadding() {
     check("getCropToPadding()").that(actual.getCropToPadding()).isTrue();
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public ImageViewSubject isNotCroppingToPadding() {
+  public void isNotCroppingToPadding() {
     check("getCropToPadding()").that(actual.getCropToPadding()).isFalse();
-    return this;
   }
 
-  public ImageViewSubject hasDrawable(@Nullable Drawable drawable) {
+  public void hasDrawable(@Nullable Drawable drawable) {
     check("getDrawable()").that(actual.getDrawable()).isSameInstanceAs(drawable);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public ImageViewSubject hasImageAlpha(int alpha) {
+  public void hasImageAlpha(int alpha) {
     check("getImageAlpha()").that(actual.getImageAlpha()).isEqualTo(alpha);
-    return this;
   }
 
-  public ImageViewSubject hasScaleType(@Nullable ImageView.ScaleType type) {
+  public void hasScaleType(@Nullable ImageView.ScaleType type) {
     check("getScaleType()").that(actual.getScaleType()).isEqualTo(type);
-    return this;
   }
 }

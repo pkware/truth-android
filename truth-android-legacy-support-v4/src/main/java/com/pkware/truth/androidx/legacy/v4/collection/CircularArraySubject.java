@@ -37,28 +37,23 @@ public class CircularArraySubject<E> extends Subject {
     this.actual = actual;
   }
 
-  public CircularArraySubject<E> hasFirst(@Nullable E first) {
+  public void hasFirst(@Nullable E first) {
     check("getFirst()").that(actual.getFirst()).isEqualTo(first);
-    return this;
   }
 
-  public CircularArraySubject<E> hasLast(@Nullable E last) {
+  public void hasLast(@Nullable E last) {
     check("getLast()").that(actual.getLast()).isEqualTo(last);
-    return this;
   }
 
-  public CircularArraySubject<E> isEmpty() {
+  public void isEmpty() {
     check("isEmpty()").that(actual.isEmpty()).isTrue();
-    return this;
   }
 
-  public CircularArraySubject<E> isNotEmpty() {
+  public void isNotEmpty() {
     check("isEmpty()").that(actual.isEmpty()).isFalse();
-    return this;
   }
 
-  public CircularArraySubject<E> hasSize(int size) {
+  public void hasSize(int size) {
     check("size()").that(actual.size()).isEqualTo(size);
-    return this;
   }
 }

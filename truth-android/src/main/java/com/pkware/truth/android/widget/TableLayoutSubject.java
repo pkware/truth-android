@@ -36,51 +36,45 @@ public class TableLayoutSubject extends AbstractLinearLayoutSubject<TableLayout>
     this.actual = actual;
   }
 
-  public TableLayoutSubject isCollapsedColumn(int index) {
+  public void isCollapsedColumn(int index) {
     check("isColumnCollapsed(index)")
         .withMessage("column %s is collapsed", index)
         .that(actual.isColumnCollapsed(index))
         .isTrue();
-    return this;
   }
 
-  public TableLayoutSubject isNotCollapsedColumn(int index) {
+  public void isNotCollapsedColumn(int index) {
     check("isColumnCollapsed(index)")
         .withMessage("column %s is not collapsed", index)
         .that(actual.isColumnCollapsed(index))
         .isFalse();
-    return this;
   }
 
-  public TableLayoutSubject isShrinkableColumn(int index) {
+  public void isShrinkableColumn(int index) {
     check("isColumnShrinkable(index)")
         .withMessage("column %s is shrinkable", index)
         .that(actual.isColumnShrinkable(index))
         .isTrue();
-    return this;
   }
 
-  public TableLayoutSubject isNotShrinkableColumn(int index) {
+  public void isNotShrinkableColumn(int index) {
     check("isColumnShrinkable(index)")
         .withMessage("column %s is not shrinkable", index)
         .that(actual.isColumnShrinkable(index))
         .isFalse();
-    return this;
   }
 
-  public TableLayoutSubject isStretchableColumn(int index) {
+  public void isStretchableColumn(int index) {
     check("isColumnStretchable(index)")
         .withMessage("column %s is stretchable", index)
         .that(actual.isColumnStretchable(index))
         .isTrue();
-    return this;
   }
 
-  public TableLayoutSubject isNotStretchableColumn(int index) {
+  public void isNotStretchableColumn(int index) {
     check("isColumnStretchable(index)")
         .withMessage("column %s is not stretchable", index)
         .that(actual.isColumnStretchable(index))
         .isFalse();
-    return this;
   }
 }

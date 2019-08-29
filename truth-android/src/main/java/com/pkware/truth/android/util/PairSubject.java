@@ -37,13 +37,11 @@ public class PairSubject<F, S> extends Subject {
     this.actual = actual;
   }
 
-  public PairSubject<F, S> hasFirst(@Nullable F first) {
+  public void hasFirst(@Nullable F first) {
     check("first").that(actual.first).isEqualTo(first);
-    return this;
   }
 
-  public PairSubject<F, S> hasSecond(@Nullable S second) {
+  public void hasSecond(@Nullable S second) {
     check("second").that(actual.second).isEqualTo(second);
-    return this;
   }
 }

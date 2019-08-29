@@ -37,13 +37,11 @@ public class SwipeRefreshLayoutSubject extends AbstractViewGroupSubject<SwipeRef
     this.actual = actual;
   }
 
-  public SwipeRefreshLayoutSubject isRefreshing() {
+  public void isRefreshing() {
     check("isRefreshing()").that(actual.isRefreshing()).isTrue();
-    return this;
   }
 
-  public SwipeRefreshLayoutSubject isNotRefreshing() {
+  public void isNotRefreshing() {
     check("isRefreshing()").that(actual.isRefreshing()).isFalse();
-    return this;
   }
 }

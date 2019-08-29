@@ -38,7 +38,7 @@ public class TabLayoutTabSubject extends Subject {
     this.actual = actual;
   }
 
-  public TabLayoutTabSubject hasContentDescription(String contentDescription) {
+  public void hasContentDescription(String contentDescription) {
     CharSequence actualContentDescription = actual.getContentDescription();
     String contentDescriptionString;
     if (actualContentDescription == null) {
@@ -47,21 +47,19 @@ public class TabLayoutTabSubject extends Subject {
       contentDescriptionString = actualContentDescription.toString();
     }
     check("getContentDescription()").that(contentDescriptionString).isEqualTo(contentDescription);
-    return this;
   }
 
-  public TabLayoutTabSubject hasIcon(@Nullable Drawable icon) {
+  public void hasIcon(@Nullable Drawable icon) {
     check("getIcon()").that(actual.getIcon()).isSameInstanceAs(icon);
-    return this;
   }
 
-  public TabLayoutTabSubject hasPosition(int position) {
+  public void hasPosition(int position) {
     check("getPosition()").that(actual.getPosition()).isEqualTo(position);
     //noinspection unchecked
-    return this;
+
   }
 
-  public TabLayoutTabSubject hasText(@Nullable String text) {
+  public void hasText(@Nullable String text) {
     CharSequence actualText = actual.getText();
     String actualTextString;
     if (actualText == null) {
@@ -70,6 +68,5 @@ public class TabLayoutTabSubject extends Subject {
       actualTextString = actualText.toString();
     }
     check("getText()").that(actualTextString).isEqualTo(text);
-    return this;
   }
 }

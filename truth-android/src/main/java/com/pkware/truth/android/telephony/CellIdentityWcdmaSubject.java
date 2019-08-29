@@ -41,28 +41,23 @@ public final class CellIdentityWcdmaSubject extends Subject {
     this.actual = actual;
   }
 
-  public CellIdentityWcdmaSubject hasCid(int cid) {
+  public void hasCid(int cid) {
     check("getCid()").that(actual.getCid()).isEqualTo(cid);
-    return this;
   }
 
-  public CellIdentityWcdmaSubject hasLac(int lac) {
+  public void hasLac(int lac) {
     check("getLac()").that(actual.getLac()).isEqualTo(lac);
-    return this;
   }
 
-  public CellIdentityWcdmaSubject hasMcc(int mcc) {
+  public void hasMcc(int mcc) {
     check("getMcc()").that(actual.getMcc()).isEqualTo(mcc);
-    return this;
   }
 
-  public CellIdentityWcdmaSubject hasMnc(int mnc) {
+  public void hasMnc(int mnc) {
     check("getMnc()").that(actual.getMnc()).isEqualTo(mnc);
-    return this;
   }
 
-  public CellIdentityWcdmaSubject hasPsc(int psc) {
+  public void hasPsc(int psc) {
     check("getPsc()").that(actual.getPsc()).isEqualTo(psc);
-    return this;
   }
 }

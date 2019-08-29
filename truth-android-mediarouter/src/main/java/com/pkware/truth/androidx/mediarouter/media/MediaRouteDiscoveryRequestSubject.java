@@ -37,23 +37,19 @@ public class MediaRouteDiscoveryRequestSubject extends Subject {
     this.actual = actual;
   }
 
-  public MediaRouteDiscoveryRequestSubject isActiveScan() {
+  public void isActiveScan() {
     check("isActiveScan()").that(actual.isActiveScan()).isTrue();
-    return this;
   }
 
-  public MediaRouteDiscoveryRequestSubject isNotActiveScan() {
+  public void isNotActiveScan() {
     check("isActiveScan()").that(actual.isActiveScan()).isFalse();
-    return this;
   }
 
-  public MediaRouteDiscoveryRequestSubject isValid() {
+  public void isValid() {
     check("isValid()").that(actual.isValid()).isTrue();
-    return this;
   }
 
-  public MediaRouteDiscoveryRequestSubject isNotValid() {
+  public void isNotValid() {
     check("isValid()").that(actual.isValid()).isFalse();
-    return this;
   }
 }

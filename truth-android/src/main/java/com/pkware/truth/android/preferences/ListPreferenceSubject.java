@@ -39,8 +39,7 @@ public class ListPreferenceSubject extends AbstractDialogPreferenceSubject<ListP
     this.actual = actual;
   }
 
-  public ListPreferenceSubject hasEntries(@Nonnull String... entries) {
-
+  public void hasEntries(@Nonnull String... entries) {
     // We convert to Strings b/c most of the time we are interested in the text content
     FluentIterable<String> actualValues = FluentIterable.from(actual.getEntries())
         .transform(CharSequence::toString);
@@ -50,20 +49,17 @@ public class ListPreferenceSubject extends AbstractDialogPreferenceSubject<ListP
         .that(actualValues)
         .containsExactlyElementsIn(entries)
         .inOrder();
-    return this;
   }
 
-  public ListPreferenceSubject hasEntry(@Nullable CharSequence entry) {
+  public void hasEntry(@Nullable CharSequence entry) {
     check("getEntry()").that(actual.getEntry()).isEqualTo(entry);
-    return this;
   }
 
-  public ListPreferenceSubject hasEntry(@StringRes int resId) {
-    return hasEntry(actual.getContext().getString(resId));
+  public void hasEntry(@StringRes int resId) {
+    hasEntry(actual.getContext().getString(resId));
   }
 
-  public ListPreferenceSubject hasEntryValues(@Nonnull String... values) {
-
+  public void hasEntryValues(@Nonnull String... values) {
     // We convert to Strings b/c most of the time we are interested in the text content
     FluentIterable<String> actualValues = FluentIterable.from(actual.getEntryValues())
         .transform(CharSequence::toString);
@@ -73,11 +69,9 @@ public class ListPreferenceSubject extends AbstractDialogPreferenceSubject<ListP
         .that(actualValues)
         .containsExactlyElementsIn(values)
         .inOrder();
-    return this;
   }
 
-  public ListPreferenceSubject hasValue(@Nullable String value) {
+  public void hasValue(@Nullable String value) {
     check("getValue()").that(actual.getValue()).isEqualTo(value);
-    return this;
   }
 }

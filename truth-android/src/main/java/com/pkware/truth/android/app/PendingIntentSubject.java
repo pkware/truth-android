@@ -42,19 +42,16 @@ public class PendingIntentSubject extends Subject {
   }
 
   @TargetApi(JELLY_BEAN_MR1)
-  public PendingIntentSubject hasCreatorPackage(@Nullable String packageName) {
+  public void hasCreatorPackage(@Nullable String packageName) {
     check("getCreatorPackage()").that(actual.getCreatorPackage()).isEqualTo(packageName);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN_MR1)
-  public PendingIntentSubject hasCreatorUid(int uid) {
+  public void hasCreatorUid(int uid) {
     check("getCreatorUid()").that(actual.getCreatorUid()).isEqualTo(uid);
-    return this;
   }
 
-  public PendingIntentSubject hasTargetPackage(@Nullable String targetPackage) {
+  public void hasTargetPackage(@Nullable String targetPackage) {
     check("getTargetPackage()").that(actual.getTargetPackage()).isEqualTo(targetPackage);
-    return this;
   }
 }

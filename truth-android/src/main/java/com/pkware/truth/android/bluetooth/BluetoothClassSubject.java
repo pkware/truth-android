@@ -129,7 +129,7 @@ public class BluetoothClassSubject extends Subject {
         .get();
   }
 
-  public BluetoothClassSubject hasDeviceClass(int deviceClass) {
+  public void hasDeviceClass(int deviceClass) {
     int actualClass = actual.getDeviceClass();
     check("getDeviceClass()")
         .withMessage("Expected device class <%s> but was <%s>.",
@@ -137,10 +137,9 @@ public class BluetoothClassSubject extends Subject {
             deviceClassToString(actualClass))
         .that(actualClass)
         .isEqualTo(actualClass);
-    return this;
   }
 
-  public BluetoothClassSubject hasMajorDeviceClass(int majorDeviceClass) {
+  public void hasMajorDeviceClass(int majorDeviceClass) {
     int actualMajorDeviceClass = actual.getMajorDeviceClass();
     check("getMajorDeviceClass()")
         .withMessage("Expected major device class <%s> but was <%s>.",
@@ -148,22 +147,19 @@ public class BluetoothClassSubject extends Subject {
             majorDeviceClassToString(actualMajorDeviceClass))
         .that(actualMajorDeviceClass)
         .isEqualTo(majorDeviceClass);
-    return this;
   }
 
-  public BluetoothClassSubject hasService(int service) {
+  public void hasService(int service) {
     check("hasService(service)")
         .withMessage("has service <%s>", serviceToString(service))
         .that(actual.hasService(service))
         .isTrue();
-    return this;
   }
 
-  public BluetoothClassSubject doesNotHaveService(int service) {
+  public void doesNotHaveService(int service) {
     check("hasService(service)")
         .withMessage("has service <%s>", serviceToString(service))
         .that(actual.hasService(service))
         .isFalse();
-    return this;
   }
 }

@@ -65,19 +65,17 @@ public class ConfigurationSubject extends Subject {
   }
 
   @TargetApi(JELLY_BEAN_MR1)
-  public ConfigurationSubject hasLayoutDirection(@ViewLayoutDirection int layoutDirection) {
+  public void hasLayoutDirection(@ViewLayoutDirection int layoutDirection) {
     int actualLayoutDirection = actual.getLayoutDirection();
     //noinspection ResourceType
     check("getLayoutDirection()")
         .withMessage("Expected layout direction to be <%s> but was <%s>.", layoutDirectionToString(layoutDirection), layoutDirectionToString(actualLayoutDirection))
         .that(actualLayoutDirection)
         .isEqualTo(layoutDirection);
-    return this;
   }
 
   @TargetApi(KITKAT)
-  public ConfigurationSubject hasMnc(int mnc) {
+  public void hasMnc(int mnc) {
     check("mnc").that(actual.mnc).isEqualTo(mnc);
-    return this;
   }
 }

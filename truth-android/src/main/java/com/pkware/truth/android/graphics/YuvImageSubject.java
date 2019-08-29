@@ -37,18 +37,15 @@ public class YuvImageSubject extends Subject {
     this.actual = actual;
   }
 
-  public YuvImageSubject hasHeight(int height) {
+  public void hasHeight(int height) {
     check("getHeight()").that(actual.getHeight()).isEqualTo(height);
-    return this;
   }
 
-  public YuvImageSubject hasWidth(int width) {
+  public void hasWidth(int width) {
     check("getWidth()").that(actual.getWidth()).isEqualTo(width);
-    return this;
   }
 
-  public YuvImageSubject hasYuvFormat(int format) {
+  public void hasYuvFormat(int format) {
     check("getYuvFormat()").that(actual.getYuvFormat()).isEqualTo(format);
-    return this;
   }
 }

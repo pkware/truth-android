@@ -37,43 +37,35 @@ public class KeyEventSubject extends Subject {
     this.actual = actual;
   }
 
-  public KeyEventSubject hasAction(int action) {
+  public void hasAction(int action) {
     check("getAction()").that(actual.getAction()).isEqualTo(action);
-    return this;
   }
 
-  public KeyEventSubject hasDisplayLabel(char label) {
+  public void hasDisplayLabel(char label) {
     check("getDisplayLabel()").that(actual.getDisplayLabel()).isEqualTo(label);
-    return this;
   }
 
-  public KeyEventSubject hasDownTime(long time) {
+  public void hasDownTime(long time) {
     check("getDownTime()").that(actual.getDownTime()).isEqualTo(time);
-    return this;
   }
 
-  public KeyEventSubject hasKeyCode(int keyCode) {
+  public void hasKeyCode(int keyCode) {
     check("getKeyCode()").that(actual.getKeyCode()).isEqualTo(keyCode);
-    return this;
   }
 
-  public KeyEventSubject hasRepeatCount(int count) {
+  public void hasRepeatCount(int count) {
     check("getRepeatCount()").that(actual.getRepeatCount()).isEqualTo(count);
-    return this;
   }
 
-  public KeyEventSubject hasSource(int source) {
+  public void hasSource(int source) {
     check("getSource()").that(actual.getSource()).isEqualTo(source);
-    return this;
   }
 
-  public KeyEventSubject hasModifiers(int modifiers) {
+  public void hasModifiers(int modifiers) {
     check("hasModifiers(modifiers)").that(actual.hasModifiers(modifiers)).isTrue();
-    return this;
   }
 
-  public KeyEventSubject hasNoModifiers() {
+  public void hasNoModifiers() {
     check("hasNoModifiers()").that(actual.hasNoModifiers()).isTrue();
-    return this;
   }
 }

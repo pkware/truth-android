@@ -37,18 +37,15 @@ public class SensorEventSubject extends Subject {
     this.actual = actual;
   }
 
-  public SensorEventSubject hasAccuracy(int accuracy) {
+  public void hasAccuracy(int accuracy) {
     check("accuracy").that(actual.accuracy).isEqualTo(accuracy);
-    return this;
   }
 
-  public SensorEventSubject hasTimestamp(long timestamp) {
+  public void hasTimestamp(long timestamp) {
     check("timestamp").that(actual.timestamp).isEqualTo(timestamp);
-    return this;
   }
 
-  public SensorEventSubject hasValues(float[] values, float tolerance) {
+  public void hasValues(float[] values, float tolerance) {
     check("values").that(actual.values).usingTolerance(tolerance).containsAnyOf(values);
-    return this;
   }
 }

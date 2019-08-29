@@ -54,32 +54,27 @@ public class ListPopupWindowSubject extends Subject {
         .get();
   }
 
-  public ListPopupWindowSubject hasAnchorView(@Nullable View view) {
+  public void hasAnchorView(@Nullable View view) {
     check("getAnchorView()").that(actual.getAnchorView()).isSameInstanceAs(view);
-    return this;
   }
 
-  public ListPopupWindowSubject hasAnimationStyle(int style) {
+  public void hasAnimationStyle(int style) {
     check("getAnimationStyle()").that(actual.getAnimationStyle()).isEqualTo(style);
-    return this;
   }
 
-  public ListPopupWindowSubject hasBackground(@Nullable Drawable background) {
+  public void hasBackground(@Nullable Drawable background) {
     check("getBackground()").that(actual.getBackground()).isSameInstanceAs(background);
-    return this;
   }
 
-  public ListPopupWindowSubject hasHeight(int height) {
+  public void hasHeight(int height) {
     check("getHeight()").that(actual.getHeight()).isEqualTo(height);
-    return this;
   }
 
-  public ListPopupWindowSubject hasHorizontalOffset(int offset) {
+  public void hasHorizontalOffset(int offset) {
     check("getHorizontalOffset()").that(actual.getHorizontalOffset()).isEqualTo(offset);
-    return this;
   }
 
-  public ListPopupWindowSubject hasInputMethodMode(@ListPopupWindowInputMethodMode int mode) {
+  public void hasInputMethodMode(@ListPopupWindowInputMethodMode int mode) {
     int actualMode = actual.getInputMethodMode();
     //noinspection ResourceType
     check("getInputMethodMode()")
@@ -87,71 +82,57 @@ public class ListPopupWindowSubject extends Subject {
             inputMethodModeToString(mode), inputMethodModeToString(actualMode))
         .that(actualMode)
         .isEqualTo(mode);
-    return this;
   }
 
-  public ListPopupWindowSubject hasListView(@Nullable ListView view) {
+  public void hasListView(@Nullable ListView view) {
     check("getListView()").that(actual.getListView()).isSameInstanceAs(view);
-    return this;
   }
 
-  public ListPopupWindowSubject hasPromptPosition(int position) {
+  public void hasPromptPosition(int position) {
     check("getPromptPosition()").that(actual.getPromptPosition()).isEqualTo(position);
-    return this;
   }
 
-  public ListPopupWindowSubject hasSelectedItem(@Nullable Object item) {
+  public void hasSelectedItem(@Nullable Object item) {
     check("getSelectedItem()").that(actual.getSelectedItem()).isEqualTo(item);
-    return this;
   }
 
-  public ListPopupWindowSubject hasSelectedItemId(long id) {
+  public void hasSelectedItemId(long id) {
     check("getSelectedItemId()").that(actual.getSelectedItemId()).isEqualTo(id);
-    return this;
   }
 
-  public ListPopupWindowSubject hasSelectedItemPosition(int position) {
+  public void hasSelectedItemPosition(int position) {
     check("getSelectedItemPosition()").that(actual.getSelectedItemPosition()).isEqualTo(position);
-    return this;
   }
 
-  public ListPopupWindowSubject hasSelectedItemView(@Nullable View view) {
+  public void hasSelectedItemView(@Nullable View view) {
     check("getSelectedView()").that(actual.getSelectedView()).isSameInstanceAs(view);
-    return this;
   }
 
-  public ListPopupWindowSubject hasSoftInputMode(int mode) {
+  public void hasSoftInputMode(int mode) {
     check("getSoftInputMode()").that(actual.getSoftInputMode()).isEqualTo(mode);
-    return this;
   }
 
-  public ListPopupWindowSubject hasVerticalOffset(int offset) {
+  public void hasVerticalOffset(int offset) {
     check("getVerticalOffset()").that(actual.getVerticalOffset()).isEqualTo(offset);
-    return this;
   }
 
-  public ListPopupWindowSubject hasWidth(int width) {
+  public void hasWidth(int width) {
     check("getWidth()").that(actual.getWidth()).isEqualTo(width);
-    return this;
   }
 
-  public ListPopupWindowSubject isModal() {
+  public void isModal() {
     check("isModal()").that(actual.isModal()).isTrue();
-    return this;
   }
 
-  public ListPopupWindowSubject isNotModal() {
+  public void isNotModal() {
     check("isModal()").that(actual.isModal()).isFalse();
-    return this;
   }
 
-  public ListPopupWindowSubject isShowing() {
+  public void isShowing() {
     check("isShowing()").that(actual.isShowing()).isTrue();
-    return this;
   }
 
-  public ListPopupWindowSubject isNotShowing() {
+  public void isNotShowing() {
     check("isShowing()").that(actual.isShowing()).isFalse();
-    return this;
   }
 }

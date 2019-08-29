@@ -36,13 +36,11 @@ public class TextureViewSubject extends AbstractViewSubject<TextureView> {
     this.actual = actual;
   }
 
-  public TextureViewSubject isAvailable() {
+  public void isAvailable() {
     check("isAvailable()").that(actual.isAvailable()).isTrue();
-    return this;
   }
 
-  public TextureViewSubject isNotAvailable() {
+  public void isNotAvailable() {
     check("isAvailable()").that(actual.isAvailable()).isFalse();
-    return this;
   }
 }

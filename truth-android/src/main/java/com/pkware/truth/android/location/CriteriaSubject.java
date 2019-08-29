@@ -75,103 +75,89 @@ public class CriteriaSubject extends Subject {
         .get();
   }
 
-  public CriteriaSubject hasAccuracy(int accuracy) {
+  public void hasAccuracy(int accuracy) {
     int actualAccuracy = actual.getAccuracy();
     //noinspection ResourceType
     check("getAccuracy()")
         .withMessage("Expected accuracy <%s> but was <%s>.", accuracyRequirementToString(accuracy), accuracyRequirementToString(actualAccuracy))
         .that(actualAccuracy)
         .isEqualTo(accuracy);
-    return this;
   }
 
-  public CriteriaSubject hasBearingAccuracy(int accuracy) {
+  public void hasBearingAccuracy(int accuracy) {
     int actualAccuracy = actual.getBearingAccuracy();
     //noinspection ResourceType
     check("getBearingAccuracy()")
         .withMessage("Expected bearing accuracy <%s> but was <%s>.", accuracyToString(accuracy), accuracyToString(actualAccuracy))
         .that(actualAccuracy)
         .isEqualTo(accuracy);
-    return this;
   }
 
-  public CriteriaSubject hasHorizontalAccuracy(int accuracy) {
+  public void hasHorizontalAccuracy(int accuracy) {
     int actualAccuracy = actual.getHorizontalAccuracy();
     //noinspection ResourceType
     check("getHorizontalAccuracy()")
         .withMessage("Expected horizontal accuracy <%s> but was <%s>.", accuracyToString(accuracy), accuracyToString(actualAccuracy))
         .that(actualAccuracy)
         .isEqualTo(accuracy);
-    return this;
   }
 
-  public CriteriaSubject hasPowerRequirement(int requirement) {
+  public void hasPowerRequirement(int requirement) {
     int actualRequirement = actual.getPowerRequirement();
     //noinspection ResourceType
     check("getPowerRequirement()")
         .withMessage("Expected power requirement <%s> but was <%s>.", powerRequirementToString(requirement), powerRequirementToString(actualRequirement))
         .that(actualRequirement)
         .isEqualTo(requirement);
-    return this;
   }
 
-  public CriteriaSubject hasSpeedAccuracy(int accuracy) {
+  public void hasSpeedAccuracy(int accuracy) {
     int actualAccuracy = actual.getSpeedAccuracy();
     //noinspection ResourceType
     check("getSpeedAccuracy()")
         .withMessage("Expected speed accuracy <%s> but was <%s>.", accuracyToString(accuracy), accuracyToString(actualAccuracy))
         .that(actualAccuracy)
         .isEqualTo(accuracy);
-    return this;
   }
 
-  public CriteriaSubject hasVerticalAccuracy(int accuracy) {
+  public void hasVerticalAccuracy(int accuracy) {
     int actualAccuracy = actual.getVerticalAccuracy();
     //noinspection ResourceType
     check("getVerticalAccuracy()")
         .withMessage("Expected vertical accuracy <%s> but was <%s>.", accuracyToString(accuracy), accuracyToString(actualAccuracy))
         .that(actualAccuracy)
         .isEqualTo(accuracy);
-    return this;
   }
 
-  public CriteriaSubject isAltitudeRequired() {
+  public void isAltitudeRequired() {
     check("isAltitudeRequired()").that(actual.isAltitudeRequired()).isTrue();
-    return this;
   }
 
-  public CriteriaSubject isAltitudeNotRequired() {
+  public void isAltitudeNotRequired() {
     check("isAltitudeRequired()").that(actual.isAltitudeRequired()).isFalse();
-    return this;
   }
 
-  public CriteriaSubject isBearingRequired() {
+  public void isBearingRequired() {
     check("isBearingRequired()").that(actual.isBearingRequired()).isTrue();
-    return this;
   }
 
-  public CriteriaSubject isBearingNotRequired() {
+  public void isBearingNotRequired() {
     check("isBearingRequired()").that(actual.isBearingRequired()).isFalse();
-    return this;
   }
 
-  public CriteriaSubject isCostAllowed() {
+  public void isCostAllowed() {
     check("isCostAllowed()").that(actual.isCostAllowed()).isTrue();
-    return this;
   }
 
-  public CriteriaSubject isCostNotAllowed() {
+  public void isCostNotAllowed() {
     check("isCostAllowed()").that(actual.isCostAllowed()).isFalse();
-    return this;
   }
 
-  public CriteriaSubject isSpeedRequired() {
+  public void isSpeedRequired() {
     check("isSpeedRequired()").that(actual.isSpeedRequired()).isTrue();
-    return this;
   }
 
-  public CriteriaSubject isSpeedNotRequired() {
+  public void isSpeedNotRequired() {
     check("isSpeedRequired()").that(actual.isSpeedRequired()).isFalse();
-    return this;
   }
 }

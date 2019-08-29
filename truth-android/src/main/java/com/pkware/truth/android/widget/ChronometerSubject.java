@@ -36,13 +36,11 @@ public class ChronometerSubject extends AbstractTextViewSubject<Chronometer> {
     this.actual = actual;
   }
 
-  public ChronometerSubject hasBase(long base) {
+  public void hasBase(long base) {
     check("getBase()").that(actual.getBase()).isEqualTo(base);
-    return this;
   }
 
-  public ChronometerSubject hasFormat(@Nullable String format) {
+  public void hasFormat(@Nullable String format) {
     check("getFormat()").that(actual.getFormat()).isEqualTo(format);
-    return this;
   }
 }

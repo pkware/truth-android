@@ -41,40 +41,33 @@ public class NinePatchSubject extends Subject {
     this.actual = actual;
   }
 
-  public NinePatchSubject hasDensity(int density) {
+  public void hasDensity(int density) {
     check("getDensity()").that(actual.getDensity()).isEqualTo(density);
-    return this;
   }
 
-  public NinePatchSubject hasHeight(int height) {
+  public void hasHeight(int height) {
     check("getHeight()").that(actual.getHeight()).isEqualTo(height);
-    return this;
   }
 
-  public NinePatchSubject hasWidth(int width) {
+  public void hasWidth(int width) {
     check("getWidth()").that(actual.getWidth()).isEqualTo(width);
-    return this;
   }
 
-  public NinePatchSubject hasAlpha() {
+  public void hasAlpha() {
     check("hasAlpha()").that(actual.hasAlpha()).isTrue();
-    return this;
   }
 
-  public NinePatchSubject hasNoAlpha() {
+  public void hasNoAlpha() {
     check("hasAlpha()").that(actual.hasAlpha()).isFalse();
-    return this;
   }
 
   @TargetApi(KITKAT)
-  public NinePatchSubject hasName(@Nullable String name) {
+  public void hasName(@Nullable String name) {
     check("getName()").that(actual.getName()).isEqualTo(name);
-    return this;
   }
 
   @TargetApi(KITKAT)
-  public NinePatchSubject hasBitmap(@Nullable Bitmap bitmap) {
+  public void hasBitmap(@Nullable Bitmap bitmap) {
     check("getBitmap()").that(actual.getBitmap()).isEqualTo(bitmap);
-    return this;
   }
 }

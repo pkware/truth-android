@@ -37,18 +37,15 @@ public class AsyncTaskSubject extends Subject {
     this.actual = actual;
   }
 
-  public AsyncTaskSubject hasStatus(@Nullable AsyncTask.Status status) {
+  public void hasStatus(@Nullable AsyncTask.Status status) {
     check("getStatus()").that(actual.getStatus()).isEqualTo(status);
-    return this;
   }
 
-  public AsyncTaskSubject isCancelled() {
+  public void isCancelled() {
     check("isCancelled()").that(actual.isCancelled()).isTrue();
-    return this;
   }
 
-  public AsyncTaskSubject isNotCancelled() {
+  public void isNotCancelled() {
     check("isCancelled()").that(actual.isCancelled()).isFalse();
-    return this;
   }
 }

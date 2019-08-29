@@ -37,13 +37,11 @@ public final class KeyframeSubject extends Subject {
     this.actual = actual;
   }
 
-  public KeyframeSubject hasType(@Nonnull Class type) {
+  public void hasType(@Nonnull Class type) {
     check("getType()").that(actual.getType()).isEqualTo(type);
-    return this;
   }
 
-  public KeyframeSubject hasValue(@Nullable Object value) {
+  public void hasValue(@Nullable Object value) {
     check("getValue()").that(actual.getValue()).isEqualTo(value);
-    return this;
   }
 }

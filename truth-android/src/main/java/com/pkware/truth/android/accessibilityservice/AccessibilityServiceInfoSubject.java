@@ -57,38 +57,33 @@ public final class AccessibilityServiceInfoSubject extends Subject {
   }
 
   @TargetApi(JELLY_BEAN_MR2)
-  public AccessibilityServiceInfoSubject hasCapabilities(@AccessibilityServiceInfoCapabilities int capabilities) {
+  public void hasCapabilities(@AccessibilityServiceInfoCapabilities int capabilities) {
     int actualCapabilities = actual.getCapabilities();
     //noinspection ResourceType
     check("getCapabilities()")
         .withMessage("Expected capabilities <%s> but was <%s>.", capabilitiesToString(capabilities), capabilitiesToString(actualCapabilities))
         .that(actualCapabilities)
         .isEqualTo(capabilities);
-    return this;
   }
 
   /**
    * @deprecated {@link AccessibilityServiceInfo#getDescription()} is deprecated
    */
   @Deprecated
-  public AccessibilityServiceInfoSubject hasDescription(@Nullable String description) {
+  public void hasDescription(@Nullable String description) {
     check("getDescription()").that(actual.getDescription()).isEqualTo(description);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public AccessibilityServiceInfoSubject hasDescription(@Nullable String description, @Nonnull PackageManager packageManager) {
+  public void hasDescription(@Nullable String description, @Nonnull PackageManager packageManager) {
     check("loadDescription(packageManager)").that(actual.loadDescription(packageManager)).isEqualTo(description);
-    return this;
   }
 
-  public AccessibilityServiceInfoSubject hasId(@Nullable String id) {
+  public void hasId(@Nullable String id) {
     check("getId()").that(actual.getId()).isEqualTo(id);
-    return this;
   }
 
-  public AccessibilityServiceInfoSubject hasSettingsActivityName(@Nullable String name) {
+  public void hasSettingsActivityName(@Nullable String name) {
     check("getSettingsActivityName()").that(actual.getSettingsActivityName()).isEqualTo(name);
-    return this;
   }
 }

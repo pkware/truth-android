@@ -39,43 +39,35 @@ public class RegionSubject extends Subject {
     this.actual = actual;
   }
 
-  public RegionSubject hasBoundaryPath(@Nullable Path path) {
+  public void hasBoundaryPath(@Nullable Path path) {
     check("getBoundaryPath()").that(actual.getBoundaryPath()).isEqualTo(path);
-    return this;
   }
 
-  public RegionSubject hasBounds(@Nullable Rect bounds) {
+  public void hasBounds(@Nullable Rect bounds) {
     check("getBounds()").that(actual.getBounds()).isEqualTo(bounds);
-    return this;
   }
 
-  public RegionSubject isComplex() {
+  public void isComplex() {
     check("isComplex()").that(actual.isComplex()).isTrue();
-    return this;
   }
 
-  public RegionSubject isNotComplex() {
+  public void isNotComplex() {
     check("isComplex()").that(actual.isComplex()).isFalse();
-    return this;
   }
 
-  public RegionSubject isEmpty() {
+  public void isEmpty() {
     check("isEmpty()").that(actual.isEmpty()).isTrue();
-    return this;
   }
 
-  public RegionSubject isNotEmpty() {
+  public void isNotEmpty() {
     check("isEmpty()").that(actual.isEmpty()).isFalse();
-    return this;
   }
 
-  public RegionSubject isRect() {
+  public void isRect() {
     check("isRect()").that(actual.isRect()).isTrue();
-    return this;
   }
 
-  public RegionSubject isNotRect() {
+  public void isNotRect() {
     check("isRect()").that(actual.isRect()).isFalse();
-    return this;
   }
 }

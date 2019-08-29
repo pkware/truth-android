@@ -42,13 +42,11 @@ public final class CellInfoWcdmaSubject extends AbstractCellInfoSubject<CellInfo
     this.actual = actual;
   }
 
-  public CellInfoWcdmaSubject hasCellIdentity(@Nullable CellIdentityWcdma cellIdentity) {
+  public void hasCellIdentity(@Nullable CellIdentityWcdma cellIdentity) {
     check("getCellIdentity()").that(actual.getCellIdentity()).isEqualTo(cellIdentity);
-    return this;
   }
 
-  public CellInfoWcdmaSubject hasCellSignalStrength(@Nullable CellSignalStrengthWcdma cellSignalStrength) {
+  public void hasCellSignalStrength(@Nullable CellSignalStrengthWcdma cellSignalStrength) {
     check("getCellSignalStrength()").that(actual.getCellSignalStrength()).isEqualTo(cellSignalStrength);
-    return this;
   }
 }

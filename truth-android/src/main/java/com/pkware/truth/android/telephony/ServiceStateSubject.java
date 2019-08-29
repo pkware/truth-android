@@ -53,42 +53,35 @@ public class ServiceStateSubject extends Subject {
         .get();
   }
 
-  public ServiceStateSubject isManualSelection() {
+  public void isManualSelection() {
     check("getIsManualSelection()").that(actual.getIsManualSelection()).isTrue();
-    return this;
   }
 
-  public ServiceStateSubject isAutomaticSelection() {
+  public void isAutomaticSelection() {
     check("getIsManualSelection()").that(actual.getIsManualSelection()).isFalse();
-    return this;
   }
 
-  public ServiceStateSubject hasOperatorAlphaLong(@Nullable String operatorAlphaLong) {
+  public void hasOperatorAlphaLong(@Nullable String operatorAlphaLong) {
     check("getOperatorAlphaLong()").that(actual.getOperatorAlphaLong()).isEqualTo(operatorAlphaLong);
-    return this;
   }
 
-  public ServiceStateSubject hasOperatorAlphaShort(@Nullable String operatorAlphaShort) {
+  public void hasOperatorAlphaShort(@Nullable String operatorAlphaShort) {
     check("getOperatorAlphaShort()").that(actual.getOperatorAlphaShort()).isEqualTo(operatorAlphaShort);
-    return this;
   }
 
-  public ServiceStateSubject hasOperatorNumeric(@Nullable String operatorNumeric) {
+  public void hasOperatorNumeric(@Nullable String operatorNumeric) {
     check("getOperatorNumeric()").that(actual.getOperatorNumeric()).isEqualTo(operatorNumeric);
-    return this;
   }
 
-  public ServiceStateSubject isRoaming() {
+  public void isRoaming() {
     check("getRoaming()").that(actual.getRoaming()).isTrue();
-    return this;
   }
 
-  public ServiceStateSubject isNotRoaming() {
+  public void isNotRoaming() {
     check("getRoaming()").that(actual.getRoaming()).isFalse();
-    return this;
   }
 
-  public ServiceStateSubject hasState(@ServiceStateState int state) {
+  public void hasState(@ServiceStateState int state) {
     int actualState = actual.getState();
     //noinspection ResourceType
     check("getState()")
@@ -96,6 +89,5 @@ public class ServiceStateSubject extends Subject {
             serviceStateToString(actualState))
         .that(actualState)
         .isEqualTo(state);
-    return this;
   }
 }

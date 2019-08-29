@@ -45,50 +45,43 @@ public class SwitchSubject extends AbstractCompoundButtonSubject<Switch> {
   }
 
   @TargetApi(JELLY_BEAN)
-  public SwitchSubject hasSwitchMinWidth(int width) {
+  public void hasSwitchMinWidth(int width) {
     check("getSwitchMinWidth()").that(actual.getSwitchMinWidth()).isEqualTo(width);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public SwitchSubject hasSwitchPadding(int padding) {
+  public void hasSwitchPadding(int padding) {
     check("getSwitchPadding()").that(actual.getSwitchPadding()).isEqualTo(padding);
-    return this;
   }
 
-  public SwitchSubject hasOnText(@Nullable String text) {
+  public void hasOnText(@Nullable String text) {
     check("getTextOn()").that(actual.getTextOn().toString()).isEqualTo(text);
-    return this;
   }
 
-  public SwitchSubject hasOnText(@StringRes int resId) {
-    return hasOnText(actual.getContext().getString(resId));
+  public void hasOnText(@StringRes int resId) {
+    hasOnText(actual.getContext().getString(resId));
   }
 
-  public SwitchSubject hasOffText(@Nullable String text) {
+  public void hasOffText(@Nullable String text) {
     check("getTextOff()").that(actual.getTextOff().toString()).isEqualTo(text);
-    return this;
   }
 
-  public SwitchSubject hasOffText(@StringRes int resId) {
-    return hasOffText(actual.getContext().getString(resId));
+  public void hasOffText(@StringRes int resId) {
+    hasOffText(actual.getContext().getString(resId));
   }
 
   @TargetApi(JELLY_BEAN)
-  public SwitchSubject hasThumbDrawable(@Nullable Drawable drawable) {
+  public void hasThumbDrawable(@Nullable Drawable drawable) {
     check("getThumbDrawable()").that(actual.getThumbDrawable()).isSameInstanceAs(drawable);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public SwitchSubject hasThumbTextPadding(int padding) {
+  public void hasThumbTextPadding(int padding) {
     check("getThumbTextPadding()").that(actual.getThumbTextPadding()).isEqualTo(padding);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public SwitchSubject hasTrackDrawable(@Nullable Drawable drawable) {
+  public void hasTrackDrawable(@Nullable Drawable drawable) {
     check("getTrackDrawable()").that(actual.getTrackDrawable()).isSameInstanceAs(drawable);
-    return this;
   }
 }

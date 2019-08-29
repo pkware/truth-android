@@ -101,12 +101,11 @@ public class BluetoothGattCharacteristicSubject extends Subject {
         .get();
   }
 
-  public BluetoothGattCharacteristicSubject hasInstanceId(int id) {
+  public void hasInstanceId(int id) {
     check("getInstanceId()").that(actual.getInstanceId()).isEqualTo(id);
-    return this;
   }
 
-  public BluetoothGattCharacteristicSubject hasPermissions(@BluetoothGattCharacteristicPermissions int permissions) {
+  public void hasPermissions(@BluetoothGattCharacteristicPermissions int permissions) {
     int actualPermissions = actual.getPermissions();
     //noinspection ResourceType
     check("getPermissions()")
@@ -115,10 +114,9 @@ public class BluetoothGattCharacteristicSubject extends Subject {
             permissionsToString(actualPermissions))
         .that(actualPermissions)
         .isEqualTo(permissions);
-    return this;
   }
 
-  public BluetoothGattCharacteristicSubject hasProperties(@BluetoothGattCharacteristicProperties int properties) {
+  public void hasProperties(@BluetoothGattCharacteristicProperties int properties) {
     int actualProperties = actual.getProperties();
     //noinspection ResourceType
     check("getProperties()")
@@ -127,21 +125,18 @@ public class BluetoothGattCharacteristicSubject extends Subject {
             propertiesToString(actualProperties))
         .that(actualProperties)
         .isEqualTo(properties);
-    return this;
   }
 
-  public BluetoothGattCharacteristicSubject hasUuid(@Nullable UUID uuid) {
+  public void hasUuid(@Nullable UUID uuid) {
     check("getUuid()").that(actual.getUuid()).isEqualTo(uuid);
-    return this;
   }
 
-  public BluetoothGattCharacteristicSubject hasValue(@Nonnull byte[] value) {
+  public void hasValue(@Nonnull byte[] value) {
     byte[] actualValue = actual.getValue();
     check("getValue()").that(actualValue).isEqualTo(value);
-    return this;
   }
 
-  public BluetoothGattCharacteristicSubject hasWriteType(@BluetoothGattCharacteristicWriteType int writeType) {
+  public void hasWriteType(@BluetoothGattCharacteristicWriteType int writeType) {
     int actualWriteType = actual.getWriteType();
     //noinspection ResourceType
     check("getWriteType()")
@@ -150,6 +145,5 @@ public class BluetoothGattCharacteristicSubject extends Subject {
             writeTypeToString(actualWriteType))
         .that(actualWriteType)
         .isEqualTo(writeType);
-    return this;
   }
 }

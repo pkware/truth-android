@@ -50,27 +50,23 @@ public class PopupWindowSubject extends Subject {
         .get();
   }
 
-  public PopupWindowSubject hasAnimationStyle(int style) {
+  public void hasAnimationStyle(int style) {
     check("getAnimationStyle()").that(actual.getAnimationStyle()).isEqualTo(style);
-    return this;
   }
 
-  public PopupWindowSubject hasBackground(@Nullable Drawable background) {
+  public void hasBackground(@Nullable Drawable background) {
     check("getBackground()").that(actual.getBackground()).isSameInstanceAs(background);
-    return this;
   }
 
-  public PopupWindowSubject hasContentView(@Nullable View view) {
+  public void hasContentView(@Nullable View view) {
     check("getContentView()").that(actual.getContentView()).isSameInstanceAs(view);
-    return this;
   }
 
-  public PopupWindowSubject hasHeight(int height) {
+  public void hasHeight(int height) {
     check("getHeight()").that(actual.getHeight()).isEqualTo(height);
-    return this;
   }
 
-  public PopupWindowSubject hasInputMethodMode(@PopupWindowInputMethodMode int mode) {
+  public void hasInputMethodMode(@PopupWindowInputMethodMode int mode) {
     int actualMode = actual.getInputMethodMode();
     //noinspection ResourceType
     check("getInputMethodMode()")
@@ -78,88 +74,71 @@ public class PopupWindowSubject extends Subject {
             inputMethodModeToString(mode), inputMethodModeToString(actualMode))
         .that(actualMode)
         .isEqualTo(mode);
-    return this;
   }
 
-  public PopupWindowSubject hasSoftInputMode(int mode) {
+  public void hasSoftInputMode(int mode) {
     check("getSoftInputMode()").that(actual.getSoftInputMode()).isEqualTo(mode);
-    return this;
   }
 
-  public PopupWindowSubject hasWidth(int width) {
+  public void hasWidth(int width) {
     check("getWidth()").that(actual.getWidth()).isEqualTo(width);
-    return this;
   }
 
-  public PopupWindowSubject isAboveAnchor() {
+  public void isAboveAnchor() {
     check("isAboveAnchor()").that(actual.isAboveAnchor()).isTrue();
-    return this;
   }
 
-  public PopupWindowSubject isNotAboveAnchor() {
+  public void isNotAboveAnchor() {
     check("isAboveAnchor()").that(actual.isAboveAnchor()).isFalse();
-    return this;
   }
 
-  public PopupWindowSubject isClippingEnabled() {
+  public void isClippingEnabled() {
     check("isClippingEnabled()").that(actual.isClippingEnabled()).isTrue();
-    return this;
   }
 
-  public PopupWindowSubject isClippingDisabled() {
+  public void isClippingDisabled() {
     check("isClippingEnabled()").that(actual.isClippingEnabled()).isFalse();
-    return this;
   }
 
-  public PopupWindowSubject isFocusable() {
+  public void isFocusable() {
     check("isFocusable()").that(actual.isFocusable()).isTrue();
-    return this;
   }
 
-  public PopupWindowSubject isNotFocusable() {
+  public void isNotFocusable() {
     check("isFocusable()").that(actual.isFocusable()).isFalse();
-    return this;
   }
 
-  public PopupWindowSubject isTouchableOutside() {
+  public void isTouchableOutside() {
     check("isOutsideTouchable()").that(actual.isOutsideTouchable()).isTrue();
-    return this;
   }
 
-  public PopupWindowSubject isNotTouchableOutside() {
+  public void isNotTouchableOutside() {
     check("isOutsideTouchable()").that(actual.isOutsideTouchable()).isFalse();
-    return this;
   }
 
-  public PopupWindowSubject isShowing() {
+  public void isShowing() {
     check("isShowing()").that(actual.isShowing()).isTrue();
-    return this;
   }
 
-  public PopupWindowSubject isNotShowing() {
+  public void isNotShowing() {
     check("isShowing()").that(actual.isShowing()).isFalse();
-    return this;
   }
 
-  public PopupWindowSubject isSplitTouchEnabled() {
+  public void isSplitTouchEnabled() {
     check("isSplitTouchEnabled()").that(actual.isSplitTouchEnabled()).isTrue();
-    return this;
   }
 
-  public PopupWindowSubject isSplitTouchDisabled() {
+  public void isSplitTouchDisabled() {
     check("isSplitTouchEnabled()")
         .withMessage("is split touch disabled")
         .that(actual.isSplitTouchEnabled()).isFalse();
-    return this;
   }
 
-  public PopupWindowSubject isTouchable() {
+  public void isTouchable() {
     check("isTouchable()").that(actual.isTouchable()).isTrue();
-    return this;
   }
 
-  public PopupWindowSubject isNotTouchable() {
+  public void isNotTouchable() {
     check("isTouchable()").that(actual.isTouchable()).isFalse();
-    return this;
   }
 }

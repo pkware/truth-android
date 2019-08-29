@@ -50,7 +50,7 @@ public class RingtonePreferenceSubject extends AbstractPreferenceSubject<Rington
         .get();
   }
 
-  public RingtonePreferenceSubject hasRingtoneType(@RingtoneType int type) {
+  public void hasRingtoneType(@RingtoneType int type) {
     int actualType = actual.getRingtoneType();
     //noinspection ResourceType
     check("getRingtoneType()")
@@ -58,26 +58,21 @@ public class RingtonePreferenceSubject extends AbstractPreferenceSubject<Rington
             ringtoneTypeToString(type), ringtoneTypeToString(actualType))
         .that(actualType)
         .isEqualTo(type);
-    return this;
   }
 
-  public RingtonePreferenceSubject isShowingDefault() {
+  public void isShowingDefault() {
     check("getShowDefault()").that(actual.getShowDefault()).isTrue();
-    return this;
   }
 
-  public RingtonePreferenceSubject isNotShowingDefault() {
+  public void isNotShowingDefault() {
     check("getShowDefault()").that(actual.getShowDefault()).isFalse();
-    return this;
   }
 
-  public RingtonePreferenceSubject isShowingSilent() {
+  public void isShowingSilent() {
     check("getShowSilent()").that(actual.getShowSilent()).isTrue();
-    return this;
   }
 
-  public RingtonePreferenceSubject isNotShowingSilent() {
+  public void isNotShowingSilent() {
     check("getShowSilent()").that(actual.getShowSilent()).isFalse();
-    return this;
   }
 }

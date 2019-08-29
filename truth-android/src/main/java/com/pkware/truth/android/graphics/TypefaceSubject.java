@@ -37,28 +37,23 @@ public class TypefaceSubject extends Subject {
     this.actual = actual;
   }
 
-  public TypefaceSubject hasStyle(int style) {
+  public void hasStyle(int style) {
     check("getStyle()").that(actual.getStyle()).isEqualTo(style);
-    return this;
   }
 
-  public TypefaceSubject isBold() {
+  public void isBold() {
     check("isBold()").that(actual.isBold()).isTrue();
-    return this;
   }
 
-  public TypefaceSubject isNotBold() {
+  public void isNotBold() {
     check("isBold()").that(actual.isBold()).isFalse();
-    return this;
   }
 
-  public TypefaceSubject isItalic() {
+  public void isItalic() {
     check("isItalic()").that(actual.isItalic()).isTrue();
-    return this;
   }
 
-  public TypefaceSubject isNotItalic() {
+  public void isNotItalic() {
     check("isItalic()").that(actual.isItalic()).isFalse();
-    return this;
   }
 }

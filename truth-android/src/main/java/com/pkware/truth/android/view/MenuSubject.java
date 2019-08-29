@@ -39,34 +39,29 @@ public class MenuSubject extends Subject {
     this.actual = actual;
   }
 
-  public MenuSubject hasItem(@IdRes int id) {
+  public void hasItem(@IdRes int id) {
     check("findItem(id)")
         .withMessage("menu item with ID %s", id)
         .that(actual.findItem(id))
         .isNotNull();
-    return this;
   }
 
-  public MenuSubject hasItemAt(int index) {
+  public void hasItemAt(int index) {
     check("getItem(index)")
         .withMessage("menu item at index %s", index)
         .that(actual.getItem(index))
         .isNotNull();
-    return this;
   }
 
-  public MenuSubject hasVisibleItems() {
+  public void hasVisibleItems() {
     check("hasVisibleItems()").that(actual.hasVisibleItems()).isTrue();
-    return this;
   }
 
-  public MenuSubject hasNoVisibleItems() {
+  public void hasNoVisibleItems() {
     check("hasVisibleItems()").that(actual.hasVisibleItems()).isFalse();
-    return this;
   }
 
-  public MenuSubject hasSize(int size) {
+  public void hasSize(int size) {
     check("size()").that(actual.size()).isEqualTo(size);
-    return this;
   }
 }

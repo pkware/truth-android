@@ -41,71 +41,58 @@ public class BitmapSubject extends Subject {
     this.actual = actual;
   }
 
-  public BitmapSubject isRecycled() {
+  public void isRecycled() {
     check("isRecycled()").that(actual.isRecycled()).isTrue();
-    return this;
   }
 
-  public BitmapSubject isNotRecycled() {
+  public void isNotRecycled() {
     check("isRecycled()").that(actual.isRecycled()).isFalse();
-    return this;
   }
 
-  public BitmapSubject isMutable() {
+  public void isMutable() {
     check("isMutable()").that(actual.isMutable()).isTrue();
-    return this;
   }
 
-  public BitmapSubject isNotMutable() {
+  public void isNotMutable() {
     check("isMutable()").that(actual.isMutable()).isFalse();
-    return this;
   }
 
   @TargetApi(JELLY_BEAN_MR1)
-  public BitmapSubject isPremultiplied() {
+  public void isPremultiplied() {
     check("isPremultiplied()").that(actual.isPremultiplied()).isTrue();
-    return this;
   }
 
   @TargetApi(JELLY_BEAN_MR1)
-  public BitmapSubject isNotPremultiplied() {
+  public void isNotPremultiplied() {
     check("isPremultiplied()").that(actual.isPremultiplied()).isFalse();
-    return this;
   }
 
   @TargetApi(KITKAT)
-  public BitmapSubject hasAllocationByteCount(int count) {
+  public void hasAllocationByteCount(int count) {
     check("getAllocationByteCount()").that(actual.getAllocationByteCount()).isEqualTo(count);
-    return this;
   }
 
-  public BitmapSubject hasByteCount(int count) {
+  public void hasByteCount(int count) {
     check("getByteCount()").that(actual.getByteCount()).isEqualTo(count);
-    return this;
   }
 
-  public BitmapSubject hasDensity(int density) {
+  public void hasDensity(int density) {
     check("getDensity()").that(actual.getDensity()).isEqualTo(density);
-    return this;
   }
 
-  public BitmapSubject hasWidth(int width) {
+  public void hasWidth(int width) {
     check("getWidth()").that(actual.getWidth()).isEqualTo(width);
-    return this;
   }
 
-  public BitmapSubject hasHeight(int height) {
+  public void hasHeight(int height) {
     check("getHeight()").that(actual.getHeight()).isEqualTo(height);
-    return this;
   }
 
-  public BitmapSubject hasAlphaSupport() {
+  public void hasAlphaSupport() {
     check("hasAlpha()").that(actual.hasAlpha()).isTrue();
-    return this;
   }
 
-  public BitmapSubject hasNoAlphaSupport() {
+  public void hasNoAlphaSupport() {
     check("hasAlpha()").that(actual.hasAlpha()).isFalse();
-    return this;
   }
 }

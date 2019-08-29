@@ -60,12 +60,11 @@ public class DetectedActivitySubject extends Subject {
         .get();
   }
 
-  public DetectedActivitySubject hasConfidence(int confidence) {
+  public void hasConfidence(int confidence) {
     check("getConfidence()").that(actual.getConfidence()).isEqualTo(confidence);
-    return this;
   }
 
-  public DetectedActivitySubject hasType(@DetectedActivityType int type) {
+  public void hasType(@DetectedActivityType int type) {
     int actualType = actual.getType();
     //noinspection ResourceType
     check("getType()")
@@ -73,6 +72,5 @@ public class DetectedActivitySubject extends Subject {
             typeToString(actualType))
         .that(actualType)
         .isEqualTo(type);
-    return this;
   }
 }

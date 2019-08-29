@@ -38,13 +38,11 @@ public class ArrayAdapterSubject extends AbstractListAdapterSubject<ArrayAdapter
     this.actual = actual;
   }
 
-  public ArrayAdapterSubject hasContext(@Nullable Context context) {
+  public void hasContext(@Nullable Context context) {
     check("getContext()").that(actual.getContext()).isSameInstanceAs(context);
-    return this;
   }
 
-  public ArrayAdapterSubject hasFilter(@Nullable Filter filter) {
+  public void hasFilter(@Nullable Filter filter) {
     check("getFilter()").that(actual.getFilter()).isSameInstanceAs(filter);
-    return this;
   }
 }

@@ -36,13 +36,11 @@ public class MediaControllerSubject extends AbstractFrameLayoutSubject<MediaCont
     this.actual = actual;
   }
 
-  public MediaControllerSubject isShowing() {
+  public void isShowing() {
     check("isShowing()").that(actual.isShowing()).isTrue();
-    return this;
   }
 
-  public MediaControllerSubject isNotShowing() {
+  public void isNotShowing() {
     check("isShowing()").that(actual.isShowing()).isFalse();
-    return this;
   }
 }

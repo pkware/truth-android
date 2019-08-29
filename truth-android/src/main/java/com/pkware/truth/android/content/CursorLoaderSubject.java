@@ -37,82 +37,71 @@ public class CursorLoaderSubject extends AbstractLoaderSubject<CursorLoader> {
     this.actual = actual;
   }
 
-  public CursorLoaderSubject hasProjection(@Nonnull String... projection) {
+  public void hasProjection(@Nonnull String... projection) {
     check("getProjection()")
         .that(actual.getProjection())
         .asList()
         .containsExactlyElementsIn(projection)
         .inOrder();
-    return this;
   }
 
-  public CursorLoaderSubject doesNotHaveProjection() {
+  public void doesNotHaveProjection() {
     String[] projection = actual.getProjection();
     if (projection == null) {
       projection = new String[0];
     }
     check("getProjection()").that(projection).isEmpty();
-    return this;
   }
 
-  public CursorLoaderSubject projectionContains(@Nonnull String... projection) {
+  public void projectionContains(@Nonnull String... projection) {
     check("getProjection()").that(actual.getProjection()).asList().contains(projection);
-    return this;
   }
 
-  public CursorLoaderSubject hasSelection(@Nullable String selection) {
+  public void hasSelection(@Nullable String selection) {
     check("getSelection()").that(actual.getSelection()).isEqualTo(selection);
-    return this;
   }
 
-  public CursorLoaderSubject doesNotHaveSelection() {
+  public void doesNotHaveSelection() {
     String selection = actual.getSelection();
     if (selection == null) {
       selection = "";
     }
     check("getSelection()").that(selection).isEmpty();
-    return this;
   }
 
-  public CursorLoaderSubject hasSelectionArgs(@Nonnull String... selectionArgs) {
+  public void hasSelectionArgs(@Nonnull String... selectionArgs) {
     check("getSelectionArgs()")
         .that(actual.getSelectionArgs())
         .asList()
         .containsExactlyElementsIn(selectionArgs)
         .inOrder();
-    return this;
   }
 
-  public CursorLoaderSubject doesNotHaveSelectionArgs() {
+  public void doesNotHaveSelectionArgs() {
     String[] selectionArgs = actual.getSelectionArgs();
     if (selectionArgs == null) {
       selectionArgs = new String[0];
     }
     check("getSelectionArgs()").that(actual.getSelectionArgs()).isEmpty();
-    return this;
   }
 
-  public CursorLoaderSubject containsSelectionArgs(@Nonnull String... selectionArgs) {
+  public void containsSelectionArgs(@Nonnull String... selectionArgs) {
     check("getSelectionArgs()").that(actual.getSelectionArgs()).asList().containsAtLeastElementsIn(selectionArgs);
-    return this;
   }
 
-  public CursorLoaderSubject hasSortOrder(@Nullable String sortOrder) {
+  public void hasSortOrder(@Nullable String sortOrder) {
     check("getSortOrder()").that(actual.getSortOrder()).isEqualTo(sortOrder);
-    return this;
   }
 
-  public CursorLoaderSubject doesNotHaveSortOrder() {
+  public void doesNotHaveSortOrder() {
     String sortOrder = actual.getSortOrder();
     if (sortOrder == null) {
       sortOrder = "";
     }
     check("getSortOrder()").that(sortOrder).isEmpty();
-    return this;
   }
 
-  public CursorLoaderSubject hasUri(@Nullable Uri uri) {
+  public void hasUri(@Nullable Uri uri) {
     check("getUri()").that(actual.getUri()).isEqualTo(uri);
-    return this;
   }
 }

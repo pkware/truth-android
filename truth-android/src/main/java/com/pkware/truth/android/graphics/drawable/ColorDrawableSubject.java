@@ -36,12 +36,11 @@ public class ColorDrawableSubject extends AbstractDrawableSubject<ColorDrawable>
     this.actual = actual;
   }
 
-  public ColorDrawableSubject hasColor(int color) {
+  public void hasColor(int color) {
     int actualColor = actual.getColor();
     check("getColor()")
         .withMessage("Expected color <%s> but was <%s>.", Integer.toHexString(color), Integer.toHexString(actualColor))
         .that(actualColor)
         .isEqualTo(color);
-    return this;
   }
 }

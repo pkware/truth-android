@@ -36,18 +36,15 @@ public class TabWidgetSubject extends AbstractLinearLayoutSubject<TabWidget> {
     this.actual = actual;
   }
 
-  public TabWidgetSubject hasTabCount(int count) {
+  public void hasTabCount(int count) {
     check("getTabCount()").that(actual.getTabCount()).isEqualTo(count);
-    return this;
   }
 
-  public TabWidgetSubject isStripEnabled() {
+  public void isStripEnabled() {
     check("isStripEnabled()").that(actual.isStripEnabled()).isTrue();
-    return this;
   }
 
-  public TabWidgetSubject isStripDisabled() {
+  public void isStripDisabled() {
     check("isStripEnabled()").that(actual.isStripEnabled()).isFalse();
-    return this;
   }
 }

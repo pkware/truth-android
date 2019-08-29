@@ -37,18 +37,15 @@ public class GsmCellLocationSubject extends Subject {
     this.actual = actual;
   }
 
-  public GsmCellLocationSubject hasCid(int cid) {
+  public void hasCid(int cid) {
     check("getCid()").that(actual.getCid()).isEqualTo(cid);
-    return this;
   }
 
-  public GsmCellLocationSubject hasLac(int lac) {
+  public void hasLac(int lac) {
     check("getLac()").that(actual.getLac()).isEqualTo(lac);
-    return this;
   }
 
-  public GsmCellLocationSubject hasPsc(int psc) {
+  public void hasPsc(int psc) {
     check("getPsc()").that(actual.getPsc()).isEqualTo(psc);
-    return this;
   }
 }

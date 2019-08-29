@@ -37,23 +37,19 @@ public class CameraPositionSubject extends Subject {
     this.actual = actual;
   }
 
-  public CameraPositionSubject hasBearing(float bearing, float tolerance) {
+  public void hasBearing(float bearing, float tolerance) {
     check("bearing").that(actual.bearing).isWithin(tolerance).of(bearing);
-    return this;
   }
 
-  public CameraPositionSubject hasTarget(LatLng target) {
+  public void hasTarget(LatLng target) {
     check("target").that(actual.target).isEqualTo(target);
-    return this;
   }
 
-  public CameraPositionSubject hasTilt(float tilt, float tolerance) {
+  public void hasTilt(float tilt, float tolerance) {
     check("tilt").that(actual.tilt).isWithin(tolerance).of(tilt);
-    return this;
   }
 
-  public CameraPositionSubject hasZoom(float zoom, float tolerance) {
+  public void hasZoom(float zoom, float tolerance) {
     check("zoom").that(actual.zoom).isWithin(tolerance).of(zoom);
-    return this;
   }
 }

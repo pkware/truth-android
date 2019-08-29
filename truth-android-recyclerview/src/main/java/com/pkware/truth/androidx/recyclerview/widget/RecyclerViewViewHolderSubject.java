@@ -38,28 +38,23 @@ public class RecyclerViewViewHolderSubject extends Subject {
   }
 
   @SuppressWarnings("deprecation")
-  public RecyclerViewViewHolderSubject hasPosition(int position) {
+  public void hasPosition(int position) {
     check("getPosition()").that(actual.getPosition()).isEqualTo(position);
-    return this;
   }
 
-  public RecyclerViewViewHolderSubject hasItemId(long itemId) {
+  public void hasItemId(long itemId) {
     check("getItemId()").that(actual.getItemId()).isEqualTo(itemId);
-    return this;
   }
 
-  public RecyclerViewViewHolderSubject hasItemViewType(int itemViewType) {
+  public void hasItemViewType(int itemViewType) {
     check("getItemViewType()").that(actual.getItemViewType()).isEqualTo(itemViewType);
-    return this;
   }
 
-  public RecyclerViewViewHolderSubject isRecyclable() {
+  public void isRecyclable() {
     check("isRecyclable()").that(actual.isRecyclable()).isTrue();
-    return this;
   }
 
-  public RecyclerViewViewHolderSubject isNotRecyclable() {
+  public void isNotRecyclable() {
     check("isRecyclable()").that(actual.isRecyclable()).isFalse();
-    return this;
   }
 }

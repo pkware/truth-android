@@ -42,113 +42,91 @@ public class MenuItemSubject extends Subject {
     this.actual = actual;
   }
 
-  public MenuItemSubject hasActionView(@Nullable View view) {
+  public void hasActionView(@Nullable View view) {
     check("getActionView()").that(actual.getActionView()).isSameInstanceAs(view);
-    return this;
   }
 
-  public MenuItemSubject hasAlphabeticShortcut(char shortcut) {
+  public void hasAlphabeticShortcut(char shortcut) {
     check("getAlphabeticShortcut()").that(actual.getAlphabeticShortcut()).isEqualTo(shortcut);
-    return this;
   }
 
-  public MenuItemSubject hasGroupId(int id) {
+  public void hasGroupId(int id) {
     check("getGroupId()").that(actual.getGroupId()).isEqualTo(id);
-    return this;
   }
 
-  public MenuItemSubject hasIcon(@Nullable Drawable icon) {
+  public void hasIcon(@Nullable Drawable icon) {
     check("getIcon()").that(actual.getIcon()).isSameInstanceAs(icon);
-    return this;
   }
 
-  public MenuItemSubject hasIntent(@Nullable Intent intent) {
+  public void hasIntent(@Nullable Intent intent) {
     check("getIntent()").that(actual.getIntent()).isEqualTo(intent);
-    return this;
   }
 
-  public MenuItemSubject hasItemId(@IdRes int id) {
+  public void hasItemId(@IdRes int id) {
     check("getItemId()").that(actual.getItemId()).isEqualTo(id);
-    return this;
   }
 
-  public MenuItemSubject hasNumericShortcut(char shortcut) {
+  public void hasNumericShortcut(char shortcut) {
     check("getNumericShortcut()").that(actual.getNumericShortcut()).isEqualTo(shortcut);
-    return this;
   }
 
-  public MenuItemSubject hasOrder(int order) {
+  public void hasOrder(int order) {
     check("getOrder()").that(actual.getOrder()).isEqualTo(order);
-    return this;
   }
 
-  public MenuItemSubject hasTitle(@Nullable String title) {
+  public void hasTitle(@Nullable String title) {
     check("getTitle()").that(actual.getTitle().toString()).isEqualTo(title);
-    return this;
   }
 
-  public MenuItemSubject hasCondensedTitle(@Nullable String title) {
+  public void hasCondensedTitle(@Nullable String title) {
     check("getTitleCondensed()").that(actual.getTitleCondensed().toString()).isEqualTo(title);
-    return this;
   }
 
-  public MenuItemSubject hasSubMenu() {
+  public void hasSubMenu() {
     check("hasSubMenu()").that(actual.hasSubMenu()).isTrue();
-    return this;
   }
 
-  public MenuItemSubject hasNoSubMenu() {
+  public void hasNoSubMenu() {
     check("hasSubMenu()").that(actual.hasSubMenu()).isFalse();
-    return this;
   }
 
-  public MenuItemSubject isActionViewExpanded() {
+  public void isActionViewExpanded() {
     check("isActionViewExpanded()").that(actual.isActionViewExpanded()).isTrue();
-    return this;
   }
 
-  public MenuItemSubject isActionViewCollapsed() {
+  public void isActionViewCollapsed() {
     check("isActionViewExpanded()").that(actual.isActionViewExpanded()).isFalse();
-    return this;
   }
 
-  public MenuItemSubject isCheckable() {
+  public void isCheckable() {
     check("isCheckable()").that(actual.isCheckable()).isTrue();
-    return this;
   }
 
-  public MenuItemSubject isNotCheckable() {
+  public void isNotCheckable() {
     check("isCheckable()").that(actual.isCheckable()).isFalse();
-    return this;
   }
 
-  public MenuItemSubject isChecked() {
+  public void isChecked() {
     check("isChecked()").that(actual.isChecked()).isTrue();
-    return this;
   }
 
-  public MenuItemSubject isNotChecked() {
+  public void isNotChecked() {
     check("isChecked()").that(actual.isChecked()).isFalse();
-    return this;
   }
 
-  public MenuItemSubject isEnabled() {
+  public void isEnabled() {
     check("isEnabled()").that(actual.isEnabled()).isTrue();
-    return this;
   }
 
-  public MenuItemSubject isDisabled() {
+  public void isDisabled() {
     check("isEnabled()").that(actual.isEnabled()).isFalse();
-    return this;
   }
 
-  public MenuItemSubject isVisible() {
+  public void isVisible() {
     check("isVisible()").that(actual.isVisible()).isTrue();
-    return this;
   }
 
-  public MenuItemSubject isNotVisible() {
+  public void isNotVisible() {
     check("isVisible()").that(actual.isVisible()).isFalse();
-    return this;
   }
 }

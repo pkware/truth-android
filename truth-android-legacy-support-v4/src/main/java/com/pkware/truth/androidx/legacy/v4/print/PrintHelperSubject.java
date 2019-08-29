@@ -69,7 +69,7 @@ public class PrintHelperSubject extends Subject {
         .get();
   }
 
-  public PrintHelperSubject hasColorMode(@PrintHelperColorMode int colorMode) {
+  public void hasColorMode(@PrintHelperColorMode int colorMode) {
     int actualColorMode = actual.getColorMode();
     //noinspection ResourceType
     check("getColorMode()")
@@ -77,10 +77,9 @@ public class PrintHelperSubject extends Subject {
             colorModeToString(colorMode), colorModeToString(actualColorMode))
         .that(actualColorMode)
         .isEqualTo(colorMode);
-    return this;
   }
 
-  public PrintHelperSubject hasOrientation(@PrintHelperOrientation int orientation) {
+  public void hasOrientation(@PrintHelperOrientation int orientation) {
     int actualOrientation = actual.getOrientation();
     //noinspection ResourceType
     check("getOrientation()")
@@ -88,10 +87,9 @@ public class PrintHelperSubject extends Subject {
             orientationToString(orientation), orientationToString(actualOrientation))
         .that(actualOrientation)
         .isEqualTo(orientation);
-    return this;
   }
 
-  public PrintHelperSubject hasScaleMode(@PrintHelperScaleMode int scaleMode) {
+  public void hasScaleMode(@PrintHelperScaleMode int scaleMode) {
     int actualScaleMode = actual.getScaleMode();
     //noinspection ResourceType
     check("getScaleMode()")
@@ -99,6 +97,5 @@ public class PrintHelperSubject extends Subject {
             scaleModeToString(scaleMode), scaleModeToString(actualScaleMode))
         .that(actualScaleMode)
         .isEqualTo(scaleMode);
-    return this;
   }
 }

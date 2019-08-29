@@ -39,8 +39,7 @@ public class AtomicFileSubject extends Subject {
     this.actual = actual;
   }
 
-  public AtomicFileSubject hasBaseFile(@Nullable File file) {
+  public void hasBaseFile(@Nullable File file) {
     check("getBaseFile()").that(actual.getBaseFile()).isEqualTo(file);
-    return this;
   }
 }

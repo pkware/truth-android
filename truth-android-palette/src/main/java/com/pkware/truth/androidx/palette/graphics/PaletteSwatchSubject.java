@@ -37,8 +37,7 @@ public class PaletteSwatchSubject extends Subject {
     this.actual = actual;
   }
 
-  public PaletteSwatchSubject hasRgb(int rgb) {
+  public void hasRgb(int rgb) {
     check("getRgb()").that(actual.getRgb()).isEqualTo(rgb);
-    return this;
   }
 }

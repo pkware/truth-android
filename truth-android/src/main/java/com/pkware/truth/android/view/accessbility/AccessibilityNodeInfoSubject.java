@@ -41,206 +41,169 @@ public class AccessibilityNodeInfoSubject extends Subject {
     this.actual = actual;
   }
 
-  public AccessibilityNodeInfoSubject hasActions(int actions) {
+  public void hasActions(int actions) {
     check("getActions()").that(actual.getActions()).isEqualTo(actions);
-    return this;
   }
 
-  public AccessibilityNodeInfoSubject hasChildCount(int count) {
+  public void hasChildCount(int count) {
     check("getChildCount()").that(actual.getChildCount()).isEqualTo(count);
-    return this;
   }
 
-  public AccessibilityNodeInfoSubject hasClassName(@Nullable String name) {
+  public void hasClassName(@Nullable String name) {
     check("getClassName()")
         .that(actual.getClassName().toString())
         .isEqualTo(name);
-    return this;
   }
 
-  public AccessibilityNodeInfoSubject hasContentDescription(@Nullable String description) {
+  public void hasContentDescription(@Nullable String description) {
     check("getContentDescription()")
         .that(actual.getContentDescription().toString())
         .isEqualTo(description);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public AccessibilityNodeInfoSubject hasMovementGranularities(int granularities) {
+  public void hasMovementGranularities(int granularities) {
     check("getMovementGranularities()").that(actual.getMovementGranularities()).isEqualTo(granularities);
-    return this;
   }
 
-  public AccessibilityNodeInfoSubject hasPackageName(@Nullable String name) {
+  public void hasPackageName(@Nullable String name) {
     check("getPackageName()")
         .that(actual.getPackageName().toString())
         .isEqualTo(name);
-    return this;
   }
 
-  public AccessibilityNodeInfoSubject hasText(@Nullable String text) {
+  public void hasText(@Nullable String text) {
     check("getText()")
         .that(actual.getText().toString())
         .isEqualTo(text);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN_MR2)
-  public AccessibilityNodeInfoSubject hasTextSelectionStart(int position) {
+  public void hasTextSelectionStart(int position) {
     check("getTextSelectionStart()").that(actual.getTextSelectionStart()).isEqualTo(position);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN_MR2)
-  public AccessibilityNodeInfoSubject hasTextSelectionEnd(int position) {
+  public void hasTextSelectionEnd(int position) {
     check("getTextSelectionEnd()").that(actual.getTextSelectionEnd()).isEqualTo(position);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN_MR2)
-  public AccessibilityNodeInfoSubject hasViewIdResourceName(@Nullable String name) {
+  public void hasViewIdResourceName(@Nullable String name) {
     check("getViewIdResourceName()").that(actual.getViewIdResourceName()).isEqualTo(name);
-    return this;
   }
 
-  public AccessibilityNodeInfoSubject hasWindowId(int id) {
+  public void hasWindowId(int id) {
     check("getWindowId()").that(actual.getWindowId()).isEqualTo(id);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public AccessibilityNodeInfoSubject isAccessibilityFocused() {
+  public void isAccessibilityFocused() {
     check("isAccessibilityFocused()").that(actual.isAccessibilityFocused()).isTrue();
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public AccessibilityNodeInfoSubject isNotAccessibilityFocused() {
+  public void isNotAccessibilityFocused() {
     check("isAccessibilityFocused()").that(actual.isAccessibilityFocused()).isFalse();
-    return this;
   }
 
-  public AccessibilityNodeInfoSubject isCheckable() {
+  public void isCheckable() {
     check("isCheckable()").that(actual.isCheckable()).isTrue();
-    return this;
   }
 
-  public AccessibilityNodeInfoSubject isNotCheckable() {
+  public void isNotCheckable() {
     check("isCheckable()").that(actual.isCheckable()).isFalse();
-    return this;
   }
 
-  public AccessibilityNodeInfoSubject isChecked() {
+  public void isChecked() {
     check("isChecked()").that(actual.isChecked()).isTrue();
-    return this;
   }
 
-  public AccessibilityNodeInfoSubject isNotChecked() {
+  public void isNotChecked() {
     check("isChecked()").that(actual.isChecked()).isFalse();
-    return this;
   }
 
-  public AccessibilityNodeInfoSubject isClickable() {
+  public void isClickable() {
     check("isClickable()").that(actual.isClickable()).isTrue();
-    return this;
   }
 
-  public AccessibilityNodeInfoSubject isNotClickable() {
+  public void isNotClickable() {
     check("isClickable()").that(actual.isClickable()).isFalse();
-    return this;
   }
 
   @TargetApi(JELLY_BEAN_MR2)
-  public AccessibilityNodeInfoSubject isEditable() {
+  public void isEditable() {
     check("isEditable()").that(actual.isEditable()).isTrue();
-    return this;
   }
 
   @TargetApi(JELLY_BEAN_MR2)
-  public AccessibilityNodeInfoSubject isNotEditable() {
+  public void isNotEditable() {
     check("isEditable()").that(actual.isEditable()).isFalse();
-    return this;
   }
 
-  public AccessibilityNodeInfoSubject isEnabled() {
+  public void isEnabled() {
     check("isEnabled()").that(actual.isEnabled()).isTrue();
-    return this;
   }
 
-  public AccessibilityNodeInfoSubject isNotEnabled() {
+  public void isNotEnabled() {
     check("isEnabled()").that(actual.isEnabled()).isFalse();
-    return this;
   }
 
-  public AccessibilityNodeInfoSubject isFocusable() {
+  public void isFocusable() {
     check("isFocusable()").that(actual.isFocusable()).isTrue();
-    return this;
   }
 
-  public AccessibilityNodeInfoSubject isNotFocusable() {
+  public void isNotFocusable() {
     check("isFocusable()").that(actual.isFocusable()).isFalse();
-    return this;
   }
 
-  public AccessibilityNodeInfoSubject isFocused() {
+  public void isFocused() {
     check("isFocused()").that(actual.isFocused()).isTrue();
-    return this;
   }
 
-  public AccessibilityNodeInfoSubject isNotFocused() {
+  public void isNotFocused() {
     check("isFocused()").that(actual.isFocused()).isFalse();
-    return this;
   }
 
-  public AccessibilityNodeInfoSubject isLongClickable() {
+  public void isLongClickable() {
     check("isLongClickable()").that(actual.isLongClickable()).isTrue();
-    return this;
   }
 
-  public AccessibilityNodeInfoSubject isNotLongClickable() {
+  public void isNotLongClickable() {
     check("isLongClickable()").that(actual.isLongClickable()).isFalse();
-    return this;
   }
 
-  public AccessibilityNodeInfoSubject isPassword() {
+  public void isPassword() {
     check("isPassword()").that(actual.isPassword()).isTrue();
-    return this;
   }
 
-  public AccessibilityNodeInfoSubject isNotPassword() {
+  public void isNotPassword() {
     check("isPassword()").that(actual.isPassword()).isFalse();
-    return this;
   }
 
-  public AccessibilityNodeInfoSubject isScrollable() {
+  public void isScrollable() {
     check("isScrollable()").that(actual.isScrollable()).isTrue();
-    return this;
   }
 
-  public AccessibilityNodeInfoSubject isNotScrollable() {
+  public void isNotScrollable() {
     check("isScrollable()").that(actual.isScrollable()).isFalse();
-    return this;
   }
 
-  public AccessibilityNodeInfoSubject isSelected() {
+  public void isSelected() {
     check("isSelected()").that(actual.isSelected()).isTrue();
-    return this;
   }
 
-  public AccessibilityNodeInfoSubject isNotSelected() {
+  public void isNotSelected() {
     check("isSelected()").that(actual.isSelected()).isFalse();
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public AccessibilityNodeInfoSubject isVisibleToUser() {
+  public void isVisibleToUser() {
     check("isVisibleToUser()").that(actual.isVisibleToUser()).isTrue();
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public AccessibilityNodeInfoSubject isNotVisibleToUser() {
+  public void isNotVisibleToUser() {
     check("isVisibleToUser()").that(actual.isVisibleToUser()).isFalse();
-    return this;
   }
 }

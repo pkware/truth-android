@@ -41,40 +41,35 @@ public class SparseBooleanArraySubject extends Subject {
     this.actual = actual;
   }
 
-  public SparseBooleanArraySubject keyIsTrue(int key) {
+  public void keyIsTrue(int key) {
     check("get(key)")
         .withMessage("key %s", key)
         .that(actual.get(key))
         .isTrue();
-    return this;
   }
 
-  public SparseBooleanArraySubject keyIsFalse(int key) {
+  public void keyIsFalse(int key) {
     check("get(key)")
         .withMessage("key %s", key)
         .that(actual.get(key))
         .isFalse();
-    return this;
   }
 
-  public SparseBooleanArraySubject hasKey(int key) {
+  public void hasKey(int key) {
     check("indexOfKey(key)")
         .withMessage("Expected key <%s> to be present but was not.", key)
         .that(actual.indexOfKey(key))
         .isGreaterThan(-1);
-    return this;
   }
 
-  public SparseBooleanArraySubject doesNotHaveKey(int key) {
+  public void doesNotHaveKey(int key) {
     check("indexOfKey(key)")
         .withMessage("Expected key <%s> to not be present but was.", key)
         .that(actual.indexOfKey(key))
         .isLessThan(0);
-    return this;
   }
 
-  public SparseBooleanArraySubject hasSize(int size) {
+  public void hasSize(int size) {
     check("size()").that(actual.size()).isEqualTo(size);
-    return this;
   }
 }

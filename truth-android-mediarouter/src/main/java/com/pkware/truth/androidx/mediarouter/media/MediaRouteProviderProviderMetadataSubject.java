@@ -39,13 +39,11 @@ public class MediaRouteProviderProviderMetadataSubject extends Subject {
     this.actual = actual;
   }
 
-  public MediaRouteProviderProviderMetadataSubject hasComponentName(@Nullable ComponentName componentName) {
+  public void hasComponentName(@Nullable ComponentName componentName) {
     check("getComponentName()").that(actual.getComponentName()).isEqualTo(componentName);
-    return this;
   }
 
-  public MediaRouteProviderProviderMetadataSubject hasPackageName(@Nullable String packageName) {
+  public void hasPackageName(@Nullable String packageName) {
     check("getPackageName()").that(actual.getPackageName()).isEqualTo(packageName);
-    return this;
   }
 }

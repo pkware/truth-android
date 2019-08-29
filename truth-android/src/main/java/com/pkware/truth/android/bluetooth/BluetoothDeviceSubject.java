@@ -69,12 +69,11 @@ public class BluetoothDeviceSubject extends Subject {
         .get();
   }
 
-  public BluetoothDeviceSubject hasAddress(@Nullable String address) {
+  public void hasAddress(@Nullable String address) {
     check("getAddress()").that(actual.getAddress()).isEqualTo(address);
-    return this;
   }
 
-  public BluetoothDeviceSubject hasBondState(@BluetoothDeviceBondState int state) {
+  public void hasBondState(@BluetoothDeviceBondState int state) {
     int actualState = actual.getBondState();
     //noinspection ResourceType
     check("getBondState()")
@@ -83,16 +82,14 @@ public class BluetoothDeviceSubject extends Subject {
             bondStateToString(actualState))
         .that(actualState)
         .isEqualTo(state);
-    return this;
   }
 
-  public BluetoothDeviceSubject hasName(@Nullable String name) {
+  public void hasName(@Nullable String name) {
     check("getName()").that(actual.getName()).isEqualTo(name);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN_MR2)
-  public BluetoothDeviceSubject hasType(@BluetoothDeviceType int type) {
+  public void hasType(@BluetoothDeviceType int type) {
     int actualType = actual.getType();
     //noinspection ResourceType
     check("getType()")
@@ -101,6 +98,5 @@ public class BluetoothDeviceSubject extends Subject {
             typeToString(actualType))
         .that(actualType)
         .isEqualTo(type);
-    return this;
   }
 }

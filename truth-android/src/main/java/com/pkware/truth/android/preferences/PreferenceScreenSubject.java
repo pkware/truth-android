@@ -38,13 +38,11 @@ public class PreferenceScreenSubject extends AbstractPreferenceGroupSubject<Pref
     this.actual = actual;
   }
 
-  public PreferenceScreenSubject hasDialog(@Nullable Dialog dialog) {
+  public void hasDialog(@Nullable Dialog dialog) {
     check("getDialog()").that(actual.getDialog()).isSameInstanceAs(dialog);
-    return this;
   }
 
-  public PreferenceScreenSubject hasRootAdapter(@Nullable ListAdapter adapter) {
+  public void hasRootAdapter(@Nullable ListAdapter adapter) {
     check("getRootAdapter()").that(actual.getRootAdapter()).isSameInstanceAs(adapter);
-    return this;
   }
 }

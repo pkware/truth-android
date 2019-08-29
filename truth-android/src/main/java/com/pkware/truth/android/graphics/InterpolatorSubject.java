@@ -37,13 +37,11 @@ public class InterpolatorSubject extends Subject {
     this.actual = actual;
   }
 
-  public InterpolatorSubject hasKeyFrameCount(int count) {
+  public void hasKeyFrameCount(int count) {
     check("getKeyFrameCount()").that(actual.getKeyFrameCount()).isEqualTo(count);
-    return this;
   }
 
-  public InterpolatorSubject hasValueCount(int count) {
+  public void hasValueCount(int count) {
     check("getValueCount()").that(actual.getValueCount()).isEqualTo(count);
-    return this;
   }
 }

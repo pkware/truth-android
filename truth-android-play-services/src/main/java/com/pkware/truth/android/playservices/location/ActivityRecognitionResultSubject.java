@@ -36,13 +36,11 @@ public class ActivityRecognitionResultSubject extends Subject {
     this.actual = actual;
   }
 
-  public ActivityRecognitionResultSubject hasElapsedRealtimeMillis(long millis) {
+  public void hasElapsedRealtimeMillis(long millis) {
     check("getElapsedRealtimeMillis()").that(actual.getElapsedRealtimeMillis()).isEqualTo(millis);
-    return this;
   }
 
-  public ActivityRecognitionResultSubject hasTime(long time) {
+  public void hasTime(long time) {
     check("getTime()").that(actual.getTime()).isEqualTo(time);
-    return this;
   }
 }

@@ -36,33 +36,27 @@ public class NumberPickerSubject extends AbstractLinearLayoutSubject<NumberPicke
     this.actual = actual;
   }
 
-  public NumberPickerSubject hasDisplayedValues(@Nonnull String[] values) {
+  public void hasDisplayedValues(@Nonnull String[] values) {
     check("getDisplayedValues()").that(actual.getDisplayedValues()).asList().containsExactlyElementsIn(values).inOrder();
-    return this;
   }
 
-  public NumberPickerSubject hasMaxValue(int value) {
+  public void hasMaxValue(int value) {
     check("getMaxValue()").that(actual.getMaxValue()).isEqualTo(value);
-    return this;
   }
 
-  public NumberPickerSubject hasMinValue(int value) {
+  public void hasMinValue(int value) {
     check("getMinValue()").that(actual.getMinValue()).isEqualTo(value);
-    return this;
   }
 
-  public NumberPickerSubject hasValue(int value) {
+  public void hasValue(int value) {
     check("getValue()").that(actual.getValue()).isEqualTo(value);
-    return this;
   }
 
-  public NumberPickerSubject isWrappingSelectorWheel() {
+  public void isWrappingSelectorWheel() {
     check("getWrapSelectorWheel()").that(actual.getWrapSelectorWheel()).isTrue();
-    return this;
   }
 
-  public NumberPickerSubject isNotWrappingSelectorWheel() {
+  public void isNotWrappingSelectorWheel() {
     check("getWrapSelectorWheel()").that(actual.getWrapSelectorWheel()).isFalse();
-    return this;
   }
 }

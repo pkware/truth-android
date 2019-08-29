@@ -36,13 +36,11 @@ public class ExpandableListActivitySubject extends AbstractActivitySubject<Expan
     this.actual = actual;
   }
 
-  public ExpandableListActivitySubject hasSelectedId(long id) {
+  public void hasSelectedId(long id) {
     check("getSelectedId()").that(actual.getSelectedId()).isEqualTo(id);
-    return this;
   }
 
-  public ExpandableListActivitySubject hasSelectedPosition(long position) {
+  public void hasSelectedPosition(long position) {
     check("getSelectedPosition()").that(actual.getSelectedPosition()).isEqualTo(position);
-    return this;
   }
 }

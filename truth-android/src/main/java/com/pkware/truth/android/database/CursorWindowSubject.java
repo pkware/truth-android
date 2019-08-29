@@ -37,13 +37,11 @@ public class CursorWindowSubject extends Subject {
     this.actual = actual;
   }
 
-  public CursorWindowSubject hasRowCount(int count) {
+  public void hasRowCount(int count) {
     check("getNumRows()").that(actual.getNumRows()).isEqualTo(count);
-    return this;
   }
 
-  public CursorWindowSubject hasStartPosition(int position) {
+  public void hasStartPosition(int position) {
     check("getStartPosition()").that(actual.getStartPosition()).isEqualTo(position);
-    return this;
   }
 }

@@ -41,39 +41,35 @@ public class UiModeManagerSubject extends Subject {
     this.actual = actual;
   }
 
-  public UiModeManagerSubject isNightMode() {
+  public void isNightMode() {
     check("getNightMode()")
         .withMessage("Expected to be in night mode but was not in night mode.")
         .that(actual.getNightMode())
         .isNotEqualTo(MODE_NIGHT_NO);
-    return this;
   }
 
-  public UiModeManagerSubject isNotNightMode() {
+  public void isNotNightMode() {
     check("getNightMode()")
         .withMessage("Expected not to be in night mode but was in night mode.")
         .that(actual.getNightMode())
         .isEqualTo(MODE_NIGHT_NO);
-    return this;
   }
 
-  public UiModeManagerSubject isInUiModeType(@ConfigurationUiModeType int mode) {
+  public void isInUiModeType(@ConfigurationUiModeType int mode) {
     int actualMode = actual.getCurrentModeType();
     //noinspection ResourceType
     check("getCurrentModeType()")
         .withMessage("Expected mode <%s> but was <%s>.", uiModeTypeToString(mode), uiModeTypeToString(actualMode))
         .that(actualMode)
         .isEqualTo(mode);
-    return this;
   }
 
-  public UiModeManagerSubject isNotInUiModeType(@ConfigurationUiModeType int mode) {
+  public void isNotInUiModeType(@ConfigurationUiModeType int mode) {
     int actualMode = actual.getCurrentModeType();
     //noinspection ResourceType
     check("getCurrentModeType()")
         .withMessage("Expected not mode <%s> but was <%s>.", uiModeTypeToString(mode), uiModeTypeToString(actualMode))
         .that(actualMode)
         .isNotEqualTo(mode);
-    return this;
   }
 }

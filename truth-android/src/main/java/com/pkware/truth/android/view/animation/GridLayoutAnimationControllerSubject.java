@@ -77,12 +77,11 @@ public class GridLayoutAnimationControllerSubject extends
         .get();
   }
 
-  public GridLayoutAnimationControllerSubject hasColumnDelay(float delay, float tolerance) {
+  public void hasColumnDelay(float delay, float tolerance) {
     check("getColumnDelay()").that(actual.getColumnDelay()).isWithin(tolerance).of(delay);
-    return this;
   }
 
-  public GridLayoutAnimationControllerSubject hasDirection(@GridLayoutAnimationControllerDirection int direction) {
+  public void hasDirection(@GridLayoutAnimationControllerDirection int direction) {
     int actualDirection = actual.getDirection();
     //noinspection ResourceType
     check("getDirection()")
@@ -90,10 +89,9 @@ public class GridLayoutAnimationControllerSubject extends
             directionToString(direction), directionToString(actualDirection))
         .that(actualDirection)
         .isEqualTo(direction);
-    return this;
   }
 
-  public GridLayoutAnimationControllerSubject hasDirectionPriority(@GridLayoutAnimationControllerDirectionPriority int priority) {
+  public void hasDirectionPriority(@GridLayoutAnimationControllerDirectionPriority int priority) {
     int actualPriority = actual.getDirectionPriority();
     //noinspection ResourceType
     check("getDirectionPriority()")
@@ -101,11 +99,9 @@ public class GridLayoutAnimationControllerSubject extends
             directionPriorityToString(priority), directionPriorityToString(actualPriority))
         .that(actualPriority)
         .isEqualTo(priority);
-    return this;
   }
 
-  public GridLayoutAnimationControllerSubject hasRowDelay(float delay, float tolerance) {
+  public void hasRowDelay(float delay, float tolerance) {
     check("getRowDelay()").that(actual.getRowDelay()).isWithin(tolerance).of(delay);
-    return this;
   }
 }

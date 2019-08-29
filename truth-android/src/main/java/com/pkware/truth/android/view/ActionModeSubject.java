@@ -41,52 +41,43 @@ public class ActionModeSubject extends Subject {
     this.actual = actual;
   }
 
-  public ActionModeSubject hasCustomView() {
+  public void hasCustomView() {
     check("getCustomView()").that(actual.getCustomView()).isNotNull();
-    return this;
   }
 
-  public ActionModeSubject hasCustomView(@Nullable View view) {
+  public void hasCustomView(@Nullable View view) {
     check("getCustomView()").that(actual.getCustomView()).isEqualTo(view);
-    return this;
   }
 
-  public ActionModeSubject hasSubtitle(@Nullable CharSequence subtitle) {
+  public void hasSubtitle(@Nullable CharSequence subtitle) {
     check("getSubtitle()").that(actual.getSubtitle()).isEqualTo(subtitle);
-    return this;
   }
 
-  public ActionModeSubject hasTag(@Nullable Object tag) {
+  public void hasTag(@Nullable Object tag) {
     check("getTag()").that(actual.getTag()).isEqualTo(tag);
-    return this;
   }
 
-  public ActionModeSubject hasTitle(@Nullable CharSequence title) {
+  public void hasTitle(@Nullable CharSequence title) {
     check("getTitle()").that(actual.getTitle()).isEqualTo(title);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public ActionModeSubject hasOptionalTitleHint() {
+  public void hasOptionalTitleHint() {
     check("getTitleOptionalHint()").that(actual.getTitleOptionalHint()).isTrue();
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public ActionModeSubject hasNonOptionalTitleHint() {
+  public void hasNonOptionalTitleHint() {
     check("getTitleOptionalHint()").that(actual.getTitleOptionalHint()).isFalse();
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public ActionModeSubject hasOptionalTitle() {
+  public void hasOptionalTitle() {
     check("isTitleOptional()").that(actual.isTitleOptional()).isTrue();
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public ActionModeSubject hasNonOptionalTitle() {
+  public void hasNonOptionalTitle() {
     check("isTitleOptional()").that(actual.isTitleOptional()).isFalse();
-    return this;
   }
 }

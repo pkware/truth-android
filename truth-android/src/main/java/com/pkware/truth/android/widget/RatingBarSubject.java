@@ -36,28 +36,23 @@ public class RatingBarSubject extends AbstractAbsSeekBarSubject<RatingBar> {
     this.actual = actual;
   }
 
-  public RatingBarSubject hasStarCount(int count) {
+  public void hasStarCount(int count) {
     check("getNumStars()").that(actual.getNumStars()).isEqualTo(count);
-    return this;
   }
 
-  public RatingBarSubject hasRating(float rating, float tolerance) {
+  public void hasRating(float rating, float tolerance) {
     check("getRating()").that(actual.getRating()).isWithin(tolerance).of(rating);
-    return this;
   }
 
-  public RatingBarSubject hasStepSize(float size, float tolerance) {
+  public void hasStepSize(float size, float tolerance) {
     check("getStepSize()").that(actual.getStepSize()).isWithin(tolerance).of(size);
-    return this;
   }
 
-  public RatingBarSubject isIndicator() {
+  public void isIndicator() {
     check("isIndicator()").that(actual.isIndicator()).isTrue();
-    return this;
   }
 
-  public RatingBarSubject isNotIndicator() {
+  public void isNotIndicator() {
     check("isIndicator()").that(actual.isIndicator()).isFalse();
-    return this;
   }
 }

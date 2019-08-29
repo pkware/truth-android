@@ -36,7 +36,7 @@ public class TextInputLayoutSubject extends AbstractLinearLayoutSubject<TextInpu
     this.actual = actual;
   }
 
-  public TextInputLayoutSubject hasError(@Nullable String error) {
+  public void hasError(@Nullable String error) {
     CharSequence actualError = actual.getError();
     String actualErrorString;
     if (actualError == null) {
@@ -45,6 +45,5 @@ public class TextInputLayoutSubject extends AbstractLinearLayoutSubject<TextInpu
       actualErrorString = actualError.toString();
     }
     check("getError()").that(actualErrorString).isEqualTo(error);
-    return this;
   }
 }

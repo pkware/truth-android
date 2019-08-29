@@ -155,7 +155,7 @@ public class TelephonyManagerSubject extends Subject {
         .get();
   }
 
-  public TelephonyManagerSubject hasCallState(@TelephonyManagerCallState int state) {
+  public void hasCallState(@TelephonyManagerCallState int state) {
     int actualState = actual.getCallState();
     //noinspection ResourceType
     check("getCallState()")
@@ -163,15 +163,13 @@ public class TelephonyManagerSubject extends Subject {
             callStateToString(actualState))
         .that(actualState)
         .isEqualTo(state);
-    return this;
   }
 
-  public TelephonyManagerSubject hasCellLocation(@Nullable CellLocation cellLocation) {
+  public void hasCellLocation(@Nullable CellLocation cellLocation) {
     check("getCellLocation()").that(actual.getCellLocation()).isEqualTo(cellLocation);
-    return this;
   }
 
-  public TelephonyManagerSubject hasDataActivity(@TelephonyManagerDataActivity int dataActivity) {
+  public void hasDataActivity(@TelephonyManagerDataActivity int dataActivity) {
     int actualDataActivity = actual.getDataActivity();
     //noinspection ResourceType
     check("getDataActivity()")
@@ -179,10 +177,9 @@ public class TelephonyManagerSubject extends Subject {
             dataActivityToString(dataActivity), dataActivityToString(actualDataActivity))
         .that(actualDataActivity)
         .isEqualTo(dataActivity);
-    return this;
   }
 
-  public TelephonyManagerSubject hasDataState(@TelephonyManagerDataState int dataState) {
+  public void hasDataState(@TelephonyManagerDataState int dataState) {
     int actualDataState = actual.getDataState();
     //noinspection ResourceType
     check("getDataState()")
@@ -190,58 +187,48 @@ public class TelephonyManagerSubject extends Subject {
             dataStateToString(dataState), dataStateToString(actualDataState))
         .that(actualDataState)
         .isEqualTo(dataState);
-    return this;
   }
 
-  public TelephonyManagerSubject hasDeviceId(@Nullable String deviceId) {
+  public void hasDeviceId(@Nullable String deviceId) {
     check("getDeviceId()").that(actual.getDeviceId()).isEqualTo(deviceId);
-    return this;
   }
 
-  public TelephonyManagerSubject hasDeviceSoftwareVersion(@Nullable String version) {
+  public void hasDeviceSoftwareVersion(@Nullable String version) {
     check("getDeviceSoftwareVersion()").that(actual.getDeviceSoftwareVersion()).isEqualTo(version);
-    return this;
   }
 
   @TargetApi(JELLY_BEAN_MR2)
-  public TelephonyManagerSubject hasGroupIdLevel1(@Nullable String level) {
+  public void hasGroupIdLevel1(@Nullable String level) {
     check("getGroupIdLevel1()").that(actual.getGroupIdLevel1()).isEqualTo(level);
-    return this;
   }
 
-  public TelephonyManagerSubject hasLine1Number(@Nullable String number) {
+  public void hasLine1Number(@Nullable String number) {
     check("getLine1Number()").that(actual.getLine1Number()).isEqualTo(number);
-    return this;
   }
 
   @TargetApi(KITKAT)
-  public TelephonyManagerSubject hasMmsUAProfUrl(@Nullable String url) {
+  public void hasMmsUAProfUrl(@Nullable String url) {
     check("getMmsUAProfUrl()").that(actual.getMmsUAProfUrl()).isEqualTo(url);
-    return this;
   }
 
   @TargetApi(KITKAT)
-  public TelephonyManagerSubject hasMmsUserAgent(@Nullable String userAgent) {
+  public void hasMmsUserAgent(@Nullable String userAgent) {
     check("getMmsUserAgent()").that(actual.getMmsUserAgent()).isEqualTo(userAgent);
-    return this;
   }
 
-  public TelephonyManagerSubject hasNetworkCountryIso(@Nullable String iso) {
+  public void hasNetworkCountryIso(@Nullable String iso) {
     check("getNetworkCountryIso()").that(actual.getNetworkCountryIso()).isEqualTo(iso);
-    return this;
   }
 
-  public TelephonyManagerSubject hasNetworkOperator(@Nullable String operator) {
+  public void hasNetworkOperator(@Nullable String operator) {
     check("getNetworkOperator()").that(actual.getNetworkOperator()).isEqualTo(operator);
-    return this;
   }
 
-  public TelephonyManagerSubject hasNetworkOperatorName(@Nullable String name) {
+  public void hasNetworkOperatorName(@Nullable String name) {
     check("getNetworkOperatorName()").that(actual.getNetworkOperatorName()).isEqualTo(name);
-    return this;
   }
 
-  public TelephonyManagerSubject hasNetworkType(@TelephonyManagerNetworkType int type) {
+  public void hasNetworkType(@TelephonyManagerNetworkType int type) {
     int actualType = actual.getNetworkType();
     //noinspection ResourceType
     check("getNetworkType()")
@@ -249,10 +236,9 @@ public class TelephonyManagerSubject extends Subject {
             networkTypeToString(type), networkTypeToString(actualType))
         .that(actualType)
         .isEqualTo(type);
-    return this;
   }
 
-  public TelephonyManagerSubject hasPhoneType(@TelephonyManagerPhoneType int type) {
+  public void hasPhoneType(@TelephonyManagerPhoneType int type) {
     int actualType = actual.getPhoneType();
     //noinspection ResourceType
     check("getPhoneType()")
@@ -260,30 +246,25 @@ public class TelephonyManagerSubject extends Subject {
             phoneTypeToString(actualType))
         .that(actualType)
         .isEqualTo(type);
-    return this;
   }
 
-  public TelephonyManagerSubject hasSimCountryIso(@Nullable String iso) {
+  public void hasSimCountryIso(@Nullable String iso) {
     check("getSimCountryIso()").that(actual.getSimCountryIso()).isEqualTo(iso);
-    return this;
   }
 
-  public TelephonyManagerSubject hasSimOperator(@Nullable String operator) {
+  public void hasSimOperator(@Nullable String operator) {
     check("getSimOperator()").that(actual.getSimOperator()).isEqualTo(operator);
-    return this;
   }
 
-  public TelephonyManagerSubject hasSimOperatorName(@Nullable String name) {
+  public void hasSimOperatorName(@Nullable String name) {
     check("getSimOperatorName()").that(actual.getSimOperatorName()).isEqualTo(name);
-    return this;
   }
 
-  public TelephonyManagerSubject hasSimSerialNumber(@Nullable String serialNumber) {
+  public void hasSimSerialNumber(@Nullable String serialNumber) {
     check("getSimSerialNumber()").that(actual.getSimSerialNumber()).isEqualTo(serialNumber);
-    return this;
   }
 
-  public TelephonyManagerSubject hasSimState(@TelephonyManagerSimState int state) {
+  public void hasSimState(@TelephonyManagerSimState int state) {
     int actualState = actual.getSimState();
     //noinspection ResourceType
     check("getSimState()")
@@ -291,41 +272,33 @@ public class TelephonyManagerSubject extends Subject {
             simStateToString(actualState))
         .that(actualState)
         .isEqualTo(state);
-    return this;
   }
 
-  public TelephonyManagerSubject hasSubscriberId(@Nullable String id) {
+  public void hasSubscriberId(@Nullable String id) {
     check("getSubscriberId()").that(actual.getSubscriberId()).isEqualTo(id);
-    return this;
   }
 
-  public TelephonyManagerSubject hasVoiceMailAlphaTag(@Nullable String tag) {
+  public void hasVoiceMailAlphaTag(@Nullable String tag) {
     check("getVoiceMailAlphaTag()").that(actual.getVoiceMailAlphaTag()).isEqualTo(tag);
-    return this;
   }
 
-  public TelephonyManagerSubject hasVoiceMailNumber(@Nullable String number) {
+  public void hasVoiceMailNumber(@Nullable String number) {
     check("getVoiceMailNumber()").that(actual.getVoiceMailNumber()).isEqualTo(number);
-    return this;
   }
 
-  public TelephonyManagerSubject hasIccCard() {
+  public void hasIccCard() {
     check("hasIccCard()").that(actual.hasIccCard()).isTrue();
-    return this;
   }
 
-  public TelephonyManagerSubject doesNotHaveIccCard() {
+  public void doesNotHaveIccCard() {
     check("hasIccCard()").that(actual.hasIccCard()).isFalse();
-    return this;
   }
 
-  public TelephonyManagerSubject isNetworkRoaming() {
+  public void isNetworkRoaming() {
     check("isNetworkRoaming()").that(actual.isNetworkRoaming()).isTrue();
-    return this;
   }
 
-  public TelephonyManagerSubject isNotNetworkRoaming() {
+  public void isNotNetworkRoaming() {
     check("isNetworkRoaming()").that(actual.isNetworkRoaming()).isFalse();
-    return this;
   }
 }

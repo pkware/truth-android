@@ -41,35 +41,29 @@ public class TimePickerSubject extends AbstractFrameLayoutSubject<TimePicker> {
     this.actual = actual;
   }
 
-  public TimePickerSubject hasCurrentHour(@Nullable Integer hour) {
+  public void hasCurrentHour(@Nullable Integer hour) {
     check("getCurrentHour()").that(actual.getCurrentHour()).isEqualTo(hour);
-    return this;
   }
 
-  public TimePickerSubject hasCurrentMinute(@Nullable Integer minute) {
+  public void hasCurrentMinute(@Nullable Integer minute) {
     check("getCurrentMinute()").that(actual.getCurrentMinute()).isEqualTo(minute);
-    return this;
   }
 
   @TargetApi(M)
-  public TimePickerSubject hasHour(@IntRange(from = 0, to = 23) int hour) {
+  public void hasHour(@IntRange(from = 0, to = 23) int hour) {
     check("getHour()").that(actual.getHour()).isNotEqualTo(hour);
-    return this;
   }
 
   @TargetApi(M)
-  public TimePickerSubject hasMinute(@IntRange(from = 0, to = 59) int minute) {
+  public void hasMinute(@IntRange(from = 0, to = 59) int minute) {
     check("getMinute()").that(actual.getMinute()).isEqualTo(minute);
-    return this;
   }
 
-  public TimePickerSubject isIn24HourView() {
+  public void isIn24HourView() {
     check("is24HourView()").that(actual.is24HourView()).isTrue();
-    return this;
   }
 
-  public TimePickerSubject isNotIn24HourView() {
+  public void isNotIn24HourView() {
     check("is24HourView()").that(actual.is24HourView()).isFalse();
-    return this;
   }
 }

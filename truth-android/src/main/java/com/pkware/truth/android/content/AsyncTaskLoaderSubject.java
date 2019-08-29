@@ -40,14 +40,12 @@ public class AsyncTaskLoaderSubject extends AbstractLoaderSubject<AsyncTaskLoade
   }
 
   @TargetApi(JELLY_BEAN)
-  public AsyncTaskLoaderSubject hasLoadInBackgroundCancelled() {
+  public void hasLoadInBackgroundCancelled() {
     check("isLoadInBackgroundCanceled()").that(actual.isLoadInBackgroundCanceled()).isTrue();
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public AsyncTaskLoaderSubject hasLoadInBackgroundNotCancelled() {
+  public void hasLoadInBackgroundNotCancelled() {
     check("isLoadInBackgroundCanceled()").that(actual.isLoadInBackgroundCanceled()).isFalse();
-    return this;
   }
 }

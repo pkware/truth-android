@@ -37,13 +37,11 @@ public class ViewTreeObserverSubject extends Subject {
     this.actual = actual;
   }
 
-  public ViewTreeObserverSubject isAlive() {
+  public void isAlive() {
     check("isAlive()").that(actual.isAlive()).isTrue();
-    return this;
   }
 
-  public ViewTreeObserverSubject isNotAlive() {
+  public void isNotAlive() {
     check("isAlive()").that(actual.isAlive()).isFalse();
-    return this;
   }
 }

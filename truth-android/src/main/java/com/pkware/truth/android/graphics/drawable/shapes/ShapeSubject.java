@@ -37,25 +37,21 @@ public class ShapeSubject extends Subject {
     this.actual = actual;
   }
 
-  public ShapeSubject hasHeight(float height, float tolerance) {
+  public void hasHeight(float height, float tolerance) {
     check("getHeight()").that(actual.getHeight()).isWithin(tolerance)
         .of(height);
-    return this;
   }
 
-  public ShapeSubject hasWidth(float width, float tolerance) {
+  public void hasWidth(float width, float tolerance) {
     check("getWidth()").that(actual.getWidth()).isWithin(tolerance)
         .of(width);
-    return this;
   }
 
-  public ShapeSubject hasAlpha() {
+  public void hasAlpha() {
     check("hasAlpha()").that(actual.hasAlpha()).isTrue();
-    return this;
   }
 
-  public ShapeSubject hasNoAlpha() {
+  public void hasNoAlpha() {
     check("hasAlpha()").that(actual.hasAlpha()).isFalse();
-    return this;
   }
 }

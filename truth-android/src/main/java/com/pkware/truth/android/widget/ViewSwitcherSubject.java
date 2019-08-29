@@ -37,8 +37,7 @@ public class ViewSwitcherSubject extends AbstractViewAnimatorSubject<ViewSwitche
     this.actual = actual;
   }
 
-  public ViewSwitcherSubject hasNextView(@Nullable View view) {
+  public void hasNextView(@Nullable View view) {
     check("getNextView()").that(actual.getNextView()).isSameInstanceAs(view);
-    return this;
   }
 }

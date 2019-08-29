@@ -39,37 +39,31 @@ public class MediaRouterRouteInfoSubject extends Subject {
     this.actual = actual;
   }
 
-  public MediaRouterRouteInfoSubject hasDescription(@Nullable String description) {
+  public void hasDescription(@Nullable String description) {
     check("getDescription()").that(actual.getDescription()).isEqualTo(description);
-    return this;
   }
 
-  public MediaRouterRouteInfoSubject hasId(@Nullable String id) {
+  public void hasId(@Nullable String id) {
     check("getId()").that(actual.getId()).isEqualTo(id);
-    return this;
   }
 
-  public MediaRouterRouteInfoSubject hasName(@Nullable String name) {
+  public void hasName(@Nullable String name) {
     check("getName()").that(actual.getName()).isEqualTo(name);
-    return this;
   }
 
-  public MediaRouterRouteInfoSubject hasPlaybackStream(int playbackStream) {
+  public void hasPlaybackStream(int playbackStream) {
     check("getPlaybackStream()").that(actual.getPlaybackStream()).isEqualTo(playbackStream);
-    return this;
   }
 
-  public MediaRouterRouteInfoSubject hasPlaybackType(int playbackType) {
+  public void hasPlaybackType(int playbackType) {
     check("getPlaybackType()").that(actual.getPlaybackType()).isEqualTo(playbackType);
-    return this;
   }
 
-  public MediaRouterRouteInfoSubject hasVolume(int volume) {
+  public void hasVolume(int volume) {
     check("getVolume()").that(actual.getVolume()).isEqualTo(volume);
-    return this;
   }
 
-  public MediaRouterRouteInfoSubject hasVolumeHandling(@MediaRouteVolumeHandling int volumeHandling) {
+  public void hasVolumeHandling(@MediaRouteVolumeHandling int volumeHandling) {
     int actualHandling = actual.getVolumeHandling();
     //noinspection WrongConstant
     check("hasVolumeHandling()")
@@ -77,41 +71,33 @@ public class MediaRouterRouteInfoSubject extends Subject {
             volumeHandling(volumeHandling), volumeHandling(actualHandling))
         .that(actualHandling)
         .isEqualTo(volumeHandling);
-    return this;
   }
 
-  public MediaRouterRouteInfoSubject hasVolumeMax(int volumeMax) {
+  public void hasVolumeMax(int volumeMax) {
     check("getVolumeMax()").that(actual.getVolumeMax()).isEqualTo(volumeMax);
-    return this;
   }
 
-  public MediaRouterRouteInfoSubject isConnecting() {
+  public void isConnecting() {
     check("isConnecting()").that(actual.isConnecting()).isTrue();
-    return this;
   }
 
-  public MediaRouterRouteInfoSubject isNotConnecting() {
+  public void isNotConnecting() {
     check("isConnecting()").that(actual.isConnecting()).isFalse();
-    return this;
   }
 
-  public MediaRouterRouteInfoSubject isEnabled() {
+  public void isEnabled() {
     check("isEnabled()").that(actual.isEnabled()).isTrue();
-    return this;
   }
 
-  public MediaRouterRouteInfoSubject isDisabled() {
+  public void isDisabled() {
     check("isEnabled()").that(actual.isEnabled()).isFalse();
-    return this;
   }
 
-  public MediaRouterRouteInfoSubject isSelected() {
+  public void isSelected() {
     check("isSelected()").that(actual.isSelected()).isTrue();
-    return this;
   }
 
-  public MediaRouterRouteInfoSubject isNotSelected() {
+  public void isNotSelected() {
     check("isSelected()").that(actual.isSelected()).isFalse();
-    return this;
   }
 }

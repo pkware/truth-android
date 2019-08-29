@@ -37,11 +37,10 @@ public class LoaderManagerSubject extends Subject {
     this.actual = actual;
   }
 
-  public LoaderManagerSubject hasLoader(int id) {
+  public void hasLoader(int id) {
     check("getLoader(id)")
         .withMessage("loader with ID %s", id)
         .that(actual.getLoader(id))
         .isNotNull();
-    return this;
   }
 }

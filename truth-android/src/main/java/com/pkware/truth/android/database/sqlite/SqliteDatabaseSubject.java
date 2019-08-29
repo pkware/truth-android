@@ -40,87 +40,71 @@ public class SqliteDatabaseSubject extends Subject {
     this.actual = actual;
   }
 
-  public SqliteDatabaseSubject hasMaximumSize(long size) {
+  public void hasMaximumSize(long size) {
     check("getMaximumSize()").that(actual.getMaximumSize()).isEqualTo(size);
-    return this;
   }
 
-  public SqliteDatabaseSubject hasPageSize(long size) {
+  public void hasPageSize(long size) {
     check("getPageSize()").that(actual.getPageSize()).isEqualTo(size);
-    return this;
   }
 
-  public SqliteDatabaseSubject hasPath(@Nullable String path) {
+  public void hasPath(@Nullable String path) {
     check("getPath()").that(actual.getPath()).isEqualTo(path);
-    return this;
   }
 
-  public SqliteDatabaseSubject hasVersion(int version) {
+  public void hasVersion(int version) {
     check("getVersion()").that(actual.getVersion()).isEqualTo(version);
-    return this;
   }
 
-  public SqliteDatabaseSubject isInTransaction() {
+  public void isInTransaction() {
     check("inTransaction()").that(actual.inTransaction()).isTrue();
-    return this;
   }
 
-  public SqliteDatabaseSubject isNotInTransaction() {
+  public void isNotInTransaction() {
     check("inTransaction()").that(actual.inTransaction()).isFalse();
-    return this;
   }
 
-  public SqliteDatabaseSubject isDatabaseIntegrityOk() {
+  public void isDatabaseIntegrityOk() {
     check("isDatabaseIntegrityOk()").that(actual.isDatabaseIntegrityOk()).isTrue();
-    return this;
   }
 
-  public SqliteDatabaseSubject isDatabaseIntegrityNotOk() {
+  public void isDatabaseIntegrityNotOk() {
     check("isDatabaseIntegrityOk()").that(actual.isDatabaseIntegrityOk()).isFalse();
-    return this;
   }
 
-  public SqliteDatabaseSubject isLockedByCurrentThread() {
+  public void isLockedByCurrentThread() {
     check("isDbLockedByCurrentThread()").that(actual.isDbLockedByCurrentThread()).isTrue();
-    return this;
   }
 
-  public SqliteDatabaseSubject isNotLockedByCurrentThread() {
+  public void isNotLockedByCurrentThread() {
     check("isDbLockedByCurrentThread()").that(actual.isDbLockedByCurrentThread()).isFalse();
-    return this;
   }
 
-  public SqliteDatabaseSubject isOpen() {
+  public void isOpen() {
     check("isOpen()").that(actual.isOpen()).isTrue();
-    return this;
   }
 
-  public SqliteDatabaseSubject isNotOpen() {
+  public void isNotOpen() {
     check("isOpen()").that(actual.isOpen()).isFalse();
-    return this;
   }
 
-  public SqliteDatabaseSubject isReadOnly() {
+  public void isReadOnly() {
     check("isReadOnly()").that(actual.isReadOnly()).isTrue();
-    return this;
   }
 
-  public SqliteDatabaseSubject isNotReadOnly() {
+  public void isNotReadOnly() {
     check("isReadOnly()").that(actual.isReadOnly()).isFalse();
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public SqliteDatabaseSubject isWriteAheadLoggingEnabled() {
+  public void isWriteAheadLoggingEnabled() {
     check("isWriteAheadLoggingEnabled()").that(actual.isWriteAheadLoggingEnabled()).isTrue();
-    return this;
   }
 
   @TargetApi(JELLY_BEAN)
-  public SqliteDatabaseSubject isWriteAheadLoggingDisabled() {
+  public void isWriteAheadLoggingDisabled() {
     check("isWriteAheadLoggingEnabled()")
         .that(actual.isWriteAheadLoggingEnabled())
         .isFalse();
-    return this;
   }
 }

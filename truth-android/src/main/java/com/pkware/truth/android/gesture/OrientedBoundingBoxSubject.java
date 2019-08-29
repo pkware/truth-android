@@ -37,33 +37,27 @@ public class OrientedBoundingBoxSubject extends Subject {
     this.actual = actual;
   }
 
-  public OrientedBoundingBoxSubject hasCenterX(float centerX, float tolerance) {
+  public void hasCenterX(float centerX, float tolerance) {
     check("centerX").that(actual.centerX).isWithin(tolerance).of(centerX);
-    return this;
   }
 
-  public OrientedBoundingBoxSubject hasCenterY(float centerY, float tolerance) {
+  public void hasCenterY(float centerY, float tolerance) {
     check("centerY").that(actual.centerY).isWithin(tolerance).of(centerY);
-    return this;
   }
 
-  public OrientedBoundingBoxSubject hasHeight(float height, float tolerance) {
+  public void hasHeight(float height, float tolerance) {
     check("height").that(actual.height).isWithin(tolerance).of(height);
-    return this;
   }
 
-  public OrientedBoundingBoxSubject hasOrientation(float orientation, float tolerance) {
+  public void hasOrientation(float orientation, float tolerance) {
     check("orientation").that(actual.orientation).isWithin(tolerance).of(orientation);
-    return this;
   }
 
-  public OrientedBoundingBoxSubject hasSquareness(float squareness, float tolerance) {
+  public void hasSquareness(float squareness, float tolerance) {
     check("squareness").that(actual.squareness).isWithin(tolerance).of(squareness);
-    return this;
   }
 
-  public OrientedBoundingBoxSubject hasWidth(float width, float tolerance) {
+  public void hasWidth(float width, float tolerance) {
     check("width").that(actual.width).isWithin(tolerance).of(width);
-    return this;
   }
 }

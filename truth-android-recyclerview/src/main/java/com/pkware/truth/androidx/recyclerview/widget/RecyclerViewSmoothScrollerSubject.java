@@ -37,33 +37,27 @@ public class RecyclerViewSmoothScrollerSubject extends Subject {
     this.actual = actual;
   }
 
-  public RecyclerViewSmoothScrollerSubject isPendingInitialRun() {
+  public void isPendingInitialRun() {
     check("isPendingInitialRun()").that(actual.isPendingInitialRun()).isTrue();
-    return this;
   }
 
-  public RecyclerViewSmoothScrollerSubject isNotPendingInitialRun() {
+  public void isNotPendingInitialRun() {
     check("isPendingInitialRun()").that(actual.isPendingInitialRun()).isFalse();
-    return this;
   }
 
-  public RecyclerViewSmoothScrollerSubject isRunning() {
+  public void isRunning() {
     check("isRunning()").that(actual.isRunning()).isTrue();
-    return this;
   }
 
-  public RecyclerViewSmoothScrollerSubject isNotRunning() {
+  public void isNotRunning() {
     check("isRunning()").that(actual.isRunning()).isFalse();
-    return this;
   }
 
-  public RecyclerViewSmoothScrollerSubject hasTargetPosition(int position) {
+  public void hasTargetPosition(int position) {
     check("getTargetPosition()").that(actual.getTargetPosition()).isEqualTo(position);
-    return this;
   }
 
-  public RecyclerViewSmoothScrollerSubject hasChildCount(int count) {
+  public void hasChildCount(int count) {
     check("getChildCount()").that(actual.getChildCount()).isEqualTo(count);
-    return this;
   }
 }

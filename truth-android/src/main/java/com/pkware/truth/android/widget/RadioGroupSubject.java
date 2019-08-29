@@ -36,8 +36,7 @@ public class RadioGroupSubject extends AbstractLinearLayoutSubject<RadioGroup> {
     this.actual = actual;
   }
 
-  public RadioGroupSubject hasCheckedRadioButtonId(int id) {
+  public void hasCheckedRadioButtonId(int id) {
     check("getCheckedRadioButtonId()").that(actual.getCheckedRadioButtonId()).isEqualTo(id);
-    return this;
   }
 }

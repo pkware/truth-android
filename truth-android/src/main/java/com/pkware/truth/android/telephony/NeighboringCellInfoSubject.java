@@ -39,17 +39,15 @@ public class NeighboringCellInfoSubject extends Subject {
     this.actual = actual;
   }
 
-  public NeighboringCellInfoSubject hasCid(int cid) {
+  public void hasCid(int cid) {
     check("getCid()").that(actual.getCid()).isEqualTo(cid);
-    return this;
   }
 
-  public NeighboringCellInfoSubject hasLac(int lac) {
+  public void hasLac(int lac) {
     check("getLac()").that(actual.getLac()).isEqualTo(lac);
-    return this;
   }
 
-  public NeighboringCellInfoSubject hasNetworkType(@TelephonyManagerNetworkType int networkType) {
+  public void hasNetworkType(@TelephonyManagerNetworkType int networkType) {
     int actualNetworkType = actual.getNetworkType();
     //noinspection ResourceType
     check("getNetworkType()")
@@ -57,16 +55,13 @@ public class NeighboringCellInfoSubject extends Subject {
             networkTypeToString(networkType), networkTypeToString(actualNetworkType))
         .that(actualNetworkType)
         .isEqualTo(networkType);
-    return this;
   }
 
-  public NeighboringCellInfoSubject hasPsc(int psc) {
+  public void hasPsc(int psc) {
     check("getPsc()").that(actual.getPsc()).isEqualTo(psc);
-    return this;
   }
 
-  public NeighboringCellInfoSubject hasRssi(int rssi) {
+  public void hasRssi(int rssi) {
     check("getRssi()").that(actual.getRssi()).isEqualTo(rssi);
-    return this;
   }
 }

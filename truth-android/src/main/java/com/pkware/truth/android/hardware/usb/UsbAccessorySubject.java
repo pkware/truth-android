@@ -37,33 +37,27 @@ public class UsbAccessorySubject extends Subject {
     this.actual = actual;
   }
 
-  public UsbAccessorySubject hasDescription(@Nullable String description) {
+  public void hasDescription(@Nullable String description) {
     check("getDescription()").that(actual.getDescription()).isEqualTo(description);
-    return this;
   }
 
-  public UsbAccessorySubject hasManufacturer(@Nullable String manufacturer) {
+  public void hasManufacturer(@Nullable String manufacturer) {
     check("getManufacturer()").that(actual.getManufacturer()).isEqualTo(manufacturer);
-    return this;
   }
 
-  public UsbAccessorySubject hasModel(@Nullable String model) {
+  public void hasModel(@Nullable String model) {
     check("getModel()").that(actual.getModel()).isEqualTo(model);
-    return this;
   }
 
-  public UsbAccessorySubject hasSerial(@Nullable String serial) {
+  public void hasSerial(@Nullable String serial) {
     check("getSerial()").that(actual.getSerial()).isEqualTo(serial);
-    return this;
   }
 
-  public UsbAccessorySubject hasUri(@Nullable String uri) {
+  public void hasUri(@Nullable String uri) {
     check("getUri()").that(actual.getUri()).isEqualTo(uri);
-    return this;
   }
 
-  public UsbAccessorySubject hasVersion(@Nullable String version) {
+  public void hasVersion(@Nullable String version) {
     check("getVersion()").that(actual.getVersion()).isEqualTo(version);
-    return this;
   }
 }

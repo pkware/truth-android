@@ -1,6 +1,5 @@
 /*
  * Copyright 2013 Square, Inc.
- * Copyright 2016 PKWARE, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,19 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.pkware.truth.android.mediarouter.v7.media;
+package com.pkware.truth.androidx.mediarouter.media;
 
 import androidx.annotation.IntDef;
-import androidx.mediarouter.media.MediaRouter;
+import androidx.mediarouter.media.MediaSessionStatus;
 
 import java.lang.annotation.Retention;
 
 import static java.lang.annotation.RetentionPolicy.SOURCE;
 
 @IntDef({
-    MediaRouter.RouteInfo.PLAYBACK_VOLUME_FIXED,
-    MediaRouter.RouteInfo.PLAYBACK_VOLUME_VARIABLE,
+    MediaSessionStatus.SESSION_STATE_ACTIVE,
+    MediaSessionStatus.SESSION_STATE_ENDED,
+    MediaSessionStatus.SESSION_STATE_INVALIDATED
 })
 @Retention(SOURCE)
-@interface MediaRouteVolumeHandling {
+@interface MediaSessionStatusState {
 }

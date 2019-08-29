@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.pkware.truth.android.mediarouter.v7.media;
+package com.pkware.truth.androidx.mediarouter.media;
 
 import androidx.mediarouter.media.MediaRouteDescriptor;
 import androidx.mediarouter.media.MediaRouter;

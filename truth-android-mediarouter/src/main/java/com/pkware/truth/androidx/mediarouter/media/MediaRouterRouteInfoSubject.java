@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.pkware.truth.android.mediarouter.v7.media;
+package com.pkware.truth.androidx.mediarouter.media;
 
 import androidx.mediarouter.media.MediaRouter;
 
@@ -24,7 +24,7 @@ import com.google.common.truth.Subject;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import static com.pkware.truth.android.mediarouter.v7.media.MediaRouteDescriptorSubject.volumeHandling;
+import static com.pkware.truth.androidx.mediarouter.media.MediaRouteDescriptorSubject.volumeHandling;
 
 /**
  * Propositions for {@link MediaRouter.RouteInfo} subjects.

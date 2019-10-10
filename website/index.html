@@ -26,7 +26,7 @@
     <div class="row">
       <div class="span10 offset1">
         <p>Writing tests is not the most glamorous part of developing an Android application but it is an invaluable one. Using libraries like JUnit and Truth provide a great starting point for writing tests.</p>
-        <p>This library is an extension of <a href="https://google.github.io/truth/">Truth</a> which aims to make it even easier to test Android.</p>
+        <p>This library is an extension of <a href="https://truth.dev">Truth</a> which aims to make it even easier to test Android.</p>
       </div>
     </div>
     <div class="row examples section">
@@ -49,16 +49,16 @@
       <div class="span10 offset1">
         <p>When failing, the <em>Truth Android</em> assertion produces an output which allows you to immediately recognize the problem: <code>Expected visibility &lt;gone> but was &lt;invisible>.</code></p>
         <p>Compare that to the output of regular <em>Truth</em> <code>expected:&lt;[8]> but was:&lt;[4]></code> and regular <em>JUnit</em> <code>expected: &lt;8> but was: &lt;4></code> and you should immediately see the advantage.</p>
-        <p>Because <em>Truth Android</em> offers assertions directly on objects rather than properties they can be chained together.</p>
+        <p>Because <em>Truth Android</em> offers assertions directly on objects rather than properties, tests are much more readable.</p>
       </div>
     </div>
     <div class="row examples section">
       <div class="span8 offset2">
         <h5>Truth Android</h5>
-        <pre class="prettyprint">assertThat(layout).isVisible()
-    .isVertical()
-    .hasChildCount(4)
-    .hasShowDividers(SHOW_DIVIDERS_MIDDLE);</pre>
+        <pre class="prettyprint">assertThat(layout).isVisible();
+assertThat(layout).isVertical();
+assertThat(layout).hasChildCount(4);
+assertThat(layout).hasShowDividers(SHOW_DIVIDERS_MIDDLE);</pre>
       </div>
     </div>
     <div class="row">
@@ -79,7 +79,7 @@ assertThat(layout.getShowDividers()).isEqualTo(SHOW_DIVIDERS_MIDDLE);</pre>
     </div>
     <div class="row section">
       <div class="span10 offset1">
-        <p>Assertions exist for nearly every object that you would ever want to test, from <code>LinearLayout</code> to <code>ActionBar</code> to <code>Fragment</code> to <code>MenuItem</code>. Everything in the support library is included too.</p>
+        <p>Assertions exist for nearly every object that you would ever want to test, from <code>LinearLayout</code> to <code>ActionBar</code> to <code>Fragment</code> to <code>MenuItem</code>. AndroidX is mostly included too.</p>
       </div>
     </div>
     <div class="row section">
@@ -91,7 +91,7 @@ assertThat(layout.getShowDividers()).isEqualTo(SHOW_DIVIDERS_MIDDLE);</pre>
     <div class="row section">
       <div class="span10 offset1">
         <h5 id="add-ons">Add-On Modules</h5>
-        <p>Modules are also provided for the add-on Android libraries. Add the dependency (listed below) and use the following imports:</p>
+        <p>Modules are also provided for the add-on AndroidX libraries. Add the dependency (listed below) and use the following imports:</p>
         <ul>
           <li><p>legacy-support-v4</p><pre class="prettyprint">import static com.pkware.truth.androidx.legacy.v4.Assertions.assertThat;</pre></li>
           <li><p>Google Play Services</p><pre class="prettyprint">import static com.pkware.truth.android.playservices.Assertions.assertThat;</pre></li>
@@ -115,32 +115,29 @@ assertThat(layout.getShowDividers()).isEqualTo(SHOW_DIVIDERS_MIDDLE);</pre>
   }
 }</pre>
         <p>Use the following pattern to set up your assertions.</p>
-        <pre class="prettyprint">public final class CustomLayoutSubject extends AbstractLinearLayoutSubject&lt;CustomLayoutSubject, CustomLayout> {
-  private static final SubjectFactory&lt;CustomLayoutSubject, CustomLayout> CUSTOM_LAYOUT_SUBJECT_FACTORY =
-      new SubjectFactory&lt;CustomLayoutSubject, CustomLayout>() {
-        @Override
-        public CustomLayoutSubject getSubject(FailureStrategy failureStrategy, @Nullable CustomLayout target) {
-          return new CustomLayoutSubject(failureStrategy, target);
-        }
-      };
+        <pre class="prettyprint">public final class CustomLayoutSubject extends AbstractLinearLayoutSubject&lt;CustomLayout> {
+
+  @Nullable
+  private final CustomLayout actual;
 
   public static CustomLayoutSubject assertThat(@Nullable CustomLayout actual) {
-    return assertAbout(CUSTOM_LAYOUT_SUBJECT_FACTORY).that(actual);
+    return assertAbout(CustomLayoutSubject::new).that(actual);
   }
 
-  private CustomLayoutSubject(FailureStrategy failureStrategy, CustomLayout subject) {
-    super(failureStrategy, subject);
+  private CustomLayoutSubject(FailureStrategy failureStrategy, @Nullable CustomLayout actual) {
+    super(failureStrategy, actual);
+    this.actual = actual;
   }
 
-  public CustomLayoutSubject hasSomeBehavior() {
-    assertThat(actual.getBehavior())
-        .withFailureMessage("Expected some behavior but was doing other behavior.")
-        .isEqualTo(42)
-    return this;
+  public void hasSomeBehavior() {
+    check("getBehavior()")
+        .withMessage("Expected some behavior but was doing other behavior.")
+        .that(actual.getBehavior())
+        .isEqualTo(42);
   }
 }</pre>
         <p>Now static import <code>CustomLayoutSubject.assertThat</code> in your test classes.</p>
-        <p>For more information about writing custom assertions see the <a href="https://google.github.io/truth/extension">official documentation</a>.</p>
+        <p>For more information about writing custom assertions see the <a href="https://truth.dev/extension">official documentation</a>.</p>
       </div>
     </div>
     <div class="row section">

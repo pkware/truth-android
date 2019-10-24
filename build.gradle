@@ -24,15 +24,15 @@ ext {
     buildToolsVersion = '28.0.3'
 
     truth = 'com.google.truth:truth:1.0'
-    supportAnnotations = "androidx.annotation:annotation:1.0.0"
-    supportV4 = "androidx.legacy:legacy-support-v4:1.0.0"
-    supportAppCompat = "androidx.appcompat:appcompat:1.0.0"
-    supportCardView = "androidx.cardview:cardview:1.0.0"
-    supportDesign = "com.google.android.material:material:1.0.0"
-    supportGridLayout = "androidx.gridlayout:gridlayout:1.0.0"
-    supportMediaRouter = "androidx.mediarouter:mediarouter:1.0.0"
-    supportPalette = "androidx.palette:palette:1.0.0"
-    supportRecyclerView = "androidx.recyclerview:recyclerview:1.0.0"
+    androidxAnnotation = "androidx.annotation:annotation:1.0.0"
+    androidxLegacySupportV4 = "androidx.legacy:legacy-support-v4:1.0.0"
+    androidxAppCompat = "androidx.appcompat:appcompat:1.0.0"
+    androidxCardView = "androidx.cardview:cardview:1.0.0"
+    materialComponents = "com.google.android.material:material:1.0.0"
+    androidxGridLayout = "androidx.gridlayout:gridlayout:1.0.0"
+    androidxMediaRouter = "androidx.mediarouter:mediarouter:1.0.0"
+    androidxPalette = "androidx.palette:palette:1.0.0"
+    androidxRecyclerView = "androidx.recyclerview:recyclerview:1.0.0"
 
     playServices = 'com.google.android.gms:play-services:7.5.0'
 }

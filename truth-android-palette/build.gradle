@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 
 dependencies {
     api project(':truth-android')
-    api rootProject.ext.supportPalette
+    api rootProject.ext.androidxPalette
 }
 
 android {

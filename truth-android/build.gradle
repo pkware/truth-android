@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 
 dependencies {
     api rootProject.ext.truth
-    api rootProject.ext.supportAnnotations
+    api rootProject.ext.androidxAnnotation
 }
 
 android {

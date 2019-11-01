@@ -93,15 +93,24 @@ assertThat(layout.getShowDividers()).isEqualTo(SHOW_DIVIDERS_MIDDLE);</pre>
         <h5 id="add-ons">Add-On Modules</h5>
         <p>Modules are also provided for the add-on AndroidX libraries. Add the dependency (listed below) and use the following imports:</p>
         <ul>
-          <li><p>legacy-support-v4</p><pre class="prettyprint">import static com.pkware.truth.androidx.legacy.v4.Assertions.assertThat;</pre></li>
+          <li><p>legacy-support-core-ui</p><pre class="prettyprint">import static com.pkware.truth.androidx.legacy.Assertions.assertThat;</pre></li>
+          <li><p>collection</p><pre class="prettyprint">import static com.pkware.truth.androidx.collection.Assertions.assertThat;</pre></li>
+          <li><p>core</p><pre class="prettyprint">import static com.pkware.truth.androidx.core.Assertions.assertThat;</pre></li>
+          <li><p>cursoradapter</p><pre class="prettyprint">import static com.pkware.truth.androidx.cursoradapter.Assertions.assertThat;</pre></li>
+          <li><p>fragment</p><pre class="prettyprint">import static com.pkware.truth.androidx.fragment.Assertions.assertThat;</pre></li>
           <li><p>Google Play Services</p><pre class="prettyprint">import static com.pkware.truth.android.playservices.Assertions.assertThat;</pre></li>
           <li><p>appcompat</p><pre class="prettyprint">import static com.pkware.truth.androidx.appcompat.Assertions.assertThat;</pre></li>
           <li><p>Material Components</p><pre class="prettyprint">import static com.pkware.truth.android.material.Assertions.assertThat;</pre></li>
+          <li><p>loader</p><pre class="prettyprint">import static com.pkware.truth.androidx.loader.Assertions.assertThat;</pre></li>
           <li><p>mediarouter</p><pre class="prettyprint">import static com.pkware.truth.androidx.mediarouter.Assertions.assertThat;</pre></li>
           <li><p>gridlayout</p><pre class="prettyprint">import static com.pkware.truth.androidx.gridlayout.Assertions.assertThat;</pre></li>
           <li><p>cardview</p><pre class="prettyprint">import static com.pkware.truth.androidx.cardview.Assertions.assertThat;</pre></li>
           <li><p>recyclerview</p><pre class="prettyprint">import static com.pkware.truth.android.recyclerview.v7.Assertions.assertThat;</pre></li>
           <li><p>pallete</p><pre class="prettyprint">import static com.pkware.truth.android.pallete.v7.Assertions.assertThat;</pre></li>
+          <li><p>print</p><pre class="prettyprint">import static com.pkware.truth.androidx.print.Assertions.assertThat;</pre></li>
+          <li><p>slidingpanelayout</p><pre class="prettyprint">import static com.pkware.truth.androidx.slidingpanelayout.Assertions.assertThat;</pre></li>
+          <li><p>swiperefreshlayout</p><pre class="prettyprint">import static com.pkware.truth.androidx.swiperefreshlayout.Assertions.assertThat;</pre></li>
+          <li><p>viewpager</p><pre class="prettyprint">import static com.pkware.truth.androidx.viewpager.Assertions.assertThat;</pre></li>
         </dl>
       </div>
     </div>
@@ -145,15 +154,24 @@ assertThat(layout.getShowDividers()).isEqualTo(SHOW_DIVIDERS_MIDDLE);</pre>
         <h5 id="download">Download</h5>
         <ul>
           <li><p>Android module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android:<span class="maven-version">1.1.0</span>'</pre></li>
-          <li><p>legacy support-v4 module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-support-v4:<span class="maven-version">1.1.0</span>'</pre></li>
+          <li><p>legacy-support-core-ui module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-legacy-support-core-ui:<span class="maven-version">1.1.0</span>'</pre></li>
+          <li><p>collection module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-collection:<span class="maven-version">1.1.0</span>'</pre></li>
+          <li><p>core module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-core:<span class="maven-version">1.1.0</span>'</pre></li>
+          <li><p>cursoradapter module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-cursoradapter:<span class="maven-version">1.1.0</span>'</pre></li>
+          <li><p>fragment module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-fragment:<span class="maven-version">1.1.0</span>'</pre></li>
           <li><p>Google Play Services module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-play-services:<span class="maven-version">1.1.0</span>'</pre></li>
           <li><p>Material Components library module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-material:<span class="maven-version">1.1.0</span>'</pre></li>
           <li><p>appcompat module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-appcompat:<span class="maven-version">1.1.0</span>'</pre></li>
+          <li><p>loader module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-loader:<span class="maven-version">1.1.0</span>'</pre></li>
           <li><p>mediarouter module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-mediarouter:<span class="maven-version">1.1.0</span>'</pre></li>
           <li><p>gridlayout module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-gridlayout:<span class="maven-version">1.1.0</span>'</pre></li>
           <li><p>cardview module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-cardview:<span class="maven-version">1.1.0</span>'</pre></li>
           <li><p>recyclerview module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-recyclerview:<span class="maven-version">1.1.0</span>'</pre></li>
           <li><p>pallete module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-pallete:<span class="maven-version">1.1.0</span>'</pre></li>
+          <li><p>print module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-print:<span class="maven-version">1.1.0</span>'</pre></li>
+          <li><p>slidingpanelayout module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-slidingpanelayout:<span class="maven-version">1.1.0</span>'</pre></li>
+          <li><p>swiperefreshlayout module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-swiperefreshlayout:<span class="maven-version">1.1.0</span>'</pre></li>
+          <li><p>viewpager module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-viewpager:<span class="maven-version">1.1.0</span>'</pre></li>
         </ul>
       </div>
     </div>

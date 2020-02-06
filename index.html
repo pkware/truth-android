@@ -26,7 +26,7 @@
     <div class="row">
       <div class="span10 offset1">
         <p>Writing tests is not the most glamorous part of developing an Android application but it is an invaluable one. Using libraries like JUnit and Truth provide a great starting point for writing tests.</p>
-        <p>This library is an extension of <a href="https://google.github.io/truth/">Truth</a> which aims to make it even easier to test Android.</p>
+        <p>This library is an extension of <a href="https://truth.dev">Truth</a> which aims to make it even easier to test Android.</p>
       </div>
     </div>
     <div class="row examples section">
@@ -49,16 +49,16 @@
       <div class="span10 offset1">
         <p>When failing, the <em>Truth Android</em> assertion produces an output which allows you to immediately recognize the problem: <code>Expected visibility &lt;gone> but was &lt;invisible>.</code></p>
         <p>Compare that to the output of regular <em>Truth</em> <code>expected:&lt;[8]> but was:&lt;[4]></code> and regular <em>JUnit</em> <code>expected: &lt;8> but was: &lt;4></code> and you should immediately see the advantage.</p>
-        <p>Because <em>Truth Android</em> offers assertions directly on objects rather than properties they can be chained together.</p>
+        <p>Because <em>Truth Android</em> offers assertions directly on objects rather than properties, tests are much more readable.</p>
       </div>
     </div>
     <div class="row examples section">
       <div class="span8 offset2">
         <h5>Truth Android</h5>
-        <pre class="prettyprint">assertThat(layout).isVisible()
-    .isVertical()
-    .hasChildCount(4)
-    .hasShowDividers(SHOW_DIVIDERS_MIDDLE);</pre>
+        <pre class="prettyprint">assertThat(layout).isVisible();
+assertThat(layout).isVertical();
+assertThat(layout).hasChildCount(4);
+assertThat(layout).hasShowDividers(SHOW_DIVIDERS_MIDDLE);</pre>
       </div>
     </div>
     <div class="row">
@@ -79,7 +79,7 @@ assertThat(layout.getShowDividers()).isEqualTo(SHOW_DIVIDERS_MIDDLE);</pre>
     </div>
     <div class="row section">
       <div class="span10 offset1">
-        <p>Assertions exist for nearly every object that you would ever want to test, from <code>LinearLayout</code> to <code>ActionBar</code> to <code>Fragment</code> to <code>MenuItem</code>. Everything in the support library is included too.</p>
+        <p>Assertions exist for nearly every object that you would ever want to test, from <code>LinearLayout</code> to <code>ActionBar</code> to <code>Fragment</code> to <code>MenuItem</code>. AndroidX is mostly included too.</p>
       </div>
     </div>
     <div class="row section">
@@ -91,17 +91,26 @@ assertThat(layout.getShowDividers()).isEqualTo(SHOW_DIVIDERS_MIDDLE);</pre>
     <div class="row section">
       <div class="span10 offset1">
         <h5 id="add-ons">Add-On Modules</h5>
-        <p>Modules are also provided for the add-on Android libraries. Add the dependency (listed below) and use the following imports:</p>
+        <p>Modules are also provided for the add-on AndroidX libraries. Add the dependency (listed below) and use the following imports:</p>
         <ul>
-          <li><p>support-v4</p><pre class="prettyprint">import static com.pkware.truth.android.support.v4.Assertions.assertThat;</pre></li>
+          <li><p>legacy-support-core-ui</p><pre class="prettyprint">import static com.pkware.truth.androidx.legacy.Assertions.assertThat;</pre></li>
+          <li><p>collection</p><pre class="prettyprint">import static com.pkware.truth.androidx.collection.Assertions.assertThat;</pre></li>
+          <li><p>core</p><pre class="prettyprint">import static com.pkware.truth.androidx.core.Assertions.assertThat;</pre></li>
+          <li><p>cursoradapter</p><pre class="prettyprint">import static com.pkware.truth.androidx.cursoradapter.Assertions.assertThat;</pre></li>
+          <li><p>fragment</p><pre class="prettyprint">import static com.pkware.truth.androidx.fragment.Assertions.assertThat;</pre></li>
           <li><p>Google Play Services</p><pre class="prettyprint">import static com.pkware.truth.android.playservices.Assertions.assertThat;</pre></li>
-          <li><p>appcompat-v7</p><pre class="prettyprint">import static com.pkware.truth.android.appcompat.v7.Assertions.assertThat;</pre></li>
-          <li><p>design</p><pre class="prettyprint">import static com.pkware.truth.android.design.Assertions.assertThat;</pre></li>
-          <li><p>mediarouter-v7</p><pre class="prettyprint">import static com.pkware.truth.android.mediarouter.v7.Assertions.assertThat;</pre></li>
-          <li><p>gridlayout-v7</p><pre class="prettyprint">import static com.pkware.truth.android.gridlayout.v7.Assertions.assertThat;</pre></li>
-          <li><p>cardview-v7</p><pre class="prettyprint">import static com.pkware.truth.android.cardview.v7.Assertions.assertThat;</pre></li>
-          <li><p>recyclerview-v7</p><pre class="prettyprint">import static com.pkware.truth.android.recyclerview.v7.Assertions.assertThat;</pre></li>
-          <li><p>pallete-v7</p><pre class="prettyprint">import static com.pkware.truth.android.pallete.v7.Assertions.assertThat;</pre></li>
+          <li><p>appcompat</p><pre class="prettyprint">import static com.pkware.truth.androidx.appcompat.Assertions.assertThat;</pre></li>
+          <li><p>Material Components</p><pre class="prettyprint">import static com.pkware.truth.android.material.Assertions.assertThat;</pre></li>
+          <li><p>loader</p><pre class="prettyprint">import static com.pkware.truth.androidx.loader.Assertions.assertThat;</pre></li>
+          <li><p>mediarouter</p><pre class="prettyprint">import static com.pkware.truth.androidx.mediarouter.Assertions.assertThat;</pre></li>
+          <li><p>gridlayout</p><pre class="prettyprint">import static com.pkware.truth.androidx.gridlayout.Assertions.assertThat;</pre></li>
+          <li><p>cardview</p><pre class="prettyprint">import static com.pkware.truth.androidx.cardview.Assertions.assertThat;</pre></li>
+          <li><p>recyclerview</p><pre class="prettyprint">import static com.pkware.truth.androidx.recyclerview.Assertions.assertThat;</pre></li>
+          <li><p>pallete</p><pre class="prettyprint">import static com.pkware.truth.androidx.palette.Assertions.assertThat;</pre></li>
+          <li><p>print</p><pre class="prettyprint">import static com.pkware.truth.androidx.print.Assertions.assertThat;</pre></li>
+          <li><p>slidingpanelayout</p><pre class="prettyprint">import static com.pkware.truth.androidx.slidingpanelayout.Assertions.assertThat;</pre></li>
+          <li><p>swiperefreshlayout</p><pre class="prettyprint">import static com.pkware.truth.androidx.swiperefreshlayout.Assertions.assertThat;</pre></li>
+          <li><p>viewpager</p><pre class="prettyprint">import static com.pkware.truth.androidx.viewpager.Assertions.assertThat;</pre></li>
         </dl>
       </div>
     </div>
@@ -115,48 +124,54 @@ assertThat(layout.getShowDividers()).isEqualTo(SHOW_DIVIDERS_MIDDLE);</pre>
   }
 }</pre>
         <p>Use the following pattern to set up your assertions.</p>
-        <pre class="prettyprint">public final class CustomLayoutSubject extends AbstractLinearLayoutSubject&lt;CustomLayoutSubject, CustomLayout> {
-  private static final SubjectFactory&lt;CustomLayoutSubject, CustomLayout> CUSTOM_LAYOUT_SUBJECT_FACTORY =
-      new SubjectFactory&lt;CustomLayoutSubject, CustomLayout>() {
-        @Override
-        public CustomLayoutSubject getSubject(FailureStrategy failureStrategy, @Nullable CustomLayout target) {
-          return new CustomLayoutSubject(failureStrategy, target);
-        }
-      };
+        <pre class="prettyprint">public final class CustomLayoutSubject extends AbstractLinearLayoutSubject&lt;CustomLayout> {
+
+  @Nullable
+  private final CustomLayout actual;
 
   public static CustomLayoutSubject assertThat(@Nullable CustomLayout actual) {
-    return assertAbout(CUSTOM_LAYOUT_SUBJECT_FACTORY).that(actual);
+    return assertAbout(CustomLayoutSubject::new).that(actual);
   }
 
-  private CustomLayoutSubject(FailureStrategy failureStrategy, CustomLayout subject) {
-    super(failureStrategy, subject);
+  private CustomLayoutSubject(FailureStrategy failureStrategy, @Nullable CustomLayout actual) {
+    super(failureStrategy, actual);
+    this.actual = actual;
   }
 
-  public CustomLayoutSubject hasSomeBehavior() {
-    assertThat(actual.getBehavior())
-        .withFailureMessage("Expected some behavior but was doing other behavior.")
-        .isEqualTo(42)
-    return this;
+  public void hasSomeBehavior() {
+    check("getBehavior()")
+        .withMessage("Expected some behavior but was doing other behavior.")
+        .that(actual.getBehavior())
+        .isEqualTo(42);
   }
 }</pre>
         <p>Now static import <code>CustomLayoutSubject.assertThat</code> in your test classes.</p>
-        <p>For more information about writing custom assertions see the <a href="https://google.github.io/truth/extension">official documentation</a>.</p>
+        <p>For more information about writing custom assertions see the <a href="https://truth.dev/extension">official documentation</a>.</p>
       </div>
     </div>
     <div class="row section">
       <div class="span10 offset1">
         <h5 id="download">Download</h5>
         <ul>
-          <li><p>Android module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android:<span class="maven-version">1.1.0</span>'</pre></li>
-          <li><p>support-v4 module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-support-v4:<span class="maven-version">1.1.0</span>'</pre></li>
-          <li><p>Google Play Services module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-play-services:<span class="maven-version">1.1.0</span>'</pre></li>
-          <li><p>Design library module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-pallete-v7:<span class="maven-version">1.1.0</span>'</pre></li>
-          <li><p>appcompat-v7 module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-appcompat-v7:<span class="maven-version">1.1.0</span>'</pre></li>
-          <li><p>mediarouter-v7 module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-mediarouter-v7:<span class="maven-version">1.1.0</span>'</pre></li>
-          <li><p>gridlayout-v7 module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-gridlayout-v7:<span class="maven-version">1.1.0</span>'</pre></li>
-          <li><p>cardview-v7 module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-cardview-v7:<span class="maven-version">1.1.0</span>'</pre></li>
-          <li><p>recyclerview-v7 module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-recyclerview-v7:<span class="maven-version">1.1.0</span>'</pre></li>
-          <li><p>pallete-v7 module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-pallete-v7:<span class="maven-version">1.1.0</span>'</pre></li>
+          <li><p>Android module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android:<span class="maven-version">2.0.0</span>'</pre></li>
+          <li><p>legacy-support-core-ui module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-legacy-support-core-ui:<span class="maven-version">2.0.0</span>'</pre></li>
+          <li><p>collection module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-collection:<span class="maven-version">2.0.0</span>'</pre></li>
+          <li><p>core module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-core:<span class="maven-version">2.0.0</span>'</pre></li>
+          <li><p>cursoradapter module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-cursoradapter:<span class="maven-version">2.0.0</span>'</pre></li>
+          <li><p>fragment module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-fragment:<span class="maven-version">2.0.0</span>'</pre></li>
+          <li><p>Google Play Services module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-play-services:<span class="maven-version">2.0.0</span>'</pre></li>
+          <li><p>Material Components library module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-material:<span class="maven-version">2.0.0</span>'</pre></li>
+          <li><p>appcompat module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-appcompat:<span class="maven-version">2.0.0</span>'</pre></li>
+          <li><p>loader module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-loader:<span class="maven-version">2.0.0</span>'</pre></li>
+          <li><p>mediarouter module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-mediarouter:<span class="maven-version">2.0.0</span>'</pre></li>
+          <li><p>gridlayout module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-gridlayout:<span class="maven-version">2.0.0</span>'</pre></li>
+          <li><p>cardview module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-cardview:<span class="maven-version">2.0.0</span>'</pre></li>
+          <li><p>recyclerview module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-recyclerview:<span class="maven-version">2.0.0</span>'</pre></li>
+          <li><p>pallete module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-pallete:<span class="maven-version">2.0.0</span>'</pre></li>
+          <li><p>print module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-print:<span class="maven-version">2.0.0</span>'</pre></li>
+          <li><p>slidingpanelayout module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-slidingpanelayout:<span class="maven-version">2.0.0</span>'</pre></li>
+          <li><p>swiperefreshlayout module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-swiperefreshlayout:<span class="maven-version">2.0.0</span>'</pre></li>
+          <li><p>viewpager module:</p><pre class="prettyprint">androidTestCompile 'com.pkware.truth-android:truth-android-viewpager:<span class="maven-version">2.0.0</span>'</pre></li>
         </ul>
       </div>
     </div>

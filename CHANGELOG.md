@@ -1,6 +1,6 @@
 # Change Log
 
-## Version 2.0.0-rc1 *(2019-10-10)*
+## Version 2.0.0 *(2020-02-06)*
 This release marks a major milestone in that it moves to Truth stable, and migrates to AndroidX.
 
 ### Migrating

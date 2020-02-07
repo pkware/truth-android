@@ -5,7 +5,7 @@ Releasing
  1. If the release is not a `rc`, `beta`, or similar, change the version in `website/index.html`.
  1. Update the `CHANGELOG.md` for the impending release.
  1. `git commit -am "Prepare for release X.Y.Z."` (where X.Y.Z is the new version)
- 1. `./gradlew clean publish`
+ 1. `./gradlew clean publish --no-parallel`
  1. Visit [Sonatype Nexus](https://oss.sonatype.org/) and promote the artifact.
  1. `git tag -a X.Y.X -m "Version X.Y.Z"` (where X.Y.Z is the new version)
  1. If you updated `website/index.html`, run the `deploy_website.sh` script.

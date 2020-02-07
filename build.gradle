@@ -6,6 +6,7 @@ subprojects {
         }
         dependencies {
             classpath 'com.android.tools.build:gradle:3.5.3'
+            classpath 'digital.wup:android-maven-publish:3.6.3'
         }
     }
 
@@ -45,18 +46,4 @@ ext {
 
     materialComponents = "com.google.android.material:material:1.0.0"
     playServices = 'com.google.android.gms:play-services:7.5.0'
-}
-
-subprojects {
-    afterEvaluate {
-        android.libraryVariants.all { variant ->
-            def task = project.tasks.create "jar${variant.name.capitalize()}", Jar
-            task.description = "Create jar artifact for ${variant.name}"
-            task.dependsOn variant.javaCompile
-            task.from variant.javaCompile.destinationDir
-            task.destinationDir = project.file("${project.buildDir}/outputs/jar")
-            task.archiveName = "${project.name}-${variant.baseName}.jar"
-            artifacts.add('archives', task);
-        }
-    }
 }
